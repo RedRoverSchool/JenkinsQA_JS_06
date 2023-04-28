@@ -53,7 +53,7 @@ jobs:
 
     - name: Write the cypress.env.json
       run: |
-        echo '${{ secrets.JENKINS_LOGIN_CREDENTIALS }}' > ./cypress.env.json
+        echo '${{ secrets.CYPRESS_LOGIN_CREDENTIALS }}' > ./cypress.env.json
 
     - name: Npx run
       run: npx cypress run --headless
