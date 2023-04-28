@@ -56,7 +56,7 @@ jobs:
           echo '${{ secrets.CYPRESS_LOGIN_CREDENTIALS }}' > ./cypress.env.json
 
       - name: Npx run
-        run: npx cypress run --headless
+        run: npx cypress run --browser=chrome
 
       - name: Create test summary
         uses: test-summary/action@v1.0
