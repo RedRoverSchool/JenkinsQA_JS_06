@@ -23,6 +23,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
 
+    - name: Npm install
+      run: npm ci
+
     - name: Install JDK
         uses: actions/setup-java@v3
         with:
@@ -47,9 +50,6 @@ jobs:
 
     # - name: Wait for the Jenkins
     #     run: ./.github/wait-for-jenkins.sh
-
-    - name: Npm install
-      run: npm ci
 
     - name: Write the cypress.env.json
       run: |
