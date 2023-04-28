@@ -51,8 +51,6 @@ jobs:
 
     - name: Npx run
       run: npx cypress run --headless
-      # env:
-      #     CI_RUN: true 
 
     - name: Create test summary
       uses: test-summary/action@v1.0
