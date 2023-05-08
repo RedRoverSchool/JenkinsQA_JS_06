@@ -45,8 +45,9 @@ Students are not allowed to install any libraries, plugins, etc. to avoid changi
 
 ```package.json```
 ```package.lock.json```
-```ci.yml```
-```cancel.yml```
 ```cypress.config.js```
 ```e2e.js```
+```ci.yml```
+```cancel.yml```
 ```globalHooks.js```
+```cleanData.js```

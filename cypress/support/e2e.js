@@ -16,6 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import './globalHooks'
+import './cleanData'
 
 Cypress.on('uncaught:exception', () => false)
 
