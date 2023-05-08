@@ -22,10 +22,10 @@ student should create the spec containing the name of the userstory (US): ```hea
 
 **Spec structure:**
 
-- Each block ```describe``` should contain name of group
+- Each block ```describe``` should contain the name of spec file
 - Each test (```it```) should contain name of test case (```AT```) 
-example:
 
+example:
 describe('Header', () => {
 
     it('Verify logo jenkins is visible on the header', function () {
@@ -49,3 +49,4 @@ Students are not allowed to install any libraries, plugins, etc. to avoid changi
 ```cancel.yml```
 ```cypress.config.js```
 ```e2e.js```
+```globalHooks.js```
