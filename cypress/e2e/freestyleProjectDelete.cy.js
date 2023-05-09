@@ -10,8 +10,8 @@ describe('<Freestyle project> Delete created project', () => {
       cy.get('#ok-button').click()
       cy.get(':nth-child(1) > .model-link').click()
 
-      cy.get('table#projectstatus tbody tr td:nth-child(3) a').realHover({ position: "center" });
-      cy.get('table#projectstatus tbody tr td:nth-child(3) a button').click();
+      
+      cy.get('table#projectstatus tbody tr td:nth-child(3) a button').click({force:true});
       cy.get('div#breadcrumb-menu ul li a').contains('Delete Project').click();
 
       cy.on('window:confirm', (str) => {
