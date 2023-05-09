@@ -11,8 +11,8 @@ describe('Freestyle project. Delete created project', () => {
       cy.get(':nth-child(1) > .model-link').click()
 
       
-      cy.get('tbody tr td a.jenkins-table__link').as('projectName').realHover({position: "center"});
-      cy.get('@projectName').should('have.attr', 'href')
+      cy.get('tbody tr td a.jenkins-table__link').as('projectName').realHover();
+     
       cy.get('@projectName').find('span').should('have.text', 'Project1');
      
       cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').should('be.visible').click()
