@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 
 describe('Jenkins Dashboard', () => {
-  it.only('verify dropdown menu Dashboard', function () {
-    cy.get('.jenkins-breadcrumbs__list-item > .model-link').should('have.text', 'Dashboard').realHover();
+  it('verify dropdown menu Dashboard', function () {
+    cy.get('.jenkins-breadcrumbs__list-item > .model-link').should('have.text', 'Dashboard').realHover({ position: "center" });
     cy.get('li.jenkins-breadcrumbs__list-item button.jenkins-menu-dropdown-chevron').click();
     cy.get('#breadcrumb-menu>div.bd>ul.first-of-type>li>a>span').should('be.visible').and('have.length', 5);
   });
