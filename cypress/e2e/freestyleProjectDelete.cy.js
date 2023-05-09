@@ -15,9 +15,8 @@ describe('Freestyle project. Delete created project', () => {
         cy.wrap($el).realHover()
       })
      
-      cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron')
-        .invoke('removeAttr', 'style')
-        .trigger('click')
+      cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').then($el => cy.wrap($el).invoke('removeAttr', 'style')).click();
+
       cy.get('div#breadcrumb-menu ul li a').contains('Delete Project').click();
 
       cy.on('window:confirm', (str) => {
