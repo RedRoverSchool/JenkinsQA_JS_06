@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import messages from "../fixtures/messages.json"
 
-describe('<Freestyle project> Delete created project', () => {
+describe('Freestyle project> Delete created project', () => {
     
     it('Delete project using dropdown menu', function () {
       cy.get('a[href="newJob"]').click()
@@ -12,8 +12,9 @@ describe('<Freestyle project> Delete created project', () => {
 
       
       cy.get('tbody tr td a.jenkins-table__link').realHover().should('have.attr', 'href');
-      cy.get('tbody tr td a.jenkins-table__link span').should('have.text', 'Project1')
-      cy.get('table#projectstatus tbody tr td:nth-child(3) a button').click()
+      cy.get('tbody tr td a.jenkins-table__link span').should('have.text', 'Project1');
+      cy.wait(1000)
+      cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').click()
       cy.get('div#breadcrumb-menu ul li a').contains('Delete Project').click();
 
       cy.on('window:confirm', (str) => {
