@@ -2,7 +2,7 @@
 
 describe("newItemTest", () => {
 
-    it("<New item> Create a new Pipeline", () => {
+    it("New item, Create a new Pipeline", () => {
         cy.get("#side-panel").click();
         cy.contains("New Item").click();
         cy.get("[class='add-item-name'] input[name='name']").type(`Engineer `);
@@ -14,7 +14,7 @@ describe("newItemTest", () => {
         cy.get("[href$='Engineer/']").should("have.text", "Engineer");
     });
 
-    it("<New Item > Create a new Multibranch Pipeline", () => {
+    it("New Item, Create a new Multibranch Pipeline", () => {
         cy.get("#side-panel").click();
         cy.contains("New Item").click();
         cy.get("[class='add-item-name'] input[name='name']").type(`Engineer `);
