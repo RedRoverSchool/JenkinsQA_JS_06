@@ -1,4 +1,4 @@
-describe("AT_02.05_002 | Homepage Link 'Learn more about distributed builds'", () => {
+describe("Homepage", () => {
   it("Redirection to wiki occurs after clicking the 'Learn more about distributed builds' link", () => {
     cy.intercept('GET', '**/Distributed+builds').as('reqToWiki');
 
