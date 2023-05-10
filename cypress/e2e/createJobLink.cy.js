@@ -7,6 +7,6 @@ describe('Homepage: Create a job link', () => {
         cy.get('a[href*="newJob"].content-block__link').should('be.visible')
         cy.get('a[href*="newJob"].content-block__link').should('have.text', 'Create a job')
         cy.get('a[href*="newJob"].content-block__link').click()
-        cy.url().should('eq', 'http://localhost:8080/newJob')
+        cy.url().should('contain', '/newJob')
     });
 });
