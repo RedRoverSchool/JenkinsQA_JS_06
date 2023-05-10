@@ -1,9 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('<Header>', () => {
-    beforeEach(() => {
-        cy.visit('http://localhost:8080/')
-    })
+describe('Header: Jenkins icon', () => {
 
     it('Verify Jenkins icon', function () {
 
@@ -14,9 +11,4 @@ describe('<Header>', () => {
         cy.get('#jenkins-head-icon').should('have.css', 'height', '40px')
         cy.get('#jenkins-head-icon').should('have.css', 'vertical-align', 'middle')
     });
-
 });
-
-
-
-
