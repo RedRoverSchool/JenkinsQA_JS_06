@@ -18,7 +18,6 @@ describe("Freestyle project - View project changes", () => {
         cy.contains('Changes').click();
         cy.url().should('contain', 'changes');
         cy.contains('No builds.').should('be.visible');
-
     });
 
 });
