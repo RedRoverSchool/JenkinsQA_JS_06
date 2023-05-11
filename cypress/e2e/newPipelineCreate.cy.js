@@ -9,7 +9,7 @@ describe('Create a new Pipeline', () => {
         cy.get('table#projectstatus').should('contain', newPipeLineName)
     })
 
-    it.only('Create a new Pipeline', () => {
+    it('Create a new Pipeline', () => {
         cy.contains('span[class="task-link-text"]', 'New Item').click({force:true})
         cy.get('.org_jenkinsci_plugins_workflow_job_WorkflowJob').click()
         cy.get('.jenkins-input').type('New project')
