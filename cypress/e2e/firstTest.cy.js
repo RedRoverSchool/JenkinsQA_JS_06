@@ -9,7 +9,7 @@ describe('Jenkins Dashboard', () => {
 
   it('verify user can create a job', function () {
     cy.get('a[href="newJob"]').click()
-    cy.get('input#name').type('Project1')
+    cy.get('input#name').type('NewProject')
     cy.get('li[tabindex="0"] span').contains('Freestyle project').click()
     cy.get('#ok-button').click()
     cy.get(':nth-child(1) > .model-link').click()

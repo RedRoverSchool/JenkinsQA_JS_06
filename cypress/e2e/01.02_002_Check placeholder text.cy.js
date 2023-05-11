@@ -8,5 +8,6 @@ describe('Check seach box', () => {
         cy.get('input#search-box')
         .should('have.attr', 'placeholder', 'Search (⌘+K)')
         .should('be.visible')
+        
     });
 });
