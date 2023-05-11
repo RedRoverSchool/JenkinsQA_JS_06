@@ -3,7 +3,7 @@
 describe('Head Icon', () => {
 
     it('Verify Jenkins icon and name-icon are visible in header', () => {
-        cy.get('#jenkins-home-link').should("be.visible")
+        cy.get('#jenkins-head-icon').should("be.visible")
         cy.get('#jenkins-name-icon').should("be.visible")
     })
 
