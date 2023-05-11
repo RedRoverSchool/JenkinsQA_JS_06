@@ -1,3 +1,4 @@
 {
-    "deleteConfirmMessage": "Delete Project: are you sure?"
+    "deleteConfirmMessage": "Delete Project: are you sure?",
+    "error": "Nothing seems to match."
 }
