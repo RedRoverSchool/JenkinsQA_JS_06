@@ -14,4 +14,9 @@ describe('Jenkins Dashboard', () => {
     cy.get('#ok-button').click()
     cy.get(':nth-child(1) > .model-link').click()
   });
+
+  it('AT_02.09_002 | Verification "add description" button', function (){
+    cy.get('#description-link').click()
+    cy.get('.jenkins-input').should('be.visible')
+  })
 });
