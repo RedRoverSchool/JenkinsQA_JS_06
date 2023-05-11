@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 
-describe("createNewPipelineProjectTest", () => {
+describe("newItemTest", () => {
 
-    it("createNewPipelineProjectTest", () => {
+    it("<New item> Create a new Pipeline", () => {
         cy.get("#side-panel").click();
         cy.contains("New Item").click();
         cy.get("[class='add-item-name'] input[name='name']").type(`Engineer `);
