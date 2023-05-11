@@ -1,6 +1,8 @@
 /// <reference types="cypress"/>
 
-describe('verify user can rename fristyle project with dropdown', () => {
+import messages from "../fixtures/messages.json"
+
+describe('Freestyle project - Rename project', () => {
     
     let jobName = 'Project1'
     
@@ -26,4 +28,14 @@ describe('verify user can rename fristyle project with dropdown', () => {
 
         cy.get('.icon-edit-delete').click()
     })
+
+    it('AT_12.03_002 | Verify that using the same name an error message is appeared', function() {
+        cy.get('.jenkins-table__link').click()
+        cy.get('a[href$="confirm-rename"]').click()
+        cy.get('.jenkins-input').should('have.value', jobName)
+        cy.get('.jenkins-button').click()
+
+        cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error).and('be.visible')
+        cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message).and('be.visible')
+    });
 })
