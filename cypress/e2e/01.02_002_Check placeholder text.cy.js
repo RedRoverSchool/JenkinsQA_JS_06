@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+
 describe('Check seach box', () => {
     
     it('Check placeholder text "Search (CTRL+K)"', () => {
