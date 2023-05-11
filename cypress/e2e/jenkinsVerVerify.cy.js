@@ -10,8 +10,3 @@ describe('AT_3.02_001 Link Jenkins ver number is correct', () =>{
         .and('have.css','color','rgb(20, 20, 31)')
     })
  })
-
-        
-        
-
- 
