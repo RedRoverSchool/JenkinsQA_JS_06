@@ -7,7 +7,7 @@ describe('Head Icon', () => {
         cy.url().should('include', 'localhost')
     })
 
-    it('Verify logo icon and name-icon position', () => {
+    it('Verify logo icon and name-icon are displayed in top-left corner on the page', () => {
         cy.get('#jenkins-head-icon')
             .should('have.prop', 'offsetTop', 0)
             .and('have.prop', 'offsetLeft', 0)
