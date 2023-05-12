@@ -1,5 +1,8 @@
 /// <reference types="cypress"/>
 
+import projects from "../fixtures/projects.json"
+import headers from "../fixtures/headers.json"
+
 describe('Header Search Box', () => {
     
     it('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
@@ -11,4 +14,10 @@ describe('Header Search Box', () => {
         cy.url().should('include', '/doc/book/using/searchbox/')
         cy.get('h1#search-box').should('contain.text', '\nSearch Box\n')
     });
+
+    it('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
+        cy.get('#jenkins').trigger('keydown', { ctrlKey: true, keyCode: 75})
+        cy.get('#search-box').type(projects.multibranchPipeline.name + '{enter}')
+        cy.get("#main-panel h1").should('have.text', headers.searchPage).and('be.visible')
+    })
 })
