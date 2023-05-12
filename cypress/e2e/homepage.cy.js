@@ -10,6 +10,7 @@ describe('Homepage', () => {
   });
   
   it('Verify Home page > Link "Learn more about distributed builds"',() => {
+    
     cy.get('a[href$="/redirect/distributed-builds"]').invoke('removeAttr', 'target').click()
     cy.url().should('include', '/display/JENKINS/Distributed+builds')
     cy.title().should('eq', 'Jenkins : Distributed builds')
