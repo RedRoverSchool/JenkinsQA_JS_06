@@ -7,7 +7,7 @@ describe('<New Item> Create a new Organization Folder', () => {
     it('New Item > Create a new Organization Folder by [+New Item]', function () {
         cy.contains('New Item').click()
 
-        cy.url().should('eq', 'http://localhost:8080/view/all/newJob')
+        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/view/all/newJob`)
 
         cy.get("#name").type(folderName)
 
