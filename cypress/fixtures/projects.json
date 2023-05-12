@@ -6,5 +6,8 @@
 
 	"multibranchPipeline": {
 		"name": "Multibranch Pipeline1"
+	},
+	"api": {
+		"text": "REST API"
 	}
 }
