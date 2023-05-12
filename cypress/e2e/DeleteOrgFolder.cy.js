@@ -12,10 +12,11 @@ describe('<Organization Folder> Delete Organization Folder', () => {
             const folder = new Folder();
             folder.createNewFolder();
 
-            // Delete folder
+            // Delete folderß
             cy.contains(folderName).click()
     
-            cy.url().should('eq', `http://localhost:8080/job/${folderName}/`)
+            // cy.url().should('eq', `http://localhost:8080/job/${folderName}/`)
+            cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/`)
     
             cy.contains("Delete Organization Folder").click()
     
