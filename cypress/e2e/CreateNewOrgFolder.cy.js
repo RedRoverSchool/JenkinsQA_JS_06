@@ -18,6 +18,7 @@ describe('<New Item> Create a new Organization Folder', () => {
         .click()
 
         cy.url().should('eq', 'http://localhost:8080/job/Test/configure')
+        
 
         cy.contains('Save').click()
 
