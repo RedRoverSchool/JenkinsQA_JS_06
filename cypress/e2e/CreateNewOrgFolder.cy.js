@@ -25,6 +25,7 @@ describe('<New Item> Create a new Organization Folder', () => {
 
         cy.get(':nth-child(1) > .model-link').click()
 
-        cy.get('#job_Test .jenkins-table__link').should('have.text', folderName)
+        cy.get('#job_Test .jenkins-table__link')
+        .should('have.text', folderName)
     })
 })
