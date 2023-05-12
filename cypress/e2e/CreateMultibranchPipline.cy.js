@@ -17,7 +17,7 @@ describe('<New Item> Create a new Multibranch Pipeline', () => {
         .should('be.visible')
         .click()
 
-        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/${multibranchName}/configure`)
+        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${multibranchName}/configure`)
 
         cy.contains('Save').click()
 
