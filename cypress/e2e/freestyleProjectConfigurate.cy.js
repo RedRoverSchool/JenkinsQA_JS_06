@@ -6,7 +6,7 @@ describe('Freestyle project > Configurate project', () => {
 
     beforeEach('Create freestyle project', function () {
         cy.get('a[href="newJob"]').click();
-        cy.get('#name').should('have.text', '').type(jobName);
+        cy.get('#name').type(jobName);
         cy.contains('Freestyle project').click();
         cy.get('#ok-button').click();
         cy.get('button[name=Submit]').click();
