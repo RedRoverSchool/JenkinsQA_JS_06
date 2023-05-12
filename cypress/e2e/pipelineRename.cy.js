@@ -2,7 +2,7 @@ import pipelineName from "../fixtures/pipelineName.json"
 
 describe('US_13.03 Pipeline.Rename pipeline project', () => {
     it('TC_13.03.001 Change Pipeline name using Rename button', () => {
-        cy.get('a[href="newJob"]'). click()
+        cy.get('a[href="newJob"]').click()
         cy.get('input#name').type(pipelineName.namePipeline)
         cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
         cy.get('#ok-button').click()
