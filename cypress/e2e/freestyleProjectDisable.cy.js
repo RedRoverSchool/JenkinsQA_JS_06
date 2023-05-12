@@ -112,7 +112,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 			.and('have.attr', 'title', 'Disabled')
 	});
 
-	it('AT_12.06_0004 | <Freestyle project>Disable project. "Disabled" status icon has grey color', () => {
+	it('AT_12.06_0004 | Freestyle project>Disable project. "Disabled" status icon has grey color', () => {
 		cy.intercept('/view/all/newJob').as('newJobsList')
 		cy.intercept(`/job/${projects.freestyle.name}/configure`).as('newProjectConfigure')
 		cy.intercept(`/job/${projects.freestyle.name}/`).as('newProjectProfile')
