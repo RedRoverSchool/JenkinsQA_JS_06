@@ -18,6 +18,6 @@ describe('<Freestyle project> Delete created project', () => {
       cy.on('window:confirm', (str) => {
             expect(str).to.equal(messages.deleteConfirmMessage)
       })
-    });
+    }); //npm install cypress-real-events 
   });
   
