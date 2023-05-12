@@ -109,6 +109,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 			.contains('tr', projects.freestyle.name)
 			.find('svg.icon-disabled')
 			.should('be.visible')
+			.and('have.attr', 'title', 'Disabled')
 	});
 
 })
