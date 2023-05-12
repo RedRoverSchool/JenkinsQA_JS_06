@@ -1,0 +1,29 @@
+name: Check file names
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check-file-names:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Check file names
+        run: |
+          # Получаем список всех файлов во всех ветках репозитория, игнорируя скрытые файлы
+          git ls-files --exclude-standard --others --cached --no-empty-directory | sort -f > files.txt
+          
+          # Удаляем дубликаты, сохраняя первое вхождение
+          uniq -di files.txt > duplicates.txt
+          
+          # Если найдены дубликаты, выводим сообщение и выходим с ошибкой
+          if [[ -s duplicates.txt ]]; then
+            echo "Найдены файлы с одинаковыми названиями, отличающимися только регистром:"
+            cat duplicates.txt
+            exit 1
+          fi
