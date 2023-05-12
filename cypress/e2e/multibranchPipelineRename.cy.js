@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import pipelineName from "../fixtures/pipelineName.json";
+import messages from "../fixtures/messages.json";
 
 describe('Rename existing Multibranch Pipeline', () =>{
     beforeEach(() => {
@@ -23,5 +24,15 @@ describe('Rename existing Multibranch Pipeline', () =>{
         cy.get('button[name=Submit]').click();
         cy.url().should('include', `/job/${pipelineName.newNamePipeline}`);
         cy.get('h1').contains(`${pipelineName.newNamePipeline}`);
+    })
+
+     it.only('Rename Multibranch Pipeline using dropdown menu_negative1', () => {
+        cy.get('a[href^="job/"').realHover();
+        cy.get('td > a [class$="dropdown-chevron"]').click();
+        cy.get('li > a > span').contains('Rename').click();
+        cy.get('button[name=Submit]').click();
+        cy.url().should('include', `/job/${pipelineName.namePipeline}/confirmRename`);
+        cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error);
+        cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message);
     })
 })
