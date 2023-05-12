@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import pipelineName from "../fixtures/pipelineName.json";
+import messages from "../fixtures/messages.json";
 
 describe('Rename existing Multibranch Pipeline', () =>{
     beforeEach(() => {
