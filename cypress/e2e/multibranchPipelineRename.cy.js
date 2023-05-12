@@ -35,4 +35,5 @@ describe('Rename existing Multibranch Pipeline', () =>{
         cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error);
         cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message);
     })
+
 })
