@@ -26,7 +26,7 @@ describe('Rename existing Multibranch Pipeline', () =>{
         cy.get('h1').contains(`${pipelineName.newNamePipeline}`);
     })
 
-     it.only('Rename Multibranch Pipeline using dropdown menu_negative1', () => {
+     it('Rename Multibranch Pipeline using dropdown menu_negative1', () => {
         cy.get('a[href^="job/"').realHover();
         cy.get('td > a [class$="dropdown-chevron"]').click();
         cy.get('li > a > span').contains('Rename').click();
