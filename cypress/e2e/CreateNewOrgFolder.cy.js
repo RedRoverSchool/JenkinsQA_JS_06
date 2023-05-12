@@ -17,7 +17,7 @@ describe('<New Item> Create a new Organization Folder', () => {
         .should('be.visible')
         .click()
 
-        cy.url().should('eq', 'http://localhost:8080/job/Test/configure')
+        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/configure`)
 
         cy.contains('Save').click()
 
