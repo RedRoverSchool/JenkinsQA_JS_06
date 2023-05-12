@@ -2,6 +2,8 @@
 
 import Folder from "../pages/createOrgFolder"
 
+const folderName = 'Test';
+
 describe('<Organization Folder> Delete Organization Folder', () => {
     
         it('Delete Organization Folder', () => {
@@ -11,7 +13,7 @@ describe('<Organization Folder> Delete Organization Folder', () => {
             folder.createNewFolder();
 
             // Delete folder
-            cy.contains('Test').click()
+            cy.contains(folderName).click()
     
             cy.url().should('eq', `http://localhost:8080/job/${folderName}/`)
     
