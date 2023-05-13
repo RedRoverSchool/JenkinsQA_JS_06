@@ -34,9 +34,7 @@ describe('DemoQA Menu-titles', () => {
     cy.visit('https://primereact.org/dropdown/');
     cy.get('.doc-main .py-3:nth-of-type(8) .p-dropdown').click();
     searchForOption(itemForSearch);
-    cy.get('.doc-main .py-3:nth-of-type(8) .p-dropdown-label').should(
-      'have.text',
-      itemForSearch
-    );
+    cy.get('.doc-main .py-3:nth-of-type(8) .p-dropdown-label')
+      .should('have.text', itemForSearch);
   });
 });
