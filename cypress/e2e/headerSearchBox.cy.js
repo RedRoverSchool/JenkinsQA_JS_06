@@ -21,8 +21,13 @@ describe('Header Search Box', () => {
         cy.get("#main-panel h1").should('have.text', headers.searchPage).and('be.visible')
     });
 
-    it('TC_01.02_007 | <Header> Verify search box is visible', function () {
+    it('AT_01.02_007 | <Header> Verify search box is visible', function () {
         cy.get('#search-box')
           .should('have.css', 'width', '300px')
-    })
+    });
+
+    it('AT_01.02_008 | <Header> Verify text in placeholder: “Search (CTRL+K)"', function () {
+        cy.get('#search-box')
+          .should('have.attr', 'placeholder', 'Search (CTRL+K)')
+    });
 })
