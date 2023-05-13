@@ -13,7 +13,7 @@ describe('Header', () => {
     });
 
     
-    it.only('Verify logo jenkins is visible on the header', function () {
+    it('Verify logo jenkins is visible and clickable on the header', function () {
         cy.get('#jenkins-head-icon')
           .should('be.visible')
           .should('have.css', 'height', '40px')
