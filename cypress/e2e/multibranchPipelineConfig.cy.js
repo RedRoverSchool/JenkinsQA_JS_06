@@ -15,5 +15,7 @@ describe('Configurate Multibranch Pipeliner', () => {
       cy.get('.jenkins-input.validated').type('job-1')
       cy.get('[name="_.description"]').type('first job');
       cy.get('button[name=Submit]').click();
+      cy.url().should('contain', '/job/job/')
+      cy.get('h1').should('be.visible', 'job-1')
   });
 })
