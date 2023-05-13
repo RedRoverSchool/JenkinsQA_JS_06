@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe("Header | Head Icon", () => {
+describe("Header|Head Icon", () => {
 
     it("Verify Head Icon", () => {
         cy.visit('http://localhost:8080/asynchPeople/')
