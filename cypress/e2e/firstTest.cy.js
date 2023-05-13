@@ -3,7 +3,11 @@
 describe('Jenkins Dashboard', () => {
   it('verify dropdown menu Dashboard', function () {
     cy.get('.jenkins-breadcrumbs__list-item > .model-link').should('have.text', 'Dashboard').realHover();
+<<<<<<< Updated upstream
     cy.get('li.jenkins-breadcrumbs__list-item button.jenkins-menu-dropdown-chevron').should('be.visible').click();
+=======
+    cy.get('li.jenkins-breadcrumbs__list-item button.jenkins-menu-dropdown-chevron').should('be.visible').click({force: true});
+>>>>>>> Stashed changes
     cy.get('#breadcrumb-menu>div.bd>ul.first-of-type>li>a>span').should('be.visible').and('have.length', 5);
   });
 
