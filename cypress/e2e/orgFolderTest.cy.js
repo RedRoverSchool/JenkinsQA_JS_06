@@ -4,7 +4,7 @@ describe('<Organization Folder> Configurate Organization Folder', () => {
     const orgFolderName = 'OrgFolderTest';
     const description = 'The description was added to the organization folder.';
 
-    beforeEach ('Create Organization Folder', () => {
+    before ('Create Organization Folder', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(orgFolderName);
         cy.get('.jenkins_branch_OrganizationFolder').click();
