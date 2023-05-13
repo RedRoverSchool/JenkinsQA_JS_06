@@ -10,9 +10,8 @@ describe('FreestyleProjectEditDescription', () => {
       cy.get(':nth-child(1) > .model-link').click()
 
       cy.get('#description-link').click();
-      cy.get('.jenkins-input   ').clear().type('Description from Home page');
+      cy.get('.jenkins-input').clear().type('Description from Home page');
       cy.get('button[name="Submit"]').click()
       cy.get('#description').contains('Description from Home page')
-     
-  })
+    })
 })
