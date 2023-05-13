@@ -1,27 +1,45 @@
 /// <reference types="cypress"/>
 
-import Folder from "../pages/createOrgFolder"
-
 const folderName = 'Test';
 
 describe('<Organization Folder> Delete Organization Folder', () => {
-    
-        it('Delete Organization Folder', () => {
 
-            // Create new Org Folder
-            const folder = new Folder();
-            folder.createNewFolder();
+    it('New Item > Create a new Organization Folder by [+New Item]', function () {
 
-            // Delete folderß
-            cy.contains(folderName).click()
+    // Create Org Folder
+    cy.contains('New Item').click()
+
+    cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/view/all/newJob`)
+
+    cy.get("#name").type(folderName)
+
+    cy.contains("Organization Folder").click()
+
+    cy.get('#ok-button')
+    .should('be.visible')
+    .click()
+
+    cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/configure`)
+
+    cy.contains('Save').click()
+
+    cy.get('#main-panel > h1').should('contain', folderName)
+
+    cy.get(':nth-child(1) > .model-link').click()
+
+    cy.get('#job_Test .jenkins-table__link')
+    .should('have.text', folderName)
     
-            // cy.url().should('eq', `http://localhost:8080/job/${folderName}/`)
-            cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/`)
+    // Delete Org Folder
+    cy.contains(folderName).click()
     
-            cy.contains("Delete Organization Folder").click()
+    cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/`)
     
-            cy.get('[class$="color"]')
-            .should('be.visible')
-            .click()
-        })
+    cy.contains("Delete Organization Folder").click()
+    
+    cy.get('[class$="color"]')
+    .should('be.visible')
+    .click()
+
     })
+ })
