@@ -15,5 +15,5 @@ describe('Create job link', () => {
     it.only('Create job link', () => {
         cy.get('#main-panel .content-block a[href=newJob]').click();
         cy.url().should('eq','http://localhost:8080/newJob');
-    })
-})
+    });
+});
