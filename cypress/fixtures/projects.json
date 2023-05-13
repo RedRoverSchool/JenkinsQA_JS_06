@@ -9,5 +9,9 @@
 	},
 	"api": {
 		"text": "REST API"
-	}
+	},
+
+	"organizationFolder" : {
+		"name" : "myFirstOrganizationForder"
+	  }
 }
