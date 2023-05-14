@@ -29,4 +29,16 @@ describe('Create a new Pipeline', () => {
         cy.get('li a[href="/"]').click()
         cy.get('table#projectstatus').should('contain', newPipeLineName)
     })
-})
+
+    it("Create a new Pipeline", () => {
+        cy.get("#side-panel").click();
+        cy.contains("New Item").click();
+        cy.get("[class='add-item-name'] input[name='name']").type(`FirstProject `);
+        cy.contains("Pipeline").click();
+        cy.get("#ok-button").click();
+        cy.get("textarea[name='description']").type("new create super project");
+        cy.get("button[name='Submit']").click();
+        cy.get("li:nth-child(1) > a").click();
+        cy.get("[href$='FirstProject/']").should("have.text", "FirstProject");
+    })
+});
