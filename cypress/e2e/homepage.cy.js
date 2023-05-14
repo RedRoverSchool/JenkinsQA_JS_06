@@ -33,3 +33,4 @@ describe('Homepage', () => {
     cy.get("#title-text").should("contain.text", "Jenkins : Distributed builds")
     cy.url().should('eq', 'https://wiki.jenkins.io/display/JENKINS/Distributed+builds')
   });
+})
