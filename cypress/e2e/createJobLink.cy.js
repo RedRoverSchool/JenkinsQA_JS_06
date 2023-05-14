@@ -9,4 +9,10 @@ describe('Homepage: Create a job link', () => {
         cy.get('a[href*="newJob"].content-block__link').click()
         cy.url().should('contain', '/newJob')
     });
+
+    it('Create job link', () => {
+        cy.get('#main-panel .content-block a[href=newJob]').click();
+        cy.url().should('eq',`http://localhost:${Cypress.env('local.port')}/newJob`);
+    });
+    
 });
