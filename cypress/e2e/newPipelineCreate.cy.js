@@ -18,4 +18,15 @@ describe('Create a new Pipeline', () => {
         cy.get('li.jenkins-breadcrumbs__list-item').click()
         cy.get('a[href*="job/New%20project"]').should('be.visible')
     })
+
+    it('Create a new Pipeline goin from People page', () => {
+        cy.get('a[href="/asynchPeople/"]').click()
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('input.jenkins-input').type(newPipeLineName)
+        cy.get('.org_jenkinsci_plugins_workflow_job_WorkflowJob').click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('li a[href="/"]').click()
+        cy.get('table#projectstatus').should('contain', newPipeLineName)
+    })
 })
