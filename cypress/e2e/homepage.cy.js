@@ -27,4 +27,10 @@ describe('Homepage', () => {
     cy.url().should('include', '/display/JENKINS/Distributed+builds')
     cy.title().should('eq', 'Jenkins : Distributed builds')
   })
-});
+
+  it ('Verify Homepage Link "Learn more about distributed builds" is working', () => {
+    cy.get('.content-block').contains('Learn more about distributed builds').invoke('removeAttr', 'target').click()
+    cy.get("#title-text").should("contain.text", "Jenkins : Distributed builds")
+    cy.url().should('eq', 'https://wiki.jenkins.io/display/JENKINS/Distributed+builds')
+  });
+})
