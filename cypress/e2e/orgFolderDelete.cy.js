@@ -19,12 +19,12 @@ describe('<Organization Folder> Delete Organization Folder', () => {
 
     it('Delete Organization Folder using dropdown menu', () => {
         cy.get('#tasks .task').contains('New Item').click()
-        cy.get('input#name').type('orgfolder')
+        cy.get('input#name').type(projects.organizationFolder.name)
         cy.get('#j-add-item-type-nested-projects li:last-child').click()
         cy.get('#ok-button').click()
         cy.get('#breadcrumbBar').contains('Dashboard').click()
     
-        cy.get('tbody tr td .jenkins-table__link').contains('orgfolder').realHover()
+        cy.get('tbody tr td .jenkins-table__link').contains(projects.organizationFolder.name).realHover()
         cy.get('#projectstatus button.jenkins-menu-dropdown-chevron').click()
         cy.get('.first-of-type li').contains('Delete Organization Folder').click()
         cy.get('button[name="Submit"]').click()
