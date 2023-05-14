@@ -76,7 +76,7 @@ const clickApplyButton = () =>  cy.get('button[name="Apply"]').should("be.visibl
 const getPopUpNotification = () => cy.get('#notification-bar span');
 const getProjectDescription = () => cy.get('#description div').not('div[class]');
 
-describe('<Freestyle project> Set configurations', () => {
+describe('Freestyle project, Set configurations', () => {
 
     beforeEach('Create new freestyle project with default configurations', () => {
         createProjectWithDefaultSettings(data.projectName, data.projectType);
