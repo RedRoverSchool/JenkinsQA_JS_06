@@ -20,4 +20,13 @@ describe("Freestyle project - View project changes", () => {
         cy.contains('No builds.').should('be.visible');
     });
 
+    it('Changes button is visible in the menu on the left side', ()=>{
+        cy.contains('New Item').click();
+        cy.get('.hudson_model_FreeStyleProject').click();
+        cy.get('#name').type('Project2').click();
+        cy.get('#ok-button').click();
+        cy.get('[name = "Submit"]').click();
+
+        cy.contains('Changes').should('be.visible');
+    })
 });
