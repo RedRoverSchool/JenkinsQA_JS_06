@@ -10,4 +10,8 @@ describe('Header User Icon', () => {
         cy.get('a[href= "/user/admin"] button').click({force:true})
         cy.get('ul.first-of-type').should('be.visible')
     })
+
+    it('AT_01.03_005 | Header | User icon | Verification of the visibility of the user icon', function () {
+        cy.get('.login.page-header__hyperlinks .model-link').should('be.visible');
+    });
 })

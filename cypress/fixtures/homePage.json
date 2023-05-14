@@ -5,5 +5,13 @@
         "Build History", 
         "Manage Jenkins", 
         "My Views"
+    ],
+
+    "endPointUrl" : [
+        "/all/newJob", 
+        "/asynchPeople/", 
+        "/builds",
+        "/manage/", 
+        "/my-views/view/all/"
     ]
 }
