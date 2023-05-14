@@ -9,8 +9,8 @@ describe('New Item', () => {
     })
     
     it('AT_05.07 _002 | Verify New Item page contains input field', () => {
-        cy.get('a[href ="/view/all/newJob"]').click()
-        cy.url().should('eq', 'http://localhost:8080/view/all/newJob')
-        cy.get('#name').should('be.visible')
+        cy.get('a[href ="/view/all/newJob"]').click();
+        cy.url().should('eq', 'http://localhost:8080/view/all/newJob');
+        cy.get('#name').should('be.visible');
     })
 })
