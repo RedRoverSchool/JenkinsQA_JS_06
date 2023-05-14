@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('US_01.10 | Header notification icon', ()=> {
+describe('Header | notification icon', ()=> {
     const buttons = ["Set up agent", "Set up cloud", "Dismiss"]
     it('verify buttons and links', ()=> {
         cy.get('#visible-sec-am-button')
