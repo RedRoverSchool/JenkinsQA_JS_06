@@ -2,7 +2,7 @@
 
 const folderName = 'Test';
 
-describe('<Organization Folder> Delete Organization Folder', () => {
+describe('Organization Folder > Delete Organization Folder', () => {
 
     it('New Item > Create a new Organization Folder by [+New Item]', function () {
 
@@ -19,7 +19,8 @@ describe('<Organization Folder> Delete Organization Folder', () => {
     .should('be.visible')
     .click()
 
-    cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/configure`)
+    cy.url()
+    .should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/configure`)
 
     cy.contains('Save').click()
 
@@ -33,7 +34,8 @@ describe('<Organization Folder> Delete Organization Folder', () => {
     // Delete Org Folder
     cy.contains(folderName).click()
     
-    cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/`)
+    cy.url()
+    .should('eq', `http://localhost:${Cypress.env('local.port')}/job/${folderName}/`)
     
     cy.contains("Delete Organization Folder").click()
     
