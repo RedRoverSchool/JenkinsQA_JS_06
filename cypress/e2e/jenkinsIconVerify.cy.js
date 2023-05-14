@@ -11,8 +11,9 @@ describe('Header', () => {
         cy.get('#jenkins-head-icon').should('have.css', 'height', '40px')
         cy.get('#jenkins-head-icon').should('have.css', 'vertical-align', 'middle')
     });
+
     
-    it('AT_01.01_010 | Verify Jenkins head icon visible and clickable', function () {
+    it.only('Verify logo jenkins is visible on the header', function () {
         cy.get('#jenkins-head-icon')
           .should('be.visible')
           .click()
