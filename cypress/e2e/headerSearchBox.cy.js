@@ -29,4 +29,10 @@ describe('Header Search Box', () => {
     it('01.02_ 006 |Verify Search Box is visible',function(){
         cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
     });
+
+
+    it('AT_01.02_007 | Verify search box is visible', function () {
+        cy.get('#search-box')
+          .should('be.visible')
+    });
 })

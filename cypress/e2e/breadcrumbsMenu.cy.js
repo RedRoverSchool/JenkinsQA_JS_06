@@ -43,6 +43,7 @@ describe('Breadcrumbs',()=>{
    })
 
    it('AT_04.02_003 | <Breadcrumbs> Dashboard page link > Dropdown menu has subfolders of the Dashboard page', () => {
+      
       cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
       cy.get('[href="/"] .jenkins-menu-dropdown-chevron').should('be.visible').click();
 
@@ -51,6 +52,21 @@ describe('Breadcrumbs',()=>{
       cy.get('#breadcrumb-menu>.bd>ul>li').each(($el, idx) => {        
          expect($el.text()).contain(homePage.dashboardDropdownItems[idx]);
       })
+   })
+   
+   it('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu items should navigate to the corresponding folder page', () => {
+      function clickBreadcrumbsDropdownItems(idx) {          
+            cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
+            cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();
+            cy.get(`#breadcrumb-menu>.bd>ul>li:nth-child(${idx})`).click();           
+      }
+
+      let idx = 1  
+      while(idx <= homePage.endPointUrl.length)  {
+         clickBreadcrumbsDropdownItems(idx);
+         cy.url().should('include', homePage.endPointUrl[idx - 1]);
+         idx++;
+      }           
    })
 
 })
