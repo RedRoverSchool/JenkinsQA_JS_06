@@ -59,7 +59,7 @@ const getBuildTriggersCheck = () => cy.get('input#cb17');
 
 const getSchedule = () => cy.get('textarea[name="_.spec"]').should("be.visible");
 
-const getBuildEnvironmentOption = (option) => cy.get('#cb23 + label').should("be.visible").contains(option);
+const getBuildEnvironmentOption = (option) => cy.get('div[ref="cb23"] span.jenkins-checkbox label').should("be.visible");
 
 const getAddTimestampsCheck = () => cy.get('input#cb23');
 
