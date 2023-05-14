@@ -21,7 +21,7 @@ describe('Header Search Box', () => {
         cy.get("#main-panel h1").should('have.text', headers.searchPage).and('be.visible')
     });
 
-    it('AT_01.02_008 | <Header> Verify text in placeholder: “Search (CTRL+K)"', function () {
+    it('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
         cy.get('#search-box')
           .should('have.attr', 'placeholder', 'Search (CTRL+K)')
     });
