@@ -48,8 +48,7 @@ const getMaxNumberOfBuildsToKeep = () => {
     return cy.get('input[name="_.numToKeepStr"]');
 }
 
-const getStrategy = () => cy.get('div[nameref="rowSetStart32"] .dropdownList option')
-    .should("be.visible");
+const getStrategy = () => cy.get('select.dropdownList option[selected="true"]');
 
 const getMaxNumberOfBuildsToKeepValue = () => cy.get('input[name="_.numToKeepStr"]');
 
