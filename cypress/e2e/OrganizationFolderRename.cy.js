@@ -22,4 +22,13 @@ describe('Rename existing Organization Folder', () => {
         cy.url().should('include', `/job/${organizationFolderNames.newOrganizationFolder}`);
         cy.get('h1').contains(`${organizationFolderNames.newOrganizationFolder}`);
     })
+
+    it('Rename Organization Folder with the same name', () => {
+        cy.get('[href^="job"]').realHover();
+        cy.get('[href^="job"] > button').click();
+        cy.get('[href$="rename"]').click();
+        cy.get('[name="Submit"]').click();
+        cy.get('#main-panel h1').should('have.text', 'Error');
+        cy.get('#main-panel p').should('have.text', 'The new name is the same as the current name.');
+    })
 })
