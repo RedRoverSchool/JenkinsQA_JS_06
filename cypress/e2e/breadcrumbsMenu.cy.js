@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import homePage from "../fixtures/homePage.json"
 describe('Breadcrumbs',()=>{
     
   const pagesName =['New Item', 'People', 'Build History', 'Manage Jenkins', 'My Views']
@@ -39,6 +40,17 @@ describe('Breadcrumbs',()=>{
       cy.get('a[href="editDescription"]').click()
       cy.get('textarea[name="description"]').clear().type(text2).should('have.value', text2)
       cy.get('button[name="Submit"]').click()
+   })
+
+   it('AT_04.02_003 | <Breadcrumbs> Dashboard page link > Dropdown menu has subfolders of the Dashboard page', () => {
+      cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
+      cy.get('[href="/"] .jenkins-menu-dropdown-chevron').should('be.visible').click();
+
+      cy.get('#breadcrumb-menu>.bd>ul>li').should('be.visible')
+         .and('have.length', homePage.dashboardDropdownItems.length);
+      cy.get('#breadcrumb-menu>.bd>ul>li').each(($el, idx) => {        
+         expect($el.text()).contain(homePage.dashboardDropdownItems[idx]);
+      })
    })
 
 })
