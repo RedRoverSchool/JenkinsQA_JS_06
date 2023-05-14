@@ -19,4 +19,11 @@ describe('Jenkins Dashboard', () => {
     cy.get('#description-link').click()
     cy.get('.jenkins-input').should('be.visible')
   })
+
+  it.only('verify dropdown menu Dashboard2', function () {
+    cy.get('.jenkins-breadcrumbs__list-item > .model-link').should('have.text', 'Dashboard').realHover();
+    cy.get('li.jenkins-breadcrumbs__list-item button.jenkins-menu-dropdown-chevron').should('be.visible').click({force:true});
+    cy.get('#breadcrumb-menu>div.bd>ul.first-of-type>li>a>span').should('be.visible').and('have.length', 5);
+  });
+
 });
