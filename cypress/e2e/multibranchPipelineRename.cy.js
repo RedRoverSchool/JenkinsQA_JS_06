@@ -35,4 +35,13 @@ describe('Rename existing Multibranch Pipeline', () =>{
         cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error);
         cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message);
     })
+
+    it('Rename Multibranch Pipeline using dropdown menu entering a valid name',() => {
+        cy.get('.jenkins-table td:nth-child(3) span').realHover()
+        cy.get('td button.jenkins-menu-dropdown-chevron').click()
+        cy.get('.first-of-type > li').contains('Rename').click()
+        cy.get('input[name="newName"]').clear().type(pipelineName.newNamePipeline)
+        cy.get('button[name="Submit"]').click()
+        cy.get('#main-panel h1').should('contain', pipelineName.newNamePipeline )
+    })
 })
