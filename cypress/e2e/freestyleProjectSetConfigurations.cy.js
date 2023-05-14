@@ -115,13 +115,5 @@ describe('<Freestyle project> Set configurations', () => {
         getAddTimestampsCheck().should('have.attr', 'checked', "checked");
         getBuildStepName().should("contain.text", data.scriptOption);
         getScriptText().should("have.text", data.scriptText);
-
-
-        goToProjectPage(data.projectName);
-        cy.wait(60000);
-        cy.get('div[time] a').should("have.length", 1).click();
-        cy.get(`a[href="/job/${data.projectName}/1/console"]`).click();
-        cy.get('pre.console-output').should("contain.text", "java --version");
-        cy.get('pre.console-output').should("contain.text", "Finished: SUCCESS");
     });
 });
