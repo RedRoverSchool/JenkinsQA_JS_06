@@ -1,5 +1,4 @@
 /// <reference types="cypress"/>
-
 describe('Header | User icon', () => {
     it('The user icon and dropdown list', () => {
         cy.get('[class="login page-header__hyperlinks"] .model-link').should('exist').click()
