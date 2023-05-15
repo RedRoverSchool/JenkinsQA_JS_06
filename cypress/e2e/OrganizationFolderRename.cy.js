@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import organizationFolderNames  from "../fixtures/organizationFolderNames.json";
+import messages from "../fixtures/messages.json"
 
 describe('Rename existing Organization Folder', () => {
     beforeEach(() => {
@@ -29,6 +30,8 @@ describe('Rename existing Organization Folder', () => {
         cy.get('[href$="rename"]').click();
         cy.get('[name="Submit"]').click();
         cy.get('#main-panel h1').should('have.text', 'Error');
-        cy.get('#main-panel p').should('have.text', 'The new name is the same as the current name.');
+        cy.get('#main-panel p').should(($p) => {
+            expect($p.text().trim()).equal(messages.renameErrorMessage.message);
+          });
     });
-})
+});
