@@ -22,8 +22,6 @@
         cy.get('a[href="/user/peri"]').click()
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('a[href="/user/peri/credentials"].yuimenuitemlabel').click()
-        //cy.contains('Credentials').click()
         cy.url().should('includes','/credentials/')  
     })
  })
- 
