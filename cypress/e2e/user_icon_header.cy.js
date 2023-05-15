@@ -16,7 +16,6 @@
         cy.get('a[href="/user/peri"]').click()
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('a[href="/user/peri/my-views"].yuimenuitemlabel').click()
-        //cy.contains('My Views').click()
         cy.url().should('includes','/my-views/view/all/')
         
         cy.get('a[href="/user/peri"]').click()
