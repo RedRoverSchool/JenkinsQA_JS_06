@@ -16,6 +16,7 @@ describe('Header - User Builds Link', () => {
         cy.get('h1').should('have.text', 'Builds for ' + userName)
     });
   }); 
+});
 
   it('Verify the side panel', () =>{
     let userBuilds = 'a[href="/user/admin/builds"].yuimenuitemlabel'
@@ -25,4 +26,4 @@ describe('Header - User Builds Link', () => {
       cy.get(userBuilds).click();
       cy.get('#side-panel').should('be.visible')
    });
-});
+
