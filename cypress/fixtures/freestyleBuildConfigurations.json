@@ -10,5 +10,6 @@
   "buildEnvironmentOption": "Add timestamps to the Console Output",
   "scriptOption": "Execute shell",
   "scriptText": "java --version",
-  "applyConfirmMessage": "Saved"
+  "applyConfirmMessage": "Saved",
+  "message": "No changes in any of the builds."
 }
