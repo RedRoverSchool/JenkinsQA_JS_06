@@ -15,7 +15,7 @@ describe('<Organization Folder> Delete Organization Folder', () => {
         cy.get('button[name="Submit"]').click()
     });
 
-    it('AT_17.03_004 | Organization Folder>Delete Organization Folder', () => {
+    it('AT_17.03_004 Delete Organization Folder', () => {
         cy.get('a[href="newJob"]').click()
         cy.get('input[name="name"]').type('project')
         cy.get('span.label').contains('Organization Folder').click()
