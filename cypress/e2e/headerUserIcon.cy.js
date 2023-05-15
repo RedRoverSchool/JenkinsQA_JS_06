@@ -31,7 +31,7 @@ describe('Header User Icon', () => {
         cy.url().should('contain','/user/admin/configure')
         cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('.first-of-type span').contains('My Views').click()
-        cy.url().should('contain','user/svetlana/my-views/view/all/')
+        cy.url().should('contain','user/admin/my-views/view/all/')
         cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('.first-of-type span').contains('Credentials').click()
         cy.url().should('contain','/user/admin/credentials/')
