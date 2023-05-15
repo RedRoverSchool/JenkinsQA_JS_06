@@ -11,7 +11,7 @@ describe('Rename existing Organization Folder', () => {
         cy.url().should('include', `/${organizationFolderNames.nameOrganizationFolder}/configure`);
         cy.get('button[name=Submit]').click();
         cy.get('[class="model-link"]').contains('Dashboard').click();
-    })
+    });
 
     it('Rename Organization Folder using dropdown menu_positive', ()=> {
         cy.get('a[href^="job/"').realHover();
@@ -19,6 +19,7 @@ describe('Rename existing Organization Folder', () => {
         cy.get('li > a > span').contains('Rename').click();
         cy.get('.jenkins-input').clear().type(organizationFolderNames.newOrganizationFolder);
         cy.get('button[name=Submit]').click();
+        
         cy.url().should('include', `/job/${organizationFolderNames.newOrganizationFolder}`);
         cy.get('h1').contains(`${organizationFolderNames.newOrganizationFolder}`);
     })
@@ -30,5 +31,15 @@ describe('Rename existing Organization Folder', () => {
         cy.get('[name="Submit"]').click();
         cy.get('#main-panel h1').should('have.text', 'Error');
         cy.get('#main-panel p').should('have.text', 'The new name is the same as the current name.');
+    });
+
+    it('Rename Organization Folder using left side menu_positive', ()=> {
+        cy.get('a[href^="job/"').click()
+        cy.get('#tasks > div:nth-child(8)>span').contains('Rename').click()
+        cy.get('.jenkins-input').clear().type(organizationFolderNames.newOrganizationFolder);
+        cy.get('button[name=Submit]').click();
+
+        cy.url().should('include', `/job/${organizationFolderNames.newOrganizationFolder}`);
+        cy.get('h1').contains(`${organizationFolderNames.newOrganizationFolder}`);
     });
 })

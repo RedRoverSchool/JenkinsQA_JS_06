@@ -15,4 +15,11 @@ describe('Homepage: Create a job link', () => {
         cy.url().should('eq',`http://localhost:${Cypress.env('local.port')}/newJob`);
     });
     
+    it("Homepage Create a job link", () => { 
+        cy.get('[href="newJob"]').click();
+        cy.url().should(
+          "eq",
+          `http://localhost:${Cypress.env('local.port')}/newJob`
+        );
+    });
 });
