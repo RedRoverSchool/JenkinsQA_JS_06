@@ -3,7 +3,7 @@
 describe("newItemTest", () => {
     const orgFolderName = 'OrgFolderTest';
 
-    it("<New item> Create a new Pipeline", () => {
+    it("New item, Create a new Pipeline", () => {
         cy.get("#side-panel").click();
         cy.contains("New Item").click();
         cy.get("[class='add-item-name'] input[name='name']").type(`Engineer `);
@@ -36,4 +36,8 @@ describe("newItemTest", () => {
 
         cy.get('.jenkins-table__link.model-link.inside').should('have.text', orgFolderName)
     })
+
 });
+
+
+
