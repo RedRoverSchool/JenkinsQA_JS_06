@@ -11,7 +11,7 @@ describe('Header | User icon', () => {
         cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true})
         cy.get('#breadcrumb-menu').should('exist')
         cy.get('.yuimenuitemlabel span').contains('Configure').click()
-        cy.url().should('includes','/user/dariamas/configure')
+        cy.url().should('includes','/configure')
         cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true})
         cy.get('#breadcrumb-menu').should('exist')
         cy.get('.yuimenuitemlabel span').contains('My Views').click()
