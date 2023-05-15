@@ -16,7 +16,7 @@ describe('New Item', () => {
         cy.get('#name').should('be.visible')
     })
 
-    it("TC_05.07_003 | New item, Input field visible", () => {
+    it("AT_05.07_003 | New item, Input field visible", () => {
         cy.get("a[href='/view/all/newJob']").click();
         cy.url().should('include', '/view/all/newJob');
         cy.get("input[id='name']").should("be.visible");
