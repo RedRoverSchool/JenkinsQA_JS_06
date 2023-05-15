@@ -6,7 +6,7 @@ describe('AT_3.01_004 | Verify the link "Rest API"', () =>{
         cy.url().should('includes','/api/')
     })
 
-    it.only("AT_03.01_005 | <Footer> Check the link REST API", () => {
+    it("AT_03.01_005 | <Footer> Check the link REST API", () => {
     cy.get('[href="api/"]').click();
     cy.url()
       .should("be.eq", `http://localhost:${Cypress.env('local.port')}/api/`)
