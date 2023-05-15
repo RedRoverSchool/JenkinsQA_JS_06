@@ -8,5 +8,6 @@ describe('Icon', () => {
     cy.get('div h1').should('be.visible')
     cy.get('#jenkins-name-icon').should('be.visible')
 
+    
     })
 })
