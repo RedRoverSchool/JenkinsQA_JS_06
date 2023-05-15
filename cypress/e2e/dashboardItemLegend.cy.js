@@ -14,4 +14,11 @@ describe('Verify <Dashboard>Icon legend', () => {
         .click()
         cy.url().should('equal','http://localhost:8080/legend')
     })
+   
+    it('Click on Icon legend via Dashboard', function () {
+
+        cy.get('.jenkins-button[href="/legend"]').click()
+        cy.url().should('contain', '/legend')
+
+      });
  })
