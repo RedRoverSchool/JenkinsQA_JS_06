@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
-describe ('01.08 _010 <Header>Log out button', () => {
-it ('verify btn "Log out"', () => {
+describe ('Header | Log out button', () => {
+it ('AT_01.08_010 | Verify btn "Log out"', () => {
     cy.get('a[href="/logout"]').should('have.text', 'log out')
 })
 })
