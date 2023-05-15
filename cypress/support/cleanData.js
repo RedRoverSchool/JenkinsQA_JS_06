@@ -137,8 +137,8 @@ Cypress.Commands.add('cleanData', () => {
 
     function deleteDescription() {
       let mainPage = getPage('');
-      postHttp(getUrl() + "submitDescription", "description=&Submit=&Jenkins-Crumb=%1$s&json=%%7B%%22description%%22%%3A+%%22%%22%%2C+%%22Submit%%22%%3A+%%22%%22%%2C+%%22Jenkins-Crumb%%22%%3A+%%22%1$s%%22%%7D" +
-      getCrumbFromPage(mainPage));
+      postHttp(getUrl() + "submitDescription", 
+        "description=&Submit=&Jenkins-Crumb=" + getCrumbFromPage(mainPage) + "&json=%7B%22description%22%3A+%22%22%2C+%22Submit%22%3A+%22%22%2C+%22Jenkins-Crumb%22%3A+%22" + getCrumbFromPage(mainPage) + "%22%7D");
     }
 
     function clearData() {
