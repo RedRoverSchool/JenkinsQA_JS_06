@@ -28,7 +28,7 @@ describe('myViewsEditDescriptionTest', () => {
     })
 
 let jobName = "Test1";
-it("AT_04.03_006 | <Breadcrumbs>My Views page Check an opportunity to open a chosen job", () => {
+it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chosen job", () => {
   cy.get('[href="/view/all/newJob"] .task-link-text').click({
     force: true,
   });
