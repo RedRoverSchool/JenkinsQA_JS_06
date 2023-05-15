@@ -1,4 +1,4 @@
-describe('create new view from my views', function () {
+describe('my view create new view', function () {
     beforeEach('create the job', function () {
         cy.get('a[href="newJob"]').click();
         cy.get('#name').type('First job');
@@ -8,7 +8,7 @@ describe('create new view from my views', function () {
         cy.get(':nth-child(1) > .model-link').click()
     })
 
-    it('AT 09.01.002 should create new view with valid credentials', function () {
+    it('AT 09.01.002 create new view', function () {
         cy.get('a[href="/me/my-views"]').should('contain.text', 'My Views').click()
         cy.get('a[title="New View"]').click()
         cy.get('#name').type('first view');
