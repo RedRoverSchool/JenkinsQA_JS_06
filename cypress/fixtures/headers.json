@@ -1,3 +1,6 @@
 {
-    "searchPage": "Search for 'Multibranch Pipeline1'"
+    "searchPage": "Search for 'Multibranch Pipeline1'",
+    "iconLegend": {
+        "projectHealth": "Project Health"
+    }
 }
