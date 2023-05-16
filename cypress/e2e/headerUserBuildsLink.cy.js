@@ -17,12 +17,10 @@ describe('Header - User Builds Link', () => {
     });
   }); 
 
-  it('Verify the side panel', () =>{
-    let userBuilds = 'a[href="/user/admin/builds"].yuimenuitemlabel'
-    let dropDown = 'button:nth-child(3)'
-    
-      cy.get(dropDown).click( {force: true});
-      cy.get(userBuilds).click();
+  it('AT_01.04_006|<Header> User builds link| Verify the side panel', () =>{
+       
+      cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} );
+      cy.get('.yuimenuitemlabel').contains('Builds').click();
       cy.get('#side-panel').should('be.visible')
    });
 });
