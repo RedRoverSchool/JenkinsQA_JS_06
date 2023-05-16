@@ -3,7 +3,7 @@
 import pipelineName from "../fixtures/pipelineName.json";
 import messages from "../fixtures/messages.json";
 
-describe("US_16.02|<Multibranch Pipeline> Rename Multibranch Pipeline", () => {
+describe("multibranchPipelineRename", () => {
   beforeEach(() => {
     cy.get('a[href$="/newJob"]').click();
     cy.get(".jenkins-input").as("nameInputField");
