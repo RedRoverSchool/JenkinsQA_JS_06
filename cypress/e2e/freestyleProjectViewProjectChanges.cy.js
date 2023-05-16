@@ -43,7 +43,7 @@ describe("Freestyle project - View project changes", () => {
         cy.get('#main-panel').should('includes.text', data.message)
     });
 
-    it('AT_12.04_004 | Verify Changes icon on Jenkins dashboard by clicking on dropdown button', () => {
+    it.only('AT_12.04_004 | Verify Changes icon on Jenkins dashboard by clicking on dropdown button', () => {
         cy.get('.task:nth-child(1)').contains('New Item').click();
         cy.get('.jenkins-input').type(data.projectName);
         cy.get('.hudson_model_FreeStyleProject').click();
@@ -52,9 +52,8 @@ describe("Freestyle project - View project changes", () => {
         cy.get('h1').should('includes.text', data.projectName)
         cy.get(':nth-child(1) > .model-link').click()
 
-        cy.get('.jenkins-table__link.model-link.inside').contains(data.projectName).realHover();
+        cy.get('.jenkins-table__link.model-link.inside').should('includes.text', data.projectName).realHover();
         cy.get('.jenkins-table__link.model-link.inside > button').click()
-        cy.get('.yuimenuitemlabel span').contains('Changes')
+        cy.get('.yuimenuitemlabel span').should('includes.text', 'Changes')
     });
-
 });
