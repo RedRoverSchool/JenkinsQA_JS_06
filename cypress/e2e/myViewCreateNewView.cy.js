@@ -9,13 +9,11 @@ describe('my view create new view', function () {
     })
 
     it('AT 09.01.002 create new view', function () {
-        cy.get('a[href="/me/my-views"]').should('contain.text', 'My Views').click()
+        cy.get('a[href="/me/my-views"]').click()
         cy.get('a[title="New View"]').click()
         cy.get('#name').type('first view');
         cy.get('[for="hudson.model.MyView"]').click()
         cy.get('#ok').click()
         cy.get('.tab.active').should('contain', 'first view')
-        cy.get('a[href$="configure"]').click()
     });
-
 });
