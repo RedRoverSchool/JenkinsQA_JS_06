@@ -37,5 +37,23 @@ describe('<Freestyle project> Delete created project', () => {
       cy.get('#search-box').type(`${projects.freestyle.name}{enter}`)
       cy.get('.error').should('contain.text', messages.error)
     })
+
+    it('Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
+      cy.get('.task ').contains('New Item').click()
+      cy.get('input#name').type(projects.freestyle.name)
+      cy.get('#items li').contains('Freestyle project').click()
+      cy.get('#ok-button').click()
+      cy.get('#breadcrumbBar').contains('Dashboard').click()
+
+      cy.get('#projectstatus tr td:nth-child(3)').contains(projects.freestyle.name).realHover()
+      cy.get('table#projectstatus .jenkins-menu-dropdown-chevron').click()
+      cy.get('.first-of-type li:nth-child(5)').click()
+      cy.on('window:confirm', (str) => {
+        expect(str).to.equal(messages.deleteConfirmMessage)
+        return false
+      })
+      cy.get('table#projectstatus tbody').should('contain', projects.freestyle.name)
+    })
+
   });
   

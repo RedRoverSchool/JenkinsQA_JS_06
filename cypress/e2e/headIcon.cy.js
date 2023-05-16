@@ -21,4 +21,9 @@ describe('Head Icon', () => {
             .should('have.prop', 'offsetTop', 3)
             .and('have.prop', 'offsetLeft', 33)
     })
+
+    it('Verify jenkins icon is visible', function () {
+        cy.get('#jenkins-head-icon').should('be.visible')
+        cy.get('#jenkins-name-icon').should('be.visible')
+    })
 })
