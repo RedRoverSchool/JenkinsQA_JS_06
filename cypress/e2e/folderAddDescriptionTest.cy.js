@@ -38,7 +38,7 @@ describe('Folder > Add User description with "Add description" button', () => {
       .should("have.text", newDescription);
   });
 
-  it('AT_15.02_003 | <Folder> Add description', () => {
+  it('AT_15.02_003 | “Add description” button is visible and clickable', () => {
     cy.get("a[href='/view/all/newJob']").click();
     cy.get('li[class="com_cloudbees_hudson_plugins_folder_Folder"]')
       .click()
