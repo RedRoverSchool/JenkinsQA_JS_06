@@ -1,6 +1,9 @@
 /// <reference types="cypress" />
 
 describe('US_02.06 | Homepage (Dashboard) > Verify the Main panel description', ()=>{
+    const text = "Jenkins project"
+    const text2 = "Jenkins project in progress"
+    
     it('AT_02.06_001 |Verify the Main panel description', ()=>{
         cy.get('#description-link').click()
         cy.get('.jenkins-input ').type('Jenkins project')

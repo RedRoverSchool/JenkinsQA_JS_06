@@ -5,9 +5,7 @@ describe('Breadcrumbs',()=>{
     
   const pagesName =['New Item', 'People', 'Build History', 'Manage Jenkins', 'My Views']
   const endPointUrl = ['/all/newJob', '/asynchPeople/', '/builds' ,'/manage/', '/my-views/view/all/']
-  const text = "Jenkins project"
-  const text2 = "Jenkins project in progress"
-
+ 
     it('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', ()=>{
    
              pagesName.forEach(page =>{
