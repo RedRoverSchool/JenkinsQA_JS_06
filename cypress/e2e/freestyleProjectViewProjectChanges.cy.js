@@ -54,6 +54,6 @@ describe("Freestyle project - View project changes", () => {
 
         cy.get('.jenkins-table__link.model-link.inside').should('includes.text', data.projectName).realHover();
         cy.get('.jenkins-table__link.model-link.inside > button').click()
-        cy.get('.yuimenuitemlabel span').should('includes.text', 'Changes')
+        cy.get('.yuimenuitemlabel span').contains('Changes').should('have.text', 'Changes')
     });
 });
