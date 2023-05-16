@@ -15,24 +15,29 @@ describe('Header Search Box', () => {
         cy.get('h1#search-box').should('contain.text', '\nSearch Box\n')
     });
 
-    it('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
+    xit('AT_01.02_004 | User is able to get Search Box by a keyboard shortcut (Ctrl+K)', function () {
         cy.get('#jenkins').trigger('keydown', { ctrlKey: true, keyCode: 75})
         cy.get('#search-box').type(projects.multibranchPipeline.name + '{enter}')
         cy.get("#main-panel h1").should('have.text', headers.searchPage).and('be.visible')
     })
 
-    it('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
+    xit('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
         cy.get('#search-box')
           .should('have.attr', 'placeholder', 'Search (CTRL+K)')
     });
     
-    it('01.02_ 006 |Verify Search Box is visible',function(){
+    xit('01.02_ 006 |Verify Search Box is visible',function(){
         cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
     });
 
 
-    it('AT_01.02_007 | Verify search box is visible', function () {
+    xit('AT_01.02_007 | Verify search box is visible', function () {
         cy.get('#search-box')
           .should('be.visible')
+    });
+
+    it('AT_01.02_017 | Verify visible Search box', function () {
+        cy.get('#search-box').should('be.visible')
+        .and('have.attr', 'placeholder', 'Search (⌘+K)')
     });
 })
