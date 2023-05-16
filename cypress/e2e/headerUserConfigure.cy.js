@@ -30,13 +30,29 @@ describe('Header | User configure', () => {
         cy.navigateUserConfigurationPage().then(() => {
             descriptionField().should('be.visible');
             descriptionField().type('{selectall}').then(() => {
+                descriptionField().type(descriptionText).then(() => {
+                    cy.saveDataUserConfigurationPage(applyButton);
+                    cy.visit(`http://localhost:${Cypress.env('local.port')}/user/admin/`)
+                        .then(() => {
+                            cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/`);
+                            cy.get('#description>div:first-child').invoke('text').should('eq', descriptionText);
+                        });
+                });
+            });
+        });
+    });
+
+    it('AT_01.05 _008| <Header> User can change information about user', function () {
+        cy.navigateUserConfigurationPage().then(() => {
+            descriptionField().should('be.visible');
+            descriptionField().type('{selectall}').then(() => {
                 descriptionField().type('{del}').then(() => {
-                    descriptionField().type(descriptionText).then(() => {
+                    descriptionField().type(descriptionText+' CHANGED').then(() => {
                         cy.saveDataUserConfigurationPage(applyButton);
                         cy.visit(`http://localhost:${Cypress.env('local.port')}/user/admin/`)
                             .then(() => {
                                 cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/`);
-                                cy.get('#description>div:first-child').invoke('text').should('eq',descriptionText);
+                                cy.get('#description>div:first-child').invoke('text').should('eq',descriptionText+' CHANGED');
                             });
                     });
                 });
