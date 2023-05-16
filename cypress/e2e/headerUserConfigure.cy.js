@@ -53,6 +53,7 @@ describe('Header | User configure', () => {
                             .then(() => {
                                 cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/`);
                                 cy.get('#description>div:first-child').invoke('text').should('eq',descriptionText+' CHANGED');
+
                             });
                     });
                 });
