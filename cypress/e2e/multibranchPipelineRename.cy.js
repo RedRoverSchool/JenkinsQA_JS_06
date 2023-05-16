@@ -56,7 +56,7 @@ describe("multibranchPipelineRename", () => {
     cy.get("#main-panel p").should("have.text", messages.renameErrorMessage.emptyNameMsg);
   });
 
-  it.only("AT_16.02_004 Rename using dropdown menu-Rename using special characters", () => {
+  it("AT_16.02_004 Rename using dropdown menu-Rename using special characters", () => {
     pipelineName.specialCharactersArr.forEach(char => {
         cy.get('a[href^="job/"').realHover();
         cy.get('td > a [class$="dropdown-chevron"]').click();
