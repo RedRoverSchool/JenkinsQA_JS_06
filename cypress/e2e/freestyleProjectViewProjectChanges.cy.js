@@ -43,7 +43,7 @@ describe("Freestyle project - View project changes", () => {
         cy.get('#main-panel').should('includes.text', data.message)
     });
 
-    it.only('AT_12.04_004 | Verify Changes icon on Jenkins dashboard by clicking on dropdown button', () => {
+    it('AT_12.04_004 | Verify Changes icon on Jenkins dashboard by clicking on dropdown button', () => {
         cy.get('.task:nth-child(1)').contains('New Item').click();
         cy.get('.jenkins-input').type(data.projectName);
         cy.get('.hudson_model_FreeStyleProject').click();
