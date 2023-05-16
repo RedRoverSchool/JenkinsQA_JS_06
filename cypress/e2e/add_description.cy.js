@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('US_02.06 | Homepage Dashboard_Verify the Main panel description', ()=>{
+describe('add_description', ()=>{
     const text = "Jenkins project"
     const text2 = "Jenkins project in progress"
 
