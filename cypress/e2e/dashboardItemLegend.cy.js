@@ -1,4 +1,6 @@
 /// <reference types='cypress'/>
+import { iconLegends } from '../fixtures/iconLegends.json'
+
 describe('Verify <Dashboard>Icon legend', () => {
     beforeEach('Create Project', function () {
         cy.get('a[href="newJob"]').click()
@@ -21,4 +23,10 @@ describe('Verify <Dashboard>Icon legend', () => {
         cy.url().should('contain', '/legend')
 
       });
+
+    it('Verify number of Icon legend', () => {
+        cy.get('#rss-bar .jenkins-button').contains('Icon legend').click()
+        cy.get('#main-panel > .app-icon-legend dt').should('have.length', iconLegends.length)
+    })
+
  })

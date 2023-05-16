@@ -4,6 +4,8 @@
 
     "renameErrorMessage": {
         "error": "Error",
-        "message": "The new name is the same as the current name."
+        "message": "The new name is the same as the current name.",
+        "emptyNameMsg": "No name is specified", 
+        "specialCharactersMsg": " is an unsafe character"
     }
 }
