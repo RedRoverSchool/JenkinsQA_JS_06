@@ -1,4 +1,7 @@
 {
     "namePipeline" : "myFirstPipeline",
-    "newNamePipeline" : "myPipelineRenamed"
+    "newNamePipeline" : "myPipelineRenamed",
+    "specialCharactersArr": [
+        "!", "@", "#", "$", "%", "^", "&", "*" 
+    ]
 }
