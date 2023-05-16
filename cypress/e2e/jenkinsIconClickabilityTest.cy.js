@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Icon', () => {
+describe('jenkinsIconClicabilityTest', () => {
 
     it('Clicability test', () =>{
     cy.get('a[href="/manage"]').click()
