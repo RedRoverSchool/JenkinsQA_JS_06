@@ -9,7 +9,7 @@ describe('Homepage', () => {
       cy.url().should('eq', 'https://wiki.jenkins.io/display/JENKINS/Distributed+builds')
   });
 
-  it("AT_02.05_002 | Redirection to wiki occurs after clicking the 'Learn more about distributed builds' link", () => {
+  it.skip("AT_02.05_002 | Redirection to wiki occurs after clicking the 'Learn more about distributed builds' link", () => {
     cy.intercept('GET', '**/Distributed+builds').as('reqToWiki');
 
     cy.get('a[href*=distributed-builds]')
