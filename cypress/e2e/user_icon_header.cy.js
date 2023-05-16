@@ -1,26 +1,24 @@
 /// <reference types="cypress"/>
- describe('<Header | User icon', ()=>{
+describe('<Header | User icon', ()=>{
     it('Verify the "User" icon is clickable', ()=>{
-        cy.get('.model-link span[class="hidden-xs hidden-sm"').click()
-        cy.url('').should('includes','/user/peri/')
+        cy.get('.model-link span[class="hidden-xs hidden-sm"]').click()
+        cy.get('.icon-lg').should('be.visible')
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
-        cy.get('#yui-gen1 a[href="/user/peri/builds"]').click()
+        cy.get('.yuimenuitemlabel span').contains('Builds').click({force:true})
         cy.url().should('includes','/builds')
 
-        cy.get('a[href="/user/peri"]').click()
+
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
-        cy.get('a[href="/user/peri/configure"].yuimenuitemlabel').click()
-        //cy.contains('Configure').click()
+        cy.contains('Configure').click()
         cy.url().should('includes','/configure')
-        
-        cy.get('a[href="/user/peri"]').click()
+
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
-        cy.get('a[href="/user/peri/my-views"].yuimenuitemlabel').click()
+        cy.get('.yuimenuitemlabel span').contains('My Views').click()
         cy.url().should('includes','/my-views/view/all/')
-        
-        cy.get('a[href="/user/peri"]').click()
+
         cy.get('.page-header .jenkins-menu-dropdown-chevron').click({force:true})
-        cy.get('a[href="/user/peri/credentials"].yuimenuitemlabel').click()
+        cy.get('.yuimenuitemlabel span').contains('Credentials').click()
         cy.url().should('includes','/credentials/')  
     })
  })
+ 
