@@ -1,3 +1,5 @@
+import logInPage from "../fixtures/logInPage.json";
+
 describe('verification log out button', function () {
 
     it('01_08_001 log out button should be clickable and open login page', function () {
@@ -7,6 +9,6 @@ describe('verification log out button', function () {
 
     it('Verify that the Log out button transfer the user back to the login page "Welcome to Jenkins!"', () => {
         cy.get('a[href="/logout"]').should('be.visible').click()
-        cy.get('#loginIntroDefault').should('have.text', 'Welcome to Jenkins!')
+        cy.get('#loginIntroDefault').should('have.text', logInPage.loginPageHeader)
     })
 });
