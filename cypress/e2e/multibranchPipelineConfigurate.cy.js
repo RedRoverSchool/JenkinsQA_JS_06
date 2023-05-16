@@ -10,7 +10,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
       cy.get('button[name=Submit]').click();
   });
 
-  it('TC_16.01_001 | Create "job-1" configuration', () => {
+  it('AT_16.01_001 | Create "job-1" configuration', () => {
       cy.get('[href="/job/job/configure"]').click();
       cy.get('.jenkins-input.validated').type('job-1')
       cy.get('[name="_.description"]').type('first job');
