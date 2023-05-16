@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Configurate Multibranch Pipeliner', () => {
+describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
 
   beforeEach('Create multibranch pipeline', function () {
       cy.get('a[href="newJob"]').click();
@@ -10,7 +10,7 @@ describe('Configurate Multibranch Pipeliner', () => {
       cy.get('button[name=Submit]').click();
   });
 
-  it('Create "job-1" configuration', () => {
+  it('AT_16.01_01 | Create "job-1" configuration', () => {
       cy.get('[href="/job/job/configure"]').click();
       cy.get('.jenkins-input.validated').type('job-1')
       cy.get('[name="_.description"]').type('first job');
