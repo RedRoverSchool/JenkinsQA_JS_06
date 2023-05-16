@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
-
-describe('AT_3.02_001 Link Jenkins ver number is correct', () =>{
-    it('Verify the link "Jenkins has ver 2.387.2"', () =>{
+describe('footerJenkinsVerVerify', () =>{
+    it('AT_03.02_001 | Footer> Link Jenkins ver number is correct', () =>{
         cy.get('.jenkins_ver a')
         .should('exist')
         .and('be.visible')
@@ -9,4 +8,4 @@ describe('AT_3.02_001 Link Jenkins ver number is correct', () =>{
         .and('have.attr','href','https://www.jenkins.io/')
         .and('have.css','color','rgb(20, 20, 31)')
     })
- })
+})
