@@ -23,5 +23,10 @@ describe('Header - User Builds Link', () => {
       cy.get('.yuimenuitemlabel').contains('Builds').click();
       cy.get('#side-panel').should('be.visible')
    });
+  it('AT_01.04.05|Header User Builds link',()=>{
+    cy.get('.login.page-header__hyperlinks .jenkins-menu-dropdown-chevron').click({force: true})
+    cy.get('.yuimenuitem.first-of-type .yuimenuitemlabel').click() 
+    cy.get('#tasks').should('be.visible')
+   })
 });
 
