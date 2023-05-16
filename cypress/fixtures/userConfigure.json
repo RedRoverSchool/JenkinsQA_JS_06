@@ -1,0 +1,12 @@
+{
+    "SidePanelTasks": {
+        "Names": [
+            "People",
+            "Status",
+            "Builds",
+            "Configure",
+            "My Views",
+            "Credentials"
+        ]
+    }
+}
