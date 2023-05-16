@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header | User configure', () => {
+describe('Header User configure', () => {
     Cypress.Commands.add('navigateUserConfigurationPage', () => {
         cy.get('.login .model-link').should('be.visible');
         cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });
