@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('jenkinsVerVerify', () =>{
+describe('footerJenkinsVerVerify', () =>{
     it('AT_03.02_001 | Footer> Link Jenkins ver number is correct', () =>{
         cy.get('.jenkins_ver a')
         .should('exist')
