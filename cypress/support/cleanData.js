@@ -135,11 +135,18 @@ Cypress.Commands.add('cleanData', () => {
         getCrumbFromPage(mainPage));
     }
 
+    function deleteDescription() {
+      let mainPage = getPage('');
+      postHttp(getUrl() + "submitDescription", 
+        "description=&Submit=&Jenkins-Crumb=" + getCrumbFromPage(mainPage) + "&json=%7B%22description%22%3A+%22%22%2C+%22Submit%22%3A+%22%22%2C+%22Jenkins-Crumb%22%3A+%22" + getCrumbFromPage(mainPage) + "%22%7D");
+    }
+
     function clearData() {
       deleteViews();
       deleteJobs();
       deleteUsers();
       deleteNodes();
+      deleteDescription();
     }
 
     clearData();

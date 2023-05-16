@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 
+import homePage from "../fixtures/homePage.json"
 describe('Breadcrumbs',()=>{
     
   const pagesName =['New Item', 'People', 'Build History', 'Manage Jenkins', 'My Views']
@@ -39,6 +40,33 @@ describe('Breadcrumbs',()=>{
       cy.get('a[href="editDescription"]').click()
       cy.get('textarea[name="description"]').clear().type(text2).should('have.value', text2)
       cy.get('button[name="Submit"]').click()
+   })
+
+   it('AT_04.02_003 | <Breadcrumbs> Dashboard page link > Dropdown menu has subfolders of the Dashboard page', () => {
+      
+      cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
+      cy.get('[href="/"] .jenkins-menu-dropdown-chevron').should('be.visible').click();
+
+      cy.get('#breadcrumb-menu>.bd>ul>li').should('be.visible')
+         .and('have.length', homePage.dashboardDropdownItems.length);
+      cy.get('#breadcrumb-menu>.bd>ul>li').each(($el, idx) => {        
+         expect($el.text()).contain(homePage.dashboardDropdownItems[idx]);
+      })
+   })
+   
+   it('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu items should navigate to the corresponding folder page', () => {
+      function clickBreadcrumbsDropdownItems(idx) {          
+            cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
+            cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();
+            cy.get(`#breadcrumb-menu>.bd>ul>li:nth-child(${idx})`).click();           
+      }
+
+      let idx = 1  
+      while(idx <= homePage.endPointUrl.length)  {
+         clickBreadcrumbsDropdownItems(idx);
+         cy.url().should('include', homePage.endPointUrl[idx - 1]);
+         idx++;
+      }           
    })
 
 })
