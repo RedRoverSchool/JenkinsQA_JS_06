@@ -2,7 +2,7 @@
 
 let userDropdown = '.jenkins-menu-dropdown-chevron:nth-child(3)';
  
-describe("breadcrumbsMyViewOpenSelectedItem", () => {
+describe("breadcrumbsMyViewsPage", () => {
     it('04.03_001 Verify that user can open selected Pipeline', () => {
 
         cy.get('a[href="/view/all/newJob"]').click();
