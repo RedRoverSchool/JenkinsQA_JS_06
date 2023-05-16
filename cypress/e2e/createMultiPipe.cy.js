@@ -13,3 +13,5 @@ describe('New Item | Create a new Multibranch Pipeline', ()=>{
         cy.url().should('includes','http://localhost:8080/')
     })
 })
+
+
