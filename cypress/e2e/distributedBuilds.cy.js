@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-// const { contains } = require("cypress/types/jquery")
+ const { contains } = require("cypress/types/jquery")
 
 describe ('Learn more about distributed builds', () => {
     it('Verify "Learn more about distributed builds" is clickable ', () =>{
