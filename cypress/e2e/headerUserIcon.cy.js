@@ -56,6 +56,11 @@ describe('Header User Icon', () => {
         })       
     })   
     
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4);
+    })
+
     it('AT_01.03_010 | Header | User icon | Working dropdown menu', () => {
         cy.get('.page-header .jenkins-menu-dropdown-chevron')
             .should('be.visible')
@@ -90,5 +95,5 @@ describe('Header User Icon', () => {
         cy.get('li[index="3"]').click()
         cy.url().should('contain', '/credentials')
         cy.get('#breadcrumbBar').should('contain', dropDown[3])
-    })
+    })    
 })
