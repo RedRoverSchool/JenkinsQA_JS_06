@@ -60,4 +60,10 @@ describe('Header User Icon', () => {
         cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('.yuimenuitemlabel span').should('have.length', 4);
       })
+
+    it('AT_01.03_020 | Header User icon', function () {
+        cy.get('a[href="/user/admin"] button').click();
+        cy.get('ul.first-of-type').should('be.visible')        
+    });
+
 })
