@@ -61,7 +61,7 @@ describe('freestyleProjectSetConfigurations', () => {
     const buildTriggersCheck = "input#cb17";
     const buildTriggersOption = "#cb17 + label";
     const schedule = "textarea[name='_.spec']";
-    const addTimestampsCheck = "input#cb23";
+    const addTimestampsCheck = "input[name='hudson-plugins-timestamper-TimestamperBuildWrapper']";
     const buildEnvironmentOption = "span input[name='hudson-plugins-timestamper-TimestamperBuildWrapper'] + label";
     const addBuildStepsButton = "#build-steps + div button";
     const scriptOptions = "#build-steps + .tr .bd";
@@ -88,7 +88,7 @@ describe('freestyleProjectSetConfigurations', () => {
                     .then(() => {
                         cy.get('#build-environment').should("be.visible")
                             .then(() => {
-                                cy.get(buildEnvironmentOption).contains("Add timestamps to the Console Output")
+                                cy.get(buildEnvironmentOption).contains(data.buildEnvironmentOption)
                                     .should("be.visible")
                                     .click();
                             })
