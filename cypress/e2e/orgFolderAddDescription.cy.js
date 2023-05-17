@@ -3,7 +3,7 @@ describe('<Organization Folder> Configurate Organization Folder', () => {
     const orgFolderName = 'OrgFolderTest';
     const description = 'The description was added to the organization folder.';
 
-    it('Add description to the Organization Folder via Configurate', () => {
+    it('AT_17.01.002| Add description to the Organization Folder via Configurate', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(orgFolderName);
         cy.get('.jenkins_branch_OrganizationFolder').click();
