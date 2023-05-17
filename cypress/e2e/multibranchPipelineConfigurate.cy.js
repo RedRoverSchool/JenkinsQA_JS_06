@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import multibranchPipeline from '../fixtures/multibranchPipeline.json'
+
 describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
 
   beforeEach('Create multibranch pipeline', function () {
@@ -24,4 +26,11 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     cy.get('[type="checkbox"]').should('have.length', 4)
   })
   
+  it('AT_16.01_07 | Metrics', () => {
+    cy.get('.content-block [href="./configure"]').click()
+    cy.get('.advancedButton').click()
+    cy.get('#yui-gen3-button').click()
+    cy.get('#yui-gen6').should('be.visible', multibranchPipeline.addMetrics[0])
+    cy.get('#yui-gen7').should('be.visible', multibranchPipeline.addMetrics[1])
+  })
 })
