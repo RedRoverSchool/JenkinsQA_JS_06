@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-
+import userIconMenuItems from "../fixtures/userIconMenuItems.json"
 describe('Header User Icon', () => {
 
     let dropDown = ['Builds', 'Configure','My Views','Credentials'];
@@ -47,4 +47,23 @@ describe('Header User Icon', () => {
             expect(name).to.include(dropDown[idx]);
         })
     });
+
+    it('Header | User icon | check the content of the drop down menu', function () {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force:true});
+        cy.get('#breadcrumb-menu li').should('have.length', userIconMenuItems.userMenuItems.length);
+        cy.get('#breadcrumb-menu li').each(($el, index) => {        
+            cy.wrap($el).should('contain.text', userIconMenuItems.userMenuItems[index]);            
+        })       
+    })    
+
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4);
+      })
+
+    it('AT_01.03_020 | Header User icon', function () {
+        cy.get('a[href="/user/admin"] button').click();
+        cy.get('ul.first-of-type').should('be.visible')        
+    });
+
 })

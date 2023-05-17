@@ -6,7 +6,7 @@ describe('Build History|View build history calendar', () => {
         cy.get('.jenkins-app-bar__content>h1').should('have.text', 'Build History of Jenkins');
     });
 
-    it.only('AT_07.01_002| Build History Verify Build History link is clickable', () =>{
+    it('AT_07.01_002| Build History Verify Build History link is clickable', () =>{
         cy.get('a[href="/view/all/builds"').click()
         cy.get('.jenkins-app-bar__content').should('have.text', 'Build History of Jenkins')
     })
