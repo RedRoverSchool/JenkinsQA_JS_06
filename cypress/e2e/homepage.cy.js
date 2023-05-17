@@ -1,10 +1,10 @@
 /// <reference types="cypress"/>
 
-describe.skip('Homepage', () => {
+describe('Homepage', () => {
 
-  it.skip('Verify Homepage Link "Learn more about distributed builds" is working', () => {
+  it('Verify Homepage Link "Learn more about distributed builds" is working', () => {
 
-      cy.get('.content-block__link.content-block__help-link').invoke('removeAttr', 'target').click()
+      cy.get('.content-block__link.content-block__help-link').invoke('removeAttr', 'target').click({force: true})
       cy.get('#title-text').should('contain.text', 'Jenkins : Distributed builds')
       cy.url().should('eq', 'https://wiki.jenkins.io/display/JENKINS/Distributed+builds')
   });
