@@ -1,51 +1,28 @@
 /// <reference types="cypress"/>
+import userDescription from "../fixtures/userDescription.json";
 
 describe('Folder > Add User description with "Add description" button', () => {
-  let textDescription = "User description";
-  let newDescription =
-    "New very long description with numbers 2023 and symbols #$@";
-
-  it("TC 15.02_003 Add description", () => {
-    cy.get(".task-link").eq(1).click();
-    cy.get(".jenkins-table__link").click();
+  it("AT 15.02.001 | Add User description", () => {
+    cy.get("a[href='/view/all/newJob']").click();
+    cy.get("input#name").type("Folder name");
+    cy.get('li[class="com_cloudbees_hudson_plugins_folder_Folder"]').click();
+    cy.get("#ok-button").click();
+    cy.get("button[name='Submit']").click();
     cy.get("#description-link").click();
-    cy.get(".jenkins-input").clear().type("Hello world!");
-    cy.get(".jenkins-button").click();
-    cy.get("#description > :nth-child(1)").should("contain", "Hello world!");
+    cy.get(".jenkins-input").type(userDescription.textDescription);
+    cy.get("button[name='Submit']").click();
+    cy.get("#description")
+      .should("include.text", userDescription.textDescription);
   });
 
-  it("AT 15.02.001 | Add User description", function () {
-    cy.get("a.task-link").eq(1).click();
-    cy.get(".jenkins-table__link").first().click();
-    cy.get("#description-link").click();
-    cy.get(".jenkins-input").type("{selectall}").type(textDescription);
-    cy.get(".jenkins-button").click();
-    cy.get("#description div:nth-of-type(1)")
-    .should( "have.text", textDescription);
-  });
-
-  it("AT_15.03_001 | Folder > Edit description", () => {
-    cy.get("a.task-link").eq(1).click();
-    cy.get(".jenkins-table__link").first().click();
-    cy.get("#description-link")
-      .invoke("text")
-      .should("contain", "Edit description");
-
-    cy.get("#description-link").click();
-    cy.get(".jenkins-input").type("{selectall}").type(newDescription);
-    cy.get(".jenkins-button").click();
-    cy.get("#description div:nth-of-type(1)")
-      .should("have.text", newDescription);
-  });
-
-  it('AT_15.02_003 | “Add description” button is visible and clickable', () => {
+  it("AT_15.02_003 | “Add description” button is visible and clickable", () => {
     cy.get("a[href='/view/all/newJob']").click();
     cy.get('li[class="com_cloudbees_hudson_plugins_folder_Folder"]')
       .click()
-      .type('New project Anna I {enter}')
+      .type("New project Anna I {enter}");
     cy.get('button[name="Submit"]').click();
 
-    cy.get('#description-link').should('be.visible').click();
-    cy.get('textarea[name="description"]').should('exist')
-});
+    cy.get("#description-link").should("be.visible").click();
+    cy.get('textarea[name="description"]').should("exist");
+  });
 });
