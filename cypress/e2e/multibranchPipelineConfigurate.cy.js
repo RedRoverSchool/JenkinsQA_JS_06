@@ -26,7 +26,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     cy.get('[type="checkbox"]').should('have.length', 4)
   })
   
-  it('AT_16.01_07 | Metrics', () => {
+  it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
     cy.get('.content-block [href="./configure"]').click()
     cy.get('.advancedButton').click()
     cy.get('#yui-gen3-button').click()
