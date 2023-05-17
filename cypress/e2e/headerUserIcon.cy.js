@@ -71,3 +71,47 @@ describe("Header User Icon", () => {
     cy.get(".yuimenuitemlabel span").should("have.length", 4);
   });
 });
+    it('AT_01.03_004| Header | User icon | Ability to choose one of the menu-list option by clicking on it', function () {
+        cy.get('a[href= "/user/admin"] button').click({force:true})
+        cy.get('ul.first-of-type').should('be.visible')
+        cy.get('ul.first-of-type span').contains('Builds').click()
+        cy.url().should('contain', '/user/admin/builds')
+    })
+
+    it('TC_01.03 _006| Header>User icon',()=>{
+        cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
+        cy.get('.first-of-type span').contains('Builds').click()
+        cy.url().should('contain','/user/admin/builds')
+        cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
+        cy.get('.first-of-type span').contains('Configure').click()
+        cy.url().should('contain','/user/admin/configure')
+        cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
+        cy.get('.first-of-type span').contains('My Views').click()
+        cy.url().should('contain','user/admin/my-views/view/all/')
+        cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
+        cy.get('.first-of-type span').contains('Credentials').click()
+        cy.url().should('contain','/user/admin/credentials/')
+    })
+
+    it('AT_01.03_011 | Header | User icon | Verify dropdown menu has 4 elements', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4)
+          .each(($el, idx) => {
+            let name = $el.text();
+            expect(name).to.include(dropDown[idx]);
+        })
+    });
+
+    it('Header | User icon | check the content of the drop down menu', function () {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force:true});
+        cy.get('#breadcrumb-menu li').should('have.length', userIconMenuItems.userMenuItems.length);
+        cy.get('#breadcrumb-menu li').each(($el, index) => {        
+            cy.wrap($el).should('contain.text', userIconMenuItems.userMenuItems[index]);            
+        })       
+    })    
+
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4);
+      })
+})
