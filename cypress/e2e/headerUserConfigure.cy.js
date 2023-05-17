@@ -19,14 +19,14 @@ describe('Header User configure', () => {
             .find('textarea[name="_.description"]');
     const saveButton = '#bottom-sticker button[name="Submit"]';
     const applyButton = '#bottom-sticker button.jenkins-button.apply-button';
-    const userId = Cypress.env('local.admin.login').toLowerCase();
+    const userId = Cypress.env('local.admin.username').toLowerCase();
     const jenkinsPort = Cypress.env('local.port');
     const jenkinsURL = 'http://localhost:'+jenkinsPort;
-    const userURL = jenkinsURL+'/user/'+userId;
+    const userURL = jenkinsURL+'/user/'+userId+'/';
     
     it('AT_01.05_001| <Header>User configure menu item', function () {
         cy.navigateUserConfigurationPage().then(() => {
-            cy.url().should('eq', userURL + '/configure');
+            cy.url().should('eq', userURL + 'configure');
         });
     });
     it('AT_01.05_004| <Header> <User Configure> insert information about user', function () {
