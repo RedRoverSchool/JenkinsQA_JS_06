@@ -56,7 +56,7 @@ describe('Header User Icon', () => {
         })       
     })    
 
-    it.only('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
         cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('.yuimenuitemlabel span').should('have.length', 4);
       })
