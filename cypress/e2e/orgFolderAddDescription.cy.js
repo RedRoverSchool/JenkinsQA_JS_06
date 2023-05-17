@@ -1,5 +1,5 @@
 // <reference types=“cypress”/>
-describe('<Organization Folder> Configurate Organization Folder', () => {
+describe('Organization Folder| Configurate Organization Folder', () => {
     const orgFolderName = 'OrgFolderTest';
     const description = 'The description was added to the organization folder.';
 
