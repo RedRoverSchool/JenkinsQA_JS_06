@@ -1,0 +1,15 @@
+{
+  "projectName": "Project1",
+  "projectType": "Freestyle project",
+  "projectDescription": "New Freestyle Project with every 1 min build",
+  "strategyOption": "Log Rotation",
+  "maxBuilds": 2,
+  "sourceCodeManagement": "None",
+  "buildTriggers": "Build periodically",
+  "schedule": "* * * * *",
+  "buildEnvironmentOption": "Add timestamps to the Console Output",
+  "scriptOption": "Execute shell",
+  "scriptText": "java --version",
+  "applyConfirmMessage": "Saved",
+  "message": "No changes in any of the builds."
+}

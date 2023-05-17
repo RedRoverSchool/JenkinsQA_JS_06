@@ -21,4 +21,14 @@ describe('Head Icon', () => {
             .should('have.prop', 'offsetTop', 3)
             .and('have.prop', 'offsetLeft', 33)
     })
+
+    it('Verify Head icon Jenkins is present and visible', () => {
+        cy.get('#jenkins-head-icon').should("be.visible")
+        cy.get('#jenkins-name-icon').should("be.visible")
+    })
+    
+    it('Verify Jenkins icon clickable and redirected to the homepage', () => {
+        cy.get('#jenkins-head-icon').click()
+        cy.url().should('include', 'localhost')
+    })
 })
