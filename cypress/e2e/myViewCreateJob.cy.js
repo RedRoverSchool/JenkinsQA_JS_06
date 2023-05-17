@@ -1,13 +1,13 @@
 /// <reference types="cypress"/>
+const PORT = Cypress.env("local.port");
 
-
-describe('My Views', () => {
-   it('TC_09.08.001 | Create job', () => {      
+describe('myViewsCreateJob', () => {
+   it('AT_09.08.001 | <My view> Create job', () => {      
     cy.get('a[href$="my-views"]').click();
-    cy.url().should('equal', 'http://localhost:8080/me/my-views/view/all/');
+    cy.url().should('equal', `http://localhost:${PORT}/me/my-views/view/all/`);
    cy.get('a[href="newJob"]').should('have.text', 'Create a job');
    cy.get('a[href="newJob"]').click();
-   cy.url().should('equal', 'http://localhost:8080/me/my-views/view/all/newJob');
+   cy.url().should('equal', `http://localhost:${PORT}/me/my-views/view/all/newJob`);
    cy.get('input#name').type('My Project');
    cy.get('li[tabindex="0"] span').contains('Freestyle project').click();
    cy.get('#ok-button').click();
