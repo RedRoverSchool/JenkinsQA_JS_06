@@ -44,23 +44,19 @@ describe('Organization Folder > Delete Organization Folder', () => {
     .click()
 
     })
- })
-
-
- describe('AT_17.03_004 | Organization Folder>Delete Organization Folder', () => {
-    it('create Organization Folder', () => {
-        cy.get('a[href="newJob"]').click()
-        cy.get('input[name="name"]').type('project')
+    it('AT_17.03_004 | Create organization Folder>Delete Organization Folder', () => {
+        cy.get('#tasks .task').contains('New Item').click()
+        cy.get('input#name').type('project')
         cy.get('span.label').contains('Organization Folder').click()
         cy.get('#ok-button').click()
         cy.get('button[name="Submit"]').click()
-        cy.get(':nth-child(1) > .model-link').click()
-    })
-    it('delete Organization Folder', () => {
-        cy.get('tbody tr td a.jenkins-table__link').realHover()
-        cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').click()
-        cy.get('div#breadcrumb-menu ul li a').contains('Delete Organization Folder').click();
+        cy.get('#breadcrumbBar').contains('Dashboard').click()
+
+        cy.url().should('eq', 'http://localhost:8080/')
+        cy.get('tbody tr td .jenkins-table__link').contains('project').realHover()
+        cy.get('#projectstatus button.jenkins-menu-dropdown-chevron').click()
+        cy.get('.first-of-type li').contains('Delete Organization Folder').click()
         cy.get('button[name="Submit"]').click()
-        cy.get('.empty-state-block').should('contain', 'Welcome to Jenkins!')
+        cy.get('.empty-state-block').should('be.visible', 'Welcome to Jenkins!')
     })
  })
