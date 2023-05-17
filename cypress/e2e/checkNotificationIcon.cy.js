@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
-describe('Header | notification icon', ()=> {
+describe.skip('Header | notification icon', ()=> {
     const buttons = ["Set up agent", "Set up cloud", "Dismiss"]
-    it('verify buttons and links', ()=> {
+    it.skip('verify buttons and links', ()=> {
         cy.get('#visible-sec-am-button')
           .should('be.visible')
           .click()

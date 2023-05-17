@@ -1,4 +1,9 @@
 /// <reference types='cypress'/>
+
+import { iconLegends } from '../fixtures/iconLegends.json'
+import headers from '../fixtures/headers.json'
+import statuses from '../fixtures/statuses.json'
+
 describe('Verify <Dashboard>Icon legend', () => {
     beforeEach('Create Project', function () {
         cy.get('a[href="newJob"]').click()
@@ -21,4 +26,26 @@ describe('Verify <Dashboard>Icon legend', () => {
         cy.url().should('contain', '/legend')
 
       });
+
+    it('Verify number of Icon legend', () => {
+        cy.get('#rss-bar .jenkins-button').contains('Icon legend').click()
+        cy.get('#main-panel > .app-icon-legend dt').should('have.length', iconLegends.length)
+    })
+
+    it("AT_20.05.005 | Verify User is able to see Project Health statuses", function () {
+      cy.get('a[href="/legend"]').click();
+      cy.get("#main-panel > h2:nth-child(5)")
+        .should("be.visible")
+        .and("have.text", headers.iconLegend.projectHealth);
+      cy.get("#main-panel > dl:nth-child(6)").each(($el, idx) => {
+        cy.wrap($el)
+          .invoke("text")
+          .then((text) => {
+            expect(text.trim()).to.includes(
+              statuses.projectHealth[idx]
+            );
+          });
+      });
+    });
  })
+ 

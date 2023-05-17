@@ -55,4 +55,24 @@ describe("multibranchPipelineRename", () => {
     cy.get("#main-panel h1").should("have.text", messages.renameErrorMessage.error);
     cy.get("#main-panel p").should("have.text", messages.renameErrorMessage.emptyNameMsg);
   });
+
+  it("AT_16.02_004 Rename using dropdown menu-Rename using special characters", () => {
+    pipelineName.specialCharactersArr.forEach(char => {
+        cy.get('a[href^="job/"').realHover();
+        cy.get('td > a [class$="dropdown-chevron"]').click();
+        cy.get("li > a > span").contains("Rename").click();
+        cy.get("@nameInputField").type(char);
+        cy.get("button[name=Submit]").click();
+        cy.url().should("include", `/job/${pipelineName.namePipeline}/confirmRename`);
+        cy.get("#main-panel h1").should("have.text", messages.renameErrorMessage.error);
+        if(char == "&") {
+            cy.get("#main-panel p")
+              .should("contain", `${char}amp;`).and("contain", messages.renameErrorMessage.specialCharactersMsg);
+        } else {
+            cy.get("#main-panel p")
+            .should("contain", char).and("contain", messages.renameErrorMessage.specialCharactersMsg);
+        }
+        cy.get('a.model-link').contains('Dashboard').click();
+    })    
+  })
 });
