@@ -55,4 +55,15 @@ describe('Header User Icon', () => {
             cy.wrap($el).should('contain.text', userIconMenuItems.userMenuItems[index]);            
         })       
     })    
+
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4);
+      })
+
+    it('AT_01.03_020 | Header User icon', function () {
+        cy.get('a[href="/user/admin"] button').click();
+        cy.get('ul.first-of-type').should('be.visible')        
+    });
+
 })

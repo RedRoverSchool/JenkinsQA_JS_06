@@ -4,7 +4,7 @@ describe('myViewsEditDescriptionTest', () => {
     const description = 'text'
     const newDescription = 'newText'
 
-    it ('My views Edit Description', () => {
+    it ('AT_09.03.001 | <My Views>Edit description link is visible and clickable', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input   ').type(description)
@@ -14,7 +14,7 @@ describe('myViewsEditDescriptionTest', () => {
         cy.get('.jenkins-buttons-row').should('contain', 'Edit description')
     })
 
-    it ('My views Edit Description text is saved', () => {
+    it ('AT_09.03.002 | <My Views>Edit description text is saved', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input   ').clear().type(description)
