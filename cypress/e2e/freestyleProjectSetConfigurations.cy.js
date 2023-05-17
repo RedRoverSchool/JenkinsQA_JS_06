@@ -86,9 +86,12 @@ describe('freestyleProjectSetConfigurations', () => {
                         cy.get(schedule).should("be.visible").type(data.schedule);
                     })
                     .then(() => {
-                        cy.get(buildEnvironmentOption).contains(data.buildEnvironmentOption)
-                            .should("be.visible")
-                            .click();
+                        cy.get('#build-environment').should("be.visible")
+                            .then(() => {
+                                cy.get(buildEnvironmentOption).contains(data.buildEnvironmentOption)
+                                    .should("be.visible")
+                                    .click();
+                            })
                     })
                     .then(() => {
                         cy.get(addBuildStepsButton).should("be.visible").click();
