@@ -15,6 +15,7 @@ describe('My Views>Create new view', () => {
     cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text')
       .should('have.text', 'My Views')
       .click({force: true})
+      
     cy.get('#projectstatus-tabBar > div > div.tabBar > div:nth-child(2) > a').should('be.visible').click();
     cy.get('.jenkins-form-label.help-sibling').should('have.text', 'View name');
     cy.get('#name').type('New Dima job');
