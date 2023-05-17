@@ -49,7 +49,7 @@ describe('Header User Icon', () => {
     });
 
     it('Header | User icon | check the content of the drop down menu', function () {
-        let menuItems = ['Builds', 'Configure', 'My Views', 'Credentials'];
+        // let menuItems = ['Builds', 'Configure', 'My Views', 'Credentials'];
         cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force:true});
         cy.get('#breadcrumb-menu li').should('have.length', userIconMenuItems.userMenuItems.length);
         cy.get('#breadcrumb-menu li').each(($el, index) => {        
