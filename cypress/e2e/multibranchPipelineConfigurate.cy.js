@@ -18,4 +18,10 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
       cy.url().should('contain', '/job/job/')
       cy.get('h1').should('be.visible', 'job-1')
   });
+
+  it('AT_16.01_06 | Verify the number of checkboxes', () => {
+    cy.get('.content-block [href="./configure"]').click()
+    cy.get('[type="checkbox"]').should('have.length', 4)
+  })
+  
 })
