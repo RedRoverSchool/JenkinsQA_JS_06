@@ -2,15 +2,16 @@
 import userDescription from "../fixtures/userDescription.json";
 
 describe('Folder > Add User description with "Add description" button', () => {
-  it.only("AT 15.02.001 | Add User description", () => {
+  it("AT 15.02.001 | Add User description", () => {
     cy.get("a[href='/view/all/newJob']").click();
     cy.get("input#name").type("Folder name");
     cy.get('li[class="com_cloudbees_hudson_plugins_folder_Folder"]').click();
     cy.get("#ok-button").click();
-    cy.get("textarea[name='_.description']")
-      .type(userDescription.textDescription);
     cy.get("button[name='Submit']").click();
-    cy.get("#view-message")
+    cy.get("#description-link").click();
+    cy.get(".jenkins-input").type(userDescription.textDescription);
+    cy.get("button[name='Submit']").click();
+    cy.get("#description")
       .should("include.text", userDescription.textDescription);
   });
 
