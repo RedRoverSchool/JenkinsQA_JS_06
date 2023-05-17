@@ -35,4 +35,13 @@ describe('Header Search Box', () => {
         cy.get('#search-box')
           .should('be.visible')
     });
+
+    it('Verify user is able to get to the Search Box by a keyboard shortcut (Ctrl+K)', () => {
+        cy.get('#jenkins').trigger('keydown', { ctrlKey: true, keyCode: 75 })
+        cy.get('#search-box').type(headers.searchText + '{enter}')
+
+        cy.get('#main-panel h1').then((el)=> {
+            assert.include(el.text(), headers.searchText);  
+        });
+    });
 })
