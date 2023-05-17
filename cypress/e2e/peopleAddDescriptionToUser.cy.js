@@ -10,4 +10,12 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get(".jenkins-button").click();
     cy.get("#description").should("include.text", userDescription.textDescription)
   });
+
+  it("AT_06.02_002 | Verify description is added to a user", function () {
+    cy.get("header .model-link").click()
+    cy.get("#description-link").click()
+    cy.get("textarea[name='description']").clear().type(userDescription.description)
+    cy.get("button[name='Submit']").should("include.text", "Save").click()
+    cy.get("#description").should("include.text", userDescription.description)
+  })
 });
