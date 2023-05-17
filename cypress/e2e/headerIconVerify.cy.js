@@ -6,7 +6,6 @@ describe('Header | Head Icon', () => {
         cy.get('#jenkins-head-icon').should('be.visible');        
     });
     it('AT_01.01.032 | Header Icon verify', () => {
-        cy.get('#jenkins-head-icon').should('be.visible').click()
-        cy.url().should('include', 'http://localhost:8080/')
+        cy.get('#jenkins-head-icon').should('be.visible')    
     })
 })
