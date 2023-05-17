@@ -3,5 +3,6 @@
     "iconLegend": {
         "projectHealth": "Project Health"
     },
+    "newItemHeader" : "Enter an item name",
     "searchText": "Text"
 }

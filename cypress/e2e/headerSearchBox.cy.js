@@ -36,6 +36,11 @@ describe('Header Search Box', () => {
           .should('be.visible')
     });
 
+    it('AT_01.02_019| No results appear after input text in the Search box', () => {
+        cy.get('input.main-search__input').type('text' + '{enter}')
+        cy.get('div.error').should('have.text', 'Nothing seems to match.')
+    });
+  
     it('Verify user is able to get to the Search Box by a keyboard shortcut (Ctrl+K)', () => {
         cy.get('#jenkins').trigger('keydown', { ctrlKey: true, keyCode: 75 })
         cy.get('#search-box').type(headers.searchText + '{enter}')
