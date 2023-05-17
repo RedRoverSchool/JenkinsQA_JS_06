@@ -69,5 +69,4 @@ describe('Breadcrumbs',()=>{
         cy.go('back')
         })
    })
-
 })
