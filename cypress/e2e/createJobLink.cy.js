@@ -22,4 +22,8 @@ describe('Homepage: Create a job link', () => {
           `http://localhost:${Cypress.env('local.port')}/newJob`
         );
     });
+    it('AT_02.01.008|Homepage Create a job link', () => {
+        cy.get('a[href="newJob"]').click();
+        cy.get('.h3').should('have.text', 'Enter an item name')
+    })
 });
