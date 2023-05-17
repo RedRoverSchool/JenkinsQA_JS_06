@@ -8,4 +8,12 @@ describe('footerJenkinsVerVerify', () =>{
         .and('have.attr','href','https://www.jenkins.io/')
         .and('have.css','color','rgb(20, 20, 31)')
     })
+    it('AT_3.02_002 Link Jenkins redirects the user to the correct page', () =>{
+        cy.get('.jenkins_ver a')
+        .invoke('removeAttr','target')
+        .click()
+        
+        cy.url().should("equal", "https://www.jenkins.io/")
+        cy.get('h1 +p strong').should('contain','Build great things at any scale')
+    })
 })
