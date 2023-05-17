@@ -58,4 +58,16 @@ describe('Breadcrumbs',()=>{
       }           
    })
 
+   it.only('AT_04.02_005 | Verify Dashboard is visible in the breadcrumb on every page and user can return to the main page.', () => {
+      
+      cy.get('.jenkins-breadcrumbs__list-item').contains('Dashboard').should('be.visible')
+      cy.get('.jenkins-breadcrumbs__list-item').click()
+      cy.get('.empty-state-block h1').should('have.text', 'Welcome to Jenkins!')
+      
+        homePage.sidePanelItems.forEach(item => {
+        cy.contains(item).click()
+        cy.go('back')
+        })
+   })
+
 })
