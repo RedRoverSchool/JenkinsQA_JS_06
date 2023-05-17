@@ -8,8 +8,8 @@ describe('Header User Icon', () => {
     cy.get('.login .model-link').should('be.visible');
     });
 
-    it('AT_01.03_003| Header | User icon | Verification of the visibility of the dropdown menu', function () {
-        cy.get('a[href= "/user/admin"] button').click({force:true})
+    it('AT_01.03_003| Header | User icon | Verification of the visibility of the dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
         cy.get('ul.first-of-type').should('be.visible')
     })
 
@@ -60,4 +60,10 @@ describe('Header User Icon', () => {
         cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('.yuimenuitemlabel span').should('have.length', 4);
       })
+
+    it('AT_01.03_020 | Header User icon', function () {
+        cy.get('a[href="/user/admin"] button').click();
+        cy.get('ul.first-of-type').should('be.visible')        
+    });
+
 })

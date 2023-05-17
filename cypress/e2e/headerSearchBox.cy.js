@@ -35,4 +35,10 @@ describe('Header Search Box', () => {
         cy.get('#search-box')
           .should('be.visible')
     });
+
+    it('AT_01.02_019| No results appear after input text in the Search box', () => {
+        cy.get('input.main-search__input').type('text' + '{enter}')
+        cy.get('div.error').should('have.text', 'Nothing seems to match.')
+    });
+
 })
