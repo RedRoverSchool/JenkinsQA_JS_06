@@ -1,8 +1,10 @@
 /// <reference types="cypress"/>
 
+import newItemNames from '../fixtures/newItemNames.json'
+
 const PORT = Cypress.env("local.port");
 
-describe('New Item', () => {
+describe('newItemInputField', () => {
 
     it('Verify New Item has input field', () => {
         cy.get('a[href="/view/all/newJob"]').click()
@@ -21,4 +23,11 @@ describe('New Item', () => {
         cy.url().should('include', '/view/all/newJob');
         cy.get("input[id='name']").should("be.visible");
     });
+
+    it('AT_05.07_004 | New item page has Input field for text data', () => {
+        cy.get('#side-panel a[href="/view/all/newJob"]').click()
+
+        cy.get('div.header .h3').should('have.text', newItemNames.headerText)
+        cy.get('div.header input').should('have.attr', 'type', 'text')
+    })
 })
