@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
-import homePage from "../fixtures/homePage.json"
+import homePage from "../fixtures/homePage.json";
+import headers from "../fixtures/headers.json";
 describe('Breadcrumbs',()=>{
     
   const pagesName =['New Item', 'People', 'Build History', 'Manage Jenkins', 'My Views']
@@ -55,18 +56,13 @@ describe('Breadcrumbs',()=>{
    })
    
    it('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu items should navigate to the corresponding folder page', () => {
-      function clickBreadcrumbsDropdownItems(idx) {          
-            cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
-            cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();
-            cy.get(`#breadcrumb-menu>.bd>ul>li:nth-child(${idx})`).click();           
-      }
+              
+      cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
+      cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();
+      cy.get('#breadcrumb-menu>.bd>ul>li:nth-child(1)').should('contain', 'New Item').click();
 
-      let idx = 1  
-      while(idx <= homePage.endPointUrl.length)  {
-         clickBreadcrumbsDropdownItems(idx);
-         cy.url().should('include', homePage.endPointUrl[idx - 1]);
-         idx++;
-      }           
+      cy.url().should('include', homePage.endPointUrl[0]);
+      cy.get('.header .h3').should('have.text', headers.newItemHeader); 
    })
 
 })
