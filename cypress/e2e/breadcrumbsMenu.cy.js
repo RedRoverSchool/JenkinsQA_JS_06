@@ -48,7 +48,7 @@ describe('Breadcrumbs',()=>{
               
       cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
       cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();
-      cy.get('#breadcrumb-menu>.bd>ul>li:nth-child(1)').should('contain', 'New Item').click();
+      cy.get('#breadcrumb-menu>.bd>ul>li:nth-child(1)').should('contain', homePage.dashboardDropdownItems[0]).click();
 
       cy.url().should('include', homePage.endPointUrl[0]);
       cy.get('.header .h3').should('have.text', headers.newItemHeader); 
