@@ -65,9 +65,9 @@ describe("Header User Icon", () => {
   });
 
   it("01.03_018 Header | Verify User icon is visible and clickable", () => {
-    cy.get(".login.page-header__hyperlinks .model-link")
-      .should("be.visible")
-      .click();
-    cy.get("ul .first-of-type").should("be.visible");
+    cy.get("#page-header .jenkins-menu-dropdown-chevron")
+      .realHover()
+      .click({ force: true });
+    cy.get(".yuimenuitemlabel span").should("have.length", 4);
   });
 });
