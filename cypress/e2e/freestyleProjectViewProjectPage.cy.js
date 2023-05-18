@@ -2,7 +2,7 @@
 
 describe('freestyle project - View project page', () => {
 
-    it('', () => {
+    it('AT_12.01_001|Freestyle project> View project page', () => {
         cy.get('a[href="newJob"]').click();
         cy.get('#name').type('FreestyleProject').click();
         cy.get('.hudson_model_FreeStyleProject').click();
