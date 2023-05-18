@@ -16,4 +16,24 @@ describe('Dashboard', () => {
         cy.get('#description').should('contain', 'I am very happy to be there.')
 
     })
+
+    it('AT_02.06_009 | Homepage (Dashboard) | Verify the user can change main panel description', () => {
+      const firstDescription = 'This is my description of the main page!'
+      const modifiedDescription = 'This is the modified description of the page.'
+      cy.get('#description-link').click()
+      cy.get('.jenkins-input   ')
+        .should('be.visible')
+        .type(firstDescription)
+      cy.get('.jenkins-input   ').should('have.value', firstDescription)
+      cy.get('#description button').click()
+      cy.get('#description div:nth-child(1)').should('have.text', firstDescription)
+      
+      cy.get('#description-link').click()
+      cy.get('.jenkins-input   ').should('have.value', firstDescription)
+        .clear()
+        .type(modifiedDescription)
+        .should('have.value', modifiedDescription)
+      cy.get('#description button').click()
+      cy.get('#description div:nth-child(1)').should('have.text', modifiedDescription)
+    })
 })
