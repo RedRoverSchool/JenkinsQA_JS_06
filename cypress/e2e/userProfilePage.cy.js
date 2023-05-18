@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 describe("User Profile Page", () => {
-  it("AT_18.01_001 | <Profile Page> Verify user profile name redirect.", function () {
+  it("AT_18.01_001 | Profile Page | Verify user profile name redirect.", function () {
     cy.get("div[class*='login page-header']>a[href^='/user']").then(
       ($element) => {
         const userNameInUrl = $element.attr("href").split("/").pop();
