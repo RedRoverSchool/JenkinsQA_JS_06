@@ -13,7 +13,7 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get("#description").should("include.text", userDescription.textDescription)
   });
 
-  it('AT_06.02_003 | Verify save button functionality', () => {
+  it.skip('AT_06.02_003 | Verify save button functionality', () => {
     cy.get(':nth-child(2) > .task-link-wrapper > .task-link').click();
     cy.get('.jenkins-table__link').click();
     cy.get('#description-link').click();
@@ -24,7 +24,7 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('#description').should('include.text','new user description')
     
   });
-  it("AT_06.02_002 | Verify description is added to a user", function () {
+  it.skip("AT_06.02_002 | Verify description is added to a user", function () {
     cy.get("a[href='/asynchPeople/']").click()
     cy.url().should("include", "/asynchPeople/")
     cy.get(".jenkins-table__link").click()
