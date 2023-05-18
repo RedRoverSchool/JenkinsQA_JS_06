@@ -38,9 +38,10 @@ it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
     "have.text",
     "Second Description"
   );
-
   cy.get(' [href="editDescription"]').click();
   cy.get('[name="description"]').clear();
   cy.get('[name="Submit"]').click();
+   cy.get("#description div:first-of-type").should(
+     "not.have.text");
 });
 });
