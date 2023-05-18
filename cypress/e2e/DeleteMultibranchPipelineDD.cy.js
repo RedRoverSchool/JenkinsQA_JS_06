@@ -23,5 +23,3 @@ describe(`Delete Multibranch Pipeline`, () => {
         cy.contains(projectName).should('not.exist')
     })
 });
-  
-  
