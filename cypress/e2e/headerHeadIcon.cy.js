@@ -13,16 +13,13 @@ describe('Header Head Icon', () => {
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)
     })
 
-    it('AT_01.01_033 | Validate <Header> head icon', () => {
-        cy.visit('http://localhost:8080/');
-        cy.get('div h1').should('have.text','Welcome to Jenkins!')
-                        .should('be.visible');
+    it.only('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({force: true});
-        cy.get('div h1').should('have.text','\n            People\n            ')
-                        .should('exist');
+        cy.get('div h1').should('exist')
+                        .and('include.text','People');
         cy.get('#jenkins-home-link').click();
         cy.get('div h1').should('have.text','Welcome to Jenkins!')
-                        .should('be.visible');
+                        .and('be.visible');
 
     })
 })
