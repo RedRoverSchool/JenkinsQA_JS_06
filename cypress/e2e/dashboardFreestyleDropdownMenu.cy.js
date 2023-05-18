@@ -21,6 +21,9 @@ describe('dashboardFreestyleDropdownMenu', () => {
         })
     })
     
+    it('AT_20.03_002 | Verify numbers of items of Freestyle projects name hoverable dropdown menu', () => {
+        cy.get('.jenkins-table__link.model-link.inside button').click({ force: true })
+        cy.get('.first-of-type li').should('have.length', freestyleDropdownItems.freestyleDropdownItems.length)
+    })
+
 })
-
-
