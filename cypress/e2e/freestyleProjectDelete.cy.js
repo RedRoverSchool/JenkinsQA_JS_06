@@ -55,5 +55,20 @@ describe('<Freestyle project> Delete created project', () => {
       cy.get('table#projectstatus tbody').should('contain', projects.freestyle.name)
     })
 
+    it.only('AT_12.02_008 | Freestyle project| Delete created project with inside menu', () => {
+      cy.get("a[href='/view/all/newJob']").click()
+      cy.get('#name').type(projects.freestyle.name)
+      cy.get('.hudson_model_FreeStyleProject').click()
+      cy.get('#ok-button').click()
+      cy.get('button[name="Submit"]').click()
+      cy.get('#jenkins-name-icon').click()
+
+      cy.get('.jenkins-table__link.model-link.inside').click()
+      cy.get('a[data-message^="Delete the Project"]').click()
+      cy.on('window:confirm',(str) => {
+        expect(str).to.equal('Delete the Project ‘Brand_new_Freestyle_project’?')
+      })
+      cy.get('div[class="empty-state-block"] h1').should('have.text', 'Welcome to Jenkins!')
+    })
+    
   });
-  
