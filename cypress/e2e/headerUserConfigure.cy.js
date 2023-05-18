@@ -81,9 +81,17 @@ describe('Header User configure', () => {
         });
     });
 
+
     it('AT_01.05_007 | <Header>The user is able to select the option "Configure" from the dropdown menu "User"', () => {
         cy.get('.login button').click({ force: true })
         cy.get('.yuimenuitemlabel').contains('Configure').click()
         cy.get('#breadcrumbs').should('contain', 'Configure')
+    })
+
+    it('AT_01.05.009 | <Header>User should be able to choose the “Configure“ menu item in the “User” dropdown-menu', () => {
+        cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });
+        cy.get('#breadcrumb-menu li.yuimenuitem a span').contains('Configure').click();
+        cy.get(`${saveButton}`).click()
+        cy.get('#main-panel').should('be.visible')
     })
 });
