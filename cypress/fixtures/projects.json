@@ -4,6 +4,10 @@
 	},
 	"disabledProjectNotify": "This project is currently disabled",
 
+	"multiConfigurationProject" : {
+		"name" : "myFirstMultiConfigurationProject"
+	},
+
 	"multibranchPipeline": {
 		"name": "Multibranch Pipeline1"
 	},
@@ -13,5 +17,7 @@
 
 	"organizationFolder" : {
 		"name" : "myFirstOrganizationForder"
-	  }
+	  },
+	
+	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]
 }
