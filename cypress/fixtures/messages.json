@@ -1,6 +1,7 @@
 {
     "deleteConfirmMessage": "Delete Project: are you sure?",
     "error": "Nothing seems to match.",
+    "deleteMessage": "Delete the Project",
 
     "renameErrorMessage": {
         "error": "Error",
