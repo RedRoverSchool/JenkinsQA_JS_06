@@ -20,4 +20,9 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
             expect($el.text()).to.be.equal(sidePanelItems[idx])
         })
     })
+
+    it('Homepage(Dashboard) | Verify "New Item" redirection', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.url().should('include', '/view/all/newJob')
+    })
 })
