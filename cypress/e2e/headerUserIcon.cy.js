@@ -100,5 +100,11 @@ describe('Header User Icon', () => {
         cy.get('li[index="3"]').click()
         cy.url().should('contain', '/credentials')
         cy.get('#breadcrumbBar').should('contain', dropDown[3])
-    })      
+    })    
+    
+    it('AT_01.03.022 | Header, User icon is visible and clickable', () => {
+        cy.get('[href^="/user"]').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+        cy.get('#main-panel > :nth-child(4)').should('include.text','Jenkins User ID')
+    })
 })
