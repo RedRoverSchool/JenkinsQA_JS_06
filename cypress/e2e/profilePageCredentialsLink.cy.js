@@ -12,7 +12,7 @@ describe('profilePageCredentialsLink', () => {
               cy.contains("h1", userNameOnThePage).should("be.visible");
             }
           );
-          cy.get('span[class="task-link-text"]').contains('Credentials').click({force: true})
+          cy.get('#tasks span[class="task-link-wrapper "]').contains('Credentials').click()
           cy.url().should('contain', headerCredentials.credentialsPageUrl)
           cy.get('.jenkins-app-bar h1').should('have.text', headerCredentials.credentialsPageHeader)  
     })
