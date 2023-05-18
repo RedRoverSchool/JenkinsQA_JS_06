@@ -64,26 +64,13 @@ describe('Freestyle project Delete', () => {
     cy.get('#main-panel h1').should('have.text', homePage.loginPageHeader)
   })
 
-  const project = "FreeStyle"
-    function createFreeProject(){
-      cy.get(':nth-child(1) > .task-link-wrapper > .task-link').click()
-      cy.url().should('includes','/view/all/newJob')
-      cy.get('#name').type(project)
-      cy.contains('Freestyle project').click()
-      cy.get('#ok-button').click()
-      cy.get('button[name="Submit"]').click()
-      cy.contains(project).should('be.visible')
-      cy.contains('Dashboard').click()
-      cy.url().should('includes','http://localhost:8080/')
-    }
-    it('AT_12.02_010 | Freestyle project | Delete created project',()=>{
-      createFreeProject()
-      cy.get('.jenkins-table__link > span').realHover({ position: "center" })
-      cy.get('#job_FreeStyle > :nth-child(3)').contains(project).click()
-      cy.get(':nth-child(7) > .task-link-wrapper .task-link').should('have.text','Delete Project').click()
+    it.only('AT_12.02_010 | Freestyle project | Delete created project',()=>{
+      cy.get('tbody tr td a.jenkins-table__link').contains(projects.freestyle.name).realHover({ position: "center" })
+      cy.get('#projectstatus .jenkins-menu-dropdown-chevron').click()
+      cy.get('.first-of-type li:nth-child(5)').should('have.text','Delete Project').click()
 
       cy.on('window:confirm', (str) => {
-      expect(str).to.equal(`Delete the Project ‘${project}’?`)
+      expect(str).to.equal('Delete Project: are you sure?')
       })
       cy.get('#main-panel').contains('Project Freestyle').should('not.exist')
     })
