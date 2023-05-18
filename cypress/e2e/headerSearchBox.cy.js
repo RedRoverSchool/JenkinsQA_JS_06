@@ -64,5 +64,11 @@ describe('Header Search Box', () => {
     .and('have.attr', 'placeholder')
     .and('contain', 'Search')
     .and('contain', '+K')
-});
+  });
+
+  it('AT_01.02.022 | Search box text placeholder is visible', () =>{
+    cy.get('#search-box')
+    .should('be.visible')
+    .and('have.attr','placeholder','Search (CTRL+K)')
+  })
 });
