@@ -31,4 +31,9 @@ describe('Homepage: Create a job link', () => {
         cy.get('a[href="newJob"]').click();
         cy.get('.h3').should('have.text', 'Enter an item name')
     })
+
+    it('AT_02.01_006 | Homepage, Create a job link', () => {
+        cy.get('[href="newJob"]').click()
+        cy.url().should('include', '/newJob')
+    })
 });

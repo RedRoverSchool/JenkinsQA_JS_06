@@ -54,6 +54,20 @@ describe('<Freestyle project> Delete created project', () => {
       })
       cy.get('table#projectstatus tbody').should('contain', projects.freestyle.name)
     })
+    
+    it('12.02_009 Deleting a Freestyle Project using the dropdown menu',() =>{
+      cy.get('a[href="newJob"]').click()
+      cy.get('input#name').type('Freestyle')
+      cy.get('li[tabindex="0"] span').contains('Freestyle project').click()
+      cy.get('#ok-button').click()
+      cy.get(':nth-child(1) > .model-link').click()
+      
+      cy.get("[class*='jenkins-table'] .jenkins-menu-dropdown-chevron").realHover().click()
+      cy.get('div#breadcrumb-menu ul li a').contains('Delete Project').click()
 
+      cy.on('window:confirm', (str) => {
+        expect(str).to.equal(messages.deleteConfirmMessage)
+      })
+    })
   });
   
