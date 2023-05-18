@@ -25,7 +25,7 @@ describe('multiConfigurationProjectRename', () => {
         })
     })
 
-    it.only('AT_14.06._002 | Rename Multi-configuration project_Positive', () => {
+    it('AT_14.06._002 | Rename Multi-configuration project_Positive', () => {
         let renameValidName = 'RenamedProject123'
         cy.get('td:nth-child(3) a[href^="job/"]').realHover()
         cy.get('.jenkins-table__link button.jenkins-menu-dropdown-chevron').click()
