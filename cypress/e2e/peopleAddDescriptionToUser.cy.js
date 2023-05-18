@@ -24,4 +24,14 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('#description').should('include.text','new user description')
     
   });
+  it("AT_06.02_002 | Verify description is added to a user", function () {
+    cy.get("a[href='/asynchPeople/']").click()
+    cy.url().should("include", "/asynchPeople/")
+    cy.get(".jenkins-table__link").click()
+    cy.url().should("include", "/user/")
+    cy.get("#description-link").click()
+    cy.get("textarea[name='description']").clear().type(userDescription.description)
+    cy.get("button[name='Submit']").should("include.text", "Save").click()
+    cy.get("#description").should("include.text", userDescription.description)
+  })
 });

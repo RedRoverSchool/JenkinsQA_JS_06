@@ -31,5 +31,19 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('#main-panel > h1').should('be.visible')
         cy.get('#main-panel > h1').should('include.text', "testFolder")
     })
+
+    it('04.03_003 Verify that user can open selected Freestyle project', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('#name').type('testFreestyleProject');
+        cy.get('.hudson_model_FreeStyleProject').click({ force: true });
+        cy.get('#ok-button').click();
+        cy.get('.jenkins-button--primary').click();
+
+        cy.get(userDropdown).click({ force: true })
+        cy.get('.yuimenuitem').contains("My Views").click()
+        cy.get('#job_testFreestyleProject').click()
+        cy.get('a[class="jenkins-table__link model-link inside"]').should('be.visible')
+        cy.get('a[class="jenkins-table__link model-link inside"]').should('include.text', "testFreestyleProject")
+    })
 });
 

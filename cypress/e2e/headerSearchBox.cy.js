@@ -49,4 +49,8 @@ describe('Header Search Box', () => {
             assert.include(el.text(), headers.searchText);  
         });
     });
+    it('АТ_01.02.021 | searchboxPlaceholderCheck', () => {
+       // code here
+       cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
+    });
 })
