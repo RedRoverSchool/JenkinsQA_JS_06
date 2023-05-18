@@ -1,3 +1,4 @@
 {
-    "projectNames" : ["Freestyle project", "Pipeline","Multi-configuration project", "Folder","Multibranch Pipeline", "Organization Folder"]
+    "projectNames" : ["Freestyle project", "Pipeline","Multi-configuration project", "Folder","Multibranch Pipeline", "Organization Folder"],
+    "headerText": "Enter an item name"
 }

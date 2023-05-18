@@ -4,7 +4,7 @@ describe('myViewsEditDescriptionTest', () => {
     const description = 'text'
     const newDescription = 'newText'
 
-    it ('My views Edit Description', () => {
+    it ('AT_09.03.001 | <My Views>Edit description link is visible and clickable', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input   ').type(description)
@@ -14,7 +14,7 @@ describe('myViewsEditDescriptionTest', () => {
         cy.get('.jenkins-buttons-row').should('contain', 'Edit description')
     })
 
-    it ('My views Edit Description text is saved', () => {
+    it ('AT_09.03.002 | <My Views>Edit description text is saved', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input   ').clear().type(description)
@@ -57,4 +57,20 @@ it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chos
     `Project ${jobName}`
   );
 });
+
+    it('AT_09.03_004 | My Views Verify Edit description is changed and saved', () => {
+      cy.contains('My Views').click()
+      cy.get('#description-link').click()
+      cy.get('#description textarea').clear().type(description)
+      cy.get('button[name="Submit"]').click()
+      cy.get('#description div:nth-child(1)').should('have.text', description)
+
+      cy.get('#description-link')
+        .should('exist')
+        .and('contain', 'Edit description')
+      cy.get('#description-link').click()
+      cy.get('#description textarea').clear().type(newDescription)
+      cy.get('button[name="Submit"]').click()
+      cy.get('#description div:nth-child(1)').should('have.text', newDescription)
+    })
 })
