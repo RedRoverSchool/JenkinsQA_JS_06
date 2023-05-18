@@ -1,29 +1,27 @@
 /// <reference types="cypress"/>
+import addCreateNewView from "../fixtures/addCreateNewView.json"
 
-describe('My Views>Create new view', () => {
-  it('My Views>Create new view', function () {
-    cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text').realHover();
-    cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text').click({force:true});
+describe('myViewsCreateNewView', () => {
+  it('My Viewws>Create new view', function () {
+    cy.get('a[href $="my-views"]').realHover();
+    cy.get('a[href $="my-views"]').click();
     cy.get('a[href$="/newJob"]').click();
-    cy.get('#name').type('Dima first job');
+    cy.get('#name').type(addCreateNewView.jobName);
     cy.get('.hudson_model_FreeStyleProject').click();
     cy.get('#ok-button').click();
-    cy.get('#general').should('have.text', 'General');
+    cy.get('#general').should('have.text', addCreateNewView.header);
     cy.get('.jenkins-button--primary').click();
-    cy.get('.job-index-headline').should('have.text', 'Project Dima first job');
-    cy.get('#breadcrumbs > li:nth-child(1) > a').click();
-    cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text')
-      .should('have.text', 'My Views')
-      .click({force: true})
+    cy.get('.job-index-headline').should('have.text', `Project ${addCreateNewView.jobName}`);
+    cy.get('a.model-link[href="/"').click();
+    cy.get('a[href $="my-views"]').click();
       
-    cy.get('#projectstatus-tabBar > div > div.tabBar > div:nth-child(2) > a').should('be.visible').click();
-    cy.get('.jenkins-form-label.help-sibling').should('have.text', 'View name');
-    cy.get('#name').type('New Dima job');
-    cy.get('#createItemForm > div:nth-child(1) > div:nth-child(2) > fieldset > div:nth-child(4) > label').click();
+    cy.get('.addTab').should('be.visible').click();
+    cy.get('#name').type(addCreateNewView.viewName);
+    cy.get('.jenkins-radio:last-child label').should('have.text', addCreateNewView.myViews).click();
     cy.get('#ok').click();
-    cy.get('#projectstatus-tabBar > div > div.tabBar > div.tab.active > a').should('have.text', 'New Dima job');
-    cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text').click({force: true});
-    cy.get('#main-panel > form > button').click({force: true});
+    cy.get('.tab.active').contains(addCreateNewView.viewName);
+    cy.get('a[href$="delete"]').click();
+    cy.get('#main-panel > form > button').click();
   });
 })
 
