@@ -54,7 +54,8 @@ describe('<Freestyle project> Delete created project', () => {
       })
       cy.get('table#projectstatus tbody').should('contain', projects.freestyle.name)
     })
-    it.only('AT_12.02_008 | Freestyle project| Delete created project with inside menu', () => {
+    
+    it('AT_12.02_008 | Freestyle project| Delete created project with inside menu', () => {
       cy.get("a[href='/view/all/newJob']").click()
       cy.get('#name').type(projects.freestyle.name)
       cy.get('.hudson_model_FreeStyleProject').click()
