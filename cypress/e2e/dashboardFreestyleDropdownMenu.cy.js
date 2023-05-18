@@ -26,7 +26,7 @@ describe('dashboardFreestyleDropdownMenu', () => {
         cy.get('.first-of-type li').should('have.length', freestyleDropdownItems.freestyleDropdownItems.length)
     })
 
-    it.only('AT_20.03_003 | Verify dropdown menu of the Freestyle project is visible', () => {
+    it('AT_20.03_003 | Verify dropdown menu of the Freestyle project is visible', () => {
         cy.get('.jenkins-table__link.model-link.inside button').click({ force: true })
         cy.get('.first-of-type li').then($el => {
             let array = Cypress.$.makeArray($el).map($el => $el.innerText);
