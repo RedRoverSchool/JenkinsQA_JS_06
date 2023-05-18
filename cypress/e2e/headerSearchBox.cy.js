@@ -39,6 +39,8 @@ describe('Header Search Box', () => {
     it('AT_01.02_017 | Verify visible Search box', function () {
         cy.get('#search-box')
         .should('be.visible')
-        // .and('have.attr', 'placeholder', 'Search (⌘+K)')
+        .and('have.attr', 'placeholder')
+        .and('contain', 'Search')
+        .and('contain', '+K')
     });
 })
