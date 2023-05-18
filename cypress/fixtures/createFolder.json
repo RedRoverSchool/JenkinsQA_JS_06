@@ -1,5 +1,7 @@
 {
   "folderName": "TestFolder",
   "folder": "Folder",
-  "link": "testfolder" 
+  "link": "testfolder",
+
+  "folderName1": "QA_06_Folder1"
 }
