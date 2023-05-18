@@ -15,7 +15,7 @@ describe('folderDeleteFolder', () =>{
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/job/${createFolder.folderName1}/`);
     }); 
 
-    it.skip('AT_15.04.001 | Folder | Delete folder', () =>{
+    it('AT_15.04.001 | Folder | Delete folder', () =>{
         cy.get('a[href*="delete"]').click();
         cy.get('button[name = "Submit"]').click();
         cy.get('.empty-state-block').should('be.visible', titleHomePage.loginPageHeader);
