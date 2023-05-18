@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
-describe ('<Header> Search box', ()  => {
+describe('searchBoxPlaceholder', () => {
 
-it ('01.02 | <Header> Search box',() => {
-cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
-})
+    it('AT_01.02.18_Header_Search_box', () => {
+        cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
+    })
 })
 
