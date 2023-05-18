@@ -53,4 +53,10 @@ describe('Header Search Box', () => {
        // code here
        cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
     });
+
+    it.only('AT_01.02.022 | Search box text placeholder is visible', () =>{
+        cy.get('#search-box')
+        .should('be.visible')
+        .and('have.attr','placeholder','Search (CTRL+K)')
+    })
 })
