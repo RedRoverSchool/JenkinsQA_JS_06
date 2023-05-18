@@ -2,7 +2,7 @@
 import createNewView from "../fixtures/createNewView.json"
 
 describe('myViewsCreateNewView', () => {
-  it('My Viewws>Create new view', function () {
+  it('AT_09.01_001 | My Views>Create new view', function () {
     cy.get('a[href$="my-views"]').realHover();
     cy.get('a[href$="my-views"]').click();
     cy.get('a[href$="/newJob"]').click();
