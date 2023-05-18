@@ -13,6 +13,7 @@ describe('Header | User configure', () => {
         cy.get(button).click();
         cy.wait(['@saved']);
     });
+    
     const descriptionText = 'Some example description';
     const descriptionField = () =>
         cy.get('#main-panel form[name="config"] div.setting-main')
@@ -26,6 +27,7 @@ describe('Header | User configure', () => {
             cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/configure`);
         });
     });
+
     it('AT_01.05_004| <Header> <User Configure> insert information about user', function () {
         cy.navigateUserConfigurationPage().then(() => {
             descriptionField().should('be.visible');
@@ -59,4 +61,10 @@ describe('Header | User configure', () => {
             });
         });
     });
+
+    it('AT_01.05_007 | <Header>The user is able to select the option "Configure" from the dropdown menu "User"', () => {
+        cy.get('.login button').click({ force: true })
+        cy.get('.yuimenuitemlabel').contains('Configure').click()
+        cy.get('#breadcrumbs').should('contain', 'Configure')
+    })
 });

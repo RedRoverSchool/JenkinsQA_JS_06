@@ -1,0 +1,11 @@
+{
+    "pipelineDropdownItems": [
+        "Changes", 
+        "Build Now" ,
+        "Configure" , 
+        "Delete Pipeline", 
+        "Full Stage View",
+        "Rename", 
+        "Pipeline Syntax"
+        ]
+}
