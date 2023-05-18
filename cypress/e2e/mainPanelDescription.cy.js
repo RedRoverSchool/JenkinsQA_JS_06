@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Dashboard', () => {
+describe('mainPanelDescription', () => {
 
     it('Verify adding/editing  main panel description', () => {
         cy.get('#description-link').click()
