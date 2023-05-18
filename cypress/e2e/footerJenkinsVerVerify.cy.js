@@ -16,4 +16,12 @@ describe('footerJenkinsVerVerify', () =>{
         cy.url().should("equal", "https://www.jenkins.io/")
         cy.get('h1 +p strong').should('contain','Build great things at any scale')
     })
+
+    it('AT_03.02.004 | Footer> Verify redirection to Jenkins website', () => {
+        cy.get('footer .jenkins_ver a')
+          .invoke('removeAttr', 'target')
+          .click()
+
+        cy.url(). should('eq', 'https://www.jenkins.io/')
+    })
 })
