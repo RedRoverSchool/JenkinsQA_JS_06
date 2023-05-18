@@ -19,4 +19,15 @@ describe('US_05.08 New Item Names and Icons', () => {
             })
             .should('deep.equal', newItemNames.projectNames)
     })
+
+    it('AT_05.08_004 | <New Item> New Item link goes to New Item page', () => {
+        cy.get('.task:nth-child(1) .task-icon-link').should('exist')
+        cy.get('.task:nth-child(1) a.task-link')
+            .should('exist')
+            .and('have.text', 'New Item')
+            .and('have.attr', 'href', '/view/all/newJob')
+            .click()
+        cy.get('div.add-item-name').should('exist');
+        cy.url().should('contain', '/view/all/newJob')
+    });
 })
