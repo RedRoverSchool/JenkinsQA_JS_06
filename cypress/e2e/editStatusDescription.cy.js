@@ -2,7 +2,7 @@
 
 describe('editStatusDescription', () => {
 
-    it('AT_18.02.001 | <Profile Page> Edit status description', () => {
+    it('AT_18.02.001 | Verify that the user can edit the status description', () => {
         cy.get('a[href="/user/admin"]').click();
         cy.location('pathname').should('eq', '/user/admin/');
         cy.get('#description-link.jenkins-button').click();
