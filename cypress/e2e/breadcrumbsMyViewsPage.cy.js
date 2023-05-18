@@ -58,10 +58,28 @@ describe("breadcrumbsMyViewsPage", () => {
 
         cy.get(userDropdown).click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
-        cy.get('a[class="jenkins-table__link model-link inside"] span').click()
+        cy.get('a[class="jenkins-table__link model-link inside"] span')
+          .contains('testMulti Configuration Project')
+          .click()
         cy.get('h1[class="matrix-project-headline page-headline"]')
           .should('be.visible')
           .and('include.text', "testMulti Configuration Project")
+    })
+    it('04.03_008 Verify that user can open selected Multibranch Pipeline', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('#name').type('testMultiBranch Pipeline');
+        cy.get('.hudson_matrix_MatrixProject').click();
+        cy.get('#ok-button').click();
+        cy.get('.jenkins-button--primary').click();
+
+        cy.get(userDropdown).click({ force: true })
+        cy.get('.yuimenuitem').contains("My Views").click()
+        cy.get('a[class="jenkins-table__link model-link inside"] span')
+          .contains('testMultiBranch Pipeline')
+          .click()
+        cy.get('h1[class="matrix-project-headline page-headline"]')
+          .should('be.visible')
+          .and('include.text', "testMultiBranch Pipeline")
     })
 });
 
