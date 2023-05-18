@@ -1,4 +1,5 @@
 {
   "enableMessage": "This Multibranch Pipeline is currently disabled",
-  "addMetrics": ["Child item with worst health", "Health of the primary branch of a repository"]
+  "addMetrics": ["Child item with worst health", "Health of the primary branch of a repository"],
+  "newMultiPipeline": "Multibranch_Pipeline"
 }
