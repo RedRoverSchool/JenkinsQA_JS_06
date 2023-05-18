@@ -17,6 +17,10 @@ describe('Header | User icon', () => {
         cy.get('#breadcrumbBar>ol>li:last-child').should('have.text', 'Builds')
     })
 
+    it('AT_01.03_015| <Header> Verify User Icon is visible and clickable', () => {
+        cy.get('.model-link span[class="hidden-xs hidden-sm"]').should('exist').click()
+        cy.get('.icon-lg').should('exist')
+    })
 })
 
 
