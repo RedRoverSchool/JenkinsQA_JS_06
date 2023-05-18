@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header | User configure', () => {
+describe('Header User configure', () => {
     Cypress.Commands.add('navigateUserConfigurationPage', () => {
         cy.get('.login .model-link').should('be.visible');
         cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });
@@ -20,11 +20,14 @@ describe('Header | User configure', () => {
             .find('textarea[name="_.description"]');
     const saveButton = '#bottom-sticker button[name="Submit"]';
     const applyButton = '#bottom-sticker button.jenkins-button.apply-button';
-
-
+    const userId = Cypress.env('local.admin.username').toLowerCase();
+    const jenkinsPort = Cypress.env('local.port');
+    const jenkinsURL = 'http://localhost:'+jenkinsPort;
+    const userURL = jenkinsURL+'/user/'+userId+'/';
+    
     it('AT_01.05_001| <Header>User configure menu item', function () {
         cy.navigateUserConfigurationPage().then(() => {
-            cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/configure`);
+            cy.url().should('eq', userURL + 'configure');
         });
     });
 
@@ -32,13 +35,29 @@ describe('Header | User configure', () => {
         cy.navigateUserConfigurationPage().then(() => {
             descriptionField().should('be.visible');
             descriptionField().type('{selectall}').then(() => {
+                descriptionField().type(descriptionText).then(() => {
+                    cy.saveDataUserConfigurationPage(applyButton);
+                    cy.visit(userURL)
+                        .then(() => {
+                            cy.url().should('eq', userURL);
+                            cy.get('#description>div:first-child').invoke('text').should('eq', descriptionText);
+                        });
+                });
+            });
+        });
+    });
+
+    it('AT_01.05 _008| <Header> User can change information about user', function () {
+        cy.navigateUserConfigurationPage().then(() => {
+            descriptionField().should('be.visible');
+            descriptionField().type('{selectall}').then(() => {
                 descriptionField().type('{del}').then(() => {
-                    descriptionField().type(descriptionText).then(() => {
+                    descriptionField().type(descriptionText+' CHANGED').then(() => {
                         cy.saveDataUserConfigurationPage(applyButton);
-                        cy.visit(`http://localhost:${Cypress.env('local.port')}/user/admin/`)
+                        cy.visit(userURL)
                             .then(() => {
-                                cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/`);
-                                cy.get('#description>div:first-child').invoke('text').should('eq',descriptionText);
+                                cy.url().should('eq', userURL);
+                                cy.get('#description>div:first-child').invoke('text').should('eq',descriptionText+' CHANGED');
                             });
                     });
                 });
@@ -52,9 +71,9 @@ describe('Header | User configure', () => {
             descriptionField().type('{selectall}').then(() => {
                 descriptionField().type('{del}').then(() => {
                     cy.saveDataUserConfigurationPage(applyButton);
-                    cy.visit(`http://localhost:${Cypress.env('local.port')}/user/admin/`)
+                    cy.visit(userURL)
                         .then(() => {
-                            cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/`);
+                            cy.url().should('eq', userURL);
                             cy.get('#description>div:first-child').invoke('text').should('be.empty');
                         });
                 });
