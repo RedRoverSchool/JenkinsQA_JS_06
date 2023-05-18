@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-describe('New item Create a new Pipeline',()=>{
+describe('Create a new Pipeline',()=>{
     const nameOfPipeline = 'New Pipeline'
     it('Create a new Pipeline',()=>{
         cy.get('span[class="task-link-text"]').contains('New Item').click({force: true})
