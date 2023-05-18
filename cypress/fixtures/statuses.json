@@ -1,0 +1,9 @@
+{
+    "projectHealth": [
+        "Project health is over 80%",
+        "Project health is over 60% and up to 80%",
+        "Project health is over 40% and up to 60%",
+        "Project health is over 20% and up to 40%",
+        "Project health is 20% or less"
+    ]
+}

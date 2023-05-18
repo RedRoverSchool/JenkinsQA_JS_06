@@ -1,0 +1,17 @@
+{
+    "dashboardMenu": [
+        "New Item",
+        "People",
+        "Build History",
+        "Manage Jenkins",
+        "My Views"
+    ],
+    "greeting": "Welcome to Jenkins!",
+    "endPointUrl": [
+        "/all/newJob",
+        "/asynchPeople/",
+        "/builds",
+        "/manage/",
+        "/my-views/view/all/"
+    ]
+}
