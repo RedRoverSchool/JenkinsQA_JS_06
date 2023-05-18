@@ -13,6 +13,7 @@ describe('Header | User configure', () => {
         cy.get(button).click();
         cy.wait(['@saved']);
     });
+    
     const descriptionText = 'Some example description';
     const descriptionField = () =>
         cy.get('#main-panel form[name="config"] div.setting-main')
