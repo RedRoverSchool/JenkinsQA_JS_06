@@ -3,5 +3,7 @@
     "viewName": "My new view",
     "freestyleProject": "Freestyle project",
     "header": "General",
-    "myView": "My View"
+    "myView": "My View",
+    "description": "description",
+    "typeText": "Success"
   }
