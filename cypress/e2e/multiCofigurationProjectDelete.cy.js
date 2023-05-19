@@ -1,4 +1,4 @@
-import rightSideMenu from '../fixtures/MCPSideMenu.json'
+import rightSideMenu from '../fixtures/multiConfigurationProjectSideMenu.json'
 import projects from '../fixtures/projects.json'
 
 describe('multiConfigurationProjectDelete', () => {
@@ -12,7 +12,7 @@ describe('multiConfigurationProjectDelete', () => {
         cy.get("ol#breadcrumbs > li:nth-of-type(1)").click();
     })
 
-    it('AT_14.07_001 | MCP | Delete Multi-configuration project within itself', () => {
+    it('AT_14.07_001 | Multi Configuration Project Delete | Delete Multi-configuration project within itself', () => {
         cy.get(`a[href='job/${projects.multiConfigurationProject.name}/']`).click();
         cy.get(".confirmation-link").contains(`${rightSideMenu.MCPSideMenuItems[5]}`).click();
         cy.get("#page-body").should("not.have.text", `${projects.multiConfigurationProject.name}`)
