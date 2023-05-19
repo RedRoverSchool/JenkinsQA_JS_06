@@ -1,0 +1,10 @@
+{
+    "freestyleDropdownItems": [
+        "Changes", 
+        "Workspace",
+        "Build Now" ,
+        "Configure" , 
+        "Delete Project", 
+        "Rename"
+        ]
+}

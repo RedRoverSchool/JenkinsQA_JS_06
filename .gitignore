@@ -2,6 +2,9 @@
 logs
 *.log
 
+# IDEs and editors
+.idea
+
 # Runtime data
 pids
 *.pid
@@ -35,3 +38,5 @@ reports
 cypress/downloads
 
 cypress.env.json
+.DS_Store
+cypress/.DS_Store
