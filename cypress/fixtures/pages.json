@@ -13,5 +13,18 @@
         "/builds",
         "/manage/",
         "/my-views/view/all/"
-    ]
+    ],
+    "pageName": {
+        "/all/newJob": "Dashboard [Jenkins]",
+        "/view/all/newJob": "New Item [Jenkins]",
+        "/asynchPeople/": "People - [Jenkins]",
+        "/view/all/builds": "All [Jenkins]",
+        "/manage/": "Manage Jenkins [Jenkins]",
+        "/me/my-views/view/all/": "Dashboard [Jenkins]",
+        "/newJob": "New Item [Jenkins]",
+        "/computer/": "Nodes [Jenkins]",
+        "/computer/new": "New Node [Jenkins]",
+        "/computer/createItem": "Jenkins",
+        "/manage/computer/(built-in)/": "Built-In Node [Jenkins]"
+    }
 }

@@ -1,4 +1,5 @@
-import newItemNames from '../fixtures/newItemNames.json'
+import newItemNames from '../fixtures/newItemNames.json';
+import pages from '../fixtures/pages.json'
 
 describe('newItem', () => {
     it('TC_05.08_007 Verify item names', () => {
@@ -33,6 +34,7 @@ describe('newItem', () => {
 
     it('AT_05.08_0006 | <New Item> New Item page name in the header', () => {
         cy.get('a[href="/view/all/newJob"]').click();
-        cy.get('head title').should('have.text', 'New Item [Jenkins]')
+        cy.get('head title')
+            .should('have.text', pages.pageName["/view/all/newJob"])
     });
 })
