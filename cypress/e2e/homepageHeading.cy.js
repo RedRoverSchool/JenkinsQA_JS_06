@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 
 describe("Homepage > Main Panel", () => {
-  it("Main panel > Verify the heading", function () {
-    cy.get("h1")
+  it("AT_02.07.001 | Main panel > Verify the heading", function () {
+    cy.get(".empty-state-block > h1")
       .should("be.visible")
       .should("have.text", "Welcome to Jenkins!");
   });
