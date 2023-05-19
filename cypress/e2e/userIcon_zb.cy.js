@@ -1,6 +1,13 @@
 /// <reference types="cypress"/>
 
 describe('Header | User icon', () => {
+    
+    const expectedDropDownMenuItems = [
+        'Builds',
+        'Configure',
+        'My Views',
+        'Credentials',
+    ]
 
     it('AT_01.03_013| <Header> Verify "User Icon" is visible and clickable', () => {
         cy.get('.login > a.model-link').should('exist').click()
@@ -20,6 +27,13 @@ describe('Header | User icon', () => {
     it('AT_01.03_015| <Header> Verify User Icon is visible and clickable', () => {
         cy.get('.model-link span[class="hidden-xs hidden-sm"]').should('exist').click()
         cy.get('.icon-lg').should('exist')
+    })
+
+    it('AT_01.03_017 | <Header>| User icon | Verify contents of the drop-down menu', () => {
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('#breadcrumb-menu ul>li span').should('have.length', 4).each(($el, idx) => {
+            expect($el.text()).to.be.equal(expectedDropDownMenuItems[idx]);
+        })
     })
 })
 
