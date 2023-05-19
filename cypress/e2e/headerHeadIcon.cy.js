@@ -12,4 +12,12 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-name-icon').click()
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)
     })
+
+    it('AT_01.01.036 | Head Icon visible and active', () => {
+        cy.get('a[href="/asynchPeople/"]').click()
+        cy.get('#jenkins-head-icon')
+            .should('be.visible')
+            .click()
+        cy.get('h1').should('have.text', 'Welcome to Jenkins!')
+    })
 })
