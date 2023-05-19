@@ -16,7 +16,8 @@
 	  },
 
 	"multiConfigurationProject" : {
-		"name" : "myNewMultiConfigurationProject"
+		"name" : "myNewMultiConfigurationProject",
+		"renameWithValidName" : "RenamedProject123"
 	},
 	
 	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  

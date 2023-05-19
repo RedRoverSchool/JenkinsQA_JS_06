@@ -26,15 +26,12 @@ describe('multiConfigurationProjectRename', () => {
     })
 
     it('AT_14.06._002 | Rename Multi-configuration project_Positive', () => {
-        let renameValidName = 'RenamedProject123'
         cy.get('td:nth-child(3) a[href^="job/"]').realHover()
         cy.get('.jenkins-table__link button.jenkins-menu-dropdown-chevron').click()
         cy.get('.first-of-type > li').contains('Rename').click()
         cy.get('input[name="newName"]')
             .clear()
-            .type(`${renameValidName}{enter}`)
-        cy.get('h1.page-headline')
-            .should('include.text', 'Project')
-            .and('include.text', renameValidName)
+            .type(`${projects.multiConfigurationProject.renameWithValidName}{enter}`)
+        cy.get('h1.page-headline').should('include.text', `Project ${projects.multiConfigurationProject.renameWithValidName}`)
     })
 })
