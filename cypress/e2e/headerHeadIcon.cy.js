@@ -12,4 +12,14 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-name-icon').click()
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)
     })
+
+    it('AT_01.01_033 | Validate <Header> head icon', () => {
+        cy.get('span.task-link-text').contains('People').click({force: true});
+        cy.get('div h1').should('exist')
+                        .and('include.text','People');
+        cy.get('#jenkins-home-link').click();
+        cy.get('div h1').should('have.text','Welcome to Jenkins!')
+                        .and('be.visible');
+
+    })
 })
