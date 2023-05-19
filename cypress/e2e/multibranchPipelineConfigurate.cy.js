@@ -33,4 +33,12 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     cy.get('#yui-gen6').should('be.visible', multibranchPipeline.addMetrics[0])
     cy.get('#yui-gen7').should('be.visible', multibranchPipeline.addMetrics[1])
   })
+
+  it('AT_16.01_05 | Verify check boxes change color', () => {
+    cy.get('.content-block [href="./configure"]').click()
+    cy.get('#cb2')
+    .realHover()
+    .should('have.css', 'box-shadow')
+  })
+  
 })
