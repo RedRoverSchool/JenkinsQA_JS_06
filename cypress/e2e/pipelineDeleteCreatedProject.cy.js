@@ -23,6 +23,7 @@ describe('Pipeline | Delete Created Project', () => {
         })
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
+    
     it('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
         createPipeline()
 
