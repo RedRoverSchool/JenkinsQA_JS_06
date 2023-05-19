@@ -1,6 +1,6 @@
 import newItemNames from '../fixtures/newItemNames.json'
 
-describe('US_05.08 New Item Names and Icons', () => {
+describe('newItem', () => {
     it('TC_05.08_007 Verify item names', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('.j-item-options li span')
@@ -29,5 +29,10 @@ describe('US_05.08 New Item Names and Icons', () => {
             .click()
         cy.get('div.add-item-name').should('exist');
         cy.url().should('contain', '/view/all/newJob')
+    });
+
+    it('AT_05.08_0006 | <New Item> New Item page name in the header', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('head title').should('have.text', 'New Item [Jenkins]')
     });
 })
