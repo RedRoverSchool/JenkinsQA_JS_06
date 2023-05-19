@@ -5,5 +5,11 @@
   "messageDisable": "Disable Multibranch Pipeline",
   "itemToCreate" : "Multibranch Pipeline",
   "enableMessageColor" : "rgb(254, 130, 10)",
-  "enableButton" : "Enable"
+  "enableButton" : "Enable",
+  "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
+
+  "titles" : {
+    "multiBranchPipeline" : "Multibranch Pipeline",
+    "folder" : "Folder"
+  }
 }

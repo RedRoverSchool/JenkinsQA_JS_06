@@ -37,5 +37,15 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     .realHover()
     .should('have.css', 'box-shadow')
   })
-  
+
+  it('AT_16.01.004 | Verify Change Appearance', function () {
+    cy.get('#jenkins-home-link').click()
+    cy.get('[class="icon-pipeline-multibranch-project icon-md"]').should('have.attr', 'title', multibranchPipeline.titles.multiBranchPipeline)
+    cy.get('[class="jenkins-table__link model-link inside"]').click()
+    cy.get('.content-block [href="./configure"]').click()
+    cy.get('[class="tab config-section-activator config_appearance"]').click()
+    cy.get('[class="jenkins-form-item has-help config_appearance active"] [class="jenkins-select__input dropdownList"]').select(multibranchPipeline.iconDrpDwn[0])
+    cy.get('[name="Submit"]').click()
+    cy.get('[class="icon-folder icon-xlg"]').should('have.attr', 'title', multibranchPipeline.titles.folder)
+  });
 })
