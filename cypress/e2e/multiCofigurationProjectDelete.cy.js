@@ -1,7 +1,10 @@
-
+import rightSideMenu from '../fixtures/MCPSideMenu.json'
 import projects from '../fixtures/projects.json'
 
 describe('multiConfigurationProjectDelete', () => {
+
+    const deleteButtonName = rightSideMenu.MCPSideMenuItems[5];
+
     beforeEach(() => {
         cy.get('a[href="newJob"]').click();
         cy.get('input#name').type(projects.multiConfigurationProject.name);
@@ -13,7 +16,7 @@ describe('multiConfigurationProjectDelete', () => {
 
     it('AT_14.07_001 | MCP | Delete Multi-configuration project within itself', () => {
         cy.get(`a[href='job/${projects.multiConfigurationProject.name}/']`).click();
-        cy.get(".confirmation-link").contains("Delete Multi-configuration project").click();
+        cy.get(".confirmation-link").contains(`${deleteButtonName}`).click();
         cy.get("#page-body").should("not.have.text", `${projects.multiConfigurationProject.name}`)
     });
 });
