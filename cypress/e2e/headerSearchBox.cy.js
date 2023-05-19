@@ -2,6 +2,7 @@
 
 import projects from "../fixtures/projects.json"
 import headers from "../fixtures/headers.json"
+import { forEach } from "cypress/types/lodash";
 
 describe('Header Search Box', () => {
     
@@ -35,4 +36,9 @@ describe('Header Search Box', () => {
         cy.get('#search-box')
           .should('be.visible')
     });
+
+    it('AT_01.02_023 | Validation of the Search box', ()=> {
+        cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
+    });
+    
 })
