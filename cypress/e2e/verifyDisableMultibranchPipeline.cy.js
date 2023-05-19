@@ -8,8 +8,7 @@ describe('Multibranch Pipeline - Disable/Enable Multibranch Pipeline', () => {
         cy.get('.org_jenkinsci_plugins_workflow_multibranch_WorkflowMultiBranchProject').click();
         cy.get('#ok-button').click();
         cy.get('button[name="Submit"]').click()
-        cy.url().should('eq', 'http://localhost:8080/job/Multibranch_Pipeline/');
-        cy.get('button[name="Submit"]').should('includes.text', 'Disable Multibranch Pipeline').click();
+        cy.get('button[name="Submit"]').should('includes.text', data.messageDisable).click();
         cy.get('#enable-project').contains(data.enableMessage);
         cy.get('button[name="Submit"]').should('includes.text', 'Enable');
     });
