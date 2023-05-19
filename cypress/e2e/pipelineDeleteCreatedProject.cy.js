@@ -23,7 +23,7 @@ describe('Pipeline | Delete Created Project', () => {
         })
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
-    it.only('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
+    it('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
         createPipeline()
 
         cy.get('[class="jenkins-table__link model-link inside"] span')
