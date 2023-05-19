@@ -3,5 +3,7 @@
     "newNamePipeline" : "myPipelineRenamed",
     "specialCharactersArr": [
         "!", "@", "#", "$", "%", "^", "&", "*" 
-    ]
+    ],
+    "newPipelineName" : "New Pipeline",
+    "confirmationOfDeleting" : "Delete Pipeline: are you sure?"
 }
