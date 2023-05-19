@@ -81,5 +81,21 @@ describe("breadcrumbsMyViewsPage", () => {
           .should('be.visible')
           .and('include.text', "testMultiBranch Pipeline")
     })
+    it('TC_04.03.009|Verify that the user can open the selected Organization Folder', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('#name').type('testOrganisation Folder');
+        cy.get('.hudson_matrix_MatrixProject').click();
+        cy.get('#ok-button').click();
+        cy.get('.jenkins-button--primary').click();
+
+        cy.get(userDropdown).click({ force: true })
+        cy.get('.yuimenuitem').contains("My Views").click()
+        cy.get('a[class="jenkins-table__link model-link inside"] span')
+          .contains('testOrganisation Folder')
+          .click()
+        cy.get('#main-panel')
+          .should('be.visible')
+          .and('include.text', "testOrganisation Folder")
+    })
 });
 
