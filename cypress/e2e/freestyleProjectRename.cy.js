@@ -40,7 +40,7 @@ describe('Freestyle project - Rename project', () => {
         cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message).and('be.visible')
     });
 
-    it.only('AT_12.03.003| <Freestyle project> Rename project from Freestyle project page,and check it is accessible and visible on the Jenkins dashboard under the new name.', function () {
+    it.only('AT_12.03.003| <Freestyle project> Rename project from Freestyle project page,and verify it is accessible and visible on the Jenkins dashboard under the new name.', function () {
         cy.get('#job_Project1 td:nth-child(3) a span')
           .should('be.visible')
           .and('have.text', freestyleProject.projectName).click()
