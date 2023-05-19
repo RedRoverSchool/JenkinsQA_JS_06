@@ -28,7 +28,7 @@ describe('Freestyle Project Add And Edit Description', () => {
       cy.get('#description div:first-child').should('have.text', 'New Description')
     })
 
-    it('AT_12.07_004| Fteestyle project > Add and edit description into project from List', function () {
+    it('AT_12.07_004| Freestyle project > Add and edit description into project from List', function () {
       cy.get('a[href="newJob"]').click()
       cy.get('input#name').type('Project1')
       cy.get('li[tabindex="0"] span').contains('Freestyle project').click()
