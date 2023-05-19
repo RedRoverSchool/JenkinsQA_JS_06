@@ -1,7 +1,7 @@
 describe('New Item Create a new Multibranch Pipeline', () => {
     const nameOfPipeline = 'TestMultibranchPipeline'
-    
-    it('Create a new Multibranch Pipeline using [+New Item]', () => {
+
+    it('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#name').type(nameOfPipeline)
         cy.get('#j-add-item-type-nested-projects').contains('Multibranch Pipeline').click()
