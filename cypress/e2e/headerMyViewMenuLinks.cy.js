@@ -15,6 +15,6 @@ describe("US_01.06 Header My views menu link", () => {
         cy.get('.content-block').should('have.text','Create a job');
         cy.get('[href="/user/admin/my-views/view/all/newJob"]').should('have.text','New Item');
         cy.get('[href="/asynchPeople/"] .task-link-text').should('have.text','People');
-        cy.get('[href="/user/admin/my-views/view/all/builds"]').should('have.text','Build History')
+        cy.get('[href="/user/admin/my-views/view/all/builds"]').should('have.text','Build History');
     })
 });
