@@ -57,4 +57,22 @@ describe('Header Search Box', () => {
   it('AT_01.02.022 | Header Search box is visible', function () {
     cy.get('input#search-box').should('be.visible');
   });
+
+  it('AT_01.02_017 | Verify visible Search box', function () {
+    cy.get('#search-box')
+    .should('be.visible')
+    .and('have.attr', 'placeholder')
+    .and('contain', 'Search')
+    .and('contain', '+K')
+  });
+
+  it('AT_01.02.18_Header_Search_box', () => {
+    cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
+})
+
+  it('AT_01.02.022 | Search box text placeholder is visible', () =>{
+    cy.get('#search-box')
+    .should('be.visible')
+    .and('have.attr','placeholder','Search (CTRL+K)')
+  })
 });

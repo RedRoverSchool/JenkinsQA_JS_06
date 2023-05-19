@@ -1,4 +1,5 @@
 {
     "nameOrganizationFolder" : "testOrganizationFolder",
-    "newOrganizationFolder" : "renamedOrganizationFolder"
+    "newOrganizationFolder" : "renamedOrganizationFolder",
+    "nameNewFolder": "newFolder"
 }
