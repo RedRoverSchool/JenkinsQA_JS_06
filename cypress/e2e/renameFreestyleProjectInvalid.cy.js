@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-describe('renameFreestyleProject_invalid', () => {
+describe('renameFreestyleProjectInvalid', () => {
     let projectName = "DemoJob";
 
     beforeEach ('Prepare freeStyle Project', function () {
@@ -27,7 +27,7 @@ describe('renameFreestyleProject_invalid', () => {
       cy.get('button[name="Submit"]').click();
 
       cy.get('div h1').contains("Error");
-      cy.get('div#main-panel p').contains("The new name is the same as the current name.");
+      cy.get('div#main-panel p').should('have.text','The new name is the same as the current name.');
   
     });
 });
