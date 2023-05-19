@@ -13,5 +13,20 @@
         "/builds",
         "/manage/",
         "/my-views/view/all/"
+    ],
+    "projectName":"Freestyle first",
+
+    "folderName":"Freestyle project",
+
+    "configurationPage":"Configure",
+    
+    "sidePanel":[
+     "Status",
+     "Changes",
+     "Workspace",
+     "Build Now",
+     "Configure",
+     "Delete Project",
+     "Rename"
     ]
 }
