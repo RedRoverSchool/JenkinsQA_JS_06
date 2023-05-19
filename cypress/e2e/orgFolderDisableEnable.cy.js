@@ -21,12 +21,12 @@ describe('Organization Folder Disable/Enable', () => {
     it('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
         cy.get('#projectstatus').contains(projects.organizationFolder.name).click()
         cy.get('#disable-project button').click()
-        cy.get('form#enable-project').should('contain', 'This Organization Folder is currently disabled')
+        cy.get('form#enable-project').should('contain', projects.organizationFolder.disable)
 
         cy.get('#jenkins-name-icon').click()
         cy.get('#projectstatus').contains(projects.organizationFolder.name).click()
         cy.get('button.jenkins-button').click()
 
-        cy.get('form#disable-project').should('have.text', 'Disable Organization Folder')
+        cy.get('form#disable-project').should('have.text', projects.organizationFolder.disableBtn)
     });
 });
