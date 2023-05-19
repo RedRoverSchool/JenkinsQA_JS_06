@@ -1,5 +1,7 @@
 {
     "textDescription": "User description",
     "newTextDescription": "New very long description with numbers 2023 and symbols #$@",
-    "description": "My name is Valentin. I'm Automation QA Engineer."
+    "description": "My name is Valentin. I'm Automation QA Engineer.",
+    "textHelloWorld": "Hello world!",
+    "textDataForMe": "lol"
 }
