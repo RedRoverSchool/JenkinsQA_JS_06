@@ -2,7 +2,7 @@
 
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe.skip('freestyleProjectSetConfigurations', () => {
+describe('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add("openDashboard", () => {
         cy.get('#breadcrumbBar a').contains('Dashboard').click()
             .then(() => {
@@ -69,7 +69,7 @@ describe.skip('freestyleProjectSetConfigurations', () => {
     const buildStepName = ".repeated-chunk .repeated-chunk__header";
     const scriptText = ".CodeMirror-lines div div[style] pre";
 
-    it.skip('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
+    it('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
         cy.createProjectWithDefaultSettings(data.projectName, data.projectType)
             .then(() => {
                 cy.openConfigurationsPage(data.projectName)
