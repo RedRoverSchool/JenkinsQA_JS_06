@@ -5,5 +5,6 @@
         "!", "@", "#", "$", "%", "^", "&", "*" 
     ],
     "newPipelineName" : "New Pipeline",
-    "confirmationOfDeleting" : "Delete Pipeline: are you sure?"
+    "confirmationOfDeleting" : "Delete Pipeline: are you sure?",
+    "confirmationOfDeletingFromSideBar" : "Delete the Pipeline"
 }
