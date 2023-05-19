@@ -63,15 +63,15 @@ describe('Freestyle project Delete', () => {
     })
     cy.get('#main-panel h1').should('have.text', homePage.loginPageHeader)
   })
-  
+
   it('AT_12.02_010 | Freestyle project | Delete created project',()=>{
     cy.get('tbody tr td a.jenkins-table__link').contains(projects.freestyle.name).realHover({ position: "center" })
     cy.get('#projectstatus .jenkins-menu-dropdown-chevron').click()
-    cy.get('.first-of-type li:nth-child(5)').should('have.text','Delete Project').click()
+    cy.get('.first-of-type li:nth-child(5)').should('have.text',messages.messageDeleteFreestyleProject).click()
 
     cy.on('window:confirm', (str) => {
-    expect(str).to.equal('Delete Project: are you sure?')
+    expect(str).to.equal(messages.promtMessage)
     })
-    cy.get('#main-panel').contains('Project Freestyle').should('not.exist')
+    cy.get('#main-panel').contains(projects.freestyle.name).should('not.exist')
   })
 });
