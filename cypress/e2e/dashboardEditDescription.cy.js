@@ -1,16 +1,18 @@
 /// <reference types="cypress"/>
+import descriptionsProject from "../fixtures/descriptionsProject.json"
 
 describe(`Dashboard Edit Description`, () => {
-    const text = 'Editing description check out'
+  it('20.02 _001| Dashboard > Editing Description', () => {
+    cy.get('#description-link').contains('Add').click()
+    cy.get('.jenkins-input').type(descriptionsProject.addDescriptionProject)
+    cy.get('button[name="Submit"]').contains('Save').click()
+    cy.get('#description div:first-of-type').should('have.text', 'Project DemoQA')
 
-    it(`Dashboard > Editing Description`, () => {
-        cy.get('#description-link').click()
-        cy.get('.jenkins-input')
-          .clear()
-          .type(text)
-        cy.get('button[name="Submit"]').contains('Save').click()
-        cy.get('#view-message').should('contain', text)
-    });
+    cy.get('#description-link').contains('Edit').click()
+    cy.get('.jenkins-input').clear().type(descriptionsProject.editDescriptionProject)
+    cy.get('button[name="Submit"]').contains('Save').click()
+    cy.get('#description div:first-of-type').should('have.text',' - QA JS 06')
+  });
 
 it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
   cy.get('[href="/view/all/newJob"] .task-icon-link').click();
