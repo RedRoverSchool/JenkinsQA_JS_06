@@ -3,6 +3,7 @@
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
 
 const USERID = Cypress.env('local.admin.username').toLowerCase();
+const PORT = Cypress.env('local.port')
 
 describe('BreadcrumbsBuilds', () => {
     beforeEach('', () => {
@@ -59,6 +60,15 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('svg.svg-icon.icon-md').should('have.css', 'height', '20.796875px')
         cy.get('a[href="/iconSize?32x32"]').click()
         cy.get('.svg-icon').should('have.css', 'height', '24px')
+    })
+
+    it('AT_04.06.005 verify "Icon legend" redirects User to "Icon legend" page', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('a[href="/legend"]').click()
+        cy.url().should('eq', `http://localhost:${PORT}/legend`)
+        cy.get('div#main-panel h1').should('have.text', 'Icon legend')
     })
 
 });
