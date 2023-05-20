@@ -33,4 +33,15 @@ describe('dashboardMainPanelDescription', () => {
         cy.get(".textarea-preview").should("not.be.visible")
     })
 
+    it("AT_02.06_010| Dashboard > Add description for the main panel", () => {
+        cy.get("a#description-link").click() 
+        cy.get(".jenkins-input")
+          .type(descriptionsProject.addDescriptionProject)
+          .invoke('val').as('descr')
+        cy.get('@descr').then((descr) => {
+            cy.get("button.jenkins-button.jenkins-button--primary").click()
+            cy.get("#description > div:nth-child(1)").should("have.text", descr)
+        })
+    })
+
 })
