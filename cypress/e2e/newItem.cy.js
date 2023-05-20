@@ -35,6 +35,6 @@ describe('newItem', () => {
     it('AT_05.08_0006 | <New Item> New Item page name in the header', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('head title')
-            .should('have.text', pages.pageName["/view/all/newJob"])
+            .should('have.text', pages.newItemPageTitle)
     });
 })
