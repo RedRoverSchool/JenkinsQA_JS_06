@@ -4,7 +4,7 @@ const jenkinsPort = Cypress.env('local.port');
 const jenkinsURL = 'http://localhost:' + jenkinsPort;
 const userId = Cypress.env('local.admin.username').toLowerCase();
 describe('Build History Sort builds', () => {
-    it('AT_07.02 _001 | <Build History>Sort builds', () => {
+    it('AT_07.02 _001 | Build History Sort builds', () => {
         const sortColumn = () => cy.get('table#projectStatus thead .sortheader');
         const buildColumn = () => sortColumn().contains('Build').realHover();
         const timeColumn = () => sortColumn().contains('Time Since').realHover();
