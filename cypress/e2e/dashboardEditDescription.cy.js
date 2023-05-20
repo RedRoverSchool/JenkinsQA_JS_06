@@ -1,17 +1,17 @@
 /// <reference types="cypress"/>
-import descriptionsProject from "../fixtures/descriptionsProject.json"
+import descriptions from "../fixtures/homePage.json"
 
-describe(`Dashboard Edit Description`, () => {
+describe('Dashboard Edit Description', () => {
   it('20.02 _001| Dashboard > Editing Description', () => {
-    cy.get('#description-link').contains('Add').click()
-    cy.get('.jenkins-input').type(descriptionsProject.addDescriptionProject)
-    cy.get('button[name="Submit"]').contains('Save').click()
-    cy.get('#description div:first-of-type').should('have.text', 'Project DemoQA')
+    cy.get('#description-link').contains(descriptions.add).click()
+    cy.get('.jenkins-input').type(descriptions.addDescription)
+    cy.get('button[name="Submit"]').contains(descriptions.save).click()
+    cy.get('#description div:first-of-type').should('have.text', descriptions.addDescription)
 
-    cy.get('#description-link').contains('Edit').click()
-    cy.get('.jenkins-input').clear().type(descriptionsProject.editDescriptionProject)
-    cy.get('button[name="Submit"]').contains('Save').click()
-    cy.get('#description div:first-of-type').should('have.text',' - QA JS 06')
+    cy.get('#description-link').contains(descriptions.edit).click()
+    cy.get('.jenkins-input').clear().type(descriptions.editDescription)
+    cy.get('button[name="Submit"]').contains(descriptions.save).click()
+    cy.get('#description div:first-of-type').should('have.text', descriptions.editDescription)
   });
 
 it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
