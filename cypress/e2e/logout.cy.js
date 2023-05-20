@@ -16,4 +16,8 @@ describe('verification log out button', function () {
         cy.get('[href="/logout"] > .hidden-xs').click();
         cy.get('#loginIntroDefault').should('have.text', 'Welcome to Jenkins!')
     })
+    it('AT_01.08_14|Verify Log out button is working ', () =>{
+        cy.get('a[href="/logout"]').click()
+        cy.title().should('eq', 'Sign in [Jenkins]')
+    })
 });
