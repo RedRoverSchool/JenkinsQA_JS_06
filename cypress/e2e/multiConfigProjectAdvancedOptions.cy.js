@@ -29,12 +29,23 @@ describe('Multi Config Project Advanced Options', () => {
 			.contains('a', 'Configure')
 			.click()
 		cy.wait('@newProjectConfigure')
-	})
+	});
 
 	it('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').should('be.visible')
+		})
+	});
+
+	it('AT_14.05_002 | Multi-configuration project. There are 7 advanced project options in the list', () => {
+		const optionsNumber = projects.multiConfigurationProject.advancedOptions.length + projects.multiConfigurationProject.advancedOptionsField.length;
+
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container')
+				.children()
+				.should('have.length', optionsNumber)
 		})
 	});
 

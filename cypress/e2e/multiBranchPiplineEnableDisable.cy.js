@@ -38,4 +38,11 @@ describe('multiBranchPiplineEnableDisable', () => {
         )
       })
   })
+  it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
+    cy.get('button[formnovalidate]').as('formButton').click()
+    cy.get('@formButton')
+      .should('include.text', multibranchPipelineData.disableButton)
+      .should('have.css', 'color', multibranchPipelineData.enableButtonColor)
+  })
+  
 })

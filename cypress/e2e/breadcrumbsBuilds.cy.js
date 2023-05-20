@@ -48,5 +48,17 @@ describe('BreadcrumbsBuilds', () => {
 
         cy.get('div#main-panel h1').should('have.text', `Builds for ${userID}`)
     })
-    
-    });
+
+    it('AT_04.06.002 clicking on S, M, L will change the icon size', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('.jenkins-button[title="Small"]').click()
+        cy.get('svg.svg-icon.icon-sm').should('have.css', 'height', '16px')
+        cy.get('.jenkins-button[title="Medium"]').click()
+        cy.get('svg.svg-icon.icon-md').should('have.css', 'height', '20.796875px')
+        cy.get('a[href="/iconSize?32x32"]').click()
+        cy.get('.svg-icon').should('have.css', 'height', '24px')
+    })
+
+});
