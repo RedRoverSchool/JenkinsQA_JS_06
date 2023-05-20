@@ -75,4 +75,30 @@ describe('Header Search Box', () => {
     .should('be.visible')
     .and('have.attr','placeholder','Search (CTRL+K)')
   })
+
+  it('AT_01.02_025 | Accessibility of the search field from the every page', () => {
+    cy.get('#searchform').should('be.visible')
+    cy.get('a[href="/view/all/newJob"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/asynchPeople/"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/view/all/builds"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/manage"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover() 
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').first().click()
+    cy.get('#breadcrumb-menu a[href="/me/my-views"]').click()
+    cy.get('#searchform').should('be.visible')
+  })
 });
