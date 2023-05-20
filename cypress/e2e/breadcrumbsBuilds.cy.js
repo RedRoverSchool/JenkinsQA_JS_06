@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
-
+//import {local.admin.username} from "../cypress.env.json"
 
 describe('BreadcrumbsBuilds', () => {
-
+    const userID = Cypress.env('local.admin.username').toLowerCase();
     beforeEach('', () => {
         cy.get('a[href^="newJob"]').click();
         cy.get('input#name').type(breadcrumbsBuilds.nameOfProject);
@@ -15,8 +15,8 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('.task a[onclick*=build]').click();
         cy.get('.task a[onclick*=build]').click();
     
-        cy.get('a[href$=admin]').click();
-        cy.get('a[href$=builds]').click();
+        //cy.get('a[href$=admin]').click();
+        //cy.get('a[href$=builds]').click();
     
         });
         
@@ -40,5 +40,13 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('#projectStatus tbody>tr:nth-child(even)').should('contain', breadcrumbsBuilds.buildsNumbers.build_2);
 
     });
+
+    
+    it('AT_04.06.001 Breadcrumbs Builds user can see his username in the title of the table.', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('div#main-panel h1').should('have.text', `Builds for ${userID}`)
+    })
     
     });
