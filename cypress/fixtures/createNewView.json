@@ -5,5 +5,7 @@
     "header": "General",
     "myView": "My View",
     "description": "description",
-    "typeText": "Success"
+    "typeText": "Success",
+    "editDescriptionText": "New description",
+    "editButton": "Edit description"
   }

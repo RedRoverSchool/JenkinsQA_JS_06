@@ -5,53 +5,64 @@ describe('freestyleProjectEditDescription', () => {
     
     it('AT_12.07_002| Freestyle project > Add and edit description above existed project in List', function (){
       cy.get('#description-link').click();
-      cy.get('.jenkins-input').clear().type('Description from Home page above list');
+      cy.get('.jenkins-input').clear().type(createNewView.jobName);
       cy.get('button[name="Submit"]').click()
-      cy.get('#description').should('contain.text', 'Description from Home page above list')
-      cy.get('#description-link').should('contain', 'Edit description').click();
-      cy.get('.jenkins-input').type('Modify Description + ');
+      cy.get('#description').should('contain.text', createNewView.jobName)
+      cy.get('#description-link').should('contain', createNewView.editButton).click();
+      cy.get('.jenkins-input').clear().type(createNewView.editDescriptionText);
       cy.get('button[name="Submit"]').click()
-     cy.get('#description').should('contain.text', 'Modify Description')
+     cy.get('#description').should('contain.text', createNewView.editDescriptionText)
     })
 
     it('AT_12.07.003 | Freestyle project> Verify possibility to edit description', () => {
       cy.get('a[href="newJob"]').click()
-      cy.get('input#name').type('Project name')
+      cy.get('input#name').type(createNewView.jobName)
       cy.get('.hudson_model_FreeStyleProject').click()
       cy.get('#ok-button').click()
-      cy.get('[name="description"]').type('Description')
+      cy.get('[name="description"]').type(createNewView.typeText)
       cy.get('[name="Submit"]').click()
 
       cy.get('#description-link').click()
-      cy.get('[name="description"]').type('New ')
+      cy.get('[name="description"]').clear().type(createNewView.editDescriptionText)
       cy.get('.jenkins-button--primary ').click()
-
-      cy.get('#description div:first-child').should('have.text', 'New Description')
+      cy.get('#description div:first-child').should('have.text', createNewView.editDescriptionText)
     })
 
     it('AT_12.07_004| Freestyle project > Add and edit description into project from List', function () {
       cy.get('a[href="newJob"]').click()
-      cy.get('input#name').type('Project1')
-      cy.get('li[tabindex="0"] span').contains('Freestyle project').click()
+      cy.get('input#name').type(createNewView.jobName)
+      cy.get('li[tabindex="0"] span').contains(createNewView.freestyleProject).click()
       cy.get('#ok-button').click()
       cy.get(':nth-child(1) > .model-link').click()
       cy.get('.jenkins-table__link > span').click()
+      
       cy.get('#description-link').click()
-      cy.get('.jenkins-input').clear().type('Description into the project');
+      cy.get('.jenkins-input').clear().type(createNewView.typeText);
       cy.get('.jenkins-button.jenkins-button--primary').click()
-      cy.get('#description').should('contain.text', 'Description into the project')
-      cy.get('#description-link').should('contain', 'Edit description').click()
-      cy.get('.jenkins-input').type('Changing Description + ')
+      cy.get('#description').should('contain.text', createNewView.typeText)
+      cy.get('#description-link').should('contain', createNewView.editButton).click()
+      cy.get('.jenkins-input').clear().type(createNewView.editDescriptionText)
       cy.get('.jenkins-button.jenkins-button--primary').click()
-      cy.get('#description').should('contain.text', 'Changing Description')
+      cy.get('#description').should('contain.text', createNewView.editDescriptionText)
     })
 
     it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
-      cy.get('.leading-icon').realHover();
-      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
-      cy.get('.jenkins-input').type(createNewView.typeText);
-      cy.get('.jenkins-input').should('be.visible');
+      cy.get('a[href$="/newJob"]').click();
+      cy.get('#name').type(createNewView.jobName);
+      cy.get('.hudson_model_FreeStyleProject').click();
+      cy.get('#ok-button').click();
+      cy.get('#general').should('have.text', createNewView.header);
       cy.get('.jenkins-button--primary').click();
-      cy.get('#description').contains(createNewView.typeText)
+      
+      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
+      cy.get('.jenkins-input').should('be.visible').type(createNewView.typeText)
+      cy.get('.jenkins-button--primary').click();
+      cy.get('#description').contains(createNewView.typeText);
+      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
+      cy.get('.jenkins-input').clear();
+      cy.get('.jenkins-input').should('be.visible').type(createNewView.editDescriptionText);
+      cy.get('.jenkins-button--primary').click();
+      cy.get('#description').contains(createNewView.editDescriptionText);
+      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.editButton)
     })
   })
