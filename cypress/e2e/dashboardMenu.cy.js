@@ -23,7 +23,7 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
 
     it('AT_02.04.005| Verify that the link "People" is clickable',() => {
         cy.get('a[href="/asynchPeople/"').click()
-        cy.url().should('include','/asynchPeople/')
+        cy.url().should('include',endPointUrl[1])
      })
 
      it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
