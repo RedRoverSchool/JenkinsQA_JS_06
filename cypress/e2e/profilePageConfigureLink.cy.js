@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-const userName = Cypress.env("local.admin.username");
+const userName = Cypress.env("local.admin.username").toLowerCase();
 
 describe ('profilePageConfigureLink', () => {
 

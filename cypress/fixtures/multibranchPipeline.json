@@ -5,5 +5,7 @@
   "messageDisable": "Disable Multibranch Pipeline",
   "itemToCreate" : "Multibranch Pipeline",
   "enableMessageColor" : "rgb(254, 130, 10)",
-  "enableButton" : "Enable"
+  "enableButton" : "Enable",
+  "enableButtonColor" : "rgb(255, 255, 255)",
+  "disableButton" : "Disable Multibranch Pipeline"
 }
