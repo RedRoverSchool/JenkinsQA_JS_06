@@ -1,5 +1,17 @@
 /// <reference types="cypress"/>
 import createNewView from "../fixtures/createNewView.json"
+import newItemNames from "../fixtures/newItemNames.json"
+
+const createSomeDifferentJobs = (numberOfJobs) => {
+  for (let project of newItemNames.projectNames.slice(0, numberOfJobs)) {
+      cy.get('a[href="/view/all/newJob"]').click();
+      cy.get('#name').type(project);
+      cy.get('.label').contains(project).click();
+      cy.get('#ok-button').click();
+      cy.get('button[name="Submit"]').click();
+      cy.contains('Dashboard').click();
+  };
+};
 
 describe('myViewsCreateNewView', () => {
 
@@ -31,3 +43,14 @@ describe('myViewsCreateNewView', () => {
   })
 })
 
+describe('My Views Create New View', () => {
+
+  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+      createSomeDifferentJobs(1);
+      cy.get('a[href="/me/my-views"]').click();
+      cy.get('.addTab').should('be.visible').click();
+      cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/admin/my-views/newView`);
+      cy.title().should('eq', 'Jenkins');
+      cy.get('#breadcrumbs li:last-child').should('have.text', 'New view')
+  });
+});
