@@ -25,4 +25,9 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         cy.get('a[href="/asynchPeople/"').click()
         cy.url().should('include','/asynchPeople/')
      })
+
+     it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.url().should('include','/view/all/builds')
+     })
 })
