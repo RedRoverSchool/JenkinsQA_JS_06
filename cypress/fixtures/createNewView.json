@@ -3,5 +3,9 @@
     "viewName": "My new view",
     "freestyleProject": "Freestyle project",
     "header": "General",
-    "myView": "My View"
+    "myView": "My View",
+    "newItem": "My Project",
+    "myViewRadio": "This view automatically displays all the jobs that the current user has an access to.",
+    "editView": "Edit View",
+    "newView": "New View"
   }
