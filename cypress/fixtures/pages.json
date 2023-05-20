@@ -28,5 +28,6 @@
      "Configure",
      "Delete Project",
      "Rename"
-    ]
+    ],
+    "newItemPageTitle": "New Item [Jenkins]"
 }

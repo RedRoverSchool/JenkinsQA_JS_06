@@ -14,6 +14,23 @@ describe('Header Head Icon', () => {
     })
 
     it('AT_01.01_033 | Validate <Header> head icon', () => {
+        cy.get('span.task-link-text').contains('People').click({ force: true });
+        cy.get('div h1').should('exist')
+            .and('include.text', 'People');
+        cy.get('#jenkins-home-link').click();
+        cy.get('div h1').should('have.text', 'Welcome to Jenkins!')
+            .and('be.visible');
+    })
+
+    it('AT_01.01.036 | Head Icon visible and active', () => {
+        cy.get('a[href="/asynchPeople/"]').click()
+        cy.get('#jenkins-head-icon')
+            .should('be.visible')
+            .click()
+        cy.get('h1').should('have.text', 'Welcome to Jenkins!')
+    })
+  
+    it('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({force: true});
         cy.get('div h1').should('exist')
                         .and('include.text','People');

@@ -20,4 +20,11 @@ describe('headerCredentialsMenuLink', () => {
         cy.url().should('contain', headerCredentials.newDomainPageUrl)
         cy.get('#page-body h1').should('have.text', headerCredentials.newDomainPageHeader)
     })
+
+    it('AT_01.07.003 | Header> Verify Redirection to Credentials Page', () => {
+      cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
+      cy.get('.yuimenuitem [href*=credentials]').click()
+
+      cy.get('.jenkins-app-bar__content').should('contain', headerCredentials.credentialsPageHeader)
+    })
 })
