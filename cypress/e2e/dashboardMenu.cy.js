@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import {sidePanelItems} from '../fixtures/homePage.json'
+import {sidePanelItems, endPointUrl} from '../fixtures/homePage.json'
 
 describe('Homepage(Dashboard)| Side panel sub-menu', () => {
 
@@ -28,6 +28,6 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
 
      it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
         cy.get('a[href="/view/all/builds"]').click()
-        cy.url().should('include','/view/all/builds')
+        cy.url().should('include', endPointUrl[2])
      })
 })
