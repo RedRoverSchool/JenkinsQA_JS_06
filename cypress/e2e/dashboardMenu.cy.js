@@ -20,4 +20,9 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.url().should('include', '/view/all/newJob')
     })
+
+    it('AT_02.04.005| Verify that the link "People" is clickable',() => {
+        cy.get('a[href="/asynchPeople/"').click()
+        cy.url().should('include','/asynchPeople/')
+     })
 })
