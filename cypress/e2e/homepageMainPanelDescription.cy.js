@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-import * as descriptions from '../fixtures/descriptionsProject.json';
+import descriptions from '../fixtures/descriptionsProject.json';
 
 describe('homepageMainPanelDescription',()=>{
 
