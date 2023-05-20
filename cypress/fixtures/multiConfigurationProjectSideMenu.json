@@ -1,0 +1,11 @@
+{
+    "MCPSideMenuItems": [
+        "Status",
+        "Changes", 
+        "Workspace",
+        "Build Now", 
+        "Configure",
+        "Delete Multi-configuration project", 
+        "Rename"
+        ]
+}
