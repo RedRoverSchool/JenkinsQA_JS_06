@@ -22,4 +22,15 @@ describe('dashboardMainPanelDescription', () => {
         })
     }) 
 
+    it("AT_02.06_008 | Dashboard > Verification of the link 'Hide preview' for description at main panel", () => {
+        cy.get("a#description-link").click() 
+        cy.get(".jenkins-input").type(descriptionsProject.addDescriptionProject)
+        cy.get('.textarea-hide-preview').should('not.be.visible')
+        cy.get(".textarea-show-preview").click()
+        cy.get('.textarea-hide-preview').should('be.visible')
+        cy.get('.textarea-hide-preview').click()
+        cy.get('.textarea-hide-preview').should('not.be.visible')
+        cy.get(".textarea-preview").should("not.be.visible")
+    })
+
 })
