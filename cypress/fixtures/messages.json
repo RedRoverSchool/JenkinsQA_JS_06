@@ -8,5 +8,7 @@
         "message": "The new name is the same as the current name.",
         "emptyNameMsg": "No name is specified", 
         "specialCharactersMsg": " is an unsafe character"
-    }
+    },
+    "messageDeleteFreestyleProject": "Delete Project",
+    "promtMessage":"Delete Project: are you sure?"
 }

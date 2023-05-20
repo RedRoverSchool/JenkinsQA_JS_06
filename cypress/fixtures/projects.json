@@ -13,11 +13,13 @@
 
 	"organizationFolder" : {
 		"name" : "myFirstOrganizationForder",
-		"disable": "This Organization Folder is currently disabled"
+		"disable": "This Organization Folder is currently disabled",
+		"disableBtn": "Disable Organization Folder"
 	  },
 
 	"multiConfigurationProject" : {
-		"name" : "myNewMultiConfigurationProject"
+		"name" : "myNewMultiConfigurationProject",
+		"renameWithValidName" : "RenamedProject123"
 	},
 	
 	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  

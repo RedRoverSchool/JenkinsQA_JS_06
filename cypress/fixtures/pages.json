@@ -14,17 +14,19 @@
         "/manage/",
         "/my-views/view/all/"
     ],
-    "pageName": {
-        "/all/newJob": "Dashboard [Jenkins]",
-        "/view/all/newJob": "New Item [Jenkins]",
-        "/asynchPeople/": "People - [Jenkins]",
-        "/view/all/builds": "All [Jenkins]",
-        "/manage/": "Manage Jenkins [Jenkins]",
-        "/me/my-views/view/all/": "Dashboard [Jenkins]",
-        "/newJob": "New Item [Jenkins]",
-        "/computer/": "Nodes [Jenkins]",
-        "/computer/new": "New Node [Jenkins]",
-        "/computer/createItem": "Jenkins",
-        "/manage/computer/(built-in)/": "Built-In Node [Jenkins]"
-    }
+    "projectName":"Freestyle first",
+
+    "folderName":"Freestyle project",
+
+    "configurationPage":"Configure",
+    
+    "sidePanel":[
+     "Status",
+     "Changes",
+     "Workspace",
+     "Build Now",
+     "Configure",
+     "Delete Project",
+     "Rename"
+    ]
 }
