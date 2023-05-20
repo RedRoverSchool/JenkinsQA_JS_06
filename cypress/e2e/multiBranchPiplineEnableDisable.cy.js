@@ -8,7 +8,6 @@ import multibranchPipelineData from '../fixtures/multibranchPipeline.json'
 
 describe('multiBranchPiplineEnableDisable', () => {
   beforeEach(() => {
-    const jobType = 'Multibranch Pipeline'
     const randomNumber = getRandomNumber()
     createMultibranchPipeline(
       '.task:first-child',
@@ -16,7 +15,7 @@ describe('multiBranchPiplineEnableDisable', () => {
       '[id="j-add-item-type-nested-projects"]',
       '#ok-button',
       randomNumber,
-      jobType
+      multibranchPipelineData.itemToCreate
     )
     toggleAndSubmit(
       '#toggle-switch-enable-disable-project',
