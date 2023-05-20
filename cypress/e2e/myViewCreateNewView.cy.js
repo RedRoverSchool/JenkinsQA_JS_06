@@ -16,4 +16,15 @@ describe('my view create new view', function () {
         cy.get('#ok').click()
         cy.get('.tab.active').should('contain', 'first view')
     });
-});
+
+    it ('AT_09.01_003| Create new view via tab My Views', function () {
+
+        cy.get('.task:nth-child(5)').click()
+        cy.get('[title="New View"]').click()
+        cy.get('#name').type('myFirstView')
+        cy.get('.jenkins-radio__label[for="hudson.model.MyView"]').click()
+        cy.get('#ok').should('be.enabled').click()
+        cy.get('.tab:nth-child(2)').should('be.visible').contains('myFirstView')
+    })
+
+})

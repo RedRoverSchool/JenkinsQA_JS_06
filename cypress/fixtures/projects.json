@@ -12,6 +12,14 @@
 	},
 
 	"organizationFolder" : {
-		"name" : "myFirstOrganizationForder"
-	  }
+		"name" : "myFirstOrganizationForder",
+		"disable": "This Organization Folder is currently disabled"
+	  },
+
+	"multiConfigurationProject" : {
+		"name" : "myNewMultiConfigurationProject",
+		"renameWithValidName" : "RenamedProject123"
+	},
+	
+	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  
 }

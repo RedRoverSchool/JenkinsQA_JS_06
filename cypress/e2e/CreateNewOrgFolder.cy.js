@@ -1,5 +1,8 @@
 /// <reference types="cypress"/>
 
+import projects from '../fixtures/projects.json'
+import descriptionOrgFolder from '../fixtures/descriptionOrgFolder.json'
+
 const folderName = 'Test'
 
 describe('<New Item> Create a new Organization Folder', () => {
@@ -27,5 +30,18 @@ describe('<New Item> Create a new Organization Folder', () => {
 
         cy.get('#job_Test .jenkins-table__link')
         .should('have.text', folderName)
+    })
+
+    it('AT_05.06_005| Create a new Organization Folder with description', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('input#name').type(projects.organizationFolder.name)
+        cy.get('span.label').contains('Organization Folder').click()
+        cy.get('#ok-button').click()
+        cy.get('textarea[name="_.description"]')
+          .click()
+          .type(descriptionOrgFolder.addDescriptionOrgFolder)
+        cy.get('button[name="Submit"]').click()
+        cy.get(':nth-child(1) > .model-link').click()
+        cy.get(".jenkins-table__link > span").should("have.text", projects.organizationFolder.name) 
     })
 })

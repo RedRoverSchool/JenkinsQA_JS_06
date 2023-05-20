@@ -8,8 +8,8 @@ describe('Header User Icon', () => {
     cy.get('.login .model-link').should('be.visible');
     });
 
-    it('AT_01.03_003| Header | User icon | Verification of the visibility of the dropdown menu', function () {
-        cy.get('a[href= "/user/admin"] button').click({force:true})
+    it('AT_01.03_003| Header | User icon | Verification of the visibility of the dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
         cy.get('ul.first-of-type').should('be.visible')
     })
 
@@ -55,4 +55,50 @@ describe('Header User Icon', () => {
             cy.wrap($el).should('contain.text', userIconMenuItems.userMenuItems[index]);            
         })       
     })    
+
+    it('AT_01.03_019|Header| Verify user icon is clickable and opens dropdown menu', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.yuimenuitemlabel span').should('have.length', 4);
+      })
+
+    it('AT_01.03_020 | Header User icon', function () {
+        cy.get('a[href="/user/admin"] button').click();
+        cy.get('ul.first-of-type').should('be.visible')        
+    });
+
+    it('AT_01.03_010 | Header | User icon | Working dropdown menu', () => {
+        cy.get('.page-header .jenkins-menu-dropdown-chevron')
+            .should('be.visible')
+            .realHover()
+            .click()
+        cy.get('#breadcrumb-menu li')
+            .should('have.length', dropDown.length)
+            .each((el, idx) => {
+              expect(el.text()).to.include(dropDown[idx])
+        })
+        cy.get('li[index="0"]').click()
+        cy.url().should('contain', '/builds')
+        cy.get('#breadcrumbBar').should('contain', dropDown[0])
+        cy.get('.page-header .jenkins-menu-dropdown-chevron')
+            .should('be.visible')
+            .realHover()
+            .click()
+        cy.get('li[index="1"]').click()
+        cy.url().should('contains', '/configure')
+        cy.get('#breadcrumbBar').should('contain', dropDown[1])
+        cy.get('.page-header .jenkins-menu-dropdown-chevron')
+            .should('be.visible')
+            .realHover()
+            .click()
+        cy.get('li[index="2"]').click()
+        cy.url().should('contain', '/my-views/view/all')
+        cy.get('#breadcrumbBar').should('contain', dropDown[2], 'All')
+        cy.get('.page-header .jenkins-menu-dropdown-chevron')
+            .should('be.visible')
+            .realHover()
+            .click()
+        cy.get('li[index="3"]').click()
+        cy.url().should('contain', '/credentials')
+        cy.get('#breadcrumbBar').should('contain', dropDown[3])
+    })      
 })
