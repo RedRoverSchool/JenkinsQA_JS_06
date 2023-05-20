@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
-//import {local.admin.username} from "../cypress.env.json"
+
 
 describe('BreadcrumbsBuilds', () => {
     const userID = Cypress.env('local.admin.username').toLowerCase();
@@ -15,8 +15,8 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('.task a[onclick*=build]').click();
         cy.get('.task a[onclick*=build]').click();
     
-        //cy.get('a[href$=admin]').click();
-        //cy.get('a[href$=builds]').click();
+        cy.get('a[href$=admin]').click();
+        cy.get('a[href$=builds]').click();
     
         });
         
