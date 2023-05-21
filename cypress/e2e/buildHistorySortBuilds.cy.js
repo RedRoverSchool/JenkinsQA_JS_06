@@ -1,9 +1,26 @@
 /// <reference types="cypress"/>
 import projects from '../fixtures/projects.json';
+import buildHistory from '../fixtures/buildHistory.json';
+
 const jenkinsPort = Cypress.env('local.port');
 const jenkinsURL = 'http://localhost:' + jenkinsPort;
 const userId = Cypress.env('local.admin.username').toLowerCase();
+
+function createBuildsOfNewProject(projectName, buildsNumber) {
+    cy.get('[href="/view/all/newJob"]').click();
+    cy.get('.jenkins-input').type(projectName);
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click();
+    cy.get('.jenkins-breadcrumbs__list-item:first-child').click();
+
+    for(let i = 1; i <= buildsNumber; i++){
+        cy.get(`[tooltip="Schedule a Build for ${projectName}"]`).click();
+        cy.wait(1000);
+    };
+}
+
 describe('Build History Sort builds', () => {
+
     it('AT_07.02 _001 | Build History Sort builds', () => {
         const sortColumn = () => cy.get('table#projectStatus thead .sortheader');
         const buildColumn = () => sortColumn().contains('Build').realHover();
@@ -42,6 +59,31 @@ describe('Build History Sort builds', () => {
                 timeColumn().click();
                 firstBuildInTable().should('have.text', text2);
             });
+        });
+    });
+
+    it('AT_07.02_002 | Build History > Verify user can sort builds by build number', () => {
+        const buildsNumber = 3;
+        createBuildsOfNewProject(projects.newProject, buildsNumber)
+
+        cy.get('[href="/view/all/builds"]').click();
+        cy.get('div h1').should('have.text', buildHistory.title)
+        
+        cy.get('#projectStatus tbody tr td:nth-child(2) .inside').then(($buildNumber) => {
+            let arrayDESC = $buildNumber.text().match(/\d/g).join(' ').split(' ').map($el => Number($el));
+            for (let i = 0; i < arrayDESC.length -1 ; i++) {
+                expect(arrayDESC[i]).to.equal(arrayDESC[i+1] + 1)
+            }
+            expect(arrayDESC[2]).to.equal(1);
+        });
+
+        cy.get('.sortheader').contains('Build').click().click();
+        cy.get('#projectStatus tbody tr td:nth-child(2) .inside').then(($buildNumber) => {
+            let arrayASC = $buildNumber.text().match(/\d/g).join(' ').split(' ').map($el => Number($el));
+            for (let i = 0; i < arrayASC.length-1; i++) {
+                expect(arrayASC[i]).to.equal(arrayASC[i+1] - 1);
+            }
+            expect(arrayASC[2]).to.equal(buildsNumber);
         });
     });
 });
