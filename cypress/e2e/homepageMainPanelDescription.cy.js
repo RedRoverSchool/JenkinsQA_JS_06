@@ -24,4 +24,13 @@ describe('homepageMainPanelDescription',()=>{
         cy.get('#description').should('not.contain', descriptions.addDescriptionProject);
       });
       
+    it('AT_02.06_015 | Homepage (Dashboard) > Deleting Main panel description', () => {
+        cy.get('#description-link').should('contain', descriptions.editDescriptionButtonText).click();
+        cy.get('#description-link').should('not.exist');
+        cy.get('[name="description"]').clear();
+        cy.get('.jenkins-button[formnovalidate="formNoValidate"]').should('have.text', descriptions.saveButtonText).click();
+        cy.get('#description').should('not.contain', descriptions.addDescriptionProject);
+        cy.get('#description-link').should('contain', descriptions.addDescriptionButtonText);
+    });
+
 });
