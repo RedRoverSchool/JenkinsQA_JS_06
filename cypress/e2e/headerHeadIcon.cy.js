@@ -45,4 +45,13 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-head-icon').should('be.visible').click();
         cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');
     })
+
+    it('AT_01.01_007 | Verify Head Icon', () => {
+        cy.get('[href="/asynchPeople/"]').click();
+        cy.get('#jenkins-head-icon')
+          .get('header')
+          .should('be.visible');
+        cy.get('#jenkins-head-icon').click();
+        cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');  
+    })
 })
