@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Freestyle project > Configurate project', () => {
+describe('FreestyleProjectConfigurateProject', () => {
     let jobName = 'MyProject1';
     let description = 'New description';
 
@@ -12,7 +12,7 @@ describe('Freestyle project > Configurate project', () => {
         cy.get('button[name=Submit]').click();
     });
 
-    it('Freestyle project > Configure > Add description', () => {
+    it('AT_12.05_001 | Freestyle project > Add description', () => {
         cy.contains('Configure').click();
         cy.get('textarea[name="description"]').type(description);
         cy.get('button[name=Submit]').click();

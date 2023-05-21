@@ -12,6 +12,24 @@
 	},
 
 	"organizationFolder" : {
-		"name" : "myFirstOrganizationForder"
-	  }
+		"name" : "myFirstOrganizationForder",
+		"disable": "This Organization Folder is currently disabled",
+		"disableBtn": "Disable Organization Folder"
+	  },
+
+	"multiConfigurationProject" : {
+		"name" : "myNewMultiConfigurationProject",
+		"renameWithValidName" : "RenamedProject123",
+		"advancedOptions": [
+			"Quiet period", 
+			"Retry Count", 
+			"Block build when upstream project is building", 
+			"Block build when downstream project is building", 
+			"Use custom workspace",	
+			"Use custom child workspace"
+		],
+		"advancedOptionsField": ["Display Name"]
+	},
+	
+	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  
 }

@@ -20,4 +20,9 @@ const createMultibranchPipeline = (
   cy.get(okButtonSelector).click()
 }
 
-module.exports = { getRandomNumber, createMultibranchPipeline }
+function toggleAndSubmit(disableButton,submitButton) {
+  cy.get(disableButton).click();
+  cy.get(submitButton).click();
+}
+
+module.exports = { getRandomNumber, createMultibranchPipeline ,toggleAndSubmit}

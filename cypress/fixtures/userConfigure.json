@@ -8,5 +8,8 @@
             "My Views",
             "Credentials"
         ]
-    }
+    },
+
+    "BuildsHeader": "Builds for"
+
 }

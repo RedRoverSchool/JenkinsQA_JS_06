@@ -1,16 +1,48 @@
 /// <reference types = "cypress" />
-const { getRandomNumber  ,createMultibranchPipeline } = require('../support/helper');
-import multibranchPipelineData from '../fixtures/multibranchPipeline.json';
+const {
+  getRandomNumber,
+  createMultibranchPipeline,
+  toggleAndSubmit
+} = require('../support/helper')
+import multibranchPipelineData from '../fixtures/multibranchPipeline.json'
 
-describe('US_16.01 Enable or disable the current Multibranch Pipeline', () => {
-    it('TC_16.01.003 Enables and disables the current Multibranch Pipeline', () => {
-      const jobType = 'Multibranch Pipeline'
-      createMultibranchPipeline('.task:first-child', 'input#name', '[id="j-add-item-type-nested-projects"]', '#ok-button',  getRandomNumber(),jobType);
-      cy.get('#enable-disable-project').click({ force: true });
-      cy.get('button[name=Submit]').click();
+describe('multiBranchPiplineEnableDisable', () => {
+  beforeEach(() => {
+    const randomNumber = getRandomNumber()
+    createMultibranchPipeline(
+      '.task:first-child',
+      'input#name',
+      '[id="j-add-item-type-nested-projects"]',
+      '#ok-button',
+      randomNumber,
+      multibranchPipelineData.itemToCreate
+    )
+    toggleAndSubmit(
+      '#toggle-switch-enable-disable-project',
+      'button[name=Submit]'
+    )
+  })
+  it('AT_16.01.003 Disables the current Multibranch Pipeline', () => {
+    cy.get('#enable-project')
+      .should('contain', multibranchPipelineData.enableMessage)
+      .and('have.css', 'color', multibranchPipelineData.enableMessageColor)
 
-      cy.get('#enable-project').should('contain', multibranchPipelineData.enableMessage);
-    });
-
-  });
+    cy.get('button[formnovalidate]')
+      .should('include.text', multibranchPipelineData.enableButton)
+      .click()
+      .then(() => {
+        cy.get('button[formnovalidate]').should(
+          'have.css',
+          'color',
+          multibranchPipelineData.enableButtonColor
+        )
+      })
+  })
+  it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
+    cy.get('button[formnovalidate]').as('formButton').click()
+    cy.get('@formButton')
+      .should('include.text', multibranchPipelineData.disableButton)
+      .should('have.css', 'color', multibranchPipelineData.enableButtonColor)
+  })
   
+})

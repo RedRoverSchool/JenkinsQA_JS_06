@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import createFolder from "../fixtures/createFolder.json"
+
 describe('Folder edit description', () => {
   beforeEach('createFolder', () => {
     cy.get('a[href="newJob"]').click();
@@ -24,4 +26,12 @@ describe('Folder edit description', () => {
     cy.get('div#description>div:first-child').should('have.text', 'New description');
     cy.get('a#description-link').should('contain', 'Edit description');
   }); 
+
+  it('AT_15.03.002 | Folder > Verify possibility to edit description', () => {
+    cy.get('#description-link').click()
+    cy.get('#description textarea').clear().type(createFolder.newDescriptionFolder)
+    cy.get('.jenkins-button').click()
+
+    cy.get('#description').should('contain', createFolder.newDescriptionFolder)
+  });
 });
