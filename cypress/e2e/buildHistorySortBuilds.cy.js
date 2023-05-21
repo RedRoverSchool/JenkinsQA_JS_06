@@ -62,28 +62,20 @@ describe('Build History Sort builds', () => {
         });
     });
 
-    it('AT_07.02_002 | Build History > Verify user can sort builds by build number', () => {
+    it('AT_07.02_002 | Build History > Verify by default builds are sorted by build number in descending order', () => {
         const buildsNumber = 3;
-        createBuildsOfNewProject(projects.newProject, buildsNumber)
+        let buidsNumberArray = buildHistory.buidsNumberArray;
+        let arrayExpectedDESC = buidsNumberArray.sort((a, b) => b - a);
+        
+        createBuildsOfNewProject(projects.newProject, buildsNumber);
 
         cy.get('[href="/view/all/builds"]').click();
-        cy.get('div h1').should('have.text', buildHistory.title)
+        cy.get('div h1').should('have.text', buildHistory.title);
         
         cy.get('#projectStatus tbody tr td:nth-child(2) .inside').then(($buildNumber) => {
-            let arrayDESC = $buildNumber.text().match(/\d/g).join(' ').split(' ').map($el => Number($el));
-            for (let i = 0; i < arrayDESC.length -1 ; i++) {
-                expect(arrayDESC[i]).to.equal(arrayDESC[i+1] + 1)
-            }
-            expect(arrayDESC[2]).to.equal(1);
-        });
-
-        cy.get('.sortheader').contains('Build').click().click();
-        cy.get('#projectStatus tbody tr td:nth-child(2) .inside').then(($buildNumber) => {
-            let arrayASC = $buildNumber.text().match(/\d/g).join(' ').split(' ').map($el => Number($el));
-            for (let i = 0; i < arrayASC.length-1; i++) {
-                expect(arrayASC[i]).to.equal(arrayASC[i+1] - 1);
-            }
-            expect(arrayASC[2]).to.equal(buildsNumber);
+            let arrayActual = $buildNumber.text().match(/\d/g).join(' ').split(' ').map($el => Number($el));
+ 
+            expect(arrayActual).to.deep.equal(arrayExpectedDESC);
         });
     });
 });
