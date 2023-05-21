@@ -40,4 +40,16 @@ describe('dashboardMainPanelDescription', () => {
         cy.get("button.jenkins-button.jenkins-button--primary").click()
         cy.get("#description > div:nth-child(1)").should("have.text", descriptionsProject.addDescriptionProject)
     })
+
+    it("AT_02.06_012| Dashboard > Replacing the decription for the project with a new one", () => {
+        cy.get("a#description-link").click()
+        cy.get(".jenkins-input").type(descriptionsProject.addDescriptionProject) 
+        cy.get("button.jenkins-button.jenkins-button--primary").click()
+        cy.get("a#description-link").click()
+        cy.get(".jenkins-input").clear().type(descriptionsProject.addNewDescriptionProject)
+        cy.get("button.jenkins-button.jenkins-button--primary").click()
+        cy.get("#description > div:nth-child(1)").should("have.text", descriptionsProject.addNewDescriptionProject)
+    })
+
 })
+
