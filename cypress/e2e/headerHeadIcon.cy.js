@@ -39,4 +39,10 @@ describe('Header Head Icon', () => {
                         .and('be.visible');
 
     })
+    
+    it('AT_01.01_038 | Head Icon is visible and redirects to home page after clicking', () => {
+        cy.get('a[href="newJob"]').click();
+        cy.get('#jenkins-head-icon').should('be.visible').click();
+        cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');
+    })
 })
