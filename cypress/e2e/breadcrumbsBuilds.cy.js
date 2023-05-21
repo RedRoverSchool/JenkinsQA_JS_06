@@ -83,6 +83,5 @@ describe('BreadcrumbsBuilds', () => {
                 expect(currentTime).should.be.greaterThan(nextTime);
             }
         });
-
     })
 });
