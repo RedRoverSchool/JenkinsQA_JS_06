@@ -7,5 +7,6 @@
     "newPipelineName" : "New Pipeline",
     "confirmationOfDeleting" : "Delete Pipeline: are you sure?",
     "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
-    "descriptionPipeLine" : "Pipeline Description"
+    "descriptionPipeLine" : "Pipeline Description",
+    "additionalDescriptionPipeline" : " second"
 }
