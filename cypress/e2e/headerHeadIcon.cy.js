@@ -54,4 +54,11 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-head-icon').click();
         cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');  
     })
+  
+    it('AT_01.01_39 | Head icon is visible, clickable and redirects to the home page', () => {
+        cy.get('span.task-link-text').contains('People').click({force:true});
+        cy.get('#jenkins-name-icon').click();
+        cy.get('h1').should('have.text','Welcome to Jenkins!').and('be.visible');
+    })
 })
+
