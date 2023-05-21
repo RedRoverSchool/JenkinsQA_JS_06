@@ -3,10 +3,7 @@
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
 
 const USERID = Cypress.env('local.admin.username').toLowerCase();
-<<<<<<< HEAD
-=======
 const PORT = Cypress.env('local.port')
->>>>>>> f2d2d985a4816497b24558b5941a24e9cfbf967d
 
 describe('BreadcrumbsBuilds', () => {
     beforeEach('', () => {
