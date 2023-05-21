@@ -1,6 +1,8 @@
 /// <reference types="cypress"/>
 
-let userDropdown = '.jenkins-menu-dropdown-chevron:nth-child(3)';
+import items from '../fixtures/items.json'
+import userMenuItems from '../fixtures/userIconMenuItems.json'
+
  
 describe("breadcrumbsMyViewsPage", () => {
     it('04.03_001 Verify that user can open selected Pipeline', () => {
@@ -12,7 +14,7 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('.jenkins-button--primary').click();
 
         cy.get('#breadcrumbBar li:first-child').click();
-        cy.get(userDropdown).click({ force: true })
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
         cy.get('a[href="job/testPipeline/"]').click()
         cy.get('#main-panel > h1')
@@ -27,7 +29,7 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('#ok-button').click();
         cy.get('.jenkins-button--primary').click();
 
-        cy.get(userDropdown).click({ force: true })
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
         cy.get('a[href="job/testFolder/"]').click()
         cy.get('#main-panel > h1')
@@ -42,7 +44,7 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('#ok-button').click();
         cy.get('.jenkins-button--primary').click();
 
-        cy.get(userDropdown).click({ force: true })
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
         cy.get('#job_testFreestyleProject').click()
         cy.get('a[class="jenkins-table__link model-link inside"]')
@@ -56,7 +58,7 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('#ok-button').click();
         cy.get('.jenkins-button--primary').click();
 
-        cy.get(userDropdown).click({ force: true })
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
         cy.get('a[class="jenkins-table__link model-link inside"] span')
           .contains('testMulti Configuration Project')
@@ -72,7 +74,7 @@ describe("breadcrumbsMyViewsPage", () => {
         cy.get('#ok-button').click();
         cy.get('.jenkins-button--primary').click();
 
-        cy.get(userDropdown).click({ force: true })
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').click({ force: true })
         cy.get('.yuimenuitem').contains("My Views").click()
         cy.get('a[class="jenkins-table__link model-link inside"] span')
           .contains('testMultiBranch Pipeline')
@@ -81,5 +83,23 @@ describe("breadcrumbsMyViewsPage", () => {
           .should('be.visible')
           .and('include.text', "testMultiBranch Pipeline")
     })
+
+    it('AT_04.03.009|Verify that the user can open the selected Organization Folder', () => {
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('#name').type(items.organizationFolderName[0]);
+        cy.get('.hudson_matrix_MatrixProject').click();
+        cy.get('#ok-button').click();
+        cy.get('.jenkins-button--primary').click();
+
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('.yuimenuitem').contains(userMenuItems.userMenuItems[2]).click()
+        cy.get('a[class="jenkins-table__link model-link inside"] span')
+          .contains(items.organizationFolderName[0])
+          .click()
+        cy.get('#main-panel')
+          .should('be.visible')
+          .and('include.text', items.organizationFolderName[0])
+    })
+
 });
 
