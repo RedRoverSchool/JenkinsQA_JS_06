@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 
-describe('Add a description to the Pipeline', () => {
-    const newPipelineDescription = 'myFirstDescription_1'
-    it('Create a  description', () => {
+describe('pipelineToAddDescription', () => {
+    it('AT_13.04_003', () => {
+        const newPipelineDescription = 'myFirstDescription_1'
         cy.get('.task:first-child').click()
         cy.get('input#name').type(newPipelineDescription)
         cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
