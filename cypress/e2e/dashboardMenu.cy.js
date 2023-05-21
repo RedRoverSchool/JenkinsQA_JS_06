@@ -35,4 +35,9 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         cy.get('a[href="/manage"').click()
         cy.url().should('include', endPointUrl[3])
      })
+
+     it('AT_02.04.008 | Verify that link "My Views" is clickable', () => {
+        cy.get('a[href="/me/my-views"').click()
+        cy.url().should('include', endPointUrl[4])
+     })   
 })
