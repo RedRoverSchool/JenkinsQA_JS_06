@@ -1,9 +1,12 @@
 {
 	"pipelineName":"testPipeline",
-	"organizationFolderName":["testOrganization Folder"],
+	"organizationFolderName":["testOrganization Folder", "Organisation Folder", "a Organisation Folder"],
 	"multiBranchPipelineName":"testMultiBranch Pipeline",
 	"multiConfigurationProjectName":"testMulti Configuration Project",
 	"freestyleProjectName":"testFreestyleProject",
-	"folderName":"testFolder"
+	"folderName":"testFolder",
+	"createdItemsNames":["a Organisation Folder", "Organisation Folder", "testOrganization Folder"],
+	"ascendingItemsNames":["testOrganization Folder", "Organisation Folder", "a Organisation Folder"]
 }
+
 		
