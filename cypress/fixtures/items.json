@@ -1,0 +1,9 @@
+{
+	"pipelineName":"testPipeline",
+	"organizationFolderName":["testOrganization Folder"],
+	"multiBranchName":"testMultiBranch Pipeline",
+	"multiConfigurationProjectName":"testMulti Configuration Project",
+	"freestyleProjectName":"testFreestyleProject",
+	"folderName":"testFolder"
+}
+		

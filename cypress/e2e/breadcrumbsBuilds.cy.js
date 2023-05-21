@@ -2,9 +2,10 @@
 
 import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
 
+const USERID = Cypress.env('local.admin.username').toLowerCase();
+const PORT = Cypress.env('local.port')
 
 describe('BreadcrumbsBuilds', () => {
-
     beforeEach('', () => {
         cy.get('a[href^="newJob"]').click();
         cy.get('input#name').type(breadcrumbsBuilds.nameOfProject);
@@ -18,7 +19,7 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('a[href$=admin]').click();
         cy.get('a[href$=builds]').click();
     
-        });
+    });
         
     
     it('AT_04.06 _003 | Verify builds list is sorted in ascending order by default', () => {
@@ -41,6 +42,14 @@ describe('BreadcrumbsBuilds', () => {
 
     });
 
+    
+    it('AT_04.06.001 Breadcrumbs Builds user can see his username in the title of the table.', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('div#main-panel h1').should('have.text', `Builds for ${USERID}`)
+    })
+
     it('AT_04.06.002 clicking on S, M, L will change the icon size', function () {
         cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('.first-of-type a[href$="/builds"]').click();
@@ -51,6 +60,15 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('svg.svg-icon.icon-md').should('have.css', 'height', '20.796875px')
         cy.get('a[href="/iconSize?32x32"]').click()
         cy.get('.svg-icon').should('have.css', 'height', '24px')
+    })
+
+    it('AT_04.06.005 verify "Icon legend" redirects User to "Icon legend" page', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('a[href="/legend"]').click()
+        cy.url().should('eq', `http://localhost:${PORT}/legend`)
+        cy.get('div#main-panel h1').should('have.text', 'Icon legend')
     })
 
 });
