@@ -1,5 +1,5 @@
 /// reference types="cypress"/>
-describe('headerUserBuildslinkExamination', () =>{
+describe('headerUserBuildslinkExamination ', () =>{
     it('AT_01.04.08|Header User Builds link examination', ()=> {
        cy.get('.page-header a .jenkins-menu-dropdown-chevron').realHover().click()
        cy.get(`a[hre$="/builds"]`).click()
