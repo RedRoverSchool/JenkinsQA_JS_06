@@ -27,5 +27,6 @@
     "editDescription": "New Description after",
     "add": "Add",
     "edit": "Edit",
-    "save": "Save"
+    "save": "Save",
+    "projectName" : "MyProject1"
 }
