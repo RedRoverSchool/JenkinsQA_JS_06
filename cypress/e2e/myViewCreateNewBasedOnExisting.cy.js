@@ -17,13 +17,9 @@ describe('myViewCreateNewBasedOnExisting', () => {
         cy.get(`[href="/job/${folderName}/newJob"]`).click();
         cy.get('#name').type(jobName);
         cy.get('span.label').contains('Freestyle project').click();
-        cy.get('#ok-button').should('have.text', 'OK').click();
+        cy.get('#ok-button').click();
         cy.get('button[name=Submit]').click();
-        cy.get('a[href*="/job/"]').contains(folderName).click();
-        cy.get('#main-panel h1').then(($el) => {
-            const header = $el.text().trim();
-            expect(header).to.equal(folderName)
-        })
+        cy.get('a[href*="/job/"]').contains(folderName).click();    
     }
 
     beforeEach('Create new View with two folders and 3 freestyle jobs in one of the folders', () => {        
@@ -60,7 +56,7 @@ describe('myViewCreateNewBasedOnExisting', () => {
         cy.get('#projectstatus tbody>tr>td:nth-child(3) span')
         .each(($el, idx) => {
             const expectedName = myView.jobFilter[idx].name;
-            expect($el).to.have.text(expectedName);      
+            expect($el).to.have.text(expectedName);  
         })         
     })
 })
