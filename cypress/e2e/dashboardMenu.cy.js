@@ -30,4 +30,9 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         cy.get('a[href="/view/all/builds"]').click()
         cy.url().should('include', endPointUrl[2])
      })
+
+     it('AT_02.04.007 | Verify that link "Manage Jenkins" is clickable', () => {
+        cy.get('a[href="/manage"').click()
+        cy.url().should('include', endPointUrl[3])
+     })
 })
