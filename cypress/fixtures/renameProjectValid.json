@@ -2,5 +2,7 @@
     "projectName": "DemoJob",
     "newProjectName": "AnotherProject",
     "ok": "OK",
-    "text": "test"
+    "text": "test",
+    "error": "Error",
+    "errorDescription" : "The new name is the same as the current name."
 }
