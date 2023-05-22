@@ -55,4 +55,22 @@ describe('BreadcrumbsMenu', () => {
          cy.go('back')
       })
    })
+
+
+
+
+
+
+
+
+
+   it.only('AT_04.02_008 | Verify Dashboard dropdown Manage Jenkins submenu content', () => {
+      let array = ['Configure System', 'Global Tool Configuration', 'Manage Plugins', 'Manage Nodes and Clouds', 'Install as Windows Service', 'Configure Global', 'Credentials', 'Credential Providers', 'Manage Users', 'System Information', 'System Log', 'Load Statistics', 'About Jenkins', 'Manage Old Data', 'Reload Configuration from Disk', 'Jenkins CLI', 'Script Console', 'Prepare for Shutdown']
+      cy.get('#breadcrumbBar').contains('Dashboard').realHover()
+      cy.get('li:first-child .jenkins-menu-dropdown-chevron').click()
+      cy.get('#breadcrumb-menu>.bd>ul>li').contains('Manage Jenkins').realHover()
+      cy.get('#submenu0 >.bd > ul > :not(li.yuimenuitem-disabled) a').then(($els) => {
+         return Cypress.$.makeArray($els).map($el => $el.innerText)
+      }).should('deep.equal', array)
+   })
 })
