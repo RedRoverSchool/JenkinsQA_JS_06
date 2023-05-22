@@ -17,4 +17,15 @@ describe('myViewsCreateJob', () => {
    cy.get('button[name=Submit]').click();
    cy.get('h1.job-index-headline').should('have.text', addJob.projectHeader);
   }); 
+
+  it('AT_09.08.002 My view Create job Verify User should be able to enter item name, choose type, click Ok', () => {
+    cy.get('a[href="/me/my-views"]').click();
+
+    cy.get('a[href="newJob"]').click();
+    cy.get('input#name').type(addJob.projectName);
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click();
+    cy.get('h2#general').should('have.text', addJob.header);
+    cy.url().should('include', `/configure`);
+  });
 });
