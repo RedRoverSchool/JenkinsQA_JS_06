@@ -29,4 +29,15 @@ describe('orgFolderConfigurate', () => {
         cy.get('#bottom-sticker button[name="Submit"]').click();
         cy.get('#enable-project').should('contain', orgFolderConfigure.disableMessage);
     });
+
+    it('AT_17.01.003 | Organization Folder> Add Display name to the Organization Folder via Configure', () =>{
+        createOrgFolder(orgFolderConfigure.orgFolderName);
+        cy.get('tbody tr td .jenkins-table__link').contains(orgFolderConfigure.orgFolderName).realHover()
+        cy.get('#projectstatus button.jenkins-menu-dropdown-chevron').click()
+        cy.get('.yuimenuitemlabel').contains('Configure').click()
+        cy.get('input[name="_.displayNameOrNull"]').type(orgFolderConfigure.displayName);
+        cy.get('#bottom-sticker button[name="Submit"]').click();
+        cy.get('a[href="./configure"]').click()
+        cy.contains(orgFolderConfigure.displayName).should('be.visible')
+    })
 });
