@@ -58,7 +58,7 @@ describe('BreadcrumbsMenu', () => {
 
    it('AT_04.02_007 | Verify Dashboard dropdown menu content', () => {
       cy.get('#breadcrumbBar').contains('Dashboard').realHover()
-      cy.get('li:first-child .jenkins-menu-dropdown-chevron').click()
+      cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').click()
       cy.get('#breadcrumb-menu>.bd>ul>li > .yuimenuitemlabel span').each(($el, idx) => {
          expect($el.text()).to.be.equal(homePage.dashboardDropdownItems[idx])
       })
