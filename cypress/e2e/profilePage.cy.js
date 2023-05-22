@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 describe("Profile Page", () => {
+  const USERNAME = Cypress.env('local.admin.username');
   let userNameInUrl;
   let userNameOnThePage;
 
@@ -28,4 +29,16 @@ describe("Profile Page", () => {
       });
     });
   });
+
+  it.only('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+      cy.get('div[class^="login page-header"]>a[href^="/user"]').click()
+      cy.url().should('include', `${USERNAME}`)
+      cy.get('.icon-lg').should('exist')
+      cy.get('a[class="model-link"] span[class="hidden-xs hidden-sm"]').then((el) => {
+      let fullName = el.text()
+      cy.title().should('exist').and('contain', `${fullName}`)
+      })
+      cy.get('#tasks>:nth-child(2)').should('exist')
+      cy.get('#main-panel>div:last-child').should('contain', `${USERNAME}`)
+  })
 });
