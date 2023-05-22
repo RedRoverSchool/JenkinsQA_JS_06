@@ -1,12 +1,13 @@
-describe('Create a new Pipeline', () => {
-    const newPipeLineName = 'myFirstPipeLine_1'
-    it('Create a new Pipeline', () => {
+import projects from '../fixtures/projects.json'
+
+describe('pipelineCreate', () => {
+    it('AT_05.02_001 | Create a new Pipeline', () => {
         cy.get('.task:first-child ').click()
-        cy.get('input#name').type(newPipeLineName)
+        cy.get('input#name').type(projects.pipeline.name)
         cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
         cy.get('#ok-button').click()
         cy.get('#breadcrumbBar li:first-child').click()
-        cy.get('table#projectstatus').should('contain', newPipeLineName)
+        cy.get('table#projectstatus').should('contain', projects.pipeline.name)
     })
 
     it('Create a new Pipeline', () => {
