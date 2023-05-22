@@ -83,6 +83,9 @@ describe('Freestyle project Delete', () => {
     cy.get('.first-of-type li:nth-child(5)').contains('Delete Project').click();
     cy.on('window:confirm', (str) => {
       expect(str).to.equal(messages.promtMessage)});
+    cy.get('#main-panel')
+      .contains(projects.freestyle.name)
+      .should('not.exist');
   });
 
 });
