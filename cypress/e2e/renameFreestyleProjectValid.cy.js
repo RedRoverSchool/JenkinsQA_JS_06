@@ -31,7 +31,6 @@ describe('FreestyleProjectRenameFreestyleProject', () => {
   });
 
   it("AT_12.03.005 Rename project, new name isn't valid", () => {
-    cy.get('input[name="newName"]').clear().type(userData.projectName);
     cy.get('button[name="Submit"]').click();
 
     cy.get('div h1').contains(userData.error);
