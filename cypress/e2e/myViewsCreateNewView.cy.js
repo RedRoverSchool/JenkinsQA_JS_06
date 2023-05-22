@@ -2,6 +2,33 @@
 import createNewView from "../fixtures/createNewView.json"
 import myViews from "../fixtures/myViews.json"
 
+const createNewViewExample = (viewType) => {
+  cy.get('a[href="/me/my-views"]').click();
+  cy.get('.addTab').click();
+  cy.get('.jenkins-radio__label').contains(viewType).then(($view) => {
+      if ($view.text().includes('global')) {
+          cy.get('#name').type(extractGlobalViewNameFromGlobalViewType(viewType));
+      } else {
+          cy.get('#name').type(viewType);
+      }
+  });
+  cy.get('.jenkins-radio__label').contains(viewType).click();
+  cy.get('#ok').click();
+  cy.get('body').then(($body) => {
+      if ($body.find('button[name="Submit"]').length > 0)
+          cy.get('button[name="Submit"]').click();
+  });
+  cy.contains('Dashboard').click();
+};
+
+const extractGlobalViewNameFromGlobalViewType = (globalViewType) => {
+  return globalViewType
+      .split(' ')
+      .slice(2)
+      .map(words => words.charAt(0).toUpperCase() + words.slice(1))
+      .join(' ');
+};
+
 describe('myViewsCreateNewView', () => {
 
   beforeEach('create the job', function () {
@@ -49,5 +76,24 @@ describe('My Views Create New View', () => {
       cy.url().should('contain', myViews.newViewPageURL);
       cy.title().should('eq', 'Jenkins');
       cy.get('#breadcrumbs li:last-child').should('have.text', myViews.newViewItemOnTopMenu)
+  });
+
+  it('AT_09.01_007 | My Views > Create new view > Verify creating different types of Viwes', () => {
+    createNewViewExample(myViews.viewTypes.globalView);
+    createNewViewExample(myViews.viewTypes.listView);
+    createNewViewExample(myViews.viewTypes.myView);
+    cy.get('a[href="/me/my-views"]').click();
+
+    cy.url().should('contain', myViews.allViewPageURL);
+    cy.get('#breadcrumbs li:nth-last-child(2)').should('have.text', myViews.tabAllViews);
+    cy.get('.tab.active')
+        .should('have.text', myViews.tabAllViews)
+        .and('have.css', 'color', 'rgb(20, 20, 31)')
+        .and('have.css', 'background-color', 'rgba(0, 0, 0, 0)');
+    cy.get('.tabBar')
+        .should('be.visible')
+        .and('contain', extractGlobalViewNameFromGlobalViewType(myViews.viewTypes.globalView))
+        .and('contain', myViews.viewTypes.listView)
+        .and('contain', myViews.viewTypes.myView);
   });
 });
