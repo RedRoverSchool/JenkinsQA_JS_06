@@ -30,7 +30,7 @@ describe("Profile Page", () => {
     });
   });
 
-  it.only('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+  it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
       cy.get('div[class^="login page-header"]>a[href^="/user"]').click()
       cy.url().should('include', `${USERNAME}`)
       cy.get('.icon-lg').should('exist')
