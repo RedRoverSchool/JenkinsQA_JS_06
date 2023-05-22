@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe("User Profile Page", () => {
+describe("Profile Page", () => {
   let userNameInUrl;
   let userNameOnThePage;
 
