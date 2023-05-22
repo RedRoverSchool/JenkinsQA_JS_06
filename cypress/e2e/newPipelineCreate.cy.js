@@ -50,4 +50,14 @@ describe('Create a new Pipeline', () => {
         cy.get('li.jenkins-breadcrumbs__list-item>a[href="/"]').click()
         cy.get('table.jenkins-table').should('contain', 'TestPipeline')
     })
+
+    it('Create a new Pipeline', () => {
+        cy.get('span.task-link-text').contains('New Item').click({force: true})
+        cy.get('input#name').type('testProject')
+        cy.get('span.label').contains('Pipeline').click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('a.model-link').contains('Dashboard').click()
+        cy.get('a[href="job/testProject/"]' ).should('be.visible')
+    })
 });
