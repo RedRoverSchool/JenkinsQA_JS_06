@@ -33,4 +33,12 @@ describe('headerCredentialsMenuLink', () => {
     it('AT_01.07_004 | <Header> The users name should be visible in the header', () => {
       cy.get(`a[href="/user/${login}"]`).should('be.visible');
     });
+
+  it('AT_01.07.005|Header Credentials menu link', () => {
+    cy.get('.page-header__hyperlinks .model-link').click()
+    cy.get('a[href*="/credentials').click()
+    cy.get('a[href*="/credentials/store/user"]:not(a[href*="/credentials/store/user/domain/_/"])').click()
+    cy.get('a[href="newDomain"]').click()
+    cy.get('#main-panel h1').should('have.text', headerCredentials.newDomainPageHeader)
+    })
 })
