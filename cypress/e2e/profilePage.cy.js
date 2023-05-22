@@ -29,8 +29,8 @@ describe("Profile Page", () => {
     });
   });
 
-  it("AT_18.01_002 | Profile Page | Verify Profile Icon in Header", function () {
+  it("AT_18.01_002 | Profile Page | Verify Profile Icon on the page", function () {
     cy.get("div[class*='login page-header']>a[href^='/user']").click();
-    cy.get('a[href^="/user"] > svg').should("exist");
+    cy.get("span[class='icon-lg']").should("exist");
   });
 });
