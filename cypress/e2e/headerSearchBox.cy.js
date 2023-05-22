@@ -100,5 +100,5 @@ describe('Header Search Box', () => {
     cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').first().click()
     cy.get('#breadcrumb-menu a[href="/me/my-views"]').click()
     cy.get('#searchform').should('be.visible')
-  })
+  });
 });
