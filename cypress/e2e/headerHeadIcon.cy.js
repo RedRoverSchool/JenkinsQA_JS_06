@@ -14,6 +14,12 @@ describe('Header Head Icon', () => {
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)
     })
 
+    it('AT_01.01_37 | Head icon is visible, clickable', ()=>{
+        cy.get("a[href='/asynchPeople/']").click()
+        cy.get('#jenkins-home-link').should('be.visible').click()
+        cy.url().should('eq','http://localhost:8080/')
+    })
+  
     it('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({ force: true });
         cy.get('div h1').should('exist')

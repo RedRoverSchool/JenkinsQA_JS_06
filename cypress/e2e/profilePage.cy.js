@@ -36,6 +36,19 @@ describe("Profile Page", () => {
     cy.get("span[class='icon-lg']").should("exist");
   });
 
+  it("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
+    getUserNameOnThePage().then((nameOnPage) => {
+      const userNameOnThePage = nameOnPage;
+      cy.get("div[class*='login page-header']>a[href^='/user']").click();
+      cy.get("div[id='main-panel'] h1")
+        .should("exist")
+        .invoke("text")
+        .then((text) => {
+          expect(text.trim()).to.equal(userNameOnThePage);
+        });
+    });
+  });
+
   it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
       cy.get('div[class^="login page-header"]>a[href^="/user"]').click()
       cy.url().should('include', `${USERNAME}`)
