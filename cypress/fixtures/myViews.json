@@ -7,6 +7,18 @@
         "Multibranch Pipeline",
         "Organization Folder"
     ],
+
     "newViewPageURL": "/my-views/newView",
-    "newViewItemOnTopMenu": "New view"
+
+    "allViewPageURL": "/my-views/view/all/",
+
+    "newViewItemOnTopMenu": "New view",
+
+    "viewTypes": {
+        "globalView": "Include a global view",
+        "listView": "List View",
+        "myView": "My View"
+    },
+
+    "tabAllViews": "All"
 }
