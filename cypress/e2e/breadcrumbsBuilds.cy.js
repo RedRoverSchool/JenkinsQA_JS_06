@@ -68,7 +68,7 @@ describe('BreadcrumbsBuilds', () => {
 
         cy.get('a[href="/legend"]').click()
         cy.url().should('eq', `http://localhost:${PORT}/legend`)
-        cy.get('div#main-panel h1').should('have.text', 'Icon legend')
+        cy.get('div#main-panel h1').should('have.text', breadcrumbsBuilds.iconLegendText)
     })
 
 });

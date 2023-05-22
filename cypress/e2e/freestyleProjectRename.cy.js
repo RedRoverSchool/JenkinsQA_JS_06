@@ -55,4 +55,18 @@ describe('Freestyle project - Rename project', () => {
           .should('be.visible')
           .and('have.text', freestyleProject.projectNewName)
     });
+
+    it('AT_12.03.006 | Freestyle project Rename project without any changes', () => {
+        cy.get('.jenkins-table__link').realHover()
+        cy.get('#projectstatus .jenkins-menu-dropdown-chevron').click()
+        cy.get('a[href*="/confirm-rename"]').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('#main-panel h1')
+            .should('be.visible')
+            .and('have.text', messages.renameErrorMessage.error)
+        cy.get('#main-panel p')
+            .should('be.visible')
+            .and('have.text', messages.renameErrorMessage.message)
+    });
+
 })

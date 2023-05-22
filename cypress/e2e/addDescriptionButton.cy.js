@@ -20,5 +20,10 @@ describe('add description button', () => {
       cy.get('.jenkins-button.jenkins-button--primary').click()
       cy.get ('#description > div:nth-child(1)').contains('Hello')
   })
+
+  it('AT_02.09_005|Verification "add description" button', function () {
+    cy.get("#description-link").click()
+    cy.get(".jenkins-input").should("be.visible")
+  });
 })
   

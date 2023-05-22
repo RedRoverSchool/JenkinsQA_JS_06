@@ -1,3 +1,5 @@
+import myView from "../fixtures/myView.json"
+
 describe('my view create new view', function () {
     beforeEach('create the job', function () {
         cy.get('a[href="newJob"]').click();
@@ -17,7 +19,7 @@ describe('my view create new view', function () {
         cy.get('.tab.active').should('contain', 'first view')
     });
 
-    it ('AT_09.01_003| Create new view via tab My Views', function () {
+    it('AT_09.01_003| Create new view via tab My Views', function () {
 
         cy.get('.task:nth-child(5)').click()
         cy.get('[title="New View"]').click()
@@ -27,4 +29,22 @@ describe('my view create new view', function () {
         cy.get('.tab:nth-child(2)').should('be.visible').contains('myFirstView')
     })
 
+    it('AT_09.01_006 | My Views Create new view', () => {
+        cy.get('#side-panel a[href="/me/my-views"]').click();
+        cy.get('#projectstatus-tabBar [href$=newView]').click();
+        cy.location('pathname').should('contain','/my-views/newView');
+        cy.get('.jenkins-form-item input#name').type(myView.nameMyView);
+        cy.get('.jenkins-fieldset .jenkins-radio label[for$=MyView]').click();
+        cy.get('#bottom-sticker button[name=Submit]').click();
+
+        cy.get('.tabBar').should('contain', myView.nameMyView);
+        cy.get('.tabBar [href$="MyTestView/"]').click();
+        cy.get('.jenkins-breadcrumbs__list-item a[href$="MyTestView/"]').should('be.visible');
+
+    })
+
+    after('delete view', () => {
+        cy.get('#side-panel [href=delete]').click();
+        cy.get('#main-panel form[name=delete] button[name=Submit]').click();
+    })
 })

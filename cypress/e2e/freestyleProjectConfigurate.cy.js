@@ -1,12 +1,14 @@
 /// <reference types="cypress"/>
 
-describe('FreestyleProjectConfigurateProject', () => {
-    let jobName = 'MyProject1';
+import homePageData from "../fixtures/homePage.json";
+import configurePageData from "../fixtures/configure.json";
+
+describe('FreestyleProjectConfigurateProject', () => {   
     let description = 'New description';
 
     beforeEach('Create freestyle project', function () {
         cy.get('a[href="newJob"]').click();
-        cy.get('#name').type(jobName);
+        cy.get('#name').type(homePageData.projectName);
         cy.contains('Freestyle project').click();
         cy.get('#ok-button').click();
         cy.get('button[name=Submit]').click();
@@ -18,4 +20,21 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('button[name=Submit]').click();
         cy.get('#description div:nth-child(1)').should('have.text', description);
     });
+
+    it('AT_12.05_004 | Add link on GitHub', () => {
+        cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click();
+        cy.get('.jenkins-table__link').realHover();
+        cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron').click({force : true});
+        cy.get('#breadcrumb-menu').should('be.visible');
+        cy.get('[href*="configure"]').click();
+        cy.get('.jenkins-checkbox [name="githubProject"]').check({force : true});
+        cy.get('input[name="_.projectUrlStr"]').type(configurePageData.gitHubProjectURL);
+        cy.get('button[name="Submit"]').click();
+
+        cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]')
+           .should('be.visible')
+           .click();
+        cy.url().should('be.eq', configurePageData.gitHubProjectURL); 
+        cy.get('.author').should('include.text', configurePageData.gitHeaderAuthor);
+    })
 })
