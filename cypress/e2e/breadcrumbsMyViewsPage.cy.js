@@ -103,5 +103,28 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.organizationFolderName[0])
     })
 
+  it('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
+    for (let i = 0; i <= 2; i++) {
+      cy.get('.task ').contains('New Item').click();
+      cy.get('#name').type(items.organizationFolderName[i]);
+      cy.get('.hudson_matrix_MatrixProject').click();
+      cy.get('#ok-button').click();
+      cy.get('.jenkins-button--primary').click();
+      cy.get('#jenkins-home-link').click();
+    };
+
+    cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+    cy.get('.yuimenuitem').contains(userMenuItems.userMenuItems[2]).click();
+    cy.get('a[class="jenkins-table__link model-link inside"] span').should('have.length', 3)
+      .each(($el, idx) => {
+        expect($el.text()).to.be.equal(items.createdItemsNames[idx]);
+      });
+    cy.get('.sortheader').contains('Name').click();
+    cy.get('a[class="jenkins-table__link model-link inside"] span').should('have.length', 3)
+      .each(($el, idx) => {
+        expect($el.text()).to.be.equal(items.ascendingItemsNames[idx]);
+      });
+  });
+
 });
 
