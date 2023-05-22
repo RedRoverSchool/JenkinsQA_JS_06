@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import logInPage from "../fixtures/logInPage.json"
 
 describe('Header Head Icon', () => {
 
@@ -60,6 +61,14 @@ describe('Header Head Icon', () => {
         cy.get('span.task-link-text').contains('People').click({force:true});
         cy.get('#jenkins-name-icon').click();
         cy.get('h1').should('have.text','Welcome to Jenkins!').and('be.visible');
+    })
+
+    it('AT_01.01_41 | Header - Head Icon is visible, clickable and redirects to the home page', () => {
+        cy.get('[href="/asynchPeople/"]').click()
+        cy.get('#main-panel h1').should('include.text', 'People')
+        cy.get('.logo #jenkins-head-icon').should('be.visible').click()
+        cy.url().should('include', `http://localhost:${Cypress.env('local.port')}/`)
+        cy.get('#main-panel h1').should('have.text', logInPage.loginPageHeader) 
     })
 })
 
