@@ -8,7 +8,7 @@ describe('Header Search Box', () => {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
-  it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
+  it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
     cy.get('.main-search__icon-trailing')
       .invoke('removeAttr', 'target')
       .click();

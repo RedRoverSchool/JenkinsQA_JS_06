@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+const USERNAME = Cypress.env('local.admin.username');
+
 describe("Profile Page", () => {
   let userNameInUrl;
   let userNameOnThePage;
@@ -33,4 +35,29 @@ describe("Profile Page", () => {
     cy.get("div[class*='login page-header']>a[href^='/user']").click();
     cy.get("span[class='icon-lg']").should("exist");
   });
+
+  it("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
+    getUserNameOnThePage().then((nameOnPage) => {
+      userNameOnThePage = nameOnPage;
+      cy.get("div[class*='login page-header']>a[href^='/user']").click();
+      cy.get("div[id='main-panel'] h1")
+        .should("exist")
+        .invoke("text")
+        .then((text) => {
+          expect(text.trim()).to.equal(userNameOnThePage);
+        });
+    });
+  });
+
+  it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+      cy.get('div[class^="login page-header"]>a[href^="/user"]').click()
+      cy.url().should('include', `${USERNAME}`)
+      cy.get('.icon-lg').should('exist')
+      cy.get('a[class="model-link"] span[class="hidden-xs hidden-sm"]').then((el) => {
+      let fullName = el.text()
+      cy.title().should('exist').and('contain', `${fullName}`)
+      })
+      cy.get('#tasks>:nth-child(2)').should('exist')
+      cy.get('#main-panel>div:last-child').should('contain', `${USERNAME}`)
+  })
 });

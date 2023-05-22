@@ -29,5 +29,6 @@
      "Delete Project",
      "Rename"
     ],
-    "newItemPageTitle": "New Item [Jenkins]"
+    "newItemPageTitle": "New Item [Jenkins]",
+    "text":"Jenkins project"
 }

@@ -11,6 +11,10 @@
 		"text": "REST API"
 	},
 
+	"pipeline": {
+		"name": "newPipeline_06"
+	},
+
 	"organizationFolder" : {
 		"name" : "myFirstOrganizationForder",
 		"disable": "This Organization Folder is currently disabled",

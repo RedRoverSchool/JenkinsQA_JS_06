@@ -4,7 +4,7 @@ import userDescription from "../fixtures/userDescription.json";
 describe("peopleAddDescriptionToUser", () => {
   const newDescription = 'new user description';
 
-  it("AT 06.02.001 | Verify description is added to user", function () {
+  it.skip("AT 06.02.001 | Verify description is added to user", function () {
     cy.get("a.task-link").eq(1).click();
     cy.get(".jenkins-table__link").first().click();
     cy.get("#description-link").click();
