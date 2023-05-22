@@ -26,6 +26,6 @@ describe('myViewsCreateJob', () => {
     cy.get('.hudson_model_FreeStyleProject').click();
     cy.get('#ok-button').click();
     cy.get('h2#general').should('have.text', addJob.header);
-    cy.url().should('include', `/configure`);
+    cy.url().should('include', addJob.configurePageEndpoint);
   });
 });
