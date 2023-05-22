@@ -1,7 +1,8 @@
 /// <reference types="cypress"/>
 
+const USERNAME = Cypress.env('local.admin.username');
+
 describe("Profile Page", () => {
-  const USERNAME = Cypress.env('local.admin.username');
   let userNameInUrl;
   let userNameOnThePage;
 
