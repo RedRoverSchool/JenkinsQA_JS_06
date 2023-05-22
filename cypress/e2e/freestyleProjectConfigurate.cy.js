@@ -23,10 +23,10 @@ describe('FreestyleProjectConfigurateProject', () => {
 
     it('AT_12.05_004 | Add link on GitHub', () => {
         cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click();
-        cy.get('[href="job/MyProject1/"]').realHover();
-        cy.get('[href="job/MyProject1/"] .jenkins-menu-dropdown-chevron').click({force : true});
+        cy.get('.jenkins-table__link').realHover();
+        cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron').click({force : true});
         cy.get('#breadcrumb-menu').should('be.visible');
-        cy.get('[href="/job/MyProject1/configure"]').click();
+        cy.get('[href*="configure"]').click();
         cy.get('.jenkins-checkbox [name="githubProject"]').check({force : true});
         cy.get('input[name="_.projectUrlStr"]').type(configurePageData.gitHubProjectURL);
         cy.get('button[name="Submit"]').click();
@@ -34,7 +34,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]')
            .should('be.visible')
            .click();
-        cy.url().should('include', 'RedRoverSchool/JenkinsQA_JS_06/'); 
-        cy.get('.author').should('include.text', 'RedRoverSchool');
+        cy.url().should('be.eq', configurePageData.gitHubProjectURL); 
+        cy.get('.author').should('include.text', configurePageData.gitHeaderAuthor);
     })
 })
