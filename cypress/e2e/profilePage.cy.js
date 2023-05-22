@@ -38,7 +38,7 @@ describe("Profile Page", () => {
 
   it("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
     getUserNameOnThePage().then((nameOnPage) => {
-      const userNameOnThePage = nameOnPage;
+      userNameOnThePage = nameOnPage;
       cy.get("div[class*='login page-header']>a[href^='/user']").click();
       cy.get("div[id='main-panel'] h1")
         .should("exist")
