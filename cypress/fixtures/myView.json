@@ -19,5 +19,7 @@
             "url": "job/f2/",
             "name": "f2"
         }
-    ]
+    ],
+
+    "nameMyView": "MyTestView"
 }

@@ -35,6 +35,21 @@ describe('Header | User icon', () => {
             expect($el.text()).to.be.equal(expectedDropDownMenuItems[idx]);
         })
     })
+
+    it('AT_01.03_016 | <Header> User icon | Verify drop-down menu', () => {
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Builds').click();
+        cy.get('#breadcrumbs li.jenkins-breadcrumbs__list-item:nth-last-child(1)').should('have.text', 'Builds');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Configure').click();
+        cy.get('#breadcrumbs li.jenkins-breadcrumbs__list-item:nth-last-child(1)').should('have.text', 'Configure');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('My Views').click();
+        cy.get('.jenkins-breadcrumbs__list-item a[href$="my-views/"]').should('have.text', 'My Views');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Credentials').click();
+        cy.get('.jenkins-app-bar__content h1').should('have.text', 'Credentials');
+    })
 })
 
 

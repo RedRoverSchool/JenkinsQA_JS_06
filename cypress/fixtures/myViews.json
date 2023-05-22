@@ -1,0 +1,12 @@
+{
+    "projectNames": [
+        "Freestyle project",
+        "Pipeline",
+        "Multi-configuration project",
+        "Folder",
+        "Multibranch Pipeline",
+        "Organization Folder"
+    ],
+    "newViewPageURL": "/my-views/newView",
+    "newViewItemOnTopMenu": "New view"
+}

@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import createNewView from "../fixtures/createNewView.json"
+import myViews from "../fixtures/myViews.json"
 
 describe('myViewsCreateNewView', () => {
 
@@ -31,3 +32,22 @@ describe('myViewsCreateNewView', () => {
   })
 })
 
+describe('My Views Create New View', () => {
+
+  beforeEach('Create New Job', function () {
+      cy.get('a[href="/view/all/newJob"]').click();
+      cy.get('#name').type(myViews.projectNames[0]);
+      cy.get('.label').contains(myViews.projectNames[0]).click();
+      cy.get('#ok-button').click();
+      cy.get('button[name="Submit"]').click();
+      cy.contains('Dashboard').click();
+  });
+
+  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+      cy.get('a[href="/me/my-views"]').click();
+      cy.get('.addTab').should('be.visible').click();
+      cy.url().should('contain', myViews.newViewPageURL);
+      cy.title().should('eq', 'Jenkins');
+      cy.get('#breadcrumbs li:last-child').should('have.text', myViews.newViewItemOnTopMenu)
+  });
+});
