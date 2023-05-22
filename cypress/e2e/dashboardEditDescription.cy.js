@@ -1,16 +1,18 @@
 /// <reference types="cypress"/>
+import descriptions from "../fixtures/homePage.json"
 
-describe(`Dashboard Edit Description`, () => {
-    const text = 'Editing description check out'
+describe('Dashboard Edit Description', () => {
+  it('20.02 _001| Dashboard > Editing Description', () => {
+    cy.get('#description-link').contains(descriptions.add).click()
+    cy.get('.jenkins-input').type(descriptions.addDescription)
+    cy.get('button[name="Submit"]').contains(descriptions.save).click()
+    cy.get('#description div:first-of-type').should('have.text', descriptions.addDescription)
 
-    it(`Dashboard > Editing Description`, () => {
-        cy.get('#description-link').click()
-        cy.get('.jenkins-input')
-          .clear()
-          .type(text)
-        cy.get('button[name="Submit"]').contains('Save').click()
-        cy.get('#view-message').should('contain', text)
-    });
+    cy.get('#description-link').contains(descriptions.edit).click()
+    cy.get('.jenkins-input').clear().type(descriptions.editDescription)
+    cy.get('button[name="Submit"]').contains(descriptions.save).click()
+    cy.get('#description div:first-of-type').should('have.text', descriptions.editDescription)
+  });
 
 it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
   cy.get('[href="/view/all/newJob"] .task-icon-link').click();

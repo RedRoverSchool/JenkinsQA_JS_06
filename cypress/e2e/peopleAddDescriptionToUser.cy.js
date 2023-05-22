@@ -10,7 +10,7 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get("#description-link").click();
     cy.get(".jenkins-input").clear().type(userDescription.textDescription);
     cy.get(".jenkins-button").click();
-    cy.get("#description").should("include.text", userDescription.textDescription)
+    cy.get('#description div:nth-of-type(1)').should("have.text", userDescription.textDescription);
   });
 
   it.skip('AT_06.02_003 | Verify save button functionality', () => {

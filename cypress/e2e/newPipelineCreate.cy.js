@@ -41,4 +41,13 @@ describe('Create a new Pipeline', () => {
         cy.get("li:nth-child(1) > a").click();
         cy.get("[href$='FirstProject/']").should("have.text", "FirstProject");
     })
+    
+    it('Create new Pipeline', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('input#name').type('TestPipeline')
+        cy.get('span.label').contains('Pipeline').click()
+        cy.get('#ok-button').click()
+        cy.get('li.jenkins-breadcrumbs__list-item>a[href="/"]').click()
+        cy.get('table.jenkins-table').should('contain', 'TestPipeline')
+    })
 });
