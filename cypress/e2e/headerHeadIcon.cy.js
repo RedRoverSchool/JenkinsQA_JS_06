@@ -2,9 +2,10 @@
 
 describe('Header Head Icon', () => {
 
-    it('Verify that Head Icon is visible and clickable', () => {
+    it('AT_01.01_004 | Verify that Head Icon is visible and clickable', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#jenkins-home-link').should('be.visible').click()
-        cy.url().should('include', 'http://localhost:8080/')
+        cy.get('#main-panel h1').should('have.text', 'Welcome to Jenkins!')
     })
 
     it('AT_01.01_012 | Jenkins Header logo is visible and clickable', () => {
