@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import dashboardIcons from '../fixtures/dashboardIcons.json'
+
 describe ('Dashboard Icons S,M,L', ()=> {
     it ('Table size S', ()=> {
         cy.get('a[href="newJob"]').click()
@@ -18,8 +20,8 @@ describe ('Dashboard Icons S,M,L', ()=> {
     })
     it ('20.01_002_DashboardIcons_M', ()=> {
         cy.get('a[href="newJob"]').click()
-        cy.get('input#name').type('Project1')
-        cy.get('li[tabindex="0"] span').contains('Freestyle project').click()
+        cy.get('input#name').type(dashboardIcons.projectName)
+        cy.get('li[tabindex="0"] span').contains(dashboardIcons.item).click()
         cy.get('#ok-button').click()
         cy.get(':nth-child(1) > .model-link').click()
         
