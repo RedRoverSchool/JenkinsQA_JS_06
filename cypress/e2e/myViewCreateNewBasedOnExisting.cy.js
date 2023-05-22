@@ -8,7 +8,7 @@ describe('myViewCreateNewBasedOnExisting', () => {
     function createFolder(name) {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(name);
-        cy.get('span.label').contains('Folder').click();
+        cy.get('span.label').contains(myView.folder).click();
         cy.get('#ok-button').click()
         cy.get('button[name=Submit]').click();
     }
@@ -16,7 +16,7 @@ describe('myViewCreateNewBasedOnExisting', () => {
     function createFreestyleJobsInTHeFolder(jobName, folderName) {
         cy.get(`[href="/job/${folderName}/newJob"]`).click();
         cy.get('#name').type(jobName);
-        cy.get('span.label').contains('Freestyle project').click();
+        cy.get('span.label').contains(myView.freestyleProject).click();
         cy.get('#ok-button').click();
         cy.get('button[name=Submit]').click();
         cy.get('a[href*="/job/"]').contains(folderName).click();    
@@ -27,9 +27,9 @@ describe('myViewCreateNewBasedOnExisting', () => {
         createFreestyleJobsInTHeFolder(myView.JobName1, myView.FolderName1); 
         createFreestyleJobsInTHeFolder(myView.JobName2, myView.FolderName1); 
         createFreestyleJobsInTHeFolder(myView.JobName3, myView.FolderName1);        
-        cy.get('a[href="/"]').contains('Dashboard').click();
+        cy.get('a[href="/"]').contains(myView.dashboard).click();
         createFolder(myView.FolderName2);
-        cy.get('a[href="/"]').contains('Dashboard').click();
+        cy.get('a[href="/"]').contains(myView.dashboard).click();
     })
 
     it('AT_09.01_004 | <My Views>Create new view with Job Filters to add jobs from an existing View', () => {
