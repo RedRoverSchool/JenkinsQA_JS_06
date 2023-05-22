@@ -9,5 +9,7 @@
     "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
     "descriptionPipeLine" : "Pipeline Description",
     "additionalDescriptionPipeline" : " second",
-    "pipelineJob": "Pipeline"
+    "pipelineJob": "Pipeline",
+    "textForNewItem":"New Item",
+    "textForDeleteProject" : "Delete Pipeline"
 }
