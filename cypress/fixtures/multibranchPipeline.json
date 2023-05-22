@@ -13,5 +13,10 @@
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
-  }
+  },
+  
+  "newItem" : "New Item",
+  "multibranchPipeline" : "Multibranch Pipeline",
+  "savePipelineButton" : "Save",
+  "projectName" : "projectName"
 }
