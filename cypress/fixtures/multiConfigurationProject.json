@@ -1,0 +1,20 @@
+{
+    "sideMenuItems": [
+        "Status",
+        "Changes", 
+        "Workspace",
+        "Build Now", 
+        "Configure",
+        "Delete Multi-configuration project", 
+        "Rename"
+        ],
+        
+        "dropdownItems": [
+            "Changes", 
+            "Workspace",
+            "Build Now" ,
+            "Configure" , 
+            "Delete Multi-configuration project", 
+            "Rename"
+            ]
+}

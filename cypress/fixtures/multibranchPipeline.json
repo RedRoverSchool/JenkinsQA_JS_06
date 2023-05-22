@@ -1,4 +1,17 @@
 {
   "enableMessage": "This Multibranch Pipeline is currently disabled",
-  "addMetrics": ["Child item with worst health", "Health of the primary branch of a repository"]
+  "addMetrics": ["Child item with worst health", "Health of the primary branch of a repository"],
+  "newMultiPipeline": "Multibranch_Pipeline",
+  "messageDisable": "Disable Multibranch Pipeline",
+  "itemToCreate" : "Multibranch Pipeline",
+  "enableMessageColor" : "rgb(254, 130, 10)",
+  "enableButton" : "Enable",
+  "enableButtonColor" : "rgb(255, 255, 255)",
+  "disableButton" : "Disable Multibranch Pipeline",
+  "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
+
+  "titles" : {
+    "multiBranchPipeline" : "Multibranch Pipeline",
+    "folder" : "Folder"
+  }
 }

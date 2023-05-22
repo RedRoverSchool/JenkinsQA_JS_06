@@ -1,5 +1,8 @@
 {
     "addDescriptionProject": "Project DemoQA",
     "addNewDescriptionProject": "Project Jenkins",
-    "editDescriptionProject": " - QA JS 06"
+    "editDescriptionProject": " - QA JS 06",
+    "addDescriptionButtonText": "Add description",
+    "saveButtonText": "Save",
+    "editDescriptionButtonText": "Edit description"
 }

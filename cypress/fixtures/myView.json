@@ -1,0 +1,25 @@
+{
+    "FolderName1": "f1",
+    "FolderName2": "f2",
+    "ViewName1": "view1",
+    "JobName1": "job1",
+    "JobName2": "job2",
+    "JobName3": "job3",
+
+    "jobFilter": [
+        {
+            "url": "job/f1/job/job1/",
+            "name": "f1 » job1"
+        },
+        {
+            "url": "job/f1/job/job3/",
+            "name": "f1 » job3"
+        },
+        {
+            "url": "job/f2/",
+            "name": "f2"
+        }
+    ],
+
+    "nameMyView": "MyTestView"
+}

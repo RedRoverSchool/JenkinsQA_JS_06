@@ -4,11 +4,11 @@ import projects from '../fixtures/projects.json';
 import headers from '../fixtures/headers.json';
 
 describe('Header Search Box', () => {
-  xit('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
+  it('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
-  xit('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
+  it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
     cy.get('.main-search__icon-trailing')
       .invoke('removeAttr', 'target')
       .click();
@@ -64,5 +64,41 @@ describe('Header Search Box', () => {
     .and('have.attr', 'placeholder')
     .and('contain', 'Search')
     .and('contain', '+K')
-});
+  });
+
+  it('AT_01.02.18_Header_Search_box', () => {
+    cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
+})
+
+  it('AT_01.02.022 | Search box text placeholder is visible', () =>{
+    cy.get('#search-box')
+    .should('be.visible')
+    .and('have.attr','placeholder','Search (CTRL+K)')
+  })
+
+  it('AT_01.02_025 | Accessibility of the search field from the every page', () => {
+    cy.get('#searchform').should('be.visible')
+    cy.get('a[href="/view/all/newJob"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/asynchPeople/"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/view/all/builds"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu a[href="/manage"]').click()
+    cy.get('#searchform').should('be.visible')
+
+    cy.get('#breadcrumbs a[href="/"]').realHover() 
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').first().click()
+    cy.get('#breadcrumb-menu a[href="/me/my-views"]').click()
+    cy.get('#searchform').should('be.visible')
+  });
 });
