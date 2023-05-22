@@ -31,5 +31,7 @@
 		"advancedOptionsField": ["Display Name"]
 	},
 	
-	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  
+	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"],
+	
+	"newProject" : "New project"
 }
