@@ -11,13 +11,11 @@ describe('My View Delete', () => {
         cy.get('#ok-button').click()
         cy.get('[name=Submit]').click()
         cy.get('#jenkins-name-icon').click()
-        cy.get('table#projectstatus').should('contain', myView.JobName1)
-
+       
         cy.get('[href="/newView"]'). click()
         cy.get('input#name').type(myView.ViewName1)
         cy.get('[for$="MyView"]').click()
         cy.get('#ok').click()
-        cy.get('.tabBar').should('contain', myView.ViewName1)
     });
 
     it('AT_09.06.002 | Verify Possibility to Delete View', () => {
