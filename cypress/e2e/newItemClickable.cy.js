@@ -11,4 +11,5 @@ describe('New Item |Items Names and Icons', () => {
         cy.url().should('contain','/all/newJob');
         cy.get('.add-item-name').should('contain','Enter an item name');
     })
+    
 })
