@@ -52,7 +52,7 @@ describe('<New Item> Create a new Organization Folder', () => {
         cy.get('#ok-button').click();
         cy.get('#scan-organization-folder-triggers').should('be.visible');
         cy.get('form[name=config] input[name$=displayNameOrNull]').type(projects.forOrganizationFolder.displayName);
-        cy.get('form[name=config] textarea[name$=description]').type(projects.forOrganizationFolder.Description);
+        cy.get('form[name=config] textarea[name$=description]').type(projects.forOrganizationFolder.description);
         cy.get('button[name=Submit]').click();
         cy.get('#main-panel h1').should('have.text',`\n    ${projects.forOrganizationFolder.displayName}\n  `);
     })
