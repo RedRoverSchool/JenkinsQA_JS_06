@@ -97,6 +97,15 @@ describe('Header User configure', () => {
         cy.get('#main-panel').should('be.visible')
     })
 
+    it('AT_01.05_011 | Header>Redirect to User Configure Page', () => {
+        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
+          .realHover()
+          .click({force: true});
+        cy.get('#yui-gen2').click();
+        cy.get("li[aria-current='page']").should('have.text', 'Configure');
+    })
+
+
     it('AT_01.05_12 | Verify User can configure user account', () => {
         cy.get('a[href^="/user/"] button[class="jenkins-menu-dropdown-chevron"]').realHover().click()
         cy.get('#yui-gen2').click()

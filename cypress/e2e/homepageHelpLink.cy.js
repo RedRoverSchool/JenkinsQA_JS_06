@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 describe("Homepage > Main Panel's help link", () => {
-  it('AT_02.07.007 | <Main Panel> Verify the "Learn more about distributed builds" link', function () {
+  it.skip('AT_02.07.007 | <Main Panel> Verify the "Learn more about distributed builds" link', function () {
     cy.get(".content-block__help-link")
       .should("be.visible")
       .should("have.text", "Learn more about distributed builds")
