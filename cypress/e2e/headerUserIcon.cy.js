@@ -117,4 +117,10 @@ describe('Header User Icon', () => {
         })
           .should('deep.equal', userIconMenuItems.userMenuItems)
     });
+
+    it('AT_01.03_024 | Header | User icon is visible and clickable', () => {
+        cy.get('.login .model-link').should('be.visible').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+    })
+
 });
