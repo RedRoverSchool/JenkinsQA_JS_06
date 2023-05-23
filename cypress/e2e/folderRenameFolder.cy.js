@@ -28,11 +28,11 @@ describe('Folder rename folder', () => {
         cy.get('#main-panel > h1').should('contain', createFolder.folderName + 'CHANGED');
     });
 
-    it.only('AT_15.06_002 | Folder> Same name Error message if renaming Folder by dropdown menu' , () => {
+    it('AT_15.06_002 | Folder> Same name Error message if renaming Folder by dropdown menu' , () => {
         cy.get('#breadcrumbs > li:nth-child(1) > a').click();
         cy.get('tbody tr td a.jenkins-table__link')
             .should('be.visible')
-            .should('have.text', createFolder.folderName)
+            .and('have.text', createFolder.folderName)
             .realHover()
         cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').should('be.visible').click()
         cy.contains('div#breadcrumb-menu ul li a', 'Rename').should('be.visible').click();
