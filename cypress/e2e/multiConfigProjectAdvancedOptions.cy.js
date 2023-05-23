@@ -62,7 +62,6 @@ describe('Multi Config Project Advanced Options', () => {
 					.should('be.visible')
 					.and('be.enabled')
 			})
-
 		})
 	});
 
