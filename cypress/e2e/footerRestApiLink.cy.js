@@ -14,6 +14,7 @@ describe('footerRestApiLink', () => {
 
     it('AT_03.007 | Footer | Link REST API Redirect', () => {
         cy.get('.page-footer a[href="api/"]').invoke('removeAttr', 'target').click()
+        
         cy.url().should('equal', `http://localhost:${LOCAL_PORT}/api/`)
         cy.title().should('equal', 'Remote API [Jenkins]')
     })
