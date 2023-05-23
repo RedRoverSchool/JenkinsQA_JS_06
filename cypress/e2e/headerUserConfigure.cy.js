@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-
+import userDescription from '../fixtures/userDescription.json'
 describe('Header User configure', () => {
     Cypress.Commands.add('navigateUserConfigurationPage', () => {
         cy.get('.login .model-link').should('be.visible');
@@ -94,4 +94,13 @@ describe('Header User configure', () => {
         cy.get(`${saveButton}`).click()
         cy.get('#main-panel').should('be.visible')
     })
+
+    it('AT_01.05_011 | Header>Redirect to User Configure Page', () => {
+        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
+          .realHover()
+          .click({force: true});
+        cy.get('#yui-gen2').click();
+        cy.get("li[aria-current='page']").should('have.text', 'Configure');
+    })
+
 });
