@@ -109,4 +109,9 @@ describe('Header User Icon', () => {
         cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
         cy.get('#main-panel > :nth-child(4)').should('include.text',headerIcon.userJenkins)
     })
+
+    it('AT_01.03_024 | Header | User icon is visible and clickable', () => {
+        cy.get('.login .model-link').should('be.visible').click({force:true})
+        cy.url().should('contain', '/user/alexviktoria/')
+    })
 })
