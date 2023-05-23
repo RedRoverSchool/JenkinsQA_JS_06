@@ -2,7 +2,7 @@
 import {newItem, multibranchPipeline, savePipelineButton, projectName} from '../fixtures/multibranchPipeline.json'
 describe('Delete Multibranch Pipeline', () => {
     
-    beforeEach('AT_16.03_002 | Delete Multibranch Pipeline', () => {
+    beforeEach('Delete Multibranch Pipeline', () => {
         cy.contains(newItem).click()
         cy.get('#name').type(projectName)
         cy.contains(multibranchPipeline).click()
@@ -12,7 +12,7 @@ describe('Delete Multibranch Pipeline', () => {
         cy.contains(projectName).should('exist')
     })  
        
-    it('Delete Multibranch Pipeline throw dropDown menu', () => {
+    it('AT_16.03_002 | <Multibranch Pipeline> Delete Multibranch Pipeline', () => {
         cy.get('#jenkins-name-icon').click()
         cy.get('.jenkins-table__link > span').should('have.text',projectName).realHover({ position: "center" })
         cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').click()
