@@ -11,5 +11,13 @@ describe('Side panel sub menu', () => {
             })
             .should('deep.equal', dashboardDropdownItems)
     })
+
+    it('AT_02.04_008 | Homepage(Dashboard) > Verify 5 items from the sub-menu', () => { 
+        cy.get('.task-link-text')
+            .should('have.length', dashboardDropdownItems.length)
+            .each((el, idx) => {
+                expect(el.text()).to.be.equal(dashboardDropdownItems[idx])
+            })      
+    })
 })
 
