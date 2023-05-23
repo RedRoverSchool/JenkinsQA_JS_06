@@ -72,5 +72,4 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get('.icon-pipeline-multibranch-project').should('have.attr', 'title', itemName.projectNames[4])
         cy.get('.jenkins-table__link').should('have.text', pipelineName.namePipeline)
     });
-
 });
