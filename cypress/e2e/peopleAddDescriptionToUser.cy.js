@@ -1,15 +1,17 @@
 /// <reference types="cypress"/>
 import userDescription from "../fixtures/userDescription.json";
 
+const USERNAME = Cypress.env('local.admin.username');
+
 describe("peopleAddDescriptionToUser", () => {
   const newDescription = 'new user description';
 
   it("AT 06.02.001 | Verify description is added to user", function () {
     cy.get("a.task-link").eq(1).click();
-    cy.get("#people a[href*='/user/']").first().click();
+    cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click();
     cy.get("#description-link").click();
     cy.get(".jenkins-input").clear().type(userDescription.textDescription);
-    cy.get(".jenkins-button").click();
+    cy.get("button[name='Submit']").click();
     cy.get('#description div:nth-of-type(1)').should("have.text", userDescription.textDescription);
   });
 
