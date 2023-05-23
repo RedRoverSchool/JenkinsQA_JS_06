@@ -60,4 +60,17 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get('.jenkins-table__link').should('have.text', pipelineName.namePipeline)
     });
 
+    it('AT_16.04 _004| Moving the Multibranch Pipeline to an existing folder from the left sidebar', function () {
+        cy.get('#jenkins-home-link').click()
+        cy.get(`a[href="job/${pipelineName.namePipeline}/"]`).click()
+        cy.get('a[href$="move"]').click()
+        cy.get('.setting-input').select(`Jenkins » ${folderName.nameOrganizationFolder}`)
+        cy.get('button[name="Submit"]').click()
+        cy.get('#jenkins-home-link').click()
+        cy.get(`a[href="job/${folderName.nameOrganizationFolder}/"]`).click()
+        cy.get('#main-panel h1').should('include.text', folderName.nameOrganizationFolder)
+        cy.get('.icon-pipeline-multibranch-project').should('have.attr', 'title', itemName.projectNames[4])
+        cy.get('.jenkins-table__link').should('have.text', pipelineName.namePipeline)
+    });
+
 });
