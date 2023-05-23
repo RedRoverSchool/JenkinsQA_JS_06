@@ -8,5 +8,8 @@
     "confirmationOfDeleting" : "Delete Pipeline: are you sure?",
     "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
     "descriptionPipeLine" : "Pipeline Description",
-    "additionalDescriptionPipeline" : " second"
+    "additionalDescriptionPipeline" : " second",
+    "pipelineJob": "Pipeline",
+    "textForNewItem":"New Item",
+    "textForDeleteProject" : "Delete Pipeline"
 }
