@@ -37,4 +37,15 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.url().should('be.eq', configurePageData.gitHubProjectURL); 
         cy.get('.author').should('include.text', configurePageData.gitHeaderAuthor);
     })
+
+    it.only('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
+        cy.get('#tasks .task:nth-child(6)').click()
+        cy.get('button#yui-gen9-button').click()
+        cy.get('#yui-gen10 [id^="yui-gen"]').then(($els) => {
+            const builder = Cypress.$.makeArray($els).filter($el => $el.innerText == 'Execute Windows batch command')
+            return cy.wrap(builder) 
+        }).click()
+        cy.get('[name="builder"]').should('exist')
+
+    })
 })
