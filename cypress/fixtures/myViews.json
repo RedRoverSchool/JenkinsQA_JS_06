@@ -20,5 +20,7 @@
         "myView": "My View"
     },
 
-    "tabAllViews": "All"
+    "tabAllViews": "All",
+
+    "editedDescription": "New Description"
 }
