@@ -41,6 +41,7 @@ describe('FreestyleProjectConfigurateProject', () => {
 
     it('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
         cy.get('#tasks .task:nth-child(6)').click()
+        cy.get('#tasks :nth-child(5) button').click()
         configure.addBuildStep.forEach(builderOption => {
             cy.get('button#yui-gen9-button').click()
             cy.get('#yui-gen10 [id^="yui-gen"]').then(($els) => {

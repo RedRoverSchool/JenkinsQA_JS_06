@@ -9,7 +9,7 @@
         "Invoke Gradle script",
         "Invoke top-level Maven targets",
         "Run with timeout",
-        "Set build status to 'pending' on GitHub commit"
+        "Set build status to \"pending\" on GitHub commit"
     ]
 
 }
