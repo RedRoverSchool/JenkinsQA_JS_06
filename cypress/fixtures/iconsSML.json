@@ -2,5 +2,22 @@
     "checkForTablePadding" : "--table-padding",
     "sRem" : "0.2rem",
     "mRem" : "0.4rem",
-    "lRem" : "0.55rem"
+    "lRem" : "0.55rem",
+    "setOfIcons" : [
+        {
+            "nameOfIcon" : "S",
+            "locatorOfIcon" : "Small",
+            "remValue" : "0.2rem"
+        },
+        {
+            "nameOfIcon" : "M",
+            "locatorOfIcon" : "Medium",
+            "remValue" : "0.4rem"
+        },
+        {
+            "nameOfIcon" : "L",
+            "locatorOfIcon" : "Large",
+            "remValue" : "0.55rem"
+        }
+    ]
 }

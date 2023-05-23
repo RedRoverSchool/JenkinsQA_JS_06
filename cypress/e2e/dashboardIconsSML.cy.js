@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 import pipelineName from '../fixtures/pipelineName.json'
 import iconsSML from "../fixtures/iconsSML.json"
+import {setOfIcons} from "../fixtures/iconsSML.json"
 
 describe('Dashboard | Icons S,M,L', () => {
     beforeEach('Create one job', () => {
@@ -13,33 +14,15 @@ describe('Dashboard | Icons S,M,L', () => {
         cy.get('[class="jenkins-table__link model-link inside"] span').contains(pipelineName.newPipelineName).should('exist')
     })
 
-    it('AT_20.01_004 |Dashboard| Icon S', () => {
-        cy.get('[tooltip="Small"]').click()
-        cy.get('#projectstatus').then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding))
-                    .should('eq',iconsSML.sRem)
-            })
+    setOfIcons.forEach((obj)=>{
+        it(`AT_20.01_004 | AT_20.01_005 | AT_20.01_006 |Dashboard| Icon ${obj.nameOfIcon} `, () => {
+            cy.get(`[tooltip="${obj.locatorOfIcon}"]`).click()
+            cy.get('#projectstatus').then((data) => {
+                cy.document().then(() => {
+                    cy.wrap(data).then($el => window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding))
+                    .should('eq',`${obj.remValue}`)
+                })
+                })
         })
-    })
-    
-    it('AT_20.01_005 |Dashboard| Icon M', () => {
-        cy.get('[tooltip="Medium"]').click()
-        cy.get('#projectstatus').then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding))
-                    .should('eq',iconsSML.mRem)
-            })
-        })
-    })
-
-    it('AT_20.01_006 |Dashboard| Icon L', () => {
-        cy.get('[tooltip="Large"]').click()
-        cy.get('#projectstatus').then((obj) => {
-            cy.document().then(() => {
-                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding))
-                    .should('eq',iconsSML.lRem)
-            })
-        })
-    })
+    }) 
 })
