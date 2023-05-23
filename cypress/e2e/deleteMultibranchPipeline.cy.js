@@ -2,7 +2,7 @@
 import {newItem, multibranchPipeline, savePipelineButton, projectName} from '../fixtures/multibranchPipeline.json'
 describe('Delete Multibranch Pipeline', () => {
     
-    beforeEach('Creat Multibranch Pipeline', () => {
+    beforeEach('AT_16.03_002 | Delete Multibranch Pipeline', () => {
         cy.contains(newItem).click()
         cy.get('#name').type(projectName)
         cy.contains(multibranchPipeline).click()
