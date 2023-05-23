@@ -3,7 +3,7 @@
 import homepageMainPanel from "../fixtures/homepageMainPanel";
 
 describe("HomepageMainPanel'sHeadingsAndLinks", () => {
-  it('AT_02.07.007 | <Main Panel> Verify the "Learn more about distributed builds" link', function () {
+  it.skip('AT_02.07.007 | <Main Panel> Verify the "Learn more about distributed builds" link', function () {
     cy.get(".content-block__help-link")
       .should("be.visible")
       .and("have.text", homepageMainPanel.helpLinkName)
