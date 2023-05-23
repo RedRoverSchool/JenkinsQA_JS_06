@@ -38,7 +38,7 @@ describe("Profile Page", () => {
 
   it("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
     getUserNameOnThePage().then((nameOnPage) => {
-      const userNameOnThePage = nameOnPage;
+      userNameOnThePage = nameOnPage;
       cy.get("div[class*='login page-header']>a[href^='/user']").click();
       cy.get("div[id='main-panel'] h1")
         .should("exist")
@@ -46,6 +46,14 @@ describe("Profile Page", () => {
         .then((text) => {
           expect(text.trim()).to.equal(userNameOnThePage);
         });
+    });
+  });
+
+  it("AT_18.01_004 | Profile Page | Verify User ID on the page", function () {
+    getUserNameInUrl().then((nameInUrl) => {
+      userNameInUrl = nameInUrl;
+      cy.get("div[class*='login page-header']>a[href^='/user']").click();
+      cy.get("div[id='main-panel']>div:nth-of-type(2)").should("contain", userNameInUrl);
     });
   });
 
