@@ -101,4 +101,9 @@ describe('Header Search Box', () => {
     cy.get('#breadcrumb-menu a[href="/me/my-views"]').click()
     cy.get('#searchform').should('be.visible')
   });
+  
+  it('AT_01.02.026 | Search box is not available for not logged in users ', () =>{
+    cy.get('a[href="/logout"]').click();
+    cy.get('#searchform').should('not.exist'); 
+  });
 });
