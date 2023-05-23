@@ -67,7 +67,7 @@ describe('BreadcrumbsMenu', () => {
    it('AT_04.02_008 | Verify Dashboard dropdown Manage Jenkins submenu content', () => {
       cy.get('#breadcrumbBar').contains('Dashboard').realHover()
       cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
-      cy.get('#breadcrumb-menu>.bd>ul>li').contains('Manage Jenkins').trigger('focus')
+      cy.get('#breadcrumb-menu>.bd>ul>li').contains(homePage.dashboardDropdownItems[4]).trigger('focus')
       cy.get('#submenu0 >.bd > ul > li:not(.yuimenuitem-disabled) span').then(($els) => {
          let actualSubmenuContentNames = $els.toArray().map($el => $el.textContent)
          expect(actualSubmenuContentNames).to.deep.equal(homePage.dashboardSubmenuManageJenkinsDropdownItems)
