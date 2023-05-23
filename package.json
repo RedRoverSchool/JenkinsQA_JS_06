@@ -12,6 +12,6 @@
     "cypress": "^12.11.0"
   },
   "dependencies": {
-    "cypress-real-events": "^1.7.6"
+    "cypress-real-events": "^1.8.1"
   }
 }
