@@ -1,15 +1,17 @@
 /// <reference types="cypress"/>
 
-describe("Homepage > Main Panel", () => {
+import homepageMainPanelLinkData from "/fixtures/homepageMainPanelLinkData";
+
+describe("homepageConfigureACloudLink", () => {
   it('AT_02.07.006 | <Main Panel> Verify the "Configure a cloud" link in the "Set up a distributed build" section', function () {
     cy.get('.content-block a[href="configureClouds"]')
       .should("be.visible")
-      .should("have.text", "Configure a cloud")
+      .and("have.text", homepageMainPanelLinkData.linkName)
       .click();
-    cy.url().should("include", "configureClouds");
+    cy.url().should("include", homepageMainPanelLinkData.linkEndPoint);
     cy.get(".jenkins-app-bar__content > h1").should(
       "have.text",
-      "Configure Clouds"
+      homepageMainPanelLinkData.newPageHeading
     );
   });
 });
