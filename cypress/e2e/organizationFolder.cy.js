@@ -6,6 +6,7 @@ import { nameOrganizationFolder } from '../fixtures/organizationFolderNames.json
 describe('organizationFolder', function () {
 
     beforeEach('Create two folders', function () {
+        
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('.com_cloudbees_hudson_plugins_folder_Folder').click()
         cy.get('#name').type(folderName)
