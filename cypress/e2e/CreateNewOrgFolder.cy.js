@@ -56,5 +56,4 @@ describe('<New Item> Create a new Organization Folder', () => {
         cy.get('button[name=Submit]').click();
         cy.get('#main-panel h1').should('have.text',`\n    ${projects.forOrganizationFolder.displayName}\n  `);
     })
-    
 })
