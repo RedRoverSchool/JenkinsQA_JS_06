@@ -106,4 +106,8 @@ describe('Header Search Box', () => {
     cy.get('a[href="/logout"]').click();
     cy.get('#searchform').should('not.exist'); 
   });
+
+  it('AT_01.02_023 | Validation of the Search box', ()=> { 
+    cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
+  });
 });
