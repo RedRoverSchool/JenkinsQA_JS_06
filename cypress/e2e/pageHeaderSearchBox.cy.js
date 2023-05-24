@@ -12,6 +12,6 @@ describe('pageHeaderSearchBox', () => {
     });
     it('AT_01.02_010 verify Search Box is visible on the People page', function () {
         cy.get('.task  a[href="/asynchPeople/"]').click()
-        cy.get('#searchform').should('be.visible').click()
+        cy.get('#searchform').should('be.visible')
     });
 });
