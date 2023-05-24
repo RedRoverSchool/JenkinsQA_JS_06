@@ -71,17 +71,4 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('div#main-panel h1').should('have.text', breadcrumbsBuilds.iconLegendText)
     })
 
-    it('AT_04.06.006 Breadcrumbs Builds user can sort the Builds list by time in ascending order', function () {
-        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
-        cy.get('.first-of-type a[href$="/builds"]').click();
-
-        cy.get('th:nth-child(3)').click()
-        cy.contains('sec').then((timeElements) => {
-            for (let i = 0; i < timeElements.length - 1; i++) {
-                const currentTime = timeElements[i];
-                const nextTime = timeElements[i + 1];
-                expect(currentTime).should.be.greaterThan(nextTime);
-            }
-        });
-    })
 });

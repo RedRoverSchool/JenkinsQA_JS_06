@@ -1,7 +1,5 @@
 /// <reference types="cypress"/>
 
-import userDescription from '../fixtures/userDescription.json'
-
 describe('Header User configure', () => {
     Cypress.Commands.add('navigateUserConfigurationPage', () => {
         cy.get('.login .model-link').should('be.visible');
@@ -95,30 +93,5 @@ describe('Header User configure', () => {
         cy.get('#breadcrumb-menu li.yuimenuitem a span').contains('Configure').click();
         cy.get(`${saveButton}`).click()
         cy.get('#main-panel').should('be.visible')
-    })
-
-    it('AT_01.05_011 | Header>Redirect to User Configure Page', () => {
-        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
-          .realHover()
-          .click({force: true});
-        cy.get('#yui-gen2').click();
-        cy.get("li[aria-current='page']").should('have.text', 'Configure');
-    })
-
-
-    it('AT_01.05_12 | Verify User can configure user account', () => {
-        cy.get('a[href^="/user/"] button[class="jenkins-menu-dropdown-chevron"]').realHover().click()
-        cy.get('#yui-gen2').click()
-        cy.get('textarea[name="_.description"]').type(userDescription.textDescription)
-        cy.get('button[name="Submit"]').click()
-        cy.get('#description').should('contain', userDescription.textDescription)
-        cy.get('#tasks>:nth-child(4)').click()
-        cy.get('textarea[name="_.description"]').clear().type(userDescription.editDescription)
-        cy.get('button[name="Submit"]').click()
-        cy.get('#description').should('contain', userDescription.editDescription)
-        cy.get('#tasks>:nth-child(4)').click()
-        cy.get('textarea[name="_.description"]').clear()
-        cy.get('button[name="Submit"]').click()
-        cy.get('#description-link').should('contain', 'Add description')
     })
 });

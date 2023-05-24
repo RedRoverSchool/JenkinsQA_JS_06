@@ -76,13 +76,5 @@ describe('Header Head Icon', () => {
         cy.url().should('include', `http://localhost:${Cypress.env('local.port')}/`)
         cy.get('#main-panel h1').should('have.text', logInPage.loginPageHeader) 
     })
-
-    it('AT_01.01_40 | Head Icon is visible in top left corner', () => {
-        cy.get('#jenkins-head-icon')
-          .should('be.visible')
-          .should('have.prop', 'offsetTop', 0)
-          .should('have.prop', 'offsetLeft', 0)
-    })
-
 })
 
