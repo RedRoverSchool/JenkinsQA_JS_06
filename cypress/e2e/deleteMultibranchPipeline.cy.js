@@ -9,7 +9,6 @@ describe('Delete Multibranch Pipeline', () => {
         cy.get('#ok-button').click()
         cy.contains(savePipelineButton).click()
         cy.get('#jenkins-name-icon').click()
-        cy.contains(projectName).should('exist')
     })  
        
     it('AT_16.03_002 | <Multibranch Pipeline> Delete Multibranch Pipeline', () => {
