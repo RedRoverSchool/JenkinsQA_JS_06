@@ -6,5 +6,6 @@
   "projectHeader": "Project My Project",
   "configurePageEndpoint": "/configure",
   "description": "Test description",
-  "itemName": "Enter an item name"
+  "itemName": "Enter an item name",
+  "headerProject": "Project "
 }
