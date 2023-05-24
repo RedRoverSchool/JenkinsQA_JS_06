@@ -24,4 +24,18 @@ describe('freestyleProjectPage', () => {
                 expect(actual).to.be.deep.equal(pages.sidePanel)
             })
     })
+
+    it('AT_12.01.004 |Freestyle project > Verify option add and delete description', () => {
+        creatFreestyleProject()
+        
+        cy.get('#description-link').should('be.visible').click()
+        cy.get('textarea[name="description"]').clear().type(pages.text)
+        cy.get('button[class="jenkins-button jenkins-button--primary "]').click()
+        cy.get('#description div:nth-child(1)').should('have.text', pages.text)
+        cy.get('a[href="editDescription"]').click()
+        cy.get('textarea[name="description"]').clear()
+        cy.get('button[class="jenkins-button jenkins-button--primary "]').click()
+
+        cy.get('#description div:nth-child(1)').should('not.have.text', pages.text).and('be.empty')
+     })
 })

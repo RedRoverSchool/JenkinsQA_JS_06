@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import logInPage from "../fixtures/logInPage.json"
 
 describe('Header Head Icon', () => {
 
@@ -14,6 +15,12 @@ describe('Header Head Icon', () => {
         cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)
     })
 
+    it('AT_01.01_37 | Head icon is visible, clickable', ()=>{
+        cy.get("a[href='/asynchPeople/']").click()
+        cy.get('#jenkins-home-link').should('be.visible').click()
+        cy.url().should('eq','http://localhost:8080/')
+    })
+  
     it('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({ force: true });
         cy.get('div h1').should('exist')
@@ -61,5 +68,21 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-name-icon').click();
         cy.get('h1').should('have.text','Welcome to Jenkins!').and('be.visible');
     })
+
+    it('AT_01.01_41 | Header - Head Icon is visible, clickable and redirects to the home page', () => {
+        cy.get('[href="/asynchPeople/"]').click()
+        cy.get('#main-panel h1').should('include.text', 'People')
+        cy.get('.logo #jenkins-head-icon').should('be.visible').click()
+        cy.url().should('include', `http://localhost:${Cypress.env('local.port')}/`)
+        cy.get('#main-panel h1').should('have.text', logInPage.loginPageHeader) 
+    })
+
+    it('AT_01.01_40 | Head Icon is visible in top left corner', () => {
+        cy.get('#jenkins-head-icon')
+          .should('be.visible')
+          .should('have.prop', 'offsetTop', 0)
+          .should('have.prop', 'offsetLeft', 0)
+    })
+
 })
 

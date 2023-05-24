@@ -4,5 +4,6 @@
         "projectHealth": "Project Health"
     },
     "newItemHeader" : "Enter an item name",
-    "searchText": "Text"
+    "searchText": "Text",
+    "generalHeader": "General"
 }

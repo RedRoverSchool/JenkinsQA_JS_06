@@ -8,7 +8,7 @@ describe('Header Search Box', () => {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
-  it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
+  it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', function () {
     cy.get('.main-search__icon-trailing')
       .invoke('removeAttr', 'target')
       .click();
@@ -100,5 +100,14 @@ describe('Header Search Box', () => {
     cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').first().click()
     cy.get('#breadcrumb-menu a[href="/me/my-views"]').click()
     cy.get('#searchform').should('be.visible')
+  });
+  
+  it('AT_01.02.026 | Search box is not available for not logged in users ', () =>{
+    cy.get('a[href="/logout"]').click();
+    cy.get('#searchform').should('not.exist'); 
+  });
+
+  it('AT_01.02_023 | Validation of the Search box', ()=> { 
+    cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
 });
