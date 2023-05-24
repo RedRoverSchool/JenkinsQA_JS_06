@@ -20,14 +20,14 @@ beforeEach('create2folders', function () {
 describe('Move Organization Folder', () => {
     it('AT_17.04.003 | Move Organization Folder', function () {
       cy.get('.jenkins-table__link').contains(names.orgFolderName).realHover();
-      cy.get('[href="job/OrgFolder/"]').click();
+      cy.get(`[href="job/${names.orgFolderName}/"]`).click();
       cy.contains(names.tabMove).click()
-      cy.get('[name="destination"]').realHover().select(names.moveToFolder);
+      cy.get('[name="destination"]').realHover().select(`/${names.folderName}`);
       cy.get('.jenkins-button[name="Submit"]').click();
-      cy.get ('.model-link[href="/job/Folder/"]').click();
-      cy.get('[href="job/OrgFolder/"]').should('exist')
+      cy.get (`.model-link[href="/job/${names.folderName}/"]`).click();
+      cy.get(`[href="job/${names.orgFolderName}/"]`).should('exist')
       cy.get('#jenkins-home-link').click();
-      cy.get('[href="job/OrgFolder/"]').should('not.exist');
+      cy.get(`[href="job/${names.orgFolderName}/"]`).should('not.exist');
 
     });
     });
