@@ -7,6 +7,26 @@
         "My Views"
     ],
 
+    "dashboardSubmenuManageJenkinsDropdownItems" : [
+        "Configure System", 
+        "Global Tool Configuration", 
+        "Manage Plugins", 
+        "Manage Nodes and Clouds",  
+        "Configure Global Security", 
+        "Credentials", 
+        "Credential Providers", 
+        "Manage Users", 
+        "System Information", 
+        "System Log", 
+        "Load Statistics", 
+        "About Jenkins", 
+        "Manage Old Data", 
+        "Reload Configuration from Disk", 
+        "Jenkins CLI", 
+        "Script Console", 
+        "Prepare for Shutdown"
+      ],
+
     "endPointUrl" : [
         "/all/newJob", 
         "/asynchPeople/", 

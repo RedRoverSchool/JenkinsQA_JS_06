@@ -3,6 +3,7 @@
 import homePage from "../fixtures/homePage.json";
 import headers from "../fixtures/headers.json";
 import pages from "../fixtures/pages.json"
+
 describe('BreadcrumbsMenu', () => {
 
    it('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
@@ -61,6 +62,16 @@ describe('BreadcrumbsMenu', () => {
       cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').click()
       cy.get('#breadcrumb-menu>.bd>ul>li > .yuimenuitemlabel span').each(($el, idx) => {
          expect($el.text()).to.be.equal(homePage.dashboardDropdownItems[idx])
+      })
+   })
+
+   it('AT_04.02_008 | Verify Dashboard dropdown Manage Jenkins submenu content', () => {
+    cy.get('#breadcrumbBar').contains('Dashboard').realHover()
+    cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu>.bd>ul>li').contains(homePage.dashboardDropdownItems[4]).trigger('focus')
+    cy.get('#submenu0 >.bd > ul > li:not(.yuimenuitem-disabled) span').then(($els) => {
+         let actualSubmenuContentNames = $els.toArray().map($el => $el.textContent)
+         expect(actualSubmenuContentNames).to.deep.equal(homePage.dashboardSubmenuManageJenkinsDropdownItems)
       })
    })
 
