@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import addText from "../fixtures/addText.json"
 
 describe('My Views | Add Description', () => {
     it('Verify Possibility to Add Description', () => {
@@ -15,6 +16,6 @@ describe('My Views | Add Description', () => {
         cy.get('#description-link').should('be.visible').click()
         cy.get('.jenkins-input').should('be.visible').type('My text')
         cy.get('button[name=Submit]').click()
-        cy.get('#description > div:nth-child(1)').contains('My text')
+        cy.get('#description > div:nth-child(1)').should('contain', addText.addDescriptionsText)
     })
 })
