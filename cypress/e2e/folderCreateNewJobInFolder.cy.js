@@ -49,7 +49,7 @@ describe('Folder Create a new job inside a folder', () => {
     cy.get('#main-panel').should('contain', `${createFolder.folderName}/${addJob.projectName}`)
   })
 
-  it.only('AT_15.05.004 | Folder > Create a new job inside a folder', () => {
+  it('AT_15.05.004 | Folder > Create a new job inside a folder', () => {
     cy.get('a[href=newJob]')
       .contains(addJob.createBtn)
       .click();
