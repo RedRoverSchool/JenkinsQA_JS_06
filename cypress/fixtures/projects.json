@@ -37,5 +37,11 @@
 	
 	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"],
 	
-	"newProject" : "New project"
+	"newProject" : "New project",
+
+	"forOrganizationFolder" : {
+		"name": "My Organization Folder",
+		"displayName": "Display Name",
+		"description": "Description"
+	}
 }
