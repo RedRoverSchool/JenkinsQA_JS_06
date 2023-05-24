@@ -9,7 +9,10 @@
   "enableButtonColor" : "rgb(255, 255, 255)",
   "disableButton" : "Disable Multibranch Pipeline",
   "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
-
+  "errorMessage" : "A problem occurred while processing the request.",
+  "character" : "a",
+  "number": 256,
+  
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
