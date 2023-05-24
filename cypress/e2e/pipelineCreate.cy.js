@@ -1,4 +1,8 @@
 import projects from '../fixtures/projects.json'
+import pipelineName from '../fixtures/pipelineName.json'
+import homePage from '../fixtures/homePage.json'
+import newItemNames from '../fixtures/newItemNames.json'
+import myView from '../fixtures/myView.json'
 
 describe('pipelineCreate', () => {
     it('AT_05.02_001 | Create a new Pipeline', () => {
@@ -50,5 +54,16 @@ describe('pipelineCreate', () => {
         cy.get('#ok-button').click()
         cy.get('li.jenkins-breadcrumbs__list-item>a[href="/"]').click()
         cy.get('table.jenkins-table').should('contain', 'TestPipeline')
+    
+    })
+
+    it('AT_05.02_008 | Create a new Pipeline', () => {
+        cy.get('.task:first-child ').contains(homePage.sidePanelItems[0]).click()
+        cy.get('input#name').type(pipelineName.namePipeline)
+        cy.get('span.label').contains(newItemNames.projectNames[1]).click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('a.model-link').contains(myView.dashboard).click()
+        cy.get('table#projectstatus').should('contain', pipelineName.namePipeline)
     })
 });
