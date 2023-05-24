@@ -27,7 +27,7 @@ describe('Create a new Pipeline',()=>{
         cy.get('.jenkins-breadcrumbs__list-item').click();
         cy.get('.jenkins-table__link > span').should('include.text', `${pipelineName.namePipeline}`).and('exist');
     })
-    it.only('AT 05.02.09|New item Create a new Pipeline',()=>{
+    it('AT 05.02.09|New item Create a new Pipeline',()=>{
         cy.get('[href="/view/all/newJob"]').click();
         cy.get('#name').should('be.visible').type(pipelineName.namePipeline);
         cy.get(radioButtonPipeline).click();
