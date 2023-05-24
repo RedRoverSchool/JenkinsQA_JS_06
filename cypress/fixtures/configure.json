@@ -2,7 +2,10 @@
     "gitHubProjectURL" : "https://github.com/RedRoverSchool/JenkinsQA_JS_06/", 
     "gitHeaderAuthor" : "RedRoverSchool",
 
-    "addBuildStep" : [
+    "buildSteps" : {
+        "addBuildStepButtonName" : "Add build step",
+
+        "selectBuildStep" : [
         "Execute Windows batch command",
         "Execute shell",
         "Invoke Ant",
@@ -10,6 +13,7 @@
         "Invoke top-level Maven targets",
         "Run with timeout",
         "Set build status to \"pending\" on GitHub commit"
-    ]
+        ]
+    }
 
 }

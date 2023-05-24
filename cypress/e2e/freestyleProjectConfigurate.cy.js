@@ -40,15 +40,17 @@ describe('FreestyleProjectConfigurateProject', () => {
     })
 
     it('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
-        cy.get('#tasks .task:nth-child(6)').click()
-        cy.get('#tasks :nth-child(5) button').click()
-        configure.addBuildStep.forEach(builderOption => {
-            cy.get('button#yui-gen9-button').click()
-            cy.get('#yui-gen10 [id^="yui-gen"]').then(($els) => {
+        cy.get('#tasks a[href$="configure"]').click()
+        cy.get('button[data-section-id="build-steps"]').click()
+        configure.buildSteps.selectBuildStep.forEach(builderOption => {
+            cy.get('button.hetero-list-add').contains(configure.buildSteps.addBuildStepButtonName).click()
+            cy.get('.config-table .jenkins-section:nth-child(10) .yui-module .bd li').then(($els) => {
                 const builder = Cypress.$.makeArray($els).filter($el => $el.innerText == builderOption)
                 return cy.wrap(builder) 
             }).click()
-            cy.get('[name="builder"]').should('exist').and('be.visible')
+            cy.get('[name="builder"]')
+                .should('exist')
+                .and('be.visible')
             cy.get('.repeated-chunk__header button.repeatable-delete').click()
         })
     })
