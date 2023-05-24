@@ -105,12 +105,7 @@ describe('Header Search Box', () => {
   it('AT_01.02_023 | Validation of the Search box', ()=> { 
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
-
-  
-  
-  
-  
-  
+ 
   it('AT_01.02_024 | Accessibility of the search field from the Manage Jenkins page',() => {
     cy.get('a[href="/manage"]').click();
     cy.get('div h1').should('include.text','Manage Jenkins')
