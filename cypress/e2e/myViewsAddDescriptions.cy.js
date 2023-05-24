@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import descriptionsProject from '../fixtures/descriptionsProject.json'
+import createNewView from '../fixtures/createNewView.json'
 
 describe('My Views add description', () => {
 
@@ -12,7 +13,7 @@ describe('My Views add description', () => {
     })
 
     it('AT 09.02.005| My Views> Add description', function () {
-        cy.contains('My Views').click();
+        cy.contains(createNewView.myView).click();
         cy.get('#description-link').click();
         cy.get('.jenkins-input')
             .should('be.visible')
