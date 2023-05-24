@@ -69,6 +69,6 @@ describe('BreadcrumbsMenu', () => {
       cy.get('#breadcrumb-menu>div:first-child>ul>li').then(els => {
          return Cypress.$.makeArray(els).map(el => el.innerText).length
       })
-         .should('equal', pages.dashboardMenu.length)
+         .should('be.equal', pages.dashboardMenu.length)
    })
 });
