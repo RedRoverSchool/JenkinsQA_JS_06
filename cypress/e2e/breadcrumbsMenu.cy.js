@@ -65,7 +65,7 @@ describe('BreadcrumbsMenu', () => {
    })
    
    it('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
-      cy.get('#breadcrumbs .jenkins-menu-dropdown-chevron').realHover().click()
+      cy.get('#breadcrumbs .jenkins-menu-dropdown-chevron').realHover().realClick()
       cy.get('#breadcrumb-menu>div:first-child>ul>li').then(els => {
          return Cypress.$.makeArray(els).map(el => el.innerText).length
       })
