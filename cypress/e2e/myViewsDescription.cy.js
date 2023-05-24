@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import myViewsData from "../fixtures/myViews.json"
 
 describe('myViewsEditDescriptionTest', () => {
     const description = 'text'
@@ -73,4 +74,13 @@ it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chos
       cy.get('button[name="Submit"]').click()
       cy.get('#description div:nth-child(1)').should('have.text', newDescription)
     })
+
+    it('AT_09.03_06 | <My Views> Verify description is changed', () => {
+      cy.get('a[href="/me/my-views"]').click()
+      cy.get('#description-link').click()
+      cy.get('textarea[name="description"]').click().clear().type(myViewsData.editedDescription);
+      cy.get('button[name="Submit"]').click()
+
+      cy.get('#description').should('contain.text', myViewsData.editedDescription)
+    });
 })
