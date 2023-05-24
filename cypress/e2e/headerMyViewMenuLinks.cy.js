@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import homePage from '../fixtures/homePage.json'
+
 const userName = Cypress.env("local.admin.username").toLowerCase();
 
 describe("US_01.06 Header My views menu link", () => {
@@ -30,7 +32,7 @@ describe("US_01.06 Header My views menu link", () => {
     it('AT_01.06.007 | Header User menu My views link', function () {
         cy.get('header .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('a[href="/user/admin/my-views"]').click();
-        cy.url().should('includes', '/my-views');
-        cy.get('#breadcrumbs li').contains('My Views').should('be.visible');
+        cy.url().should('includes', homePage.endPointUrl[4]);
+        cy.get('#breadcrumbs li').contains(homePage.dashboardDropdownItems[4]).should('be.visible');
     })
 });
