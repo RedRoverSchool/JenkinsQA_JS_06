@@ -6,5 +6,6 @@
     "newItemHeader" : "Enter an item name",
     "searchText": "Text",
     "generalHeader": "General",
-    "dataSearchBox": ["log", "Log", "LOG", "lOg"]
+    "dataSearchBox": ["log", "Log", "LOG", "lOg"],
+    "testdata": "All Jenkins Logs"
 }
