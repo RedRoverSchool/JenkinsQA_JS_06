@@ -40,7 +40,7 @@ describe('Folder Create a new job inside a folder', () => {
     cy.get('.job-index-headline.page-headline').contains(addJob.projectName)
   })
 
-  it.only('AT_15.05.003| Verify user can create a new job inside a folder', () => {
+  it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
     cy.get('a[href="newJob"]').click()
     cy.get('input[name="name"]').type(addJob.projectName)
     cy.get('.hudson_model_FreeStyleProject').click();
