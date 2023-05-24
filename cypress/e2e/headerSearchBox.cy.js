@@ -111,7 +111,7 @@ describe('Header Search Box', () => {
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
 
-  it ('AT_01.02._027|Verify Search box is visible and accessible from two pages', function () {
+  it ('AT_01.02._027|Verify Search box is visible and accessible from twopages', function () {
     cy.get('#searchform').should('be.visible')
     cy.get('a[href="/asynchPeople/"').click()
     cy.get('#searchform').should('be.visible')
