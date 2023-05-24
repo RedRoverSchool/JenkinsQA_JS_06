@@ -64,7 +64,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it.only('AT_04.02.009 |Breadcrumbs| Dashboard page link check Manage Jenkins dropdown subfolder', () => {
+   it('AT_04.02.009 |Breadcrumbs| Dashboard page link check Manage Jenkins dropdown subfolder', () => {
       cy.get('#breadcrumbs .jenkins-menu-dropdown-chevron').realHover().realClick();
       cy.get("#breadcrumb-menu [href='\/manage'] span").contains("Manage Jenkins").trigger('mouseover');
       homePage.manageJenkinsDropdownItems.forEach(item => {
