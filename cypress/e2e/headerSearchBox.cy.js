@@ -111,13 +111,11 @@ describe('Header Search Box', () => {
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
 
-  it ('Verify Search box on top right and accessible from any page', function () {
+  it ('AT_01.02._027|Verify Search box is visible and accessible from two pages', function () {
     cy.get('#searchform').should('be.visible')
     cy.get('a[href="/asynchPeople/"').click()
     cy.get('#searchform').should('be.visible')
-
     cy.get('a[href="/view/all/builds"').click()
     cy.get('#searchform').should('be.visible')
-
   })
 });
