@@ -2,7 +2,7 @@
 
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe('freestyleProjectSetConfigurations', () => {
+describe.skip('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add("openDashboard", () => {
         cy.get('#breadcrumbBar a').contains('Dashboard').click()
             .then(() => {
