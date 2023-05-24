@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import homepageMainPanelLinkData from "/fixtures/homepageMainPanelLinkData";
+import homepageMainPanelLinkData from "../fixtures/homepageMainPanelLinkData.json";
 
 describe("homepageConfigureACloudLink", () => {
   it('AT_02.07.006 | <Main Panel> Verify the "Configure a cloud" link in the "Set up a distributed build" section', function () {
