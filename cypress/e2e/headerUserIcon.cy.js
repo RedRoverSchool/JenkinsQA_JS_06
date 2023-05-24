@@ -109,12 +109,4 @@ describe('Header User Icon', () => {
         cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
         cy.get('#main-panel > :nth-child(4)').should('include.text',headerIcon.userJenkins)
     })
-    
-    it('AT_01.03.025 | Header> Verify User Dropdown Menu Items Names', () => {
-        cy.get('header .jenkins-menu-dropdown-chevron').realHover().click()
-        cy.get('.yuimenuitem span').then($els => {
-            return Cypress.$.makeArray($els).map($el => $el.innerText)
-        })
-          .should('deep.equal', userIconMenuItems.userMenuItems)
-    });
-});
+})

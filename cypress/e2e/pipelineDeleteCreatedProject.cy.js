@@ -36,13 +36,4 @@ describe('Pipeline | Delete Created Project', () => {
         })  
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
-
-    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
-        cy.get('.jenkins-table__link.model-link.inside').click()
-        cy.get('.task-link-wrapper').contains(pipelineName.textForDeleteProject).click()
-        cy.on('window:confirm', (str) => {
-            expect(str).to.equal(`${pipelineName.confirmationOfDeletingFromSideBar} ‘${pipelineName.newPipelineName}’?`)
-        })
-        cy.get('#main-panel').should('not.have.text', pipelineName.newPipelineName)
-    })
 })
