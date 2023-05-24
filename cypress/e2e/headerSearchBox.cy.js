@@ -2,6 +2,7 @@
 
 import projects from '../fixtures/projects.json';
 import headers from '../fixtures/headers.json';
+const userName = Cypress.env('local.admin.username').toLowerCase();
 
 describe('Header Search Box', () => {
   it('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
@@ -124,6 +125,24 @@ describe('Header Search Box', () => {
         cy.get('input#search-box').clear().type(arr + '{enter}');
         cy.get('a[href="all"]').should('have.text', headers.testdata);       
         cy.get('a[href="/"].model-link').click();      
+    })
+  });
+
+  it('AT_01.02_029 | Verify case sensitive option in the Search box', () => {
+    cy.get(`a[href="/user/${userName}"]`).realHover();
+    cy.get('div>a[href^="/user/"]>button[class="jenkins-menu-dropdown-chevron"]').click();
+    cy.get('a[href$="/configure"].yuimenuitemlabel').click()
+    cy.scrollTo(0, 800);
+    cy.get('div.setting-main input[type="checkbox"]').click({ force: true });
+    cy.get('button[name="Submit"]').click();    
+    headers.dataCapCase.forEach(arr => {
+      cy.get('input#search-box')
+        .clear()
+        .type(arr + '{enter}')
+        .then(() => {
+          cy.get('input#search-box').clear();
+        })
+      cy.get('div.error').should('have.text', headers.textNothing);
     })
   });
 });
