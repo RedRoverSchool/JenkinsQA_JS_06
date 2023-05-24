@@ -20,7 +20,7 @@ describe('Header | Notifications icon', () => {
     })
 
     it('AT_01.10_005 | Header Notifications icon', () => {
-        cy.get('#visible-am-button').click()
-        cy.get('.alert.alert-info strong').should('have.text',(dashboardItems.newVersion))
+        cy.get('#visible-am-button').click();
+        cy.get('.alert.alert-info strong').should('have.text',(dashboardItems.newVersion));
     })
 })
