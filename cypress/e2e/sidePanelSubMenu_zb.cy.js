@@ -43,5 +43,25 @@ describe('Side panel sub menu', () => {
             })
         })
     })
+
+    it('AT_02.04_009 | Homepage(Dashboard) > Verify sub-menu', () => { 
+        cy.get('a[href="/view/all/newJob"]').click();
+        cy.get('.h3').contains('Enter an item name');
+        cy.get('a[href="/"].model-link').click();
+        cy.get('a[href="/asynchPeople/"]').click();
+        cy.get('.jenkins-app-bar__content h1').contains('People');
+        cy.get('[aria-current="page"]').contains('People');
+        cy.get('a[href="/"].model-link').click();
+        cy.get('a[href="/view/all/builds"]').click();
+        cy.get('.jenkins-app-bar__content').contains('Build History of Jenkins');
+        cy.get('[aria-current="page"]').contains('Build History');
+        cy.get('a[href="/"].model-link').click();
+        cy.get('[href="/manage"]').click();
+        cy.get('.jenkins-app-bar__content h1').contains('Manage Jenkins');
+        cy.get('[href="/manage/"].model-link').contains('Manage Jenkins');
+        cy.get('a[href="/"].model-link').click();
+        cy.get('[href="/me/my-views"].task-link ').click();
+        cy.get('[href="/me/my-views/"]').contains('My Views')
+    })
 })
 
