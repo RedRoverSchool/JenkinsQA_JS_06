@@ -6,7 +6,7 @@ beforeEach('create2folders', function () {
 
   cy.get('[href="/view/all/newJob"]').click()
   cy.get('#name').type(names.orgFolderName)
-  cy.contains('Organization Folder').click()
+  cy.contains(names.jobOrgFolder).click()
   cy.get('#ok-button').click()
   cy.get('[name="Submit"]').click()
   cy.get('#jenkins-home-link ').click();
@@ -21,8 +21,8 @@ describe('Move Organization Folder', () => {
     it('AT_17.04.003 | Move Organization Folder', function () {
       cy.get('.jenkins-table__link').contains(names.orgFolderName).realHover();
       cy.get('[href="job/OrgFolder/"]').click();
-      cy.contains('Move').click()
-      cy.get('[name="destination"]').realHover().select('/Folder');
+      cy.contains(names.tabMove).click()
+      cy.get('[name="destination"]').realHover().select(names.moveToFolder);
       cy.get('.jenkins-button[name="Submit"]').click();
       cy.get ('.model-link[href="/job/Folder/"]').click();
       cy.get('[href="job/OrgFolder/"]').should('exist')

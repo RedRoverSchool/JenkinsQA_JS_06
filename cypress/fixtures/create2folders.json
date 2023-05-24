@@ -1,5 +1,12 @@
 {
     "orgFolderName": "OrgFolder",
   
-      "folderName": "Folder"
+    "folderName": "Folder",
+
+    "jobOrgFolder": "Organization Folder",
+
+    "tabMove": "Move",
+
+    "moveToFolder": "Jenkins » Folder"
+
   }
