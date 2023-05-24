@@ -39,4 +39,13 @@ describe('Folder Create a new job inside a folder', () => {
     cy.get('[name="Submit"]').click();
     cy.get('.job-index-headline.page-headline').contains(addJob.projectName)
   })
+
+  it.only('AT_15.05.003| Verify user can create a new job inside a folder', () => {
+    cy.get('a[href="newJob"]').click()
+    cy.get('input[name="name"]').type(addJob.projectName)
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click()
+    cy.get('button[name="Submit"]').click()
+    cy.get('#main-panel').should('contain', `${createFolder.folderName}/${addJob.projectName}`)
+  })
 });
