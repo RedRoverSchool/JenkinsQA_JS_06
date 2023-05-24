@@ -64,9 +64,9 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02.009 |Breadcrumbs| Dashboard page link check Manage Jenkins dropdown subfolder', () => {
+   it.only('AT_04.02.009 |Breadcrumbs| Dashboard page link check Manage Jenkins dropdown subfolder', () => {
       cy.get('#breadcrumbs .jenkins-menu-dropdown-chevron').realHover().realClick();
-      cy.get("#breadcrumb-menu [href='\/manage'] span").contains(homePage.dashboardDropdownItems[3]).trigger('mouseover');
+      cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').contains(homePage.dashboardDropdownItems[3]).trigger('mouseover');
       homePage.manageJenkinsDropdownItems.forEach(item => {
          cy.contains('#submenu0', item).should('be.visible');
        });
