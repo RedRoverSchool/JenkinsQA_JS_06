@@ -4,5 +4,7 @@
   "freestyleProject": "Freestyle project",
   "header": "General",
   "projectHeader": "Project My Project",
-  "configurePageEndpoint": "/configure"
+  "configurePageEndpoint": "/configure",
+  "description": "Test description",
+  "itemName": "Enter an item name"
 }
