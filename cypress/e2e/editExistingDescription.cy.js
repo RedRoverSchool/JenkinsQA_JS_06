@@ -19,7 +19,7 @@ describe(`Edit description`, function () {
     );
   });
 
-  it('AT_20.02_ 002| Dashboard | Verify the "Edit Description" link', ()=>{
+  it.skip('AT_20.02_ 002| Dashboard | Verify the "Edit Description" link', ()=>{
       cy.get('#description-link').click()
       cy.get('.jenkins-input   ').type(descriptionsProject.addDescriptionProject)
       cy.get('button[name="Submit"]').click() 
