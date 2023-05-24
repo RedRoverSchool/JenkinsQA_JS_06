@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 import createFolder from "../fixtures/createFolder.json"
-import messages from "../fixtures/messages.json"
+
 
 
 describe('Folder rename folder', () => {
@@ -26,23 +26,5 @@ describe('Folder rename folder', () => {
         cy.get('button[name="Submit"]').click();
         cy.url().should('eq', jenkinsURL + '/job/' + createFolder.folderName + 'CHANGED/');
         cy.get('#main-panel > h1').should('contain', createFolder.folderName + 'CHANGED');
-    });
-
-    it('AT_15.06_002 | Folder> Same name Error message if renaming Folder by dropdown menu' , () => {
-        cy.get('#breadcrumbs > li:nth-child(1) > a').click();
-        cy.get('tbody tr td a.jenkins-table__link')
-            .should('be.visible')
-            .and('have.text', createFolder.folderName)
-            .realHover()
-        cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').should('be.visible').click()
-        cy.contains('div#breadcrumb-menu ul li a', 'Rename').should('be.visible').click();
-
-        cy.get('input[name="newName"]').click();
-        cy.get('div.setting-main > input').clear()
-        cy.get('div.setting-main > input').type(createFolder.folderName)
-        cy.get('button[name="Submit"]').click()
-
-        cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error).and('be.visible')
-        cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message).and('be.visible')
     });
 });

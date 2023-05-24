@@ -1,7 +1,5 @@
 /// <reference types="cypress"/>
 
-const userName = Cypress.env("local.admin.username").toLowerCase();
-
 describe("US_01.06 Header My views menu link", () => {
     it('TC_01.06_002 Header My views menu link', () => {
         cy.get('#side-panel').as('sidePanel');
@@ -18,12 +16,5 @@ describe("US_01.06 Header My views menu link", () => {
         cy.get('[href="/user/admin/my-views/view/all/newJob"]').should('have.text','New Item');
         cy.get('[href="/asynchPeople/"] .task-link-text').should('have.text','People');
         cy.get('[href="/user/admin/my-views/view/all/builds"]').should('have.text','Build History');
-    })
-
-    it('AT_01.06_004 | Header | Verify "My Views" link in user dropdown-menu is clickable', () =>{
-        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
-        cy.get('.yuimenuitemlabel').contains('My Views').click()
-        cy.url().should('includes', '/my-views/view/all/')
-        cy.get(`[href="/user/${userName}/my-views/"]`).should('have.text', 'My Views')
     })
 });

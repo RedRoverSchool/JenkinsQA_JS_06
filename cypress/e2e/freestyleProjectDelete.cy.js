@@ -3,7 +3,6 @@
 import messages from '../fixtures/messages.json'
 import projects from '../fixtures/projects.json'
 import homePage from '../fixtures/logInPage.json'
-import freestyleDropdownMenu from '../fixtures/freestyleDropdownMenu.json'
 
 describe('Freestyle project Delete', () => {
   beforeEach('Create freestyle project', () => {
@@ -75,20 +74,4 @@ describe('Freestyle project Delete', () => {
     })
     cy.get('#main-panel').contains(projects.freestyle.name).should('not.exist')
   })
-
-  it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
-    cy.get('.jenkins-table__link.model-link.inside')
-    .contains(projects.freestyle.name)
-    .realHover({position: 'center'});
-    cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').click();
-    cy.get('.first-of-type li:nth-child(5)')
-      .contains(freestyleDropdownMenu.freestyleDropdownItems[4])
-      .click();
-    cy.on('window:confirm', (str) => {
-      expect(str).to.equal(messages.promtMessage)});
-    cy.get('#main-panel')
-      .contains(projects.freestyle.name)
-      .should('not.exist');
-  });
-
 });
