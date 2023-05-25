@@ -110,4 +110,20 @@ describe('Header Search Box', () => {
   it('AT_01.02_023 | Validation of the Search box', ()=> { 
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
+ 
+  it('AT_01.02_024 | Accessibility of the search field from the Manage Jenkins page',() => {
+    cy.get('a[href="/manage"]').click();
+    cy.get('div h1').should('include.text','Manage Jenkins')
+                    .and('be.visible');
+    cy.get('#search-box').should('exist')
+                         .and('have.attr','placeholder','Search (CTRL+K)');
+  });
+
+  it('AT_01.02.028 | Verify Search box is case insensitive by default', () => {
+    headers.dataSearchBox.forEach(arr => {      
+        cy.get('input#search-box').clear().type(arr + '{enter}');
+        cy.get('a[href="all"]').should('have.text', headers.testdata);       
+        cy.get('a[href="/"].model-link').click();      
+    })
+  });
 });

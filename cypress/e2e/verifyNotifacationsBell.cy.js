@@ -18,4 +18,9 @@ describe('Header | Notifications icon', () => {
         cy.get('#visible-am-insertion span').realHover()
         cy.get('#visible-am-insertion span').should('have.css','background-color','rgb(255, 152, 0)')
     })
+
+    it('AT_01.10_005 | Header Notifications icon', () => {
+    cy.get('#visible-am-button').click();
+    cy.get('.alert.alert-info strong').should('have.text',(dashboardItems.newVersion));
+    })
 })

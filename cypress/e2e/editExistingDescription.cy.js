@@ -22,7 +22,7 @@ describe(`Edit description`, function () {
   it.skip('AT_20.02_ 002| Dashboard | Verify the "Edit Description" link', () => {
       cy.get('#description-link').click()
       cy.get('.jenkins-input   ').type(descriptionsProject.addDescriptionProject)
-      cy.get('button[name="Submit"]').click() 
+      cy.get('button[class="jenkins-button jenkins-button--primary "]').click() 
       cy.should('exist',descriptionsProject.addDescriptionProject)
       cy.get('#description-link').click()
       cy.get('textarea[name="description"]').type('{selectall}{backspace}').type(descriptionsProject.addNewDescriptionProject)

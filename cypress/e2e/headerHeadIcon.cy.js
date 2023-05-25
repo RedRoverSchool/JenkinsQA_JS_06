@@ -84,5 +84,12 @@ describe('Header Head Icon', () => {
           .should('have.prop', 'offsetLeft', 0)
     })
 
+    it('AT_01.01_42 | <Header> Head Icon is clickable and redirects to homepage', () => {
+        cy.get('[href="/asynchPeople/').click()
+        cy.get('#jenkins-head-icon').should('be.visible').click()
+        cy.get('.empty-state-block > h1').should('contain', logInPage.loginPageHeader)
+    })
+
+
 })
 
