@@ -43,5 +43,8 @@
 		"name": "My Organization Folder",
 		"displayName": "Display Name",
 		"description": "Description"
-	}
+	},
+
+	"projects" : ["Project1", "Project2", "Project3"] 
+	
 }
