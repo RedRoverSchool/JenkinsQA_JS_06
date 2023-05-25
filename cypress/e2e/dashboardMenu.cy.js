@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import {sidePanelItems, endPointUrl} from '../fixtures/homePage.json'
+import {sidePanelItems, endPointUrl, selectors} from '../fixtures/homePage.json'
 
 describe('Homepage(Dashboard)| Side panel sub-menu', () => {
 
@@ -39,5 +39,13 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
      it('AT_02.04.008 | Verify that link "My Views" is clickable', () => {
         cy.get('a[href="/me/my-views"').click()
         cy.url().should('include', endPointUrl[4])
-     })   
+     })
+     
+     it('AT_02.04_016 | Verify that the left sidebar with 5 items is clickable', () => {
+        sidePanelItems.forEach((el, idx) => {
+            cy.get(selectors[idx]).click();
+            cy.url().should('include',endPointUrl[idx])
+            cy.get('#breadcrumbBar li:nth-child(1)').click()
+        })
+     });
 })
