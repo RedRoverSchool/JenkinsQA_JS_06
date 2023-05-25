@@ -1,5 +1,7 @@
 // <reference types=“cypress”/>
 import orgFolderConfigure from '../fixtures/orgFolderConfigure.json'
+import headers from '../fixtures/headers.json'
+import pages from '../fixtures/pages.json'
 
 function createOrgFolder(orgFolderName) {
     cy.get('a[href="/view/all/newJob"]').click();
@@ -45,8 +47,8 @@ describe('orgFolderConfigurate', () => {
 
         createOrgFolder(orgFolderConfigure.orgFolderName)
         cy.get('#main-panel .jenkins-table__link.model-link.inside').click()
-        cy.get('#tasks').contains('Configure').click()
-        cy.get('#general > span').should('have.text', 'General')
+        cy.get('#tasks').contains(pages.configurationPage).click()
+        cy.get('#general > span').should('have.text', headers.generalHeader)
         cy.get('input[name="_.displayNameOrNull"]').click().type(orgFolderConfigure.displayName)
         cy.get('button[name="Submit"]').click()
         cy.get('#main-panel h1').should('contain', orgFolderConfigure.displayName)
