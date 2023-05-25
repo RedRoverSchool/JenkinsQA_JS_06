@@ -132,16 +132,12 @@ describe('Header Search Box', () => {
     cy.get(`a[href="/user/${userName}"]`).realHover();
     cy.get('div>a[href^="/user/"]>button[class="jenkins-menu-dropdown-chevron"]').click();
     cy.get('a[href$="/configure"].yuimenuitemlabel').click()
-    cy.scrollTo(0, 800);
-    cy.get('div.setting-main input[type="checkbox"]').click({ force: true });
+    cy.get('div.setting-main label').click();
     cy.get('button[name="Submit"]').click();    
     headers.dataCapCase.forEach(arr => {
       cy.get('input#search-box')
         .clear()
-        .type(arr + '{enter}')
-        .then(() => {
-          cy.get('input#search-box').clear();
-        })
+        .type(arr + '{enter}');
       cy.get('div.error').should('have.text', headers.textNothing);
     })
   });
