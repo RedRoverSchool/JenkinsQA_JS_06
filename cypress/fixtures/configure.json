@@ -1,7 +1,13 @@
 {
     "gitHubProjectURL" : "https://github.com/RedRoverSchool/JenkinsQA_JS_06/", 
     "gitHeaderAuthor" : "RedRoverSchool",
-
+    
+    "sourceCodeManagement" : {
+        "toolTips" : {
+            "git" : "Help for feature: Git"
+        }
+    },
+    
     "buildSteps" : {
         "addBuildStepButtonName" : "Add build step",
 
