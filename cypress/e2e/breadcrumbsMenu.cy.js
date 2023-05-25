@@ -74,7 +74,8 @@ describe('BreadcrumbsMenu', () => {
    });
    
    it('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
-      cy.get('#breadcrumbs button.jenkins-menu-dropdown-chevron').realHover().realClick()
+      cy.get('.jenkins-breadcrumbs__list-item').realHover()
+      cy.get('#breadcrumbs button.jenkins-menu-dropdown-chevron').realClick()
       cy.get('#breadcrumb-menu>div:first-child>ul>li')
          .should('be.visible')
          .and('have.length', pages.dashboardMenu.length)
