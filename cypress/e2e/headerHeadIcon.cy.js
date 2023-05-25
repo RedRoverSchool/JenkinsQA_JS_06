@@ -99,5 +99,11 @@ describe('Header Head Icon', () => {
         cy.url().should('equal', `http://localhost:${LOCAL_PORT}/`)
     })
 
+    it('AT_01.01.45 | <Header> Head Icon is visible and redirects to home page', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('#jenkins-home-link').should('be.visible').click();
+        cy.get('h1').should('have.text', 'Welcome to Jenkins!').and('be.visible');
+    })
+
 })
 
