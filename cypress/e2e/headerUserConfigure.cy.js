@@ -131,9 +131,10 @@ describe('Header User configure', () => {
         cy.get('#description').should('include.text', userDescription.textDescription);
     })
 
-    it.only ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
+    it ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
         cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
-          .click({force: true});
+          .realHover()
+          .click();
         cy.get('#yui-gen2').click();
         cy.get("textarea[name='_.description']").type(userDescription.textDescription);
         cy.get("button[formnovalidate='formNoValidate']").click();
