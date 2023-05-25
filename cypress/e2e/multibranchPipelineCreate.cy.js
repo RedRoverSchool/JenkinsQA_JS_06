@@ -18,7 +18,7 @@ describe('Multibranch Pipeline', () => {
     it('AT_05.05_009| Create a new Multibranch Pipeline using name with more then 255 valid characters(Negative scenario)', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#name').type(`${multibranchPipeline.character}`.repeat(`${multibranchPipeline.number}`))
-        cy.get('[id="j-add-item-type-nested-projects"]').contains('Multibranch Pipeline').click()
+        cy.get('[id="j-add-item-type-nested-projects"]').contains(`${multibranchPipeline.name}`).click()
         cy.get('#ok-button').click()
         cy.get('#error-description').should('contain', `${multibranchPipeline.errorMessage}`)
       })

@@ -12,6 +12,7 @@
   "errorMessage" : "A problem occurred while processing the request.",
   "character" : "a",
   "number": 256,
+  "name": "Multibranch Pipeline",
   
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
