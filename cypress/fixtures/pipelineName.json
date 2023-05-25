@@ -11,5 +11,6 @@
     "additionalDescriptionPipeline" : " second",
     "pipelineJob": "Pipeline",
     "textForNewItem":"New Item",
-    "textForDeleteProject" : "Delete Pipeline"
+    "textForDeleteProject" : "Delete Pipeline",
+    "firstDescription": "First Description"
 }
