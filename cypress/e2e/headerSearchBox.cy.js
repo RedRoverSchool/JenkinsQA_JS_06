@@ -141,4 +141,23 @@ describe('Header Search Box', () => {
       cy.get('div.error').should('have.text', headers.textNothing);
     })
   });
+
+  it('AT_01.02.031 | Verify Search box after uncheck sensitivity option in users profile', () => {
+    cy.get('a[href="/user/admin"]').click()
+    cy.get('a[href="/user/admin/configure"]').click()
+    cy.get('.setting-main input[type="checkbox"]')
+      .uncheck({ force: true })
+      .should('not.be.checked')
+    cy.get('button[name="Submit"]').click()
+    if
+      (cy.get('#searchform').type(headers.inputText + '{enter}')) {
+      cy.get('a[href="?q=Built-In+Node"]').should('be.visible')
+    } 
+    if (cy.get('#searchform').type(headers.inputTextLow + '{enter}')) {
+      cy.get('div.error').should('have.text', headers.textNothing)
+    }
+    if (cy.get('#searchform').type(headers.inputTextUp + '{enter}')) {
+      cy.get('div.error').should('have.text', headers.textNothing)
+    }
+  })
 });
