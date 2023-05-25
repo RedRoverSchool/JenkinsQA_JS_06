@@ -126,5 +126,34 @@ describe("breadcrumbsMyViewsPage", () => {
       });
   });
 
+  it('AT_04.03.013 | Verify user can manage the list of Jobs by sorting the projects', () => {
+    cy.get('[href="newJob"]').click()
+    cy.get('input#name').type(items.freestyleProjectName)
+    cy.get('.hudson_model_FreeStyleProject').click()
+    cy.get('#ok-button').click()
+    cy.get('button[name="Submit"]').click()
+    cy.get('#jenkins-home-link').click()
+    cy.get('[href="/view/all/newJob"]').click()
+    cy.get('input#name').type(items.multiBranchPipelineName)
+    cy.get('[class$="WorkflowMultiBranchProject"]').click()
+    cy.get('#ok-button').click()
+    cy.get('button[name="Submit"]').click()
+    cy.get('#jenkins-home-link').click()
+
+    cy.get('.jenkins-table__link.model-link.inside')
+      .should('have.length', items.createdJobs.length)
+      .then(($els) => {
+        return Cypress.$.makeArray($els).map($el => $el.innerText)
+      })
+      .should('deep.equal', items.createdJobs)
+    cy.get('.sortheader')
+      .contains('Name')
+      .click()
+    cy.get('.jenkins-table__link.model-link.inside')
+      .then(($els) => {
+        return Cypress.$.makeArray($els).map($el => $el.innerText)
+      })
+      .should('deep.equal', items.createdJobsReverse)
+  })
 });
 
