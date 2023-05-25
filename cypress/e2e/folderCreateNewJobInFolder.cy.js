@@ -61,4 +61,18 @@ describe('Folder Create a new job inside a folder', () => {
       .should('have.text', addJob.headerProject + addJob.freestyleProject)
   });
 
+  it('AT_15.05.005 | Folder > Create a new job inside a folder', () => {
+    cy.get('a[href=newJob]')
+      .contains(addJob.createBtn)
+      .click();
+    cy.get('input#name').type(addJob.freestyleProject);
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click();
+    cy.get('button[name=Submit]').click();
+    cy.get(`a[href="/job/${createFolder.folderName}/"]`).click();
+    cy.get(`tr[id^="job_"] td a span:contains("${addJob.freestyleProject}")`)
+      .should('exist');
+
+  });
+
 });
