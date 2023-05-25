@@ -7,5 +7,6 @@
   "sections": [
     "Start building your software project",
     "Set up a distributed build"
-  ]
+  ],
+  "headingH1": "Welcome to Jenkins!"
 }
