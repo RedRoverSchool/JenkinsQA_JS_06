@@ -131,4 +131,19 @@ describe('Header User configure', () => {
         cy.get('#description').should('include.text', userDescription.textDescription);
     })
 
-});
+    it ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
+        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
+          .realHover()
+          .click();
+        cy.get('#yui-gen2').click();
+        cy.get("textarea[name='_.description']").type(userDescription.textDescription);
+        cy.get("button[formnovalidate='formNoValidate']").click();
+        cy.get('#description-link')
+        .click();
+      cy.get("textarea[name='description']")
+        .clear()
+        .type(userDescription.chengedDescription);
+      cy.get("button[formnovalidate='formNoValidate']").click();
+      cy.get('#description').should('include.text', userDescription.chengedDescription);
+    });
+})

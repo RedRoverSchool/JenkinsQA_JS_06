@@ -7,5 +7,11 @@
     "searchText": "Text",
     "generalHeader": "General",
     "dataSearchBox": ["log", "Log", "LOG", "lOg"],
-    "testdata": "All Jenkins Logs"
+    "dataCapCase": ["Log", "LOG", "lOg"],
+    "testdata": "All Jenkins Logs",
+    "textNothing": "Nothing seems to match.",
+    "inputText": "Built",
+    "outText": "Built-In Node",
+    "inputTextLow": "built",
+    "inputTextUp": "BUILT"
 }
