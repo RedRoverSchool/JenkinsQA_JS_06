@@ -23,14 +23,6 @@
         "My Views"
     ],
 
-    "selectors" : [
-        "a[href$='/newJob']",
-        "a[href$='/asynchPeople/']",
-        "a[href$='/builds']",
-        "a[href='/manage']",
-        "a[href$='/my-views']"
-    ],
-
     "manageJenkinsDropdownItems" : [
         "Configure System", 
         "Global Tool Configuration", 

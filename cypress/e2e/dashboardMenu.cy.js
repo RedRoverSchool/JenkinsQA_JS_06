@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-import {sidePanelItems, endPointUrl, selectors} from '../fixtures/homePage.json'
+import {sidePanelItems, endPointUrl} from '../fixtures/homePage.json'
 
 describe('Homepage(Dashboard)| Side panel sub-menu', () => {
 
@@ -41,11 +41,11 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         cy.url().should('include', endPointUrl[4])
      })
      
-     it('AT_02.04_016 | Verify that the left sidebar with 5 items is clickable', () => {
+     it('AT_02.04_016 | Verify that the left sidebar with 5 items is clickable', () => {        
         sidePanelItems.forEach((el, idx) => {
-            cy.get(selectors[idx]).click();
+            cy.get('.task-link-wrapper').contains(sidePanelItems[idx]).click()
             cy.url().should('include',endPointUrl[idx])
-            cy.get('#breadcrumbBar li:nth-child(1)').click()
+            cy.get('#breadcrumbs a[href="/"]').click()
         })
      });
 })
