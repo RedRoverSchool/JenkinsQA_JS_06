@@ -1,4 +1,5 @@
 import pipelineName from "../fixtures/pipelineName.json"
+import piplineRename from "../fixtures/piplineRename.json"
 
 describe('US_13.03 Pipeline.Rename pipeline project', () => {
     it('TC_13.03.001 Change Pipeline name using Rename button', () => {
@@ -37,7 +38,7 @@ describe('US_13.03 Pipeline.Rename pipeline project', () => {
         cy.get('#projectstatus :nth-child(2) td:nth-child(3) a').click()
         cy.get('.task:nth-child(8)').click()
         cy.get('button[name=Submit]').click()
-        cy.get('#main-panel h1').should('have.text', 'Error')
-        cy.get('#main-panel p').should('have.text', 'The new name is the same as the current name.')
+        cy.get('#main-panel h1').should('have.text', piplineRename.error)
+        cy.get('#main-panel p').should('have.text', piplineRename.errorMessage)
     })
 })
