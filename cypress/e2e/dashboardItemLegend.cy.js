@@ -3,6 +3,10 @@
 import { iconLegends } from '../fixtures/iconLegends.json'
 import headers from '../fixtures/headers.json'
 import statuses from '../fixtures/statuses.json'
+import { iconLegendsPageName } from '../fixtures/iconLegends.json'
+import { iconLegendsHeaders } from '../fixtures/iconLegends.json'
+import { iconLegendsStatusDescriptions } from '../fixtures/iconLegends.json'
+import { iconLegendsProjectHealthDescriptions } from '../fixtures/iconLegends.json'
 
 describe('Verify <Dashboard>Icon legend', () => {
     beforeEach('Create Project', function () {
