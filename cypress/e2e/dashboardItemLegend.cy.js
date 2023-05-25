@@ -1,14 +1,12 @@
 /// <reference types='cypress'/>
 
 import { iconLegends } from '../fixtures/iconLegends.json'
+import itemLegends from '../fixtures/iconLegends.json'
 import headers from '../fixtures/headers.json'
 import statuses from '../fixtures/statuses.json'
-import { iconLegendsPageName } from '../fixtures/iconLegends.json'
-import { iconLegendsHeaders } from '../fixtures/iconLegends.json'
-import { iconLegendsStatusDescriptions } from '../fixtures/iconLegends.json'
-import { iconLegendsProjectHealthDescriptions } from '../fixtures/iconLegends.json'
 
-describe('Verify <Dashboard>Icon legend', () => {
+
+describe('Verify <Dashboard>Icon legend', () => { 
     beforeEach('Create Project', function () {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type('TestProject')
@@ -52,13 +50,13 @@ describe('Verify <Dashboard>Icon legend', () => {
       });
     });
     
-    it('AT_20.05_003 | Icon legend`s quantity by header groups', () => {
+    it.only('AT_20.05_003 | Icon legend`s quantity by header groups', () => {
       cy.get('#rss-bar .jenkins-button').contains('Icon legend').click();
-      cy.get('#main-panel .jenkins-app-bar').should('have.text', iconLegendsPageName);
-      cy.get('#main-panel>h2:nth-child(3)').should('have.text', iconLegendsHeaders[0]);
-      cy.get('#main-panel > dl:nth-child(4) dt').should('have.length', iconLegendsStatusDescriptions.length);
-      cy.get('#main-panel>h2:nth-child(5)').should('have.text', iconLegendsHeaders[1]);
-      cy.get('#main-panel > dl:nth-child(6) dt').should('have.length', iconLegendsProjectHealthDescriptions.length);
-    })
+      cy.get('#main-panel .jenkins-app-bar').should('have.text', itemLegends.PageName);
+      cy.get('#main-panel>h2:nth-child(3)').should('have.text', itemLegends.Headers[0]);
+      cy.get('#main-panel > dl:nth-child(4) dt').should('have.length', itemLegends.StatusDescriptions.length);
+      cy.get('#main-panel>h2:nth-child(5)').should('have.text', itemLegends.Headers[1]);
+      cy.get('#main-panel > dl:nth-child(6) dt').should('have.length', itemLegends.ProjectHealthDescriptions.length);
+    }) 
  })
  
