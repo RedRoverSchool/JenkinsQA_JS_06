@@ -105,7 +105,7 @@ describe('Header Head Icon', () => {
         cy.get('h1').should('have.text', 'Welcome to Jenkins!').and('be.visible');
     })
 
-    it.only('AT_01.01_46 | <Header> Head icon clickable and redirecting on the Home page', () => {
+    it('AT_01.01_46 | <Header> Head icon clickable and redirecting on the Home page', () => {
         cy.get('[href="/asynchPeople/"]').click();
         cy.get('#main-panel h1').should('include.text','People');
         cy.get('#jenkins-name-icon').click();
