@@ -179,7 +179,6 @@ describe('Header Search Box', () => {
         cy.wrap($el).click()
       }
     }).then(() => {
-      cy.log(selectWord)
       cy.get('input#search-box').should('have.value', selectWord);
     })
   });
