@@ -36,11 +36,6 @@ describe('New item Create a new Pipeline', () => {
             expect(arr.length).to.be.equal(pipelineDropdown.pipelineDropdownItems.length);
             expect(arr).to.be.deep.equal(pipelineDropdown.pipelineDropdownItems);
         })
-
-
-
-
-
     })
 
 })
