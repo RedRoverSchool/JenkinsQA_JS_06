@@ -172,7 +172,7 @@ describe('Header Search Box', () => {
   it('AT_01.02_030 | Select a single result if there are multiple matches in the search dropdown', () => {
     cy.get('input#search-box').type(headers.dataLetter).realHover();
     let selectWord;
-    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index, $list) => {
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
       const dropDown = $el.text().trim();
       if (index === 0) {
         selectWord = dropDown;
