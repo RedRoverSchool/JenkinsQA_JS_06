@@ -167,6 +167,20 @@ describe('Header Search Box', () => {
     if (cy.get('#searchform').type(headers.inputTextUp + '{enter}')) {
       cy.get('div.error').should('have.text', headers.textNothing)
     }
-
   })
+
+  it('AT_01.02_030 | Select a single result if there are multiple matches in the search dropdown', () => {
+    cy.get('input#search-box').type(headers.dataLetter).realHover();
+    let selectWord;
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index, $list) => {
+      const dropDown = $el.text().trim();
+      if (index === 0) {
+        selectWord = dropDown;
+        cy.wrap($el).click()
+      }
+    }).then(() => {
+      cy.log(selectWord)
+      cy.get('input#search-box').should('have.value', selectWord);
+    })
+  });
 });
