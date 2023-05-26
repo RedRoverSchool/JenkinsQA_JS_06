@@ -28,4 +28,19 @@ describe('New item Create a new Pipeline', () => {
             expect($el.text()).to.be.equal(pipelineDropdown.pipelineDropdownItems[idx])
         })
     })
+
+    it("AT_20.04.003 | <Dashboard>Jenkins Table:: Pipeline's name hoverable dropdown menu", () => {
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(2)').realHover().click();
+        cy.get('.first-of-type li').should('be.visible').then($el => {
+            let arr = Cypress.$.makeArray($el).map($el => $el.innerText);
+            expect(arr.length).to.be.equal(pipelineDropdown.pipelineDropdownItems.length);
+            expect(arr).to.be.deep.equal(pipelineDropdown.pipelineDropdownItems);
+        })
+
+
+
+
+
+    })
+
 })
