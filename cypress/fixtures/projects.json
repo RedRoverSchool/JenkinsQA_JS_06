@@ -1,6 +1,7 @@
 {
 	"freestyle": {
-		"name": "Brand_new_Freestyle_project"
+		"name": "Brand_new_Freestyle_project",
+		"description" : "Javascript test program"
 	},
 	"disabledProjectNotify": "This project is currently disabled",
 

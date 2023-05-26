@@ -155,5 +155,32 @@ describe("breadcrumbsMyViewsPage", () => {
       })
       .should('deep.equal', items.createdJobsReverse)
   })
+  
+  it('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
+    cy.get('a[href="/view/all/newJob"]').click();
+    cy.get('#name').type(items.createdBuildsNames[0]);
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click();
+    cy.get('.jenkins-button--primary').click();
+    cy.get('#jenkins-home-link').click();
+
+    cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click();
+    cy.get('.yuimenuitem').contains(userMenuItems.userMenuItems[2]).click();
+    cy.get('a[class="jenkins-table__link model-link inside"]')
+      .should('include.text', items.createdBuildsNames[0]);
+    cy.get('.build-status-icon__outer').trigger('focus')
+    cy.get('svg[tooltip="Not built"]').should('be.visible');
+    cy.get('td:nth-child(4)').should('contain', items.cellData);
+    cy.get('td:nth-child(5)').should('contain', items.cellData);
+    cy.get('td:nth-child(6)').should('contain', items.cellData);
+    cy.get('td:nth-child(7)').trigger('focus');
+    cy.get('a[tooltip="Schedule a Build for Build Freestyle"]')
+      .should('be.visible').click()
+    cy.wait(600)
+    cy.get('#jenkins-home-link').click();
+    cy.get('.build-status-icon__outer').trigger('focus');
+    cy.get('svg[tooltip="Success"]').should('be.visible');
+  });
+    
 });
 
