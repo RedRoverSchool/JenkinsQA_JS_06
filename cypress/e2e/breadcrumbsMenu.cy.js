@@ -82,7 +82,7 @@ describe('BreadcrumbsMenu', () => {
    });
     
    pages.dashboardMenu.forEach((page, index) => {
-      it(`AT_04.02.11|Breadcrumbs| Dropdown menu ${page} are clickable`, () => {
+      it(`AT_04.02.011|Breadcrumbs| Dropdown menu ${page} are clickable`, () => {
             cy.get('li.jenkins-breadcrumbs__list-item').realHover()
             cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron').realClick()
             cy.wait(500)
