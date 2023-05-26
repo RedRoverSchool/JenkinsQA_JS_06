@@ -13,7 +13,7 @@ describe("Add description to a created user", () => {
     cy.get("#breadcrumbBar").contains("Dashboard").click();
   });
 
-  it.only("AT_06.02.004 verify the description can be added to a created user", () => {
+  it("AT_06.02.004 verify the description can be added to a created user", () => {
     cy.get('a[href="/asynchPeople/"]').click();
     cy.get('#person-created1 a[href = "/user/created1/"]').click();
     cy.get("#description div").not("div[class]").should("be.empty");
