@@ -80,5 +80,14 @@ describe('BreadcrumbsMenu', () => {
          .should('be.visible')
          .and('have.length', pages.dashboardMenu.length)
    });
-
+    
+   pages.dashboardMenu.forEach((page, index) => {
+      it(`AT_04.02.11|Breadcrumbs| Dropdown menu ${page} are clickable`, () => {
+            cy.get('li.jenkins-breadcrumbs__list-item').realHover()
+            cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron').realClick()
+            cy.wait(500)
+            cy.contains(page).click()
+            cy.url().should('include', pages.endPointUrl[index])
+         })
+      })
 });
