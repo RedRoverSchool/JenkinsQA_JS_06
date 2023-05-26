@@ -118,7 +118,7 @@ describe('Header Search Box', () => {
     cy.get('#searchform').should('be.visible')
     cy.get('a[href="/view/all/builds"').click()
     cy.get('#searchform').should('be.visible')
-
+  });
  
   it('AT_01.02_024 | Accessibility of the search field from the Manage Jenkins page',() => {
     cy.get('a[href="/manage"]').click();
