@@ -1,3 +1,4 @@
 {
-    "jenkinsEndPointWebSite" : "jenkins.io"
+    "jenkinsEndPointWebSite" : "jenkins.io",
+    "pageTitle" : "Jenkins"
 }

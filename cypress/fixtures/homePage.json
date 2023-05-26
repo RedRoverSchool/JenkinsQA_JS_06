@@ -37,7 +37,10 @@
         "Load Statistics",
         "About Jenkins",
         "Manage Old Data",
-        "Reload Configuration from Disk"
+        "Reload Configuration from Disk",
+        "Jenkins CLI",
+        "Script Console",
+        "Prepare for Shutdown"
     ],
 
     "addDescription": "Description to edit",
