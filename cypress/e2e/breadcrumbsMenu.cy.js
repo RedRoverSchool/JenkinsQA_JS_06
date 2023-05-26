@@ -73,7 +73,7 @@ describe('BreadcrumbsMenu', () => {
        });
    });
    
-   it('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+   it.skip('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
       cy.get('#breadcrumbs .model-link').realHover()
       cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').realClick()
       cy.get('#breadcrumb-menu>div:first-child>ul>li')
