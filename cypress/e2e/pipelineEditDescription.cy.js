@@ -1,5 +1,6 @@
 /// <reference types='cypress'/>
 import pipelineName from '../fixtures/pipelineName.json'
+import description from '../fixtures/userDescription.json'
 
 describe('Add description to the pipeline', () => {
 
@@ -36,5 +37,16 @@ describe('Add description to the pipeline', () => {
         cy.get('#description div:nth-child(1)')
           .should('have.text', pipelineName.descriptionPipeLine + pipelineName.additionalDescriptionPipeline)
     });
-})
+    it.only('AT_13.05.002 | Edit description to the pipeline', () =>{
+        cy.get('.jenkins-table__link > span').click();
+        cy.get('#description-link').click();
+        cy.get('.jenkins-input').type(description.textDescription);
+        cy.get('.jenkins-button--primary').click();
+        cy.get('#description').should('contain', `${description.textDescription}`).and('exist')
 
+        cy.get('#description-link').click();
+        cy.get('.jenkins-input').type(description.pipelineDescription);
+        cy.get('.jenkins-button--primary').click();
+        cy.get('#description').should('contain', `${description.pipelineDescription}`).and('exist')
+    })
+})
