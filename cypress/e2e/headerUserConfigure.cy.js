@@ -162,7 +162,7 @@ describe('Header User configure', () => {
         cy.get('#description-link').should('contain', 'Add description');
     });
 
-    it.only('AT_01.05.10 | Header>User configure redirected', () => {
+    it('AT_01.05.10 | Header>User configure redirected', () => {
         cy.openConfigurationPage();
         cy.get('.jenkins-form-label').eq(0).should('contain', 'Full Name') 
     })
