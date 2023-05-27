@@ -182,4 +182,13 @@ describe('Header Search Box', () => {
       cy.get('input#search-box').should('have.value', selectWord);
     })
   });
+
+  it('AT_01.02_033 | Verify if the elements in the dropdown menu can be hovered over', () => {
+    cy.get('input#search-box').type(headers.dataLetter).realHover();
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
+      if (index === 0) {
+        cy.wrap($el).trigger('mouseover').should('be.visible');
+      }
+    })
+  });
 });
