@@ -41,4 +41,12 @@ describe('headerCredentialsMenuLink', () => {
     cy.get('a[href="newDomain"]').click()
     cy.get('#main-panel h1').should('have.text', headerCredentials.newDomainPageHeader)
     })
-})
+
+  it('AT_01.07.006 | Verify Redirection to Credential Page from User Dropdown Menu', () => {
+    cy.get('header .jenkins-menu-dropdown-chevron').click()
+    cy.get('#breadcrumb-menu li:last-child').click()
+
+    cy.get('#main-panel h1').should('have.text', headerCredentials.credentialsPageHeader)
+  });
+
+});
