@@ -39,7 +39,7 @@ describe('folderDeleteFolder', () =>{
         cy.get('a[href="job/QA_06_Folder1/"]').click();
         cy.get('a[href="/job/QA_06_Folder1/delete"]').click();
         cy.get('.jenkins-button.jenkins-button--primary').click();
-        cy.get('#breadcrumBar a[href^="/job"]').should('not.exist');
+        cy.get('#job_QA_06_Folder1').should('not.exist');
     });
 
 })
