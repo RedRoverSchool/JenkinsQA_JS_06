@@ -3,6 +3,9 @@
 import homePage from "../fixtures/homePage.json";
 import headers from "../fixtures/headers.json";
 import pages from "../fixtures/pages.json"
+import {dashboardMenu} from "../fixtures/pages.json"
+
+
 describe('BreadcrumbsMenu', () => {
 
    it('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
@@ -90,4 +93,11 @@ describe('BreadcrumbsMenu', () => {
             cy.url().should('include', pages.endPointUrl[index])
          })
       })
-});
+
+      it('AT_04.02.012 |Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+         cy.get('#breadcrumbs a').realHover().click('right');
+         cy.get('#breadcrumb-menu>div:first-child>ul>li')
+           .should('be.visible')
+           .and('have.length', dashboardMenu.length);  
+          });
+      });
