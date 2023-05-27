@@ -47,3 +47,13 @@ it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
      "not.have.text");
 });
 });
+
+it('20.02_004 | Edit the project description on the dashboard', () => {
+  cy.get('#description-link').click()
+  cy.get('textarea.jenkins-input')
+  .clear()
+  .type('Description for Cypress')
+  cy.get('button.jenkins-button.jenkins-button--primary ').click()
+  cy.get('#description div').should('contain', 'Description for Cypress')
+
+})
