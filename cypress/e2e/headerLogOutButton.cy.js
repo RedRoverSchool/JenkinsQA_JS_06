@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import loginPage from "../fixtures/logInPage.json"
 
 describe('Header | Log Out Button', () => {
     
@@ -15,7 +16,7 @@ describe('Header | Log Out Button', () => {
 
     it('AT_01.08.029| Header Log out button/testing the exit button', function() {
         cy.get('a[href="/logout"]').click()
-        cy.get('h1').should('have.text', "Welcome to Jenkins!")
+        cy.get('h1').should('have.text', loginPage.loginPageHeader)
     })
     
 })
