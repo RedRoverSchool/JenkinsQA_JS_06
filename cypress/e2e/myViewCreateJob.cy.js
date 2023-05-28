@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import addJob from "../fixtures/addJob.json"
+import createJob from "../fixtures/createJob.json"
 
 const PORT = Cypress.env("local.port");
 
@@ -44,4 +45,16 @@ describe('myViewsCreateJob', () => {
       expect(description).eq(addJob.description)
     })
   });
+
+    it.only('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
+        cy.get('a[href="/me/my-views"]').click()
+        cy.get('.empty-state-block h2').should('be.visible').and('have.text', createJob.verifyText)
+        cy.get('a[href="newJob"]').click()
+        cy.get('.jenkins-input').type(createJob.typeOn)
+        cy.get('#j-add-item-type-nested-projects').should('contain',createJob.verifyFolder).click()
+        cy.get('#ok-button').click()
+       cy.get('.jenkins-app-bar__content h1').should('be.visible').and('have.text', createJob.verifyPage)
+       cy.get('button[name=Submit]').click()
+       cy.get('#main-panel h1').should('contain', createJob.jobFolder)
+    })
 });
