@@ -1,43 +1,63 @@
-import items from "../fixtures/items.json";
-// import {endPointUrl, sidePanelItams} from
+import {createMultiBranchPipeline, createMultibranchPipeline} from "../support/helper";
+
 describe('Multibranch Pipeline Configuration', function () {
     const newPipelineName = 'pipeline' + Date.now()
     const description = 'description' + Date.now()
     const displayName = 'displayName' + Date.now()
     const addSourse = ["Git", "GitHub", "Single repository & branch"]
 
-    function createMultibranchPipeline(pipelineName) {
-        cy.get('a[href="newJob"]').click();
-        cy.get('#name').type(pipelineName);
-        cy.contains('Multibranch Pipeline').click();
-        cy.get('#ok-button').click();
-        cy.get('button[name=Submit]').click();
-    }
+    // function createMultibranchPipeline(pipelineName) {
+    //     cy.get('a[href="newJob"]').click();
+    //     cy.get('#name').type(pipelineName);
+    //     cy.contains('Multibranch Pipeline').click();
+    //     cy.get('#ok-button').click();
+    //     cy.get('button[name=Submit]').click();
+    // }
 
     beforeEach('Create multibranch pipeline', function () {
 
-        createMultibranchPipeline(newPipelineName)
-        // cy.get('#side-panel #tasks a').as('sideMenuLinks')
+        createMultiBranchPipeline(newPipelineName);
+        cy.get('a[href="./configure"]').click();
+
     })
 
+    it.only('fill out and verify multibranch pipeline configuration General fields', function () {
+
+        cy.get('.jenkins-form-item > .jenkins-form-label')
+            .should('contain', 'Display Name')
+        cy.get('a[title="Help for feature: Display Name"]')
+            .click()
+        cy.get('.jenkins-form-item > .help-area > .help > :nth-child(1)')
+            .should('be.visible')
+        cy.get('.jenkins-form-item > .jenkins-form-label')
+            .should('contain', 'Description')
+        cy.get('a[title="Help for feature: Display Name"]')
+            .realHover()
+            .should('be.visible')
+        cy.get('input[name="_.displayNameOrNull"]')
+            .should('be.visible')
+            .type(displayName)
+        cy.get('textarea[name="_.description"]')
+            .should('be.visible')
+            .type(description)
+        cy.get('.textarea-show-preview')
+            .should('contain', 'Preview')
+            .click()
+        cy.get('.textarea-preview').should('contain', description)
+        cy.get('.textarea-hide-preview')
+            .should('be.visible')
+            .and('contain', 'Hide preview')
+        cy.get('.textarea-hide-preview')
+            .click()
+            .should('not.be.visible')
+    });
     it('test1', function () {
-        cy.get('a[href="./configure"]').click();
-        // cy.get('.jenkins-form-item > .jenkins-form-label').should('contain', 'Display Name')
-        // cy.get('a[title="Help for feature: Display Name"]').click()
-        // cy.get('.jenkins-form-item > .help-area > .help > :nth-child(1)').should('be.visible')
-        // cy.get('.jenkins-form-item > .jenkins-form-label').should('contain', 'Description')
-        //
-        //
-        // cy.get('a[title="Help for feature: Display Name"]').realHover().should('be.visible')
-        //
-        // cy.get('input[name="_.displayNameOrNull"]').type(displayName)
-        // cy.get('textarea[name="_.description"]').type(description)
-        // cy.get('.textarea-show-preview').should('contain', 'Preview').click()
-        // cy.get('.textarea-preview').should('contain', description)
-        // cy.get('.textarea-hide-preview').should('be.visible').and('contain', 'Hide preview')
-        // cy.get('.textarea-hide-preview').click().should('not.be.visible')
+
+
         // cy.get('#branch-sources').should('contain', 'Branch Sources')
         // cy.get('#build-configuration').should('contain', 'Build Configuration')
+
+
         cy.get('#yui-gen1-button').realHover().click()
         cy.get('#yui-gen2 li').should('have.length', 3)
             .then($els => {
@@ -48,6 +68,8 @@ describe('Multibranch Pipeline Configuration', function () {
 
                 //               }).click({force:true})
             })
+
+
         // //         .then($els =>{
         // //                const item = Cypress.$.makeArray($els).filter($el => $el.innerText == 'GitHub');
         // //                return cy.wrap(item)
