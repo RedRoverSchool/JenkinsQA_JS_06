@@ -35,4 +35,12 @@ describe("US_01.06 Header My views menu link", () => {
         cy.url().should('includes', homePage.endPointUrl[4]);
         cy.get('#breadcrumbs li').contains(homePage.dashboardDropdownItems[4]).should('be.visible');
     })
+
+    it('AT_01.06.008 | <Header>My views menu link/link redirect works', function() {
+        cy.get('.page-header__hyperlinks a .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('.yuimenuitemlabel').contains('My Views').click()
+        cy.url().should('eq', `http://localhost:8080/user/${userName}/my-views/view/all/`)
+        cy.get('#side-panel').should('be.visible')
+    })
+
 });
