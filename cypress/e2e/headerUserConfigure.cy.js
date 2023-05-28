@@ -164,6 +164,6 @@ describe('Header User configure', () => {
 
     it('AT_01.05.10 | Header> Verify User redirected on page configure', () => {
         cy.openConfigurationPage();
-        cy.get('.jenkins-form-label').eq(0).should('contain', 'Full Name') 
+        cy.get('.jenkins-form-label').eq(0).should('contain', userDescription.fieldName) 
     })
 })
