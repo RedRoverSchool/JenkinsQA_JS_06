@@ -45,6 +45,6 @@ describe('headerCredentialsMenuLink', () => {
     it('AT_01.07.007 | <Header> Credentials menu link/ access check', function() {
       cy.get('.page-header__hyperlinks .model-link').click()
       cy.get('a[href*="/credentials').click()
-      cy.url().should('eq', `http://localhost:8080/user/${login}/credentials/`)
+      cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/${login}/credentials/`)
     })
 })
