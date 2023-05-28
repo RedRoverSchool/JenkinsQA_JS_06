@@ -111,6 +111,14 @@ describe('Header Search Box', () => {
   it('AT_01.02_023 | Validation of the Search box', ()=> { 
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
+
+  it ('AT_01.02._027|Verify Search box is visible and accessible from twopages', function () {
+    cy.get('#searchform').should('be.visible')
+    cy.get('a[href="/asynchPeople/"').click()
+    cy.get('#searchform').should('be.visible')
+    cy.get('a[href="/view/all/builds"').click()
+    cy.get('#searchform').should('be.visible')
+  });
  
   it('AT_01.02_024 | Accessibility of the search field from the Manage Jenkins page',() => {
     cy.get('a[href="/manage"]').click();
@@ -160,4 +168,37 @@ describe('Header Search Box', () => {
       cy.get('div.error').should('have.text', headers.textNothing)
     }
   })
+
+  it('AT_01.02_030 | Select a single result if there are multiple matches in the search dropdown', () => {
+    cy.get('input#search-box').type(headers.dataLetter).realHover();
+    let selectWord;
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
+      const dropDown = $el.text().trim();
+      if (index === 0) {
+        selectWord = dropDown;
+        cy.wrap($el).click()
+      }
+    }).then(() => {
+      cy.get('input#search-box').should('have.value', selectWord);
+    })
+  });
+
+  it('AT_01.02_033 | Verify if the elements in the dropdown menu can be hovered over', () => {
+    cy.get('input#search-box').type(headers.dataLetter).realHover();
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {      
+      if (index === 0) {
+        cy.wrap($el).trigger('mouseover').should('be.visible');
+      }
+    })
+  });
+
+  it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
+    cy.get('input#search-box').type(headers.dataLetter);   
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
+      const textDropdown = $el.text().trim();
+      cy.wrap(textDropdown).should('satisfy', (text) => {
+        return text.includes(headers.dataLetter) || text.includes(headers.dataLetterCap);
+      })
+    })
+  });
 });

@@ -34,4 +34,10 @@ describe('dashboardFreestyleDropdownMenu', () => {
         }).and('be.visible')
     })
 
+    it('AT_20.03.004 | Verify when User clicks Down arrow, dropdown menu content is appears', () => {
+        cy.get('a[href*="job/"].model-link').click()
+        cy.get('#breadcrumbBar a[href*="/job/"]').realHover()
+        cy.get('#breadcrumbBar a[href*="/job/"] button').click()
+        cy.get('#breadcrumb-menu').should('be.visible')
+    })
 })

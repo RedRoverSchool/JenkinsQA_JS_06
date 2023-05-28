@@ -13,5 +13,7 @@
     "inputText": "Built",
     "outText": "Built-In Node",
     "inputTextLow": "built",
-    "inputTextUp": "BUILT"
+    "inputTextUp": "BUILT",
+    "dataLetter": "e",
+    "dataLetterCap": "E"
 }
