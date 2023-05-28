@@ -39,7 +39,7 @@ describe("US_01.06 Header My views menu link", () => {
     it('AT_01.06.008 | <Header>My views menu link/link redirect works', function() {
         cy.get('.page-header__hyperlinks a .jenkins-menu-dropdown-chevron').realHover().click()
         cy.get('.yuimenuitemlabel').contains('My Views').click()
-        cy.url().should('eq', `http://localhost:8080/user/${userName}/my-views/view/all/`)
+        cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/${userName}/my-views/view/all/`)
         cy.get('#side-panel').should('be.visible')
     })
 
