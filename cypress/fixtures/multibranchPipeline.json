@@ -13,10 +13,13 @@
   "character" : "a",
   "number": 256,
   "name": "Multibranch Pipeline",
-  
+
+
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
-    "folder" : "Folder",
+    "folder" : "Folder"
+  },
+  "configurationsFields": {
     "displayName": "Display Name",
     "description": "Description",
     "preview": "Preview",
