@@ -25,7 +25,7 @@ function toggleAndSubmit(disableButton,submitButton) {
   cy.get(submitButton).click();
 }
 
-function createMultiBranchPipeline(pipelineName) {
+ function createMultiBranchPipeline(pipelineName) {
   cy.get('a[href="newJob"]').click();
   cy.get('#name').type(pipelineName);
   cy.contains('Multibranch Pipeline').click();
