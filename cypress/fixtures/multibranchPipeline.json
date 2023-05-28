@@ -19,6 +19,7 @@
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
   },
+
   "configurationsFields": {
     "displayName": "Display Name",
     "description": "Description",
