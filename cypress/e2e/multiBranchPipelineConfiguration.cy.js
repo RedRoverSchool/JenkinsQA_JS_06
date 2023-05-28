@@ -1,9 +1,9 @@
 import {createMultiBranchPipeline, createMultibranchPipeline} from "../support/helper";
-
+import multibranchPipline from "../fixtures/multibranchPipeline.json"
 describe('Multibranch Pipeline Configuration', function () {
 
     const newPipelineName = 'pipeline' + Date.now()
-    const description = 'description' + Date.now()
+    const descriptionText = 'description' + Date.now()
     const displayName = 'displayName' + Date.now()
 
     beforeEach('Create multibranch pipeline', function () {
@@ -13,13 +13,13 @@ describe('Multibranch Pipeline Configuration', function () {
 
     it('AT 16.01.009|fill out and verify multibranch pipeline configuration General fields', function () {
         cy.get('.jenkins-form-item > .jenkins-form-label')
-            .should('contain', 'Display Name')
+            .should('contain', multibranchPipline.titles.displayName)
         cy.get('a[title="Help for feature: Display Name"]')
             .click()
         cy.get('.jenkins-form-item > .help-area > .help > :nth-child(1)')
             .should('be.visible')
         cy.get('.jenkins-form-item > .jenkins-form-label')
-            .should('contain', 'Description')
+            .should('contain', multibranchPipline.titles.description)
         cy.get('a[title="Help for feature: Display Name"]')
             .realHover()
             .should('be.visible')
@@ -28,14 +28,14 @@ describe('Multibranch Pipeline Configuration', function () {
             .type(displayName)
         cy.get('textarea[name="_.description"]')
             .should('be.visible')
-            .type(description)
+            .type(descriptionText)
         cy.get('.textarea-show-preview')
-            .should('contain', 'Preview')
+            .should('contain', multibranchPipline.titles.preview)
             .click()
-        cy.get('.textarea-preview').should('contain', description)
+        cy.get('.textarea-preview').should('contain', descriptionText)
         cy.get('.textarea-hide-preview')
             .should('be.visible')
-            .and('contain', 'Hide preview')
+            .and('contain', multibranchPipline.titles.hidePreview)
         cy.get('.textarea-hide-preview')
             .click()
             .should('not.be.visible')
