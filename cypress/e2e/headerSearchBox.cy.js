@@ -191,4 +191,9 @@ describe('Header Search Box', () => {
       }
     })
   });
+  it('AT_01.02_034 | Header check Search box', () => {
+    cy.get('#search-box').should('be.visible')
+    cy.get('#search-box').type('checking').clear()
+    cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
+  })
 });
