@@ -1,6 +1,7 @@
 import {createMultiBranchPipeline, createMultibranchPipeline} from "../support/helper";
 
 describe('Multibranch Pipeline Configuration', function () {
+
     const newPipelineName = 'pipeline' + Date.now()
     const description = 'description' + Date.now()
     const displayName = 'displayName' + Date.now()
@@ -10,7 +11,7 @@ describe('Multibranch Pipeline Configuration', function () {
         cy.get('a[href="./configure"]').click();
     })
 
-    it('fill out and verify multibranch pipeline configuration General fields', function () {
+    it('AT 16.01.009|fill out and verify multibranch pipeline configuration General fields', function () {
         cy.get('.jenkins-form-item > .jenkins-form-label')
             .should('contain', 'Display Name')
         cy.get('a[title="Help for feature: Display Name"]')
