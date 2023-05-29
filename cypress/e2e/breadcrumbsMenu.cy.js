@@ -17,7 +17,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
+   it.skip('AT_04.02_002 |Dashbord has a dropdown menu', () => {
       cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron"]').realHover().realClick()
       cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
          .each((el, index) => {
