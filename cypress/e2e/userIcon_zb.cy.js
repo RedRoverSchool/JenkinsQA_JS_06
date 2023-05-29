@@ -50,6 +50,14 @@ describe('Header | User icon', () => {
         cy.get('.first-of-type span').contains('Credentials').click();
         cy.get('.jenkins-app-bar__content h1').should('have.text', 'Credentials');
     })
+
+    it('AT_01.03.027 | <Header> User icon is visible, clickable, opens a dropdown menu and redirects', () => {
+        cy.get('a[href="/user/admin"]').should('be.visible');
+        cy.get('button:nth-child(3)').click({force: true});
+        cy.get('#breadcrumb-menu').should('be.visible');
+        cy.get('a[href="/user/admin/builds"').click();
+        cy.get('#main-panel h1').should('have.text', 'Builds for admin');
+    });
 })
 
 
