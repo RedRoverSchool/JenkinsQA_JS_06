@@ -1,4 +1,4 @@
-import { createMultiBranchPipeline, createMultibranchPipeline } from "../support/helper";
+import { createMultiBranchPipeline} from "../support/helper";
 import multibranchPipline from "../fixtures/multibranchPipeline.json"
 
 describe('Multibranch Pipeline Configuration', function () {
