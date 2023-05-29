@@ -25,4 +25,12 @@ function toggleAndSubmit(disableButton,submitButton) {
   cy.get(submitButton).click();
 }
 
-module.exports = { getRandomNumber, createMultibranchPipeline ,toggleAndSubmit}
+function createMultiBranchPipeline(pipelineName) {
+  cy.get('a[href="newJob"]').click();
+  cy.get('#name').type(pipelineName);
+  cy.contains('Multibranch Pipeline').click();
+  cy.get('#ok-button').click();
+  cy.get('button[name=Submit]').click();
+}
+
+module.exports = { getRandomNumber, createMultibranchPipeline ,toggleAndSubmit,createMultiBranchPipeline}
