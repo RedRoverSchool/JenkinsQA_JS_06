@@ -16,6 +16,11 @@ describe('Header User configure', () => {
         cy.wait(['@saved']);
     });
     
+    Cypress.Commands.add('openConfigurationPage', () => {
+        cy.get('.page-header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('a[href*="/configure"]').click()
+    });
+
     const descriptionText = 'Some example description';
     const descriptionField = () =>
         cy.get('#main-panel form[name="config"] div.setting-main')
@@ -156,4 +161,9 @@ describe('Header User configure', () => {
         cy.get(`${saveButton}`).click();
         cy.get('#description-link').should('contain', 'Add description');
     });
+
+    it('AT_01.05.10 | Header> Verify User redirected on page configure', () => {
+        cy.openConfigurationPage();
+        cy.get('.jenkins-form-label').eq(0).should('contain', userDescription.fieldName) 
+    })
 })
