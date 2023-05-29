@@ -191,4 +191,14 @@ describe('Header Search Box', () => {
       }
     })
   });
+
+  it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
+    cy.get('input#search-box').type(headers.dataLetter);   
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
+      const textDropdown = $el.text().trim();
+      cy.wrap(textDropdown).should('satisfy', (text) => {
+        return text.includes(headers.dataLetter) || text.includes(headers.dataLetterCap);
+      })
+    })
+  });
 });
