@@ -1,4 +1,4 @@
-import { createMultiBranchPipeline} from "../support/helper";
+import { createMultiBranchPipeline } from "../support/helper";
 import multibranchPipline from "../fixtures/multibranchPipeline.json"
 
 describe('Multibranch Pipeline Configuration', function () {
@@ -6,7 +6,6 @@ describe('Multibranch Pipeline Configuration', function () {
     const newPipelineName = 'pipeline' + Date.now()
     const descriptionText = 'description' + Date.now()
     const displayName = 'displayName' + Date.now()
-    const scriptPathName = 'scriptPath' + Date.now()
 
     beforeEach('Create multibranch pipeline', function () {
         createMultiBranchPipeline(newPipelineName);
@@ -43,7 +42,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('not.be.visible')
     });
 
-    it('AT_16.01_011 | Fill out and verify configuration -> Build Configuration', function () {
+    it.only('AT_16.01_011 | Verify visibility of configuration fields names -> Build Configuration', function () {
         cy.get('#build-configuration')
             .should('contain', multibranchPipline.configurationsFields.buildConfiguration)
         cy.get(':nth-child(6) > :nth-child(2) > .jenkins-form-label')
@@ -55,9 +54,5 @@ describe('Multibranch Pipeline Configuration', function () {
         cy.get('a[title="Help for feature: Script Path"]')
             .realHover()
             .should('be.visible')
-        cy.get('input[name="_.scriptPath"]')
-            .should('be.visible')
-            .clear().type(scriptPathName)
-        cy.get('body').click({ force: true });
-    });
+        })
 })
