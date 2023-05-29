@@ -3,6 +3,9 @@
 import homePage from "../fixtures/homePage.json";
 import headers from "../fixtures/headers.json";
 import pages from "../fixtures/pages.json"
+import {dashboardMenu} from "../fixtures/pages.json"
+
+
 describe('BreadcrumbsMenu', () => {
 
    it('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
@@ -14,7 +17,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
+   it.skip('AT_04.02_002 |Dashbord has a dropdown menu', () => {
       cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron"]').realHover().realClick()
       cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
          .each((el, index) => {
@@ -55,4 +58,46 @@ describe('BreadcrumbsMenu', () => {
          cy.go('back')
       })
    })
-})
+
+   it('AT_04.02_007 | Verify Dashboard dropdown menu content', () => {
+      cy.get('#breadcrumbBar').contains('Dashboard').realHover()
+      cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').click()
+      cy.get('#breadcrumb-menu>.bd>ul>li > .yuimenuitemlabel span').each(($el, idx) => {
+         expect($el.text()).to.be.equal(homePage.dashboardDropdownItems[idx])
+      })
+   })
+
+   it('AT_04.02.009 |Breadcrumbs| Dashboard page link check Manage Jenkins dropdown subfolder', () => {
+      cy.get('#breadcrumbBar').contains('Dashboard').realHover()
+      cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').click()
+      cy.get("#breadcrumb-menu a[href$='manage'] span").contains(homePage.dashboardDropdownItems[3]).trigger('mouseover');
+      homePage.manageJenkinsDropdownItems.forEach(item => {
+         cy.contains('#submenu0', item).should('be.visible');
+       });
+   });
+   
+   it.skip('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+      cy.get('#breadcrumbs .model-link').realHover()
+      cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').realClick()
+      cy.get('#breadcrumb-menu>div:first-child>ul>li')
+         .should('be.visible')
+         .and('have.length', pages.dashboardMenu.length)
+   });
+    
+   pages.dashboardMenu.forEach((page, index) => {
+      it(`AT_04.02.011|Breadcrumbs| Dropdown menu ${page} are clickable`, () => {
+            cy.get('li.jenkins-breadcrumbs__list-item').realHover()
+            cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron').realClick()
+            cy.wait(500)
+            cy.contains(page).click()
+            cy.url().should('include', pages.endPointUrl[index])
+         })
+      })
+
+      it('AT_04.02.012 |Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+         cy.get('#breadcrumbs a').realHover().click('right');
+         cy.get('#breadcrumb-menu>div:first-child>ul>li')
+           .should('be.visible')
+           .and('have.length', dashboardMenu.length);  
+          });
+      });

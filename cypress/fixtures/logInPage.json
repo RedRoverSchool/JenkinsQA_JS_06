@@ -1,3 +1,4 @@
 {
-    "loginPageHeader": "Welcome to Jenkins!"
+    "loginPageHeader": "Welcome to Jenkins!",
+    "loginMessage": "Sign in [Jenkins]"
 }

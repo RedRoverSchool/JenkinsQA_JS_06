@@ -1,0 +1,12 @@
+{
+  "createAJobEndPointUrl": "/newJob",
+  "linkName": "Create a job",
+  "addItemLabelName": "Enter an item name",
+  "helpLinkName": "Learn more about distributed builds",
+  "helpLinkUrl": "https://wiki.jenkins.io/display/JENKINS/Distributed+builds",
+  "sections": [
+    "Start building your software project",
+    "Set up a distributed build"
+  ],
+  "headingH1": "Welcome to Jenkins!"
+}

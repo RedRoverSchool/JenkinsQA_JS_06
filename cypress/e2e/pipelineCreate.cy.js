@@ -1,12 +1,17 @@
-describe('Create a new Pipeline', () => {
-    const newPipeLineName = 'myFirstPipeLine_1'
-    it('Create a new Pipeline', () => {
+import projects from '../fixtures/projects.json'
+import pipelineName from '../fixtures/pipelineName.json'
+import homePage from '../fixtures/homePage.json'
+import newItemNames from '../fixtures/newItemNames.json'
+import myView from '../fixtures/myView.json'
+
+describe('pipelineCreate', () => {
+    it('AT_05.02_001 | Create a new Pipeline', () => {
         cy.get('.task:first-child ').click()
-        cy.get('input#name').type(newPipeLineName)
+        cy.get('input#name').type(projects.pipeline.name)
         cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
         cy.get('#ok-button').click()
         cy.get('#breadcrumbBar li:first-child').click()
-        cy.get('table#projectstatus').should('contain', newPipeLineName)
+        cy.get('table#projectstatus').should('contain', projects.pipeline.name)
     })
 
     it('Create a new Pipeline', () => {
@@ -22,12 +27,12 @@ describe('Create a new Pipeline', () => {
     it('Create a new Pipeline goin from People page', () => {
         cy.get('a[href="/asynchPeople/"]').click()
         cy.get('a[href="/view/all/newJob"]').click()
-        cy.get('input.jenkins-input').type(newPipeLineName)
+        cy.get('input.jenkins-input').type(projects.pipeline.name)
         cy.get('.org_jenkinsci_plugins_workflow_job_WorkflowJob').click()
         cy.get('#ok-button').click()
         cy.get('button[name="Submit"]').click()
         cy.get('li a[href="/"]').click()
-        cy.get('table#projectstatus').should('contain', newPipeLineName)
+        cy.get('table#projectstatus').should('contain', projects.pipeline.name)
     })
 
     it("Create a new Pipeline", () => {
@@ -40,5 +45,25 @@ describe('Create a new Pipeline', () => {
         cy.get("button[name='Submit']").click();
         cy.get("li:nth-child(1) > a").click();
         cy.get("[href$='FirstProject/']").should("have.text", "FirstProject");
+    })
+    
+    it('Create new Pipeline', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('input#name').type('TestPipeline')
+        cy.get('span.label').contains('Pipeline').click()
+        cy.get('#ok-button').click()
+        cy.get('li.jenkins-breadcrumbs__list-item>a[href="/"]').click()
+        cy.get('table.jenkins-table').should('contain', 'TestPipeline')
+    
+    })
+
+    it('AT_05.02_008 | Create a new Pipeline', () => {
+        cy.get('.task:first-child ').contains(homePage.sidePanelItems[0]).click()
+        cy.get('input#name').type(pipelineName.namePipeline)
+        cy.get('span.label').contains(newItemNames.projectNames[1]).click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('a.model-link').contains(myView.dashboard).click()
+        cy.get('table#projectstatus').should('contain', pipelineName.namePipeline)
     })
 });

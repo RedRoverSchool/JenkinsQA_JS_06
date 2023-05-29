@@ -1,6 +1,7 @@
 {
 	"freestyle": {
-		"name": "Brand_new_Freestyle_project"
+		"name": "Brand_new_Freestyle_project",
+		"description" : "Javascript test program"
 	},
 	"disabledProjectNotify": "This project is currently disabled",
 
@@ -11,15 +12,40 @@
 		"text": "REST API"
 	},
 
+	"pipeline": {
+		"name": "newPipeline_06"
+	},
+
 	"organizationFolder" : {
 		"name" : "myFirstOrganizationForder",
-		"disable": "This Organization Folder is currently disabled"
+		"disable": "This Organization Folder is currently disabled",
+		"disableBtn": "Disable Organization Folder"
 	  },
 
 	"multiConfigurationProject" : {
 		"name" : "myNewMultiConfigurationProject",
-		"renameWithValidName" : "RenamedProject123"
+		"renameWithValidName" : "RenamedProject123",
+		"advancedOptions": [
+			"Quiet period", 
+			"Retry Count", 
+			"Block build when upstream project is building", 
+			"Block build when downstream project is building", 
+			"Use custom workspace",	
+			"Use custom child workspace"
+		],
+		"advancedOptionsField": ["Display Name"]
 	},
 	
-	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"]  
+	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"],
+	
+	"newProject" : "New project",
+
+	"forOrganizationFolder" : {
+		"name": "My Organization Folder",
+		"displayName": "Display Name",
+		"description": "Description"
+	},
+
+	"projects" : ["Project1", "Project2", "Project3"] 
+	
 }
