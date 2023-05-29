@@ -112,5 +112,11 @@ describe('Header Head Icon', () => {
         cy.get('div h1').should('include.text', 'Welcome to Jenkins!');
     });
 
+    it('AT_01.01.047 | Header, Head Icon is visible and redirects to home page', () => {
+        cy.get('[href="/asynchPeople/"]').click();
+        cy.get('#jenkins-head-icon').click();
+        cy.get('div h1').should('include.text', 'Welcome to Jenkins!');
+    });
 })
+
 
