@@ -1,4 +1,5 @@
 /// <reference types="cypress"/>
+import loginPage from "../fixtures/logInPage.json"
 
 describe('Header | Log Out Button', () => {
     
@@ -12,4 +13,10 @@ describe('Header | Log Out Button', () => {
         cy.get('input[placeholder="Username"]').should('be.visible')
         cy.get('input[placeholder="Password"]').should('be.visible')
     })
+
+    it('AT_01.08.029| Header Log out button/testing the exit button', function() {
+        cy.get('a[href="/logout"]').click()
+        cy.get('h1').should('have.text', loginPage.loginPageHeader)
+    })
+    
 })
