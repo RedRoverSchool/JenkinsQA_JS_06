@@ -55,4 +55,21 @@ describe('Multibranch Pipeline Configuration', function () {
             .realHover()
             .should('be.visible')
     })
+
+    it('AT_16.01_013 | Verify visibility of configuration fields names > Scan Multibranch Pipeline Triggers', function () {
+        cy.get('#scan-multibranch-pipeline-triggers')
+          .should('contain', multibranchPipline.configurationsFields.scanMultibtanchPipelineTriggers)
+        cy.get('div[class="help-sibling tr optional-block-start row-group-start row-set-start has-help"]')
+          .should('contain', multibranchPipline.configurationsFields.periodically).click()
+        cy.get('a[title="Help for feature: Periodically if not otherwise run"]')
+          .realHover()
+          .should('be.visible').click()
+        cy.get('div[class="help"] div p:nth-child(1)')
+          .should('be.visible')
+        cy.get('a[title="Help for feature: Periodically if not otherwise run"]').click()
+        cy.get('div[class="help"] div p:nth-child(1)')
+          .should('not.be.visible')
+        cy.get('.jenkins-form-item > .jenkins-form-label')
+          .should('contain', multibranchPipline.configurationsFields.interval)
+    });
 })
