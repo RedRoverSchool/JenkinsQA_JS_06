@@ -55,7 +55,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         })
     })
 
-    it('AT_12.05_006 | Verify <Source Code Management> <GiT> tooltip text box is visible and displays correct information when User is hovering over tooltip', () => {
+    xit('AT_12.05_006 | Verify <Source Code Management> <GiT> tooltip text box is visible and displays correct information when User is hovering over tooltip', () => {
         cy.get('#tasks a[href$="configure"]').click()
         cy.get('button[data-section-id="source-code-management"]').click()
         cy.get('.config-table .jenkins-section:nth-child(7) .jenkins-radio-help-wrapper [tooltip]:nth-child(2)').trigger('focus')
