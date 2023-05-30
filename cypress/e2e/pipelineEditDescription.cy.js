@@ -37,4 +37,3 @@ describe('Add description to the pipeline', () => {
           .should('have.text', pipelineName.descriptionPipeLine + pipelineName.additionalDescriptionPipeline)
     });
 })
-
