@@ -19,6 +19,44 @@ function createBuildsOfNewProject(projectName, buildsNumber) {
     };
 };
 
+function scheduleBuildForFreestyleProject(){
+    cy.get('#tasks [href="/view/all/newJob"]').click()
+    cy.get('input#name').type(projects.freestyle.name)
+    cy.get('#j-add-item-type-standalone-projects li:first-child').click()
+    cy.get('#ok-button').click()
+    cy.get('#breadcrumbBar li:first-child').click()
+    cy.get('tr:first-child td:last-child [tooltip]').click()
+}
+
+function scheduleBuildForPipelineProjec(){
+    cy.get('#tasks [href="/view/all/newJob"]').click()
+    cy.get('input#name').type(projects.pipeline.name)
+    cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
+    cy.get('#ok-button').click()
+    cy.get('#breadcrumbBar li:first-child').click()
+    cy.get('tr:nth-child(2) td:last-child [tooltip]').click()
+}
+
+function getTable () {
+    cy.get('table#projectStatus').within(() => {
+        let keyArrayTableHeader = []
+        let tableDataArr = []
+        cy.get('thead th').then(($els) => {
+           keyArrayTableHeader = Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+        cy.get('tbody tr').each((_, row) => {
+            cy.get('tbody tr').eq(row).find('td').then(($els) => {
+                let tableData = Cypress.$.makeArray($els).map($el => $el.innerText)
+                let tempObj = tableData.reduce((obj, el, idx) => {
+                    return { ...obj, [keyArrayTableHeader[idx]]: el }
+                }, {})
+                tableDataArr.push(tempObj)
+            })
+        })
+        return cy.wrap (tableDataArr).as('table')
+    }) 
+}
+
 describe('Build History Sort builds', () => {
     
     it('AT_07.02 _001 | Build History Sort builds', () => {
@@ -117,6 +155,20 @@ describe('Build History Sort builds', () => {
         })
     });
 
+    it('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
+        scheduleBuildForFreestyleProject()
+        scheduleBuildForPipelineProjec()
+        cy.get('#tasks [href="/view/all/builds"]').click()
+        getTable()
+        cy.get('@table').then(table => {
+            cy.get('#projectStatus thead th:nth-child(2) .sortheader').dblclick()
+            cy.get('@table').then(actualTable => {
+                let expectedTable = table.sort((a,b) => a['Build'].localeCompare(b['Build']))
+                expect(actualTable).to.deep.equal(expectedTable)
+            })    
+        })
+    })
+
     it('AT_07.02.006 | Verify user can sort buids', () => {
         createBuildsOfNewProject(projects.projects[0], 3)
         cy.get('a[href="/view/all/builds"]').click()
@@ -127,4 +179,5 @@ describe('Build History Sort builds', () => {
             expect(actualResult).to.deep.equal(expectedResult)
         })
     })
+    
 });
