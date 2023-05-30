@@ -56,7 +56,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('be.visible')
     })
 
-    it('AT_16.01_013 | Verify visibility of configuration fields names > Scan Multibranch Pipeline Triggers', function () {
+    it('AT_16.01_013 | Verify visibility of configuration in fields names> Scan Multibranch Pipeline Triggers', function () {
         cy.get('#scan-multibranch-pipeline-triggers')
           .should('contain', multibranchPipline.configurationsFields.scanMultibtanchPipelineTriggers)
         cy.get('div[class="help-sibling tr optional-block-start row-group-start row-set-start has-help"]')
