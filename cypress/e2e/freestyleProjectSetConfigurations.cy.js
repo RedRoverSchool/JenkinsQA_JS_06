@@ -2,7 +2,7 @@
 
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe.skip('freestyleProjectSetConfigurations', () => {
+describe('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add("openDashboard", () => {
         cy.get('#breadcrumbBar a').contains('Dashboard').click()
             .then(() => {
@@ -49,6 +49,37 @@ describe.skip('freestyleProjectSetConfigurations', () => {
                     })
             });
     });
+    Cypress.Commands.add('createScheduledFreeStyleProjectToCheckJavaVersion', (projectName, projectSchedule) => {
+        createProjectWithDefaultSettings(data.projectName, "Freestyle Project")
+            .then(() => {
+                cy.openConfigurationsPage(data.projectName)
+                    .then(() => {
+                        cy.get(buildTriggersOption).should("be.visible").click();
+                        cy.get(schedule).should("be.visible").type(projectSchedule);
+                    })
+                    .then(() => {
+                        cy.get(addBuildStepsButton).should("be.visible").click();
+                        cy.get(scriptOptions).should("be.visible")
+                            .then(() => {
+                                cy.get(scriptOption).contains("Execute shell").click()
+                                    .then(() => {
+                                        cy.get('.CodeMirror textarea')
+                                            .should("be.visible")
+                                            .type("java --version", {force: true});
+                                    })
+                            })
+                    })
+                    .then(() => {
+                        cy.get('button[name="Apply"]').should("be.visible").click()
+                            .then(() => {
+                                cy.get('#notification-bar span').should('have.text', data.applyConfirmMessage);
+                            })
+                    })
+                    .then(() => {
+                        cy.openDashboard();
+                    })
+            })
+    })
 
     const projectEnabled = "#enable-disable-project";
     const description = "textarea[name='description']";
@@ -139,6 +170,14 @@ describe.skip('freestyleProjectSetConfigurations', () => {
                                     })
                             })
                     })
+            })
+    })
+
+    it('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', () => {
+        cy.createScheduledFreeStyleProjectToCheckJavaVersion(data.scheduledProjectName, data.schedule)
+            .then(() => {
+
+
             })
     })
 })
