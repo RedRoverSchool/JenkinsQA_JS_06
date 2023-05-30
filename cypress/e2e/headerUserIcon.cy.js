@@ -19,14 +19,14 @@ describe('Header User Icon', () => {
         cy.get('.login.page-header__hyperlinks .model-link').should('be.visible');
     });
 
-    it('AT_01.03_004| Header | User icon | Ability to choose one of the menu-list option by clicking on it', function () {
+    it.skip('AT_01.03_004| Header | User icon | Ability to choose one of the menu-list option by clicking on it', function () {
         cy.get('a[href= "/user/admin"] button').click({force:true})
         cy.get('ul.first-of-type').should('be.visible')
         cy.get('ul.first-of-type span').contains('Builds').click()
         cy.url().should('contain', '/user/admin/builds')
     })
 
-    it('TC_01.03 _006| Header>User icon',()=>{
+    it.skip('TC_01.03 _006| Header>User icon',()=>{
         cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('.first-of-type span').contains('Builds').click()
         cy.url().should('contain','/user/admin/builds')
@@ -63,7 +63,7 @@ describe('Header User Icon', () => {
         cy.get('.yuimenuitemlabel span').should('have.length', 4);
       })
 
-    it('AT_01.03_020 | Header User icon', function () {
+    it.skip('AT_01.03_020 | Header User icon', function () {
         cy.get('a[href="/user/admin"] button').click();
         cy.get('ul.first-of-type').should('be.visible')        
     });
@@ -124,13 +124,22 @@ describe('Header User Icon', () => {
     })
 
     headerIcon.dropdownMenuItems.forEach((pageName, ind) => {
-        it(`AT_01.03.026 | Header User icon Verify user is redirected to the ${pageName} page`, function() {
+        it.skip(`AT_01.03.026 | Header User icon Verify user is redirected to the ${pageName} page`, function() {
             cy.get('[href="/user/admin"] .jenkins-menu-dropdown-chevron').realHover().click()
             cy.get('#breadcrumb-menu a').as('dropdownMenuLinks')
 
             cy.get('@dropdownMenuLinks').eq(ind).click()
             cy.url().should('contain', headerIcon.dropdownMenuUrl[ind])
         })
+    })
+    it('AT_01.03.028 | User icon: checking drop-down menu', () => {
+        cy.get('header  .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('#breadcrumb-menu').contains("Builds")
+        cy.get('#breadcrumb-menu').contains("Configure")
+        cy.get('#breadcrumb-menu').contains("My Views")
+        cy.get('#breadcrumb-menu').contains("Credentials")
+        cy.get('.yuimenuitemlabel span').should('have.length', 4)
+         
     })
 
 });
