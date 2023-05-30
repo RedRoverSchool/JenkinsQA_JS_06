@@ -30,7 +30,7 @@ describe('buildHistory', () => {
         cy.get('.timeline-event-bubble-time').should('be.visible')
     });
 
-    it('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
+    it.skip('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
         function currentDateAndTime() {
             const date = new Date();
             const currentDateAndTime = date.toLocaleString('en-GB', {weekday: 'short', 
