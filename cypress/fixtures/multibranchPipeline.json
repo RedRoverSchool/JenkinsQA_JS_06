@@ -23,7 +23,11 @@
     "displayName": "Display Name",
     "description": "Description",
     "preview": "Preview",
-    "hidePreview": "Hide preview"
+    "hidePreview": "Hide preview",
+    "buildConfiguration": "Build Configuration",
+    "mode": "Mode",
+    "byJenkinsfile": "by Jenkinsfile",
+    "scriptPath": "Script Path"
   },
   "multiPipeLink": "Multibranch Pipeline",
   "dashboardLink": "Dashboard"
