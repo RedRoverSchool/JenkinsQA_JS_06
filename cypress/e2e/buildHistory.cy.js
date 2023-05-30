@@ -1,6 +1,7 @@
 /// <reference types="cypress"/>
 
 import projects from '../fixtures/projects.json';
+import buildHistory from '../fixtures/buildHistory.json'
 
 describe('buildHistory', () => {
 
@@ -65,4 +66,17 @@ describe('buildHistory', () => {
                 });
             });
     });
+    it('AT_07.01.07_ | Build History View build history calendar',()=>{
+        cy.get('a[href="newJob"]').click()
+        cy.get('#name').should('be.visible').type(projects.newProject)
+        cy.get('.hudson_model_FreeStyleProject').click()
+        cy.get('.btn-decorator').click() 
+        cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click()
+        cy.get('.jenkins-table__button').click()
+        cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click() 
+        cy.get('[href="/view/all/builds"]').click() 
+        cy.get('#main-panel').should('be.visible')
+        cy.get('.jenkins-app-bar__content').should('contain',buildHistory.title)
+              
+    })
 })
