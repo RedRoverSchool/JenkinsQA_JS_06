@@ -134,11 +134,11 @@ describe('Header User Icon', () => {
     })
     it('AT_01.03.028 | User icon: checking drop-down menu', () => {
         cy.get('header  .jenkins-menu-dropdown-chevron').realHover().click()
-        cy.get('#breadcrumb-menu').contains("Builds")
-        cy.get('#breadcrumb-menu').contains("Configure")
-        cy.get('#breadcrumb-menu').contains("My Views")
-        cy.get('#breadcrumb-menu').contains("Credentials")
-        cy.get('.yuimenuitemlabel span').should('have.length', 4)
+        cy.get('#breadcrumb-menu').should('contain', "Builds");
+        cy.get('#breadcrumb-menu').should('contain', "Configure");
+        cy.get('#breadcrumb-menu').should('contain', "My Views");
+        cy.get('#breadcrumb-menu').should('contain', "Credentials");
+        cy.get('.yuimenuitemlabel span').should('have.length', headerIcon.dropdownMenuItems.length)
          
     })
 
