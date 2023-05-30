@@ -3,6 +3,16 @@
 import projects from '../fixtures/projects.json';
 import buildHistory from '../fixtures/buildHistory.json'
 
+function createProject(nameProject) {
+    cy.get('#side-panel [href$=newJob]').click();
+    cy.get('form#createItem input[id=name]').type(nameProject);
+    cy.get('#items .category [class$=FreeStyleProject]').click();
+    cy.get('#ok-button').click();
+    cy.get('button[name=Submit]').click();
+    cy.get('#main-panel .page-headline').should('contain', projects.newProject);
+}
+
+
 describe('buildHistory', () => {
 
     it('AT_07.01 _001| Build History|Build History link is clickable', () => {
@@ -79,4 +89,15 @@ describe('buildHistory', () => {
         cy.get('.jenkins-app-bar__content').should('contain',buildHistory.title)
               
     })
+
+    it('AT_07.01_004 | Build History View build history calendar', () => {
+        createProject(projects.newProject);
+        cy.get('#breadcrumbs .jenkins-breadcrumbs__list-item:nth-child(1)').click();
+        cy.get(`.dashboard [id="job_${projects.newProject}"] [tooltip$="${projects.newProject}"]`).click();
+        cy.get('#side-panel [href$=builds]').click();  
+
+        cy.get('.timeline-event-label').contains(projects.newProject).click();
+        cy.get('div.timeline-event-bubble-title a').should('contain', projects.newProject);
+        })
+
 })
