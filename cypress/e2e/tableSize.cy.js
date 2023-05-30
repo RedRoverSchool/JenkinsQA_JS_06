@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import dashboardIcons from '../fixtures/dashboardIcons.json'
+import iconsSML from '../fixtures/iconsSML.json'
 
 describe ('Dashboard Icons S,M,L', ()=> {
     it ('Table size S', ()=> {
@@ -35,4 +36,25 @@ describe ('Dashboard Icons S,M,L', ()=> {
         })
     })
     
+    Cypress.Commands.add('CreateProject', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('input#name').type(dashboardIcons.newFreestyleProject)
+        cy.get('.hudson_model_FreeStyleProject').click()
+        cy.get('.jenkins-button.jenkins-button--primary').click()
+        cy.get('#jenkins-home-link').click()
+    })
+
+    it('20.01.007|DashbordVerify size of project table S,M,L', function () {
+        const sizeButton = ['a[tooltip="Small"]', 'a[tooltip="Medium"]', 'a[tooltip="Large"]']
+
+        cy.CreateProject()
+        cy.wrap(sizeButton).as('sizeButton')
+        cy.get('@sizeButton').each((locator) => {
+            cy.get(locator).click()
+            cy.get('#projectstatus').should(($el, index) => {
+                const tablePadding = Cypress.$($el).css('--table-padding')
+                expect(tablePadding).to.eq(iconsSML.sizeValue[index])
+            })
+        })
+    })
 })
