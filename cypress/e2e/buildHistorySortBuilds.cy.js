@@ -21,7 +21,6 @@ function createBuildsOfNewProject(projectName, buildsNumber) {
 
 describe('Build History Sort builds', () => {
     
-
     it('AT_07.02 _001 | Build History Sort builds', () => {
         const sortColumn = () => cy.get('table#projectStatus thead .sortheader');
         const buildColumn = () => sortColumn().contains('Build').realHover();
