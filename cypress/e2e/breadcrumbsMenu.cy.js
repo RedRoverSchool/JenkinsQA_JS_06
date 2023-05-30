@@ -99,4 +99,12 @@ describe('BreadcrumbsMenu', () => {
            .should('be.visible')
            .and('have.length', dashboardMenu.length);  
           });
+
+      it('AT_|Breadcrumbs| ', () => {
+            cy.get('.jenkins-breadcrumbs__list-item').realHover()
+            cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').realClick()
+            cy.get('#breadcrumb-menu >div:first-child>ul>li')
+            .should('be.visible')
+            .and('have.length',pages.dashboardMenu.length)
+         });
       });
