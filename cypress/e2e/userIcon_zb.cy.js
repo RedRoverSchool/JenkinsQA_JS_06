@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import text from '../fixtures/userConfigure.json'
+
 describe('Header | User icon', () => {
     
     const expectedDropDownMenuItems = [
@@ -51,12 +53,10 @@ describe('Header | User icon', () => {
         cy.get('.jenkins-app-bar__content h1').should('have.text', 'Credentials');
     })
 
-    it('AT_01.03.027 | <Header> User icon is visible, clickable, opens a dropdown menu and redirects', () => {
-        cy.get('a[href="/user/admin"]').should('be.visible');
-        cy.get('button:nth-child(3)').click({force: true});
-        cy.get('#breadcrumb-menu').should('be.visible');
+    it('AT_01.03.027 | Header, User icon opens a dropdown menu and redirects to the selected menu-list option', () => {
+        cy.get('button:nth-child(3)').realHover().click();
         cy.get('a[href="/user/admin/builds"').click();
-        cy.get('#main-panel h1').should('have.text', 'Builds for admin');
+        cy.get('#main-panel h1').should('have.text', text.BuildsPageText);
     });
 })
 

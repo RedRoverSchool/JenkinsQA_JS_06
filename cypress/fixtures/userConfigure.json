@@ -10,6 +10,8 @@
         ]
     },
 
-    "BuildsHeader": "Builds for"
+    "BuildsHeader": "Builds for",
+
+    "BuildsPageText": "Builds for admin"
 
 }
