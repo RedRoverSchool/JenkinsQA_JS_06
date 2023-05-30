@@ -1,10 +1,12 @@
 /// <reference types='cypress'/>
 
 import { iconLegends } from '../fixtures/iconLegends.json'
+import itemLegends from '../fixtures/iconLegends.json'
 import headers from '../fixtures/headers.json'
 import statuses from '../fixtures/statuses.json'
 
-describe('Verify <Dashboard>Icon legend', () => {
+
+describe('Verify <Dashboard>Icon legend', () => { 
     beforeEach('Create Project', function () {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type('TestProject')
@@ -47,5 +49,14 @@ describe('Verify <Dashboard>Icon legend', () => {
           });
       });
     });
+    
+    it('AT_20.05_003 | Icon legend`s quantity by header groups', () => {
+      cy.get('#rss-bar .jenkins-button').contains('Icon legend').click();
+      cy.get('#main-panel .jenkins-app-bar').should('have.text', itemLegends.pageName);
+      cy.get('#main-panel>h2:nth-child(3)').should('have.text', itemLegends.headers[0]);
+      cy.get('#main-panel > dl:nth-child(4) dt').should('have.length', itemLegends.statusDescriptions.length);
+      cy.get('#main-panel>h2:nth-child(5)').should('have.text', itemLegends.headers[1]);
+      cy.get('#main-panel > dl:nth-child(6) dt').should('have.length', itemLegends.projectHealthDescriptions.length);
+    }) 
  })
  

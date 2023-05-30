@@ -31,4 +31,15 @@ describe('folderDeleteFolder', () =>{
         cy.get("button[name='Submit']").click();
         cy.get('a[href="job/QA_06_Folder1/"]').should('not.exist');        
     });
+    
+
+    it('AT_15.04_006 | Folder Delete one folder', () =>{ 
+        cy.get('#jenkins-home-link').click();
+        cy.get('#job_QA_06_Folder1').should('exist')        
+        cy.get('a[href="job/QA_06_Folder1/"]').click();
+        cy.get('a[href="/job/QA_06_Folder1/delete"]').click();
+        cy.get('.jenkins-button.jenkins-button--primary').click();
+        cy.get('#job_QA_06_Folder1').should('not.exist');
+    });
+
 })

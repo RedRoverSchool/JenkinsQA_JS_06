@@ -13,4 +13,16 @@ describe('Create a new Multibranch Pipeline',()=>{
         cy.get('#breadcrumbs :nth-child(1)').contains('Dashboard').click()
         cy.get('[class="jenkins-table__link model-link inside"] span').contains(nameOfMultibranchPipeline)
     })
+    it('AT__05.05.010|<New Item > Create a new Multibranch Pipeline',()=>{
+       cy.get('.task [href="/view/all/newJob"]').should('be.visible').click()
+       cy.url().should('contain','/view/all/newJob')
+       cy.get('.add-item-name').should('contain','Enter an item name')
+       cy.get('.jenkins-input').type('nameOfMultibranchPipeline')
+       cy.get('.label').contains('Multibranch Pipeline').click()
+       cy.get('.btn-decorator').click()
+       cy.get('.jenkins-button.jenkins-button--primary').click()
+       cy.get('#jenkins-home-link').should('be.visible').click()
+       cy.get('#projectstatus').should('contain','nameOfMultibranchPipeline')
+
+    })
 })

@@ -16,6 +16,11 @@ describe('Header User configure', () => {
         cy.wait(['@saved']);
     });
     
+    Cypress.Commands.add('openConfigurationPage', () => {
+        cy.get('.page-header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('a[href*="/configure"]').click()
+    });
+
     const descriptionText = 'Some example description';
     const descriptionField = () =>
         cy.get('#main-panel form[name="config"] div.setting-main')
@@ -121,4 +126,44 @@ describe('Header User configure', () => {
         cy.get('button[name="Submit"]').click()
         cy.get('#description-link').should('contain', 'Add description')
     })
-});
+
+    it ('AT_01.05_013 | Header>Visiting User Configure Page and Filling Out the User Account', () => {
+        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
+          .click({force: true});
+        cy.get('#yui-gen2').click();
+        cy.get("textarea[name='_.description']").type(userDescription.textDescription);
+        cy.get("button[formnovalidate='formNoValidate']").click();
+        cy.get('#description').should('include.text', userDescription.textDescription);
+    })
+
+    it ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
+        cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
+          .realHover()
+          .click();
+        cy.get('#yui-gen2').click();
+        cy.get("textarea[name='_.description']").type(userDescription.textDescription);
+        cy.get("button[formnovalidate='formNoValidate']").click();
+        cy.get('#description-link')
+        .click();
+      cy.get("textarea[name='description']")
+        .clear()
+        .type(userDescription.chengedDescription);
+      cy.get("button[formnovalidate='formNoValidate']").click();
+      cy.get('#description').should('include.text', userDescription.chengedDescription);
+    });
+
+    it('AT_01.05_015 | Header>Visiting User Configure Page and Deleting User Information', () => {
+        cy.navigateUserConfigurationPage();
+        descriptionField().type(userDescription.chengedDescription);
+        cy.get(`${saveButton}`).click();
+        cy.navigateUserConfigurationPage();
+        descriptionField().clear();
+        cy.get(`${saveButton}`).click();
+        cy.get('#description-link').should('contain', 'Add description');
+    });
+
+    it('AT_01.05.10 | Header> Verify User redirected on page configure', () => {
+        cy.openConfigurationPage();
+        cy.get('.jenkins-form-label').eq(0).should('contain', userDescription.fieldName) 
+    })
+})

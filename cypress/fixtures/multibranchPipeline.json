@@ -9,9 +9,24 @@
   "enableButtonColor" : "rgb(255, 255, 255)",
   "disableButton" : "Disable Multibranch Pipeline",
   "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
+  "errorMessage" : "A problem occurred while processing the request.",
+  "character" : "a",
+  "number": 256,
+  "name": "Multibranch Pipeline",
+
 
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
+  },
+  "configurationsFields": {
+    "displayName": "Display Name",
+    "description": "Description",
+    "preview": "Preview",
+    "hidePreview": "Hide preview",
+    "buildConfiguration": "Build Configuration",
+    "mode": "Mode",
+    "byJenkinsfile": "by Jenkinsfile",
+    "scriptPath": "Script Path"
   }
 }

@@ -117,4 +117,20 @@ describe('Header User Icon', () => {
         })
           .should('deep.equal', userIconMenuItems.userMenuItems)
     });
+
+    it('AT_01.03_024 | Header | User icon is visible and clickable', () => {
+        cy.get('.login .model-link').should('be.visible').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+    })
+
+    headerIcon.dropdownMenuItems.forEach((pageName, ind) => {
+        it(`AT_01.03.026 | Header User icon Verify user is redirected to the ${pageName} page`, function() {
+            cy.get('[href="/user/admin"] .jenkins-menu-dropdown-chevron').realHover().click()
+            cy.get('#breadcrumb-menu a').as('dropdownMenuLinks')
+
+            cy.get('@dropdownMenuLinks').eq(ind).click()
+            cy.url().should('contain', headerIcon.dropdownMenuUrl[ind])
+        })
+    })
+
 });

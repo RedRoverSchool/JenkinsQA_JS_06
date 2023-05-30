@@ -5,5 +5,9 @@
     "textHelloWorld": "Hello world!",
     "textDataForMe": "lol",
     "chengedDescription": "Hello! I'm Kseniya. I'm QA Engineer:)",
-    "editDescription": "Edited description"
+    "editDescription": "Edited description",
+    "newDescription": "new user description",
+    "fieldName": "Full Name",
+    "pipelineDescription": "User description edit",
+    "textDesciptionNew" : "New user description"
 }

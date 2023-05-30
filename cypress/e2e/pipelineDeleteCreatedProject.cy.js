@@ -45,4 +45,12 @@ describe('Pipeline | Delete Created Project', () => {
         })
         cy.get('#main-panel').should('not.have.text', pipelineName.newPipelineName)
     })
+    it('AT_13.02.04|<Pipeline>Delete created project from the Jenkins project table',()=>{
+        cy.get('.jenkins-table__link.model-link .jenkins-menu-dropdown-chevron').realHover({ position: "center" }).click()
+        cy.get('.first-of-type :nth-child(4).yuimenuitem').click()
+        cy.on('window:confirm',(str)=>{
+            expect(str).to.equal('pipelineName.confirmationOfDeleting')
+        })
+        cy.get('#main-panel').should('not.have.text',pipelineName.newNamePipeline)
+    })
 })
