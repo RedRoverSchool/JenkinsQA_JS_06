@@ -23,4 +23,14 @@ describe('dashboardIcons', () => {
             })
         })
     })
+
+    it('AT_20.01_011 | Dashboard > Verify table size is M', () => {
+        cy.get('[tooltip="Medium"]').click()
+        cy.get('#projectstatus').then((obj) => {
+            cy.document().then(() => {
+                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding))
+                .should('eq', iconsSML.mRem)
+            })
+        })
+    })
 })
