@@ -1,0 +1,11 @@
+{
+    "projectName": "ExampleJob",
+    "projectType": {
+        "FP": "Freestyle project",
+        "PP": "Pipeline",
+        "MCP": "Multi-configuration project",
+        "F": "Folder",
+        "MPP": "Multibranch Pipeline",
+        "OF": "Organization Folder"
+    }
+}
