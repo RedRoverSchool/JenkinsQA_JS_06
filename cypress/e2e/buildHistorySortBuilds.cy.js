@@ -155,17 +155,6 @@ describe('Build History Sort builds', () => {
         })
     });
 
-    it('AT_07.02.006 | Verify user can sort buids', () => {
-        createBuildsOfNewProject(projects.projects[0], 3)
-        cy.get('a[href="/view/all/builds"]').click()
-        cy.get('thead>tr>th:nth-child(2)>a').click().click()
-        cy.get('.jenkins-table__badge').then(($els)=>{
-            let actualResult = Cypress.$.makeArray($els).map(($el)=> $el.innerText);
-            let expectedResult = actualResult.slice().sort()
-            expect(actualResult).to.deep.equal(expectedResult)
-        })
-    })
-
     it('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
         scheduleBuildForFreestyleProject()
         scheduleBuildForPipelineProjec()
@@ -177,6 +166,17 @@ describe('Build History Sort builds', () => {
                 let expectedTable = table.sort((a,b) => a['Build'].localeCompare(b['Build']))
                 expect(actualTable).to.deep.equal(expectedTable)
             })    
+        })
+    })
+
+    it('AT_07.02.006 | Verify user can sort buids', () => {
+        createBuildsOfNewProject(projects.projects[0], 3)
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.get('thead>tr>th:nth-child(2)>a').click().click()
+        cy.get('.jenkins-table__badge').then(($els)=>{
+            let actualResult = Cypress.$.makeArray($els).map(($el)=> $el.innerText);
+            let expectedResult = actualResult.slice().sort()
+            expect(actualResult).to.deep.equal(expectedResult)
         })
     })
 
