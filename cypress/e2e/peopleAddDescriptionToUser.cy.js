@@ -35,4 +35,14 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get("button[name='Submit']").should("include.text", "Save").click()
     cy.get("#description").should("include.text", userDescription.description)
   })
+
+  it('AT_06.02.009 | People> Verify Possibility to Add Description to a User', () => {
+    cy.get('#side-panel [href*=People]').click()
+    cy.get(`table#people [href*='${USERNAME}']`).click()
+    cy.get('#description-link').click()
+    cy.get('.jenkins-input').type(userDescription.textDescription)
+    cy.get('button[name=Submit]').click()
+
+    cy.get('#description div:first-of-type').should('have.text', userDescription.textDescription)
+  })
 });
