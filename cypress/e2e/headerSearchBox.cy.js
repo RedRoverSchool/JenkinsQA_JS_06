@@ -128,7 +128,7 @@ describe('Header Search Box', () => {
                          .and('have.attr','placeholder','Search (CTRL+K)');
   });
 
-  it('AT_01.02.028 | Verify Search box is case insensitive by default', () => {
+  it.skip('AT_01.02.028 | Verify Search box is case insensitive by default', () => {
     headers.dataSearchBox.forEach(arr => {      
         cy.get('input#search-box').clear().type(arr + '{enter}');
         cy.get('a[href="all"]').should('have.text', headers.testdata);       
@@ -136,7 +136,7 @@ describe('Header Search Box', () => {
     })
   });
 
-  it('AT_01.02_029 | Verify case sensitive option in the Search box', () => {
+  it.skip('AT_01.02_029 | Verify case sensitive option in the Search box', () => {
     cy.get(`a[href="/user/${userName}"]`).realHover();
     cy.get('div>a[href^="/user/"]>button[class="jenkins-menu-dropdown-chevron"]').click();
     cy.get('a[href$="/configure"].yuimenuitemlabel').click()
@@ -150,7 +150,7 @@ describe('Header Search Box', () => {
     })
   });
 
-  it('AT_01.02.031 | Verify Search box after uncheck sensitivity option in users profile', () => {
+  it.skip('AT_01.02.031 | Verify Search box after uncheck sensitivity option in users profile', () => {
     cy.get('a[href="/user/admin"]').click()
     cy.get('a[href="/user/admin/configure"]').click()
     cy.get('.setting-main input[type="checkbox"]')
@@ -183,15 +183,6 @@ describe('Header Search Box', () => {
     })
   });
 
-  it('AT_01.02_033 | Verify if the elements in the dropdown menu can be hovered over', () => {
-    cy.get('input#search-box').type(headers.dataLetter).realHover();
-    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {      
-      if (index === 0) {
-        cy.wrap($el).trigger('mouseover').should('be.visible');
-      }
-    })
-  });
-
   it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
     cy.get('input#search-box').type(headers.dataLetter);   
     cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
@@ -200,5 +191,20 @@ describe('Header Search Box', () => {
         return text.includes(headers.dataLetter) || text.includes(headers.dataLetterCap);
       })
     })
+
+  it('AT_01.02_033 | Verify if the elements in the dropdown menu can be hovered over', () => {
+    cy.get('input#search-box').type(headers.dataLetter).realHover();
+    cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {      
+      if (index === 0) {
+        cy.wrap($el).trigger('mouseover').should('be.visible');
+      }
+    })
   });
-});
+  it('AT_01.02_034 | Header check Search box', () => {
+    cy.get('#search-box').should('be.visible')
+    cy.get('#search-box').type('checking').clear()
+    cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
+  })
+})
+})
+

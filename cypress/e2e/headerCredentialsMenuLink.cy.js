@@ -54,4 +54,10 @@ describe('headerCredentialsMenuLink', () => {
       cy.get('a[href*="/credentials').click()
       cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/user/${login}/credentials/`)
     })
+
+    it('AT_01.07.008 | Header | Credentials menu user name is visible', () => {
+      cy.get(`header a[href="/user/${login}"]`)
+        .should('be.visible')        
+        .and('have.text', `${login}`)        
+    })
 })

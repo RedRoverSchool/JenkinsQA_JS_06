@@ -35,7 +35,22 @@ describe ('Dashboard Icons S,M,L', ()=> {
             })
         })
     })
-    
+    it ('20.01_009_DashboardIcons_L', ()=> {
+        cy.get('a[href="newJob"]').click()
+        cy.get('input#name').type(dashboardIcons.projectName)
+        cy.get('li[tabindex="0"] span').contains(dashboardIcons.item).click()
+        cy.get('#ok-button').click()
+        cy.get(':nth-child(1) > .model-link').click()
+        
+        cy.get('.jenkins-icon-size__items-item').contains('L').click()
+
+        cy.get('#projectstatus').then((obj) => {
+            cy.document().then(() => {
+                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+                .should('eq', '0.55rem')
+            })
+        })
+    })
     Cypress.Commands.add('CreateProject', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('input#name').type(dashboardIcons.newFreestyleProject)

@@ -3,6 +3,16 @@
     "sRem" : "0.2rem",
     "mRem" : "0.4rem",
     "lRem" : "0.55rem",
+    "sizes": [
+        "S",
+        "M",
+        "L"
+    ],
+    "RemSize":[
+         "0.2rem",
+         "0.4rem",
+         "0.55rem"
+    ],
 
     "sizeValue" : ["0.2rem", "0.4rem", "0.55rem"]
 }
