@@ -2,6 +2,9 @@
 
 import projects from '../fixtures/projects.json'
 import descriptionOrgFolder from '../fixtures/descriptionOrgFolder.json'
+import homePage from '../fixtures/homePage.json'
+import newItemNames from '../fixtures/newItemNames.json'
+import myView from '../fixtures/myView.json'
 
 const folderName = 'Test'
 
@@ -55,5 +58,15 @@ describe('<New Item> Create a new Organization Folder', () => {
         cy.get('form[name=config] textarea[name$=description]').type(projects.forOrganizationFolder.description);
         cy.get('button[name=Submit]').click();
         cy.get('#main-panel h1').should('have.text',`\n    ${projects.forOrganizationFolder.displayName}\n  `);
+    })
+
+    it('AT_05.06_009 | Create a new Organization Folder with Non-Default Configuration', () => {
+        cy.get('.task:first-child ').contains(homePage.sidePanelItems[0]).click()
+        cy.get('input#name').type(projects.forOrganizationFolder.name)
+        cy.get('span.label').contains(newItemNames.projectNames[5]).click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('a.model-link').contains(myView.dashboard).click()
+        cy.get('table#projectstatus').should('contain', projects.forOrganizationFolder.name)
     })
 })
