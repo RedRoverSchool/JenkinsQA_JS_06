@@ -1,4 +1,4 @@
-import { createMultiBranchPipeline } from "../support/helper";
+import {createMultiBranchPipeline} from "../support/helper";
 import multibranchPipline from "../fixtures/multibranchPipeline.json"
 
 describe('Multibranch Pipeline Configuration', function () {
@@ -70,30 +70,39 @@ describe('Multibranch Pipeline Configuration', function () {
 
     it('AT_16.01_013 | Fill out and verify multibranch pipeline configuration> Scan Multibranch Pipeline Triggers', function () {
         cy.get('#scan-multibranch-pipeline-triggers')
-          .should('contain', multibranchPipline.configurationsFields.scanMultibtanchPipelineTriggers)
+            .should('contain', multibranchPipline.configurationsFields.scanMultibtanchPipelineTriggers)
         cy.get('div[class="help-sibling tr optional-block-start row-group-start row-set-start has-help"] label[class="attach-previous "]')
-          .should('contain', multibranchPipline.configurationsFields.periodically).click()
+            .should('contain', multibranchPipline.configurationsFields.periodically).click()
         cy.get('a[title="Help for feature: Periodically if not otherwise run"]')
-          .realHover()
-          .should('be.visible').click()
+            .realHover()
+            .should('be.visible').click()
         cy.get('div[class="help"] div p:nth-child(1)')
-          .should('be.visible')
+            .should('be.visible')
         cy.get('a[title="Help for feature: Periodically if not otherwise run"]').click()
         cy.get('div[class="help"] div p:nth-child(1)')
-          .should('not.be.visible')
+            .should('not.be.visible')
         cy.get('.jenkins-form-item > .jenkins-form-label')
-          .should('contain', multibranchPipline.configurationsFields.interval)
+            .should('contain', multibranchPipline.configurationsFields.interval)
         cy.get('a[title="Help for feature: Interval"]')
-          .realHover()
-          .should('be.visible')
-          .click()
+            .realHover()
+            .should('be.visible')
+            .click()
         cy.get('div[class="help"] div p').should('be.visible').and('not.be.empty')
         cy.get('a[title="Help for feature: Interval"]')
-          .click()
+            .click()
         cy.get('div[class="help"] div p:nth-child(1)')
-          .should('not.be.visible')
+            .should('not.be.visible')
         cy.get('select[value="1d"]').should('contain', '1 day')
         cy.get('.setting-main > .jenkins-select > .jenkins-select__input').select('20 minutes')
-        cy.get('select[value="1d"]').should('contain','20 minutes')
+        cy.get('select[value="1d"]').should('contain', '20 minutes')
+    });
+
+    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+        cy.get('div[ref="cb2"] .jenkins-checkbox').click()
+        cy.get('select[value="1d"] option').should('have.length', '19')
+            .then($els => {
+                const itemArray = Cypress.$.makeArray($els).map(($el) => $el.innerText);
+                expect(itemArray).to.deep.equal(multibranchPipline.configurationsFields.intervalTime)
+            })
     });
 })
