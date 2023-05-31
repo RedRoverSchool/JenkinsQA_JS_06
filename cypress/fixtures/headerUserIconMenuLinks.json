@@ -1,0 +1,4 @@
+{
+    "itemsName" : ["Builds", "Configure", "My Views", "Credentials"],
+    "itemsUrl" : ["/builds", "/configure", "/my-views/view/all/", "/credentials/"]
+}
