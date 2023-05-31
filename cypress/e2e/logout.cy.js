@@ -29,4 +29,5 @@ describe('verification log out button', function () {
         cy.url()
             .should('include', 'http://localhost:8080/login');
     })
+
 })
