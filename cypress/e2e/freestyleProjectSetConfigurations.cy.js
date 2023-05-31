@@ -167,10 +167,10 @@ describe('freestyleProjectSetConfigurations', () => {
             })
     })
 
-    it.skip('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', function () {
+    it('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', function () {
         cy.createProjectWithDefaultSettings(data.scheduledProjectName, data.projectType);
         cy.openConfigurationsPage(data.scheduledProjectName);
-        cy.setConfigurations(data.schedule, data.scriptOption, data.scriptText);
+        cy.setConfigurations(data.schedule1, data.scriptOption, data.scriptText);
         cy.openDashboard();
         cy.openProjectPage(data.scheduledProjectName);
         cy.get(`#tasks .task a[href="/job/${data.scheduledProjectName}/build?delay=0sec"]`).click();
