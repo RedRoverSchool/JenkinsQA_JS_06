@@ -28,5 +28,5 @@ describe('verification log out button', function () {
             .should('contain.text', 'Welcome to Jenkins!');
         cy.url()
             .should('include', 'http://localhost:8080/login');
-    })
-});
+
+    });
