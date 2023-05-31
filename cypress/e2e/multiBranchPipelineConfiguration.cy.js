@@ -96,4 +96,13 @@ describe('Multibranch Pipeline Configuration', function () {
         cy.get('.setting-main > .jenkins-select > .jenkins-select__input').select('20 minutes')
         cy.get('select[value="1d"]').should('contain','20 minutes')
     });
+    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+        cy.get('div[ref="cb2"] .jenkins-checkbox').click()
+        cy.get('select[value="1d"] option')
+            .should('have.length', '19')
+            .then($els => {
+                const itemArray = Cypress.$.makeArray($els).map(($el) => $el.innerText);
+                expect(itemArray).to.deep.equal(multibranchPipline.configurationsFields.intervalTime)
+            })
+    });
 })
