@@ -100,7 +100,7 @@ describe('BreadcrumbsMenu', () => {
            .and('have.length', dashboardMenu.length);  
           });
 
-      it.only('AT_04.02.13 |Breadcrumbs | Verify Dashboards  drop-down Menu Length', () => {
+      it('AT_04.02.13 |Breadcrumbs | Verify Dashboards  drop-down Menu Length', () => {
             cy.get('.jenkins-breadcrumbs__list-item').realHover()
             cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').realClick()
             cy.get('#breadcrumb-menu>div:first-child>ul>li')
