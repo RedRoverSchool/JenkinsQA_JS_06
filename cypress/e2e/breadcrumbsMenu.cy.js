@@ -17,9 +17,9 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it.skip('AT_04.02_002 |Dashbord has a dropdown menu', () => {
+   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
       cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron"]').realHover().realClick()
-      cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
+      cy.get('#breadcrumb-menu>div:first-child>ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
          .each((el, index) => {
             expect(el.text()).to.equal(pages.dashboardMenu[index])
          })
