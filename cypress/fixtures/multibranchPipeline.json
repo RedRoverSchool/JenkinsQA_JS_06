@@ -13,9 +13,22 @@
   "character" : "a",
   "number": 256,
   "name": "Multibranch Pipeline",
-  
+
+
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
-  }
+  },
+  "configurationsFields": {
+    "displayName": "Display Name",
+    "description": "Description",
+    "preview": "Preview",
+    "hidePreview": "Hide preview",
+    "buildConfiguration": "Build Configuration",
+    "mode": "Mode",
+    "byJenkinsfile": "by Jenkinsfile",
+    "scriptPath": "Script Path"
+  },
+  "multiPipeLink": "Multibranch Pipeline",
+  "dashboardLink": "Dashboard"
 }

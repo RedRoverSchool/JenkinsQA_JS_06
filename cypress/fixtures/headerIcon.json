@@ -1,3 +1,17 @@
 {
-    "userJenkins" : "Jenkins User ID"
+    "userJenkins" : "Jenkins User ID",
+    
+    "dropdownMenuItems" : [
+        "Builds", 
+        "Configure", 
+        "My Views", 
+        "Credentials"
+    ],
+    
+    "dropdownMenuUrl" : [
+        "/user/admin/builds", 
+        "user/admin/configure", 
+        "user/admin/my-views/view/all/", 
+        "/user/admin/credentials/"
+    ]
 }

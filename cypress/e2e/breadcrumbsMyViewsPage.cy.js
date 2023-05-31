@@ -155,5 +155,57 @@ describe("breadcrumbsMyViewsPage", () => {
       })
       .should('deep.equal', items.createdJobsReverse)
   })
+  
+  it('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
+    cy.get('a[href="/view/all/newJob"]').click();
+    cy.get('#name').type(items.createdBuildsNames[0]);
+    cy.get('.hudson_model_FreeStyleProject').click();
+    cy.get('#ok-button').click();
+    cy.get('.jenkins-button--primary').click();
+    cy.get(':nth-child(1) > .model-link').click();
+    cy.get('.build-status-icon__outer').trigger('focus')
+    cy.get('svg[tooltip="Not built"]').should('be.visible');
+    cy.get('td:nth-child(4)').should('contain', items.cellData);
+    cy.get('td:nth-child(5)').should('contain', items.cellData);
+    cy.get('td:nth-child(6)').should('contain', items.cellData);
+    cy.get('td:nth-child(7)').trigger('focus');
+
+    cy.get('a[tooltip="Schedule a Build for Build Freestyle"]')
+      .should('be.visible').click()
+    cy.wait(2000)
+    cy.get(':nth-child(1) > .model-link').click();
+    cy.get('.build-status-icon__outer').trigger('focus');
+    cy.get('svg[tooltip="Success"]').should('be.visible');
+  });
+
+  it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chosen job", () => {
+    let jobName = "Test1";
+    cy.get('[href="/view/all/newJob"] .task-link-text').click({
+      force: true,
+    });
+    cy.get("#name").click().type(jobName);
+    cy.get(".hudson_model_FreeStyleProject .label").click({
+      force: true,
+    });
+    cy.get("#ok-button").click();
+    cy.get('[name="Submit"]').click();
+    cy.get(".job-index-headline.page-headline").should(
+      "have.text",
+      `Project ${jobName}`
+    );
+    cy.get(`[href="/"].model-link`).click();
+    cy.get('[href="/me/my-views"]').click();
+    cy.get(`a[href="job/${jobName}/"]`).click();
+    cy.url().should(
+      "be.eq",
+      `http://localhost:${Cypress.env(
+        "local.port"
+      )}/me/my-views/view/all/job/${jobName}/`
+    );
+    cy.get(".job-index-headline.page-headline").should(
+      "have.text",
+      `Project ${jobName}`
+    );
+  });
 });
 

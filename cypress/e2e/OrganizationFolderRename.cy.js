@@ -45,4 +45,14 @@ describe('Rename existing Organization Folder', () => {
             expect($p.text().trim()).equal(messages.renameErrorMessage.message);
           });
     });
+
+    it("Rename Organization Folder the folder page", () => {
+        cy.get("[class^='jenkins-table__link']").click();
+        cy.get("[href$='confirm-rename']").click();
+        cy.get("input[name='newName']").clear().type(organizationFolderNames.newOrganizationFolder);
+        cy.get("button[name='Submit']").click();
+        cy.get("#breadcrumbs > li:nth-of-type(1)").click();
+        cy.get("[class*='jenkins-table__link']").should("have.text", organizationFolderNames.newOrganizationFolder);
+
+    })
 })

@@ -42,4 +42,15 @@ describe('Dashboard | Icons S,M,L', () => {
             })
         })
     })
+
+    iconsSML.sizes.forEach((sizeName, ind) => {
+    it(`AT_20.01_010 | Verify Dashboard Icon ${sizeName} is working`,function (){
+        cy.get('.jenkins-icon-size__items.jenkins-buttons-row>ol>li').as('sizeButtons')
+        cy.get('@sizeButtons').eq(ind).click()
+        cy.get('#projectstatus').then($el =>{
+            const padding = window.getComputedStyle($el[0]).getPropertyValue(iconsSML.checkForTablePadding)
+            expect(padding).to.equal(iconsSML.RemSize[ind])
+            })
+        })
+    })
 })
