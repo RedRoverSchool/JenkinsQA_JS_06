@@ -112,7 +112,7 @@ describe('Header Head Icon', () => {
         cy.get('div h1').should('include.text', 'Welcome to Jenkins!');
     });
 
-    it('AT_01.01_48 | Header | Verify head icon is on the left corner', () => {
+    it('AT_01.01_48 | Header | Verify head icon is in the upper left corner', () => {
         cy.get("#page-header")
         .children().eq(0)
         .should('be.visible')
