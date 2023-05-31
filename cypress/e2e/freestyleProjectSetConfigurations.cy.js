@@ -20,9 +20,9 @@ describe('freestyleProjectSetConfigurations', () => {
         cy.openDashboard()
             .then(() => {
                 cy.get(`#job_${projectName} a`).realHover({position: "center"})
+                    .find(".jenkins-menu-dropdown-chevron").should('be.visible').click()
                     .then(() => {
-                        cy.get(`#job_${projectName} button`).should('be.visible').click();
-                        cy.get('#breadcrumb-menu span').contains('Configure').click()
+                        cy.get('#breadcrumb-menu span').contains('Configure').should('be.visible').click()
                             .then(() => {
                                 cy.get('#general').should("be.visible");
                             })
