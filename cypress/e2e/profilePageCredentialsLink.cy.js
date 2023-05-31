@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-import headerCredentials from "../fixtures/headerCredentials.json"
+import headerCredentials from "../fixtures/headerCredentials.json";
 
 describe('profilePageCredentialsLink', () => {
 
@@ -15,5 +15,13 @@ describe('profilePageCredentialsLink', () => {
           cy.get('#tasks span[class="task-link-wrapper "]').contains('Credentials').click()
           cy.url().should('contain', headerCredentials.credentialsPageUrl)
           cy.get('.jenkins-app-bar h1').should('have.text', headerCredentials.credentialsPageHeader)  
+    })
+
+    it.only('AT_18.06.002 | <Profile Page> Link to User`s credentials', () => {
+        cy.get('button:nth-child(3)').realHover().click();
+        cy.get('#yui-gen4').click();
+        cy.url().should('contain', headerCredentials.credentialsPageUrl);
+        cy.get('.jenkins-app-bar__content').should('have.text', headerCredentials.credentialsPageHeader);
+        cy.get('#main-panel > h2:nth-child(5)').should('contain',headerCredentials.storesScoped)
     })
 })
