@@ -19,10 +19,10 @@ describe(`Edit description`, function () {
     );
   });
 
-  xit('AT_20.02_ 002| Dashboard | Verify the "Edit Description" link', () => {
+  it.skip('AT_20.02_ 002| Dashboard | Verify the "Edit Description" link', ()=>{
       cy.get('#description-link').click()
       cy.get('.jenkins-input   ').type(descriptionsProject.addDescriptionProject)
-      cy.get('button[class="jenkins-button jenkins-button--primary "]').click() 
+      cy.get('.jenkins-button').click()
       cy.should('exist',descriptionsProject.addDescriptionProject)
       cy.get('#description-link').click()
       cy.get('textarea[name="description"]').type('{selectall}{backspace}').type(descriptionsProject.addNewDescriptionProject)

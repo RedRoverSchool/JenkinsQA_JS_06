@@ -1,3 +1,6 @@
+///<reference types="cypress" />
+
+import multibranchPipeline from '../fixtures/multibranchPipeline.json'
 import pipelineName from '../fixtures/pipelineName.json'
 
 describe('New Item Create a new Multibranch Pipeline', () => {
@@ -13,5 +16,18 @@ describe('New Item Create a new Multibranch Pipeline', () => {
         cy.get('#projectstatus')
             .should('exist')
             .and('include.text', pipelineName.namePipeline)
+    })
+
+    it('AT_05.05_006 | New Item | Create a new Multibranch Pipeline', ()=>{
+        cy.get(':nth-child(1) > .task-link-wrapper > .task-link').click()
+        cy.url().should('includes','/view/all/newJob')
+        cy.get('#name').type(multibranchPipeline.newMultiPipeline)
+        cy.contains(multibranchPipeline.multiPipeLink).click()
+        cy.get('#ok-button').click()
+        cy.url().should('includes','/configure')
+        cy.get('button[name="Submit"]').click()
+        cy.contains(multibranchPipeline.newMultiPipeline).should('be.visible')
+        cy.get('.model-link').eq(1).contains(multibranchPipeline.dashboardLink).click()
+        cy.get('table#projectstatus.jenkins-table.sortable').contains(multibranchPipeline.newMultiPipeline)
     })
 })

@@ -28,5 +28,7 @@
     "mode": "Mode",
     "byJenkinsfile": "by Jenkinsfile",
     "scriptPath": "Script Path"
-  }
+  },
+  "multiPipeLink": "Multibranch Pipeline",
+  "dashboardLink": "Dashboard"
 }
