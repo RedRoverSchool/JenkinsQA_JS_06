@@ -79,4 +79,36 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
+	it('AT_14.05_005 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Quiet period" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomQuietPeriod"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Quiet period').within(() => {
+					cy.get('input[type="number"][name="quiet_period"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
+	it('AT_14.05_006 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Retry count" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomScmCheckoutRetryCount"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Retry Count').within(() => {
+					cy.get('input[type="number"][name="scmCheckoutRetryCount"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
 });

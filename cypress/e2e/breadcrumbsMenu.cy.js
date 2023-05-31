@@ -99,4 +99,22 @@ describe('BreadcrumbsMenu', () => {
            .should('be.visible')
            .and('have.length', dashboardMenu.length);  
           });
-      });
+
+   pages.dashboardMenu.forEach((pageName, ind) => {
+      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+         cy.get('#breadcrumbs')
+            .contains(pages.pageName)
+            .realHover()
+         cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click()
+         cy.get('#breadcrumb-menu>.bd>ul>li>a span').as('dashboardMenuLinks')
+         cy.get('@dashboardMenuLinks')
+            .eq(ind)
+            .click()
+
+         cy.get('#breadcrumbs li a')
+            .first()
+            .should('have.text', pages.pageName)
+      })
+   })
+
+});

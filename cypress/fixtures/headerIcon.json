@@ -13,5 +13,8 @@
         "user/admin/configure", 
         "user/admin/my-views/view/all/", 
         "/user/admin/credentials/"
-    ]
+    ],
+
+    "headerJenkinsClass": "page-header__brand"
+
 }

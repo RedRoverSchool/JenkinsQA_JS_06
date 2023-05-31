@@ -36,4 +36,9 @@ describe('mainPanelDescription', () => {
       cy.get('#description button').click()
       cy.get('#description div:nth-child(1)').should('have.text', modifiedDescription)
     })
+
+    it('AT_02.06.16 Homepage(Dashboard) Main panel description/the button "Add description" is clickable', ()=>{
+      cy.get('#description-link').click()
+      cy.get('[name="description"]').should('be.visible')
+    })
 })

@@ -80,5 +80,13 @@ describe('Side panel sub menu', () => {
             cy.url().should('contain', endPointUrl[idx])
         })
     })
+    
+    it('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
+        cy.get('.task').should('have.length', dashboardDropdownItems.length)
+          .each(($el,idx) =>{
+            let name = $el.text()
+            expect(name).to.include(dashboardDropdownItems[idx])
+          })
+    })
 })
 
