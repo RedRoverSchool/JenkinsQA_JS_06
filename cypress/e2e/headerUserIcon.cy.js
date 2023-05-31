@@ -109,4 +109,28 @@ describe('Header User Icon', () => {
         cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
         cy.get('#main-panel > :nth-child(4)').should('include.text',headerIcon.userJenkins)
     })
-})
+    
+    it('AT_01.03.025 | Header> Verify User Dropdown Menu Items Names', () => {
+        cy.get('header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('.yuimenuitem span').then($els => {
+            return Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+          .should('deep.equal', userIconMenuItems.userMenuItems)
+    });
+
+    it('AT_01.03_024 | Header | User icon is visible and clickable', () => {
+        cy.get('.login .model-link').should('be.visible').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+    })
+
+    headerIcon.dropdownMenuItems.forEach((pageName, ind) => {
+        it(`AT_01.03.026 | Header User icon Verify user is redirected to the ${pageName} page`, function() {
+            cy.get('[href="/user/admin"] .jenkins-menu-dropdown-chevron').realHover().click()
+            cy.get('#breadcrumb-menu a').as('dropdownMenuLinks')
+
+            cy.get('@dropdownMenuLinks').eq(ind).click()
+            cy.url().should('contain', headerIcon.dropdownMenuUrl[ind])
+        })
+    })
+
+});

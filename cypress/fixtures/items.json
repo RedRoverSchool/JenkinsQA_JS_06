@@ -6,7 +6,12 @@
 	"freestyleProjectName":"testFreestyleProject",
 	"folderName":"testFolder",
 	"createdItemsNames":["a Organisation Folder", "Organisation Folder", "testOrganization Folder"],
-	"ascendingItemsNames":["testOrganization Folder", "Organisation Folder", "a Organisation Folder"]
+	"ascendingItemsNames":["testOrganization Folder", "Organisation Folder", "a Organisation Folder"],
+	"createdJobs": ["testFreestyleProject", "testMultiBranch Pipeline"],
+	"createdJobsReverse": ["testMultiBranch Pipeline", "testFreestyleProject"],
+	"createdBuildsNames":["Build Freestyle", "Build Pipeline", "Build Multi Configuration Project"],
+	"cellData":["N/A"],
+	"tooltip":["Not built","Schedule a Build for Build Freestyle","Build scheduled"]
 }
 
 		

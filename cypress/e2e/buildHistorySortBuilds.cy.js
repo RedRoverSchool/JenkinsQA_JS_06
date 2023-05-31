@@ -20,7 +20,7 @@ function createBuildsOfNewProject(projectName, buildsNumber) {
 };
 
 describe('Build History Sort builds', () => {
-
+    
     it('AT_07.02 _001 | Build History Sort builds', () => {
         const sortColumn = () => cy.get('table#projectStatus thead .sortheader');
         const buildColumn = () => sortColumn().contains('Build').realHover();
@@ -94,4 +94,37 @@ describe('Build History Sort builds', () => {
             expect(arrayActual).to.deep.equal(buidsNumberArrayASC);
         });
     });
+
+    it('AT_07.02_004 | Verify ascending sort order of builds.', () => {
+        const cellTexts = [];
+
+        for (let i = 0; i < projects.projects.length; i++) {
+            cy.get('a[href$="/newJob"]').click();
+            cy.get('input[name="name"]').type(projects.projects[i]);
+            cy.get('.hudson_model_FreeStyleProject').click();
+            cy.get('#ok-button').click();
+            cy.get('#breadcrumbs a[href="/"]').click();
+            cy.get(`[tooltip="Schedule a Build for ${projects.projects[i]}"]`).click();
+        }
+        cy.get('a[href$="/builds"]').click();
+
+        cy.get('td[data]:not(td[data].jenkins-table__icon)').then((cells) => {
+            cellTexts.push(...Array.from(cells).map((cell) => {
+                return cell.innerText.trim();
+            }));
+            const sortedSelectCells = [...cellTexts].sort();
+            expect(cellTexts).to.deep.equal(sortedSelectCells);
+        })
+    });
+
+    it('AT_07.02.006 | Verify user can sort buids', () => {
+        createBuildsOfNewProject(projects.projects[0], 3)
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.get('thead>tr>th:nth-child(2)>a').click().click()
+        cy.get('.jenkins-table__badge').then(($els)=>{
+            let actualResult = Cypress.$.makeArray($els).map(($el)=> $el.innerText);
+            let expectedResult = actualResult.slice().sort()
+            expect(actualResult).to.deep.equal(expectedResult)
+        })
+    })
 });

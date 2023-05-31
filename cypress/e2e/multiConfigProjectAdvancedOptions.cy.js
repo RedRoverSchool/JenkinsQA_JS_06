@@ -49,4 +49,34 @@ describe('Multi Config Project Advanced Options', () => {
 		})
 	});
 
+	it('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.should('be.visible')
+					.and('be.enabled')
+				cy.wrap($elem)
+					.find('input[name="_.displayNameOrNull"]')
+					.should('be.visible')
+					.and('be.enabled')
+			})
+		})
+	});
+
+	it('AT_14.05_004 | Multi-configuration project. Advance project options are checked/unchecked', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.check({ force: true })
+					.should('be.checked')
+					.uncheck({ force: true })
+					.should('be.not.checked')
+			});
+		});
+	});
+
 });

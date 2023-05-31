@@ -71,4 +71,25 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('div#main-panel h1').should('have.text', breadcrumbsBuilds.iconLegendText)
     })
 
+    it('AT_04.06.006 Breadcrumbs Builds user can sort the Builds list by time in ascending order', function () {
+        cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
+        cy.get('.first-of-type a[href$="/builds"]').click();
+
+        cy.get('th:nth-child(3)').click()
+        cy.contains('sec').then((timeElements) => {
+            for (let i = 0; i < timeElements.length - 1; i++) {
+                const currentTime = timeElements[i];
+                const nextTime = timeElements[i + 1];
+                expect(currentTime).should.be.greaterThan(nextTime);
+            }
+        });
+    })
+
+    it('AT_04.06.007 | Verify sort the builds list by status', function () {
+        cy.get('#projectStatus th:nth-child(4) a').click()
+
+        cy.get('th:nth-child(4) .sortarrow').should('be.visible').and('contain', breadcrumbsBuilds.arrows.arrowUp)
+        cy.get('#projectStatus tbody>tr:nth-child(odd)').should('contain', breadcrumbsBuilds.buildsNumbers.build_2);
+        cy.get('#projectStatus tbody>tr:nth-child(even)').should('contain', breadcrumbsBuilds.buildsNumbers.build_1);  
+    });
 });

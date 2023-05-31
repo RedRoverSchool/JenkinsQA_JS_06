@@ -33,4 +33,8 @@ describe('footerJenkinsVerVerify', () =>{
         cy.url().should('include', footerData.jenkinsEndPointWebSite)
     });
     
+    it('AT_03.02.007<Footer> Link Jenkins verification', () => {
+        cy.get('a[rel="noopener noreferrer"]').invoke('removeAttr', 'target').click()
+        cy.get('.page-title').should('contain', footerData.pageTitle)
+    })
 })
