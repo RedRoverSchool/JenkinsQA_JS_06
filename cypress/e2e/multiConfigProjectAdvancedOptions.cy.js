@@ -111,4 +111,20 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
+	it('AT_14.05_007 | Multi-configuration project. Advanced project options. Type "text" field is shown if "Use custom workspace" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomWorkspace"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Use custom workspace').within(() => {
+					cy.get('input[type="text"][name="_.customWorkspace"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
 });
