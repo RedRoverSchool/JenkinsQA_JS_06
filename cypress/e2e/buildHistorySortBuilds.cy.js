@@ -129,7 +129,7 @@ describe('Build History Sort builds', () => {
         expect(actualStates).to.deep.eq(expectedStates);
         });
     });
-});
+
 
 
 
@@ -143,3 +143,4 @@ describe('Build History Sort builds', () => {
             expect(actualResult).to.deep.equal(expectedResult)
         })
     })
+})
