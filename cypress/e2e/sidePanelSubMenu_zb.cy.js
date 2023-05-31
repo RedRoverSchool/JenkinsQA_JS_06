@@ -72,5 +72,13 @@ describe('Side panel sub menu', () => {
         cy.get('a[href="/manage"] .task-link-text').should('have.text', dashboardDropdownItems[3])
         cy.get('a[href="/me/my-views"] .task-link-text').should('have.text', dashboardDropdownItems[4])              
     })
+
+    dashboardDropdownItems.forEach((fiveItems, idx) => {
+        it(`AT_02.04_014 | <Homepage(Dashboard)> Verify all ${fiveItems} of the sub-menu redirect to the proper pages`, function () {
+            cy.get('#tasks .task').as('links')
+            cy.get('@links').eq(idx).click()
+            cy.url().should('contain', endPointUrl[idx])
+        })
+    })
 })
 
