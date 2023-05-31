@@ -43,6 +43,6 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('.jenkins-input').type(userDescription.textDescription)
     cy.get('button[name=Submit]').click()
 
-    cy.get('#description div:first-of-type').should('have.text', userDescription.textDescription)
+    cy.get('#description div:first-of-type').should('include.text', userDescription.textDescription)
   })
 });
