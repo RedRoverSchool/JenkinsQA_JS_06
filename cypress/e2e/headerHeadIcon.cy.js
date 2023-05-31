@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import logInPage from "../fixtures/logInPage.json"
+import headerIcon from "../fixtures/headerIcon.json"
 
 describe('Header Head Icon', () => {
 
@@ -116,7 +117,7 @@ describe('Header Head Icon', () => {
         cy.get("#page-header")
         .children().eq(0)
         .should('be.visible')
-        .and('have.class', 'page-header__brand');
+        .and('have.class', headerIcon.headerJenkinsClass);
     });
 
 })
