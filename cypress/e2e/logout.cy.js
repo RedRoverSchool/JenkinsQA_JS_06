@@ -21,7 +21,7 @@ describe('verification log out button', function () {
         cy.title().should('eq', logInPage.loginMessage)
     })
     const PORT = Cypress.env("local.port");
-    it.only('AT_01.08_031|Log out button redirects to login page', function () {
+    it('AT_01.08_031|Log out button redirects to login page', function () {
         cy.get('[href="/logout"]')
             .should('be.visible')
             .click();
@@ -30,5 +30,4 @@ describe('verification log out button', function () {
         cy.url()
             .should('include', `http://localhost:${PORT}/login`);
     })
-
 })
