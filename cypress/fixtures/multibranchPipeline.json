@@ -35,11 +35,7 @@
     "scanMultibtanchPipelineTriggers": "Scan Multibranch Pipeline Triggers",
     "periodically": "Periodically if not otherwise run",
     "interval": "Interval",
-    "addSource": [
-      "Git",
-      "GitHub",
-      "Single repository & branch"
-    ],
+    "addSource": ["Git", "GitHub", "Single repository & branch"],
     "intervalTime": [
       "1 minute",
       "2 minutes",
