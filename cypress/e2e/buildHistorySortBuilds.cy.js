@@ -125,7 +125,7 @@ describe('Build History Sort builds', () => {
         cy.get('.sortheader').contains('Build').dblclick();
         cy.get('table#projectStatus td:nth-child(2)').then(($els) => {
         let actualStates = Cypress.$.makeArray($els).map(($el) => $el.innerText);
-        console.log(actualStates)
+    
         let expectedStates = actualStates.slice().sort();
         expect(actualStates).to.deep.eq(expectedStates);
         });
@@ -144,4 +144,3 @@ describe('Build History Sort builds', () => {
             expect(actualResult).to.deep.equal(expectedResult)
         })
     })
-});
