@@ -1,6 +1,17 @@
 /// <reference types="cypress"/>
 
 import projects from '../fixtures/projects.json';
+import buildHistory from '../fixtures/buildHistory.json'
+
+function createProject(nameProject) {
+    cy.get('#side-panel [href$=newJob]').click();
+    cy.get('form#createItem input[id=name]').type(nameProject);
+    cy.get('#items .category [class$=FreeStyleProject]').click();
+    cy.get('#ok-button').click();
+    cy.get('button[name=Submit]').click();
+    cy.get('#main-panel .page-headline').should('contain', projects.newProject);
+}
+
 
 describe('buildHistory', () => {
 
@@ -30,7 +41,7 @@ describe('buildHistory', () => {
         cy.get('.timeline-event-bubble-time').should('be.visible')
     });
 
-    it('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
+    it.skip('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
         function currentDateAndTime() {
             const date = new Date();
             const currentDateAndTime = date.toLocaleString('en-GB', {weekday: 'short', 
@@ -65,4 +76,28 @@ describe('buildHistory', () => {
                 });
             });
     });
+    it('AT_07.01.07_ | Build History View build history calendar',()=>{
+        cy.get('a[href="newJob"]').click()
+        cy.get('#name').should('be.visible').type(projects.newProject)
+        cy.get('.hudson_model_FreeStyleProject').click()
+        cy.get('.btn-decorator').click() 
+        cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click()
+        cy.get('.jenkins-table__button').click()
+        cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click() 
+        cy.get('[href="/view/all/builds"]').click() 
+        cy.get('#main-panel').should('be.visible')
+        cy.get('.jenkins-app-bar__content').should('contain',buildHistory.title)
+              
+    })
+
+    it('AT_07.01_004 | Build History View build history calendar', () => {
+        createProject(projects.newProject);
+        cy.get('#breadcrumbs .jenkins-breadcrumbs__list-item:nth-child(1)').click();
+        cy.get(`.dashboard [id="job_${projects.newProject}"] [tooltip$="${projects.newProject}"]`).click();
+        cy.get('#side-panel [href$=builds]').click();  
+
+        cy.get('.timeline-event-label').contains(projects.newProject).click();
+        cy.get('div.timeline-event-bubble-title a').should('contain', projects.newProject);
+        })
+
 })

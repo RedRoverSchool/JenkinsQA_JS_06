@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import logInPage from "../fixtures/logInPage.json"
+import headerIcon from "../fixtures/headerIcon.json"
 
 describe('Header Head Icon', () => {
 
@@ -110,6 +111,13 @@ describe('Header Head Icon', () => {
         cy.get('#main-panel h1').should('include.text','People');
         cy.get('#jenkins-name-icon').click();
         cy.get('div h1').should('include.text', 'Welcome to Jenkins!');
+    });
+
+    it('AT_01.01_48 | Header | Verify head icon is in the upper left corner', () => {
+        cy.get("#page-header")
+        .children().eq(0)
+        .should('be.visible')
+        .and('have.class', headerIcon.headerJenkinsClass);
     });
 
 })

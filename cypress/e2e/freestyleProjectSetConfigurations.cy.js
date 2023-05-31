@@ -2,7 +2,7 @@
 
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe.skip('freestyleProjectSetConfigurations', () => {
+describe('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add("openDashboard", () => {
         cy.get('#breadcrumbBar a').contains('Dashboard').click()
             .then(() => {
@@ -20,9 +20,9 @@ describe.skip('freestyleProjectSetConfigurations', () => {
         cy.openDashboard()
             .then(() => {
                 cy.get(`#job_${projectName} a`).realHover({position: "center"})
+                    .find(".jenkins-menu-dropdown-chevron").should('be.visible').click()
                     .then(() => {
-                        cy.get(`#job_${projectName} button`).should('be.visible').click();
-                        cy.get('#breadcrumb-menu span').contains('Configure').click()
+                        cy.get('#breadcrumb-menu span').contains('Configure').should('be.visible').click()
                             .then(() => {
                                 cy.get('#general').should("be.visible");
                             })
@@ -32,6 +32,7 @@ describe.skip('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add('openProjectPage', (projectName) => {
         cy.openDashboard();
         cy.get(`#job_${projectName} a span`).contains(`${projectName}`).click();
+        cy.get('#main-panel h1').contains(`Project ${projectName}`).should("be.visible");
     })
     Cypress.Commands.add('createProjectWithDefaultSettings', (projectName, projectType) => {
         cy.get('a[href="newJob"] .trailing-icon').click()
@@ -49,6 +50,30 @@ describe.skip('freestyleProjectSetConfigurations', () => {
                     })
             });
     });
+    Cypress.Commands.add('setConfigurations', (projectSchedule, projectScriptOption, script) => {
+        cy.get(buildTriggersOption).should("be.visible").click()
+            .then(() => {
+                cy.get(schedule).should("be.visible").type(projectSchedule);
+            })
+        cy.get(addBuildStepsButton).should("be.visible").click()
+            .then(() => {
+                cy.get(scriptOptions).should("be.visible")
+                    .find(scriptOption).contains(projectScriptOption).click()
+                    .then(() => {
+                        cy.get('.CodeMirror textarea').should("be.visible")
+                            .type(script, {force: true});
+                    })
+                    .then(() => {
+                        cy.get('button[name="Apply"]').should("be.visible").click()
+                            .then(() => {
+                                cy.get('#notification-bar span').should('have.text', data.applyConfirmMessage);
+                            })
+                    })
+                    .then(() => {
+                        cy.openDashboard();
+                    })
+            })
+    })
 
     const projectEnabled = "#enable-disable-project";
     const description = "textarea[name='description']";
@@ -139,6 +164,33 @@ describe.skip('freestyleProjectSetConfigurations', () => {
                                     })
                             })
                     })
+            })
+    })
+
+    it.skip('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', function () {
+        cy.createProjectWithDefaultSettings(data.scheduledProjectName, data.projectType);
+        cy.openConfigurationsPage(data.scheduledProjectName);
+        cy.setConfigurations(data.schedule, data.scriptOption, data.scriptText);
+        cy.openDashboard();
+        cy.openProjectPage(data.scheduledProjectName);
+        cy.get(`#tasks .task a[href="/job/${data.scheduledProjectName}/build?delay=0sec"]`).click();
+        cy.get('.permalinks-header').should("be.visible");
+        cy.get('table tr').should("not.have.length", 1, {timeout: 10000})
+            .then(() => {
+                cy.reload();
+                cy.get('#main-panel').find('a[href="lastBuild/"]').should("be.visible").click()
+            })
+            .then (() => {
+                cy.get('.login .model-link span').should("be.visible")
+                    .then(($admin) => {
+                        const text = $admin.text();
+                        cy.wrap(text).as('userName');
+                    })
+            })
+            .then(() => {
+                cy.get('table tr td p span')
+                    .should("be.visible")
+                    .should("have.text", `${data.startedByUser}${this.userName}`);
             })
     })
 })

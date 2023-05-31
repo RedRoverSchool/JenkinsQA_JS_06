@@ -19,7 +19,7 @@ describe('BreadcrumbsMenu', () => {
 
    it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
       cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron"]').realHover().realClick()
-      cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
+      cy.get('#breadcrumb-menu>div:first-child>ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
          .each((el, index) => {
             expect(el.text()).to.equal(pages.dashboardMenu[index])
          })
@@ -76,9 +76,8 @@ describe('BreadcrumbsMenu', () => {
        });
    });
    
-   it.skip('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
-      cy.get('#breadcrumbs .model-link').realHover()
-      cy.get('#breadcrumbs li:first-child .jenkins-menu-dropdown-chevron').realClick()
+   it('AT_04.02.010 | Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+      cy.get('#breadcrumbs .model-link').realHover().click('right')
       cy.get('#breadcrumb-menu>div:first-child>ul>li')
          .should('be.visible')
          .and('have.length', pages.dashboardMenu.length)
@@ -100,4 +99,22 @@ describe('BreadcrumbsMenu', () => {
            .should('be.visible')
            .and('have.length', dashboardMenu.length);  
           });
-      });
+
+   pages.dashboardMenu.forEach((pageName, ind) => {
+      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+         cy.get('#breadcrumbs')
+            .contains(pages.pageName)
+            .realHover()
+         cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click()
+         cy.get('#breadcrumb-menu>.bd>ul>li>a span').as('dashboardMenuLinks')
+         cy.get('@dashboardMenuLinks')
+            .eq(ind)
+            .click()
+
+         cy.get('#breadcrumbs li a')
+            .first()
+            .should('have.text', pages.pageName)
+      })
+   })
+
+});
