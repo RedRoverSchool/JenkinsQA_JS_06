@@ -1,4 +1,4 @@
-import NewItemConfigurePage from "./NewItemConfigurePage";
+import FreestyleProjectConfigPage from "./FreestyleProjectConfigPage";
 
 class NewItemPage {
 
@@ -22,7 +22,7 @@ class NewItemPage {
 
     clickOKBtn(){
         this.getOKBtn().click();
-        return new NewItemConfigurePage();
+        return new FreestyleProjectConfigPage();
     }
 
 

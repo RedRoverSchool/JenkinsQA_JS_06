@@ -1,6 +1,6 @@
-import NewItemProjectPage from "./NewItemProjectPage";
+import FreestyleProjectPage from "./FreestyleProjectPage";
 
-class NewItemConfigurePage {
+class FreestyleProjectConfigPage {
 
     getFormHeader = () => cy.get('form[name="config"] h2');
     getDescriptionTextarea = () => cy.get('textarea[name="description"]');
@@ -13,9 +13,9 @@ class NewItemConfigurePage {
         return this;
     }
     
-    clickSubmitBtn(){
+    clickSubmitProjectBtn(){
         this.getSubmitBtn().click();
-        return new NewItemProjectPage();
+        return new FreestyleProjectPage();
     }
 
 
@@ -34,4 +34,4 @@ class NewItemConfigurePage {
 
 
 }
-export default NewItemConfigurePage;
+export default FreestyleProjectConfigPage;

@@ -1,7 +1,11 @@
 import NewItemPage from "./NewItemPage";
-import NewItemProjectPage from "./NewItemProjectPage";
+import FreestyleProjectPage from "./FreestyleProjectPage";
+const Header = require("../pageObjects/Header")
 
-class HomePage {
+class HomePage extends Header{
+    // constructor() {
+    //     super();
+    // }
 
     getNewItemMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getNewItemMenuName = () => cy.get('a[href="/view/all/newJob"] span.task-link-text');
@@ -10,7 +14,7 @@ class HomePage {
     getCreatedProjectName = () => cy.get('table#projectstatus tbody tr td a[href*="job"].jenkins-table__link span');
     getCreatedProjectMenuBtn = () => cy.get('table#projectstatus tbody tr td a[href*="job"].jenkins-table__link button');
     
-
+    
 
     clickNewItemMenuLink(){
         this.getNewItemMenuLink().click();
@@ -19,7 +23,7 @@ class HomePage {
 
     clickCreatedProjectLink() {
         this.getCreatedProjectLink().click({force:true})
-        return new NewItemProjectPage();
+        return new FreestyleProjectPage();
     }
 
 

@@ -1,6 +1,9 @@
 import HomePage from "./HomePage";
 
 class Header {
+    // constructor() {
+        
+    // }
 
     getLogoIcon = () => cy.get('img#jenkins-head-icon');
     getLogoName = () => cy.get('img#jenkins-name-icon');
@@ -15,7 +18,7 @@ class Header {
     getDashboardDropDownBtn = () => cy.get('li.jenkins-breadcrumbs__list-item a>button');
     getDashboardChildrenBtn = () => cy.get('ol.jenkins-breadcrumbs__list li.children');
 
-
+    
     clickLogoIcon(){
         this.getLogoIcon().click();
         return new HomePage();
@@ -34,4 +37,4 @@ class Header {
 
 
 }
-export default Header;
+module.exports = Header;
