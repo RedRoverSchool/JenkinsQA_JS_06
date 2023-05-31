@@ -60,7 +60,7 @@ describe('<New Item> Create a new Organization Folder', () => {
         cy.get('#main-panel h1').should('have.text',`\n    ${projects.forOrganizationFolder.displayName}\n  `);
     })
 
-    it('AT_05.06_009 | Create a new Organization Folder with Non-Default Configuration', () => {
+    it('AT_05.06_009 | Create a new Organization Folder', () => {
         cy.get('.task:first-child ').contains(homePage.sidePanelItems[0]).click()
         cy.get('input#name').type(projects.forOrganizationFolder.name)
         cy.get('span.label').contains(newItemNames.projectNames[5]).click()
