@@ -1,6 +1,15 @@
 /// <reference types="cypress"/>
 
+import text from '../fixtures/userConfigure.json'
+
 describe('Header | User icon', () => {
+    
+    const expectedDropDownMenuItems = [
+        'Builds',
+        'Configure',
+        'My Views',
+        'Credentials',
+    ]
 
     it('AT_01.03_013| <Header> Verify "User Icon" is visible and clickable', () => {
         cy.get('.login > a.model-link').should('exist').click()
@@ -21,6 +30,34 @@ describe('Header | User icon', () => {
         cy.get('.model-link span[class="hidden-xs hidden-sm"]').should('exist').click()
         cy.get('.icon-lg').should('exist')
     })
+
+    it('AT_01.03_017 | <Header>| User icon | Verify contents of the drop-down menu', () => {
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('#breadcrumb-menu ul>li span').should('have.length', 4).each(($el, idx) => {
+            expect($el.text()).to.be.equal(expectedDropDownMenuItems[idx]);
+        })
+    })
+
+    it('AT_01.03_016 | <Header> User icon | Verify drop-down menu', () => {
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Builds').click();
+        cy.get('#breadcrumbs li.jenkins-breadcrumbs__list-item:nth-last-child(1)').should('have.text', 'Builds');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Configure').click();
+        cy.get('#breadcrumbs li.jenkins-breadcrumbs__list-item:nth-last-child(1)').should('have.text', 'Configure');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('My Views').click();
+        cy.get('.jenkins-breadcrumbs__list-item a[href$="my-views/"]').should('have.text', 'My Views');
+        cy.get('.jenkins-menu-dropdown-chevron:nth-child(3)').click({ force: true });
+        cy.get('.first-of-type span').contains('Credentials').click();
+        cy.get('.jenkins-app-bar__content h1').should('have.text', 'Credentials');
+    })
+
+    it('AT_01.03.027 | Header, User icon opens a dropdown menu and redirects to the selected menu-list option', () => {
+        cy.get('button:nth-child(3)').realHover().click();
+        cy.get('a[href="/user/admin/builds"').click();
+        cy.get('#main-panel h1').should('have.text', text.BuildsPageText);
+    });
 })
 
 

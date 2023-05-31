@@ -1,4 +1,6 @@
 /// <reference types="cypress" />
+import footerData from "../fixtures/footerData.json"
+
 describe('footerJenkinsVerVerify', () =>{
     it('AT_03.02_001 | Footer> Link Jenkins ver number is correct', () =>{
         cy.get('.jenkins_ver a')
@@ -23,5 +25,16 @@ describe('footerJenkinsVerVerify', () =>{
           .click()
 
         cy.url(). should('eq', 'https://www.jenkins.io/')
+    })
+
+    it('Verify redirection to Jenkins webpage', () => {
+        cy.get('a[rel="noopener noreferrer"]').invoke('removeAttr', 'target')
+        cy.get('a[rel="noopener noreferrer"]').click()
+        cy.url().should('include', footerData.jenkinsEndPointWebSite)
+    });
+    
+    it('AT_03.02.007<Footer> Link Jenkins verification', () => {
+        cy.get('a[rel="noopener noreferrer"]').invoke('removeAttr', 'target').click()
+        cy.get('.page-title').should('contain', footerData.pageTitle)
     })
 })

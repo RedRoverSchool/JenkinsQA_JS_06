@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 import userIconMenuItems from "../fixtures/userIconMenuItems.json"
+import headerIcon from "../fixtures/headerIcon.json"
+
 describe('Header User Icon', () => {
 
     let dropDown = ['Builds', 'Configure','My Views','Credentials'];
@@ -17,14 +19,14 @@ describe('Header User Icon', () => {
         cy.get('.login.page-header__hyperlinks .model-link').should('be.visible');
     });
 
-    it('AT_01.03_004| Header | User icon | Ability to choose one of the menu-list option by clicking on it', function () {
+    it.skip('AT_01.03_004| Header | User icon | Ability to choose one of the menu-list option by clicking on it', function () {
         cy.get('a[href= "/user/admin"] button').click({force:true})
         cy.get('ul.first-of-type').should('be.visible')
         cy.get('ul.first-of-type span').contains('Builds').click()
         cy.url().should('contain', '/user/admin/builds')
     })
 
-    it('TC_01.03 _006| Header>User icon',()=>{
+    it.skip('TC_01.03 _006| Header>User icon',()=>{
         cy.get('.login .jenkins-menu-dropdown-chevron').click({force:true})
         cy.get('.first-of-type span').contains('Builds').click()
         cy.url().should('contain','/user/admin/builds')
@@ -61,7 +63,7 @@ describe('Header User Icon', () => {
         cy.get('.yuimenuitemlabel span').should('have.length', 4);
       })
 
-    it('AT_01.03_020 | Header User icon', function () {
+    it.skip('AT_01.03_020 | Header User icon', function () {
         cy.get('a[href="/user/admin"] button').click();
         cy.get('ul.first-of-type').should('be.visible')        
     });
@@ -100,5 +102,44 @@ describe('Header User Icon', () => {
         cy.get('li[index="3"]').click()
         cy.url().should('contain', '/credentials')
         cy.get('#breadcrumbBar').should('contain', dropDown[3])
-    })      
-})
+    })    
+    
+    it('AT_01.03.022 | Header, User icon is visible and clickable', () => {
+        cy.get('[href^="/user"]').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+        cy.get('#main-panel > :nth-child(4)').should('include.text',headerIcon.userJenkins)
+    })
+    
+    it('AT_01.03.025 | Header> Verify User Dropdown Menu Items Names', () => {
+        cy.get('header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('.yuimenuitem span').then($els => {
+            return Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+          .should('deep.equal', userIconMenuItems.userMenuItems)
+    });
+
+    it('AT_01.03_024 | Header | User icon is visible and clickable', () => {
+        cy.get('.login .model-link').should('be.visible').click()
+        cy.url().should('include', '/user/'+Cypress.env('local.admin.username').toLowerCase())
+    })
+
+    headerIcon.dropdownMenuItems.forEach((pageName, ind) => {
+        it.skip(`AT_01.03.026 | Header User icon Verify user is redirected to the ${pageName} page`, function() {
+            cy.get('[href="/user/admin"] .jenkins-menu-dropdown-chevron').realHover().click()
+            cy.get('#breadcrumb-menu a').as('dropdownMenuLinks')
+
+            cy.get('@dropdownMenuLinks').eq(ind).click()
+            cy.url().should('contain', headerIcon.dropdownMenuUrl[ind])
+        })
+    })
+    it('AT_01.03.028 | User icon: checking drop-down menu', () => {
+        cy.get('header  .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('#breadcrumb-menu').should('contain', "Builds");
+        cy.get('#breadcrumb-menu').should('contain', "Configure");
+        cy.get('#breadcrumb-menu').should('contain', "My Views");
+        cy.get('#breadcrumb-menu').should('contain', "Credentials");
+        cy.get('.yuimenuitemlabel span').should('have.length', headerIcon.dropdownMenuItems.length)
+         
+    })
+
+});

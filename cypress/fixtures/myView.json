@@ -1,4 +1,8 @@
 {
+    "folder": "Folder",
+    "freestyleProject": "Freestyle project",
+    "dashboard": "Dashboard",    
+    
     "FolderName1": "f1",
     "FolderName2": "f2",
     "ViewName1": "view1",
@@ -19,5 +23,7 @@
             "url": "job/f2/",
             "name": "f2"
         }
-    ]
+    ],
+
+    "nameMyView": "MyTestView"
 }

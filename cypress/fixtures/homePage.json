@@ -21,6 +21,32 @@
         "Build History", 
         "Manage Jenkins", 
         "My Views"
-    ]
-    
+    ],
+
+    "manageJenkinsDropdownItems" : [
+        "Configure System", 
+        "Global Tool Configuration", 
+        "Manage Plugins", 
+        "Manage Nodes and Clouds", 
+        "Configure Global Security",
+        "Manage Credentials",
+        "Configure Credential Providers",
+        "Manage Users",
+        "System Information",
+        "System Log",
+        "Load Statistics",
+        "About Jenkins",
+        "Manage Old Data",
+        "Reload Configuration from Disk",
+        "Jenkins CLI",
+        "Script Console",
+        "Prepare for Shutdown"
+    ],
+
+    "addDescription": "Description to edit",
+    "editDescription": "New Description after",
+    "add": "Add",
+    "edit": "Edit",
+    "save": "Save",
+    "projectName" : "MyProject1"
 }
