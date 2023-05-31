@@ -1,5 +1,7 @@
 /// <reference types="cypress"/>
 
+import newItemNames from '../fixtures/newItemNames.json'
+
 describe('Homepage: Create a job link', () => {
 
     it('Create a job link', function () {
@@ -44,6 +46,6 @@ describe('Homepage: Create a job link', () => {
 
     it('AT_02.01_11 | <Homepage> Verify Create a job link works', () =>{
         cy.get('[href="newJob"]').click()
-        cy.get('.header .h3').should('have.text', "Enter an item name")
+        cy.get('.header .h3').should('have.text', newItemNames.headerText)
     })
 });
