@@ -15,6 +15,10 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('button[name=Submit]').click();
     });
 
+    function getPostBuildActionsDropDownMenu() {
+        return cy.get('.config-table .jenkins-section:nth-child(11) .yui-module .bd li')
+    }
+
     it('AT_12.05_001 | Freestyle project > Add description', () => {
         cy.contains('Configure').click();
         cy.get('textarea[name="description"]').type(description);
@@ -61,6 +65,28 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('.config-table .jenkins-section:nth-child(7) .jenkins-radio-help-wrapper [tooltip]:nth-child(2)').trigger('focus')
         cy.get('#tippy-20').should('be.visible')
         cy.get('#tippy-20 .tippy-content').should('have.text', configure.sourceCodeManagement.toolTips.git)
+    })
+
+    configure.postBuildActions.selectPostBuildsAction.forEach((actionName, idx) => {
+        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
+            cy.get('#tasks a[href$="configure"]').click()
+            cy.get('[data-section-id="post-build-actions"]').click()
+            cy.get('button.hetero-list-add').contains(configure.postBuildActions.addPostBuildActionsButtonName).click()
+            getPostBuildActionsDropDownMenu().eq(idx).click()
+            cy.get('.repeated-chunk[name="publisher"]')
+                .should('exist')
+                .and('be.visible')
+            cy.get('button[name="Submit"]').click()
+            cy.get('#tasks a[href$="configure"]').click()
+            cy.get('[data-section-id="post-build-actions"]').click()
+            cy.get('[name="publisher"].repeated-chunk') 
+                .should('exist')
+                .and('be.visible')   
+            cy.get('.repeated-chunk__header button[tooltip="Delete"]').click()
+            cy.get('.repeated-chunk[name="publisher"]')
+                .should('not.exist')
+            cy.get('button[name="Submit"]')   
+        })
     })
 
 })
