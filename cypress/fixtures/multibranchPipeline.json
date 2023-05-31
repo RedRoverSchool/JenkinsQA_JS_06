@@ -30,7 +30,8 @@
     "scriptPath": "Script Path",
     "scanMultibtanchPipelineTriggers": "Scan Multibranch Pipeline Triggers",
     "periodically": "Periodically if not otherwise run",
-    "interval": "Interval"
+    "interval": "Interval",
+    "addSource":["Git", "GitHub", "Single repository & branch"]
   },
   "multiPipeLink": "Multibranch Pipeline",
   "dashboardLink": "Dashboard"
