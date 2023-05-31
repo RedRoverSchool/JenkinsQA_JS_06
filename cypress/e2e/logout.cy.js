@@ -20,14 +20,15 @@ describe('verification log out button', function () {
         cy.get('a[href="/logout"]').click()
         cy.title().should('eq', logInPage.loginMessage)
     })
-    it('AT_01.08_031|Log out button redirects to login page', function () {
+    const PORT = Cypress.env("local.port");
+    it.only('AT_01.08_031|Log out button redirects to login page', function () {
         cy.get('[href="/logout"]')
             .should('be.visible')
             .click();
         cy.get('#loginIntroDefault')
-            .should('contain.text', 'Welcome to Jenkins!');
+            .should('contain.text', logInPage.loginPageHeader);
         cy.url()
-            .should('include', 'http://localhost:8080/login');
+            .should('include', `http://localhost:${PORT}/login`);
     })
 
 })
