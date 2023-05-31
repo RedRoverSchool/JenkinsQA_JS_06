@@ -2,6 +2,7 @@
 
 import messages from "../fixtures/messages.json"
 import freestyleProject from "../fixtures/freestyleProject.json"
+import {dashboard} from "../fixtures/pages.json"
 
 describe('Freestyle project - Rename project', () => {
 
@@ -74,7 +75,7 @@ describe('Freestyle project - Rename project', () => {
         cy.get('#side-panel a[href$="rename"]').click();
         cy.get('input[name=newName]').clear().type(freestyleProject.projectNewName);
         cy.get('button[name=Submit]').click();
-        cy.get('#breadcrumbBar a').contains('Dashboard').click()
+        cy.get('#breadcrumbBar a').contains( dashboard).click()
         cy.get('#projectstatus a').contains(freestyleProject.projectName).should('not.exist')
         cy.get('#projectstatus a').contains(freestyleProject.projectNewName).should('be.visible')
     });
