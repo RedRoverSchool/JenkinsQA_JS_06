@@ -12,5 +12,6 @@
   "scriptText": "java --version",
   "applyConfirmMessage": "Saved",
   "message": "No changes in any of the builds.",
-  "scheduledProjectName": "Scheduled Project",
+  "scheduledProjectName": "ScheduledProject",
+  "startedByUser": "Started by user "
 }
