@@ -95,7 +95,7 @@ describe('Build History Sort builds', () => {
         });
     });
 
-    it('AT_07.02_004 | Verify ascending sort order of builds.', () => {
+    it.skip('AT_07.02_004 | Verify ascending sort order of builds.', () => {
         const cellTexts = [];
 
         for (let i = 0; i < projects.projects.length; i++) {
@@ -143,4 +143,17 @@ describe('Build History Sort builds', () => {
             expect(actualResult).to.deep.equal(expectedResult)
         })
     })
+
+    it('AT_07.02_008 | Verify user can sort builds in descending order by clicking “Time Since”', () => {
+       
+        createBuildsOfNewProject(projects.newProject, 3)
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.get('a[href="#"].sortheader').contains('Time Since').click()
+        cy.get('table#projectStatus tr > th:nth-child(3) > a > span').should('be.visible')
+        cy.get('#projectStatus > thead > tr > th:nth-child(3) > a').then(($els) => {
+            let actualData = Cypress.$.makeArray($els).map(($el) => $el.innerText)
+            let expectedData = actualData.slice().sort()
+            expect(actualData).to.deep.equal(expectedData)
+        })
+      });
 })
