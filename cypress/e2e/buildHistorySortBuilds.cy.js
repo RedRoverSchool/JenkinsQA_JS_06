@@ -148,7 +148,7 @@ describe('Build History Sort builds', () => {
        
         createBuildsOfNewProject(projects.newProject, 3)
         cy.get('a[href="/view/all/builds"]').click()
-        cy.get('a[href="#"].sortheader').contains('Time Since').click()
+        cy.get('a[href="#"].sortheader').contains(buildHistory.buildsTableHeaders.timeSince).click()
         cy.get('table#projectStatus tr > th:nth-child(3) > a > span').should('be.visible')
         cy.get('#projectStatus > thead > tr > th:nth-child(3) > a').then(($els) => {
             let actualData = Cypress.$.makeArray($els).map(($el) => $el.innerText)
