@@ -46,7 +46,7 @@ describe('myViewsCreateJob', () => {
     })
   });
 
-    it.only('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
+    it('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
         cy.get('a[href="/me/my-views"]').click()
         cy.get('.empty-state-block h2').should('be.visible').and('have.text', createJob.verifyText)
         cy.get('a[href="newJob"]').click()
