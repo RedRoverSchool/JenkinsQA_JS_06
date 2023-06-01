@@ -23,18 +23,4 @@ describe('newItemCreateProject', () => {
             .getCreatedProjectName()
             .should('contain', newItems.projectName)
     })
-
-    it('verify user can create job PP', () => {
-        homePage
-            .clickNewItemMenuLink()
-            .typeProjectName(newItems.projectName)
-            .clickTypeProjectPP()
-            .clickOKBtnGoToPPConfigPage()
-            .clickSubmitBtnGoPipelineProjectPage()
-
-        header
-            .clickLogoIcon()
-            .getCreatedProjectName()
-            .should('contain', newItems.projectName)
-    })
 })

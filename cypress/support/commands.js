@@ -31,16 +31,16 @@ const header = new Header();
 
 Cypress.Commands.add('createFreestyleProject', (projectName) => { 
     homePage
-            .clickNewItemMenuLink()
-            .typeProjectName(projectName)
-            .clickTypeProjectFP()
-            .clickOKBtnGoToConfigPage()
-            .clickSubmitBtnGoFreestyleProjectPage()
+        .clickNewItemMenuLink()
+        .typeProjectName(projectName)
+        .clickTypeProjectFP()
+        .clickOKBtnGoToFPConfigPage()
+        .clickSubmitBtnGoFreestyleProjectPage()
 
     header
-            .clickLogoIcon()
-            .getCreatedProjectName()
-            .should('contain', projectName)
+        .clickLogoIcon()
+        .getCreatedProjectName()
+        .should('contain', projectName)
  })
 
  Cypress.Commands.add('addProjectDescription', (text) => { 
