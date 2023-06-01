@@ -70,4 +70,14 @@ describe('newItem', () => {
         })
           .should('deep.equal', newItemNames.projectNames)
     });
-});
+
+    it ('AT_05.08.013 | Verify Names and Icons via tab New Item', function () {
+
+        cy.get('[href="/view/all/newJob"]').click();
+        cy.url().should('contain', '/view/all/newJob');
+        cy.get('.label').should('have.length', newItemNames.projectNames.length).each(($el,idx) => {
+        expect ($el.text()).to.be.equal(newItemNames.projectNames[idx]); 
+        cy.get ('.icon').should('have.length',6).should('be.visible')       
+ })
+})
+})

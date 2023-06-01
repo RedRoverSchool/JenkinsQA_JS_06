@@ -45,4 +45,13 @@ describe('Folder rename folder', () => {
         cy.get('#main-panel h1').should('have.text', messages.renameErrorMessage.error).and('be.visible')
         cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message).and('be.visible')
     });
+
+    it('AT_15.06_03 | Folder>Rename Folder', () => {
+        cy.get('#side-panel #tasks .task:nth-child(7)').contains('Rename').click()
+        cy.url().should('eq', jenkinsURL + '/job/' + createFolder.folderName + '/confirm-rename');
+        cy.get('.setting-main [name="newName"]').clear().type(createFolder.folderName1)
+        cy.get('button[name="Submit"]').click()
+        cy.url().should('eq', jenkinsURL + '/job/' + createFolder.folderName1 + '/');
+        cy.get('#main-panel h1').should('contain', createFolder.folderName1)
+    })
 });
