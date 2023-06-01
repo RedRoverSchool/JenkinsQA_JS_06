@@ -44,4 +44,16 @@ describe('buildHistoryDeleteBuild', () => {
         cy.get('#tasks div:nth-child(3)').click()
         cy.get('.jenkins-table__link.jenkins-table__badge.model-link.inside').should('not.exist')
     })
+
+    it("AT_07.03_005 | Build History Verify the possibility of deleting the build by clicking on the Delete Build button on the Build page", () => {
+      cy.get("#tasks div:nth-child(3)").click();
+      cy.get("table#projectStatus tbody tr").should("exist");
+      cy.get(".model-link.inside").click();
+      cy.get("#tasks div:nth-child(5)").click();
+      cy.get('button[name="Submit"]').click();
+
+      cy.get("#buildHistory #no-builds")
+        .should("be.visible")
+        .should("have.text", "No builds");
+    });
 });
