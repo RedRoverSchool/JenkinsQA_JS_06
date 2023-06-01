@@ -6,7 +6,7 @@ import Header from "../../pageObjects/Header";
 import newItems from "../../fixtures/newItems.json"
 
 
-describe('createFreestyleProject', () => {
+describe('newItemCreateProject', () => {
     const homePage = new HomePage();
     const header = new Header();
 
@@ -15,8 +15,22 @@ describe('createFreestyleProject', () => {
             .clickNewItemMenuLink()
             .typeProjectName(newItems.projectName)
             .clickTypeProjectFP()
-            .clickOKBtnGoToConfigPage()
+            .clickOKBtnGoToFPConfigPage()
             .clickSubmitBtnGoFreestyleProjectPage()
+
+        header
+            .clickLogoIcon()
+            .getCreatedProjectName()
+            .should('contain', newItems.projectName)
+    })
+
+    it('verify user can create job PP', () => {
+        homePage
+            .clickNewItemMenuLink()
+            .typeProjectName(newItems.projectName)
+            .clickTypeProjectPP()
+            .clickOKBtnGoToPPConfigPage()
+            .clickSubmitBtnGoPipelineProjectPage()
 
         header
             .clickLogoIcon()
