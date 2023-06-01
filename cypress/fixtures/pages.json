@@ -31,8 +31,7 @@
     ],
     "newItemPageTitle": "New Item [Jenkins]",
     "text":"Jenkins project",
-    "pageName": "Dashboard",
-    
+    "pageName": "Dashboard", 
     "dashboard":"Dashboard",
     "dashboardPageTitle": "Dashboard [Jenkins]"
 }
