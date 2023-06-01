@@ -33,5 +33,6 @@
     "text":"Jenkins project",
     "pageName": "Dashboard",
     
-    "dashboard":"Dashboard"
+    "dashboard":"Dashboard",
+    "dashboardPageTitle": "Dashboard [Jenkins]"
 }

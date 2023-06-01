@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import pages from "../fixtures/pages.json"
 
 describe("Header Icon 1", () => {
 
@@ -8,11 +9,15 @@ describe("Header Icon 1", () => {
     cy.get('#breadcrumb-menu li.yuimenuitem a span').contains('Configure').click();
 });
 
-  it("AT_01.01 _021| Verify Head Icon is clickable.", () => {
-    cy.navigateUserConfigurationPage()
-    cy.get("#jenkins-head-icon").should("be.visible");
+  Cypress.Commands.add('navigateJenkinsHeaderIcon', () => {
+  cy.get("#jenkins-head-icon").should("be.visible");
     cy.get("#jenkins-head-icon").click();
-    cy.title().should("eq", "Dashboard [Jenkins]");
+});
+
+  it("AT_01.01 _021| Verify Head Icon is clickable.", () => {
+    cy.navigateUserConfigurationPage();
+    cy.navigateJenkinsHeaderIcon();
+    cy.title().should("eq", pages.dashboardPageTitle);
   });
 
     it('AT_01.01_044 | <Header> Head Icon is visible and and clickable', ()=>{
