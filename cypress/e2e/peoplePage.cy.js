@@ -16,6 +16,6 @@ describe("People page", () => {
 
     it ('AT_06.01_007 | Verify of url "People" page', () => {
         cy.get('#side-panel').contains(homePage.sidePanelItems[1]).click()
-        cy.url().should('include', '/asynchPeople/')
+        cy.url().should('include', homePage.endPointUrl[1])
     })
 });
