@@ -39,7 +39,7 @@ describe('People Edit Discription to User', () => {
 
     it('AT_06.04_005 | <People> Edit User description', () => {
         cy.get('a[href="/asynchPeople/"]').should('have.text', userDescription_zb.people).click()
-        cy.get('#people a[href*="/user/"]').click()
+        cy.get('#people tr:first-child a[href*="/user/"]').click()
         cy.get('#description-link').click()
         cy.get('textarea[name="description"]').clear().type(userDescription_zb.oldDescription)
         cy.get('div[align="right"]>button').click()
