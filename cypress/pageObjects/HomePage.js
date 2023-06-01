@@ -1,8 +1,8 @@
 import NewItemPage from "./NewItemPage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
-import Header from "./Header";
 
-class HomePage extends Header {
+
+class HomePage {
 
     getNewItemMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getNewItemMenuName = () => cy.get('a[href="/view/all/newJob"] span.task-link-text');
@@ -21,11 +21,6 @@ class HomePage extends Header {
     clickCreatedProjectLink() {
         this.getCreatedProjectLink().click({ force: true })
         return new FreestyleProjectPage();
-    }
-
-    clickLogoIcon() {
-        this.getLogoIcon().click();
-        return this;
     }
 }
 export default HomePage;

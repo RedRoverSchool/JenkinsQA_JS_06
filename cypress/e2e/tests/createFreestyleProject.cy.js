@@ -1,20 +1,24 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import Header from "../../pageObjects/Header";
 
 import newItems from "../../fixtures/newItems.json"
 
 
 describe('createFreestyleProject', () => {
     const homePage = new HomePage();
+    const header = new Header();
 
     it('verify user can create job FP', () => {
         homePage
             .clickNewItemMenuLink()
             .typeProjectName(newItems.projectName)
             .clickTypeProjectFP()
-            .clickOKBtn()
-            .clickSubmitProjectBtn()
+            .clickOKBtnGoToConfigPage()
+            .clickSubmitBtnGoFreestyleProjectPage()
+
+        header
             .clickLogoIcon()
             .getCreatedProjectName()
             .should('contain', newItems.projectName)
@@ -24,7 +28,7 @@ describe('createFreestyleProject', () => {
         cy.createFreestyleProject(newItems.projectName)
         cy.addDescriptionFreestyleProject('text')
 
-        homePage
+        header
             .clickLogoIcon()
             .clickCreatedProjectLink()
             .clickDescriptionBtn()

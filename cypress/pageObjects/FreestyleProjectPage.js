@@ -1,7 +1,6 @@
-import HomePage from "./HomePage";
-import Header from "../pageObjects/Header";
 
-class FreestyleProjectPage extends Header {
+
+class FreestyleProjectPage {
 
     getPageHeader = () => cy.get('#main-panel h1');
     getDescriptionLink = () => cy.get('#description-link');
@@ -36,11 +35,6 @@ class FreestyleProjectPage extends Header {
     clickSaveDescriptionBtn() {
         this.getSaveDescriptionBtn().click();
         return this;
-    }
-
-    clickLogoIcon() {
-        this.getLogoIcon().click();
-        return new HomePage();
     }
 }
 export default FreestyleProjectPage;

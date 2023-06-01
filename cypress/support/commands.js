@@ -24,20 +24,27 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import HomePage from "../pageObjects/HomePage";
+import Header from "../pageObjects/Header";
 
 const homePage = new HomePage();
+const header = new Header();
 
 Cypress.Commands.add('createFreestyleProject', (projectName) => { 
     homePage
-        .clickNewItemMenuLink()
-        .typeProjectName(projectName)
-        .clickTypeProjectFP()
-        .clickOKBtn()
+            .clickNewItemMenuLink()
+            .typeProjectName(projectName)
+            .clickTypeProjectFP()
+            .clickOKBtnGoToConfigPage()
+            .clickSubmitBtnGoFreestyleProjectPage()
+
+    header
+            .clickLogoIcon()
+            .getCreatedProjectName()
+            .should('contain', projectName)
  })
 
  Cypress.Commands.add('addDescriptionFreestyleProject', (text) => { 
     homePage
-        .clickLogoIcon()
         .clickCreatedProjectLink()
         .clickDescriptionBtn()
         .typeDescriptionText(text)

@@ -1,3 +1,6 @@
+import HomePage from "./HomePage";
+import UserConfigPage from "./UserConfigPage";
+import UserPage from "./UserPage";
 
 class Header {
     getLogoIcon = () => cy.get('img#jenkins-head-icon');
@@ -7,16 +10,33 @@ class Header {
     getUserIcon = () => cy.get('a.model-link .icon-md');
     getUserNameLink = () => cy.get('.page-header__hyperlinks a.model-link[href*="user"]>span');
     getUserDropDownBtn = () => cy.get('a.model-link[href*="user"]>button');
-    getUserBuilsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+    getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
     getUserConfigureMenu = () => cy.get('#breadcrumb-menu li a[href*="configure"] span');
     getDashboardLink = () => cy.get('li.jenkins-breadcrumbs__list-item a');
     getDashboardDropDownBtn = () => cy.get('li.jenkins-breadcrumbs__list-item a>button');
     getDashboardChildrenBtn = () => cy.get('ol.jenkins-breadcrumbs__list li.children');
+    
 
 
     clickLogoIcon() {
         this.getLogoIcon().click();
+        return new HomePage();
+    }
+
+    clickUserDropDownBtn() {
+        this.getUserDropDownBtn().realHover().click()
         return this;
+
+    }
+
+    clickUserNameLink () {
+        this.getUserNameLink().click()
+        return new UserPage()
+    }
+
+    selectUserConfigMenu() {
+        this.getUserConfigureMenu().click()
+        return new UserConfigPage();
     }
 }
-module.exports = Header;
+export default Header;

@@ -1,7 +1,7 @@
 import FreestyleProjectConfigPage from "./FreestyleProjectConfigPage";
-import Header from "../pageObjects/Header";
 
-class NewItemPage extends Header {
+
+class NewItemPage {
 
     getHeaderFormLabel = () => cy.get('form#createItem .header .add-item-name label');
     getInputField = () => cy.get('.add-item-name input#name');
@@ -21,7 +21,7 @@ class NewItemPage extends Header {
         return this;
     }
 
-    clickOKBtn() {
+    clickOKBtnGoToConfigPage() {
         this.getOKBtn().click();
         return new FreestyleProjectConfigPage();
     }

@@ -1,7 +1,7 @@
 import FreestyleProjectPage from "./FreestyleProjectPage";
-import Header from "../pageObjects/Header";
 
-class FreestyleProjectConfigPage extends Header {
+
+class FreestyleProjectConfigPage {
 
     getFormHeader = () => cy.get('form[name="config"] h2');
     getDescriptionTextarea = () => cy.get('textarea[name="description"]');
@@ -14,7 +14,7 @@ class FreestyleProjectConfigPage extends Header {
         return this;
     }
 
-    clickSubmitProjectBtn() {
+    clickSubmitBtnGoFreestyleProjectPage() {
         this.getSubmitBtn().click();
         return new FreestyleProjectPage();
     }
