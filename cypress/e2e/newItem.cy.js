@@ -80,7 +80,7 @@ describe('newItem', () => {
             cy.get('.icon').should('have.length', 6).should('be.visible')
         })
     })
-    it.only('AT_05.08_015 | Verify Names and Icons are visible', () => {
+    it('AT_05.08_015 | Verify Names and Icons are visible', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.url().should('include', '/view/all/newJob');
         cy.get('.icon img').should('have.length', 6).should('be.visible');
