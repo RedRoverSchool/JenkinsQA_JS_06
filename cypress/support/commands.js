@@ -43,7 +43,7 @@ Cypress.Commands.add('createFreestyleProject', (projectName) => {
             .should('contain', projectName)
  })
 
- Cypress.Commands.add('addDescriptionFreestyleProject', (text) => { 
+ Cypress.Commands.add('addProjectDescription', (text) => { 
     homePage
         .clickCreatedProjectLink()
         .clickDescriptionBtn()

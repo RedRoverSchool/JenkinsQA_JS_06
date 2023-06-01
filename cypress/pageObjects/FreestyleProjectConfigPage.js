@@ -5,7 +5,7 @@ class FreestyleProjectConfigPage {
 
     getFormHeader = () => cy.get('form[name="config"] h2');
     getDescriptionTextarea = () => cy.get('textarea[name="description"]');
-    getSubmitBtn = () => cy.get('button[name="Submit"]')
+    getSubmitBtn = () => cy.get('div>button[name="Submit"]')
 
 
 

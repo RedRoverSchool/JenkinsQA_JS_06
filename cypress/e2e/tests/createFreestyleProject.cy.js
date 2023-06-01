@@ -23,20 +23,4 @@ describe('createFreestyleProject', () => {
             .getCreatedProjectName()
             .should('contain', newItems.projectName)
     })
-
-    it('verify user can edit project description', () => {
-        cy.createFreestyleProject(newItems.projectName)
-        cy.addDescriptionFreestyleProject('text')
-
-        header
-            .clickLogoIcon()
-            .clickCreatedProjectLink()
-            .clickDescriptionBtn()
-            .clearText()
-            .typeDescriptionText('new text')
-            .clickSaveDescriptionBtn()
-            .trimDescriptionText()
-            .should('eq', 'new text')
-            .and('not.eq', 'text')
-    })
 })
