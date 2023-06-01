@@ -55,4 +55,21 @@ describe('Rename existing Organization Folder', () => {
         cy.get("[class*='jenkins-table__link']").should("have.text", organizationFolderNames.newOrganizationFolder);
 
     })
+    it('AT_17.02.05_ | <Organization Folder> Verify the Ability to Rename a Organization Folder',()=>{
+        Cypress.Commands.add('createFolder',()=>{
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('#name').should('be.visible').type(organizationFolderNames.nameNewFolder)
+        cy.get('[class="label"]').contains('Organization Folder').click()
+        cy.get('.btn-decorator').click()
+        cy.get('.jenkins-button.jenkins-button--primary').click()
+    })
+    cy.createFolder()
+        cy.get('li [href="/"]').click()
+        cy.get('a[href^="job/"]').contains(organizationFolderNames.nameNewFolder).realHover()
+        cy.get(`[href="job/${organizationFolderNames.nameNewFolder}/"]>button`).click()
+        cy.get('[href="/job/newFolder/confirm-rename"]').contains('Rename').click()
+        cy.get('[checkdependson="newName"]').type(organizationFolderNames.nameOrganizationFolder)
+        cy.get('[name="Submit"]').click()
+        cy.get('#main-panel h1').should('contain',organizationFolderNames.nameOrganizationFolder)
+    })
 })

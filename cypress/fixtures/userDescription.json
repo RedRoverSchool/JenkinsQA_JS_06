@@ -7,5 +7,7 @@
     "chengedDescription": "Hello! I'm Kseniya. I'm QA Engineer:)",
     "editDescription": "Edited description",
     "newDescription": "new user description",
-    "fieldName": "Full Name"
+    "fieldName": "Full Name",
+    "pipelineDescription": "User description edit",
+    "textDesciptionNew" : "New user description"
 }

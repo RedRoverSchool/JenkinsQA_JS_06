@@ -1,4 +1,5 @@
 import logInPage from "../fixtures/logInPage.json";
+import login from "../fixtures/logInPage.json";
 
 describe('verification log out button', function () {
 
@@ -30,4 +31,9 @@ describe('verification log out button', function () {
         cy.url()
             .should('include', `http://localhost:${PORT}/login`);
     })
+
+    it('AT_01.08_030|Header, Log out button is clickable and redirects to the login page', () => {
+        cy.get('a[href="/logout"]').click();
+        cy.get('[id=loginIntroDefault] h1').should('have.text', login.loginPageGreeting);
+    });
 })

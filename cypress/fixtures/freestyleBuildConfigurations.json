@@ -7,9 +7,12 @@
   "sourceCodeManagement": "None",
   "buildTriggers": "Build periodically",
   "schedule": "* * * * *",
+  "schedule1": "*/5 * * * *",
   "buildEnvironmentOption": "Add timestamps to the Console Output",
   "scriptOption": "Execute shell",
   "scriptText": "java --version",
   "applyConfirmMessage": "Saved",
-  "message": "No changes in any of the builds."
+  "message": "No changes in any of the builds.",
+  "scheduledProjectName": "ScheduledProject",
+  "startedByUser": "Started by user "
 }

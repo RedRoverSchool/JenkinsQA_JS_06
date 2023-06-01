@@ -92,4 +92,10 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('#projectStatus tbody>tr:nth-child(odd)').should('contain', breadcrumbsBuilds.buildsNumbers.build_2);
         cy.get('#projectStatus tbody>tr:nth-child(even)').should('contain', breadcrumbsBuilds.buildsNumbers.build_1);  
     });
+
+    it('AT_04.06.008 | Breadcrumbs Verify user can see his username in the title', () => {
+        cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('.yuimenuitem.first-of-type').click()
+        cy.title().should('eq', `${USERID} ${breadcrumbsBuilds.titleText}`)
+    })
 });
