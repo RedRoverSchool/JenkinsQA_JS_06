@@ -43,12 +43,12 @@ describe('People Edit Discription to User', () => {
         cy.get('#description-link').click()
         cy.get('textarea[name="description"]').clear().type(userDescription_zb.oldDescription)
         cy.get('div[align="right"]>button').click()
-        cy.get('#description div:not(.jenkins-buttons-row)').should('have.text', userDescription_zb.oldDescription)
+        cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.oldDescription)
 
         cy.get('#description-link').click()
         cy.get('textarea[name="description"]').clear().type(userDescription_zb.editOldDescription)
         cy.get('div[align="right"]>button').click()
-        cy.get('#description div:not(.jenkins-buttons-row)').should('have.text', userDescription_zb.editOldDescription)
+        cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.editOldDescription)
     })
 })
 
