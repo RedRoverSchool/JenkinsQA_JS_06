@@ -9,5 +9,6 @@
     "newDescription": "new user description",
     "fieldName": "Full Name",
     "pipelineDescription": "User description edit",
-    "textDesciptionNew" : "New user description"
+    "textDesciptionNew" : "New user description",
+    "myUserDescription": "There is a user description"
 }

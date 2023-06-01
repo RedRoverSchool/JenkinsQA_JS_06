@@ -4,7 +4,7 @@ import userDescription from "../fixtures/userDescription.json";
 const USERNAME = Cypress.env('local.admin.username');
 
 describe("peopleAddDescriptionToUser", () => {
-  
+
   it("AT 06.02.001 | Verify description is added to user", function () {
     cy.get("a.task-link").eq(1).click();
     cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click();
@@ -22,8 +22,8 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('.jenkins-button').click();
     cy.get(':nth-child(1) > .task-link-wrapper > .task-link').click();
     cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click();
-    cy.get('#description').should('include.text',userDescription.newDescription);
-    
+    cy.get('#description').should('include.text', userDescription.newDescription);
+
   });
   it.skip("AT_06.02_002 | Verify description is added to a user", function () {
     cy.get("a[href='/asynchPeople/']").click()
@@ -44,5 +44,18 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('button[name=Submit]').click()
 
     cy.get('#description div:first-of-type').should('include.text', userDescription.textDescription)
+  })
+
+  it('AT_06.02.005 | People > Adding a description to a created user', () => {
+    cy.get('a[href="/asynchPeople/"]').click()
+    cy.get('.jenkins-app-bar__content').should('include.text', 'People')
+    cy.get(`table#people [href="/user/${USERNAME}/"]`).click()
+    cy.get('#main-panel h1').should('include.text', `${USERNAME}`)
+    cy.get('#description-link').click();
+    cy.get('textarea[name = "description"]')
+      .clear()
+      .type(userDescription.myUserDescription)
+    cy.get('button[name="Submit"]').click();
+    cy.get('#description div:first-of-type').should('have.text', userDescription.myUserDescription)
   })
 });
