@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import userDescription from "../fixtures/userDescription.json";
+import userConfigure from "../fixtures/userConfigure.json";
 
 const USERNAME = Cypress.env('local.admin.username');
 
@@ -48,7 +49,7 @@ describe("peopleAddDescriptionToUser", () => {
 
   it('AT_06.02.005 | People > Adding a description to a created user', () => {
     cy.get('a[href="/asynchPeople/"]').click()
-    cy.get('.jenkins-app-bar__content').should('include.text', 'People')
+    cy.get('.jenkins-app-bar__content').should('include.text', userConfigure.SidePanelTasks.Names[0])
     cy.get(`table#people [href="/user/${USERNAME}/"]`).click()
     cy.get('#main-panel h1').should('include.text', `${USERNAME}`)
     cy.get('#description-link').click();
