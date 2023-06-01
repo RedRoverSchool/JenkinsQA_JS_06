@@ -25,4 +25,13 @@ describe('People Add Discription to User', () => {
         cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.addNewDescription)
       })
 
+    it('AT_06.02_007 | <People> Verify description is added to a user', () => {
+        cy.get('a[href="/asynchPeople/"]').should('have.text', 'People')
+        cy.get('a[href="/asynchPeople/"]').click()
+        cy.get('a[href^="/user/"][class="jenkins-table__link"]').click()
+        cy.get('#description-link').click()
+        cy.get('textarea[name="description"]').clear().type(userDescription_zb.addNewDescription)
+        cy.get('div[align="right"]>button').click()
+        cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.addNewDescription)
+    })
 })
