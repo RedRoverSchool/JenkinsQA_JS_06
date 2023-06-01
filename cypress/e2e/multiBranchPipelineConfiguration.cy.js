@@ -99,7 +99,7 @@ describe('Multibranch Pipeline Configuration', function () {
     it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
         cy.get('div[ref="cb2"] .jenkins-checkbox').click()
         cy.get('select[value="1d"] option')
-            .should('have.length', '19')
+            .should('have.length', multibranchPipline.configurationsFields.intervalTime.length)
             .then($els => {
                 const itemArray = Cypress.$.makeArray($els).map(($el) => $el.innerText);
                 expect(itemArray).to.deep.equal(multibranchPipline.configurationsFields.intervalTime)
