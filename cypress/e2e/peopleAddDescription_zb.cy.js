@@ -28,7 +28,7 @@ describe('People Add Discription to User', () => {
     it('AT_06.02_007 | <People> Verify description is added to a user', () => {
         cy.get('a[href="/asynchPeople/"]').should('have.text', 'People')
         cy.get('a[href="/asynchPeople/"]').click()
-        cy.get('a[href^="/user/"][class="jenkins-table__link"]').click()
+        cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click()
         cy.get('#description-link').click()
         cy.get('textarea[name="description"]').clear().type(userDescription_zb.addNewDescription)
         cy.get('div[align="right"]>button').click()
