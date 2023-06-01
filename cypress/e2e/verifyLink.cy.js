@@ -8,4 +8,9 @@ describe('verifyLink', () => {
 
         cy.url().should("eq", "https://wiki.jenkins.io/display/JENKINS/Distributed+builds")
     } )
+    
+    it("AT_02.05.010 | Homepage, Link 'Learn more about distributed builds", () => {
+        cy.get('.content-block__help-link').invoke('removeAttr','target').click()
+        cy.url().should('eq', 'https://wiki.jenkins.io/display/JENKINS/Distributed+builds')
+    })
 })
