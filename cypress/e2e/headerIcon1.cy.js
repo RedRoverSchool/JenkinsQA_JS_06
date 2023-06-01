@@ -8,7 +8,7 @@ describe("Header Icon 1", () => {
     cy.get('#breadcrumb-menu li.yuimenuitem a span').contains('Configure').click();
 });
 
-  it.only("AT_01.01 _021| Verify Head Icon is clickable.", () => {
+  it("AT_01.01 _021| Verify Head Icon is clickable.", () => {
     cy.navigateUserConfigurationPage()
     cy.get("#jenkins-head-icon").should("be.visible");
     cy.get("#jenkins-head-icon").click();
