@@ -35,7 +35,7 @@ describe('buildHistoryDeleteBuild', () => {
         cy.get('svg.icon-nobuilt').should('be.visible')
     });
 
-    it.only('AT_07.03.003 | Build History > Verify deleting builds clicking on “Delete build” option in dropdown menu', () => {
+    it('AT_07.03.003 | Build History > Verify deleting builds clicking on “Delete build” option in dropdown menu', () => {
         cy.get('#tasks div:nth-child(3)').click()
         cy.get('.jenkins-table__link.jenkins-table__badge.model-link.inside').realHover().click()
         cy.get('.icon-edit-delete.icon-md').click()

@@ -20,6 +20,25 @@
         "Run with timeout",
         "Set build status to \"pending\" on GitHub commit"
         ]
+    },
+
+    "postBuildActions" : {
+        "addPostBuildActionsButtonName" : "Add post-build action",
+
+        "selectPostBuildsAction" : [
+            "Aggregate downstream test results",
+            "Archive the artifacts",
+            "Build other projects",
+            "Publish JUnit test result report",
+            "Record fingerprints of files to track usage",
+            "Git Publisher",
+            "E-mail Notification",
+            "Editable Email Notification",
+            "Set GitHub commit status (universal)",
+            "Set build status on GitHub commit [deprecated]",
+            "Delete workspace when build is done"
+        ]
+
     }
     
 }
