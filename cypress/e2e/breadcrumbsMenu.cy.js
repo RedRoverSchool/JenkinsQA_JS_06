@@ -124,4 +124,12 @@ describe('BreadcrumbsMenu', () => {
          .should('be.visible')
          .and('have.length', pages.dashboardMenu.length)
    });
+   it('AT_04.02_017 | Breadcrumbs| Dashboard dropdownmenu names', () => {
+      cy.get('.jenkins-breadcrumbs__list-item').realHover()
+      cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+      cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').then(($els) => {
+        const arr = Cypress.$.makeArray($els).map($el => $el.innerText)
+        expect(arr).to.deep.equal(homePage.dashboardDropdownItems)
+      })
+    })
 })
