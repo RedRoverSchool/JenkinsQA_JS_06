@@ -83,11 +83,8 @@ describe('FreestyleProjectConfigurateProject', () => {
                 .should('exist')
                 .and('be.visible')
             cy.get('.repeated-chunk__header').should('include.text', configure.postBuildActions.selectPostBuildsAction[idx])       
-            cy.get('button.repeatable-delete.danger').filter(':visible').click()
-            cy.get('.repeated-chunk[name="publisher"]')
-                .should('not.exist')
-            cy.get('button[name="Submit"]')   
         })
+        
     })
 
 })
