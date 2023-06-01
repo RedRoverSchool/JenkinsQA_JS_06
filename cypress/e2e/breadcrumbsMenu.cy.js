@@ -132,4 +132,12 @@ describe('BreadcrumbsMenu', () => {
         expect(arr).to.deep.equal(homePage.dashboardDropdownItems)
       })
     })
+
+    it('TC_04.02.016 | Breadcrumbs > Verify Dashboard Manage Jenkins Dropdown Menu Length', () => {
+      cy.get('#breadcrumbBar .model-link').realHover().click('right')
+      cy.get('#breadcrumb-menu [href="/manage"]').trigger('mouseover')
+      cy.get('#submenu0 svg')
+        .should('be.visible')
+        .and('have.length', homePage.manageJenkinsDropdownItems.length)
+   });
 })

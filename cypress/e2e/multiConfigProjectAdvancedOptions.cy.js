@@ -127,4 +127,20 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
+	it('AT_14.05_008 | Multi-configuration project. Advanced project options. Type "text" field is shown if "Use custom child workspace" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasChildCustomWorkspace"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Use custom child workspace').within(() => {
+					cy.get('input[type="text"][name="_.childCustomWorkspace"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
 });

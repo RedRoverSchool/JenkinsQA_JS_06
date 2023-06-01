@@ -72,4 +72,11 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get('.icon-pipeline-multibranch-project').should('have.attr', 'title', itemName.projectNames[4])
         cy.get('.jenkins-table__link').should('have.text', pipelineName.namePipeline)
     });
+
+    it('AT_16.04 _005| Verify that the moved Multibranch Pipeline (using left sidebar) does not exist on the list of projects on the home page', function () {
+        moveMPusingLS()
+        cy.get('#jenkins-home-link').click()
+        cy.get(`#job_${pipelineName.namePipeline}`).should('not.exist')
+    });
+
 });
