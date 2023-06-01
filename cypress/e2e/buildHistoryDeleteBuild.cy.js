@@ -49,8 +49,8 @@ describe('buildHistoryDeleteBuild', () => {
       cy.get("#tasks div:nth-child(3)").click();
       cy.get("table#projectStatus tbody tr").should("exist");
       cy.get(".model-link.inside").click();
-      cy.get("#tasks div:nth-child(5)").click();
-      cy.get('button[name="Submit"]').click();
+      cy.get(".task:last-child").click();
+      cy.get('[name="Submit"]').click();
 
       cy.get("#buildHistory #no-builds")
         .should("be.visible")
