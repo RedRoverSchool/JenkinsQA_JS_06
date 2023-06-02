@@ -33,5 +33,14 @@
     "text":"Jenkins project",
     "pageName": "Dashboard", 
     "dashboard":"Dashboard",
-    "dashboardPageTitle": "Dashboard [Jenkins]"
+    "dashboardPageTitle": "Dashboard [Jenkins]",
+
+    "sidePanel2":[
+        "Status",
+        "Changes",
+        "Workspace",
+        "Build Now",
+        "Configure",
+        "Rename"
+       ]
 }

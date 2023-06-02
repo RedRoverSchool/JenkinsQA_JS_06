@@ -49,4 +49,13 @@ describe('freestyleProjectPage', () => {
         cy.get('#projectstatus .jenkins-menu-dropdown-chevron').realClick()
         cy.get('#main-panel h1').should('have.text', 'Project ' + pages.projectName)
      })
+
+     it('AC_12.01_007 | Freestyle project>options of the left sidebar', () => {
+        creatFreestyleProject()
+        
+        cy.get('#side-panel span.task-link-wrapper .task-link-text').should('have.length', 6).each(($el, idx) => {
+          expect($el).to.have.text(pages.sidePanel2[idx]);
+        })
+        cy.get('#side-panel div .task span.task-link-wrapper a span').should('include.text', pages.sidePanel[5])
+    })
 })
