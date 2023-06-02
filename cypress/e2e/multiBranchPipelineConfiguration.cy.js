@@ -68,7 +68,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('be.visible')
     })
 
-    it('AT_16.01_013|Multibranch Pipeline>Verify visibility of help message> Scan Multibranch Pipeline Triggers', function () {
+    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.get('a[title$="otherwise run"]')
           .realHover()
           .should('be.visible').click()
@@ -79,4 +79,13 @@ describe('Multibranch Pipeline Configuration', function () {
           .should('not.be.visible')
     })
 
+    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+        cy.get('div[ref="cb2"] .jenkins-checkbox').click()
+        cy.get('select[value="1d"] option')
+            .should('have.length', multibranchPipline.configurationsFields.intervalTime.length)
+            .then($els => {
+                const itemArray = Cypress.$.makeArray($els).map(($el) => $el.innerText);
+                expect(itemArray).to.deep.equal(multibranchPipline.configurationsFields.intervalTime)
+            })
+    })
 })

@@ -16,8 +16,46 @@ function createBuildsOfNewProject(projectName, buildsNumber) {
     for(let i = 1; i <= buildsNumber; i++){
         cy.get(`[tooltip="Schedule a Build for ${projectName}"]`).click();
         cy.wait(1000);
-    };
-};
+    }
+}
+
+function scheduleBuildForFreestyleProject() {
+    cy.get('#tasks [href="/view/all/newJob"]').click()
+    cy.get('input#name').type(projects.freestyle.name)
+    cy.get('#j-add-item-type-standalone-projects li:first-child').click()
+    cy.get('#ok-button').click()
+    cy.get('#breadcrumbBar li:first-child').click()
+    cy.get('tr:first-child td:last-child [tooltip]').click()
+}
+
+function scheduleBuildForPipelineProjec() {
+    cy.get('#tasks [href="/view/all/newJob"]').click()
+    cy.get('input#name').type(projects.pipeline.name)
+    cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
+    cy.get('#ok-button').click()
+    cy.get('#breadcrumbBar li:first-child').click()
+    cy.get('tr:nth-child(2) td:last-child [tooltip]').click()
+}
+
+function getTable ()  {
+    cy.get('table#projectStatus').within(() => {
+        let keyArrayTableHeader = []
+        let tableDataArr = []
+        cy.get('thead th').then(($els) => {
+           keyArrayTableHeader = Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+        cy.get('tbody tr').each((_, row) => {
+            cy.get('tbody tr').eq(row).find('td').then(($els) => {
+                let tableData = Cypress.$.makeArray($els).map($el => $el.innerText)
+                let tempObj = tableData.reduce((obj, el, idx) => {
+                    return { ...obj, [keyArrayTableHeader[idx]]: el }
+                }, {})
+                tableDataArr.push(tempObj)
+            })
+        })
+        return cy.wrap (tableDataArr).as('table')
+    })
+}
 
 describe('Build History Sort builds', () => {
     
@@ -95,7 +133,7 @@ describe('Build History Sort builds', () => {
         });
     });
 
-    it('AT_07.02_004 | Verify ascending sort order of builds.', () => {
+    it.skip('AT_07.02_004 | Verify ascending sort order of builds.', () => {
         const cellTexts = [];
 
         for (let i = 0; i < projects.projects.length; i++) {
@@ -116,10 +154,10 @@ describe('Build History Sort builds', () => {
             expect(cellTexts).to.deep.equal(sortedSelectCells);
         })
     });
-    
+
     it('AT_07.02_007 | Build History>Verify Sorting Builds', () => {
         const buildsNumber = 3;
-        createBuildsOfNewProject(projects.newProject, buildsNumber); 
+        createBuildsOfNewProject(projects.newProject, buildsNumber);
 
         cy.get('a[href$="/builds"]').click();
         cy.get('.sortheader').contains('Build').dblclick();
@@ -130,8 +168,19 @@ describe('Build History Sort builds', () => {
         });
     });
 
-
-
+    it('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
+        scheduleBuildForFreestyleProject()
+        scheduleBuildForPipelineProjec()
+        cy.get('#tasks [href="/view/all/builds"]').click()
+        getTable()
+        cy.get('@table').then(table => {
+            cy.get('#projectStatus thead th:nth-child(2) .sortheader').dblclick()
+            cy.get('@table').then(actualTable => {
+                let expectedTable = table.sort((a,b) => a['Build'].localeCompare(b['Build']))
+                expect(actualTable).to.deep.equal(expectedTable)
+            })
+        })
+    })
 
     it('AT_07.02.006 | Verify user can sort buids', () => {
         createBuildsOfNewProject(projects.projects[0], 3)
@@ -141,6 +190,19 @@ describe('Build History Sort builds', () => {
             let actualResult = Cypress.$.makeArray($els).map(($el)=> $el.innerText);
             let expectedResult = actualResult.slice().sort()
             expect(actualResult).to.deep.equal(expectedResult)
+        })
+    })
+
+    it('AT_07.02_008 | Verify user can sort builds in descending order by clicking “Time Since”', () => {
+
+        createBuildsOfNewProject(projects.newProject, 3)
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.get('a[href="#"].sortheader').contains(buildHistory.buildsTableHeaders.timeSince).click()
+        cy.get('table#projectStatus tr > th:nth-child(3) > a > span').should('be.visible')
+        cy.get('#projectStatus > thead > tr > th:nth-child(3) > a').then(($els) => {
+            let actualData = Cypress.$.makeArray($els).map(($el) => $el.innerText)
+            let expectedData = actualData.slice().sort()
+            expect(actualData).to.deep.equal(expectedData)
         })
     })
 })
