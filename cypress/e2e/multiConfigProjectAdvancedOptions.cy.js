@@ -204,4 +204,30 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
+	it('AT_14.05_010 | Multi-configuration project. Advanced project options default values', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].fieldName)
+					.find('input[type="number"][name="quiet_period"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].defaultValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].fieldName)
+					.find('input[type="number"][name="scmCheckoutRetryCount"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].defaultValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.fieldName)
+					.find('input[type="text"][name="_.customWorkspace"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.defaultValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].fieldName)
+					.find('input[type="text"][name="_.childCustomWorkspace"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].defaultValue)
+				cy.contains('.jenkins-form-item', 'Display Name')
+					.find('input[type="text"][name="_.displayNameOrNull"]')
+					.should('have.value', '')
+			});
+		});
+	});
+
 });
