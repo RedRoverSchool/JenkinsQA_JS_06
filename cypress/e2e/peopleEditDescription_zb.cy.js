@@ -36,6 +36,20 @@ describe('People Edit Discription to User', () => {
         cy.get('button[name="Submit"]').click()
         cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.editOldDescription)
     })
+
+    it('AT_06.04_005 | <People> Edit User description', () => {
+        cy.get('a[href="/asynchPeople/"]').should('have.text', userDescription_zb.people).click()
+        cy.get('#people tr:first-child a[href*="/user/"]').click()
+        cy.get('#description-link').click()
+        cy.get('textarea[name="description"]').clear().type(userDescription_zb.oldDescription)
+        cy.get('div[align="right"]>button').click()
+        cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.oldDescription)
+
+        cy.get('#description-link').click()
+        cy.get('textarea[name="description"]').clear().type(userDescription_zb.editOldDescription)
+        cy.get('div[align="right"]>button').click()
+        cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.editOldDescription)
+    })
 })
 
 
