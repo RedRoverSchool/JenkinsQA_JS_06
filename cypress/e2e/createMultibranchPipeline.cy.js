@@ -2,6 +2,7 @@
 
 import multibranchPipeline from '../fixtures/multibranchPipeline.json'
 import pipelineName from '../fixtures/pipelineName.json'
+import createFolderProject from '../fixtures/createFolderProject.json'
 
 describe('New Item Create a new Multibranch Pipeline', () => {
 
@@ -30,4 +31,33 @@ describe('New Item Create a new Multibranch Pipeline', () => {
         cy.get('.model-link').eq(1).contains(multibranchPipeline.dashboardLink).click()
         cy.get('table#projectstatus.jenkins-table.sortable').contains(multibranchPipeline.newMultiPipeline)
     })
+
+    it.only('AT_05.05_011 | <Name> Create a new Multibranch Pipeline', () => {
+        cy.intercept(createFolderProject.newPageUrl).as('newJob');
+        cy.intercept(`http://localhost:8080/job/${pipelineName.namePipeline}/configure`).as('configuration');
+        cy.intercept(`http://localhost:8080/job/${pipelineName.namePipeline}/`).as('newPipeline')
+        cy.get('a[href="/view/all/newJob"]')
+            .should('be.visible')
+            .click();
+        cy.wait('@newJob');
+        cy.get('input.jenkins-input')
+            .should('be.visible')
+            .type(pipelineName.namePipeline);
+        cy.contains('span', multibranchPipeline.multiPipeLink)
+            .should('be.visible')
+            .click();
+        cy.get('li[class*="MultiBranch"]')
+            .should('have.attr', 'aria-checked')
+            .and('equal', 'true');
+        cy.get('button#ok-button')
+            .should('be.visible')
+            .should('not.contain', 'disabled')
+            .click();
+        cy.wait('@configuration');
+        cy.get('button[name="Submit"]').click();
+        cy.wait('@newPipeline');
+        cy.contains('a', 'Dashboard');
+        cy.contains('a', pipelineName.namePipeline);
+    })
+
 })
