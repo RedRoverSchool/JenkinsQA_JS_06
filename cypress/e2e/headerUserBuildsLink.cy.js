@@ -2,17 +2,7 @@
 
 import {title} from '../fixtures/buildLinkPage.json'
 import {SidePanelTasks} from '../fixtures/userConfigure.json'
-
 import {projects} from '../fixtures/projects.json'
-
-const sideMenuItems = [
-  'People',
-  'Status',
-  'Builds',
-  'Configure',
-  'My Views',
-  'Credentials'
-]
 
 function createAndBuildProject(projectName){
   cy.get('#tasks div:nth-child(1)').click()
