@@ -32,14 +32,10 @@ describe('New Item Create a new Multibranch Pipeline', () => {
         cy.get('table#projectstatus.jenkins-table.sortable').contains(multibranchPipeline.newMultiPipeline)
     })
 
-    it.only('AT_05.05_011 | <Name> Create a new Multibranch Pipeline', () => {
-        cy.intercept(createFolderProject.newPageUrl).as('newJob');
-        cy.intercept(`http://localhost:8080/job/${pipelineName.namePipeline}/configure`).as('configuration');
-        cy.intercept(`http://localhost:8080/job/${pipelineName.namePipeline}/`).as('newPipeline')
+    it('AT_05.05_011 | <Name> Create a new Multibranch Pipeline', () => {
         cy.get('a[href="/view/all/newJob"]')
             .should('be.visible')
             .click();
-        cy.wait('@newJob');
         cy.get('input.jenkins-input')
             .should('be.visible')
             .type(pipelineName.namePipeline);
@@ -53,9 +49,7 @@ describe('New Item Create a new Multibranch Pipeline', () => {
             .should('be.visible')
             .should('not.contain', 'disabled')
             .click();
-        cy.wait('@configuration');
         cy.get('button[name="Submit"]').click();
-        cy.wait('@newPipeline');
         cy.contains('a', 'Dashboard');
         cy.contains('a', pipelineName.namePipeline);
     })
