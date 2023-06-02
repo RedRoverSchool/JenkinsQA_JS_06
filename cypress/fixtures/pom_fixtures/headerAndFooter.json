@@ -1,3 +1,10 @@
 {
+   "userDropdownMenuItems": [
+       "Builds", 
+       "Configure", 
+       "My Views", 
+       "Credentials"
+   ],    
+
     "restAPIPageTitle": "REST API"
 }
