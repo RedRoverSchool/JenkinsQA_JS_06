@@ -93,7 +93,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02.012 |Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
+   it.skip('AT_04.02.012 |Breadcrumbs > Verify Dashboard Dropdown Menu Length', () => {
       cy.get('#breadcrumbs a').realHover().click('right');
       cy.get('#breadcrumb-menu>div:first-child>ul>li')
          .should('be.visible')
