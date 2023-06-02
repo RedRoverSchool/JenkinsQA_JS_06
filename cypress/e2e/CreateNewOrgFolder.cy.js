@@ -2,6 +2,9 @@
 
 import projects from '../fixtures/projects.json'
 import descriptionOrgFolder from '../fixtures/descriptionOrgFolder.json'
+import homePage from '../fixtures/homePage.json'
+import newItemNames from '../fixtures/newItemNames.json'
+import myView from '../fixtures/myView.json'
 
 const folderName = 'Test'
 
@@ -43,5 +46,27 @@ describe('<New Item> Create a new Organization Folder', () => {
         cy.get('button[name="Submit"]').click()
         cy.get(':nth-child(1) > .model-link').click()
         cy.get(".jenkins-table__link > span").should("have.text", projects.organizationFolder.name) 
+    })
+
+    it('AT_05.06_007| Create a new Organization Folder with nama and description', () => {
+        cy.get('#side-panel a[href="/view/all/newJob"]').click();
+        cy.get('.add-item-name input[name=name]').type(projects.forOrganizationFolder.name);
+        cy.get('#j-add-item-type-nested-projects [class$=OrganizationFolder]').click();
+        cy.get('#ok-button').click();
+        cy.get('#scan-organization-folder-triggers').should('be.visible');
+        cy.get('form[name=config] input[name$=displayNameOrNull]').type(projects.forOrganizationFolder.displayName);
+        cy.get('form[name=config] textarea[name$=description]').type(projects.forOrganizationFolder.description);
+        cy.get('button[name=Submit]').click();
+        cy.get('#main-panel h1').should('have.text',`\n    ${projects.forOrganizationFolder.displayName}\n  `);
+    })
+
+    it('AT_05.06_009 | Create a new Organization Folder', () => {
+        cy.get('.task:first-child ').contains(homePage.sidePanelItems[0]).click()
+        cy.get('input#name').type(projects.forOrganizationFolder.name)
+        cy.get('span.label').contains(newItemNames.projectNames[5]).click()
+        cy.get('#ok-button').click()
+        cy.get('button[name="Submit"]').click()
+        cy.get('a.model-link').contains(myView.dashboard).click()
+        cy.get('table#projectstatus').should('contain', projects.forOrganizationFolder.name)
     })
 })

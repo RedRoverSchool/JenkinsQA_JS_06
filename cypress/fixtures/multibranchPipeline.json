@@ -9,9 +9,51 @@
   "enableButtonColor" : "rgb(255, 255, 255)",
   "disableButton" : "Disable Multibranch Pipeline",
   "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
+  "errorMessage" : "A problem occurred while processing the request.",
+  "character" : "a",
+  "number": 256,
+  "name": "Multibranch Pipeline",
+
 
   "titles" : {
     "multiBranchPipeline" : "Multibranch Pipeline",
     "folder" : "Folder"
-  }
+  },
+  "configurationsFields": {
+    "displayName": "Display Name",
+    "description": "Description",
+    "preview": "Preview",
+    "hidePreview": "Hide preview",
+    "buildConfiguration": "Build Configuration",
+    "mode": "Mode",
+    "byJenkinsfile": "by Jenkinsfile",
+    "scriptPath": "Script Path",
+    "scanMultibtanchPipelineTriggers": "Scan Multibranch Pipeline Triggers",
+    "periodically": "Periodically if not otherwise run",
+    "interval": "Interval",
+    "addSource":["Git", "GitHub", "Single repository & branch"],
+    "intervalTime": [
+      "1 minute",
+      "2 minutes",
+      "3 minutes",
+      "5 minutes",
+      "10 minutes",
+      "15 minutes",
+      "20 minutes",
+      "25 minutes",
+      "30 minutes",
+      "1 hour",
+      "2 hours",
+      "4 hours",
+      "8 hours",
+      "12 hours",
+      "1 day",
+      "2 days",
+      "1 week",
+      "2 weeks",
+      "4 weeks"
+    ]
+  },
+  "multiPipeLink": "Multibranch Pipeline",
+  "dashboardLink": "Dashboard"
 }

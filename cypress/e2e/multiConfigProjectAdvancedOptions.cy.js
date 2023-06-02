@@ -49,4 +49,98 @@ describe('Multi Config Project Advanced Options', () => {
 		})
 	});
 
+	it('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.should('be.visible')
+					.and('be.enabled')
+				cy.wrap($elem)
+					.find('input[name="_.displayNameOrNull"]')
+					.should('be.visible')
+					.and('be.enabled')
+			})
+		})
+	});
+
+	it('AT_14.05_004 | Multi-configuration project. Advance project options are checked/unchecked', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.check({ force: true })
+					.should('be.checked')
+					.uncheck({ force: true })
+					.should('be.not.checked')
+			});
+		});
+	});
+
+	it('AT_14.05_005 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Quiet period" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomQuietPeriod"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Quiet period').within(() => {
+					cy.get('input[type="number"][name="quiet_period"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
+	it('AT_14.05_006 | Multi-configuration project. Advanced project options. Type "number" field is shown if "Retry count" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomScmCheckoutRetryCount"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Retry Count').within(() => {
+					cy.get('input[type="number"][name="scmCheckoutRetryCount"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
+	it('AT_14.05_007 | Multi-configuration project. Advanced project options. Type "text" field is shown if "Use custom workspace" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasCustomWorkspace"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Use custom workspace').within(() => {
+					cy.get('input[type="text"][name="_.customWorkspace"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
+	it('AT_14.05_008 | Multi-configuration project. Advanced project options. Type "text" field is shown if "Use custom child workspace" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasChildCustomWorkspace"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Use custom child workspace').within(() => {
+					cy.get('input[type="text"][name="_.childCustomWorkspace"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
 });

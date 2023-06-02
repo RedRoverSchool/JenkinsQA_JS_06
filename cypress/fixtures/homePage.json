@@ -37,7 +37,10 @@
         "Load Statistics",
         "About Jenkins",
         "Manage Old Data",
-        "Reload Configuration from Disk"
+        "Reload Configuration from Disk",
+        "Jenkins CLI",
+        "Script Console",
+        "Prepare for Shutdown"
     ],
 
     "addDescription": "Description to edit",
@@ -45,5 +48,6 @@
     "add": "Add",
     "edit": "Edit",
     "save": "Save",
-    "projectName" : "MyProject1"
+    "projectName" : "MyProject1",
+    "myViewsH1" : "text"
 }

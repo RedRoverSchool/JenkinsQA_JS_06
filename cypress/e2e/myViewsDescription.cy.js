@@ -29,35 +29,7 @@ describe('myViewsEditDescriptionTest', () => {
     })
 
 
-it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chosen job", () => {
-  let jobName = "Test1";
-  cy.get('[href="/view/all/newJob"] .task-link-text').click({
-    force: true,
-  });
-  cy.get("#name").click().type(jobName);
-  cy.get(".hudson_model_FreeStyleProject .label").click({
-    force: true,
-  });
-  cy.get("#ok-button").click();
-  cy.get('[name="Submit"]').click();
-  cy.get(".job-index-headline.page-headline").should(
-    "have.text",
-    `Project ${jobName}`
-  );
-  cy.get(`[href="/"].model-link`).click();
-  cy.get('[href="/me/my-views"]').click();
-  cy.get(`a[href="job/${jobName}/"]`).click();
-  cy.url().should(
-    "be.eq",
-    `http://localhost:${Cypress.env(
-      "local.port"
-    )}/me/my-views/view/all/job/${jobName}/`
-  );
-  cy.get(".job-index-headline.page-headline").should(
-    "have.text",
-    `Project ${jobName}`
-  );
-});
+
 
     it('AT_09.03_004 | My Views Verify Edit description is changed and saved', () => {
       cy.contains('My Views').click()

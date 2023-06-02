@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 import logInPage from "../fixtures/logInPage.json"
+import headerIcon from "../fixtures/headerIcon.json"
 
 describe('Header Head Icon', () => {
 
@@ -20,7 +21,7 @@ describe('Header Head Icon', () => {
         cy.get('#jenkins-home-link').should('be.visible').click()
         cy.url().should('eq','http://localhost:8080/')
     })
-  
+
     it('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({ force: true });
         cy.get('div h1').should('exist')
@@ -37,7 +38,7 @@ describe('Header Head Icon', () => {
             .click()
         cy.get('h1').should('have.text', 'Welcome to Jenkins!')
     })
-  
+
     it('AT_01.01_033 | Validate <Header> head icon', () => {
         cy.get('span.task-link-text').contains('People').click({force: true});
         cy.get('div h1').should('exist')
@@ -47,7 +48,7 @@ describe('Header Head Icon', () => {
                         .and('be.visible');
 
     })
-    
+
     it('AT_01.01_038 | Head Icon is visible and redirects to home page after clicking', () => {
         cy.get('a[href="newJob"]').click();
         cy.get('#jenkins-head-icon').should('be.visible').click();
@@ -60,9 +61,9 @@ describe('Header Head Icon', () => {
           .get('header')
           .should('be.visible');
         cy.get('#jenkins-head-icon').click();
-        cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');  
+        cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');
     })
-  
+
     it('AT_01.01_39 | Head icon is visible, clickable and redirects to the home page', () => {
         cy.get('span.task-link-text').contains('People').click({force:true});
         cy.get('#jenkins-name-icon').click();
@@ -74,7 +75,7 @@ describe('Header Head Icon', () => {
         cy.get('#main-panel h1').should('include.text', 'People')
         cy.get('.logo #jenkins-head-icon').should('be.visible').click()
         cy.url().should('include', `http://localhost:${Cypress.env('local.port')}/`)
-        cy.get('#main-panel h1').should('have.text', logInPage.loginPageHeader) 
+        cy.get('#main-panel h1').should('have.text', logInPage.loginPageHeader)
     })
 
     it('AT_01.01_40 | Head Icon is visible in top left corner', () => {
@@ -90,6 +91,34 @@ describe('Header Head Icon', () => {
         cy.get('.empty-state-block > h1').should('contain', logInPage.loginPageHeader)
     })
 
+    it('AT_01.01_43 | Header| Head Icon is visible and redirects to the homepage', () => {
+        const LOCAL_PORT = Cypress.env('local.port')
+
+        cy.get('#side-panel a[href="/view/all/newJob"]').click()
+        cy.get('header #jenkins-head-icon').should('be.visible').click()
+
+        cy.url().should('equal', `http://localhost:${LOCAL_PORT}/`)
+    })
+
+    it('AT_01.01.45 | <Header> Head Icon is visible and redirects to home page', () => {
+        cy.get('a[href="/view/all/newJob"]').click()
+        cy.get('#jenkins-home-link').should('be.visible').click();
+        cy.get('h1').should('have.text', 'Welcome to Jenkins!').and('be.visible');
+    })
+
+    it('AT_01.01_46 | <Header> Head icon clickable and redirecting on the Home page', () => {
+        cy.get('[href="/asynchPeople/"]').click();
+        cy.get('#main-panel h1').should('include.text','People');
+        cy.get('#jenkins-name-icon').click();
+        cy.get('div h1').should('include.text', 'Welcome to Jenkins!');
+    });
+
+    it('AT_01.01_48 | Header | Verify head icon is in the upper left corner', () => {
+        cy.get("#page-header")
+        .children().eq(0)
+        .should('be.visible')
+        .and('have.class', headerIcon.headerJenkinsClass);
+    });
 
 })
 

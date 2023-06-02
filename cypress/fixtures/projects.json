@@ -1,6 +1,7 @@
 {
 	"freestyle": {
-		"name": "Brand_new_Freestyle_project"
+		"name": "Brand_new_Freestyle_project",
+		"description" : "Javascript test program"
 	},
 	"disabledProjectNotify": "This project is currently disabled",
 
@@ -37,5 +38,24 @@
 	
 	"invalidSymbols" :  ["]", "!", "#", "$", "%", "&", "*", "/", ":", ";", "?", "@", "[", "^", "|"],
 	
-	"newProject" : "New project"
+	"newProject" : "New project",
+
+	"forOrganizationFolder" : {
+		"name": "My Organization Folder",
+		"displayName": "Display Name",
+		"description": "Description"
+	},
+
+	"projects" : ["Project1", "Project2", "Project3"],
+
+	"setNamesForNewProject": [
+		{
+		  "name": "freestyle1"
+		},
+		{
+		  "name": "freestyle2"
+		}
+	  ],
+	  "searchBoxInput" : "freestyle"
+	
 }

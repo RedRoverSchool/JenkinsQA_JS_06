@@ -39,5 +39,21 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
      it('AT_02.04.008 | Verify that link "My Views" is clickable', () => {
         cy.get('a[href="/me/my-views"').click()
         cy.url().should('include', endPointUrl[4])
-     })   
+     })
+     
+     it('AT_02.04_016 | Verify that the left sidebar with 5 items is clickable', () => {        
+        sidePanelItems.forEach((el, idx) => {
+            cy.get('.task-link-wrapper').contains(sidePanelItems[idx]).click()
+            cy.url().should('include',endPointUrl[idx])
+            cy.get('#breadcrumbs a[href="/"]').click()
+        })
+     });
+     it('AT_02.04_018 | Homepage(Dashboard) > Verification of Names on side panel', () => {
+        cy.get('.task ')
+          .should('have.length',sidePanelItems.length)
+          .then(($els) => {
+            return Cypress.$.makeArray($els).map($el => $el.innerText)
+          })
+          .should('deep.equal', sidePanelItems)
+      })
 })

@@ -9,4 +9,15 @@ describe("Homepage > Main Panel", () => {
     cy.url().should("include", "computer/new");
     cy.get(".jenkins-app-bar__content > h1").should("have.text", "New node");
   });
+  
+  it("AT_02.07.009 | Homepage Verify the 'Set up an agent' link on the main page when no jobs have been created", () => {
+    cy.get(".empty-state-block h1").should("have.text", "Welcome to Jenkins!");
+    cy.get("h2.h4").contains("Set up a distributed build").should("be.visible");
+    cy.get('[href="computer/new"]').click();
+    cy.url().should("contain", "computer/new");
+    cy.get(".jenkins-radio .jenkins-radio__label").should(
+      "have.text",
+      "Permanent Agent"
+    );
+  });
 });
