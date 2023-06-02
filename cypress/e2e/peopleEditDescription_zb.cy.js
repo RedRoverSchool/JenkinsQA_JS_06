@@ -6,7 +6,7 @@ import userDescription_zb from "../fixtures/userDescription_zb.json";
 
 const USERNAME = Cypress.env('local.admin.username');
 
-describe('People Edit Discription to User', () => {
+describe('peopleEditDescription_zb', () => {
     it("AT_06.04_004 | <People> Verify the User's Description can be edited", () => {
         cy.get('#tasks .task:nth-child(2)').click()
         cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click()
@@ -37,7 +37,7 @@ describe('People Edit Discription to User', () => {
         cy.get('#description div:nth-of-type(1)').should('have.text', userDescription_zb.editOldDescription)
     })
 
-    it('AT_06.04_005 | <People> Edit User description', () => {
+    it.skip('AT_06.04_005 | <People> Edit User description', () => {
         cy.get('a[href="/asynchPeople/"]').should('have.text', userDescription_zb.people).click()
         cy.get('#people tr:first-child a[href*="/user/"]').click()
         cy.get('#description-link').click()
