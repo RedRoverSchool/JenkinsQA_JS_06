@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {userFullName} from "../../fixtures/pom_fixtures/userConfigure.json";
+import {userFullName} from "../../fixtures/pom_fixtures/userConfigurePage.json";
 
 describe('userConfigure', () => {
 
