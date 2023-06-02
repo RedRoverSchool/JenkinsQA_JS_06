@@ -1,6 +1,6 @@
 
-class LinkRestAPIPage {
-    getMainPanelTitle =() => cy.get('#main-panel  h1');
+class RestAPIPage {
+    getRestApiTitle =() => cy.get('#main-panel h1');
 
 
 
@@ -13,4 +13,4 @@ class LinkRestAPIPage {
 
 
 }
-export default LinkRestAPIPage;
+export default RestAPIPage;

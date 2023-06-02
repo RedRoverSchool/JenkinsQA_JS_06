@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {restAPIPageTitle} from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
 
 describe('footer', () => {
 
@@ -9,8 +9,8 @@ describe('footer', () => {
 
     it('Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
-        .clickLinkRestAPI()
-        .getMainPanelTitle()
+        .clickRestAPILink()
+        .getRestApiTitle()
         .should('have.text',restAPIPageTitle)
     })
 })
