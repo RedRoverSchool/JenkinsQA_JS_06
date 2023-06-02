@@ -7,7 +7,7 @@ describe('footer', () => {
 
     const headerAndFooter = new HeaderAndFooter();
 
-    it('Verify link Rest Api redirected to the page with correct header', () => {
+    it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
         .clickRestAPILink()
         .getRestApiTitle()

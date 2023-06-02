@@ -1,5 +1,5 @@
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
-import RestAPIPage from "../pageObjects/LinkRestAPIPage"
+import RestAPIPage from "./RestAPIPage"
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
     getUserDropDownBtn = () => cy.get('div.login a[href*="user"] button');
