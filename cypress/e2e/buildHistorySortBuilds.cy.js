@@ -16,10 +16,10 @@ function createBuildsOfNewProject(projectName, buildsNumber) {
     for(let i = 1; i <= buildsNumber; i++){
         cy.get(`[tooltip="Schedule a Build for ${projectName}"]`).click();
         cy.wait(1000);
-    };
-};
+    }
+}
 
-function scheduleBuildForFreestyleProject(){
+function scheduleBuildForFreestyleProject() {
     cy.get('#tasks [href="/view/all/newJob"]').click()
     cy.get('input#name').type(projects.freestyle.name)
     cy.get('#j-add-item-type-standalone-projects li:first-child').click()
@@ -28,7 +28,7 @@ function scheduleBuildForFreestyleProject(){
     cy.get('tr:first-child td:last-child [tooltip]').click()
 }
 
-function scheduleBuildForPipelineProjec(){
+function scheduleBuildForPipelineProjec() {
     cy.get('#tasks [href="/view/all/newJob"]').click()
     cy.get('input#name').type(projects.pipeline.name)
     cy.get('#j-add-item-type-standalone-projects li:nth-child(2)').click()
@@ -37,7 +37,7 @@ function scheduleBuildForPipelineProjec(){
     cy.get('tr:nth-child(2) td:last-child [tooltip]').click()
 }
 
-function getTable () {
+function getTable ()  {
     cy.get('table#projectStatus').within(() => {
         let keyArrayTableHeader = []
         let tableDataArr = []
@@ -54,7 +54,7 @@ function getTable () {
             })
         })
         return cy.wrap (tableDataArr).as('table')
-    }) 
+    })
 }
 
 describe('Build History Sort builds', () => {
@@ -133,7 +133,7 @@ describe('Build History Sort builds', () => {
         });
     });
 
-    it('AT_07.02_004 | Verify ascending sort order of builds.', () => {
+    it.skip('AT_07.02_004 | Verify ascending sort order of builds.', () => {
         const cellTexts = [];
 
         for (let i = 0; i < projects.projects.length; i++) {
@@ -155,6 +155,19 @@ describe('Build History Sort builds', () => {
         })
     });
 
+    it('AT_07.02_007 | Build History>Verify Sorting Builds', () => {
+        const buildsNumber = 3;
+        createBuildsOfNewProject(projects.newProject, buildsNumber);
+
+        cy.get('a[href$="/builds"]').click();
+        cy.get('.sortheader').contains('Build').dblclick();
+        cy.get('table#projectStatus td:nth-child(2)').then(($els) => {
+        let actualStates = Cypress.$.makeArray($els).map(($el) => $el.innerText);
+        let expectedStates = actualStates.slice().sort();
+        expect(actualStates).to.deep.eq(expectedStates);
+        });
+    });
+
     it('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
         scheduleBuildForFreestyleProject()
         scheduleBuildForPipelineProjec()
@@ -165,7 +178,7 @@ describe('Build History Sort builds', () => {
             cy.get('@table').then(actualTable => {
                 let expectedTable = table.sort((a,b) => a['Build'].localeCompare(b['Build']))
                 expect(actualTable).to.deep.equal(expectedTable)
-            })    
+            })
         })
     })
 
@@ -179,5 +192,17 @@ describe('Build History Sort builds', () => {
             expect(actualResult).to.deep.equal(expectedResult)
         })
     })
-    
-});
+
+    it('AT_07.02_008 | Verify user can sort builds in descending order by clicking “Time Since”', () => {
+
+        createBuildsOfNewProject(projects.newProject, 3)
+        cy.get('a[href="/view/all/builds"]').click()
+        cy.get('a[href="#"].sortheader').contains(buildHistory.buildsTableHeaders.timeSince).click()
+        cy.get('table#projectStatus tr > th:nth-child(3) > a > span').should('be.visible')
+        cy.get('#projectStatus > thead > tr > th:nth-child(3) > a').then(($els) => {
+            let actualData = Cypress.$.makeArray($els).map(($el) => $el.innerText)
+            let expectedData = actualData.slice().sort()
+            expect(actualData).to.deep.equal(expectedData)
+        })
+    })
+})

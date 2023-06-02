@@ -2,6 +2,7 @@
 
 import projects from '../fixtures/projects.json';
 import headers from '../fixtures/headers.json';
+import homePage from '../fixtures/homePage.json'
 const userName = Cypress.env('local.admin.username').toLowerCase();
 
 describe('Header Search Box', () => {
@@ -205,6 +206,25 @@ describe('Header Search Box', () => {
     cy.get('#search-box').type('checking').clear()
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
   })
+})
+it('AT_01.02_035 | Header | Search box | functionality', () => {
+  projects.setNamesForNewProject.forEach((obj) => {
+      cy.get('span.task-link-text').contains(homePage.dashboardDropdownItems[0]).click({ force: true })
+      cy.get('#name').type(`${obj.name}`)
+      cy.get('.hudson_model_FreeStyleProject').click()
+      cy.get('#ok-button').click()
+      cy.get('button[name="Submit"]').click()
+      cy.get('#jenkins-name-icon').click()
+  })
+  cy.get('#searchform > input').type(projects.searchBoxInput)
+  cy.get('.yui-ac-bd li').not('li[style="display: none;"]').each($el => {
+    let textOfElements = $el.text()
+
+    if (textOfElements === projects.setNamesForNewProject[0].name) {
+      return cy.wrap($el).click().type('{enter}')
+    }
+  })
+  cy.get('h1.job-index-headline').should('contain', `Project ${projects.setNamesForNewProject[0].name}`)
 })
 })
 

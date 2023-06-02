@@ -127,4 +127,81 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
+	it('AT_14.05_008 | Multi-configuration project. Advanced project options. Type "text" field is shown if "Use custom child workspace" option is selected', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"][name="hasChildCustomWorkspace"]')
+					.check({ force: true })
+				cy.contains('.optionalBlock-container', 'Use custom child workspace').within(() => {
+					cy.get('input[type="text"][name="_.childCustomWorkspace"]')
+						.should('be.visible')
+						.and('be.enabled')
+				});
+			});
+		});
+	});
+
+	it('AT_14.05_009 | Multi-configuration project. Advanced project options are set and saved', () => {
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.check({ force: true }).then(() => {
+						cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].fieldName)
+							.find('input[type="number"][name="quiet_period"]')
+							.clear()
+							.type(projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].setValue)
+						cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].fieldName)
+							.find('input[type="number"][name="scmCheckoutRetryCount"]')
+							.clear()
+							.type(projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].setValue)
+						cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.fieldName)
+							.find('input[type="text"][name="_.customWorkspace"]')
+							.clear()
+							.type(projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.setValue)
+						cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].fieldName)
+							.find('input[type="text"][name="_.childCustomWorkspace"]')
+							.clear()
+							.type(projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].setValue, { parseSpecialCharSequences: false })
+						cy.contains('.jenkins-form-item', 'Display Name')
+							.find('input[type="text"][name="_.displayNameOrNull"]')
+							.clear()
+							.type('Advanced name')
+					});
+
+			});
+		});
+		cy.contains('button[name="Submit"]', 'Save').click()
+
+		cy.get(`#side-panel .task a[href="/job/${projects.multiConfigurationProject.name}/configure"]`).click()
+		cy.wait('@newProjectConfigure')
+		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
+			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
+			cy.get('.dropdownList-container').within(($elem) => {
+				cy.wrap($elem)
+					.find('input[type="checkbox"]')
+					.should('have.length', projects.multiConfigurationProject.advancedOptions.length)
+					.and('be.checked')
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].fieldName)
+					.find('input[type="number"][name="quiet_period"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Quiet period"]["Quiet period"].setValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].fieldName)
+					.find('input[type="number"][name="scmCheckoutRetryCount"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Retry Count"]["SCM checkout retry count"].setValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.fieldName)
+					.find('input[type="text"][name="_.customWorkspace"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom workspace"].Directory.setValue)
+				cy.contains('.optionalBlock-container', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].fieldName)
+					.find('input[type="text"][name="_.childCustomWorkspace"]')
+					.should('have.value', projects.multiConfigurationProject.additionalAdvancedOptionsFields["Use custom child workspace"]["Child Directory"].setValue, { parseSpecialCharSequences: false })
+				cy.contains('.jenkins-form-item', 'Display Name')
+					.find('input[type="text"][name="_.displayNameOrNull"]')
+					.should('have.value', 'Advanced name')
+			});
+		});
+	});
+
 });

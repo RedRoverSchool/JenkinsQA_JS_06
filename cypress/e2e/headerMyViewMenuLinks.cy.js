@@ -43,4 +43,11 @@ describe("US_01.06 Header My views menu link", () => {
         cy.get('#side-panel').should('be.visible')
     })
 
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
+        cy.get('#page-header .model-link .jenkins-menu-dropdown-chevron').realHover().click()
+        cy.get('#breadcrumb-menu-target a[href*="my-views"]').should('be.visible').click()
+        cy.location('pathname').should('eq', `/user/${userName}/my-views/view/all/`)
+        cy.get('#page-body #description div').should('include.text', homePage.myViewsH1)
+  })
+
 });

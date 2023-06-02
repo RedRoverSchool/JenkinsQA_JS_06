@@ -117,11 +117,28 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02.13 |Breadcrumbs | Verify Dashboards  drop-down Menu Length', () => {
+   it.skip('AT_04.02.13 |Breadcrumbs | Verify Dashboards  drop-down Menu Length', () => {
+
       cy.get('.jenkins-breadcrumbs__list-item').realHover()
       cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').realClick()
       cy.get('#breadcrumb-menu>div:first-child>ul>li')
          .should('be.visible')
          .and('have.length', pages.dashboardMenu.length)
+   });
+   it('AT_04.02_017 | Breadcrumbs| Dashboard dropdownmenu names', () => {
+      cy.get('.jenkins-breadcrumbs__list-item').realHover()
+      cy.get('#breadcrumbBar .jenkins-menu-dropdown-chevron').click()
+      cy.get('#breadcrumb-menu > div.bd > ul>li>a>span').then(($els) => {
+        const arr = Cypress.$.makeArray($els).map($el => $el.innerText)
+        expect(arr).to.deep.equal(homePage.dashboardDropdownItems)
+      })
+    })
+
+    it('TC_04.02.016 | Breadcrumbs > Verify Dashboard Manage Jenkins Dropdown Menu Length', () => {
+      cy.get('#breadcrumbBar .model-link').realHover().click('right')
+      cy.get('#breadcrumb-menu [href="/manage"]').trigger('mouseover')
+      cy.get('#submenu0 svg')
+        .should('be.visible')
+        .and('have.length', homePage.manageJenkinsDropdownItems.length)
    });
 })

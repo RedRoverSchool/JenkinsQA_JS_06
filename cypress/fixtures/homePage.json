@@ -48,5 +48,6 @@
     "add": "Add",
     "edit": "Edit",
     "save": "Save",
-    "projectName" : "MyProject1"
+    "projectName" : "MyProject1",
+    "myViewsH1" : "text"
 }
