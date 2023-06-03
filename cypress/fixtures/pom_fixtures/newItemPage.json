@@ -1,4 +1,13 @@
 {
     "multibranchPipelineName": "Multibranch Pipeline Job",
-    "freestyleProjectName" : "Freestyle Project"
+    "freestyleProjectName" : "Freestyle Project",
+
+    "newItemNames": [
+        "Freestyle project",
+        "Pipeline",
+        "Multi-configuration project",
+        "Folder",
+        "Multibranch Pipeline",
+        "Organization Folder"
+    ]
 }
