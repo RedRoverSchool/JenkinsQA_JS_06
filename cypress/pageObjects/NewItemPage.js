@@ -23,11 +23,9 @@ class NewItemPage {
     };
 
     getNewItemNamesList() {
-        return this
-            .getNewItemNames()
-            .then($els => {
+        return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
-            });
+        });
     };
 }
 

@@ -7,7 +7,7 @@ describe('newItem', () => {
 
     const homePage = new HomePage();
 
-    it('[RF] | POM > AT_05.08.011 | Verify Items Names', () => {
+    it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
             .clickNewItemSideMenuLink()
             .getNewItemNamesList()
