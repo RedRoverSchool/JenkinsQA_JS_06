@@ -2,6 +2,7 @@
 
 import { dashboardDropdownItems } from '../fixtures/homePage.json'
 import { endPointUrl } from '../fixtures/homePage.json'
+import {sidePanelItems} from '../fixtures/homePage.json'
 
 describe('Side panel sub menu', () => {
     it('AT_02.04_011 | <Homepage(Dashboard) > Verify names and number of items in the side panel menu', () => {
@@ -87,6 +88,15 @@ describe('Side panel sub menu', () => {
             let name = $el.text()
             expect(name).to.include(dashboardDropdownItems[idx])
           })
+    })
+    
+    it('AT_02.04_019 | Verification of name items on side panel of main page', () => {
+        cy.get('.task-link-text')
+        .should('have.length',sidePanelItems.length)
+        .then(($els) => {
+         return Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+        .should('deep.equal', sidePanelItems)
     })
 })
 

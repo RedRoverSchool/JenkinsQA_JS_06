@@ -1,13 +1,15 @@
 import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
-import JobProfilePage from "./MultiConfigurationProjectPage";
+import MyViewPage from "./MyViewPage";
+import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 
 class HomePage {
-  getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-  getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
-  getCreateJobLink = () => cy.get('a[href="newJob"]');
-  getProjectNameLink = () => cy.get('a[href*="job/"]');
-  getPageBody = () => cy.get("#page-body");
+    getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
+    getCreateJobLink = () => cy.get('a[href="newJob"]');
+    getProjectNameLink = () => cy.get('a[href*="job/"]');
+    getPageBody = () => cy.get("#page-body");
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -19,6 +21,11 @@ class HomePage {
     return new NewItemPage();
   }
 
+  clickMyViewSideMenuLink() {
+    this.getMyViewSideMenuLink().click();
+    return new MyViewPage();
+  }
+
   clickCreateJobLink() {
     this.getCreateJobLink().click();
     return new NewItemPage();
@@ -27,7 +34,6 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
-}
-
+  }
 }
 export default HomePage;
