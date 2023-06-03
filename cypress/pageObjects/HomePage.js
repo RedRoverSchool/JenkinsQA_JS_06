@@ -24,8 +24,8 @@ class HomePage {
     return new NewItemPage();
   }
 
-  clickProjectNameLink(name) {
-    this.getProjectNameLink().contains(name).click();
+  clickProjectNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
     return new JobProfilePage();
   }
 
