@@ -4,8 +4,10 @@ const LOCAL_PORT = Cypress.env('local.port')
 
 beforeEach(() => {
     cy.cleanData();
-    cy.visit(`http://localhost:${LOCAL_PORT}/login`);
-      cy.get('#j_username').type(USERNAME);
-      cy.get('input[name="j_password"]').type(PASSWORD);
-      cy.get('button[name="Submit"]').click();
+    // cy.visit(`http://localhost:${LOCAL_PORT}/login`);
+    //   cy.get('#j_username').type(USERNAME);
+    //   cy.get('input[name="j_password"]').type(PASSWORD);
+    //   cy.get('button[name="Submit"]').click();
+    cy.login(USERNAME, PASSWORD, LOCAL_PORT);
+    cy.visit(`http://localhost:${LOCAL_PORT}`);
 })
