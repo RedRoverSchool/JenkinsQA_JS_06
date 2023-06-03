@@ -1,11 +1,11 @@
-import HomePage from "./HomePage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectPage";
 
-class MultiConfigurationProjectConfigurePage {
-    getDeleteSideMenuLink = () => cy.get('a[data-message^="Delete"]');
+class JobConfigurePage {
+  getSaveButton = () => cy.get("button[name='Submit']");
 
-    clickDeleteSideMenuLink() {
-        this.getDeleteSideMenuLink().click();
-        return new HomePage();
-    }
+  clickSaveButton() {
+    this.getSaveButton().click();
+    return new MultiConfigurationProjectConfigurePage();
+  }
 }
-export default MultiConfigurationProjectConfigurePage;
+export default JobConfigurePage;

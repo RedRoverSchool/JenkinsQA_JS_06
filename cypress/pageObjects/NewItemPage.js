@@ -1,5 +1,5 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
-import JobConfigurePage from "./JobConfigurePage";
+import JobConfigurePage from "./MultiConfigurationProjectConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
