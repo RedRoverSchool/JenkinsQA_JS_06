@@ -5,22 +5,22 @@ import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import { name } from "../../fixtures/pom_fixtures/jobConfigurePage.json";
 
 describe("multiConfigurationProject", () => {
-  const homePage = new HomePage();
-  const headerAndFooter = new HeaderAndFooter();
+    const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
 
-  it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
-    homePage
-      .clickCreateJobLink()
-      .selectMultiConfigurationProjectItem()
-      .typeNewItemNameInputField(name)
-      .clickOkBtnAndGoMultiConfProjectConfig()
-      .clickSaveButton();
+    it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
+        homePage
+            .clickCreateJobLink()
+            .selectMultiConfigurationProjectItem()
+            .typeNewItemNameInputField(name)
+            .clickOkBtnAndGoMultiConfProjectConfig()
+            .clickSaveButton();
 
-    headerAndFooter
-      .clickJenkinsHomeLink()
-      .clickProjectNameLink(name)
-      .clickDeleteSideMenuLink()
-      .getPagesBody()
-      .should("not.have.text", name);
-  });
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .clickProjectNameLink(name)
+            .clickDeleteSideMenuLink()
+            .getPagesBody()
+            .should("not.have.text", name);
+    });
 });
