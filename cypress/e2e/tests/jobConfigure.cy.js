@@ -4,7 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import { name } from "../../fixtures/pom_fixtures/jobConfigurePage.json";
 
-describe("jobConfigure", () => {
+describe("multiConfigurationProject", () => {
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
 
@@ -12,14 +12,14 @@ describe("jobConfigure", () => {
     homePage
       .clickCreateJobLink()
       .clickMultiConfigurationProjectBtn()
-      .typeItemNameInputField(name)
+      .typeNewItemNameInputField(name)
       .clickOkButton()
       .clickSaveButton();
 
     headerAndFooter
       .clickJenkinsHomeLink()
       .clickJobNameLink()
-      .clickDeleteLink()
+      .clickDeleteSideMenuLink()
       .getPagesBody()
       .should("not.have.text", name);
   });

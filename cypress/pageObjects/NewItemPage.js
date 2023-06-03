@@ -1,10 +1,13 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
+import JobConfigurePage from "./JobConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
+    getMultiConfigurationProjectBtn = () =>
+    cy.get(".hudson_matrix_MatrixProject");
 
 
     typeNewItemNameInputField(name) {
@@ -27,6 +30,16 @@ class NewItemPage {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });
     };
+
+    clickMultiConfigurationProjectBtn() {
+        this.getMultiConfigurationProjectBtn().click();
+        return this;
+      }
+
+      clickOkButton() {
+        this.getNewItemOkBtn().click();
+        return new JobConfigurePage();
+      }
 }
 
 export default NewItemPage;
