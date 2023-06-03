@@ -20,7 +20,7 @@ describe('freestyleProject', () => {
             .clickRenameSideMenuLink()
             .typeNewNameInputFild(freestyleProjectNewName)
             .clickRenameBtn()
-            .getProjectName()            
+            .getFreestyleProjectHeader()            
             .should('have.text', headerText + freestyleProjectNewName)
     });
 });
