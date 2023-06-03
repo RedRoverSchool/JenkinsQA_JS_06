@@ -7,6 +7,7 @@ class NewItemPage {
     getFreestyleProjectItem = () => cy.get('li[class$="hudson_model_FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
+    getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
 
 
     typeNewItemNameInputField(name) {
@@ -38,6 +39,16 @@ class NewItemPage {
         return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });
+    };
+
+    selectFreestyleProjectItem() {
+        this.getFreestyleProjectItem().click();
+        return this;
+    };
+
+    clickOkBtnAndGoFreestyleProjectConfig() {
+        this.getNewItemOkBtn().click();
+        return new FreestyleProjectConfigurePage();
     };
 }
 
