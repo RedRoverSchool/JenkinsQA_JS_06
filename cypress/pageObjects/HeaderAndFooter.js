@@ -41,7 +41,7 @@ class HeaderAndFooter {
 
     clickJenkinsHomeLink() {
         this.getJenkinsHomeLink().click();
-        return new HomePage;
+        return new HomePage();
     }
 }
 export default HeaderAndFooter;

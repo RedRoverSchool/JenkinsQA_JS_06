@@ -3,34 +3,34 @@ import NewItemPage from "./NewItemPage";
 import JobProfilePage from "./MultiConfigurationProjectConfigurePage";
 
 class HomePage {
-  getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-  getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
-  getCreateJobLink = () => cy.get('a[href="newJob"]');
-  getProjectNameLink = () => cy.get('a[href*="job/"]');
-  getPageBody = () => cy.get("#page-body");
+    getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
+    getCreateJobLink = () => cy.get('a[href="newJob"]');
+    getProjectNameLink = () => cy.get('a[href*="job/"]');
+    getPageBody = () => cy.get("#page-body");
 
-  clickPeopleSideMenuLink() {
-    this.getPeopleSideMenuLink().click();
-    return new PeoplePage();
-  }
+    clickPeopleSideMenuLink() {
+        this.getPeopleSideMenuLink().click();
+        return new PeoplePage();
+    }
 
-  clickNewItemSideMenuLink() {
-    this.getNewItemSideMenuLink().click();
-    return new NewItemPage();
-  }
+    clickNewItemSideMenuLink() {
+        this.getNewItemSideMenuLink().click();
+        return new NewItemPage();
+    }
 
-  clickCreateJobLink() {
-    this.getCreateJobLink().click();
-    return new NewItemPage();
-  }
+    clickCreateJobLink() {
+        this.getCreateJobLink().click();
+        return new NewItemPage();
+    }
 
-  clickProjectNameLink(projectName) {
-    this.getProjectNameLink().contains(projectName).click();
-    return new JobProfilePage();
-  }
+    clickProjectNameLink(projectName) {
+        this.getProjectNameLink().contains(projectName).click();
+        return new JobProfilePage();
+    }
 
-  getPagesBody() {
-    return this.getPageBody();
-  }
+    getPagesBody() {
+        return this.getPageBody();
+    }
 }
 export default HomePage;
