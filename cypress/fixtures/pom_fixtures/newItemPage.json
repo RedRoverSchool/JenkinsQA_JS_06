@@ -1,3 +1,4 @@
 {
-    "multibranchPipelineName": "Multibranch Pipeline Job"
+    "multibranchPipelineName": "Multibranch Pipeline Job",
+    "freestyleProjectName" : "Freestyle Project"
 }

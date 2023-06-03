@@ -1,9 +1,11 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
+import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
+    getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
 
 
     typeNewItemNameInputField(name) {
@@ -19,6 +21,16 @@ class NewItemPage {
     clickOkBtnAndGoMultiPipelineConfig() {
         this.getNewItemOkBtn().click();
         return new MultibranchPipelineConfigurePage();
+    };
+
+    selectFreestyleProjectItem() {
+        this.getFreestyleProjectItem().click();
+        return this;
+    };
+
+    clickOkBtnAndGoFreestyleProjectConfig() {
+        this.getNewItemOkBtn().click();
+        return new FreestyleProjectConfigurePage;
     };
 }
 
