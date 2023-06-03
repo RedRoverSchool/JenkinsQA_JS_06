@@ -11,9 +11,9 @@ describe("multiConfigurationProject", () => {
   it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
     homePage
       .clickCreateJobLink()
-      .clickMultiConfigurationProjectBtn()
+      .selectMultiConfigurationProjectItem()
       .typeNewItemNameInputField(name)
-      .clickOkButton()
+      .clickOkBtnAndGoMultiConfProjectConfig()
       .clickSaveButton();
 
     headerAndFooter

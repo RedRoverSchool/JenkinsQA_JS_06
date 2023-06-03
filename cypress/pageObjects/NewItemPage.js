@@ -6,8 +6,7 @@ class NewItemPage {
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
-    getMultiConfigurationProjectBtn = () =>
-    cy.get(".hudson_matrix_MatrixProject");
+    getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
 
 
     typeNewItemNameInputField(name) {
@@ -31,12 +30,12 @@ class NewItemPage {
         });
     };
 
-    clickMultiConfigurationProjectBtn() {
-        this.getMultiConfigurationProjectBtn().click();
+    selectMultiConfigurationProjectItem() {
+        this.getMultiConfigurationProjectItem().click();
         return this;
       }
 
-      clickOkButton() {
+      clickOkBtnAndGoMultiConfProjectConfig() {
         this.getNewItemOkBtn().click();
         return new JobConfigurePage();
       }
