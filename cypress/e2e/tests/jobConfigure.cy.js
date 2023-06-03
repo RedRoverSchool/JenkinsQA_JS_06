@@ -18,7 +18,7 @@ describe("multiConfigurationProject", () => {
 
     headerAndFooter
       .clickJenkinsHomeLink()
-      .clickJobNameLink()
+      .clickProjectNameLink(name)
       .clickDeleteSideMenuLink()
       .getPagesBody()
       .should("not.have.text", name);
