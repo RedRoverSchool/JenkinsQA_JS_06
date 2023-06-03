@@ -11,3 +11,4 @@ class FreestyleProjectPage {
     }    
 }
 
+export default FreestyleProjectPage;

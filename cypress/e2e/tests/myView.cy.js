@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
+import { freestyleProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
+import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 
 describe('myView', () => {
 
@@ -11,11 +12,11 @@ describe('myView', () => {
         homePage
             .clickMyViewSideMenuLink()
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.freestyleProjectName)
+            .typeNewItemNameInputField(freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProjectPage()
+            .clickSaveBtnAndGoFreestyleProject()
             .getFreestyleProjectHeader()
-            .should('have.text', 'Project ' + newItemPage.freestyleProjectName);
+            .should('have.text', headerText + freestyleProjectName);
     });
 });
