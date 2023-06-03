@@ -11,12 +11,12 @@ class NewItemPage {
         return this;
     };
 
-    clickMultibranchPipelineItem() {
+    selectMultibranchPipelineItem() {
         this.getMultibranchPipelineItem().click();
         return this;
     };
 
-    clickCreateMultibranchPipelineOkBtn() {
+    clickOkBtnAndGoMultiPipelineConfig() {
         this.getNewItemOkBtn().click();
         return new MultibranchPipelineConfigurePage();
     };

@@ -11,9 +11,9 @@ describe('multibranchPipelineConfigure', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemData.multibranchPipelineName)
-            .clickMultibranchPipelineItem()
-            .clickCreateMultibranchPipelineOkBtn()
-            .clickMultibranchPipelineConfigSaveBtn()
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickSaveBtnAndGoMultiPipeline()
             .clickConfigureTheProjectLink()
             .clickHealthMetricsBtn()
             .getAddMetricBtn()

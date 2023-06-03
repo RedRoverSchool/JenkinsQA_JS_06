@@ -1,13 +1,13 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
 
 class MultibranchPipelineConfigurePage {
-    getMultibranchPipelineConfigSaveBtn = () => cy.get('button[name=Submit]');
+    getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
     getHealthMetricsBtn = () => cy.get('.advancedButton');
     getAddMetricBtn = () => cy.get('#yui-gen3-button');
 
 
-    clickMultibranchPipelineConfigSaveBtn() {
-        this.getMultibranchPipelineConfigSaveBtn().click();
+    clickSaveBtnAndGoMultiPipeline() {
+        this.getProjectConfigSaveBtn().click();
         return new MultibranchPipelinePage();
     };
 
