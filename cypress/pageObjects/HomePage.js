@@ -4,7 +4,7 @@ import JobProfilePage from "./MultiConfigurationProjectConfigurePage";
 
 class HomePage {
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
