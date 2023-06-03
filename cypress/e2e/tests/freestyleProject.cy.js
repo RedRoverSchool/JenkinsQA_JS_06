@@ -3,6 +3,8 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+
 
 describe('freestyleProject', () => {
 
@@ -14,11 +16,11 @@ describe('freestyleProject', () => {
             .typeNewItemNameInputField(newItemData.freestyleProjectName)
             .selectFreestyleProjectItem()            
             .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProjectPage()
-            .selectRenameProjectMenu ()
-            .typeNewNameInputFild (freestyleProjectNewName)
-            .clickRenameBtn ()
-            .getProjectName ()            
-            .should('have.text', "Project " + freestyleProjectNewName)
+            .clickSaveBtnAndGoFreestyleProject()
+            .clickRenameSideMenuLink()
+            .typeNewNameInputFild(freestyleProjectNewName)
+            .clickRenameBtn()
+            .getProjectName()            
+            .should('have.text', headerText + freestyleProjectNewName)
     });
 });

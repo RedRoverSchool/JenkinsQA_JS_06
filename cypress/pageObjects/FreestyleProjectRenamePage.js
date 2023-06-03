@@ -11,7 +11,7 @@ class FreestyleProjectRenamePage {
 
     clickRenameBtn () {
         this.getRenameBtn().click();
-        return new FreestyleProjectPage;
+        return new FreestyleProjectPage();
     } 
 }
 

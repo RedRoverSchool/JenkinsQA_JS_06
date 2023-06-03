@@ -37,7 +37,7 @@ class NewItemPage {
 
     clickOkBtnAndGoFreestyleProjectConfig() {
         this.getNewItemOkBtn().click();
-        return new FreestyleProjectConfigurePage;
+        return new FreestyleProjectConfigurePage();
     };
 }
 
