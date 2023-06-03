@@ -24,10 +24,10 @@ class HomePage {
     return new NewItemPage();
   }
 
-  clickProjectNameLink(projectName) {
+  clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
-    return new JobProfilePage();
-  }
+    return new MultiConfigurationProjectPage();
+}
 
 }
 export default HomePage;

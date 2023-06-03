@@ -1,11 +1,11 @@
-import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectPage";
+import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 
-class JobConfigurePage {
+class MultiConfigurationProjectConfigurePage {
   getSaveButton = () => cy.get("button[name='Submit']");
 
   clickSaveButton() {
     this.getSaveButton().click();
-    return new MultiConfigurationProjectConfigurePage();
+    return new MultiConfigurationProjectPage();
   }
 }
 export default JobConfigurePage;

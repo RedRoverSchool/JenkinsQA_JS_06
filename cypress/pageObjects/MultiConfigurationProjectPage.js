@@ -1,6 +1,6 @@
 import HomePage from "./HomePage";
 
-class MultiConfigurationProjectConfigurePage {
+class MultiConfigurationProjectPage {
     getDeleteSideMenuLink = () => cy.get('a[data-message^="Delete"]');
 
     clickDeleteSideMenuLink() {
@@ -8,4 +8,4 @@ class MultiConfigurationProjectConfigurePage {
         return new HomePage();
     }
 }
-export default MultiConfigurationProjectConfigurePage;
+export default MultiConfigurationProjectPage;
