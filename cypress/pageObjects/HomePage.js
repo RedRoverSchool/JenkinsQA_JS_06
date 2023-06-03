@@ -29,8 +29,5 @@ class HomePage {
     return new JobProfilePage();
   }
 
-  getPagesBody() {
-    return this.getPageBody();
-  }
 }
 export default HomePage;

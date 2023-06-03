@@ -20,7 +20,7 @@ describe("multiConfigurationProject", () => {
             .clickJenkinsHomeLink()
             .clickProjectNameLink(name)
             .clickDeleteSideMenuLink()
-            .getPagesBody()
+            .getPageBody()
             .should("not.have.text", name);
     });
 });
