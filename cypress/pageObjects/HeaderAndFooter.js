@@ -10,7 +10,6 @@ class HeaderAndFooter {
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
-    getJenkinsHeaderIcon = () => cy.get('#jenkins-head-icon');
     getSearchBox = () => cy.get('#search-box');
 
 
@@ -42,10 +41,6 @@ class HeaderAndFooter {
         return new HomePage();
     }
 
-    clickJenkinsHeaderIcon() {
-        this.getJenkinsHeaderIcon().click();
-        return new HomePage();
-   }
     searchTextSearchBox(text) {
         this.getSearchBox().type(text + '{enter}');
         return new ResultSearchBoxPage();

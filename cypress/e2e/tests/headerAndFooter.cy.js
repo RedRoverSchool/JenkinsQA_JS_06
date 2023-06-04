@@ -19,12 +19,13 @@ describe('headerAndFooter', () => {
 
     it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
         headerAndFooter
-        .clickUserDropDownBtn()
-        .selectUserConfigureMenu()
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu();
+
         headerAndFooter
-        .clickJenkinsHeaderIcon()
-        .getHomepageHeader()
-        .should('have.text', homePageHeader);
+            .clickJenkinsHomeLink()
+            .getHomepageHeader()
+            .should('have.text', homePageHeader);
     });
 
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
