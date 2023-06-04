@@ -31,18 +31,15 @@ describe('myView', () => {
           .clickNewItemBtn()
           .typeNewItemNameInputField(pipelineName)
           .selectPipelineItem()
-          .clickNewItemOkBtn()
-          .clickSaveBtn();
-        dashboardBreadcrumbs
-          .clickDashboardBtn();
-
+          .clickOkBtnAndGoPipelineConfig();
+                  
         headerAndFooter
           .clickUserDropDownBtn()
           .selectUserMyViewsMenu()
           .clickPipelineNameLink()
           .getPipelinePageHeadline()
           .should('be.visible')
-          .and('include.text', pipelineName)
+          .and('include.text', pipelineName);
   });
 
 });

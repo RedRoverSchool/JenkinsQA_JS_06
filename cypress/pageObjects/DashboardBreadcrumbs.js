@@ -19,7 +19,7 @@ class DashboardBreadcrumbs {
    }
 
    clickDashboardBtn() {
-      this.getDashboardBtn().realHover().click();
+      this.getDashboardBtn().click();
       return this;
    }
 

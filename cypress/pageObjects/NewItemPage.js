@@ -69,7 +69,7 @@ class NewItemPage {
         return this;
     };
 
-    clickNewItemOkBtn() {
+    clickOkBtnAndGoPipelineConfig() {
         this.getNewItemOkBtn().click()
         return new PipelineConfigurePage();
     };
