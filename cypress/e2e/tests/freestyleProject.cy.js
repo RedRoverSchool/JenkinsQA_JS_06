@@ -4,7 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-
+import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
 
 describe('freestyleProject', () => {
 
@@ -23,4 +23,26 @@ describe('freestyleProject', () => {
             .getFreestyleProjectHeader()            
             .should('have.text', headerText + freestyleProjectNewName)
     });
+
+    freestyleConfigurePage.buildSteps.forEach((buildStep,idx) => {
+        it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
+            homePage    
+                .clickNewItemSideMenuLink()
+                .typeNewItemNameInputField(newItemData.freestyleProjectName)
+                .selectFreestyleProjectItem()            
+                .clickOkBtnAndGoFreestyleProjectConfig()
+                
+                .clickLeftSidePanelBuildStepsBtn()
+                .clickAddBuildStepBtn()
+                .clickAddBuildStepMenuListItem(idx)
+                .clickLeftSidePanelBuildStepsBtn()
+                .clickSaveBtnAndGoFreestyleProject()
+                .clickConfigureSideMenuLink()
+                .clickLeftSidePanelBuildStepsBtn()
+                .checkBuilderExistAndVisible()
+                .getBuilderWindowHeader()
+                .should('include.text',buildStep)
+        })
+    })
+    
 });
