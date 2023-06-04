@@ -6,19 +6,14 @@ import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.jso
 import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import DashboardBradcrumbs from "../../pageObjects/DashboardBradcrumbs";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import MyViewPage from "../../pageObjects/MyViewPage";
-import PipelineConfigurePage from "../../pageObjects/PipelineConfigurePage";
-import NewItemPage from "../../pageObjects/NewItemPage";
+
 
 describe('myView', () => {
 
   const homePage = new HomePage();
   const dashboardBradcrambs = new DashboardBradcrumbs();
   const headerAndFooter = new HeaderAndFooter();
-  const pipelineConfigurePage = new PipelineConfigurePage();
-  const myView = new MyViewPage();
-  const newItemPage = new NewItemPage();
- 
+     
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
             .clickMyViewSideMenuLink()
@@ -36,16 +31,14 @@ describe('myView', () => {
           .clickNewItemBtn()
           .typeNewItemNameInputField(pipelineName)
           .selectPipelineItem()
-          .clickNewItemOkBtn();
-      pipelineConfigurePage
+          .clickNewItemOkBtn()
           .clickSaveBtn();
       dashboardBradcrambs
           .clickDashboardBtn();
 
       headerAndFooter
           .clickUserDropDownBtn()
-          .selectUserMyViewsMenu();
-      myView
+          .selectUserMyViewsMenu()
           .clickPipelineNameLink()
           .getPipelinePageHeadline()
           .should('be.visible')

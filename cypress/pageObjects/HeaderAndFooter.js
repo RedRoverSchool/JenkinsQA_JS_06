@@ -1,5 +1,6 @@
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import RestAPIPage from "./RestAPIPage"
+import MyViewPage from "./MyViewPage";
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
     getUserDropDownBtn = () => cy.get('div.login a[href*="user"] button');
@@ -40,7 +41,7 @@ class HeaderAndFooter {
 
     selectUserMyViewsMenu() {
         this.getUserMyViewsMenu().click();
-        return new MyViews();
+        return new MyViewPage();
     }
 
 }

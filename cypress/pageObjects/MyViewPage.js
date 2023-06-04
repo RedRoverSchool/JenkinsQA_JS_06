@@ -14,7 +14,7 @@ class MyViewPage {
   };
 
   clickPipelineNameLink(){
-    this.getProjectNameLink().click()
+    this.getPipelineNameLink().click()
     return new PipelinePage();
 };
 

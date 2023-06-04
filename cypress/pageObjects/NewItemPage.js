@@ -1,6 +1,6 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
-import PipelineConfigurePage from "./PipelneConfigurePage";
+import PipelineConfigurePage from "./PipelineConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
