@@ -9,9 +9,9 @@ class PeoplePage {
         return new UserProfilePage();
     };
 
-    trimPeoplePageHeader (){
-        return this.getPeoplePageHeader().then(($el)=>{
-         return $el.text().trim();
+    trimPeoplePageHeader() {
+        return this.getPeoplePageHeader().then(($el) => {
+            return $el.text().trim();
         });
     };
 }

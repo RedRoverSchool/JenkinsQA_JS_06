@@ -35,8 +35,8 @@ describe('people', () => {
 
     it('AT_06.01_002 | Verify People page tab is redirecting to right page',()=>{
         homePage
-        .clickPeopleSideMenuLink()
-        .trimPeoplePageHeader()
-        .should('eq', peoplePage.headerText)
+            .clickPeopleSideMenuLink()
+            .trimPeoplePageHeader()
+            .should('eq', peoplePage.peoplePageHeader)
     });
 });
