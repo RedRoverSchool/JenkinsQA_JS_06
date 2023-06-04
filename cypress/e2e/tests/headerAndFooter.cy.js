@@ -20,6 +20,7 @@ describe('headerAndFooter', () => {
         headerAndFooter
         .clickUserDropDownBtn()
         .selectUserConfigureMenu()
+        headerAndFooter
         .clickJenkinsHeaderIcon()
         .getHomepageHeader()
         .should('have.text', homePageHeader);

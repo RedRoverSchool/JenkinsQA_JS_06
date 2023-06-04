@@ -8,7 +8,7 @@ class HeaderAndFooter {
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
-
+    getJenkinsHeaderIcon = () => cy.get('#jenkins-head-icon');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -37,5 +37,10 @@ class HeaderAndFooter {
         this.getJenkinsHomeLink().click();
         return new HomePage();
     }
+
+    clickJenkinsHeaderIcon() {
+        this.getJenkinsHeaderIcon().click();
+        return new HomePage();
+   }
 }
 export default HeaderAndFooter;
