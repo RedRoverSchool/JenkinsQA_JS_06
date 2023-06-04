@@ -9,8 +9,7 @@ class NewItemPage {
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
     getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob');
-    getSaveBtn = () => cy.get('.jenkins-button--primary');
-
+        
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
         return this;
@@ -46,11 +45,11 @@ class NewItemPage {
         this.getPipelineItem().click();
         return this;
     };
-    
-    clickgetSaveBtn() {
-        this.getSaveBtn().click()
+
+    clickNewItemOkBtn() {
+        this.getNewItemOkBtn().click()
         return new PipelineConfigurePage();
     };
-    
+        
 }
 export default NewItemPage;

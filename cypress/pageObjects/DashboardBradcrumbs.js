@@ -32,7 +32,7 @@ class DashboardBradcrumbs {
 
    clickNewItemBtn() {
       this.getNewItemBtn().realHover().click();
-      return new NewItem();
+      return new NewItemPage();
 }
 
 }

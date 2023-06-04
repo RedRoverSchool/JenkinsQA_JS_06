@@ -1,5 +1,4 @@
 import NewItemPage from './NewItemPage';
-import DashboardBradcrumbs from "./DashboardBradcrumbs"
 import PipelinePage from "./PipelinePage";
 
 

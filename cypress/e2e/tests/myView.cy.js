@@ -7,11 +7,16 @@ import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import DashboardBradcrumbs from "../../pageObjects/DashboardBradcrumbs";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import MyViewPage from "../../pageObjects/MyViewPage";
+import PipelineConfigurePage from "../../pageObjects/PipelineConfigurePage";
 
 describe('myView', () => {
 
   const homePage = new HomePage();
-
+  const dashboardBradcrambs = new DashboardBradcrumbs();
+  const headerAndFooter = new HeaderAndFooter();
+  const pipelineConfigurePage = new PipelineConfigurePage();
+  const myView = new MyViewPage();
+ 
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
             .clickMyViewSideMenuLink()
@@ -24,25 +29,25 @@ describe('myView', () => {
             .should('have.text', headerText + freestyleProjectName);
     });
 
-   const dashboardBradcrambs = new DashboardBradcrumbs();
-   const headerAndFooter = new HeaderAndFooter();
-
     it('AT_04.03_001|< My View> Verify that user can open selected Pipeline', () => {
       dashboardBradcrambs
           .clickNewItemBtn()
           .typeNewItemNameInputField(pipelineName)
-          .selectItemOptionPipeline()
-          .clickOkBtn()
+          .selectPipelineItem()
+          .clickNewItemOkBtn()
+      pipelineConfigurePage
           .clickSaveBtn();
       dashboardBradcrambs
           .clickDashboardBtn();
+          
       headerAndFooter
           .clickUserDropDownBtn()
           .selectUserMyViewsMenu()
-          .clickProjectNameLink()
+      myView
+          .clickPipelineNameLink()
           .getPipelinePageHeadline()
           .should('be.visible')
           .and('include.text', pipelineName)
-  })
+  });
 
 });
