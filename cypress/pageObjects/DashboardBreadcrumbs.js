@@ -1,4 +1,3 @@
-
 class DashboardBreadcrumbs {
 
    getDashboardDropdownBtn = () => cy.get('#breadcrumbs a');

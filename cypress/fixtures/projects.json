@@ -38,28 +38,28 @@
 			"Quiet period": {
 				"Quiet period": {
 					"fieldName": "Quiet period",
-					"currentValue": 53,
+					"defaultValue": 5,
 					"setValue": 60
 				}
 			},
 			"Retry Count": {
 				"SCM checkout retry count": {
 					"fieldName": "SCM checkout retry count",
-					"currentValue": 0,
+					"defaultValue": 0,
 					"setValue": 1
 				}
 			},
 			"Use custom workspace": {
 				"Directory": {
 					"fieldName": "Directory",
-					"currentValue": "",
+					"defaultValue": "",
 					"setValue": "testDerictory"
 				}
 			},
 			"Use custom child workspace": {
 				"Child Directory": {
 					"fieldName": "Child Directory",
-					"currentValue": "${COMBINATION}",
+					"defaultValue": "${COMBINATION}",
 					"setValue": "${testDerictory}"
 				}
 			}

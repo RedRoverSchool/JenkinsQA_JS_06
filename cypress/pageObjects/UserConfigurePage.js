@@ -1,10 +1,10 @@
 import UserProfilePage from "../pageObjects/UserProfilePage"
+import HomePage from "../pageObjects/HomePage";
 
 class UserConfigurePage {
     getFullNameInputField = () => cy.get('input[name="_.fullName"]');
     getUserConfigSaveBtn = () => cy.get('button[name="Submit"]');
-
-
+    
 
     typeFullNameInputField(name) {
         this.getFullNameInputField().clear().type(name);
@@ -16,6 +16,5 @@ class UserConfigurePage {
         
         return new UserProfilePage();
     }
-
 }
 export default UserConfigurePage;
