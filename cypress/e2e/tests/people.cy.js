@@ -33,7 +33,7 @@ describe('people', () => {
             .should('have.text', userProfileData.description);
     });
 
-    it('AT_06.01_002 | Verify People page tab is redirecting to right page',()=>{
+    it('AT_06.01_002 | Verify People page tab is redirecting to right page', () => {
         homePage
             .clickPeopleSideMenuLink()
             .trimPeoplePageHeader()
