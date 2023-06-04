@@ -2,9 +2,13 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
+<<<<<<< HEAD
 import{homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
+=======
+import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
+>>>>>>> main
 
-describe('footer', () => {
+describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
 
@@ -22,5 +26,12 @@ describe('footer', () => {
         .clickJenkinsHeaderIcon()
         .getHomepageHeader()
         .should('have.text', homePageHeader);
-    })
+    });
+
+    it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
+        headerAndFooter
+           .clickUserDropDownBtn()
+           .getUserDropdownMenuItemList()
+           .should('deep.equal', userDropdownMenuItems);
+     });
 })

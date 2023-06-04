@@ -20,4 +20,15 @@ describe('people', () => {
             .getUserDescriptionText()
             .should('have.text', userProfileData.editDescription);
     });
-}) 
+
+    it('AT_06.02.009 | Verify Possibility to Add Description to a User', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickUserNameLink()
+            .clickUserDescriptionBtn()
+            .typeUserDescriptionInputField(userProfileData.description)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userProfileData.description);
+    });
+});

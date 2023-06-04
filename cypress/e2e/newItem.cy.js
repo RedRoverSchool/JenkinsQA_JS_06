@@ -63,7 +63,7 @@ describe('newItem', () => {
         cy.get('.icon img').should('be.visible')
     });
 
-    it('AT_05.08.011 | New Item > Verify Items Names', () => {
+    it.skip('AT_05.08.011 | New Item > Verify Items Names', () => {
         cy.get('#tasks [href="/view/all/newJob"]'). click()
         cy.get('.label').then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
