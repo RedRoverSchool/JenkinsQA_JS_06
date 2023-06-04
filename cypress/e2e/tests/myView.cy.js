@@ -39,7 +39,7 @@ describe('myView', () => {
           .clickSaveBtn();
       dashboardBradcrambs
           .clickDashboardBtn();
-          
+
       headerAndFooter
           .clickUserDropDownBtn()
           .selectUserMyViewsMenu()
