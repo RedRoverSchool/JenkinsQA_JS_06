@@ -1,6 +1,8 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import PipelineConfigurePage from "./PipelineConfigurePage";
+import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
@@ -8,8 +10,10 @@ class NewItemPage {
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
-    getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob');
-        
+    getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob'); 
+    getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
+    getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
+
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
         return this;
@@ -31,6 +35,15 @@ class NewItemPage {
         });
     };
 
+    selectMultiConfigurationProjectItem() {
+        this.getMultiConfigurationProjectItem().click();
+        return this;
+      }
+
+      clickOkBtnAndGoMultiConfProjectConfig() {
+        this.getNewItemOkBtn().click();
+        return new MultiConfigurationProjectConfigurePage();
+      }
     selectFreestyleProjectItem() {
         this.getFreestyleProjectItem().click();
         return this;
@@ -39,6 +52,16 @@ class NewItemPage {
     clickOkBtnAndGoFreestyleProjectConfig() {
         this.getNewItemOkBtn().click();
         return new FreestyleProjectConfigurePage();
+    };
+
+    selectOrgFolderItem() {
+        this.getOrgFolderItem().click();
+        return this;
+    };
+
+    clickOkBtnAndGoOrgFolderConfig() {
+        this.getNewItemOkBtn().click();
+        return new OrgFolderConfigurePage();
     };
 
     selectPipelineItem() {

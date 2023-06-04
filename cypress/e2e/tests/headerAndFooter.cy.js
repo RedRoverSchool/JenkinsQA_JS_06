@@ -2,8 +2,9 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
+import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
-describe('footer', () => {
+describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
 
@@ -12,5 +13,12 @@ describe('footer', () => {
         .clickRestAPILink()
         .getRestApiTitle()
         .should('have.text',restAPIPageTitle)
-    })
+    });
+
+    it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
+        headerAndFooter
+           .clickUserDropDownBtn()
+           .getUserDropdownMenuItemList()
+           .should('deep.equal', userDropdownMenuItems);
+     });
 })

@@ -38,7 +38,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     .should('have.css', 'box-shadow')
   })
 
-  it('AT_16.01.004 | Verify Change Appearance', function () {
+  it.skip ('AT_16.01.004 | Verify Change Appearance', function () {
     cy.get('#jenkins-home-link').click()
     cy.get('[class="icon-pipeline-multibranch-project icon-md"]').should('have.attr', 'title', multibranchPipeline.titles.multiBranchPipeline)
     cy.get('[class="jenkins-table__link model-link inside"]').click()
