@@ -1,8 +1,10 @@
 import UserProfilePage from "../pageObjects/UserProfilePage"
+import HomePage from "../pageObjects/HomePage";
 
 class UserConfigurePage {
     getFullNameInputField = () => cy.get('input[name="_.fullName"]');
     getUserConfigSaveBtn = () => cy.get('button[name="Submit"]');
+    getJenkinsHeaderIcon = () => cy.get('#jenkins-head-icon');
 
 
 
@@ -17,5 +19,9 @@ class UserConfigurePage {
         return new UserProfilePage();
     }
 
+    clickJenkinsHeaderIcon() {
+        this.getJenkinsHeaderIcon().click();
+        return new HomePage();
+   }
 }
 export default UserConfigurePage;

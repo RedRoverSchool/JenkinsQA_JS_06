@@ -2,6 +2,7 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
+import{homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
 
 describe('footer', () => {
 
@@ -12,5 +13,14 @@ describe('footer', () => {
         .clickRestAPILink()
         .getRestApiTitle()
         .should('have.text',restAPIPageTitle)
+    })
+
+    it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
+        headerAndFooter
+        .clickUserDropDownBtn()
+        .selectUserConfigureMenu()
+        .clickJenkinsHeaderIcon()
+        .getHomepageHeader()
+        .should('have.text', homePageHeader);
     })
 })

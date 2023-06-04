@@ -4,6 +4,7 @@ import NewItemPage from "./NewItemPage";
 class HomePage {
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
+    getHomepageHeader = () => cy.get('.empty-state-block h1'); 
 
 
     clickPeopleSideMenuLink() {
