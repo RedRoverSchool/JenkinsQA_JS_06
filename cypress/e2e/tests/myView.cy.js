@@ -8,6 +8,7 @@ import DashboardBradcrumbs from "../../pageObjects/DashboardBradcrumbs";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import MyViewPage from "../../pageObjects/MyViewPage";
 import PipelineConfigurePage from "../../pageObjects/PipelineConfigurePage";
+import NewItemPage from "../../pageObjects/NewItemPage";
 
 describe('myView', () => {
 
@@ -16,6 +17,7 @@ describe('myView', () => {
   const headerAndFooter = new HeaderAndFooter();
   const pipelineConfigurePage = new PipelineConfigurePage();
   const myView = new MyViewPage();
+  const newItemPage = new NewItemPage();
  
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
@@ -34,7 +36,7 @@ describe('myView', () => {
           .clickNewItemBtn()
           .typeNewItemNameInputField(pipelineName)
           .selectPipelineItem()
-          .clickNewItemOkBtn()
+          .clickNewItemOkBtn();
       pipelineConfigurePage
           .clickSaveBtn();
       dashboardBradcrambs
@@ -42,7 +44,7 @@ describe('myView', () => {
 
       headerAndFooter
           .clickUserDropDownBtn()
-          .selectUserMyViewsMenu()
+          .selectUserMyViewsMenu();
       myView
           .clickPipelineNameLink()
           .getPipelinePageHeadline()
