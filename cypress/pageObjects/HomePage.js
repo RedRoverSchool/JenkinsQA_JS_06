@@ -12,7 +12,6 @@ class HomePage {
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
-    getBeforeCreatedJob = () => cy.get('.jenkins-table__link.model-link.inside');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -39,22 +38,9 @@ class HomePage {
     return new MultiConfigurationProjectPage();
   }
 
-  clickBeforeCreatedOrgFolder() {
-    this.getBeforeCreatedJob().click();
+  clickOrgFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
     return new OrgFolderPage();
-  }
-
-  createNewOrgFolder(name) {
-    const homePage = new HomePage();
-    homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(name)
-            .selectOrgFolderItem()
-            .clickOkBtnAndGoOrgFolderConfig()
-            .clickSaveBtnAndGoOrgFolder()
-            .clickGoToDashboard()
-            .getMainPanel()
-            .should('contain.text', name);
   }
 }
 export default HomePage;
