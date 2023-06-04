@@ -5,6 +5,7 @@ class OrgFolderPage {
     getDashboard = () => cy.get('#breadcrumbs a').contains("Dashboard");
     getConfigureTheProjectLink = () => cy.get('.content-block [href="./configure"]');
     getEnableProjectForm = () => cy.get('#enable-project');
+    getDescriptionCreatedOrgFolder = () => cy.get('#view-message');
 
     clickGoToDashboard() {
         this.getDashboard().click();

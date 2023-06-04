@@ -2,6 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
+import orgFolderConfigurePage from "../../fixtures/pom_fixtures/OrgFolderConfigurePage";
 
 describe('newItem', () => {
 
@@ -24,5 +25,18 @@ describe('newItem', () => {
             .clickGoToDashboard()
             .getMainPanel()
             .should('contain.text', newItemPage.orgFolderName);
+    });
+    
+    it('AT_05.06_005| Create a new Organization Folder with description', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .clickOrgFolderDescriptionInputField()
+            .typeOrgFolderDescriptionInputField(orgFolderConfigurePage.description)
+            .clickSaveBtnAndGoOrgFolder()
+            .getDescriptionCreatedOrgFolder()
+            .should("have.text", orgFolderConfigurePage.description)
     });
 });
