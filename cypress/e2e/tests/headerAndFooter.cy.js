@@ -2,7 +2,7 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
-import headerAndFooter from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
