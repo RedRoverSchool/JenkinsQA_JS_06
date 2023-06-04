@@ -2,6 +2,7 @@
     "multibranchPipelineName": "Multibranch Pipeline Job",
     "freestyleProjectName": "Freestyle Project Job",
     "orgFolderName": "OrgFolderTest",
+    "pipelineName": "Pipeline Job",
 
     "newItemNames": [
         "Freestyle project",
