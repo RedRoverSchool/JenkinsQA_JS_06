@@ -2,11 +2,8 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
-<<<<<<< HEAD
 import{homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-=======
 import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
->>>>>>> main
 
 describe('headerAndFooter', () => {
 
