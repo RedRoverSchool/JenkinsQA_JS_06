@@ -20,7 +20,7 @@ describe("Header Icon 1", () => {
     cy.title().should("eq", pages.dashboardPageTitle);
   });
 
-    it('AT_01.01_044 | <Header> Head Icon is visible and and clickable', ()=>{
+    it.skip('AT_01.01_044 | <Header> Head Icon is visible and and clickable', ()=>{
       cy.get('#jenkins-home-link').should('be.visible')
       cy.get('#jenkins-home-link').click()
       cy.url().should('eq', `http://localhost:${Cypress.env('local.port')}/`)

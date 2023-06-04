@@ -2,7 +2,7 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
-import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import headerAndFooter from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
@@ -20,5 +20,12 @@ describe('headerAndFooter', () => {
            .clickUserDropDownBtn()
            .getUserDropdownMenuItemList()
            .should('deep.equal', userDropdownMenuItems);
+     });
+
+     it('AT_01.01_019 | Redirection to the homepage by label', () => {
+        headerAndFooter
+        .clickJenkinsHomeTitle()
+        .getHomePageLink()
+        .should('eq', `http://localhost:${Cypress.env('local.port')}/`)
      });
 })

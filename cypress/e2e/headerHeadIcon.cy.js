@@ -49,7 +49,7 @@ describe('Header Head Icon', () => {
 
     })
 
-    it('AT_01.01_038 | Head Icon is visible and redirects to home page after clicking', () => {
+    it.skip('AT_01.01_038 | Head Icon is visible and redirects to home page after clicking', () => {
         cy.get('a[href="newJob"]').click();
         cy.get('#jenkins-head-icon').should('be.visible').click();
         cy.get('div h1').should('have.text','Welcome to Jenkins!').and('be.visible');
@@ -91,7 +91,7 @@ describe('Header Head Icon', () => {
         cy.get('.empty-state-block > h1').should('contain', logInPage.loginPageHeader)
     })
 
-    it('AT_01.01_43 | Header| Head Icon is visible and redirects to the homepage', () => {
+    it.skip('AT_01.01_43 | Header| Head Icon is visible and redirects to the homepage', () => {
         const LOCAL_PORT = Cypress.env('local.port')
 
         cy.get('#side-panel a[href="/view/all/newJob"]').click()

@@ -11,6 +11,7 @@ class HomePage {
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
+    getHomePageLink = () => cy.url();
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -35,6 +36,6 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
-  }
+  }  
 }
 export default HomePage;
