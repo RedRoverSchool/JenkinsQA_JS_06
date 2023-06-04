@@ -2,7 +2,7 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
-import{homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
+import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
 import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
 import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json"
