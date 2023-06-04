@@ -20,7 +20,7 @@ class FreestyleProjectConfigurePage {
         this.getAddBuildStepBtn().click()
         return this
     };
-    clickAddBuildStepMenuListItem(idx) {
+    selectBuildStepFromMenuListItem(idx) {
         this.getAddBuildStepMenuList().eq(idx).click()
         return this
     };

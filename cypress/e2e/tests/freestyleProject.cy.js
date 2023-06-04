@@ -34,7 +34,7 @@ describe('freestyleProject', () => {
                 
                 .clickLeftSidePanelBuildStepsBtn()
                 .clickAddBuildStepBtn()
-                .clickAddBuildStepMenuListItem(idx)
+                .selectBuildStepFromMenuListItem(idx)
                 .clickLeftSidePanelBuildStepsBtn()
                 .clickSaveBtnAndGoFreestyleProject()
                 .clickConfigureSideMenuLink()
