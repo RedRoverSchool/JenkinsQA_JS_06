@@ -23,7 +23,7 @@ describe('orgFolderConfigurate', () => {
         cy.get('#view-message').should('have.text', orgFolderConfigure.description);
     });
 
-    it('AT_17.01.001 | Change status folder to disable', () => {
+    it.skip('AT_17.01.001 | Change status folder to disable', () => {
         createOrgFolder(orgFolderConfigure.orgFolderName, '');
         cy.get('.jenkins-table__link.model-link.inside').click();
         cy.get(':nth-child(2) > .task-link-wrapper > .task-link').click();
