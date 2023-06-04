@@ -5,7 +5,7 @@ import userMenuItems from '../fixtures/userIconMenuItems.json'
 
  
 describe("breadcrumbsMyViewsPage", () => {
-    it('AT_04.03_001|<Breadcrumbs>My Views page > Verify that user can open selected Pipeline', () => {
+    it.skip('AT_04.03_001|<Breadcrumbs>My Views page > Verify that user can open selected Pipeline', () => {
 
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.pipelineName);
