@@ -8,4 +8,4 @@ class MultiConfigurationProjectConfigurePage {
     return new MultiConfigurationProjectPage();
   }
 }
-export default JobConfigurePage;
+export default MultiConfigurationProjectConfigurePage;
