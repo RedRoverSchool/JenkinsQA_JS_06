@@ -2,7 +2,7 @@
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
-import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {userDropdownMenuItems, searchBoxPlaceholder} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
@@ -21,4 +21,10 @@ describe('headerAndFooter', () => {
            .getUserDropdownMenuItemList()
            .should('deep.equal', userDropdownMenuItems);
      });
+
+     it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+        headerAndFooter
+            .selectInputSearchBox()
+            .should('have.attr', 'placeholder', searchBoxPlaceholder);
+    });
 })
