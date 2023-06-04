@@ -1,6 +1,7 @@
 {
     "multibranchPipelineName": "Multibranch Pipeline Job",
     "freestyleProjectName": "Freestyle Project Job",
+    "pipelineName":"testPipeline",
 
     "newItemNames": [
         "Freestyle project",

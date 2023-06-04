@@ -1,5 +1,6 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import PipelineConfigurePage from "./PipelneConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
@@ -7,7 +8,8 @@ class NewItemPage {
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
-
+    getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob');
+    getSaveBtn = () => cy.get('.jenkins-button--primary');
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -39,6 +41,16 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new FreestyleProjectConfigurePage();
     };
-}
 
+    selectPipelineItem() {
+        this.getPipelineItem().click();
+        return this;
+    };
+    
+    clickgetSaveBtn() {
+        this.getSaveBtn().click()
+        return new PipelineConfigurePage();
+    };
+    
+}
 export default NewItemPage;

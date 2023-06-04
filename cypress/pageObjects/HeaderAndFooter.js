@@ -7,7 +7,7 @@ class HeaderAndFooter {
     getUserDropdownChevronBtn = () => cy.get('.login button');
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
-
+    getUserMyViewsMenu = () => cy.get('#breadcrumb-menu li a[href*="my"] span');
 
 
     clickUserDropDownBtn() {
@@ -37,5 +37,11 @@ class HeaderAndFooter {
             return Cypress._.map($els, 'innerText')
         }); 
     }
+
+    selectUserMyViewsMenu() {
+        this.getUserMyViewsMenu().click();
+        return new MyViews();
+    }
+
 }
 export default HeaderAndFooter;
