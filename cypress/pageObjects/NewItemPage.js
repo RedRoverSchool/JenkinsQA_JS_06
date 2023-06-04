@@ -11,6 +11,7 @@ class NewItemPage {
     getNewItemNames = () => cy.get('.label');
     getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
     getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
+    getNewItenHeader = () => cy.get('.header .h3');
 
 
     typeNewItemNameInputField(name) {
