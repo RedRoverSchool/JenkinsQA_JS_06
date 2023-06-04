@@ -5,6 +5,8 @@
        "My Views", 
        "Credentials"
    ],
+
+   "inputText" : "text",   
    
    "searchBoxPlaceholder": "Search (CTRL+K)"
 
