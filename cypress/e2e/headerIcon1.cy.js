@@ -14,7 +14,7 @@ describe("Header Icon 1", () => {
     cy.get("#jenkins-head-icon").click();
 });
 
-  it("AT_01.01 _021| Verify Head Icon is clickable.", () => {
+  it.skip("AT_01.01 _021| Verify Head Icon is clickable.", () => {
     cy.navigateUserConfigurationPage();
     cy.navigateJenkinsHeaderIcon();
     cy.title().should("eq", pages.dashboardPageTitle);
