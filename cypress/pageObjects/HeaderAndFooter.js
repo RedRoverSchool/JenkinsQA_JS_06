@@ -5,7 +5,6 @@ class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
     getUserDropDownBtn = () => cy.get('div.login a[href*="user"] button');
     getUserConfigureMenu = () => cy.get('#breadcrumb-menu li a[href*="configure"] span');
-    getUserDropdownChevronBtn = () => cy.get('.login button');
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
@@ -24,11 +23,6 @@ class HeaderAndFooter {
     clickRestAPILink() {
         this.getRestAPILink().click()
         return new RestAPIPage();
-    }
-
-    clickUserDropdownChevronBtn() {
-        this.getUserDropdownChevronBtn().realHover().click();
-        return this;
     }
 
     getUserDropdownMenuItemList() {
