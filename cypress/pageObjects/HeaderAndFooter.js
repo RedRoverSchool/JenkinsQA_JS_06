@@ -2,6 +2,7 @@ import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import RestAPIPage from "./RestAPIPage"
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import LoginPage from "./LoginPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -11,6 +12,7 @@ class HeaderAndFooter {
     getRestAPILink = () => cy.get('[href="api/"]');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
     getSearchBox = () => cy.get('#search-box');
+    getLogOutBtn = () => cy.get('[href="/logout"]');
 
 
     clickUserDropDownBtn() {
@@ -44,6 +46,11 @@ class HeaderAndFooter {
     searchTextSearchBox(text) {
         this.getSearchBox().type(text + '{enter}');
         return new ResultSearchBoxPage();
+    }
+
+    clickLogOutBtn() {
+        this.getLogOutBtn().click();
+        return new LoginPage();
     }
 
 }

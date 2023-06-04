@@ -6,6 +6,8 @@ import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
 import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
 import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import loginPage from "../../fixtures/pom_fixtures/loginPage.json"
+
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -42,4 +44,12 @@ describe('headerAndFooter', () => {
             .getResultNoMatch()
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
+
+    it('AT_01.08_002 | Verify logout button redirects to the login page', function() {
+        headerAndFooter
+            .clickLogOutBtn()
+            .getWelcomeMessage()
+            .should('have.text', loginPage.welcomeMessage)
+    });
+
 })
