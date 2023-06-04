@@ -4,6 +4,8 @@
        "Configure", 
        "My Views", 
        "Credentials"
-   ] 
+   ],
+
+   "inputText" : "text"
 
 }
