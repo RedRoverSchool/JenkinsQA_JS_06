@@ -1,6 +1,7 @@
 import MultibranchPipelineConfigurePage from "./MultibranchPipelineConfigurePage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
@@ -9,6 +10,7 @@ class NewItemPage {
     getNewItemOkBtn = () => cy.get('#ok-button');
     getNewItemNames = () => cy.get('.label');
     getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
+    getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
 
 
     typeNewItemNameInputField(name) {
@@ -49,6 +51,16 @@ class NewItemPage {
     clickOkBtnAndGoFreestyleProjectConfig() {
         this.getNewItemOkBtn().click();
         return new FreestyleProjectConfigurePage();
+    };
+
+    selectOrgFolderItem() {
+        this.getOrgFolderItem().click();
+        return this;
+    };
+
+    clickOkBtnAndGoOrgFolderConfig() {
+        this.getNewItemOkBtn().click();
+        return new OrgFolderConfigurePage();
     };
 }
 

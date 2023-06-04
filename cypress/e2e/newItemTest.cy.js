@@ -28,16 +28,7 @@ describe("newItemTest", () => {
         cy.get('.jenkins-table__link.model-link.inside').should('have.text', 'Multibranch Pipeline')
     });
 
-    it('Create a new Organization Folder', () => {
-        cy.get('a[href="/view/all/newJob"]').click();
-        cy.get('#name').type(newItemTest.orgFolderName);
-        cy.get('.jenkins_branch_OrganizationFolder').click();
-        cy.get('#ok-button').click();
-        cy.get('button[name="Submit"]').click();
-        cy.get('#breadcrumbBar li:first-child').click();
 
-        cy.get('.jenkins-table__link.model-link.inside').should('have.text', newItemTest.orgFolderName)
-    })
 
     it('AT_5.06_003 | Create an Organization folder with an empty Item Name', () => {
         cy.get('a[href="/view/all/newJob"]').click();

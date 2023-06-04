@@ -10,6 +10,7 @@ class HomePage {
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
+    getMainPanel = () => cy.get('#main-panel');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();

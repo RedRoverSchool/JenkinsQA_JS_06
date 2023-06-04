@@ -13,4 +13,16 @@ describe('newItem', () => {
             .getNewItemNamesList()
             .should('deep.equal', newItemPage.newItemNames);
     });
+
+    it('AT_5.06_001| Create a new Organization Folder', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .clickSaveBtnAndGoOrgFolder()
+            .clickGoToDashboard()
+            .getMainPanel()
+            .should('contain.text', newItemPage.orgFolderName);
+    });
 });
