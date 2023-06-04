@@ -5,7 +5,7 @@ class OrgFolderPage {
 
     clickGoToDashboard() {
         this.getDashboard().click();
-        return new HomePage;
+        return new HomePage();
      }
 }
 

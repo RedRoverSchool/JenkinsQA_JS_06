@@ -5,7 +5,7 @@ class OrgFolderConfigurePage {
 
     clickSaveBtnAndGoOrgFolder() {
         this.getProjectConfigSaveBtn().click();
-        return new OrgFolderPage;
+        return new OrgFolderPage();
     }
 }
 
