@@ -1,5 +1,6 @@
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import RestAPIPage from "./RestAPIPage"
+import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 
@@ -9,9 +10,9 @@ class HeaderAndFooter {
     getUserConfigureMenu = () => cy.get('#breadcrumb-menu li a[href*="configure"] span');
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
+    getUserMyViewsMenu = () => cy.get('#breadcrumb-menu li a[href*="my"] span');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
     getSearchBox = () => cy.get('#search-box');
-
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -36,6 +37,11 @@ class HeaderAndFooter {
         }); 
     }
 
+    selectUserMyViewsMenu() {
+        this.getUserMyViewsMenu().click();
+        return new MyViewPage();
+    }
+
     clickJenkinsHomeLink() {
         this.getJenkinsHomeLink().click();
         return new HomePage();
@@ -45,6 +51,5 @@ class HeaderAndFooter {
         this.getSearchBox().type(text + '{enter}');
         return new ResultSearchBoxPage();
     }
-
 }
 export default HeaderAndFooter;
