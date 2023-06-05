@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
@@ -58,4 +59,18 @@ describe('freestyleProject', () => {
                 .and('exist')
         })
     });
+
+    it.only('AT_12.05_001 | Freestyle project > Add description to Freestyle project', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .clickConfigureSideMenuLink()  
+            .typeDescriptionInputField(freestyleConfigurePage.description)
+            .clickSaveBtnAndGoFreestyleProject()        
+            .getFreestyleProjectDescription()
+            .should('contain.text', freestyleConfigurePage.description);
+    })
 });

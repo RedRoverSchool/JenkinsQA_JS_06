@@ -8,6 +8,7 @@ class FreestyleProjectConfigurePage {
     getAddBuildStepMenuList = () => cy.get('.config-table .jenkins-section:nth-child(10) li [href]')
     getBuilderWindow = () => cy.get('.repeated-chunk[name="builder"]')
     getBuilderWindowHeader = () => cy.get('.repeated-chunk__header')
+    getDescriptionInputField = () => cy.get('textarea[name="description"]');
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -30,6 +31,11 @@ class FreestyleProjectConfigurePage {
             .should('include.text', name)
         return this
     };
+
+    typeDescriptionInputField(name) {
+        this.getDescriptionInputField().clear().type(name);
+        return this;
+    }; 
 }
 
 export default FreestyleProjectConfigurePage;
