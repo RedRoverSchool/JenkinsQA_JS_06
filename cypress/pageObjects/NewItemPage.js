@@ -14,6 +14,8 @@ class NewItemPage {
     getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
     getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
     getNewItenHeader = () => cy.get('.header .h3');
+    
+    
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -74,6 +76,7 @@ class NewItemPage {
         this.getNewItemOkBtn().click()
         return new PipelineConfigurePage();
     };
+
         
 }
 export default NewItemPage;

@@ -11,35 +11,12 @@ class MultibranchPipelinePage {
         return new MultibranchPipelineConfigurePage();
     };
 
-    // readMultibranchPiplineDisabledText() {
-    //     return this.getMultibranchPiplineWarning().should('be.visible').then(function (element) {
-    //       const text = element.text().trim();
-    //       return text;
-    //     });
-    //   }
-      trimMultibranchPiplineDisabledText() {
+    trimMultibranchPiplineDisabledText() {
         return this.getMultibranchPiplineWarning().then($el => {
-          return $el.text().trim();
+            return $el.text().trimStart();
         });
-      }
-      
-    // readMultibranchPiplineDisabledText() {
-    //     return this.getMultibranchPiplineWarning().then(function (text) {
-    //       const trimmedText = typeof text === 'string' ? text.trim() : '';
-    //       return trimmedText;
-    //     });
-    //   }
-      
-      
+    };
     
-    
-      
-
-    readMultibranchPiplineEnbleButtonText() {
-        return this.getEnableButton().invoke('text');
-    }
 }
-
-  
 
 export default MultibranchPipelinePage;
