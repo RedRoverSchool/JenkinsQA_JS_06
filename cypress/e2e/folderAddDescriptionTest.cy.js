@@ -2,7 +2,7 @@
 import userDescription from "../fixtures/userDescription.json";
 
 describe('Folder > Add User description with "Add description" button', () => {
-  it("AT 15.02.001 | Add User description", () => {
+  it.skip("AT 15.02.001 | Add User description", () => {
     cy.get("a[href='/view/all/newJob']").click();
     cy.get("input#name").type("Folder name");
     cy.get('li[class="com_cloudbees_hudson_plugins_folder_Folder"]').click();

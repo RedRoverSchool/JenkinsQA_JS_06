@@ -19,10 +19,10 @@ class HomePage {
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getSearchBox = () => cy.get('#search-box');
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
-  
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -74,7 +74,12 @@ class HomePage {
     return new ResultSearchBoxPage();
   }
 
-  clickProjectNameDropdown() {
+  selectDeleteMultiConfProjectDrpDwnMenuBtn() {
+    this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
+    return this;
+  }
+
+    clickProjectNameDropdown() {
     this.getProjectNameDropdown().click({force : true});
     return this;
   }
@@ -83,7 +88,6 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
     return new FreestyleProjectConfigurePage();
   }
-
 }
 
 export default HomePage;
