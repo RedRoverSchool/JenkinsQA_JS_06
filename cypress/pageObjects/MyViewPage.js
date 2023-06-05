@@ -3,7 +3,6 @@ import PipelinePage from "./PipelinePage";
 import FreestyleProjectPage from './FreestyleProjectPage';
 import MultiConfigurationProjectPage from './MultiConfigurationProjectPage';
 
-
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
   getBreadcrumbMyViewsItem = () => cy.get('li:nth-child(5) a:nth-child(1)');
