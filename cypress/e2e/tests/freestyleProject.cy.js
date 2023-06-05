@@ -60,7 +60,7 @@ describe('freestyleProject', () => {
         })
     });
 
-    it.only('AT_12.05_001 | Freestyle project > Add description to Freestyle project', () => {
+    it('AT_12.05_001 | Freestyle project > Add description to Freestyle project', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemData.freestyleProjectName)
