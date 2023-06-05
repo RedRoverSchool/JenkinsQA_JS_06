@@ -35,4 +35,22 @@ describe('multibranchPipelineConfigure', () => {
             .clickSaveBtnAndGoMultiPipeline()
             .getMultibranchPipelineTitle().should('have.attr', 'title', multibranchPipelinePage.iconTitle)
     });
+
+    it('AT_16.01_03 | Disables the current Multibranch Pipeline', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickDisableBtn()
+            .clickSaveBtnAndGoMultiPipeline()
+            .trimMultibranchPiplineDisabledText()
+            .should('be.eq',multibranchPipelinePage.disabledMessage)
+            .should('have.css','color',multibranchPipelinePage.disabledMessageColor)
+            // .readMultibranchPiplineEnbleButtonText()
+            // .should('contains.text', multibranchPipelinePage.enableButton)
+            // .should('have.css','color',multibranchPipelinePage.enableButtonColor)
+
+           
+    });
 });
