@@ -13,6 +13,8 @@ class HomePage {
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
+    getProjectNameDropdownMenu = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
+    getMultiConfigurationDeleteDropdownMenu = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -42,6 +44,16 @@ class HomePage {
   clickOrgFolderNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new OrgFolderPage();
+  }
+
+  clickProjectNameDropdownMenu(projectName) {
+    this.getProjectNameDropdownMenu().realHover().click();
+    return this;
+  }
+
+  selectMultiConfigurationDeleteDropdownMenu() {
+    this.getMultiConfigurationDeleteDropdownMenu().click();
+    return this;
   }
 }
 export default HomePage;
