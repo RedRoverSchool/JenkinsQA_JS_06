@@ -36,7 +36,7 @@ describe('folder', () => {
             .clickProjectDrpDwnBtn()
             .clickDeleteMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
-            .getPageBody()
+            .getMainPanel()
             .should("not.have.text", folderName)
     });
 });
