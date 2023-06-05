@@ -38,4 +38,15 @@ describe('freestyleProjectPage', () => {
 
         cy.get('#description div:nth-child(1)').should('not.have.text', pages.text).and('be.empty')
      })
+
+     it('AC_12.01_006 | Freestyle project>project name is visible/clicable/redirects', () =>{
+        creatFreestyleProject()
+        cy.get('#jenkins-home-link').click()
+
+        cy.get('#projectstatus tbody td a[href*="job"]')
+        .should('be.visible')
+        .should('have.text', pages.projectName)
+        cy.get('#projectstatus .jenkins-menu-dropdown-chevron').realClick()
+        cy.get('#main-panel h1').should('have.text', 'Project ' + pages.projectName)
+     })
 })

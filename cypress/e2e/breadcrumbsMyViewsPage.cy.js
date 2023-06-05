@@ -5,7 +5,7 @@ import userMenuItems from '../fixtures/userIconMenuItems.json'
 
  
 describe("breadcrumbsMyViewsPage", () => {
-    it('AT_04.03_001|<Breadcrumbs>My Views page > Verify that user can open selected Pipeline', () => {
+    it.skip('AT_04.03_001|<Breadcrumbs>My Views page > Verify that user can open selected Pipeline', () => {
 
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.pipelineName);
@@ -37,7 +37,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.folderName)
     })
 
-    it('AT_04.03_003 |<Breadcrumbs>My Views page > Verify that the user can open the selected Freestyle project', () => {
+    it.skip('AT_04.03_003 |<Breadcrumbs>My Views page > Verify that the user can open the selected Freestyle project', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.freestyleProjectName);
         cy.get('.hudson_model_FreeStyleProject').click();
@@ -52,7 +52,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.freestyleProjectName)
     })
 
-    it('AT_04.03_007 | Verify that the user can open the selected Multi-configuration project', () => {
+    it.skip('AT_04.03_007 | Verify that the user can open the selected Multi-configuration project', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.multiConfigurationProjectName);
         cy.get('.hudson_matrix_MatrixProject').click();

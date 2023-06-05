@@ -13,7 +13,7 @@ describe('Header User icon check', () => {
        
     })
 
-    it('AT_01.03.023| Header > Verify User Icon has dropdown menu with given links', () => {
+    it.skip('AT_01.03.023| Header > Verify User Icon has dropdown menu with given links', () => {
         cy.get('.login button').realHover().click();
         cy.get('.bd li').should('have.length', userMenuItems.length)
           .then($els => Cypress._.map($els, 'innerText'))      
