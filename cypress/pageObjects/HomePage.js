@@ -3,6 +3,8 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
+import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
+import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 class HomePage {
@@ -14,6 +16,9 @@ class HomePage {
     getProjectNameLink = () => cy.get('td>a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
+    getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getSearchBox = () => cy.get('#search-box');
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
@@ -54,6 +59,21 @@ class HomePage {
     return this;
   }
 
+  clickProjectDrpDwnBtn() {
+    this.getProjectDrpDwnBtn().click({force: true});
+    return this;
+  }
+
+  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
+    this.getDeleteMultiBrPipelineLink().click();
+    return new MultibranchPipelineDeletePage();
+  }
+
+  typeIntoSearchBox(name) {
+    this.getSearchBox().type(name + '{enter}');
+    return new ResultSearchBoxPage();
+  }
+
   clickProjectNameDropdown() {
     this.getProjectNameDropdown().click({force : true});
     return this;
@@ -65,4 +85,5 @@ class HomePage {
   }
 
 }
+
 export default HomePage;
