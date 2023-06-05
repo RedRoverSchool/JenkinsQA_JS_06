@@ -6,7 +6,7 @@ import homePage from '../fixtures/homePage.json'
 const userName = Cypress.env('local.admin.username').toLowerCase();
 
 describe('Header Search Box', () => {
-  it('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
+  it.skip('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
@@ -26,11 +26,11 @@ describe('Header Search Box', () => {
       .and('be.visible');
   });
 
-  it('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
+  it.skip('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
-  it('01.02_ 006 |Verify Search Box is visible', function () {
+  it.skip('01.02_ 006 |Verify Search Box is visible', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
@@ -51,7 +51,7 @@ describe('Header Search Box', () => {
       assert.include(el.text(), headers.searchText);
     });
   });
-  it('АТ_01.02.021 | searchboxPlaceholderCheck', () => {
+  it.skip('АТ_01.02.021 | searchboxPlaceholderCheck', () => {
     // code here
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
@@ -60,7 +60,7 @@ describe('Header Search Box', () => {
     cy.get('input#search-box').should('be.visible');
   });
 
-  it('AT_01.02_017 | Verify visible Search box', function () {
+  it.skip('AT_01.02_017 | Verify visible Search box', function () {
     cy.get('#search-box')
     .should('be.visible')
     .and('have.attr', 'placeholder')
@@ -68,11 +68,11 @@ describe('Header Search Box', () => {
     .and('contain', '+K')
   });
 
-  it('AT_01.02.18_Header_Search_box', () => {
+  it.skip('AT_01.02.18_Header_Search_box', () => {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
 })
 
-  it('AT_01.02.022 | Search box text placeholder is visible', () =>{
+  it.skip('AT_01.02.022 | Search box text placeholder is visible', () =>{
     cy.get('#search-box')
     .should('be.visible')
     .and('have.attr','placeholder','Search (CTRL+K)')
@@ -109,7 +109,7 @@ describe('Header Search Box', () => {
     cy.get('#searchform').should('not.exist'); 
   });
 
-  it('AT_01.02_023 | Validation of the Search box', ()=> { 
+  it.skip('AT_01.02_023 | Validation of the Search box', ()=> { 
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
 

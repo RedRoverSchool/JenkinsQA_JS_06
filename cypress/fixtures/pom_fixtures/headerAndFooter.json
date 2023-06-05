@@ -6,6 +6,8 @@
        "Credentials"
    ],
 
-   "inputText" : "text"
+   "inputText" : "text",   
+   
+   "searchBoxPlaceholder": "Search (CTRL+K)"
 
 }

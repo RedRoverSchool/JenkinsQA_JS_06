@@ -15,6 +15,7 @@ class HeaderAndFooter {
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
     getSearchBox = () => cy.get('#search-box');
     getLogOutBtn = () => cy.get('[href="/logout"]');
+    getSearchBoxInputField = () => cy.get('input#search-box');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -50,13 +51,17 @@ class HeaderAndFooter {
     }
 
     searchTextSearchBox(text) {
-        this.getSearchBox().type(text + '{enter}');
+        this.getSearchBoxInputField().type(text + '{enter}');
         return new ResultSearchBoxPage();
     }
 
     clickLogOutBtn() {
         this.getLogOutBtn().click();
         return new LoginPage();
+      
+    getSearchBoxInputField() {
+        return this.getSearchBoxInputField();       
+
     }
 }
 export default HeaderAndFooter;
