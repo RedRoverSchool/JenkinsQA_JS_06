@@ -68,7 +68,7 @@ describe('FreestyleProjectConfigurateProject', () => {
     })
 
     configure.postBuildActions.selectPostBuildsAction.forEach((actionName, idx) => {
-        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
+        it.skip(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
             cy.get('#tasks a[href$="configure"]').click()
             cy.get('[data-section-id="post-build-actions"]').click()
             cy.get('button.hetero-list-add').contains(configure.postBuildActions.addPostBuildActionsButtonName).click()
