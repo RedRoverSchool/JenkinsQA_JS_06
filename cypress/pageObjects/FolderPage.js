@@ -2,7 +2,7 @@ class FolderPage {
     getAddDescriptiotBtn = () => cy.get('#description-link');
     getFolderDescriptionInputField = () => cy.get('textarea[name="description"]');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
-    getFolderDescription = () => cy.get('#description');
+    getFolderDescription = () => cy.get('#description div:first-child');
 
     clickAddDescriptionBtn() {
         this.getAddDescriptiotBtn().click();

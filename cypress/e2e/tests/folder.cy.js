@@ -18,6 +18,6 @@ describe('folder', () => {
             .clickAddDescriptionBtn()
             .typeFolderDescription(folderDescription)
             .saveFolderDescription()
-            .getFolderDescription().should('contain', folderDescription);
+            .getFolderDescription().should('have.text', folderDescription);
     });
 });
