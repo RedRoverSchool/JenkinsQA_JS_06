@@ -3,5 +3,12 @@
 
     "buidsNumberArrayASC" : [1, 2, 3],
 
-    "buidsNumberArrayDESC" : [3, 2, 1]
+    "buidsNumberArrayDESC" : [3, 2, 1],
+
+    "buildsTableHeaders" : {
+        "s" : "S",
+        "build" : "Build",
+        "timeSince" : "Time Since",
+        "status" : "Status"
+    }
 }

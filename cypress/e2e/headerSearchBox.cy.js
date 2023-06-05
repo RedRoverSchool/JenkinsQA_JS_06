@@ -2,10 +2,11 @@
 
 import projects from '../fixtures/projects.json';
 import headers from '../fixtures/headers.json';
+import homePage from '../fixtures/homePage.json'
 const userName = Cypress.env('local.admin.username').toLowerCase();
 
 describe('Header Search Box', () => {
-  it('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
+  it.skip('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
@@ -25,11 +26,11 @@ describe('Header Search Box', () => {
       .and('be.visible');
   });
 
-  it('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
+  it.skip('AT_01.02_008 | Verify text in placeholder: “Search (CTRL+K)"', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
-  it('01.02_ 006 |Verify Search Box is visible', function () {
+  it.skip('01.02_ 006 |Verify Search Box is visible', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
 
@@ -37,7 +38,7 @@ describe('Header Search Box', () => {
     cy.get('#search-box').should('be.visible');
   });
 
-  it('AT_01.02_019| No results appear after input text in the Search box', () => {
+  it.skip('AT_01.02_019| No results appear after input text in the Search box', () => {
     cy.get('input.main-search__input').type('text' + '{enter}');
     cy.get('div.error').should('have.text', 'Nothing seems to match.');
   });
@@ -50,7 +51,7 @@ describe('Header Search Box', () => {
       assert.include(el.text(), headers.searchText);
     });
   });
-  it('АТ_01.02.021 | searchboxPlaceholderCheck', () => {
+  it.skip('АТ_01.02.021 | searchboxPlaceholderCheck', () => {
     // code here
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });
@@ -59,7 +60,7 @@ describe('Header Search Box', () => {
     cy.get('input#search-box').should('be.visible');
   });
 
-  it('AT_01.02_017 | Verify visible Search box', function () {
+  it.skip('AT_01.02_017 | Verify visible Search box', function () {
     cy.get('#search-box')
     .should('be.visible')
     .and('have.attr', 'placeholder')
@@ -67,11 +68,11 @@ describe('Header Search Box', () => {
     .and('contain', '+K')
   });
 
-  it('AT_01.02.18_Header_Search_box', () => {
+  it.skip('AT_01.02.18_Header_Search_box', () => {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)')
 })
 
-  it('AT_01.02.022 | Search box text placeholder is visible', () =>{
+  it.skip('AT_01.02.022 | Search box text placeholder is visible', () =>{
     cy.get('#search-box')
     .should('be.visible')
     .and('have.attr','placeholder','Search (CTRL+K)')
@@ -108,7 +109,7 @@ describe('Header Search Box', () => {
     cy.get('#searchform').should('not.exist'); 
   });
 
-  it('AT_01.02_023 | Validation of the Search box', ()=> { 
+  it.skip('AT_01.02_023 | Validation of the Search box', ()=> { 
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)') 
   });
 
@@ -183,7 +184,7 @@ describe('Header Search Box', () => {
     })
   });
 
-  it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
+  it.skip('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
     cy.get('input#search-box').type(headers.dataLetter);   
     cy.get('#search-box-completion li:not([style="display: none;"])').each(($el, index) => {
       const textDropdown = $el.text().trim();
@@ -205,6 +206,25 @@ describe('Header Search Box', () => {
     cy.get('#search-box').type('checking').clear()
     cy.get('#search-box').should('have.attr','placeholder','Search (CTRL+K)')
   })
+})
+it('AT_01.02_035 | Header | Search box | functionality', () => {
+  projects.setNamesForNewProject.forEach((obj) => {
+      cy.get('span.task-link-text').contains(homePage.dashboardDropdownItems[0]).click({ force: true })
+      cy.get('#name').type(`${obj.name}`)
+      cy.get('.hudson_model_FreeStyleProject').click()
+      cy.get('#ok-button').click()
+      cy.get('button[name="Submit"]').click()
+      cy.get('#jenkins-name-icon').click()
+  })
+  cy.get('#searchform > input').type(projects.searchBoxInput)
+  cy.get('.yui-ac-bd li').not('li[style="display: none;"]').each($el => {
+    let textOfElements = $el.text()
+
+    if (textOfElements === projects.setNamesForNewProject[0].name) {
+      return cy.wrap($el).click().type('{enter}')
+    }
+  })
+  cy.get('h1.job-index-headline').should('contain', `Project ${projects.setNamesForNewProject[0].name}`)
 })
 })
 

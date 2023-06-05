@@ -48,4 +48,12 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
             cy.get('#breadcrumbs a[href="/"]').click()
         })
      });
+     it('AT_02.04_018 | Homepage(Dashboard) > Verification of Names on side panel', () => {
+        cy.get('.task ')
+          .should('have.length',sidePanelItems.length)
+          .then(($els) => {
+            return Cypress.$.makeArray($els).map($el => $el.innerText)
+          })
+          .should('deep.equal', sidePanelItems)
+      })
 })

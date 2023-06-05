@@ -2,6 +2,7 @@
 
 import { dashboardDropdownItems } from '../fixtures/homePage.json'
 import { endPointUrl } from '../fixtures/homePage.json'
+import {sidePanelItems} from '../fixtures/homePage.json'
 
 describe('Side panel sub menu', () => {
     it('AT_02.04_011 | <Homepage(Dashboard) > Verify names and number of items in the side panel menu', () => {
@@ -71,6 +72,31 @@ describe('Side panel sub menu', () => {
         cy.get('a[href$="/builds"]').should('have.text', dashboardDropdownItems[2])
         cy.get('a[href="/manage"] .task-link-text').should('have.text', dashboardDropdownItems[3])
         cy.get('a[href="/me/my-views"] .task-link-text').should('have.text', dashboardDropdownItems[4])              
+    })
+
+    dashboardDropdownItems.forEach((fiveItems, idx) => {
+        it(`AT_02.04_014 | <Homepage(Dashboard)> Verify all ${fiveItems} of the sub-menu redirect to the proper pages`, function () {
+            cy.get('#tasks .task').as('links')
+            cy.get('@links').eq(idx).click()
+            cy.url().should('contain', endPointUrl[idx])
+        })
+    })
+    
+    it('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
+        cy.get('.task').should('have.length', dashboardDropdownItems.length)
+          .each(($el,idx) =>{
+            let name = $el.text()
+            expect(name).to.include(dashboardDropdownItems[idx])
+          })
+    })
+    
+    it('AT_02.04_019 | Verification of name items on side panel of main page', () => {
+        cy.get('.task-link-text')
+        .should('have.length',sidePanelItems.length)
+        .then(($els) => {
+         return Cypress.$.makeArray($els).map($el => $el.innerText)
+        })
+        .should('deep.equal', sidePanelItems)
     })
 })
 

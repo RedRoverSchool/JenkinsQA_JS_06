@@ -30,5 +30,8 @@
      "Rename"
     ],
     "newItemPageTitle": "New Item [Jenkins]",
-    "text":"Jenkins project"
+    "text":"Jenkins project",
+    "pageName": "Dashboard", 
+    "dashboard":"Dashboard",
+    "dashboardPageTitle": "Dashboard [Jenkins]"
 }

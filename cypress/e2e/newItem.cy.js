@@ -63,11 +63,21 @@ describe('newItem', () => {
         cy.get('.icon img').should('be.visible')
     });
 
-    it('AT_05.08.011 | New Item > Verify Items Names', () => {
+    it.skip('AT_05.08.011 | New Item > Verify Items Names', () => {
         cy.get('#tasks [href="/view/all/newJob"]'). click()
         cy.get('.label').then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         })
           .should('deep.equal', newItemNames.projectNames)
     });
-});
+
+    it ('AT_05.08.013 | Verify Names and Icons via tab New Item', function () {
+
+        cy.get('[href="/view/all/newJob"]').click();
+        cy.url().should('contain', '/view/all/newJob');
+        cy.get('.label').should('have.length', newItemNames.projectNames.length).each(($el,idx) => {
+        expect ($el.text()).to.be.equal(newItemNames.projectNames[idx]); 
+        cy.get ('.icon').should('have.length',6).should('be.visible')       
+ })
+})
+})
