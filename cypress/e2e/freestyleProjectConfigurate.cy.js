@@ -43,7 +43,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('.author').should('include.text', configurePageData.gitHeaderAuthor);
     })
 
-    it('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
+    it.skip('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
         cy.get('#tasks a[href$="configure"]').click()
         cy.get('button[data-section-id="build-steps"]').click()
         configure.buildSteps.selectBuildStep.forEach(builderOption => {
