@@ -35,13 +35,13 @@ describe('freestyleProject', () => {
                 .clickLeftSidePanelBuildStepsBtn()
                 .clickAddBuildStepBtn()
                 .selectBuildStepFromMenuListItem(idx)
-                .clickLeftSidePanelBuildStepsBtn()
+                .checkBuilderWindowHeaderName(buildStep)
                 .clickSaveBtnAndGoFreestyleProject()
                 .clickConfigureSideMenuLink()
                 .clickLeftSidePanelBuildStepsBtn()
-                .checkBuilderExistAndVisible()
-                .getBuilderWindowHeader()
-                .should('include.text', buildStep)
+                .getBuilderWindow()
+                .should('be.visible')
+                .and('exist')
         })
-    })
+    });
 });

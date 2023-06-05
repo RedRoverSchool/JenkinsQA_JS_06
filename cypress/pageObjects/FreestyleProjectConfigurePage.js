@@ -3,6 +3,7 @@ import FreestyleProjectPage from "./FreestyleProjectPage";
 class FreestyleProjectConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
     getLeftSidePanelBuildStepsBtn = () => cy.get('button[data-section-id="build-steps"]')
+    getBuildStepSectionName = () => cy.get('#build-steps.jenkins-section__title')
     getAddBuildStepBtn = () => cy.get('button.hetero-list-add').contains('Add build step')
     getAddBuildStepMenuList = () => cy.get('.config-table .jenkins-section:nth-child(10) li [href]')
     getBuilderWindow = () => cy.get('.repeated-chunk[name="builder"]')
@@ -24,12 +25,11 @@ class FreestyleProjectConfigurePage {
         this.getAddBuildStepMenuList().eq(idx).click()
         return this
     };
-    checkBuilderExistAndVisible() {
-        this.getBuilderWindow()
-            .should('exist')
-            .and('be.visible')
-        return this    
-    }
+    checkBuilderWindowHeaderName(name) {
+        this.getBuilderWindowHeader()
+            .should('include.text', name)
+        return this
+    };
 }
 
 export default FreestyleProjectConfigurePage;
