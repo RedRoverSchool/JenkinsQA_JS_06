@@ -11,6 +11,6 @@ it('TC_05.04_009 | <New item> Folder', () => {
   cy.get('#ok-button').click()
   cy.get('button[name="Submit"]').click()
   cy.get('div[id="main-panel"] h1').should('have.text', folder)
-  // cy.get("body > div:nth-child(7) > ol:nth-child(1) > li:nth-child(3) > a:nth-child(1)").should('have.text','testQA')
+  // cy.get("body > div:nth-child(7) > ol:nth-child(1) > li:nth-child(3) > a:nth-child(1)").should('have.text','testQA')           
   })
 })  
