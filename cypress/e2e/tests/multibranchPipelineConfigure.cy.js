@@ -45,7 +45,7 @@ describe('multibranchPipelineConfigure', () => {
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
             .trimMultibranchPiplineDisabledText()
-            .should('be.eq',multibranchPipelinePage.disabledMessage)
+            .should('eq',multibranchPipelinePage.disabledMessage)
             .should('have.css','color',multibranchPipelinePage.disabledMessageColor)
             // .readMultibranchPiplineEnbleButtonText()
             // .should('contains.text', multibranchPipelinePage.enableButton)
