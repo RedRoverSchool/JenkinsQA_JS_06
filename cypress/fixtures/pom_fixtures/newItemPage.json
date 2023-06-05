@@ -15,5 +15,6 @@
     ], 
 
     "newItemEndPoinURL" :  "/all/newJob", 
-    "newItemHeader" : "Enter an item name"
+    "newItemHeader" : "Enter an item name",
+    "warningMessage": "» This field cannot be empty, please enter a valid name"
 }
