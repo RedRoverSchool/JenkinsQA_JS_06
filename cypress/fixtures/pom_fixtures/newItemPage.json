@@ -2,7 +2,8 @@
     "multibranchPipelineName": "Multibranch Pipeline Job",
     "freestyleProjectName": "Freestyle Project Job",
     "orgFolderName": "OrgFolderTest",
-    "folderName": "Folder Name",
+    "folderName": "Folder Job",
+    "pipelineName": "Pipeline Job",
 
     "newItemNames": [
         "Freestyle project",
@@ -11,5 +12,8 @@
         "Folder",
         "Multibranch Pipeline",
         "Organization Folder"
-    ]
+    ], 
+
+    "newItemEndPoinURL" :  "/all/newJob", 
+    "newItemHeader" : "Enter an item name"
 }

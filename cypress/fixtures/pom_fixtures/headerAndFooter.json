@@ -1,9 +1,12 @@
 {
-   "userDropdownMenuItems": [
-       "Builds", 
-       "Configure", 
-       "My Views", 
-       "Credentials"
-   ] 
-
+    "userDropdownMenuItems": [
+        "Builds",
+        "Configure",
+        "My Views",
+        "Credentials"
+    ],
+    "inputText": "text",
+    "searchBoxPlaceholder": "Search (CTRL+K)",
+    "inputLowerCase": "e",
+    "inputUpperCase": "E"
 }

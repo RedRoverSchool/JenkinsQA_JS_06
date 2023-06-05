@@ -2,8 +2,10 @@ import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
+import OrgFolderPage from "./OrgFolderPage";
 
 class HomePage {
+    getHomepageHeader = () => cy.get('.empty-state-block h1'); 
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
@@ -35,6 +37,11 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
+  }
+
+  clickOrgFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new OrgFolderPage();
   }
 }
 export default HomePage;
