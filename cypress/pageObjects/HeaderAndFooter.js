@@ -18,6 +18,12 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
+    getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
+
+    clickJenkinsVersionLink(){
+        this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
+        return new JenkinsPage;
+    }
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
