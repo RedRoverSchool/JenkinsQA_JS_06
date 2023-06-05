@@ -50,8 +50,9 @@ describe('New Item Create a new Multibranch Pipeline', () => {
             .should('not.contain', 'disabled')
             .click();
         cy.get('button[name="Submit"]').click();
-        cy.contains('a', 'Dashboard');
-        cy.contains('a', pipelineName.namePipeline);
+        cy.get('a[href="/"].model-link').should('have.text', 'Dashboard'); 
+        cy.get(`a[href="/job/${pipelineName.namePipeline}/"].model-link`)
+            .should('have.text', pipelineName.namePipeline);
     })
 
 })
