@@ -3,7 +3,7 @@ import OrgFolderPage from "./OrgFolderPage"
 class OrgFolderConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
     getEnableDisabledToggle = () => cy.get('.jenkins-toggle-switch__label');
-    getOrgFolderDescriptionInputField = () => cy.get('textarea[name="_.description"]');
+    getDescriptionField = () => cy.get('textarea[name="_.description');
 
     clickSaveBtnAndGoOrgFolder() {
         this.getProjectConfigSaveBtn().click();
@@ -15,16 +15,11 @@ class OrgFolderConfigurePage {
         return this;
     }
 
-    clickOrgFolderDescriptionInputField() {
-        this.getOrgFolderDescriptionInputField().click();
-        return this
-    }
 
-    typeOrgFolderDescriptionInputField(text) {
-        this.getOrgFolderDescriptionInputField().type(text);
-        return this
+    addDescription(description) {
+        this.getDescriptionField().type(description);
+        return this;
     }
-   
 }
 
 export default OrgFolderConfigurePage;

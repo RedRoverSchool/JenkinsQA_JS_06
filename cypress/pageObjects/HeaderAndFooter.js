@@ -3,6 +3,7 @@ import RestAPIPage from "./RestAPIPage"
 import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import LoginPage from "./LoginPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -13,6 +14,9 @@ class HeaderAndFooter {
     getUserMyViewsMenu = () => cy.get('#breadcrumb-menu li a[href*="my"] span');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
     getSearchBox = () => cy.get('#search-box');
+    getLogOutBtn = () => cy.get('[href="/logout"]');
+    getSearchBoxInputField = () => cy.get('input#search-box');
+    getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -48,8 +52,28 @@ class HeaderAndFooter {
     }
 
     searchTextSearchBox(text) {
-        this.getSearchBox().type(text + '{enter}');
+        this.getSearchBoxInputField().type(text + '{enter}');
         return new ResultSearchBoxPage();
+    }
+
+    clickLogOutBtn() {
+        this.getLogOutBtn().click();
+        return new LoginPage();
+    }
+
+    typeSearchBoxInputField(text) {
+        this.getSearchBoxInputField().type(text);
+        return this;
+    }
+
+    trimSearchBoxResultDropDownList() {
+        return this.getSearchBoxResultDropDownList().each(($el) => {
+            return cy.wrap($el.text().trim());
+        });
+    }
+
+    isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
+        return text.includes(lowerLetter) || text.includes(upperLetter);
     }
 }
 export default HeaderAndFooter;

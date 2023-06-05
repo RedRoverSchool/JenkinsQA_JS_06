@@ -40,4 +40,20 @@ describe('myView', () => {
           .and('include.text', pipelineName);
   });
 
+    it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
+      homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(freestyleProjectName)
+      .selectFreestyleProjectItem()
+      .clickOkBtnAndGoPipelineConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickFreestyleProjectNameLink()
+      .getFreestyleProjectHeader()
+      .should('be.visible')
+      .and('include.text', freestyleProjectName);
+  })
+
 });

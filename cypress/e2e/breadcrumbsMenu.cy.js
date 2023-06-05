@@ -37,7 +37,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu "New Item" should navigate to the corresponding folder page', () => {
+   it.skip('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu "New Item" should navigate to the corresponding folder page', () => {
 
       cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
       cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();

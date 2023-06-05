@@ -1,4 +1,5 @@
 {
     "freestyleProjectNewName" : "New Freestyle Project",
-    "headerText" : "Project "
+    "headerText" : "Project ",
+    "errorMessage" : "Error"
 }
