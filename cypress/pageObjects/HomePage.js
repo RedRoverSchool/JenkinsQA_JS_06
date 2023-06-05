@@ -3,6 +3,7 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
+import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import homePage from "../fixtures/pom_fixtures/homePage.json"
 
 class HomePage {
@@ -14,9 +15,8 @@ class HomePage {
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
-    getPipelineTitleLink = () => cy.get('table tr[id="job_Pipeline Job"] a[href="job/Pipeline%20Job/"]');
-    getPipelineTitleBtn = () => cy.get('table tr[id="job_Pipeline Job"] a[href="job/Pipeline%20Job/"] button');
-    getPipelineTitleDeleteOption = () => cy.get('ul.first-of-type li').contains('Delete Pipeline')
+    getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
    
     
 
@@ -49,23 +49,23 @@ class HomePage {
     this.getProjectNameLink().contains(projectName).click();
     return new OrgFolderPage();
   }
-  clickPipelineTitleLink() {
-    this.getPipelineTitleLink().realHover();
+
+  clickProjectDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
     return this;
   }
-  clickPipelineTitleBtn() {
-    this.getPipelineTitleBtn().click();
+  
+  selectDeleteDrpDwnLink(){
+    this. getDeleteDrpDwnLink().click
     return this;
   }
-  selectPipelineTitleDeleteOption(){
-    this.getPipelineTitleDeleteOption().click
-    return this;
-  }
+
   confirmPiplineDeletion(){
     cy.on('window:confirm', (str) => {
       expect(str).to.equal(homePage.deletePipelineConfirmText)      
-  })
-  return this
+    })
+    return this;
   }
 }
 export default HomePage;
