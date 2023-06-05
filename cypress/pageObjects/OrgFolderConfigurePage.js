@@ -24,11 +24,7 @@ class OrgFolderConfigurePage {
         this.getOrgFolderDescriptionInputField().type(text);
         return this
     }
-
-    clickSaveBtnAndGoOrgFolder() {
-        this.getProjectConfigSaveBtn().click();
-        return new OrgFolderPage()
-    }
+   
 }
 
 export default OrgFolderConfigurePage;
