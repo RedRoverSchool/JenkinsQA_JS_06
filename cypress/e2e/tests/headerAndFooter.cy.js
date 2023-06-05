@@ -3,7 +3,6 @@
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
 import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
 import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json"
 import {userDropdownMenuItems, searchBoxPlaceholder} from "../../fixtures/pom_fixtures/headerAndFooter.json";
@@ -46,7 +45,7 @@ describe('headerAndFooter', () => {
 
     it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
-            .selectInputSearchBox()
+            .getSearchBoxInputField()
             .should('have.attr', 'placeholder', searchBoxPlaceholder);
     });
 })
