@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderDescription} from "../../fixtures/pom_fixtures/FolderPage.json";
+import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('folder', () => {
 
