@@ -3,6 +3,8 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
+import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
+import ResultSearchBoxPage from "./ResultSearchBoxPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -13,8 +15,10 @@ class HomePage {
     getProjectNameLink = () => cy.get('a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
-    getProjectNameDropdownMenu = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
-    getMultiConfigurationDeleteDropdownMenu = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
+    getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getSearchBox = () => cy.get('#search-box');
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -46,14 +50,30 @@ class HomePage {
     return new OrgFolderPage();
   }
 
-  clickProjectNameDropdownMenu(projectName) {
-    this.getProjectNameDropdownMenu().realHover().click();
+  hoverProjectNameLink() {
+    this.getProjectNameLink().realHover();
     return this;
   }
 
-  selectMultiConfigurationDeleteDropdownMenu() {
-    this.getMultiConfigurationDeleteDropdownMenu().click();
+  clickProjectDrpDwnBtn() {
+    this.getProjectDrpDwnBtn().click({force: true});
+    return this;
+  }
+
+  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
+    this.getDeleteMultiBrPipelineLink().click();
+    return new MultibranchPipelineDeletePage();
+  }
+
+  typeIntoSearchBox(name) {
+    this.getSearchBox().type(name + '{enter}');
+    return new ResultSearchBoxPage();
+  }
+
+  selectDeleteMultiConfProjectDrpDwnMenuBtn() {
+    this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
     return this;
   }
 }
+
 export default HomePage;

@@ -28,8 +28,8 @@ describe("multiConfigurationProject", () => {
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
         headerAndFooter
             .clickJenkinsHomeLink()
-            .clickProjectNameDropdownMenu(name)
-            .selectMultiConfigurationDeleteDropdownMenu()
+            .clickProjectDrpDwnBtn()
+            .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getPageBody()
             .should("not.have.text", name);
     });
