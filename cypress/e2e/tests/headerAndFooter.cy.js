@@ -1,10 +1,11 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
+import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
 import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
-import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
@@ -41,6 +42,13 @@ describe('headerAndFooter', () => {
             .getResultNoMatch()
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
+
+    it('AT_01.08_002 | Verify logout button redirects to the login page', function() {
+        headerAndFooter
+            .clickLogOutBtn()
+            .getWelcomeMessage()
+            .should('have.text', loginPage.welcomeMessage)
+    });
 
     it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
