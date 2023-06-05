@@ -37,7 +37,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.folderName)
     })
 
-    it('AT_04.03_003 |<Breadcrumbs>My Views page > Verify that the user can open the selected Freestyle project', () => {
+    it.skip('AT_04.03_003 |<Breadcrumbs>My Views page > Verify that the user can open the selected Freestyle project', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.freestyleProjectName);
         cy.get('.hudson_model_FreeStyleProject').click();

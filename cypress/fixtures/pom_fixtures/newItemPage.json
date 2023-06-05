@@ -12,5 +12,8 @@
         "Folder",
         "Multibranch Pipeline",
         "Organization Folder"
-    ]
+    ], 
+
+    "newItemEndPoinURL" :  "/all/newJob", 
+    "newItemHeader" : "Enter an item name"
 }
