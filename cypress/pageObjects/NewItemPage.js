@@ -13,7 +13,7 @@ class NewItemPage {
     getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob'); 
     getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");
     getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
-    getNewItenHeader = () => cy.get('.header .h3');
+    getNewItemHeader = () => cy.get('.header .h3');
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
