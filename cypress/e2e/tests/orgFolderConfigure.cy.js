@@ -21,4 +21,21 @@ describe('orgFolderConfigure', () => {
             .getEnableProjectForm()
             .should('contain.text', OrgFolderConfigurePage.disableMessage);
     });
+
+    it('AT_17.01.002 | Add description to the Organization Folder via Configure the project', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .clickSaveBtnAndGoOrgFolder()
+            .clickGoToDashboard()
+
+            .clickOrgFolderNameLink(newItemPage.orgFolderName)
+            .clickConfigureTheProjectLink()
+            .addDescription(OrgFolderConfigurePage.description)
+            .clickSaveBtnAndGoOrgFolder()
+            .getDescription()
+            .should('contain.text', OrgFolderConfigurePage.description);
+    });
 });
