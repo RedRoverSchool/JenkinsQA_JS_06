@@ -4,6 +4,7 @@ import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import LoginPage from "./LoginPage";
+import UserBuildsPage from "./UserBuildsPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -17,6 +18,7 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
+    getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -74,6 +76,11 @@ class HeaderAndFooter {
 
     isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
         return text.includes(lowerLetter) || text.includes(upperLetter);
+    }
+
+    selectUserBuildsMenu() {
+        this.getUserBuildsMenu().click();
+        return new UserBuildsPage();
     }
 }
 export default HeaderAndFooter;
