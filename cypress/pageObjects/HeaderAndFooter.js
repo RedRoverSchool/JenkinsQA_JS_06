@@ -13,6 +13,7 @@ class HeaderAndFooter {
     getUserMyViewsMenu = () => cy.get('#breadcrumb-menu li a[href*="my"] span');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
     getSearchBoxInputField = () => cy.get('input#search-box');
+    getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -55,6 +56,16 @@ class HeaderAndFooter {
     typeSearchBoxInputField(text) {
         this.getSearchBoxInputField().type(text);
         return this;
+    }
+
+    trimSearchBoxResultDropDownList() {
+        return this.getSearchBoxResultDropDownList().each(($el) => {
+            return cy.wrap($el.text().trim());
+        });
+    }
+
+    isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
+        return text.includes(lowerLetter) || text.includes(upperLetter);
     }
 }
 export default HeaderAndFooter;

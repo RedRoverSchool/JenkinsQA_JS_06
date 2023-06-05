@@ -3,9 +3,9 @@
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json"
 import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json"
-import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json"
+
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -32,17 +32,29 @@ describe('headerAndFooter', () => {
         headerAndFooter
            .clickUserDropDownBtn()
            .getUserDropdownMenuItemList()
-           .should('deep.equal', userDropdownMenuItems);
+           .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
      });
 
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
-            .searchTextSearchBox(inputText)
+            .searchTextSearchBox(headerAndFooterData.inputText)
             .getResultNoMatch()
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
 
+    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+        headerAndFooter
+            .getSearchBoxInputField()
+            .should('have.attr', 'placeholder', headerAndFooterData.searchBoxPlaceholder);
+    });
+
     it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
-        headerAndFooter.typeSearchBoxInputField()
+        headerAndFooter
+            .typeSearchBoxInputField(headerAndFooterData.inputLowerCase)
+            .trimSearchBoxResultDropDownList()
+            .should('satisfy', ($text) => {
+                return headerAndFooter
+                        .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
+            })
     });
 })

@@ -6,6 +6,7 @@
         "Credentials"
     ],
     "inputText": "text",
-    "inputLetterLowerCase": "e",
-    "inputLetterUpperCase": "E"
+    "searchBoxPlaceholder": "Search (CTRL+K)",
+    "inputLowerCase": "e",
+    "inputUpperCase": "E"
 }
