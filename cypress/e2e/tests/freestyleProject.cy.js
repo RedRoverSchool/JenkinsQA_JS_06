@@ -41,8 +41,7 @@ describe('freestyleProject', () => {
                 .clickLeftSidePanelBuildStepsBtn()
                 .checkBuilderExistAndVisible()
                 .getBuilderWindowHeader()
-                .should('include.text',buildStep)
+                .should('include.text', buildStep)
         })
     })
-    
 });
