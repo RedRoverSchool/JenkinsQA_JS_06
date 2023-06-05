@@ -8,6 +8,11 @@ class FreestyleProjectConfigurePage {
     getAddBuildStepMenuList = () => cy.get('.config-table .jenkins-section:nth-child(10) li [href]')
     getBuilderWindow = () => cy.get('.repeated-chunk[name="builder"]')
     getBuilderWindowHeader = () => cy.get('.repeated-chunk__header')
+    getLeftSideMenuPostBuldActionsBtn = () => cy.get('button[data-section-id="post-build-actions"]');
+    getAddPostBuildActionBtn = () => cy.get('button.hetero-list-add').contains('Add post-build action');
+    getAddPostBuildActionDropDownMenuItems = () => cy.get('.config-table .jenkins-section:nth-child(11) li .yuimenuitemlabel');
+    getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk'); 
+    getPostBuildActionWindowHeader = () => cy.get('.repeated-chunk__header');
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -29,6 +34,23 @@ class FreestyleProjectConfigurePage {
         this.getBuilderWindowHeader()
             .should('include.text', name)
         return this
+    };
+    clickLeftSideMenuPostBuldActionsBtn() {
+        this.getLeftSideMenuPostBuldActionsBtn().click()
+        return this
+    };
+    clickAddPostBuildActionBtn() {
+        this.getAddPostBuildActionBtn().click()
+        return this
+    };
+    selectPostBuildActionDropDownMenuItem(idx) {
+        this.getAddPostBuildActionDropDownMenuItems().eq(idx).click()
+        return this
+    };
+    checkPostBuildActionWindowHeaderName(name) {
+        this.getPostBuildActionWindowHeader()
+            .should('include.text', name)
+        return this    
     };
 }
 
