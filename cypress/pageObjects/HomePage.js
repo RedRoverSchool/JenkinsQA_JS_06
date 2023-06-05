@@ -2,6 +2,7 @@ import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
+import OrgFolderPage from "./OrgFolderPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -36,6 +37,11 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
+  }
+
+  clickOrgFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new OrgFolderPage();
   }
 }
 export default HomePage;
