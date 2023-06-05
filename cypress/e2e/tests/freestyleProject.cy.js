@@ -4,7 +4,8 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import {errorMessage} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
+import {errorMessage} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
 
 describe('freestyleProject', () => {
 
