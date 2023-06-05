@@ -4,6 +4,7 @@ import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import LoginPage from "./LoginPage";
+import JenkinsPage from './JenkinsPage'
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');

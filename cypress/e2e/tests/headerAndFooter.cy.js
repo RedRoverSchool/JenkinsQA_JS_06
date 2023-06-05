@@ -11,6 +11,14 @@ describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
 
+    it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
+        headerAndFooter
+            .clickJenkinsVersionLink()
+            .getPageTitle()
+            .should('contain', headerAndFooterData.pageTitle)
+    })
+
+
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
         .clickRestAPILink()
