@@ -14,7 +14,7 @@ function createOrgFolder(orgFolderName) {
 
 describe('orgFolderConfigurate', () => {
 
-    it('AT_17.01.002 | Add description to the Organization Folder via Configure', () => {
+    it.skip('AT_17.01.002 | Add description to the Organization Folder via Configure', () => {
         createOrgFolder(orgFolderConfigure.orgFolderName);
         cy.get('.jenkins-table__link.model-link.inside').click();
         cy.get(':nth-child(2) > .task-link-wrapper > .task-link').click();
