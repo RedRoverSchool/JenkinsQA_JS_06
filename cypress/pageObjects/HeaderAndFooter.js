@@ -12,7 +12,7 @@ class HeaderAndFooter {
     getRestAPILink = () => cy.get('[href="api/"]');
     getUserMyViewsMenu = () => cy.get('#breadcrumb-menu li a[href*="my"] span');
     getJenkinsHomeLink = () => cy.get('#jenkins-home-link');
-    getSearchBox = () => cy.get('#search-box');
+    getSearchBoxInputField = () => cy.get('input#search-box');
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -48,8 +48,13 @@ class HeaderAndFooter {
     }
 
     searchTextSearchBox(text) {
-        this.getSearchBox().type(text + '{enter}');
+        this.getSearchBoxInputField().type(text + '{enter}');
         return new ResultSearchBoxPage();
+    }
+
+    typeSearchBoxInputField(text) {
+        this.getSearchBoxInputField().type(text);
+        return this;
     }
 }
 export default HeaderAndFooter;

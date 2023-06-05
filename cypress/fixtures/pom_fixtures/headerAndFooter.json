@@ -1,11 +1,11 @@
 {
-   "userDropdownMenuItems": [
-       "Builds", 
-       "Configure", 
-       "My Views", 
-       "Credentials"
-   ],
-
-   "inputText" : "text"
-
+    "userDropdownMenuItems": [
+        "Builds",
+        "Configure",
+        "My Views",
+        "Credentials"
+    ],
+    "inputText": "text",
+    "inputLetterLowerCase": "e",
+    "inputLetterUpperCase": "E"
 }

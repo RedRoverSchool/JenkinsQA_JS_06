@@ -35,11 +35,14 @@ describe('headerAndFooter', () => {
            .should('deep.equal', userDropdownMenuItems);
      });
 
-
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
             .searchTextSearchBox(inputText)
             .getResultNoMatch()
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
+
+    it('AT_01.02_032 | Verify that the search query matches the result in the search dropdown', () => {
+        headerAndFooter.typeSearchBoxInputField()
+    });
 })
