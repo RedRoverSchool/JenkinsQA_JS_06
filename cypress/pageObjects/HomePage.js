@@ -18,6 +18,7 @@ class HomePage {
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getSearchBox = () => cy.get('#search-box');
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getAddDescriptionLink = () => cy.get('#description-link');
     getAddDescriptionField = () => cy.get('.jenkins-input ');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
@@ -73,6 +74,11 @@ class HomePage {
     return new ResultSearchBoxPage();
   }
 
+  selectDeleteMultiConfProjectDrpDwnMenuBtn() {
+    this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
+    return this;
+  }
+  
   clickAddDescriptionLink() {
     this.getAddDescriptionLink().click();
     return this;
