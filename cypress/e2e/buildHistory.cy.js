@@ -1,5 +1,6 @@
 /// <reference types="cypress"/>
 
+const dayjs = require('dayjs');
 import projects from '../fixtures/projects.json';
 import buildHistory from '../fixtures/buildHistory.json'
 
@@ -99,5 +100,33 @@ describe('buildHistory', () => {
         cy.get('.timeline-event-label').contains(projects.newProject).click();
         cy.get('div.timeline-event-bubble-title a').should('contain', projects.newProject);
         })
-
+        it('Timestamp', () => {
+            function createProject(nameProject) {
+              cy.get('#side-panel [href$=newJob]').click();
+              cy.get('form#createItem input[id=name]').type(nameProject);
+              cy.get('#items .category [class$=FreeStyleProject]').click();
+              cy.get('#ok-button').click();
+              cy.get('button[name=Submit]').click();
+              cy.get('#main-panel .page-headline').should(
+                'contain',
+                projects.newProject
+              );
+            }
+        
+            createProject(projects.newProject);
+            cy.get('#jenkins-home-link').click();
+            cy.get('td:last-child [tooltip]').click();
+        
+            cy.get('a[href="/view/all/builds"]').click();
+            cy.get('#icon-tl-0-1-e1').click();
+            cy.get('div.timeline-event-bubble-title a').should(
+              'contain',
+              projects.newProject
+            );
+            cy.get('.timeline-event-bubble-time').then(el => {
+              let actualData = el.text().slice(0, 22);
+              let expectedData = dayjs().format('ddd, DD MMM YYYY HH:mm'); 
+              expect(actualData).to.be.eql(expectedData);
+            });
+          });
 })

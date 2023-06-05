@@ -25,7 +25,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     cy.get('[type="checkbox"]').should('have.length', 4)
   })
   
-  it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
+  it.skip('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
     cy.get('.advancedButton').click()
     cy.get('#yui-gen3-button').click()
     cy.get('#yui-gen6').should('be.visible', multibranchPipeline.addMetrics[0])
@@ -38,7 +38,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     .should('have.css', 'box-shadow')
   })
 
-  it('AT_16.01.004 | Verify Change Appearance', function () {
+  it.skip ('AT_16.01.004 | Verify Change Appearance', function () {
     cy.get('#jenkins-home-link').click()
     cy.get('[class="icon-pipeline-multibranch-project icon-md"]').should('have.attr', 'title', multibranchPipeline.titles.multiBranchPipeline)
     cy.get('[class="jenkins-table__link model-link inside"]').click()

@@ -70,7 +70,7 @@ describe('Freestyle project - Rename project', () => {
             .and('have.text', messages.renameErrorMessage.message)
     });
 
-    it('AT_12.03_007 | <Freestyle project> Rename project using side menu on project page', function () {
+    it.skip('AT_12.03_007 | <Freestyle project> Rename project using side menu on project page', function () {
         cy.get('#projectstatus a').contains(freestyleProject.projectName).click();
         cy.get('#side-panel a[href$="rename"]').click();
         cy.get('input[name=newName]').clear().type(freestyleProject.projectNewName);

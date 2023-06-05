@@ -1,10 +1,12 @@
 {
-   "userDropdownMenuItems": [
-       "Builds", 
-       "Configure", 
-       "My Views", 
-       "Credentials"
-   ],    
-
-    "restAPIPageTitle": "REST API"
+    "userDropdownMenuItems": [
+        "Builds",
+        "Configure",
+        "My Views",
+        "Credentials"
+    ],
+    "inputText": "text",
+    "searchBoxPlaceholder": "Search (CTRL+K)",
+    "inputLowerCase": "e",
+    "inputUpperCase": "E"
 }

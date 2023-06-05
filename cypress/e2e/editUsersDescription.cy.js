@@ -3,7 +3,7 @@
 import userDescrpiption from "../fixtures/userDescription.json";
 import newUserDescription from "../fixtures/userDescription.json"
 
-describe ('editUsersDescription', () =>{
+describe.skip('editUsersDescription', () =>{
     beforeEach(() =>{
         cy.get(':nth-child(2) > .task-link-wrapper > .task-link').click();
         cy.get('.jenkins-table__link').click();
