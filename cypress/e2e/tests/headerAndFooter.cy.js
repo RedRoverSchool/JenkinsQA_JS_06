@@ -20,9 +20,9 @@ describe('headerAndFooter', () => {
 
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
-        .clickRestAPILink()
-        .getRestApiTitle()
-        .should('have.text', restAPIPageData.restAPIPageTitle)
+            .clickRestAPILink()
+            .getRestApiTitle()
+            .should('have.text', restAPIPageData.restAPIPageTitle)
     })
 
     it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
