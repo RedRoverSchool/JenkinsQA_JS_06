@@ -13,7 +13,8 @@ describe('freestyleProject', () => {
 
     const freestyleProjectPage = new FreestyleProjectPage();
     const homePage = new HomePage();
-    
+    const freestyleProjectPage = new FreestyleProjectPage();
+
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
             .clickNewItemSideMenuLink()
