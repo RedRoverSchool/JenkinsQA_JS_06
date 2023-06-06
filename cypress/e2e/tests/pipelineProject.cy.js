@@ -3,6 +3,7 @@ import HomePage from "../../pageObjects/HomePage";
 import newitemPage from "../../fixtures/pom_fixtures/newitemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
+
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
     const headerAndFooter = new HeaderAndFooter()
