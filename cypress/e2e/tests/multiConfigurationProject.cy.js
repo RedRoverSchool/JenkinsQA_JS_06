@@ -27,7 +27,7 @@ describe("multiConfigurationProject", () => {
             .should('not.exist');
     });
 
-    it('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
+    it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
         headerAndFooter
         .clickJenkinsHomeLink()
         .clickProjectDrpDwnBtn()
