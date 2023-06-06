@@ -1,6 +1,7 @@
 import HomePage from '../../pageObjects/HomePage';
 import newItemPage from '../../fixtures/pom_fixtures/newItemPage.json';
 import OrgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
+import orgFolderPage from '../../fixtures/pom_fixtures/orgfolderPage.json'
 
 describe('orgFolderConfigure', () => {
     const homePage = new HomePage();
@@ -38,4 +39,22 @@ describe('orgFolderConfigure', () => {
             .getDescription()
             .should('contain.text', OrgFolderConfigurePage.description);
     });
+
+    it.only('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .clickSaveBtnAndGoOrgFolder()
+            .clickGoToDashboard()
+
+            .clickOrgFolderNameLink(newItemPage.orgFolderName)
+            .clickDisableButton()
+            .clickEnableButton()
+            .getDisableProjectForm()
+            .should('have.text', orgFolderPage.disableOrganizationFolder)
+
+
+    })
 });

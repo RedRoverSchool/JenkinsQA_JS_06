@@ -18,7 +18,7 @@ describe('Organization Folder Disable/Enable', () => {
         cy.get('form#enable-project').should('contain', projects.organizationFolder.disable)
     });
 
-    it('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
+    it.skip('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
         cy.get('#projectstatus').contains(projects.organizationFolder.name).click()
         cy.get('#disable-project button').click()
         cy.get('form#enable-project').should('contain', projects.organizationFolder.disable)
