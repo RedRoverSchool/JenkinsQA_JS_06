@@ -10,6 +10,7 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import FolderPage from "./FolderPage"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -115,6 +116,12 @@ class HomePage {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
   }
+
+  clickFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new FolderPage();
+  }
+  
 }
 
 export default HomePage;

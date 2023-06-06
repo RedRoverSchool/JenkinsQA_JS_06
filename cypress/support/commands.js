@@ -56,3 +56,14 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
 });
+
+Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
