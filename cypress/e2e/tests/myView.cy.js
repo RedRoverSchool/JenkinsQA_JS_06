@@ -6,6 +6,7 @@ import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.jso
 import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
+import myView from "../../fixtures/pom_fixtures/myView.json";
 
 describe('myView', () => {
 
@@ -71,8 +72,19 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', multiConfigurationProjectName);
   });
+
+  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(freestyleProjectName)
+      .selectFreestyleProjectItem()
+      .clickOkBtnAndGoFreestyleProjectConfig()
+      .clickSaveBtnAndGoFreestyleProject()
+      .clickHomePageLink()
+      .clickMyViewSideMenuLink()
+      .verifyAndClickAddNewViewLink()
+      .getBreadcrumbsLastPoint()
+      .should('have.text', myView.newViewPageBreadcrumbsLastPoint);
+  });
 });
-  
-    
-
-
