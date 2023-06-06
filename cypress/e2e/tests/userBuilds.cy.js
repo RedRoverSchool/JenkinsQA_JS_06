@@ -9,7 +9,7 @@ describe('userBuilds', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserBuildsMenu()
-
-        cy.title().should('eq', `${Cypress.env('local.admin.username')} ${userBuildsPage.titleText}`);
+            .getUserBuildsTitle()
+            .should('eq', `${Cypress.env('local.admin.username')} ${userBuildsPage.titleText}`);
     });
 })
