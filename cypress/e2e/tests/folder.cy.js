@@ -8,8 +8,7 @@ import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 describe('folder', () => {
 
     const homePage = new HomePage();
-    const headerAndFooter = new HeaderAndFooter();
-
+    
     it('AT_15.02.001 | Verify possibility to add folder description', () => {
         homePage
             .clickNewItemSideMenuLink()
