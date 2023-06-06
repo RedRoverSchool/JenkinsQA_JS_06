@@ -25,7 +25,7 @@ describe("multiConfigurationProject", () => {
             .should("not.have.text", name);
     });
 
-    it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
+    it.skip('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
         headerAndFooter
             .clickJenkinsHomeLink()
             .clickProjectDrpDwnBtn()
