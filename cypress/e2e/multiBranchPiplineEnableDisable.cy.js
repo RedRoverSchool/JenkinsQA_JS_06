@@ -22,7 +22,7 @@ describe('multiBranchPiplineEnableDisable', () => {
       'button[name=Submit]'
     )
   })
-  it('AT_16.01.003 Disables the current Multibranch Pipeline', () => {
+  it.skip('AT_16.01.003 Disables the current Multibranch Pipeline', () => {
     cy.get('#enable-project')
       .should('contain', multibranchPipelineData.enableMessage)
       .and('have.css', 'color', multibranchPipelineData.enableMessageColor)

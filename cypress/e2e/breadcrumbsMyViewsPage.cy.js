@@ -22,7 +22,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.pipelineName)
     })
     
-    it('AT_04.03_002| <Breadcrumbs>My Views page > Verify that the user can open the selected Folder', () => {
+    it.skip('AT_04.03_002| <Breadcrumbs>My Views page > Verify that the user can open the selected Folder', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.folderName);
         cy.get('.com_cloudbees_hudson_plugins_folder_Folder').click();
@@ -52,7 +52,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.freestyleProjectName)
     })
 
-    it('AT_04.03_007 | Verify that the user can open the selected Multi-configuration project', () => {
+    it.skip('AT_04.03_007 | Verify that the user can open the selected Multi-configuration project', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.multiConfigurationProjectName);
         cy.get('.hudson_matrix_MatrixProject').click();

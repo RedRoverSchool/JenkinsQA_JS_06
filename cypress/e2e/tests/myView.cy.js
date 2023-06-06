@@ -5,7 +5,8 @@ import { freestyleProjectName } from "../../fixtures/pom_fixtures/newItemPage.js
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-
+import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
+import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe('myView', () => {
 
@@ -41,7 +42,7 @@ describe('myView', () => {
   });
 
     it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
-      homePage
+    homePage
       .clickNewItemSideMenuLink()
       .typeNewItemNameInputField(freestyleProjectName)
       .selectFreestyleProjectItem()
@@ -54,6 +55,41 @@ describe('myView', () => {
       .getFreestyleProjectHeader()
       .should('be.visible')
       .and('include.text', freestyleProjectName);
-  })
+  });
 
+  it('AT_04.03_007 |<My View> Verify that the user can open the selected Multi-configuration project', () => {
+    homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(multiConfigurationProjectName)
+      .selectMultiConfigurationProjectItem()
+      .clickOkBtnAndGoMultiConfProjectConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickMultiConfigurationProjectNameLink()
+      .getMultiConfigurationProjectHeader()
+      .should('be.visible')
+      .and('include.text', multiConfigurationProjectName);
+  });
+
+  it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
+    homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(folderName)
+      .selectFolderItem()
+      .clickOkBtnAndGoFolderConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickFolderNameLink()
+      .getFolderHeader()
+      .should('be.visible')
+      .and('include.text', folderName);
+  }); 
 });
+  
+    
+
+

@@ -25,5 +25,10 @@ describe('add description button', () => {
     cy.get("#description-link").click()
     cy.get(".jenkins-input").should("be.visible")
   });
+
+  it('AT_02.09.006|Home page, "add description" button is  clickable',() => {
+    cy.get('#description-link').click()
+    cy.get('.jenkins-input').should('be.visible')
+  })
 })
   
