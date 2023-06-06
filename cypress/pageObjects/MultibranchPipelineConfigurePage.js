@@ -9,6 +9,7 @@ class MultibranchPipelineConfigurePage {
     getIconDrpDwn = () => cy.get('.jenkins-form-item.has-help > .jenkins-select select');
     getAddSourceBtn = () => cy.get('#yui-gen1-button')
     getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
+    getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -42,6 +43,12 @@ class MultibranchPipelineConfigurePage {
                 return Cypress._.map($els, 'innerText')
             });
     }
+
+    clickDisableBtn() {
+        this.getDisableBtn().click();
+        return this;
+    };
+
 }
 
 export default MultibranchPipelineConfigurePage;

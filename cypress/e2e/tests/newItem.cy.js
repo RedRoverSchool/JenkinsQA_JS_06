@@ -25,4 +25,12 @@ describe('newItem', () => {
             .getMainPanel()
             .should('contain.text', newItemPage.orgFolderName);
     });
+
+    it('AT_5.06_003 | Create an Organization folder with an empty Item Name', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .selectOrgFolderItem()
+            .getWarningMessage()
+            .should('contain.text', newItemPage.warningMessage);
+    });
 });
