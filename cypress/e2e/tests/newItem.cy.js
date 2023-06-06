@@ -13,7 +13,7 @@ describe('newItem', () => {
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .getNewItemNamesList()
+            .createNewItemNamesList()
             .should('deep.equal', newItemPage.newItemNames);
     });
 
@@ -29,6 +29,7 @@ describe('newItem', () => {
             .should('contain.text', newItemPage.orgFolderName);
     });
 
+
     newItemPage.newItemNames.forEach((newItemNames,idx) => {
         it(`AT_05.05_009 | Create a new ${newItemNames} using name with more then 255 valid characters`, () => {
             homePage
@@ -41,4 +42,12 @@ describe('newItem', () => {
         })
     })
 
+    it('AT_5.06_003 | Create an Organization folder with an empty Item Name', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .selectOrgFolderItem()
+            .getWarningMessage()
+            .should('contain.text', newItemPage.warningMessage);
+    });
+  
 });
