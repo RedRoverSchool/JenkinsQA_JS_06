@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
-import freestyleProjectConfigure from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
+import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import GitHubPage from "../../pageObjects/GitHubPage";
 import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
 
@@ -17,7 +17,7 @@ describe('freestyleProjectConfigure', () => {
     beforeEach('Create Freestyle project', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.freestyleProjectName)
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject();
@@ -32,17 +32,15 @@ describe('freestyleProjectConfigure', () => {
         homePage.getProjectNameDropdownList().should('be.visible');
         homePage.clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
-            .typeProjectUrl(freestyleProjectConfigure.gitHubProjectURL)
+            .typeProjectUrl(freestyleProjectConfigData.gitHubProjectURL)
             .clickSaveBntAndGoFreestyleProjectPage()
             .getGitHubSideMenuLink()
             .should('be.visible');
         freestyleProjectPage.clickGitHubSideMenuLink();
 
-        cy.url().should('be.eq', freestyleProjectConfigure.gitHubProjectURL);
+        cy.url().should('be.eq', freestyleProjectConfigData.gitHubProjectURL);
         gitHubPage
             .getGitHubHeaderAuthor()
             .should('include.text', gitHubPageData.gitHubHeaderAuthor);
     });
-
-
 });

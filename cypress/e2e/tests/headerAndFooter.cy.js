@@ -1,10 +1,10 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
-import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
-import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import restAPIPageData from "../../fixtures/pom_fixtures/restAPIPage.json";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
@@ -23,7 +23,7 @@ describe('headerAndFooter', () => {
         headerAndFooter
         .clickRestAPILink()
         .getRestApiTitle()
-        .should('have.text',restAPIPageTitle)
+        .should('have.text', restAPIPageData.restAPIPageTitle)
     })
 
     it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
@@ -34,7 +34,7 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickJenkinsHomeLink()
             .getHomepageHeader()
-            .should('have.text', homePageHeader);
+            .should('have.text', homePageData.homePageHeader);
     });
 
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
@@ -48,14 +48,14 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .searchTextSearchBox(headerAndFooterData.inputText)
             .getResultNoMatch()
-            .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
+            .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     })
 
     it('AT_01.08_002 | Verify logout button redirects to the login page', function() {
         headerAndFooter
             .clickLogOutBtn()
             .getWelcomeMessage()
-            .should('have.text', loginPage.welcomeMessage)
+            .should('have.text', loginPageData.welcomeMessage)
     });
 
     it.skip('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {

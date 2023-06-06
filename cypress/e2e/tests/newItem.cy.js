@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe('newItem', () => {
 
@@ -11,18 +11,18 @@ describe('newItem', () => {
         homePage
             .clickNewItemSideMenuLink()
             .getNewItemNamesList()
-            .should('deep.equal', newItemPage.newItemNames);
+            .should('deep.equal', newItemPageData.newItemNames);
     });
 
     it('AT_5.06_001| Create a new Organization Folder', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
             .selectOrgFolderItem()
             .clickOkBtnAndGoOrgFolderConfig()
             .clickSaveBtnAndGoOrgFolder()
             .clickGoToDashboard()
             .getMainPanel()
-            .should('contain.text', newItemPage.orgFolderName);
+            .should('contain.text', newItemPageData.orgFolderName);
     });
 });

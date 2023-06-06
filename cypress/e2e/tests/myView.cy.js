@@ -1,11 +1,9 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { freestyleProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
-import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
-import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe('myView', () => {
 
@@ -16,18 +14,18 @@ describe('myView', () => {
         homePage
             .clickMyViewSideMenuLink()
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(freestyleProjectName)
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .getFreestyleProjectHeader()
-            .should('have.text', headerText + freestyleProjectName);
+            .should('have.text', freestyleProjectPageData.headerText + newItemPageData.freestyleProjectName);
     });
 
     it('AT_04.03_001|< My View> Verify that user can open selected Pipeline', () => {
         homePage
           .clickNewItemSideMenuLink()
-          .typeNewItemNameInputField(pipelineName)
+          .typeNewItemNameInputField(newItemPageData.pipelineName)
           .selectPipelineItem()
           .clickOkBtnAndGoPipelineConfig();
                   
@@ -37,13 +35,13 @@ describe('myView', () => {
           .clickPipelineNameLink()
           .getPipelinePageHeadline()
           .should('be.visible')
-          .and('include.text', pipelineName);
+          .and('include.text', newItemPageData.pipelineName);
   });
 
     it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
     homePage
       .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(freestyleProjectName)
+      .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
       .selectFreestyleProjectItem()
       .clickOkBtnAndGoPipelineConfig();
             
@@ -53,13 +51,13 @@ describe('myView', () => {
       .clickFreestyleProjectNameLink()
       .getFreestyleProjectHeader()
       .should('be.visible')
-      .and('include.text', freestyleProjectName);
+      .and('include.text', newItemPageData.freestyleProjectName);
   });
 
   it('AT_04.03_007 |<My View> Verify that the user can open the selected Multi-configuration project', () => {
     homePage
       .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(multiConfigurationProjectName)
+      .typeNewItemNameInputField(newItemPageData.multiConfigurationProjectName)
       .selectMultiConfigurationProjectItem()
       .clickOkBtnAndGoMultiConfProjectConfig();
             
@@ -69,10 +67,7 @@ describe('myView', () => {
       .clickMultiConfigurationProjectNameLink()
       .getMultiConfigurationProjectHeader()
       .should('be.visible')
-      .and('include.text', multiConfigurationProjectName);
+      .and('include.text', newItemPageData.multiConfigurationProjectName);
   });
 });
   
-    
-
-

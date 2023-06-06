@@ -1,6 +1,6 @@
 import HomePage from '../../pageObjects/HomePage';
-import newItemPage from '../../fixtures/pom_fixtures/newItemPage.json';
-import OrgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
+import newItemPageData from '../../fixtures/pom_fixtures/newItemPage.json';
+import OrgFolderConfigurePageData from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
 
 describe('orgFolderConfigure', () => {
     const homePage = new HomePage();
@@ -8,34 +8,34 @@ describe('orgFolderConfigure', () => {
     it('AT_17.01.001 | Change status folder to disable', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
             .selectOrgFolderItem()
             .clickOkBtnAndGoOrgFolderConfig()
             .clickSaveBtnAndGoOrgFolder()
             .clickGoToDashboard()
 
-            .clickOrgFolderNameLink(newItemPage.orgFolderName)
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
             .clickEnableDisabledToggle()
             .clickSaveBtnAndGoOrgFolder()
             .getEnableProjectForm()
-            .should('contain.text', OrgFolderConfigurePage.disableMessage);
+            .should('contain.text', OrgFolderConfigurePageData.disableMessage);
     });
 
     it('AT_17.01.002 | Add description to the Organization Folder via Configure the project', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
             .selectOrgFolderItem()
             .clickOkBtnAndGoOrgFolderConfig()
             .clickSaveBtnAndGoOrgFolder()
             .clickGoToDashboard()
 
-            .clickOrgFolderNameLink(newItemPage.orgFolderName)
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
-            .addDescription(OrgFolderConfigurePage.description)
+            .addDescription(OrgFolderConfigurePageData.description)
             .clickSaveBtnAndGoOrgFolder()
             .getDescription()
-            .should('contain.text', OrgFolderConfigurePage.description);
+            .should('contain.text', OrgFolderConfigurePageData.description);
     });
 });

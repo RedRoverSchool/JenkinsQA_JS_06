@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('folder', () => {
 
@@ -12,12 +12,12 @@ describe('folder', () => {
         homePage
             .clickNewItemSideMenuLink()
             .selectFolderItem()
-            .typeNewItemNameInputField(folderName)
+            .typeNewItemNameInputField(newItemPageData.folderName)
             .clickOkBtnAndGoFolderConfig()
             .clickSaveBtnAndGoFolder()
             .clickAddDescriptionBtn()
-            .typeFolderDescription(folderDescription)
+            .typeFolderDescription(folderPageData.folderDescription)
             .saveFolderDescription()
-            .getFolderDescription().should('have.text', folderDescription);
+            .getFolderDescription().should('have.text', folderPageData.folderDescription);
     });
 });
