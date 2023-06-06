@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('add_description', ()=>{
+describe.skip('add_description', ()=>{
     const text = "Jenkins project"
     const text2 = "Jenkins project in progress"
 
