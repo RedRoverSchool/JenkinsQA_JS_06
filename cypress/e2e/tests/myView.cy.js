@@ -84,7 +84,7 @@ describe('myView', () => {
       .clickHomePageLink()
       .clickMyViewSideMenuLink()
       .verifyAndClickAddNewViewLink()
-      .getBreadcrumbsLastPoint()
-      .should('have.text', myView.newViewPageBreadcrumbsLastPoint);
+      .getHeaderOfNewViewNameInputField()
+      .should('have.text', myView.headerOfNewViewNameInputField)
   });
 });

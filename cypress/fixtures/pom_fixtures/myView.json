@@ -1,4 +1,4 @@
 {
     "newViewPageURL": "/my-views/newView",
-    "newViewPageBreadcrumbsLastPoint": "New view"
+    "headerOfNewViewNameInputField": "View name"
 }

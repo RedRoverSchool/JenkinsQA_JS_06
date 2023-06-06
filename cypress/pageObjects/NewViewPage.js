@@ -1,5 +1,4 @@
 class NewViewPage {
-    getNewViewPageURL = () => cy.url();
-    getBreadcrumbsLastPoint = () => cy.get('#breadcrumbs li:last-child');
+    getHeaderOfNewViewNameInputField = () => cy.get('.jenkins-form-label.help-sibling');
 }
 export default NewViewPage;
