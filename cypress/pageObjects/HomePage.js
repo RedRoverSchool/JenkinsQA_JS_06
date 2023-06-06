@@ -23,6 +23,7 @@ class HomePage {
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getSideMenuPanel = () => cy.get('#tasks .task');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -87,6 +88,12 @@ class HomePage {
   clickProjectNameDropdownConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
     return new FreestyleProjectConfigurePage();
+  }
+
+  createSidePanelItemsList() {
+    return this.getSideMenuPanel().then(($els) => {
+      return Cypress.$.makeArray($els).map($elem => $elem.innerText);
+    })
   }
 }
 

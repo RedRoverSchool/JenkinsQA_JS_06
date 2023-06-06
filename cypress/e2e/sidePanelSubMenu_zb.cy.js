@@ -5,7 +5,7 @@ import { endPointUrl } from '../fixtures/homePage.json'
 import {sidePanelItems} from '../fixtures/homePage.json'
 
 describe('Side panel sub menu', () => {
-    it('AT_02.04_011 | <Homepage(Dashboard) > Verify names and number of items in the side panel menu', () => {
+    it.skip('AT_02.04_011 | <Homepage(Dashboard) > Verify names and number of items in the side panel menu', () => {
         cy.get('#tasks .task')
             .should("have.length", 5)
             .then(($elems) => {
@@ -14,7 +14,7 @@ describe('Side panel sub menu', () => {
             .should('deep.equal', dashboardDropdownItems)
     })
 
-    it('AT_02.04_008 | Homepage(Dashboard) > Verify 5 items from the sub-menu', () => {
+    it.skip('AT_02.04_008 | Homepage(Dashboard) > Verify 5 items from the sub-menu', () => {
         cy.get('.task-link-text')
             .should('have.length', dashboardDropdownItems.length)
             .each((el, idx) => {
@@ -65,7 +65,7 @@ describe('Side panel sub menu', () => {
         cy.get('[href="/me/my-views/"]').contains('My Views')
     })
 
-    it('AT_02.04_013 | <Homepage(Dashboard)> Verify 5 items of the sub-menu', () => {
+    it.skip('AT_02.04_013 | <Homepage(Dashboard)> Verify 5 items of the sub-menu', () => {
         cy.get('#tasks .task').should('have.length', dashboardDropdownItems.length)
         cy.get('a[href="/view/all/newJob"]').should('have.text', dashboardDropdownItems[0])
         cy.get('a[href="/asynchPeople/"]').should('have.text', dashboardDropdownItems[1])
@@ -82,7 +82,7 @@ describe('Side panel sub menu', () => {
         })
     })
     
-    it('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
+    it.skip('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
         cy.get('.task').should('have.length', dashboardDropdownItems.length)
           .each(($el,idx) =>{
             let name = $el.text()
@@ -90,7 +90,7 @@ describe('Side panel sub menu', () => {
           })
     })
     
-    it('AT_02.04_019 | Verification of name items on side panel of main page', () => {
+    it.skip('AT_02.04_019 | Verification of name items on side panel of main page', () => {
         cy.get('.task-link-text')
         .should('have.length',sidePanelItems.length)
         .then(($els) => {
