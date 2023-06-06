@@ -85,7 +85,7 @@ class HomePage {
   }
   
   selectDeleteDrpDwnLink(){
-    this. getDeleteDrpDwnLink().click
+    this.getDeleteDrpDwnLink().click()
     return this;
   }
 

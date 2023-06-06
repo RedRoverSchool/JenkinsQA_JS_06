@@ -21,6 +21,7 @@ describe('pipelineProject',()=>{
         .selectDeleteDrpDwnLink()
         .confirmPiplineDeletion()
         .getMainPanel()
-        .should('not.have.text',newitemPage.pipelineName)                
+        .should('not.include.text',newitemPage.pipelineName)
+        .and('include.text','Welcome to Jenkins!')                
     })
 })
