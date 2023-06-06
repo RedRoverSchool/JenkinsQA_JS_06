@@ -77,5 +77,5 @@ describe('freestyleProject', () => {
             .and('be.visible')
             .and('be.enabled')
     });
-
+    
 });
