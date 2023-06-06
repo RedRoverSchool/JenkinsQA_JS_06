@@ -67,6 +67,6 @@ describe('multibranchPipelineConfigure', () => {
         multibranchPipelineConfigurePage
         .clickPeriodicallyCheckBox()
         .createTriggersIntervalDrDwnOptionList()
-        .should('deep.equal', multibranchPipelineConfigData.intervalTime);
+        .should('deep.equal', multibranchPipelineConfigData.intervalTime)
     });
 });
