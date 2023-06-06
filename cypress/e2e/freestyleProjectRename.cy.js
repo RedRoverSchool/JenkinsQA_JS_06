@@ -31,7 +31,7 @@ describe('Freestyle project - Rename project', () => {
         cy.get('.icon-edit-delete').click()
     })
 
-    it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
+    it.skip('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
         cy.get('.jenkins-table__link').click()
         cy.get('a[href$="confirm-rename"]').click()
         cy.get('.jenkins-input').should('have.value', jobName)

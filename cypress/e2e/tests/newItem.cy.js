@@ -4,11 +4,13 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
 import errorMessage from "../../fixtures/pom_fixtures/errorPageData.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
+import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 
 describe('newItem', () => {
 
     const homePage = new HomePage();
     const errorPage = new ErrorMessagePage();
+    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
 
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
@@ -50,4 +52,18 @@ describe('newItem', () => {
             .should('contain.text', newItemPage.warningMessage);
     });
   
+
+    it('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.multibranchPipelineName)
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickSaveBtnAndGoMultiPipeline();
+            
+        dashboardBreadcrumbs
+            .clickDashboardLinkAndGoHomePage()
+            .getProjectTable()
+            .should('exist');    
+    });
 });
