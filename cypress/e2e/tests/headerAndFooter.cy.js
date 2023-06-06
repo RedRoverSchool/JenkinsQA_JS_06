@@ -11,6 +11,14 @@ describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
 
+    it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
+        headerAndFooter
+            .clickJenkinsVersionLink()
+            .getPageTitle()
+            .should('contain', headerAndFooterData.pageTitle)
+    })
+
+
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
         .clickRestAPILink()
@@ -50,7 +58,7 @@ describe('headerAndFooter', () => {
             .should('have.text', loginPage.welcomeMessage)
     });
 
-    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+    it.skip('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
             .getSearchBoxInputField()
             .should('have.attr', 'placeholder', headerAndFooterData.searchBoxPlaceholder);

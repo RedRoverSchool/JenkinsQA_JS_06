@@ -30,7 +30,7 @@ describe('dashboardBreadcrumbs', () => {
       dashboardBreadcrumbs
          .clickDashboardDropdownBtn()
          .clickDashboardNewItemLink()
-         .getNewItenHeader()
+         .getNewItemHeader()
          .should('have.text', newItemPageData.newItemHeader);
 
       cy.url().should('include', newItemPageData.newItemEndPoinURL);   

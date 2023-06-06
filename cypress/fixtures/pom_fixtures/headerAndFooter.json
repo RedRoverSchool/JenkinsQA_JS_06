@@ -8,5 +8,8 @@
     "inputText": "text",
     "searchBoxPlaceholder": "Search (CTRL+K)",
     "inputLowerCase": "e",
-    "inputUpperCase": "E"
+    "inputUpperCase": "E",
+
+    "jenkinsEndPointWebSite" : "jenkins.io",
+    "pageTitle" : "Jenkins"
 }
