@@ -10,6 +10,7 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import FreestyleProjectPage from "./FreestyleProjectPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
@@ -32,7 +33,6 @@ class HomePage {
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
-    getProjectNameDropdownRenameLink = () => cy.get('[href*="rename"]')
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -110,12 +110,17 @@ class HomePage {
 
   getTimeBuildCreating() {
     let timeBuildCreating;
-    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm:ss');
+    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm');
   }
 
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
+  }
+
+  clickNamesProjects() {
+    this.getNamesProjects().click()
+    return new FreestyleProjectPage()
   }
 
   clickProjectNameDropdownRenameLink() {
