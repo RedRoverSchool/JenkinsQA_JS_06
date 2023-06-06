@@ -10,6 +10,7 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -31,6 +32,7 @@ class HomePage {
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -114,6 +116,11 @@ class HomePage {
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
+  }
+
+  selectRenameMultiConfProjectDrpDwnMenuBtn() {
+    this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
+    return new MultiConfProjectRenamePage();
   }
 }
 
