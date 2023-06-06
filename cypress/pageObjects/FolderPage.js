@@ -4,6 +4,7 @@ class FolderPage {
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
     getFolderDescription = () => cy.get('#description div:first-child');
     getFolderHeader = () => cy.get('#main-panel h1');
+    getEditDescriptionBtn = () => cy.get('#description-link')
 
     clickAddDescriptionBtn() {
         this.getAddDescriptiotBtn().click();
@@ -17,6 +18,16 @@ class FolderPage {
 
     saveFolderDescription() {
         this.getSaveDescriptionBtn().click();
+        return this;
+    };
+
+    clickEditDescriptionBtn() {
+        this.getEditDescriptionBtn().click();
+        return this;
+    };
+
+    typeFolderNewDescription(name) {
+        this.getFolderDescriptionInputField().clear().type(name);
         return this;
     };
 };

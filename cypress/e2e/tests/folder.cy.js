@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
+import {folderDescription, folderNewDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('folder', () => {
 
@@ -19,5 +19,21 @@ describe('folder', () => {
             .typeFolderDescription(folderDescription)
             .saveFolderDescription()
             .getFolderDescription().should('have.text', folderDescription);
+    });
+
+    it('AT_15.03.002 | Verify possibility to edit folder description', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .selectFolderItem()
+            .typeNewItemNameInputField(folderName)
+            .clickOkBtnAndGoFolderConfig()
+            .clickSaveBtnAndGoFolder()
+            .clickAddDescriptionBtn()
+            .typeFolderDescription(folderDescription)
+            .saveFolderDescription()   
+            .clickEditDescriptionBtn()
+            .typeFolderNewDescription(folderNewDescription) 
+            .saveFolderDescription()
+            .getFolderDescription().should('have.text', folderNewDescription);
     });
 });
