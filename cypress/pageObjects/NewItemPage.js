@@ -4,6 +4,7 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import PipelineConfigurePage from "./PipelineConfigurePage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import FolderConfigurePage from "./FolderConfigurePage";
+import ErrorMessagePage from "./ErrorMessagePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
@@ -17,6 +18,7 @@ class NewItemPage {
     getNewItenHeader = () => cy.get('.header .h3');
     getFolderItem = () => cy.get('li[class*="folder"]');
     getNewItemHeader = () => cy.get('.header .h3');
+    getEachItemsName = () => cy.get('#createItem li[tabindex]')
     
 
     typeNewItemNameInputField(name) {
@@ -88,6 +90,16 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new FolderConfigurePage();
       };
+
+    clickEachItemsNameFromMenuListItem(idx) {
+        this.getEachItemsName().eq(idx).click()
+        return this
+    };
+
+    clickOkBtnAndGoErrorPage() {
+        this.getNewItemOkBtn().click();
+        return new ErrorMessagePage();
+    };
         
 }
 export default NewItemPage;

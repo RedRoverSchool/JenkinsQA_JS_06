@@ -16,5 +16,8 @@
     ], 
 
     "newItemEndPoinURL" :  "/all/newJob", 
-    "newItemHeader" : "Enter an item name"
+    "newItemHeader" : "Enter an item name",
+
+    "character" : "LooongName",
+    "number" : 26
 }
