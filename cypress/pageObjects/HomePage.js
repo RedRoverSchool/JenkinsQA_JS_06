@@ -92,13 +92,6 @@ class HomePage {
     return this;
   }
 
-  confirmPiplineDeletion(){
-    cy.on('window:confirm', (str) => {
-      expect(str).to.equal(homePage.deletePipelineConfirmText)      
-    })
-    return this;
-  }
-
   selectDeleteMultiConfProjectDrpDwnMenuBtn() {
     this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
     return this;

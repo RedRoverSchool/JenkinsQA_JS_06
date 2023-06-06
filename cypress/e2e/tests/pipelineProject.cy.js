@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 import HomePage from "../../pageObjects/HomePage";
-import newitemPage from "../../fixtures/pom_fixtures/newitemPage.json";
+import newitemPageData from "../../fixtures/pom_fixtures/newitemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
 
@@ -11,17 +11,16 @@ describe('pipelineProject',()=>{
     it('AT_13.02_04|verify user can delete pipeline Project and project not displayed on homepage',()=>{
         homePage
         .clickCreateJobLink()
-        .typeNewItemNameInputField(newitemPage.pipelineName)
+        .typeNewItemNameInputField(newitemPageData.pipelineName)
         .selectPipelineItem()
         .clickOkBtnAndGoPipelineConfig();
 
         headerAndFooter
         .clickJenkinsHomeLink()
-        .clickProjectDrpDwnBtn(newitemPage.pipelineName)
+        .clickProjectDrpDwnBtn(newitemPageData.pipelineName)
         .selectDeleteDrpDwnLink()
-        .confirmPiplineDeletion()
         .getMainPanel()
-        .should('not.include.text',newitemPage.pipelineName)
+        .should('not.include.text',newitemPageData.pipelineName)
         .and('include.text','Welcome to Jenkins!')                
     })
 })
