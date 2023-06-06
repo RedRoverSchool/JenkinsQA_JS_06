@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
@@ -6,6 +8,8 @@ import OrgFolderPage from "./OrgFolderPage";
 import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
+import BuildHistoryPage from "./BuildHistoryPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -23,7 +27,15 @@ class HomePage {
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+
+   
+  
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
+    getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
     getSideMenuPanel = () => cy.get('#tasks .task');
+
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -90,11 +102,29 @@ class HomePage {
     return new FreestyleProjectConfigurePage();
   }
 
-  createSidePanelItemsList() {
-    return this.getSideMenuPanel().then(($els) => {
-      return Cypress.$.makeArray($els).map($elem => $elem.innerText);
-    })
+
+  clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
+    this.getDeleteFoldersAndMultiBrPipelineLink().click();
+    return new FoldersAndMultibrPipelineDeletePage();
   }
+
+  clickScheduleBuildBtn() {
+    return this.getScheduleBuildBtn().click();
+  }
+
+  getTimeBuildCreating() {
+    let timeBuildCreating;
+    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm:ss');
+  }
+
+  clickBuildHistoryLink() {
+    this.getBuildHistoryLink().click();
+    return new BuildHistoryPage;
+  }
+   createSidePanelItemsList() {
+     return this.getSideMenuPanel().then(($els) => {
+       return Cypress.$.makeArray($els).map($elem => $elem.innerText);
+   })
 }
 
 export default HomePage;
