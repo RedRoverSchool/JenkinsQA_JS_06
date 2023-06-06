@@ -12,8 +12,7 @@ describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
     const dashbord = new DashboardBreadcrumbs();
-    const gitHubPage = new GitHubPage();
-
+   
     beforeEach('Create Freestyle project', () => {
         homePage
             .clickNewItemSideMenuLink()
@@ -21,27 +20,20 @@ describe('freestyleProjectConfigure', () => {
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject();
-    })
+    })   
 
     it('AT_12.05_004 | Add link on GitHub and verify it', () => {    
         dashbord
-            .clickDashboardLinkAndGoHomePage();
-        homePage
-            .hoverProjectNameLink()
-            .clickProjectNameDropdown();
-        homePage.getProjectNameDropdownList().should('be.visible');
-        homePage.clickProjectNameDropdownConfigureLink()
+            .clickDashboardLinkAndGoHomePage()   
+            .clickProjectDrpDwnBtn(newItemPage.freestyleProjectName)
+            .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
             .typeProjectUrl(freestyleProjectConfigure.gitHubProjectURL)
             .clickSaveBntAndGoFreestyleProjectPage()
-            .getGitHubSideMenuLink()
-            .should('be.visible');
-        freestyleProjectPage.clickGitHubSideMenuLink();
-
-        cy.url().should('be.eq', freestyleProjectConfigure.gitHubProjectURL);
-        gitHubPage
+            .clickGitHubSideMenuLink()
+            .checkUrl() 
             .getGitHubHeaderAuthor()
-            .should('include.text', gitHubPageData.gitHubHeaderAuthor);
+            .should('include.text', gitHubPageData.gitHubHeaderAuthor); 
     });
 
     freestyleProjectConfigure.postBuildActions.forEach((actionName, idx) => {

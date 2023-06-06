@@ -1,5 +1,6 @@
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage"
+import GitHubPage from "./GitHubPage";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -19,6 +20,7 @@ class FreestyleProjectPage {
 
     clickGitHubSideMenuLink() {
         this.getGitHubSideMenuLink().click();
+        return new GitHubPage();
     }
 }
 
