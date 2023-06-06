@@ -60,4 +60,20 @@ describe('freestyleProjectConfigure', () => {
         })
     });
 
+    freestyleProjectConfigure.buildSteps.forEach((buildStep, idx) => {
+        it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
+            freestyleProjectPage
+                .clickConfigureSideMenuLink()
+                .clickLeftSidePanelBuildStepsBtn()
+                .clickAddBuildStepBtn()
+                .selectBuildStepFromMenuListItem(idx)
+                .checkBuilderWindowHeaderName(buildStep)
+                .clickSaveBtnAndGoFreestyleProject()
+                .clickConfigureSideMenuLink()
+                .clickLeftSidePanelBuildStepsBtn()
+                .getBuilderWindow()
+                .should('be.visible')
+        })
+    });
+
 });
