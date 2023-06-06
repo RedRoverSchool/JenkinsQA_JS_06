@@ -1,11 +1,12 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
-import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
+import { restAPIPageTitle } from "../../fixtures/pom_fixtures/restAPIPage.json";
+import { homePageHeader } from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
 
 describe('headerAndFooter', () => {
 
@@ -15,15 +16,14 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickJenkinsVersionLink()
             .getPageTitle()
-            .should('contain', headerAndFooterData.pageTitle)
+            .should('contain', pageTitle)
     })
-
 
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
-        .clickRestAPILink()
-        .getRestApiTitle()
-        .should('have.text',restAPIPageTitle)
+            .clickRestAPILink()
+            .getRestApiTitle()
+            .should('have.text', restAPIPageTitle)
     })
 
     it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
@@ -39,10 +39,10 @@ describe('headerAndFooter', () => {
 
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
         headerAndFooter
-           .clickUserDropDownBtn()
-           .getUserDropdownMenuItemList()
-           .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
-     });
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemList()
+            .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
+    });
 
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
@@ -51,7 +51,7 @@ describe('headerAndFooter', () => {
             .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
     })
 
-    it('AT_01.08_002 | Verify logout button redirects to the login page', function() {
+    it('AT_01.08_002 | Verify logout button redirects to the login page', function () {
         headerAndFooter
             .clickLogOutBtn()
             .getWelcomeMessage()
@@ -70,7 +70,7 @@ describe('headerAndFooter', () => {
             .trimSearchBoxResultDropDownList()
             .should('satisfy', ($text) => {
                 return headerAndFooter
-                        .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
+                    .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
 })

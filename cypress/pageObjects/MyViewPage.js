@@ -2,6 +2,7 @@ import NewItemPage from './NewItemPage';
 import PipelinePage from "./PipelinePage";
 import FreestyleProjectPage from './FreestyleProjectPage';
 import MultiConfigurationProjectPage from './MultiConfigurationProjectPage';
+import FolderPage from './FolderPage';
 import NewViewPage from './NewViewPage';
 import myView from '../fixtures/pom_fixtures/myView.json';
 
@@ -11,6 +12,7 @@ class MyViewPage {
   getPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getFreestyleProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getMultiConfigurationProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getAddNewViewLink = () => cy.get('a[href$="/newView"]');
 
   clickNewItemSideMenuLink() {
@@ -33,6 +35,10 @@ clickMultiConfigurationProjectNameLink(){
   return new MultiConfigurationProjectPage();
 };
 
+clickFolderNameLink(){
+  this.getFolderNameLink().click()
+  return new FolderPage();
+};
   verifyAndClickAddNewViewLink() {
     this.getAddNewViewLink()
     .should('be.visible').click();
