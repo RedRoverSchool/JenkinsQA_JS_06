@@ -1,19 +1,12 @@
 /// <reference types="cypress" />
 
-import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import { name } from "../../fixtures/pom_fixtures/jobConfigurePage.json";
 
 describe("multiConfigurationProject", () => {
-    const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
     beforeEach(() => {
-        homePage
-            .clickCreateJobLink()
-            .selectMultiConfigurationProjectItem()
-            .typeNewItemNameInputField(name)
-            .clickOkBtnAndGoMultiConfProjectConfig()
-            .clickSaveButton();
+        cy.createMultiConfigurationProject(name);
     })
 
     it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
@@ -21,8 +14,8 @@ describe("multiConfigurationProject", () => {
             .clickJenkinsHomeLink()
             .clickMultiConfigProjectNameLink(name)
             .clickDeleteSideMenuLink()
-            .getPageBody()
-            .should("not.have.text", name);
+            .getProjectTable()
+            .should('not.exist');
     });
 
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
@@ -30,7 +23,7 @@ describe("multiConfigurationProject", () => {
             .clickJenkinsHomeLink()
             .clickProjectDrpDwnBtn()
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
-            .getPageBody()
-            .should("not.have.text", name);
+            .getProjectTable()
+            .should('not.exist');
     });
 });

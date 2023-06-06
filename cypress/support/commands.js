@@ -23,10 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
 
+import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../pageObjects/HomePage";
 const homePage = new HomePage();
+
 Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
     homePage
         .clickNewItemSideMenuLink()
@@ -34,4 +35,35 @@ Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig()
    })
+
+import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
+const headerAndFooter = new HeaderAndFooter();
+
+Cypress.Commands.add('createFolderProject', (folderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFolderItem()
+        .typeNewItemNameInputField(folderName)
+        .clickOkBtnAndGoFolderConfig()
+        .clickSaveBtnAndGoFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+})
+
+Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+    homePage
+        .clickCreateJobLink()
+        .selectMultiConfigurationProjectItem()
+        .typeNewItemNameInputField(folderName)
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton();
+})
+
+Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFreestyleProjectItem()
+        .typeNewItemNameInputField(freestyleProjectName)
+        .clickOkBtnAndGoFreestyleProjectConfig()
+});
 
