@@ -16,6 +16,9 @@ class NewItemPage {
     getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
     getNewItenHeader = () => cy.get('.header .h3');
     getFolderItem = () => cy.get('li[class*="folder"]');
+    getWarningMessage = () => cy.get('#itemname-required');
+    getNewItemHeader = () => cy.get('.header .h3');  
+    
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -32,7 +35,7 @@ class NewItemPage {
         return new MultibranchPipelineConfigurePage();
     };
 
-    getNewItemNamesList() {
+    createNewItemNamesList() {
         return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });

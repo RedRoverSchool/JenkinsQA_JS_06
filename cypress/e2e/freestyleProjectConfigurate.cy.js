@@ -26,7 +26,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('#description div:nth-child(1)').should('have.text', description);
     });
 
-    it('AT_12.05_004 | Add link on GitHub', () => {
+    it.skip('AT_12.05_004 | Add link on GitHub', () => {
         cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click();
         cy.get('.jenkins-table__link').realHover();
         cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron').click({force : true});

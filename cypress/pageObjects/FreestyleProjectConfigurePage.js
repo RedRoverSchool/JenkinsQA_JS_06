@@ -8,6 +8,9 @@ class FreestyleProjectConfigurePage {
     getAddBuildStepMenuList = () => cy.get('.config-table .jenkins-section:nth-child(10) li [href]')
     getBuilderWindow = () => cy.get('.repeated-chunk[name="builder"]')
     getBuilderWindowHeader = () => cy.get('.repeated-chunk__header')
+    getGitHubProjectCheckbox = () => cy.get('.jenkins-checkbox [name="githubProject"]');
+    getProjectUrlInputField = () => cy.get('input[name="_.projectUrlStr"]');
+    getSaveBtn = () => cy.get('button[name="Submit"]');
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -25,11 +28,28 @@ class FreestyleProjectConfigurePage {
         this.getAddBuildStepMenuList().eq(idx).click()
         return this
     };
+    
     checkBuilderWindowHeaderName(name) {
         this.getBuilderWindowHeader()
             .should('include.text', name)
         return this
     };
+
+    checkGitHubProjectCheckbox() {
+        this.getGitHubProjectCheckbox().check({force: true});
+        return this;
+    }
+
+    typeProjectUrl(URL) {
+        this.getProjectUrlInputField().type(URL);
+        return this;
+    }
+
+    clickSaveBntAndGoFreestyleProjectPage() {
+        this.getSaveBtn().click();
+        return new FreestyleProjectPage();
+    }
+
 }
 
 export default FreestyleProjectConfigurePage;

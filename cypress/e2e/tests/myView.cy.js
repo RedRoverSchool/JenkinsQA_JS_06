@@ -6,6 +6,7 @@ import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.jso
 import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
+import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe('myView', () => {
 
@@ -71,6 +72,22 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', multiConfigurationProjectName);
   });
+
+  it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
+    homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(folderName)
+      .selectFolderItem()
+      .clickOkBtnAndGoFolderConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickFolderNameLink()
+      .getFolderHeader()
+      .should('be.visible')
+      .and('include.text', folderName);
+  }); 
 });
   
     
