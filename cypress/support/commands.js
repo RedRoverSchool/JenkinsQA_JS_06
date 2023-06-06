@@ -40,11 +40,11 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickJenkinsHomeLink()
 });
 
-Cypress.Commands.add('createFreeStyleProject', (freeStyleProjectName) => {
+Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
     homePage
         .clickNewItemSideMenuLink()
         .selectFreestyleProjectItem()
-        .typeNewItemNameInputField(freeStyleProjectName)
+        .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
 });
 
