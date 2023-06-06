@@ -38,4 +38,18 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickSaveBtnAndGoFolder()
     headerAndFooter
         .clickJenkinsHomeLink()
-})
+});
+
+Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
+    const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
+
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFreestyleProjectItem()
+        .typeNewItemNameInputField(freestyleProjectName)
+        .clickOkBtnAndGoFreestyleProjectConfig()
+        .clickSaveBtnAndGoFreestyleProject()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
