@@ -6,11 +6,12 @@ import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProj
 import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {errorMessage} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
+import '../../support/commands';
 
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
-    
+
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
             .clickNewItemSideMenuLink()
@@ -57,5 +58,18 @@ describe('freestyleProject', () => {
                 .should('be.visible')
                 .and('exist')
         })
+    });
+
+    it('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', () => {
+        cy.CreateFreestyleProject(newItemData.freestyleProjectName)
+
+        homePage
+            .hoverProjectNameLink()
+            .clickProjectNameDropdown()
+            .clickProjectNameDropdownRenameLink()
+            .typeNewNameInputFild(freestyleProjectNewName)
+            .clickRenameBtn()
+            .getFreestyleProjectHeader()            
+            .should('have.text', headerText + freestyleProjectNewName);
     });
 });

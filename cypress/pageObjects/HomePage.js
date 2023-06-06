@@ -6,6 +6,7 @@ import OrgFolderPage from "./OrgFolderPage";
 import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -23,6 +24,7 @@ class HomePage {
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectNameDropdownRenameLink = () => cy.get('[href*="rename"]')                  
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -79,14 +81,22 @@ class HomePage {
     return this;
   }
 
-    clickProjectNameDropdown() {
+  clickProjectNameDropdown() {
     this.getProjectNameDropdown().click({force : true});
+    
     return this;
   }
 
   clickProjectNameDropdownConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
+ 
     return new FreestyleProjectConfigurePage();
+  }
+
+  clickProjectNameDropdownRenameLink() {
+    this.getProjectNameDropdownRenameLink().click()
+    
+    return new FreestyleProjectRenamePage();
   }
 }
 

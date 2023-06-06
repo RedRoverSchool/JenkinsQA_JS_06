@@ -23,3 +23,19 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import HomePage from "../pageObjects/HomePage";
+import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
+
+Cypress.Commands.add('CreateFreestyleProject', (projectName) => {  
+
+    const homePage = new HomePage();
+    const dashbord = new DashboardBreadcrumbs;
+
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(projectName)
+        .selectFreestyleProjectItem()            
+        .clickOkBtnAndGoFreestyleProjectConfig();
+
+    dashbord.clickDashboardLinkAndGoHomePage();
+})
