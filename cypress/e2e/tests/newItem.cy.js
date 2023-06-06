@@ -2,10 +2,12 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
+import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 
 describe('newItem', () => {
 
     const homePage = new HomePage();
+    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
 
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
@@ -32,5 +34,19 @@ describe('newItem', () => {
             .selectOrgFolderItem()
             .getWarningMessage()
             .should('contain.text', newItemPage.warningMessage);
+    });
+
+    it('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.multibranchPipelineName)
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickSaveBtnAndGoMultiPipeline();
+            
+        dashboardBreadcrumbs
+            .clickDashboardLinkAndGoHomePage()
+            .getProjectTable()
+            .should('exist');    
     });
 });
