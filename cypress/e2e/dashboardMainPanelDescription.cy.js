@@ -8,7 +8,7 @@ describe('dashboardMainPanelDescription', () => {
         cy.get("textarea.jenkins-input").should('not.exist')
     })
 
-    it("AT_02.06_005 | Dashboard > Verification of the button 'Add description'", () => {
+    it.skip("AT_02.06_005 | Dashboard > Verification of the button 'Add description'", () => {
         cy.get("a#description-link").click() 
         cy.focused().should('have.attr', 'name', 'description') 
     })

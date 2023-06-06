@@ -26,6 +26,7 @@ class HomePage {
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getAddDescriptionBtn = () => cy.get("a#description-link");
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -95,6 +96,11 @@ class HomePage {
   clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
     this.getDeleteFoldersAndMultiBrPipelineLink().click();
     return new FoldersAndMultibrPipelineDeletePage();
+  }
+
+  clickAddDescriptionBtn() {
+    this.getAddDescriptionBtn().click();
+    return this;
   }
 }
 
