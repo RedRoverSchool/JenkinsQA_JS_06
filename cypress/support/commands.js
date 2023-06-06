@@ -23,3 +23,15 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
+
+import HomePage from "../pageObjects/HomePage";
+const homePage = new HomePage();
+Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig()
+   })
+
