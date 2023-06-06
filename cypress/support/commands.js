@@ -41,14 +41,12 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
 })
 
 Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
-    const homePage = new HomePage();
-
     homePage
-    .clickCreateJobLink()
-    .selectMultiConfigurationProjectItem()
-    .typeNewItemNameInputField(folderName)
-    .clickOkBtnAndGoMultiConfProjectConfig()
-    .clickSaveButton();
+        .clickCreateJobLink()
+        .selectMultiConfigurationProjectItem()
+        .typeNewItemNameInputField(folderName)
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton();
 })
 
 Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
