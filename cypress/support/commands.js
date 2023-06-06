@@ -40,13 +40,13 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickJenkinsHomeLink()
 })
 
-Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProjectName) => {
     homePage
         .clickCreateJobLink()
         .selectMultiConfigurationProjectItem()
-        .typeNewItemNameInputField(folderName)
+        .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
-        .clickSaveButton();
+        .clickSaveButton()
 })
 
 Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
