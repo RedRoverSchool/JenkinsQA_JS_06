@@ -10,6 +10,8 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
+import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
+import FreestyleProjectPage from "./FreestyleProjectPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -35,6 +37,8 @@ class HomePage {
     getAddDescriptionField = () => cy.get('.jenkins-input ');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
     getSavedDescriptionField = () => cy.get('#description');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getNamesProjects = () => cy.get('.jenkins-table__link span');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -112,7 +116,7 @@ class HomePage {
 
   getTimeBuildCreating() {
     let timeBuildCreating;
-    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm:ss');
+    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm');
   }
 
   clickBuildHistoryLink() {
@@ -133,6 +137,16 @@ class HomePage {
   clickSaveDescriptionBtn(){
     this.getSaveDescriptionBtn().click();
     return this;
+  }
+
+  selectRenameMultiConfProjectDrpDwnMenuBtn() {
+    this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
+    return new MultiConfProjectRenamePage();
+  }
+
+  clickNamesProjects() {
+    this.getNamesProjects().click()
+    return new FreestyleProjectPage()
   }
 
 }
