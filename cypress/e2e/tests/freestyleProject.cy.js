@@ -99,6 +99,6 @@ describe('freestyleProject', () => {
             .getErrorMessage()
             .should('have.text', freestyleProject.message)
             .and('be.visible')
-    });
+    });    
 
 });
