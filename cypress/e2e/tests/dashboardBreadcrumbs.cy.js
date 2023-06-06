@@ -33,8 +33,16 @@ describe('dashboardBreadcrumbs', () => {
          .getNewItemHeader()
          .should('have.text', newItemPageData.newItemHeader);
 
-      cy.url().should('include', newItemPageData.newItemEndPoinURL);   
+      cy.url().should('include', newItemPageData.newItemEndPoinURL);
    })
 
-
+   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
+      dashboardBreadcrumbs
+         .clickDashboardDropdownBtn()
+         .getDashboardDropDownMenuList().should('be.visible').and('have.length',dashboardDropdownMenu.length)
+         .each((el, index) => {
+            expect(el.text()).to.equal(dashboardDropdownMenu[index])
+         })
+   });
 })
+

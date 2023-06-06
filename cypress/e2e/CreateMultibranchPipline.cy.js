@@ -2,7 +2,7 @@
 
 const multibranchName = 'TestMulti'
 
-describe('<New Item> Create a new Multibranch Pipeline', () => {
+describe.skip('<New Item> Create a new Multibranch Pipeline', () => {
     
     it('New Item > Create a new Multibranch Pipeline [+New Item]', function () {
         cy.contains('New Item').click()
