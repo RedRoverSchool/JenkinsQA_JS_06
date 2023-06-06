@@ -9,10 +9,11 @@
     "searchBoxPlaceholder": "Search (CTRL+K)",
     "inputLowerCase": "e",
     "inputUpperCase": "E",
-
     "version": {
         "number" : "Jenkins 2.387.2",
         "link" : "https://www.jenkins.io/",
         "rgb" : "rgb(20, 20, 31)"
-    }
+    },
+    "jenkinsEndPointWebSite" : "jenkins.io",
+    "pageTitle" : "Jenkins"
 }

@@ -1,4 +1,5 @@
 {
+    "gitHubProjectURL" : "https://github.com/RedRoverSchool/JenkinsQA_JS_06/",
     "buildSteps" : [
         "Execute Windows batch command",
         "Execute shell",

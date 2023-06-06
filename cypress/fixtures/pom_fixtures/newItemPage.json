@@ -3,6 +3,7 @@
     "freestyleProjectName": "Freestyle Project Job",
     "orgFolderName": "OrgFolderTest",
     "pipelineName": "Pipeline Job",
+    "multiConfigurationProjectName": "Multi-configuration Project Job",
     "folderName": "Folder Job",
 
     "newItemNames": [
@@ -15,5 +16,11 @@
     ], 
 
     "newItemEndPoinURL" :  "/all/newJob", 
-    "newItemHeader" : "Enter an item name"
+    "newItemHeader" : "Enter an item name",
+
+    "character" : "LooongName",
+    "number" : 26,
+
+    "warningMessage": "» This field cannot be empty, please enter a valid name"
+  
 }

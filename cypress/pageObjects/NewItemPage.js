@@ -4,6 +4,7 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import PipelineConfigurePage from "./PipelineConfigurePage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import FolderConfigurePage from "./FolderConfigurePage";
+import ErrorMessagePage from "./ErrorMessagePage";
 
 class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
@@ -16,6 +17,11 @@ class NewItemPage {
     getOrgFolderItem = () => cy.get('.jenkins_branch_OrganizationFolder');
     getNewItenHeader = () => cy.get('.header .h3');
     getFolderItem = () => cy.get('li[class*="folder"]');
+    getNewItemHeader = () => cy.get('.header .h3');
+    getEachItemsName = () => cy.get('#createItem li[tabindex]')
+    getWarningMessage = () => cy.get('#itemname-required');
+    getNewItemHeader = () => cy.get('.header .h3');  
+    
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -32,7 +38,7 @@ class NewItemPage {
         return new MultibranchPipelineConfigurePage();
     };
 
-    getNewItemNamesList() {
+    createNewItemNamesList() {
         return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });
@@ -86,6 +92,16 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new FolderConfigurePage();
       };
+
+    clickEachItemsNameFromMenuListItem(idx) {
+        this.getEachItemsName().eq(idx).click()
+        return this
+    };
+
+    clickOkBtnAndGoErrorPage() {
+        this.getNewItemOkBtn().click();
+        return new ErrorMessagePage();
+    };
         
 }
 export default NewItemPage;

@@ -1,8 +1,10 @@
 import HomePage from "../pageObjects/HomePage";
+import JenkinsPage from './JenkinsPage'
 import LoginPage from "./LoginPage";
 import MyViewPage from "./MyViewPage";
 import RestAPIPage from "./RestAPIPage"
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import UserBuildsPage from "./UserBuildsPage";
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 
 class HeaderAndFooter {
@@ -18,7 +20,14 @@ class HeaderAndFooter {
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
     getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a'); 
-    
+    getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
+    getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+
+    clickJenkinsVersionLink(){
+        this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
+        return new JenkinsPage;
+    }
+
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
         return this;
@@ -34,7 +43,6 @@ class HeaderAndFooter {
         return new RestAPIPage();
     }
     
-
     getUserDropdownMenuItemList() {
         return this
         .getUserDropdownMenuItemsList()
@@ -76,6 +84,11 @@ class HeaderAndFooter {
 
     isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
         return text.includes(lowerLetter) || text.includes(upperLetter);
+    }
+
+    selectUserBuildsMenu() {
+        this.getUserBuildsMenu().click();
+        return new UserBuildsPage();
     }
 }
 export default HeaderAndFooter;
