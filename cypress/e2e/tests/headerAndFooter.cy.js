@@ -18,7 +18,6 @@ describe('headerAndFooter', () => {
             .should('contain', headerAndFooterData.pageTitle)
     })
 
-
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
         .clickRestAPILink()
@@ -39,10 +38,10 @@ describe('headerAndFooter', () => {
 
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
         headerAndFooter
-           .clickUserDropDownBtn()
-           .getUserDropdownMenuItemList()
-           .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
-     });
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemList()
+            .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
+    });
 
     it('AT_01.02_019 | No results appear after input text in the Search box', function () {
         headerAndFooter
@@ -51,7 +50,7 @@ describe('headerAndFooter', () => {
             .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     })
 
-    it('AT_01.08_002 | Verify logout button redirects to the login page', function() {
+    it('AT_01.08_002 | Verify logout button redirects to the login page', function () {
         headerAndFooter
             .clickLogOutBtn()
             .getWelcomeMessage()
@@ -70,7 +69,7 @@ describe('headerAndFooter', () => {
             .trimSearchBoxResultDropDownList()
             .should('satisfy', ($text) => {
                 return headerAndFooter
-                        .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
+                    .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
 })
