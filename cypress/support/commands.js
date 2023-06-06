@@ -27,10 +27,10 @@ import HomePage from "../pageObjects/HomePage";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 
-Cypress.Commands.add('createFolderProject', (folderName) => {
-    const homePage = new HomePage();
-    const headerAndFooter = new HeaderAndFooter();
+const homePage = new HomePage();
+const headerAndFooter = new HeaderAndFooter();
 
+Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
         .clickNewItemSideMenuLink()
         .selectFolderItem()
@@ -42,26 +42,18 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
 })
 
 Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
-    const homePage = new HomePage();
-
     homePage
-    .clickCreateJobLink()
-    .selectMultiConfigurationProjectItem()
-    .typeNewItemNameInputField(folderName)
-    .clickOkBtnAndGoMultiConfProjectConfig()
-    .clickSaveButton();
+        .clickCreateJobLink()
+        .selectMultiConfigurationProjectItem()
+        .typeNewItemNameInputField(folderName)
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton();
 })
 
-Cypress.Commands.add('CreateFreestyleProject', (projectName) => {  
-
-    const homePage = new HomePage();
-    const dashbord = new DashboardBreadcrumbs;
-
+Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
     homePage
         .clickNewItemSideMenuLink()
-        .typeNewItemNameInputField(projectName)
-        .selectFreestyleProjectItem()            
-        .clickOkBtnAndGoFreestyleProjectConfig();
-    dashbord
-        .clickDashboardLinkAndGoHomePage();
-    })
+        .selectFreestyleProjectItem()
+        .typeNewItemNameInputField(freestyleProjectName)
+        .clickOkBtnAndGoFreestyleProjectConfig()
+});
