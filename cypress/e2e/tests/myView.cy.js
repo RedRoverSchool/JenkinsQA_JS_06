@@ -69,5 +69,21 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', newItemPageData.multiConfigurationProjectName);
   });
+
+  it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
+    homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(newItemPageData.folderName)
+      .selectFolderItem()
+      .clickOkBtnAndGoFolderConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickFolderNameLink()
+      .getFolderHeader()
+      .should('be.visible')
+      .and('include.text', newItemPageData.folderName);
+  }); 
 });
   

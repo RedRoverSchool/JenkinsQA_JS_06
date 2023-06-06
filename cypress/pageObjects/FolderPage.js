@@ -3,6 +3,7 @@ class FolderPage {
     getFolderDescriptionInputField = () => cy.get('textarea[name="description"]');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
     getFolderDescription = () => cy.get('#description div:first-child');
+    getFolderHeader = () => cy.get('#main-panel h1');
 
     clickAddDescriptionBtn() {
         this.getAddDescriptiotBtn().click();
