@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import HeaderAndFooter from "../../pageObjects/HeaderAndFooter"
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 
@@ -24,19 +24,12 @@ describe('folder', () => {
     });
 
     it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
+        cy.createFolderProject(folderName)
         homePage
-            .clickNewItemSideMenuLink()
-            .selectFolderItem()
-            .typeNewItemNameInputField(folderName)
-            .clickOkBtnAndGoFolderConfig()
-            .clickSaveBtnAndGoFolder()
-        
-        headerAndFooter
-            .clickJenkinsHomeLink()
             .clickProjectDrpDwnBtn()
-            .clickDeleteMultiBrPipelineFromDrpDwnMenu()
+            .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
-            .getMainPanel()
-            .should("not.have.text", folderName)
+            .getProjectTable()
+            .should('not.exist');
     });
 });
