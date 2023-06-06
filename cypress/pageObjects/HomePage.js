@@ -6,6 +6,7 @@ import OrgFolderPage from "./OrgFolderPage";
 import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
@@ -24,6 +25,8 @@ class HomePage {
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getProjectNameDropdownRenameLink = () => cy.get('[href*="rename"]')                  
 
   clickPeopleSideMenuLink() {
@@ -91,6 +94,11 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
  
     return new FreestyleProjectConfigurePage();
+  }
+
+  clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
+    this.getDeleteFoldersAndMultiBrPipelineLink().click();
+    return new FoldersAndMultibrPipelineDeletePage();
   }
 
   clickProjectNameDropdownRenameLink() {

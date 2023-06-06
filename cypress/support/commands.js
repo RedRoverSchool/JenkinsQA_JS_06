@@ -24,7 +24,33 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import HomePage from "../pageObjects/HomePage";
+import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
+
+Cypress.Commands.add('createFolderProject', (folderName) => {
+    const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
+
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFolderItem()
+        .typeNewItemNameInputField(folderName)
+        .clickOkBtnAndGoFolderConfig()
+        .clickSaveBtnAndGoFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+})
+
+Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+    const homePage = new HomePage();
+
+    homePage
+    .clickCreateJobLink()
+    .selectMultiConfigurationProjectItem()
+    .typeNewItemNameInputField(folderName)
+    .clickOkBtnAndGoMultiConfProjectConfig()
+    .clickSaveButton();
+})
 
 Cypress.Commands.add('CreateFreestyleProject', (projectName) => {  
 
@@ -36,6 +62,6 @@ Cypress.Commands.add('CreateFreestyleProject', (projectName) => {
         .typeNewItemNameInputField(projectName)
         .selectFreestyleProjectItem()            
         .clickOkBtnAndGoFreestyleProjectConfig();
-
-    dashbord.clickDashboardLinkAndGoHomePage();
-})
+    dashbord
+        .clickDashboardLinkAndGoHomePage();
+    })
