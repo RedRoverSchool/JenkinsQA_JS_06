@@ -6,6 +6,7 @@ import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {pageTitle} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 
 describe('headerAndFooter', () => {
 
@@ -15,7 +16,7 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickJenkinsVersionLink()
             .getPageTitle()
-            .should('contain', headerAndFooterData.pageTitle)
+            .should('contain', pageTitle)
     })
 
 
