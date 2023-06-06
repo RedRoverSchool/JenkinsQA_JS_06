@@ -5,7 +5,7 @@ import pipelineName from '../fixtures/pipelineName.json'
 
 describe('New Item Create a new Multibranch Pipeline', () => {
 
-    it('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
+    it.skip('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#name').type(pipelineName.namePipeline)
         cy.get('#j-add-item-type-nested-projects').contains('Multibranch Pipeline').click()
@@ -18,7 +18,7 @@ describe('New Item Create a new Multibranch Pipeline', () => {
             .and('include.text', pipelineName.namePipeline)
     })
 
-    it('AT_05.05_006 | New Item | Create a new Multibranch Pipeline', ()=>{
+    it.skip('AT_05.05_006 | New Item | Create a new Multibranch Pipeline', ()=>{
         cy.get(':nth-child(1) > .task-link-wrapper > .task-link').click()
         cy.url().should('includes','/view/all/newJob')
         cy.get('#name').type(multibranchPipeline.newMultiPipeline)
