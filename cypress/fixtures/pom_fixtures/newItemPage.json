@@ -3,6 +3,8 @@
     "freestyleProjectName": "Freestyle Project Job",
     "orgFolderName": "OrgFolderTest",
     "pipelineName": "Pipeline Job",
+    "multiConfigurationProjectName": "Multi-configuration Project Job",
+    "folderName": "Folder Job",
 
     "newItemNames": [
         "Freestyle project",
