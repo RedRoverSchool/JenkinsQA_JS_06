@@ -1,13 +1,12 @@
 class FolderPage {
-    getAddDescriptiotBtn = () => cy.get('#description-link');
+    getAddEditDescriptiotBtn = () => cy.get('#description-link');
     getFolderDescriptionInputField = () => cy.get('textarea[name="description"]');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
     getFolderDescription = () => cy.get('#description div:first-child');
     getFolderHeader = () => cy.get('#main-panel h1');
-    getEditDescriptionBtn = () => cy.get('#description-link')
 
-    clickAddDescriptionBtn() {
-        this.getAddDescriptiotBtn().click();
+    clickAddEditDescriptionBtn() {
+        this.getAddEditDescriptiotBtn().click();
         return this;
     };
 
@@ -18,11 +17,6 @@ class FolderPage {
 
     saveFolderDescription() {
         this.getSaveDescriptionBtn().click();
-        return this;
-    };
-
-    clickEditDescriptionBtn() {
-        this.getEditDescriptionBtn().click();
         return this;
     };
 
