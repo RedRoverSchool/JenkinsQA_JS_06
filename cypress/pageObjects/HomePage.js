@@ -107,6 +107,7 @@ class HomePage {
   clickAddDescriptionBtn() {
     this.getAddDescriptionBtn().click();
     return this;
+  }
 
   clickScheduleBuildBtn() {
     return this.getScheduleBuildBtn().click();
