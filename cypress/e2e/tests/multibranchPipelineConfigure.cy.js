@@ -5,11 +5,13 @@ import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfigData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 import multibranchPipelineData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
 
 describe('multibranchPipelineConfigure', () => {
 
     const homePage = new HomePage();
     const multibranchPiplinePage = new MultibranchPipelinePage();
+    const multibranchPipelineConfigurePage = new MultibranchPipelineConfigurePage();
 
     it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
         homePage
@@ -57,5 +59,14 @@ describe('multibranchPipelineConfigure', () => {
             .getEnableButton()
             .should('contain', multibranchPipelineData.enableButton)
             .and('have.css', 'color', multibranchPipelineData.enableButtonColor)
+    });
+
+    it('AT_16.01_017 | Multibranch Pipeline > Configuration > Scan Multibranch Pipeline Triggers > Verify array of time Interval', function () {
+        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
+        .clickPeriodicallyCheckBox()
+        .createTriggersIntervalDrDwnOptionList()
+        .should('deep.equal', multibranchPipelineConfigData.intervalTime);
     });
 });
