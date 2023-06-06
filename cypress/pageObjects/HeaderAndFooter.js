@@ -1,9 +1,9 @@
-import UserConfigurePage from "../pageObjects/UserConfigurePage";
-import RestAPIPage from "./RestAPIPage"
-import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
-import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import LoginPage from "./LoginPage";
+import MyViewPage from "./MyViewPage";
+import RestAPIPage from "./RestAPIPage"
+import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import UserConfigurePage from "../pageObjects/UserConfigurePage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -17,7 +17,8 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
-
+    getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a'); 
+    
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
         return this;
@@ -32,6 +33,7 @@ class HeaderAndFooter {
         this.getRestAPILink().click()
         return new RestAPIPage();
     }
+    
 
     getUserDropdownMenuItemList() {
         return this
