@@ -44,5 +44,12 @@ describe('freestyleProjectConfigure', () => {
             .should('include.text', gitHubPageData.gitHubHeaderAuthor);
     });
 
-
+    it('AT_12.05_001 | Freestyle project > Add description to Freestyle project', () => {
+        freestyleProjectPage            
+            .clickConfigureSideMenuLink()  
+            .typeDescriptionInputField(freestyleProjectConfigure.description)
+            .clickSaveBtnAndGoFreestyleProject()        
+            .getFreestyleProjectDescription()
+            .should('contain.text', freestyleProjectConfigure.description);
+    })
 });

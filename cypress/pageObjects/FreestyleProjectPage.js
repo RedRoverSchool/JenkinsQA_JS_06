@@ -6,7 +6,8 @@ class FreestyleProjectPage {
     getRenameSideMenuLink = () => cy.get('#side-panel a[href$="rename"]');
     getFreestyleProjectHeader = () => cy.get('#main-panel h1');   
     getGitHubSideMenuLink = () =>  cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]');  
-    
+    getFreestyleProjectDescription = () => cy.get('#description');
+
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
         return new FreestyleProjectConfigurePage()

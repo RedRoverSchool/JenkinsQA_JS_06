@@ -11,6 +11,7 @@ class FreestyleProjectConfigurePage {
     getGitHubProjectCheckbox = () => cy.get('.jenkins-checkbox [name="githubProject"]');
     getProjectUrlInputField = () => cy.get('input[name="_.projectUrlStr"]');
     getSaveBtn = () => cy.get('button[name="Submit"]');
+    getDescriptionInputField = () => cy.get('textarea[name="description"]');
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -49,6 +50,11 @@ class FreestyleProjectConfigurePage {
         this.getSaveBtn().click();
         return new FreestyleProjectPage();
     }
+
+    typeDescriptionInputField(name) {
+        this.getDescriptionInputField().clear().type(name);
+        return this;
+    };
 
 }
 
