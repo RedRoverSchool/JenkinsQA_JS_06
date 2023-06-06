@@ -6,7 +6,8 @@ describe("homepageMainPanelDecription", () => {
     const homePage = new HomePage()
 
     it("AT_02.06_005 | Homepage > Verification of the button 'Add description'", () => {
-        homePage.clickAddDescriptionBtn();
+        homePage
+          .clickAddDescriptionBtn();
         cy.focused().should('have.attr', 'name', 'description') 
     })
 })
