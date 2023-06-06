@@ -73,4 +73,13 @@ describe('headerAndFooter', () => {
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
+
+    it('AT_01.01_003 | Verify Jenkins icon and name-icon are visible', () => {
+        headerAndFooter
+            .getHeadIcon()
+            .should('be.visible');
+        headerAndFooter
+            .getHeadIconName()
+            .should('be.visible');
+    })
 })

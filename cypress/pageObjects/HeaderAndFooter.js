@@ -21,6 +21,8 @@ class HeaderAndFooter {
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
     getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
     getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+    getHeadIcon = () => cy.get('#jenkins-head-icon');
+    getHeadIconName = () => cy.get('#jenkins-name-icon');
 
     clickJenkinsVersionLink(){
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
