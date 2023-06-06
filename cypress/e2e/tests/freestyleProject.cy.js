@@ -83,7 +83,7 @@ describe('freestyleProject', () => {
             .and('be.enabled')
     });
 
-    it.only('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
+    it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
         cy.createFreestyleProject(newItemData.freestyleProjectName)
         headerAndFooter
             .clickJenkinsHomeLink()        
