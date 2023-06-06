@@ -17,8 +17,9 @@ class NewItemPage {
     getNewItenHeader = () => cy.get('.header .h3');
     getFolderItem = () => cy.get('li[class*="folder"]');
     getWarningMessage = () => cy.get('#itemname-required');
-    getNewItemHeader = () => cy.get('.header .h3');
-  
+    getNewItemHeader = () => cy.get('.header .h3');  
+    
+
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
         return this;
