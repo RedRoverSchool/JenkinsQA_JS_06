@@ -1,3 +1,5 @@
+const dayjs = require('dayjs');
+
 import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
@@ -7,6 +9,7 @@ import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
+import BuildHistoryPage from "./BuildHistoryPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -26,6 +29,8 @@ class HomePage {
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
+    getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -95,6 +100,20 @@ class HomePage {
   clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
     this.getDeleteFoldersAndMultiBrPipelineLink().click();
     return new FoldersAndMultibrPipelineDeletePage();
+  }
+
+  clickScheduleBuildBtn() {
+    return this.getScheduleBuildBtn().click();
+  }
+
+  getTimeBuildCreating() {
+    let timeBuildCreating;
+    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm:ss');
+  }
+
+  clickBuildHistoryLink() {
+    this.getBuildHistoryLink().click();
+    return new BuildHistoryPage;
   }
 }
 

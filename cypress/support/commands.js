@@ -26,10 +26,10 @@
 import HomePage from "../pageObjects/HomePage";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 
-Cypress.Commands.add('createFolderProject', (folderName) => {
-    const homePage = new HomePage();
-    const headerAndFooter = new HeaderAndFooter();
+const homePage = new HomePage();
+const headerAndFooter = new HeaderAndFooter();
 
+Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
         .clickNewItemSideMenuLink()
         .selectFolderItem()
@@ -38,4 +38,13 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickSaveBtnAndGoFolder()
     headerAndFooter
         .clickJenkinsHomeLink()
-})
+});
+
+Cypress.Commands.add('createFreeStyleProject', (freeStyleProjectName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .selectFreestyleProjectItem()
+        .typeNewItemNameInputField(freeStyleProjectName)
+        .clickOkBtnAndGoFreestyleProjectConfig()
+});
+
