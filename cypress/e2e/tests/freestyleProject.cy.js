@@ -1,17 +1,22 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import FreestyleProjectRenamePage from "../../pageObjects/FreestyleProjectRenamePage"
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import { freestyleProjectNewName } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { errorMessage } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
+import freestyleProject from"../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
+    const headerAndFooter = new HeaderAndFooter();
+    const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
 
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
@@ -77,5 +82,26 @@ describe('freestyleProject', () => {
             .and('be.visible')
             .and('be.enabled')
     });
+
+    it.only('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
+        cy.createFreestyleProject(newItemData.freestyleProjectName)
+        headerAndFooter
+            .clickJenkinsHomeLink()        
+            .clickNamesProjects()
+            .clickRenameSideMenuLink()
+            .getNewNameInputFild()
+            .should('have.value', newItemData.freestyleProjectName)
+        freestyleProjectRenamePage
+            .clickRenameBtn()
+
+        freestyleProjectRenamePage
+            .getErrorTitle()
+            .should('have.text', freestyleProject.errorMessage)
+            .and('be.visible')
+        freestyleProjectRenamePage
+            .getErrorMessage()
+            .should('have.text', freestyleProject.message)
+            .and('be.visible')
+    });    
     
 });
