@@ -4,6 +4,8 @@ import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import LoginPage from "./LoginPage";
+import JenkinsPage from './JenkinsPage'
+import UserBuildsPage from "./UserBuildsPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -17,6 +19,13 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
+    getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
+    getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+
+    clickJenkinsVersionLink(){
+        this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
+        return new JenkinsPage;
+    }
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -76,6 +85,9 @@ class HeaderAndFooter {
         return text.includes(lowerLetter) || text.includes(upperLetter);
     }
 
-
+    selectUserBuildsMenu() {
+        this.getUserBuildsMenu().click();
+        return new UserBuildsPage();
+    }
 }
 export default HeaderAndFooter;
