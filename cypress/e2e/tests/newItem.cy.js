@@ -10,7 +10,7 @@ describe('newItem', () => {
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .getNewItemNamesList()
+            .createNewItemNamesList()
             .should('deep.equal', newItemPage.newItemNames);
     });
 
@@ -24,5 +24,13 @@ describe('newItem', () => {
             .clickGoToDashboard()
             .getMainPanel()
             .should('contain.text', newItemPage.orgFolderName);
+    });
+
+    it('AT_5.06_003 | Create an Organization folder with an empty Item Name', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .selectOrgFolderItem()
+            .getWarningMessage()
+            .should('contain.text', newItemPage.warningMessage);
     });
 });

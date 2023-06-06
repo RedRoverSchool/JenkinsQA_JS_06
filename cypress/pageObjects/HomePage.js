@@ -7,6 +7,7 @@ import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import homePage from "../fixtures/pom_fixtures/homePage.json"
+import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -14,7 +15,7 @@ class HomePage {
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
-    getProjectNameLink = () => cy.get('a[href*="job/"]');
+    getProjectNameLink = () => cy.get('td>a[href*="job/"]');
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
@@ -22,6 +23,10 @@ class HomePage {
     getSearchBox = () => cy.get('#search-box');
     getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
 
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
+    getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
+    getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
+    getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -89,6 +94,21 @@ class HomePage {
       expect(str).to.equal(homePage.deletePipelineConfirmText)      
     })
     return this;
+  }
+
+  selectDeleteMultiConfProjectDrpDwnMenuBtn() {
+    this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
+    return this;
+  }
+
+    clickProjectNameDropdown() {
+    this.getProjectNameDropdown().click({force : true});
+    return this;
+  }
+
+  clickProjectNameDropdownConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new FreestyleProjectConfigurePage();
   }
 }
 
