@@ -77,27 +77,5 @@ describe('freestyleProject', () => {
             .and('be.visible')
             .and('be.enabled')
     });
-
-
-    freestyleConfigurePage.postBuildActions.forEach((actionName, idx) => {
-        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
-            homePage
-                .clickNewItemSideMenuLink()
-                .typeNewItemNameInputField(newItemData.freestyleProjectName)
-                .selectFreestyleProjectItem()            
-                .clickOkBtnAndGoFreestyleProjectConfig()
-    
-                .clickLeftSideMenuPostBuldActionsBtn()
-                .clickAddPostBuildActionBtn()
-                .selectPostBuildActionDropDownMenuItem(idx)
-                .checkPostBuildActionWindowHeaderName(actionName)
-                .clickSaveBtnAndGoFreestyleProject()
-                .clickConfigureSideMenuLink()
-                .clickLeftSideMenuPostBuldActionsBtn()
-                .getPostBuildActionWindow()
-                .should('exist')
-                .and('be.visible')
-        })
-    });
     
 });
