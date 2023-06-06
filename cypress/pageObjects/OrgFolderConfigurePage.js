@@ -16,7 +16,7 @@ class OrgFolderConfigurePage {
     }
 
     addDescription(description) {
-        this.getDescriptionField().type(description);
+        this.getDescriptionField().click().type(description);
         return this;
     }
 }
