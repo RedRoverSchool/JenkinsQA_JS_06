@@ -38,7 +38,18 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickSaveBtnAndGoFolder()
     headerAndFooter
         .clickJenkinsHomeLink()
-});
+})
+
+Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+    const homePage = new HomePage();
+
+    homePage
+    .clickCreateJobLink()
+    .selectMultiConfigurationProjectItem()
+    .typeNewItemNameInputField(folderName)
+    .clickOkBtnAndGoMultiConfProjectConfig()
+    .clickSaveButton();
+})
 
 Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
     homePage
@@ -47,4 +58,3 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
 });
-

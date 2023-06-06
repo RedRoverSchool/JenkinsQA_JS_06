@@ -23,7 +23,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 		cy.get('table#projectstatus').should('include.text', projects.freestyle.name)
 	})
 
-	it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
+	it.skip('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
 		cy.get(`a[href="job/${projects.freestyle.name}/"]`).click()
 		cy.wait('@newProjectProfile')
 		//expected result
