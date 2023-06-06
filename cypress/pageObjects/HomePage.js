@@ -108,7 +108,7 @@ class HomePage {
 
   getTimeBuildCreating() {
     let timeBuildCreating;
-    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm:ss');
+    return timeBuildCreating = dayjs().format('ddd, DD MMM YYYY HH:mm');
   }
 
   clickBuildHistoryLink() {
