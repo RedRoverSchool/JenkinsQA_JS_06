@@ -39,3 +39,14 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
     headerAndFooter
         .clickJenkinsHomeLink()
 })
+
+Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+    const homePage = new HomePage();
+
+    homePage
+    .clickCreateJobLink()
+    .selectMultiConfigurationProjectItem()
+    .typeNewItemNameInputField(folderName)
+    .clickOkBtnAndGoMultiConfProjectConfig()
+    .clickSaveButton();
+})
