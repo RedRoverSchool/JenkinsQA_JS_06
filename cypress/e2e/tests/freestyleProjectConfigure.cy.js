@@ -2,17 +2,13 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
-import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import freestyleProjectConfigure from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
-import GitHubPage from "../../pageObjects/GitHubPage";
-import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
+import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json";
 
 describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
-    const freestyleProjectPage = new FreestyleProjectPage();
     const dashbord = new DashboardBreadcrumbs();
-    const gitHubPage = new GitHubPage();
 
     beforeEach('Create Freestyle project', () => {
         homePage
@@ -21,28 +17,22 @@ describe('freestyleProjectConfigure', () => {
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject();
+        dashbord
+            .clickDashboardLinkAndGoHomePage();
     })
 
     it('AT_12.05_004 | Add link on GitHub and verify it', () => {    
-        dashbord
-            .clickDashboardLinkAndGoHomePage();
+        
         homePage
-            .hoverProjectNameLink()
-            .clickProjectNameDropdown();
-        homePage.getProjectNameDropdownList().should('be.visible');
-        homePage.clickProjectNameDropdownConfigureLink()
+            .clickProjectDrpDwnBtn(newItemPage.freestyleProjectName)
+            .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
             .typeProjectUrl(freestyleProjectConfigure.gitHubProjectURL)
             .clickSaveBntAndGoFreestyleProjectPage()
-            .getGitHubSideMenuLink()
-            .should('be.visible');
-        freestyleProjectPage.clickGitHubSideMenuLink();
-
-        cy.url().should('be.eq', freestyleProjectConfigure.gitHubProjectURL);
-        gitHubPage
+            .clickGitHubSideMenuLink()
+            .checkUrl() 
             .getGitHubHeaderAuthor()
-            .should('include.text', gitHubPageData.gitHubHeaderAuthor);
+            .should('include.text', gitHubPageData.gitHubHeaderAuthor); 
     });
-
 
 });

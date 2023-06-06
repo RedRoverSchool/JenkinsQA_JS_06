@@ -79,7 +79,7 @@ class HomePage {
     return this;
   }
 
-    clickProjectNameDropdown() {
+  clickProjectNameDropdown() {
     this.getProjectNameDropdown().click({force : true});
     return this;
   }
@@ -87,6 +87,12 @@ class HomePage {
   clickProjectNameDropdownConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
     return new FreestyleProjectConfigurePage();
+  }
+
+  clickProjectDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
+    return this;
   }
 }
 
