@@ -34,7 +34,7 @@ class NewItemPage {
         return new MultibranchPipelineConfigurePage();
     };
 
-    getNewItemNamesList() {
+    createNewItemNamesList() {
         return this.getNewItemNames().then($els => {
             return Cypress.$.makeArray($els).map($el => $el.innerText)
         });

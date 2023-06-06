@@ -10,7 +10,7 @@ describe('newItem', () => {
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .getNewItemNamesList()
+            .createNewItemNamesList()
             .should('deep.equal', newItemPage.newItemNames);
     });
 
