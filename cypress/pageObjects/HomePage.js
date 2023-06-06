@@ -8,6 +8,7 @@ import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import homePage from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
+import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -27,6 +28,8 @@ class HomePage {
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -109,6 +112,11 @@ class HomePage {
   clickProjectNameDropdownConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
     return new FreestyleProjectConfigurePage();
+  }
+
+  clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
+    this.getDeleteFoldersAndMultiBrPipelineLink().click();
+    return new FoldersAndMultibrPipelineDeletePage();
   }
 }
 
