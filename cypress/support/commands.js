@@ -52,7 +52,6 @@ Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
 })
 
 Cypress.Commands.add('createOrgFolderProject', (folderName) => {
-
     homePage
         .clickNewItemSideMenuLink()
         .typeNewItemNameInputField(folderName)
