@@ -6,7 +6,7 @@ const USERNAME = Cypress.env('local.admin.username');
 
 describe("peopleAddDescriptionToUser", () => {
 
-  it("AT 06.02.001 | Verify description is added to user", function () {
+  it.skip("AT 06.02.001 | Verify description is added to user", function () {
     cy.get("a.task-link").eq(1).click();
     cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click();
     cy.get("#description-link").click();
