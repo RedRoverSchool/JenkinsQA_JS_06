@@ -19,7 +19,7 @@
     "newItemHeader" : "Enter an item name",
 
     "character" : "LooongName",
-    "number" : 26
+    "number" : 26,
 
     "warningMessage": "» This field cannot be empty, please enter a valid name"
   
