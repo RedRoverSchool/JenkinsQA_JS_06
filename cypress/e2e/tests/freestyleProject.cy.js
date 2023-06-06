@@ -7,6 +7,7 @@ import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.jso
 import { errorMessage } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
+import '../../support/commands';
 
 describe('freestyleProject', () => {
 
@@ -78,4 +79,16 @@ describe('freestyleProject', () => {
             .and('be.enabled')
     });
     
+    it('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', () => {
+        cy.createFreestyleProject(newItemData.freestyleProjectName)
+
+        homePage
+            .hoverProjectNameLink()
+            .clickProjectDrpDwnBtn()
+            .clickProjectNameDropdownRenameLink()
+            .typeNewNameInputFild(freestyleProjectNewName)
+            .clickRenameBtn()
+            .getFreestyleProjectHeader()            
+            .should('have.text', headerText + freestyleProjectNewName);
+    });
 });

@@ -25,9 +25,11 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import HomePage from "../pageObjects/HomePage";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
+import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
+const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -55,4 +57,5 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+    dashbord.clickDashboardLinkAndGoHomePage();
 });
