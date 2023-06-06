@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 
-describe("homepageMainPanelDecription", () => {
+describe("homePage", () => {
     const homePage = new HomePage()
 
     it("AT_02.06_005 | Homepage > Verification of the button 'Add description'", () => {
