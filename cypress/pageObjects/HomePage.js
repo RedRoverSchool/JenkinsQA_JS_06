@@ -88,6 +88,7 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
     return new FreestyleProjectConfigurePage();
   }
+
 }
 
 export default HomePage;
