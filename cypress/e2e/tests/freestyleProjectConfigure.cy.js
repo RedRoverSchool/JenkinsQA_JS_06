@@ -25,7 +25,7 @@ describe('freestyleProjectConfigure', () => {
     it('AT_12.05_004 | Add link on GitHub and verify it', () => {    
         dashbord
             .clickDashboardLinkAndGoHomePage()   
-            .clickProjectDrpDwnBtn(newItemPage.freestyleProjectName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPage.freestyleProjectName)
             .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
             .typeProjectUrl(freestyleProjectConfigure.gitHubProjectURL)
