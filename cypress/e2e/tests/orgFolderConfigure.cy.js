@@ -1,7 +1,7 @@
 import HomePage from '../../pageObjects/HomePage';
 import newItemPage from '../../fixtures/pom_fixtures/newItemPage.json';
 import OrgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
-import orgFolderPage from '../../fixtures/pom_fixtures/orgfolderPage.json'
+import orgFolderPage from '../../fixtures/pom_fixtures/orgFolderPage.json'
 
 describe('orgFolderConfigure', () => {
     const homePage = new HomePage();
