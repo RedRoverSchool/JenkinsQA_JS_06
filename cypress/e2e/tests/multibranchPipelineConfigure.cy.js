@@ -77,5 +77,5 @@ describe('multibranchPipelineConfigure', () => {
             .clickConfigureTheProjectLink()
             .hoverScanTriggerCheckbox()
             .should('have.css', 'box-shadow')
-    });
+    })
 });
