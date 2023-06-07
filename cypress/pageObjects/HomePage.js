@@ -156,13 +156,12 @@ class HomePage {
     this.getNamesProjects().click()
     return new FreestyleProjectPage()
   }
-
-  clickProjectDrpDwnBtn(projectName) {
+  
+  hoveAndClickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
   }
-
 }
 
 export default HomePage;
