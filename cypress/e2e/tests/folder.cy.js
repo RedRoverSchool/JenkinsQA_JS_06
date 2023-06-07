@@ -23,7 +23,7 @@ describe('folder', () => {
     });
 
     it.skip('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
-        cy.createFolderProject(folderName)
+        cy.createFolderProject(folderName);
         homePage
             .clickProjectDrpDwnBtn()
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
