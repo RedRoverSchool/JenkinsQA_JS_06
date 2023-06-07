@@ -26,7 +26,6 @@
 
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
-import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../pageObjects/HomePage";
 const homePage = new HomePage();
 
@@ -91,3 +90,12 @@ Cypress.Commands.add('createMultiBranchPipeline', (name) => {
         .clickOkBtnAndGoMultiPipelineConfig();
 });
 
+Cypress.Commands.add('createPipeline', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig();
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});
