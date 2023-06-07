@@ -12,6 +12,7 @@ class MyViewPage {
   getBreadcrumbMyViewsItem = () => cy.get('li:nth-child(5) a:nth-child(1)');
   getPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getFreestyleProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getDashboardMyViewsLink = () => cy.get('#breadcrumbBar a[href="/user/admin/my-views/"]');
   getMultiConfigurationProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');

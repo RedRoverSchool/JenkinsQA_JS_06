@@ -1,13 +1,14 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
-import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
-import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
-import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
+import {  restAPIPageTitle  } from "../../fixtures/pom_fixtures/restAPIPage.json";
+import {  homePageHeader  } from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
-import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import {userDescription} from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
 describe('headerAndFooter', () => {
@@ -75,6 +76,13 @@ describe('headerAndFooter', () => {
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
+
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () =>{
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+            .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbs.dashboardDropdownMenu[4])
+    })
     
     it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
         headerAndFooter
