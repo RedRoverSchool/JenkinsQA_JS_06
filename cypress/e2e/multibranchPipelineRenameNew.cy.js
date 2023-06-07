@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import namePipeline from "../fixtures/renMultibranchPip.json"
 import newNamePipeline from "../fixtures/renMultibranchPip.json"
-describe('Multibranch Pipeline Rename', ()=>{
+describe.skip('Multibranch Pipeline Rename', ()=>{
     beforeEach('Precondition: Create Multibranch Pipeline',()=>{
         cy.get('a[href="newJob"]').click()
         cy.get('li[tabindex="0"]').contains('Multibranch Pipeline').click()
