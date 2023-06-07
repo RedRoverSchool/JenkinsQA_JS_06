@@ -18,4 +18,10 @@ describe("homePage", () => {
           .should('deep.equal', sidePanelItemsData)
     });
 
+    it("AT_02.06_004 | Homepage > Description input textarea does not exist", () => {
+        homePage
+          .getAddDescriptionField()
+          .should("not.exist")
+    })
+
 })
