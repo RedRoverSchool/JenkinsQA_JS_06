@@ -168,7 +168,7 @@ class HomePage {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
-  }  
+  }
 }
 
 export default HomePage;
