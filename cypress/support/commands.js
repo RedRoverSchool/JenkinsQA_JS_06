@@ -23,14 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
-import HomePage from "../pageObjects/HomePage";
+
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
+import HomePage from "../pageObjects/HomePage";
 
 const homePage = new HomePage();
+
+Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig()
+   })
+
 const headerAndFooter = new HeaderAndFooter();
-const dashbord = new DashboardBreadcrumbs;
+const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -50,6 +60,8 @@ Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProje
         .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 })
 
 Cypress.Commands.add('createOrgFolderProject', (folderName) => {
@@ -70,6 +82,15 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .clickOkBtnAndGoFreestyleProjectConfig()
 });
 
+
+Cypress.Commands.add('createMultiBranchPipeline', (name) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(name)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig();
+});
+
 Cypress.Commands.add('createMultibranchPipelineProject', (multibranchPipelineName) => {
     homePage
         .clickNewItemSideMenuLink()
@@ -79,5 +100,5 @@ Cypress.Commands.add('createMultibranchPipelineProject', (multibranchPipelineNam
         .clickSaveBtnAndGoMultiPipeline()
     headerAndFooter
         .clickJenkinsHomeLink()
-})
+});
 

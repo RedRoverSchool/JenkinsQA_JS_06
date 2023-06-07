@@ -1,4 +1,5 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
+import {addSourceItemsList} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 
 class MultibranchPipelineConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -6,6 +7,8 @@ class MultibranchPipelineConfigurePage {
     getAddMetricBtn = () => cy.get('#yui-gen3-button');
     getAppearanceBtn = () => cy.get('#side-panel #tasks button[data-section-id="appearance"]');
     getIconDrpDwn = () => cy.get('.jenkins-form-item.has-help > .jenkins-select select');
+    getAddSourceBtn = () => cy.get('#yui-gen1-button')
+    getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
     getScanTriggersCheckbox = () => cy.get('#cb2');
 
@@ -30,10 +33,24 @@ class MultibranchPipelineConfigurePage {
         return this;
     };
 
+    hoverClickAddSource() {
+        this.getAddSourceBtn().realHover().click();
+        return this;
+    }
+
+    createAddSourceItemList() {
+        return this.getAddSourceDrDwnItemsList()
+            .should('have.length', addSourceItemsList.length)
+            .then($els => {
+                return Cypress._.map($els, 'innerText')
+            });
+    }
+
     clickDisableBtn() {
         this.getDisableBtn().click();
         return this;
     };
+
 
     hoverScanTriggerCheckbox(){
         return this.getScanTriggersCheckbox().realHover();
