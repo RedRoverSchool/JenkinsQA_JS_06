@@ -49,6 +49,8 @@ Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProje
         .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 })
 
 Cypress.Commands.add('createOrgFolderProject', (folderName) => {
