@@ -4,7 +4,6 @@ import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {folderName, freestyleProjectName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
-import {freestyleProjectName} from "../../fixtures/pom_fixtures/newItemPage.json"
 import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 
 describe('folder', () => {
