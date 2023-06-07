@@ -11,7 +11,6 @@ class NewItemPage {
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
-    getMultibranchlineItem2 = () => cy.get('span').contains('Multibranch Pipeline');
     getNewItemNames = () => cy.get('.label');
     getPipelineItem = () => cy.get('ul .org_jenkinsci_plugins_workflow_job_WorkflowJob'); 
     getMultiConfigurationProjectItem = () => cy.get(".hudson_matrix_MatrixProject");

@@ -50,5 +50,45 @@ class HeaderAndFooter {
             return Cypress._.map($els, 'innerText')
         }); 
     }
+    
+    selectUserMyViewsMenu() {
+        this.getUserMyViewsMenu().click();
+        return new MyViewPage();
+    }
+
+    clickJenkinsHomeLink() {
+        this.getJenkinsHomeLink().click();
+        return new HomePage();
+    }
+
+    searchTextSearchBox(text) {
+        this.getSearchBoxInputField().type(text + '{enter}');
+        return new ResultSearchBoxPage();
+    }
+
+    clickLogOutBtn() {
+        this.getLogOutBtn().click();
+        return new LoginPage();
+    }
+
+    typeSearchBoxInputField(text) {
+        this.getSearchBoxInputField().type(text);
+        return this;
+    }
+
+    trimSearchBoxResultDropDownList() {
+        return this.getSearchBoxResultDropDownList().each(($el) => {
+            return cy.wrap($el.text().trim());
+        });
+    }
+
+    isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
+        return text.includes(lowerLetter) || text.includes(upperLetter);
+    }
+
+    selectUserBuildsMenu() {
+        this.getUserBuildsMenu().click();
+        return new UserBuildsPage();
+    }
 }
 export default HeaderAndFooter;

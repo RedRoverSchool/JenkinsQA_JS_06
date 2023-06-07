@@ -16,7 +16,6 @@ import FreestyleProjectPage from "./FreestyleProjectPage";
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
