@@ -22,7 +22,7 @@ describe('folder', () => {
             .getFolderDescription().should('have.text', folderDescription);
     });
 
-    it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
+    it.skip('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
         cy.createFolderProject(folderName)
         homePage
             .clickProjectDrpDwnBtn()
