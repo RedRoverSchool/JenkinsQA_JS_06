@@ -79,4 +79,17 @@ describe('newItem', () => {
             .getDescription()
             .should('contain.text', orgFolderConfigurePage.description);
     });
+
+    it('AT_05.02_003 | Create a new Pipeline going from People page', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig()
+            .clickSaveBtnAndGoPipeline()
+            .clickGoToDashboard()
+            .getMainPanel()
+            .should('contain.text', newItemPage.pipelineName);
+    });
 });
