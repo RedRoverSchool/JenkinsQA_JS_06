@@ -79,6 +79,8 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });
 
 Cypress.Commands.add('createMultiBranchPipeline', (name) => {
