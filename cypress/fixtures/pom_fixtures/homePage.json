@@ -1,5 +1,5 @@
 {
     "homePageHeader": "Welcome to Jenkins!",
-    "deletePipelineConfirmText": "Delete Pipeline: are you sure?",
-    "descriptionText": "Jenkins Projects"
+    "descriptionText": "Jenkins Projects",
+    "deletePipelineConfirmText": "Delete Pipeline: are you sure?"
 }
