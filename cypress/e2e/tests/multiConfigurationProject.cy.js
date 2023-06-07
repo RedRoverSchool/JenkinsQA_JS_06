@@ -27,7 +27,7 @@ describe("multiConfigurationProject", () => {
 
     it('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
         cy.createMultiConfigurationProject(name);
-        homePage
+        headerAndFooter
             .clickProjectDrpDwnBtn()
             .selectRenameMultiConfProjectDrpDwnMenuBtn()
             .typeMultiConfProjectNameInputField(name)
