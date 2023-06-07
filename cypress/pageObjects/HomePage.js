@@ -147,6 +147,11 @@ class HomePage {
 
   }
 
+  clickFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new FolderPage();
+  }
+
   clickAddDescriptionLink() {
     this.getAddDescriptionLink().click();
     return this;

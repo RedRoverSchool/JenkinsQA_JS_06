@@ -11,6 +11,7 @@ class FreestyleProjectPage {
     getDisableProjectBtn = () => cy.get('form#disable-project').find('button[name="Submit"]');
     getHomePageLink = () => cy.get('#jenkins-home-link');
     getFullProjectName = () => cy.get('#main-panel')
+    getDisabledProgectWarning = () => cy.get('.warning');
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -29,6 +30,12 @@ class FreestyleProjectPage {
     clickHomePageLink() {
         this.getHomePageLink().click();
         return new HomePage();
-    } 
+    }
+
+    clickDisableProjectBtn() {
+        this.getDisableProjectBtn().click()
+        return this;
+    }
+
 }
 export default FreestyleProjectPage;
