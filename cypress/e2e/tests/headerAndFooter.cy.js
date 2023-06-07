@@ -1,12 +1,13 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import { restAPIPageTitle } from "../../fixtures/pom_fixtures/restAPIPage.json";
-import { homePageHeader } from "../../fixtures/pom_fixtures/homePage.json";
-import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
-import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import {userDropdownMenuItems} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
+import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
+import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
 import HomePage from "../../pageObjects/HomePage";
 describe('headerAndFooter', () => {
@@ -42,7 +43,7 @@ describe('headerAndFooter', () => {
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
         headerAndFooter
             .clickUserDropDownBtn()
-            .getUserDropdownMenuItemList()
+            .createUserDropdownMenuItemsList()
             .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
     });
 
@@ -75,6 +76,16 @@ describe('headerAndFooter', () => {
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
+    
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+        headerAndFooter
+            .getJenkinsLinkVerNumber()
+            .should('be.visible')
+            .and('have.text', version.number)
+            .and('have.attr', 'href', version.link)
+            .and('have.css', 'color', version.rgb)
+    })
+
 
      it('AT_01.01_019 | Redirection to the homepage by label', () => {
         homePage

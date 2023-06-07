@@ -7,6 +7,7 @@ class MultibranchPipelinePage {
     getJenkinsHeadIcon = () => cy.get('#jenkins-head-icon');
     getMultibranchPiplineWarning = () => cy.get('#enable-project');
     getEnableButton = () => cy.get('button[formnovalidate]');
+    getMultiBranchPipelineHeader = () => cy.get('#main-panel h1');
 
     clickConfigureTheProjectLink() {
         this.getConfigureTheProjectLink().click();

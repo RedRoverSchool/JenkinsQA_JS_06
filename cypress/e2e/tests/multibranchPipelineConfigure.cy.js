@@ -5,10 +5,12 @@ import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfigData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 import multibranchPipelineData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
+import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
 
 describe('multibranchPipelineConfigure', () => {
 
     const homePage = new HomePage();
+    const multibranchPipelineConfigurePage = new MultibranchPipelineConfigurePage();
     const multibranchPiplinePage = new MultibranchPipelinePage();
 
     it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
@@ -57,5 +59,14 @@ describe('multibranchPipelineConfigure', () => {
             .getEnableButton()
             .should('contain', multibranchPipelineData.enableButton)
             .and('have.css', 'color', multibranchPipelineData.enableButtonColor)
+    });
+
+    it('AT_16.01_010 | Verify configuration fields -> Branch source ', function () {
+        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
+            .hoverClickAddSource()
+            .createAddSourceItemList()
+            .should('deep.equal', multibranchPipelineConfigData.addSourceItemsList)
     });
 });
