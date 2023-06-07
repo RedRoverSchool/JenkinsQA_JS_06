@@ -29,7 +29,7 @@ import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
-const dashbord = new DashboardBreadcrumbs;
+const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -49,6 +49,8 @@ Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProje
         .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 })
 
 Cypress.Commands.add('createOrgFolderProject', (folderName) => {
@@ -79,3 +81,12 @@ Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
     headerAndFooter
         .clickJenkinsHomeLink();
 });
+
+Cypress.Commands.add('createMultiBranchPipeline', (name) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(name)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig();
+});
+
