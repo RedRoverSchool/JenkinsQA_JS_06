@@ -196,7 +196,7 @@ class HomePage {
   clickProjectNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new FolderPage;
-  } 
+  }
 }
 
 export default HomePage;
