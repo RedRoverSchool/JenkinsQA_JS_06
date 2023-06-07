@@ -5,6 +5,7 @@
     "pipelineName": "Pipeline Job",
     "multiConfigurationProjectName": "Multi-configuration Project Job",
     "folderName": "Folder Job",
+    "newpipelineName": "New Pipeline Job",
 
     "newItemNames": [
         "Freestyle project",

@@ -80,6 +80,8 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });
 
 
