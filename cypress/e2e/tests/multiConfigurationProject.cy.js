@@ -35,20 +35,4 @@ describe("multiConfigurationProject", () => {
             .getCurrentNameMessage()
             .should('contain.text', multiConfProjectPage.currentNameMsg)
     })
-
-
-     it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
-        headerAndFooter
-        .clickJenkinsHomeLink()
-        .clickProjectDrpDwnBtn()
-        .selectRenameMultiConfProjectDrpDwnMenuBtn()
-        .typeMultiConfProjectNameInputField(name)
-        .clickMultiConfProjectRenameBtn()
-        .getCurrentNameMessage()
-        .should('contain.text', multiConfProjectPage.currentNameMsg)
-    })
-
 });
-
-});
-
