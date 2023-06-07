@@ -4,7 +4,6 @@ import HomePage from "../../pageObjects/HomePage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import {folderDescription, folderNewDescription} from "../../fixtures/pom_fixtures/folderPage.json";
-import FolderPage from "../../pageObjects/FolderPage";
 
 describe('folder', () => {
 
@@ -33,14 +32,11 @@ describe('folder', () => {
             .should('not.exist');
     });
 
-    it('AT_15.03.002 | Verify possibility to edit folder description', () => {
-
-        const folderPage = new FolderPage;
-
+    it.only('AT_15.03.002 | Verify possibility to edit folder description', () => {
         cy.createFolderProject(folderName);
         cy.addFolderDescription(folderDescription);
-
-        folderPage  
+        homePage 
+            .clickFolderNameLink(folderName) 
             .clickAddEditDescriptionBtn()
             .typeFolderNewDescription(folderNewDescription) 
             .saveFolderDescription()

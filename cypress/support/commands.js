@@ -26,12 +26,10 @@
 import HomePage from "../pageObjects/HomePage";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
-import FolderPage from "../pageObjects/FolderPage";
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
 const dashbord = new DashboardBreadcrumbs;
-const folderPage = new FolderPage;
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -72,8 +70,11 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
 });
 
 Cypress.Commands.add('addFolderDescription', (folderDescription) => {
-    folderPage
+    homePage
+        .clickFolderNameLink()
         .clickAddEditDescriptionBtn()
         .typeFolderDescription(folderDescription)
-        .saveFolderDescription();
+        .saveFolderDescription()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });          
