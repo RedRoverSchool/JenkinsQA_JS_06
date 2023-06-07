@@ -1,6 +1,6 @@
 {
     "multibranchPipelineName": "Multibranch Pipeline Job",
-    "freestyleProjectName": "Freestyle Project Job",
+    "newItemPage": "Freestyle Project Job",
     "orgFolderName": "OrgFolderTest",
     "pipelineName": "Pipeline Job",
     "multiConfigurationProjectName": "Multi-configuration Project Job",

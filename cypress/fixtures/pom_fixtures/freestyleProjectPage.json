@@ -2,5 +2,7 @@
     "freestyleProjectNewName" : "New Freestyle Project",
     "headerText" : "Project ",
     "errorMessage" : "Error",
-    "message": "The new name is the same as the current name."
+    "message": "The new name is the same as the current name.",
+    "description": "New description",
+    "editDescription": " Edit Description"
 }
