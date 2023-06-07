@@ -17,18 +17,6 @@ class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="newJob"]');
-    getMultibranchName = () => cy.get('a[href="job/Multibranch_Pipeline_Job/"]');
-    getDropdownMenuDelete = () => cy.get('.icon-edit-delete');
-    
-    selectDropdownMenuDelete() {
-        this.getDropdownMenuDelete().click()
-        return new MultibranchPipelineDeletePage();
-    }
-    
-    clickDropDownMenu() {
-        this.getMultibranchName().realHover().click();
-        return this;
-    }
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
@@ -182,6 +170,7 @@ class HomePage {
     this.getProjectDrpDwnBtn().click();
     return this;
   }
-}
+  
+ }
 
 export default HomePage;

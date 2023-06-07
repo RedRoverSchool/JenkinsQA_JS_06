@@ -22,5 +22,4 @@
     "number" : 26,
 
     "warningMessage": "» This field cannot be empty, please enter a valid name"
-  
-}
+  }
