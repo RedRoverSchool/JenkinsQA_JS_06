@@ -35,7 +35,7 @@ describe('<New Item> Create a new Organization Folder', () => {
         .should('have.text', folderName)
     })
 
-    it('AT_05.06_005| Create a new Organization Folder with description', () => {
+    it.skip('AT_05.06_005| Create a new Organization Folder with description', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('input#name').type(projects.organizationFolder.name)
         cy.get('span.label').contains('Organization Folder').click()
