@@ -6,14 +6,9 @@ describe('orgFolderConfigure', () => {
     const homePage = new HomePage();
 
     it('AT_17.01.001 | Change status folder to disable', () => {
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
+         
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.orgFolderName)
-            .selectOrgFolderItem()
-            .clickOkBtnAndGoOrgFolderConfig()
-            .clickSaveBtnAndGoOrgFolder()
-            .clickGoToDashboard()
-
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
             .clickEnableDisabledToggle()
@@ -23,14 +18,9 @@ describe('orgFolderConfigure', () => {
     });
 
     it('AT_17.01.002 | Add description to the Organization Folder via Configure the project', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.orgFolderName)
-            .selectOrgFolderItem()
-            .clickOkBtnAndGoOrgFolderConfig()
-            .clickSaveBtnAndGoOrgFolder()
-            .clickGoToDashboard()
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
 
+        homePage
             .clickOrgFolderNameLink(newItemPageData.orgFolderName)
             .clickConfigureTheProjectLink()
             .addDescription(OrgFolderConfigurePageData.description)

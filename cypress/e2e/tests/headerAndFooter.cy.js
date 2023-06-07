@@ -72,4 +72,13 @@ describe('headerAndFooter', () => {
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
+    
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+        headerAndFooter
+            .getJenkinsLinkVerNumber()
+            .should('be.visible')
+            .and('have.text', headerAndFooterData.version.number)
+            .and('have.attr', 'href', headerAndFooterData.version.link)
+            .and('have.css', 'color', headerAndFooterData.version.rgb)
+    })
 })

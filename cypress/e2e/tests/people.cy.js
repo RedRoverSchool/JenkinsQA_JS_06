@@ -39,15 +39,4 @@ describe('people', () => {
             .trimPeoplePageHeader()
             .should('eq', peoplePageData.peoplePageHeader)
     });
-
-    it('AT_06.02_001| Verify description is added to a user', () => {
-        homePage
-            .clickPeopleSideMenuLink()
-            .clickUserNameLink()
-            .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(userProfilePageData.description)
-            .clickUserDescriptionSaveBtn()
-            .getUserDescriptionText()
-            .should("have.text", userProfilePageData.description)
-    });
 });

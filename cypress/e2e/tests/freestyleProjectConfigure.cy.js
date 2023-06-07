@@ -43,4 +43,20 @@ describe('freestyleProjectConfigure', () => {
             .getGitHubHeaderAuthor()
             .should('include.text', gitHubPageData.gitHubHeaderAuthor);
     });
+
+    freestyleProjectConfigData.postBuildActions.forEach((actionName, idx) => {
+        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
+            freestyleProjectPage
+                .clickConfigureSideMenuLink()
+                .clickLeftSideMenuPostBuldActionsBtn()
+                .clickAddPostBuildActionBtn()
+                .selectPostBuildActionDropDownMenuItem(idx)
+                .checkPostBuildActionWindowHeaderName(actionName)
+                .clickSaveBtnAndGoFreestyleProject()
+                .clickConfigureSideMenuLink()
+                .clickLeftSideMenuPostBuldActionsBtn()
+                .getPostBuildActionWindow()
+                .should('exist')
+        })
+    });
 });
