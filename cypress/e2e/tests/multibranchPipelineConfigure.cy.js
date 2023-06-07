@@ -70,7 +70,7 @@ describe('multibranchPipelineConfigure', () => {
             .should('deep.equal', multibranchPipelineConfigData.addSourceItemsList)
     });
 
-    it.only('AT_16.01_05 | Verify check boxes change color', () => {
+    it('AT_16.01_05 | Verify check boxes change color', () => {
         cy.createMultibranchPipelineProject(newItemData.multibranchPipelineName)
         homePage
             .clickMultibranchPipelineNameLink(newItemData.multibranchPipelineName)
