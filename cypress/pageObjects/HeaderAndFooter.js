@@ -43,7 +43,7 @@ class HeaderAndFooter {
         return new RestAPIPage();
     }
     
-    getUserDropdownMenuItemList() {
+    createUserDropdownMenuItemsList() {
         return this
         .getUserDropdownMenuItemsList()
         .then($els => { 
