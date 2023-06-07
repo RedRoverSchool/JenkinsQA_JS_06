@@ -1,4 +1,5 @@
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
+import HomePage from "./HomePage";
 import RestAPIPage from "./RestAPIPage"
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -7,9 +8,8 @@ class HeaderAndFooter {
     getUserDropdownChevronBtn = () => cy.get('.login button');
     getUserDropdownMenuItemsList = () => cy.get('.bd li');
     getRestAPILink = () => cy.get('[href="api/"]');
-
-
-
+    getJenkinsBtn = () => cy.get('[alt= "Jenkins"]');
+    
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
         return this;
@@ -36,6 +36,11 @@ class HeaderAndFooter {
         .then($els => { 
             return Cypress._.map($els, 'innerText')
         }); 
+    }
+
+    clickJenkinsBtn() {
+        this.getJenkinsBtn().click()
+        return new HomePage();
     }
 }
 export default HeaderAndFooter;

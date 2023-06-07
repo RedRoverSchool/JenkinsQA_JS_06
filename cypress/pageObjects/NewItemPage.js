@@ -4,9 +4,10 @@ class NewItemPage {
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getNewItemOkBtn = () => cy.get('#ok-button');
+    getMultibranchlineItem2 = () => cy.get('span').contains('Multibranch Pipeline');
 
 
-    typeNewItemNameInputField(name) {
+        typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
         return this;
     };
@@ -20,6 +21,11 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new MultibranchPipelineConfigurePage();
     };
-}
+        clickMultibranchPipeLine2() {
+            this.getMultibranchlineItem2().click();
+            return this;
+        }
+    };
+    
 
 export default NewItemPage;
