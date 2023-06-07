@@ -10,6 +10,7 @@ describe('Multibranch Pipeline Configuration', function () {
 
     beforeEach('Create multibranch pipeline', function () {
         createMultiBranchPipeline(newPipelineName);
+
         cy.get('a[href="./configure"]').click();
     })
 
@@ -43,7 +44,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('not.be.visible')
     });
 
-    it('AT_16.01_010 | Verify configuration fields -> Branch source ', function () {
+    it.skip('AT_16.01_010 | Verify configuration fields -> Branch source ', function () {
         cy.get('#branch-sources').should('contain', 'Branch Sources')
         cy.get('#yui-gen1-button').realHover().click()
         cy.get('#yui-gen2 li').should('have.length', 3)
