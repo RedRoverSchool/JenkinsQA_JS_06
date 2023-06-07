@@ -5,7 +5,6 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
-import GitHubPage from "../../pageObjects/GitHubPage";
 import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
 
 describe('freestyleProjectConfigure', () => {
@@ -25,7 +24,7 @@ describe('freestyleProjectConfigure', () => {
     it('AT_12.05_004 | Add link on GitHub and verify it', () => {    
         dashbord
             .clickDashboardLinkAndGoHomePage()   
-            .hoverAndClickProjectDrpDwnBtn(newItemPage.freestyleProjectName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
             .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
             .typeProjectUrl(freestyleProjectConfigData.gitHubProjectURL)

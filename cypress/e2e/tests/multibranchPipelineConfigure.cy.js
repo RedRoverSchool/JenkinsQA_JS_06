@@ -62,7 +62,7 @@ describe('multibranchPipelineConfigure', () => {
     });
 
     it('AT_16.01_010 | Verify configuration fields -> Branch source ', function () {
-        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName);
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
 
         multibranchPipelineConfigurePage
             .hoverClickAddSource()
