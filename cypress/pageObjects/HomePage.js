@@ -16,6 +16,7 @@ import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
+import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -201,6 +202,11 @@ class HomePage {
   clickProjectNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new FolderPage;
+  }
+
+  clickMultibranchPipelineNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
+    return new MultibranchPipelineStatusPage();
   }
 }
 
