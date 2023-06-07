@@ -10,7 +10,7 @@ describe('folder', () => {
 
     const homePage = new HomePage();
     
-    it.skip('AT_15.02.001 | Verify possibility to add folder description', () => {
+    it('AT_15.02.001 | Verify possibility to add folder description', () => {
         homePage
             .clickNewItemSideMenuLink()
             .selectFolderItem()

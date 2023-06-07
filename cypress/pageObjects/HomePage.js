@@ -14,6 +14,7 @@ import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDele
 import BuildHistoryPage from "./BuildHistoryPage";
 import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
 import {folderName} from "../fixtures/pom_fixtures/newItemPage.json"
 
@@ -47,6 +48,7 @@ class HomePage {
     getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
     getSideMenuPanel = () => cy.get('#tasks .task');
+    getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
     getDescriptionField = () => cy.get('#description div:first-of-type')
     
@@ -187,6 +189,11 @@ class HomePage {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
+  }
+
+  selectRenamePipelineProjectDrpDwnMenuBtn() {
+    this.getRenamePipelineProjectDrpDwnMenuBtn().click();
+    return new PipelineProjectRenamePage();
   }
 
   clickEditDescriptionBtn() {
