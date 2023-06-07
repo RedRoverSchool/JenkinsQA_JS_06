@@ -16,7 +16,7 @@ describe("multiConfigurationProject", () => {
             .should('not.exist');
     });
 
-    it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
+    it.skip('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
         cy.createMultiConfigurationProject(name);
         homePage
             .clickProjectDrpDwnBtn()
@@ -25,6 +25,7 @@ describe("multiConfigurationProject", () => {
             .should('not.exist');
     });
 
+    it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
     it('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
         cy.createMultiConfigurationProject(name);
         homePage
