@@ -46,7 +46,7 @@ describe('freestyleProjectEditDescription', () => {
       cy.get('#description').should('contain.text', createNewView.editDescriptionText)
     })
 
-    it.only('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+    it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
       cy.get('a[href$="/newJob"]').click();
       cy.get('#name').type(createNewView.jobName);
       cy.get('.hudson_model_FreeStyleProject').click();
@@ -54,14 +54,14 @@ describe('freestyleProjectEditDescription', () => {
       cy.get('#general').should('have.text', createNewView.header);
       cy.get('.jenkins-button--primary').click();
       
-      // cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
-      // cy.get('.jenkins-input').should('be.visible').type(createNewView.typeText)
-      // cy.get('.jenkins-button--primary').click();
-      // cy.get('#description').contains(createNewView.typeText);
-      // cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
-      // cy.get('.jenkins-input').clear();
-      // cy.get('.jenkins-input').should('be.visible').type(createNewView.editDescriptionText);
-      // cy.get('.jenkins-button--primary').click();
+      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
+      cy.get('.jenkins-input').should('be.visible').type(createNewView.typeText)
+      cy.get('.jenkins-button--primary').click();
+      cy.get('#description').contains(createNewView.typeText);
+      cy.get('#description-link').should('be.visible').and('includes.text', createNewView.description).click();
+      cy.get('.jenkins-input').clear();
+      cy.get('.jenkins-input').should('be.visible').type(createNewView.editDescriptionText);
+      cy.get('.jenkins-button--primary').click();
       cy.get('#description').contains(createNewView.editDescriptionText);
       cy.get('#description-link').should('be.visible').and('includes.text', createNewView.editButton)
     })
