@@ -10,6 +10,7 @@ class FreestyleProjectPage {
     getGitHubSideMenuLink = () => cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]');
     getDisableProjectBtn = () => cy.get('form#disable-project').find('button[name="Submit"]');
     getHomePageLink = () => cy.get('#jenkins-home-link');
+    getDisabledProgectWarning = () => cy.get('.warning');
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -28,6 +29,12 @@ class FreestyleProjectPage {
     clickHomePageLink() {
         this.getHomePageLink().click();
         return new HomePage();
-    } 
+    }
+
+    clickDisableProjectBtn() {
+        this.getDisableProjectBtn().click()
+        return this;
+    }
+
 }
 export default FreestyleProjectPage;

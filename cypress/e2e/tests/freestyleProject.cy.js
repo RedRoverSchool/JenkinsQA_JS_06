@@ -7,7 +7,7 @@ import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
 import { freestyleProjectNewName } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { errorMessage } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import freestyleProject from"../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import freestyleProject from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 
 describe('freestyleProject', () => {
@@ -64,7 +64,7 @@ describe('freestyleProject', () => {
     it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
         cy.createFreestyleProject(newItemData.freestyleProjectName)
         headerAndFooter
-            .clickJenkinsHomeLink()        
+            .clickJenkinsHomeLink()
             .clickNamesProjects()
             .clickRenameSideMenuLink()
             .getNewNameInputFild()
@@ -80,6 +80,23 @@ describe('freestyleProject', () => {
             .getErrorMessage()
             .should('have.text', freestyleProject.message)
             .and('be.visible')
-    });    
-    
+    });
+
+    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFreestyleProjectHeader()
+            .should('include.text', newItemData.freestyleProjectName)
+
+        freestyleProjectPage
+            .clickDisableProjectBtn()
+            .getDisabledProgectWarning()
+            .should('be.visible')
+            .and('include.text', freestyleProject.disabledProjectNotify)
+    });
+
 });
