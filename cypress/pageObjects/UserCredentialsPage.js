@@ -1,4 +1,4 @@
-import {credentialsPageUrl}  from '../fixtures/pom_fixtures/userCredentialsPageData.json';
+import userCredentialsPageData  from '../fixtures/pom_fixtures/userCredentialsPage.json';
 
 class UserCredentialsPage {
     getCredentialsPageUrl = () =>cy.url();
@@ -8,7 +8,7 @@ class UserCredentialsPage {
 
     checkUrlCredentialsPage() {
         this.getCredentialsPageUrl()
-            .should('include', credentialsPageUrl);
+            .should('include', userCredentialsPageData.credentialsPageUrl);
         return this;
     }
 }
