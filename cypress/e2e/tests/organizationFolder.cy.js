@@ -7,7 +7,7 @@ describe('orgFolderConfigure', () => {
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
 
-    it('AT_17.04_002 |  Move Organization Folder into Folder', () => {
+    it('AT_17.04_002 | Move Organization Folder into Folder', () => {
         cy.createOrganizationFolderProject(newItemPage.orgFolderName)
         cy.createFolderProject(newItemPage.folderName);
         homePage
