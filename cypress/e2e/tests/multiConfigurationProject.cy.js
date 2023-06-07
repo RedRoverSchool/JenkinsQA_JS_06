@@ -45,5 +45,5 @@ describe("multiConfigurationProject", () => {
         .clickMultiConfProjectRenameBtn()
         .getCurrentNameMessage()
         .should('contain.text', multiConfProjectPage.currentNameMsg)
-    }
+    })
 });
