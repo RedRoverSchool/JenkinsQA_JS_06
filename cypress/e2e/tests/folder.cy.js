@@ -36,7 +36,7 @@ describe('folder', () => {
     it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
         cy.createFolderProject(folderName);
         homePage
-            .clickProjectNameLink()
+            .clickProjectNameLink(folderName)
             .clickCreateAJobLink()
             .typeNewItemNameInputField(freestyleProjectName)
             .selectFreestyleProjectItem()
