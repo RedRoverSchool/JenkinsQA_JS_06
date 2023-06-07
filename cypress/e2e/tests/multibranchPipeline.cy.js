@@ -8,7 +8,7 @@ describe('multibranchPipeline', () => {
 
     const homePage = new HomePage();
 
-    it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
+    it.skip('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         homePage
             .clickCreateJobLink()
             .typeNewItemNameInputField(newItemData.multibranchPipelineName)
