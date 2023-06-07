@@ -14,6 +14,7 @@ import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDele
 import BuildHistoryPage from "./BuildHistoryPage";
 import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -190,6 +191,11 @@ class HomePage {
   clickEditDescriptionBtn() {
     this.getAddEditDescriptionBtn().click();
     return this;
+  }
+
+  clickMultibranchPipelineNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
+    return new MultibranchPipelineStatusPage();
   }
 }
 
