@@ -215,6 +215,6 @@ class HomePage {
     this.getDescriptionPreviewLink().click();
     return this;
   }
-}
+};
 
 export default HomePage;
