@@ -54,7 +54,6 @@ describe('orgFolderConfigure', () => {
             .clickEnableButton()
             .getDisableProjectForm()
             .should('have.text', orgFolderPage.disableOrganizationFolder)
-
-
     })
+    
 });
