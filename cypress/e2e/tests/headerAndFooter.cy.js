@@ -41,7 +41,7 @@ describe('headerAndFooter', () => {
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
         headerAndFooter
             .clickUserDropDownBtn()
-            .getUserDropdownMenuItemList()
+            .createUserDropdownMenuItemsList()
             .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
     });
 
