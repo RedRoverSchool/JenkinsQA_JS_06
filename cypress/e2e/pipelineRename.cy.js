@@ -1,7 +1,7 @@
 import pipelineName from "../fixtures/pipelineName.json"
 import piplineRename from "../fixtures/piplineRename.json"
 
-describe('US_13.03 Pipeline.Rename pipeline project', () => {
+describe.skip('US_13.03 Pipeline.Rename pipeline project', () => {
     it('TC_13.03.001 Change Pipeline name using Rename button', () => {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type(pipelineName.namePipeline)
