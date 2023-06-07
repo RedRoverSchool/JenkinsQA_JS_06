@@ -79,7 +79,7 @@ describe('newItem', () => {
             .getDescription()
             .should('contain.text', orgFolderConfigurePage.description);
     });
-
+    
     it('AT_05.02_003 | Create a new Pipeline going from People page', () => {
         homePage
             .clickPeopleSideMenuLink()
@@ -92,4 +92,12 @@ describe('newItem', () => {
             .getMainPanel()
             .should('contain.text', newItemPage.pipelineName);
     });
+
+    it('AT_05.07_004 | New item page has Input field for text data', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .verifyNewItemHeader(newItemPage.newItemHeader)
+            .getNewItemNameInputField()
+            .should('have.attr', 'type', 'text')
+    });        
 });

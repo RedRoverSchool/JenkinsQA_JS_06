@@ -30,8 +30,7 @@ class HomePage {
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getSearchBox = () => cy.get('#search-box');
-    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
-
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
@@ -185,6 +184,11 @@ class HomePage {
     })
   }
 
+  clickFolderNameLink() {
+    this.getProjectNameLink().click();
+    return new FolderPage();
+  }
+
   hoverAndClickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
@@ -204,7 +208,7 @@ class HomePage {
   clickProjectNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new FolderPage;
-  }
+  };
 
   clickMultibranchPipelineNameLink(name) {
     this.getProjectNameLink().contains(name).click();
