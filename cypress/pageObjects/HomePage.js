@@ -16,7 +16,7 @@ import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
-import {folderName} from "../fixtures/pom_fixtures/newItemPage.json"
+import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -38,7 +38,6 @@ class HomePage {
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-    getAddDescriptionBtn = () => cy.get("a#description-link");
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
     getAddDescriptionLink = () => cy.get('#description-link');
@@ -133,12 +132,6 @@ class HomePage {
     return new FoldersAndMultibrPipelineDeletePage();
   }
 
-
-  clickAddDescriptionBtn() {
-    this.getAddDescriptionBtn().click();
-    return this;
-  }
-
   clickScheduleBuildBtn() {
     return this.getScheduleBuildBtn().click();
   }
@@ -201,9 +194,14 @@ class HomePage {
     return this;
   }
 
-  clickProjectNameLink() {
-    this.getProjectNameLink().contains(folderName).click();
+  clickProjectNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
     return new FolderPage;
+  }
+
+  clickMultibranchPipelineNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
+    return new MultibranchPipelineStatusPage();
   }
 }
 

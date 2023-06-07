@@ -1,7 +1,6 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 import {freestyleProjectName} from "../../fixtures/pom_fixtures/newItemPage.json"
@@ -36,7 +35,7 @@ describe('folder', () => {
     it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
         cy.createFolderProject(folderName);
         homePage
-            .clickProjectNameLink()
+            .clickProjectNameLink(folderName)
             .clickCreateAJobLink()
             .typeNewItemNameInputField(freestyleProjectName)
             .selectFreestyleProjectItem()
