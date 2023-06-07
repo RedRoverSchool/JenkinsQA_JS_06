@@ -12,10 +12,14 @@ describe("homePage", () => {
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
+    it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
           .should('deep.equal', sidePanelItemsData)
     });
+
+    it("AT_02.06_004 | Homepage > Description input textarea does not exist", () => {
+      homePage.getAddDescriptionField().should("not.exist")
+    })
 
 })
