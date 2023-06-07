@@ -4,6 +4,8 @@ import FreestyleProjectPage from './FreestyleProjectPage';
 import MultiConfigurationProjectPage from './MultiConfigurationProjectPage';
 import FolderPage from './FolderPage';
 import MultibranchPipelinePage from './MultibranchPipelinePage';
+import NewViewPage from './NewViewPage';
+import myView from '../fixtures/pom_fixtures/myView.json';
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -13,7 +15,8 @@ class MyViewPage {
   getMultiConfigurationProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
-  
+  getAddNewViewLink = () => cy.get('a[href$="/newView"]');
+
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -43,5 +46,12 @@ clickMultiBranchPipelineNameLink(){
   this.getMultiBranchPipelineNameLink().click()
   return new MultibranchPipelinePage();
 };
+
+  verifyAndClickAddNewViewLink() {
+    this.getAddNewViewLink()
+    .should('be.visible').click();
+    cy.url().should('contain', myView.newViewPageURL);
+    return new NewViewPage();
+  };
 }
 export default MyViewPage;
