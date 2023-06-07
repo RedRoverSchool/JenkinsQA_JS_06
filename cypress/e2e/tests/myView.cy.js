@@ -4,6 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import myViewData from "../../fixtures/pom_fixtures/myView.json";
 
 describe('myView', () => {
 
@@ -85,5 +86,31 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', newItemPageData.folderName);
   }); 
+
+  it('AT_04.03_008|<My View> Verify that the user can open the selected Multibranch Pipeline', () => {
+    cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickMultiBranchPipelineNameLink()
+      .getMultiBranchPipelineHeader()
+      .should('be.visible')
+      .and('include.text', newItemPageData.multibranchPipelineName);
+  }); 
+
+  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+      .selectFreestyleProjectItem()
+      .clickOkBtnAndGoFreestyleProjectConfig()
+      .clickSaveBtnAndGoFreestyleProject()
+      .clickHomePageLink()
+      .clickMyViewSideMenuLink()
+      .verifyAndClickAddNewViewLink()
+      .getHeaderOfNewViewNameInputField()
+      .should('have.text', myViewData.headerOfNewViewNameInputField)
+  });
 });
-  
