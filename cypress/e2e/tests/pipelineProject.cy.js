@@ -23,4 +23,21 @@ describe('pipelineProject',()=>{
         .should('not.include.text', newItemPageData.pipelineName)
         .and('include.text','Welcome to Jenkins!')                
     })
+    it('AT_13.03.05 | <Pipeline>User can rename pipeline project',()=>{
+        homePage
+            .clickCreateJobLink()
+            .typeNewItemNameInputField(newItemPageData.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig();
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .clickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .selectRenamePipelineProjectDrpDwnMenuBtn()
+            .typePipelineProjectNameInputField(newItemPageData.newpipelineName)
+            .clickPipelineProjectRenameBtn()
+            .getPipelinePageHeadline()
+            .should('contain.text',newItemPageData.newpipelineName)
+        
+    })
 })
