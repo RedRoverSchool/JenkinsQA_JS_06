@@ -1,11 +1,10 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { freestyleProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
-import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
+import {freestyleProjectName, pipelineName, folderName, multibranchPipelineName, multiConfigurationProjectName} from "../../fixtures/pom_fixtures/newItemPage.json";
+
 
 describe('myView', () => {
 
@@ -71,6 +70,34 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', multiConfigurationProjectName);
   });
+
+  it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
+    homePage
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(folderName)
+      .selectFolderItem()
+      .clickOkBtnAndGoFolderConfig();
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickFolderNameLink()
+      .getFolderHeader()
+      .should('be.visible')
+      .and('include.text', folderName);
+  }); 
+
+  it('AT_04.03_008|<My View> Verify that the user can open the selected Multibranch Pipeline', () => {
+    cy.createMultiBranchPipeline(multibranchPipelineName);
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickMultiBranchPipelineNameLink()
+      .getMultiBranchPipelineHeader()
+      .should('be.visible')
+      .and('include.text', multibranchPipelineName);
+  }); 
 });
   
     

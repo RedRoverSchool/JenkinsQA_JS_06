@@ -1,27 +1,34 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import FreestyleProjectRenamePage from "../../pageObjects/FreestyleProjectRenamePage"
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
-import {freestyleProjectNewName} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import {headerText} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import {errorMessage} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import { freestyleProjectNewName } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import { errorMessage } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import freestyleConfigurePage from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
+import freestyleProject from"../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
-    
+    const freestyleProjectPage = new FreestyleProjectPage();
+    const headerAndFooter = new HeaderAndFooter();
+    const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
+
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemData.freestyleProjectName)
-            .selectFreestyleProjectItem()            
+            .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .typeNewNameInputFild(freestyleProjectNewName)
             .clickRenameBtn()
-            .getFreestyleProjectHeader()            
+            .getFreestyleProjectHeader()
             .should('have.text', headerText + freestyleProjectNewName)
     });
 
@@ -34,18 +41,18 @@ describe('freestyleProject', () => {
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .clickRenameBtn()
-            .getFreestyleProjectHeader()   
+            .getFreestyleProjectHeader()
             .should('have.text', errorMessage);
     })
 
-    freestyleConfigurePage.buildSteps.forEach((buildStep,idx) => {
+    freestyleConfigurePage.buildSteps.forEach((buildStep, idx) => {
         it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
-            homePage    
+            homePage
                 .clickNewItemSideMenuLink()
                 .typeNewItemNameInputField(newItemData.freestyleProjectName)
-                .selectFreestyleProjectItem()            
+                .selectFreestyleProjectItem()
                 .clickOkBtnAndGoFreestyleProjectConfig()
-                
+
                 .clickLeftSidePanelBuildStepsBtn()
                 .clickAddBuildStepBtn()
                 .selectBuildStepFromMenuListItem(idx)
@@ -58,4 +65,43 @@ describe('freestyleProject', () => {
                 .and('exist')
         })
     });
+
+    it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFreestyleProjectHeader()
+            .should('include.text', newItemData.freestyleProjectName)
+
+        freestyleProjectPage
+            .getDisableProjectBtn()
+            .should('have.text', 'Disable Project')
+            .and('be.visible')
+            .and('be.enabled')
+    });
+
+    it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
+        cy.createFreestyleProject(newItemData.freestyleProjectName)
+        headerAndFooter
+            .clickJenkinsHomeLink()        
+            .clickNamesProjects()
+            .clickRenameSideMenuLink()
+            .getNewNameInputFild()
+            .should('have.value', newItemData.freestyleProjectName)
+        freestyleProjectRenamePage
+            .clickRenameBtn()
+
+        freestyleProjectRenamePage
+            .getErrorTitle()
+            .should('have.text', freestyleProject.errorMessage)
+            .and('be.visible')
+        freestyleProjectRenamePage
+            .getErrorMessage()
+            .should('have.text', freestyleProject.message)
+            .and('be.visible')
+    });    
+    
 });
