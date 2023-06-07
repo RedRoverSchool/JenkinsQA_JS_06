@@ -36,6 +36,15 @@ describe('freestyleProjectConfigure', () => {
             .should('include.text', gitHubPageData.gitHubHeaderAuthor); 
     });
 
+    it('AT_12.05_001 | Freestyle project > Add description to Freestyle project through Congure in side menu', () => {
+        freestyleProjectPage            
+            .clickConfigureSideMenuLink()  
+            .typeDescriptionInputField(freestyleProjectConfigure.description)
+            .clickSaveBtnAndGoFreestyleProject()        
+            .getFreestyleProjectDescription()
+            .should('contain.text', freestyleProjectConfigure.description);
+    })
+
     freestyleProjectConfigure.postBuildActions.forEach((actionName, idx) => {
         it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
             freestyleProjectPage
