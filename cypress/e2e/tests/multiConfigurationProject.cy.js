@@ -35,7 +35,7 @@ describe("multiConfigurationProject", () => {
             .getCurrentNameMessage()
             .should('contain.text', multiConfProjectPage.currentNameMsg)
     })
-  
+
      it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
         headerAndFooter
         .clickJenkinsHomeLink()
@@ -45,5 +45,5 @@ describe("multiConfigurationProject", () => {
         .clickMultiConfProjectRenameBtn()
         .getCurrentNameMessage()
         .should('contain.text', multiConfProjectPage.currentNameMsg)
-    }
+    })
 });
