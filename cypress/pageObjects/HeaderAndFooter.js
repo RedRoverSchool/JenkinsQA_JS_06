@@ -50,7 +50,7 @@ class HeaderAndFooter {
             return Cypress._.map($els, 'innerText')
         }); 
     }
-    
+
     selectUserMyViewsMenu() {
         this.getUserMyViewsMenu().click();
         return new MyViewPage();
