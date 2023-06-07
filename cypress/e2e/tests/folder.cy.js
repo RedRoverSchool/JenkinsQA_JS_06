@@ -45,7 +45,7 @@ describe('folder', () => {
             .should('contain', `${folderName}/${freestyleProjectName}`);
       });
 
-    it.only('AT_15.03.002 | Verify possibility to edit folder description', () => {
+    it('AT_15.03.002 | Verify possibility to edit folder description', () => {
         cy.createFolderProject(folderName);
         cy.addFolderDescription(folderDescription);
         homePage 
