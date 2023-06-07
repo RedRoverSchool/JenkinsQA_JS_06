@@ -6,6 +6,7 @@ class OrgFolderPage {
     getConfigureTheProjectLink = () => cy.get('.content-block [href="./configure"]');
     getEnableProjectForm = () => cy.get('#enable-project');
     getDescription = () => cy.get('#view-message');
+    getDisplayName = () => cy.get('#main-panel h1')
 
     clickGoToDashboard() {
         this.getDashboard().click();
