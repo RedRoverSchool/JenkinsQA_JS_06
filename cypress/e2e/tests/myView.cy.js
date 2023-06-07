@@ -1,12 +1,10 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { freestyleProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
-import {pipelineName} from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {multiConfigurationProjectName } from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
+import {freestyleProjectName, pipelineName, folderName, multibranchPipelineName, multiConfigurationProjectName} from "../../fixtures/pom_fixtures/newItemPage.json";
+
 import myView from "../../fixtures/pom_fixtures/myView.json";
 
 describe('myView', () => {
@@ -88,6 +86,18 @@ describe('myView', () => {
       .getFolderHeader()
       .should('be.visible')
       .and('include.text', folderName);
+  }); 
+
+  it('AT_04.03_008|<My View> Verify that the user can open the selected Multibranch Pipeline', () => {
+    cy.createMultiBranchPipeline(multibranchPipelineName);
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickMultiBranchPipelineNameLink()
+      .getMultiBranchPipelineHeader()
+      .should('be.visible')
+      .and('include.text', multibranchPipelineName);
   }); 
 
   it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
