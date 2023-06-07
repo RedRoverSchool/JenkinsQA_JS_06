@@ -14,7 +14,9 @@ import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDele
 import BuildHistoryPage from "./BuildHistoryPage";
 import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
+import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -28,15 +30,13 @@ class HomePage {
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getSearchBox = () => cy.get('#search-box');
-    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
-
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-    getAddDescriptionBtn = () => cy.get("a#description-link");
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
     getAddDescriptionLink = () => cy.get('#description-link');
@@ -46,7 +46,10 @@ class HomePage {
     getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
     getSideMenuPanel = () => cy.get('#tasks .task');
-
+    getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getAddEditDescriptionBtn = () => cy.get("a#description-link");
+    getDescriptionField = () => cy.get('#description div:first-of-type')
+    
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
     return new PeoplePage();
@@ -128,12 +131,6 @@ class HomePage {
     return new FoldersAndMultibrPipelineDeletePage();
   }
 
-
-  clickAddDescriptionBtn() {
-    this.getAddDescriptionBtn().click();
-    return this;
-  }
-
   clickScheduleBuildBtn() {
     return this.getScheduleBuildBtn().click();
   }
@@ -147,6 +144,11 @@ class HomePage {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage;
 
+  }
+
+  clickFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new FolderPage();
   }
 
   clickAddDescriptionLink() {
@@ -190,6 +192,26 @@ class HomePage {
     this.getProjectDrpDwnBtn().click();
     return this;
   }
-}
+
+  selectRenamePipelineProjectDrpDwnMenuBtn() {
+    this.getRenamePipelineProjectDrpDwnMenuBtn().click();
+    return new PipelineProjectRenamePage();
+  }
+
+  clickEditDescriptionBtn() {
+    this.getAddEditDescriptionBtn().click();
+    return this;
+  }
+
+  clickProjectNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
+    return new FolderPage;
+  };
+
+  clickMultibranchPipelineNameLink(name) {
+    this.getProjectNameLink().contains(name).click();
+    return new MultibranchPipelineStatusPage();
+  }
+};
 
 export default HomePage;

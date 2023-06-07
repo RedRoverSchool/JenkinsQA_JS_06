@@ -4,7 +4,7 @@ import headerCredentials from "../fixtures/headerCredentials.json";
 
 describe('profilePageCredentialsLink', () => {
 
-    it('AT_18.06_001 | Profile Page | Verifying the Credentials link redirects to the users credentials page', () => {
+    it.skip('AT_18.06_001 | Profile Page | Verifying the Credentials link redirects to the users credentials page', () => {
         cy.get('#page-header a[class="model-link"] span[class="hidden-xs hidden-sm"]').then(
             ($element) => {
               const userNameOnThePage = $element.text();

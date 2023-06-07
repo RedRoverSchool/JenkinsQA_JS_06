@@ -79,6 +79,19 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
+
+Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink();
 });
 
 Cypress.Commands.add('addFolderDescription', (folderDescription) => {
