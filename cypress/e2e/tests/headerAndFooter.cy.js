@@ -8,6 +8,7 @@ import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
+import {userDescription} from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
 describe('headerAndFooter', () => {
 
@@ -84,4 +85,13 @@ describe('headerAndFooter', () => {
             .and('have.css', 'color', version.rgb)
     })
 
+    it.only('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
+        headerAndFooter
+            .clickUserDropDownBtn() 
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userDescription)
+            .clickUserConfigSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userDescription)
+    });
 })
