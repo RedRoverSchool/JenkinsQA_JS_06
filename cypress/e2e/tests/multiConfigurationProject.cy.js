@@ -27,7 +27,9 @@ describe("multiConfigurationProject", () => {
             .should('not.exist');
     });
 
+refactoring_RF_POM_AT_02.06_005
     it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
+        cy.createMultiConfigurationProject(name);
         headerAndFooter
         .clickJenkinsHomeLink()
         .clickProjectDrpDwnBtn()
