@@ -26,14 +26,15 @@ describe('multibranchPipeline', () => {
             .getResultNoMatch().should('have.text', resultSearchBox.resultSearchNoMatchMsg)  
         });
 
-    it('delete Multibranch Pipeline using the dropdown menu', () => {
-        cy.createMultiBranchPipeline(multibranchPipelineName)
+    it('AT_16.03_003 | Multibranch Pipelinedelete Multibranch Pipeline using the dropdown menu', () => {
+        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName)
         dashbord
             .clickDashboardLinkAndGoHomePage()
-            .hoverAndClickProjectDrpDwnBtn()
+            .hoverAndClickProjectDrpDwnBtn(newItemData.multibranchPipelineName)
             .clickDeleteMultiBrPipelineFromDrpDwnMenu()
-            .clickYesBtn()
-            .should('not.contain.text', multibranchPipelineName)
+            .clickSubmitBtn()
+            .getProjectTable()
+            .should('not.exist')
         });
     });
     
