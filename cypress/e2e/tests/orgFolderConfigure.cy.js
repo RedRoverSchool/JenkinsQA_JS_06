@@ -40,7 +40,7 @@ describe('orgFolderConfigure', () => {
             .should('contain.text', OrgFolderConfigurePage.description);
     });
 
-    it.only('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
+    it('AT_17.05.002 | Verify possibility to enable Organization Folder', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPage.orgFolderName)
@@ -55,5 +55,5 @@ describe('orgFolderConfigure', () => {
             .getDisableProjectForm()
             .should('have.text', orgFolderPage.disableOrganizationFolder)
     })
-    
+
 });
