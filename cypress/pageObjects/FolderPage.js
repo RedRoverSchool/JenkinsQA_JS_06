@@ -1,8 +1,11 @@
+import NewItemPage from "../pageObjects/NewItemPage";
+
 class FolderPage {
     getAddDescriptiotBtn = () => cy.get('#description-link');
     getFolderDescriptionInputField = () => cy.get('textarea[name="description"]');
     getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
     getFolderDescription = () => cy.get('#description div:first-child');
+    getNewItemSideMenuLink = () => cy.get('a[href$="/newJob"]');
 
     clickAddDescriptionBtn() {
         this.getAddDescriptiotBtn().click();
@@ -18,6 +21,11 @@ class FolderPage {
         this.getSaveDescriptionBtn().click();
         return this;
     };
+
+    clickNewItemSideMenuLink() {
+        this.getNewItemSideMenuLink().click();
+        return new NewItemPage();
+    }
 };
 
 export default FolderPage;
