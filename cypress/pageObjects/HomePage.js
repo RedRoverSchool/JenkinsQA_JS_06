@@ -5,8 +5,6 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
-import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
-import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import homePage from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
@@ -28,8 +26,6 @@ class HomePage {
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
-    getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-    getSearchBox = () => cy.get('#search-box');
     getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
 
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
@@ -79,26 +75,6 @@ class HomePage {
   clickOrgFolderNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new OrgFolderPage();
-  }
-
-  hoverProjectNameLink() {
-    this.getProjectNameLink().realHover();
-    return this;
-  }
-
-  clickProjectDrpDwnBtn() {
-    this.getProjectDrpDwnBtn().click({force: true});
-    return this;
-  }
-
-  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
-    this.getDeleteMultiBrPipelineLink().click();
-    return new MultibranchPipelineDeletePage();
-  }
-
-  typeIntoSearchBox(name) {
-    this.getSearchBox().type(name + '{enter}');
-    return new ResultSearchBoxPage();
   }
 
   clickProjectDrpDwnBtn(projectName) {
