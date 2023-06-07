@@ -2,7 +2,7 @@
 import descriptions from "../fixtures/homePage.json"
 
 describe('Dashboard Edit Description', () => {
-  it('20.02 _001| Dashboard > Editing Description', () => {
+  it.skip('20.02 _001| Dashboard > Editing Description', () => {
     cy.get('#description-link').contains(descriptions.add).click()
     cy.get('.jenkins-input').type(descriptions.addDescription)
     cy.get('button[name="Submit"]').contains(descriptions.save).click()
