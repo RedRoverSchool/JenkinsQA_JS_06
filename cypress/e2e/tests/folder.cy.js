@@ -34,7 +34,7 @@ describe('folder', () => {
     });
 
     it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
-        cy.createFolderProject(folderName)
+        cy.createFolderProject(folderName);
         homePage
             .clickProjectNameLink()
             .clickCreateAJobLink()
@@ -42,6 +42,7 @@ describe('folder', () => {
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
-            .getFullProjectName().should('contain', `${folderName}/${freestyleProjectName}`)
+            .getFullProjectName()
+            .should('contain', `${folderName}/${freestyleProjectName}`);
       });
 });
