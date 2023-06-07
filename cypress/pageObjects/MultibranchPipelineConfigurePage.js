@@ -7,6 +7,8 @@ class MultibranchPipelineConfigurePage {
     getAppearanceBtn = () => cy.get('#side-panel #tasks button[data-section-id="appearance"]');
     getIconDrpDwn = () => cy.get('.jenkins-form-item.has-help > .jenkins-select select');
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
+    getScanTriggersCheckbox = () => cy.get('#cb2');
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -31,6 +33,10 @@ class MultibranchPipelineConfigurePage {
     clickDisableBtn() {
         this.getDisableBtn().click();
         return this;
+    };
+
+    hoverScanTriggerCheckbox(){
+        return this.getScanTriggersCheckbox().realHover();
     };
 }
 

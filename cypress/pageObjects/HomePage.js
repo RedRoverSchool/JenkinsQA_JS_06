@@ -1,3 +1,5 @@
+import MultibranchPipelinePage from "./MultibranchPipelinePage";
+
 const dayjs = require('dayjs');
 
 import PeoplePage from "./PeoplePage";
@@ -14,7 +16,7 @@ import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 
 class HomePage {
-    getHomepageHeader = () => cy.get('.empty-state-block h1'); 
+    getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
@@ -69,6 +71,11 @@ class HomePage {
   clickOrgFolderNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new OrgFolderPage();
+  }
+
+  clickMultibranchPipelineNameLink(projectName) {
+      this.getProjectNameLink().contains(projectName).click();
+      return new MultibranchPipelinePage();
   }
 
   hoverProjectNameLink() {

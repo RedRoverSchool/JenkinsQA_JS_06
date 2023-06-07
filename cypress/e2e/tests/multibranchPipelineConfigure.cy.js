@@ -58,4 +58,13 @@ describe('multibranchPipelineConfigure', () => {
             .should('contain', multibranchPipelineData.enableButton)
             .and('have.css', 'color', multibranchPipelineData.enableButtonColor)
     });
+
+    it('AT_16.01_05 | Verify check boxes change color', () => {
+        cy.createMultibranchPipelineProject(newItemData.multibranchPipelineName)
+        homePage
+            .clickMultibranchPipelineNameLink(newItemData.multibranchPipelineName)
+            .clickConfigureTheProjectLink()
+            .hoverScanTriggerCheckbox()
+            .should('be.visible', 'box-shadow')
+    })
 });
