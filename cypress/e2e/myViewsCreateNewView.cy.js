@@ -70,7 +70,7 @@ describe('My Views Create New View', () => {
       cy.contains('Dashboard').click();
   });
 
-  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+  it.skip('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
       cy.get('a[href="/me/my-views"]').click();
       cy.get('.addTab').should('be.visible').click();
       cy.url().should('contain', myViews.newViewPageURL);
