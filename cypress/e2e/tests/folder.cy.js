@@ -34,12 +34,9 @@ describe('folder', () => {
     });
 
     it('AT_15.05.001 | <Folder> Create a new Freestyle Project job inside a folder', () => {
+        cy.createFolderProject(folderName)
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(folderName)
-            .selectFolderItem()           
-            .clickOkBtnAndGoFolderConfig()
-            .clickSaveBtnAndGoFolder()
+            .clickAndOpenFolderPage()
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(freestyleProjectName)
             .selectFreestyleProjectItem()

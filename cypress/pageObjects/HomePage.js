@@ -12,6 +12,7 @@ import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDele
 import BuildHistoryPage from "./BuildHistoryPage";
 import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import FolderPage from "./FolderPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -168,6 +169,11 @@ class HomePage {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
+  }
+
+  clickAndOpenFolderPage() {
+    this.getProjectNameLink().click();
+    return new FolderPage
   }
 }
 
