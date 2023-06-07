@@ -17,7 +17,6 @@ class FreestyleProjectConfigurePage {
     getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk'); 
     getPostBuildActionWindowHeader = () => cy.get('.repeated-chunk__header');
     
-    
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
         return new FreestyleProjectPage();

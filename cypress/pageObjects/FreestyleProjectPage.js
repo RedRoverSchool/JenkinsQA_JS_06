@@ -23,6 +23,12 @@ class FreestyleProjectPage {
 
     clickGitHubSideMenuLink() {
         this.getGitHubSideMenuLink().click();
+        return new GitHubPage();
+    }
+
+    clickHomePageLink() {
+        this.getHomePageLink().click();
+        return new HomePage();
     }
 }
 export default FreestyleProjectPage;
