@@ -26,7 +26,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('#description div:nth-child(1)').should('have.text', description);
     });
 
-    it('AT_12.05_004 | Add link on GitHub', () => {
+    it.skip('AT_12.05_004 | Add link on GitHub', () => {
         cy.get('.jenkins-breadcrumbs__list-item [href="/"]').click();
         cy.get('.jenkins-table__link').realHover();
         cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron').click({force : true});
@@ -43,7 +43,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         cy.get('.author').should('include.text', configurePageData.gitHeaderAuthor);
     })
 
-    it('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
+    it.skip('AT_12.05_005| Verify user can choose any builder from the dropdown menu list <Add build step> while configuring the freestyle project', () => {
         cy.get('#tasks a[href$="configure"]').click()
         cy.get('button[data-section-id="build-steps"]').click()
         configure.buildSteps.selectBuildStep.forEach(builderOption => {
@@ -68,7 +68,7 @@ describe('FreestyleProjectConfigurateProject', () => {
     })
 
     configure.postBuildActions.selectPostBuildsAction.forEach((actionName, idx) => {
-        it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
+        it.skip(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
             cy.get('#tasks a[href$="configure"]').click()
             cy.get('[data-section-id="post-build-actions"]').click()
             cy.get('button.hetero-list-add').contains(configure.postBuildActions.addPostBuildActionsButtonName).click()

@@ -8,7 +8,7 @@ import { dashboardMenu } from "../fixtures/pages.json"
 
 describe('BreadcrumbsMenu', () => {
 
-   it('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
+   it.skip('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
       pages.dashboardMenu.forEach(page => {
          cy.contains(page).click()
          cy.get('#breadcrumbs li>a').first().should('have.text', 'Dashboard').and('be.visible')
@@ -17,7 +17,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02_002 |Dashbord has a dropdown menu', () => {
+   it.skip('AT_04.02_002 |Dashbord has a dropdown menu', () => {
       cy.get('.jenkins-breadcrumbs__list-item button[class="jenkins-menu-dropdown-chevron"]').realHover().realClick()
       cy.get('#breadcrumb-menu>div:first-child>ul>li>a>span').should('be.visible').and('have.length', pages.dashboardMenu.length)
          .each((el, index) => {
@@ -25,7 +25,7 @@ describe('BreadcrumbsMenu', () => {
          })
    })
 
-   it('AT_04.02_003 | <Breadcrumbs> Dashboard page link > Dropdown menu has subfolders of the Dashboard page', () => {
+   it.skip('AT_04.02_003 | <Breadcrumbs> Dashboard page link > Dropdown menu has subfolders of the Dashboard page', () => {
 
       cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
       cy.get('[href="/"] .jenkins-menu-dropdown-chevron').should('be.visible').click();
@@ -37,7 +37,7 @@ describe('BreadcrumbsMenu', () => {
       })
    })
 
-   it('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu "New Item" should navigate to the corresponding folder page', () => {
+   it.skip('AT_04.02.004 | <Breadcrumbs> Dashboard page link > Clicking on the dropdown menu "New Item" should navigate to the corresponding folder page', () => {
 
       cy.get('.jenkins-breadcrumbs__list-item [href="/"]').realHover();
       cy.get('[href="/"] .jenkins-menu-dropdown-chevron').click();

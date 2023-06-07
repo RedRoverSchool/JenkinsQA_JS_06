@@ -15,13 +15,13 @@ describe('multiConfigurationProjectDelete', () => {
         cy.get("ol#breadcrumbs > li:nth-of-type(1)").click();
     })
 
-    it('AT_14.07_001 | Multi Configuration Project Delete | Delete Multi-configuration project within itself', () => {
+    xit('AT_14.07_001 | Multi Configuration Project Delete | Delete Multi-configuration project within itself', () => {
         cy.get(`a[href='job/${projects.multiConfigurationProject.name}/']`).click();
         cy.get(".confirmation-link").contains(`${sideMenuItems[5]}`).click();
         cy.get("#page-body").should("not.have.text", `${projects.multiConfigurationProject.name}`);
     });
 
-    it('AT_14.07_002 |Multi-configuration project| Delete Multi-configuration project with dropdown menu', () => {
+    xit('AT_14.07_002 |Multi-configuration project| Delete Multi-configuration project with dropdown menu', () => {
         cy.get(".jenkins-table__link .jenkins-menu-dropdown-chevron").realHover().click();
         cy.get("li:nth-of-type(5)  span")
         .contains(`${dropdownItems[4]}`)

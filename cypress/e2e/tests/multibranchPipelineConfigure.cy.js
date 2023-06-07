@@ -2,11 +2,15 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
+import multibranchPipelineConfigData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import multibranchPipelineData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
+import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 
 describe('multibranchPipelineConfigure', () => {
 
     const homePage = new HomePage();
-    
+    const multibranchPiplinePage = new MultibranchPipelinePage();
+
     it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
         homePage
             .clickNewItemSideMenuLink()
@@ -18,5 +22,40 @@ describe('multibranchPipelineConfigure', () => {
             .clickHealthMetricsBtn()
             .getAddMetricBtn()
             .should('be.visible');
+    });
+
+    it('AT_16.01.004 | Verify Change Appearance', function () {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickSaveBtnAndGoMultiPipeline()
+            .clickConfigureTheProjectLink()
+            .clickAppearanceBtn()
+            .selectIconDrpDwn(multibranchPipelineConfigData.iconDrpDwn[0])
+            .clickSaveBtnAndGoMultiPipeline()
+            .getMultibranchPipelineTitle().should('have.attr', 'title', multibranchPipelineData.iconTitle)
+    });
+
+    it('AT_16.01_03 | Disables the current Multibranch Pipeline', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
+            .selectMultibranchPipelineItem()
+            .clickOkBtnAndGoMultiPipelineConfig()
+            .clickDisableBtn()
+            .clickSaveBtnAndGoMultiPipeline()
+            .trimMultibranchPiplineDisabledText()
+            .should('contain', multibranchPipelineData.disabledMessage)
+
+        multibranchPiplinePage
+            .getMultibranchPiplineWarning()
+            .should('have.css', 'color', multibranchPipelineData.disabledMessageColor)
+
+        multibranchPiplinePage
+            .getEnableButton()
+            .should('contain', multibranchPipelineData.enableButton)
+            .and('have.css', 'color', multibranchPipelineData.enableButtonColor)
     });
 });
