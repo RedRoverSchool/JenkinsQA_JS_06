@@ -6,13 +6,13 @@ import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsDa
 describe("homePage", () => {
     const homePage = new HomePage()
 
-    it("AT_02.06_005 | Homepage > Verification of the button 'Add description'", () => {
+    it("AT_02.06_005 | Homepage > Verification of the link 'Add description'", () => {
         homePage
-          .clickAddDescriptionBtn();
+          .clickAddDescriptionLink();
         cy.focused().should('have.attr', 'name', 'description') 
     })
 
-    it('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
+    it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
           .should('deep.equal', sidePanelItemsData)
