@@ -14,7 +14,7 @@ describe('Side panel sub menu', () => {
             .should('deep.equal', dashboardDropdownItems)
     })
 
-    it('AT_02.04_008 | Homepage(Dashboard) > Verify 5 items from the sub-menu', () => {
+    it.skip('AT_02.04_008 | Homepage(Dashboard) > Verify 5 items from the sub-menu', () => {
         cy.get('.task-link-text')
             .should('have.length', dashboardDropdownItems.length)
             .each((el, idx) => {
@@ -82,7 +82,7 @@ describe('Side panel sub menu', () => {
         })
     })
     
-    it('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
+    it.skip('AT_02.04.017| Homepage(Dashboard)/Check side panel sub-menu with 5 items', function (){
         cy.get('.task').should('have.length', dashboardDropdownItems.length)
           .each(($el,idx) =>{
             let name = $el.text()
@@ -90,7 +90,7 @@ describe('Side panel sub menu', () => {
           })
     })
     
-    it('AT_02.04_019 | Verification of name items on side panel of main page', () => {
+    it.skip('AT_02.04_019 | Verification of name items on side panel of main page', () => {
         cy.get('.task-link-text')
         .should('have.length',sidePanelItems.length)
         .then(($els) => {

@@ -1,9 +1,12 @@
-import UserConfigurePage from "../pageObjects/UserConfigurePage";
-import RestAPIPage from "./RestAPIPage"
-import MyViewPage from "./MyViewPage";
 import HomePage from "../pageObjects/HomePage";
-import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import JenkinsPage from './JenkinsPage'
 import LoginPage from "./LoginPage";
+import MyViewPage from "./MyViewPage";
+import RestAPIPage from "./RestAPIPage"
+import ResultSearchBoxPage from "./ResultSearchBoxPage";
+import UserBuildsPage from "./UserBuildsPage";
+import UserConfigurePage from "../pageObjects/UserConfigurePage";
+import UserCredentialsPage from './UserCredentialsPage';
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -17,6 +20,15 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
+    getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a'); 
+    getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
+    getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span')
+
+    clickJenkinsVersionLink(){
+        this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
+        return new JenkinsPage;
+    }
 
     clickUserDropDownBtn() {
         this.getUserDropDownBtn().realHover().click();
@@ -32,8 +44,8 @@ class HeaderAndFooter {
         this.getRestAPILink().click()
         return new RestAPIPage();
     }
-
-    getUserDropdownMenuItemList() {
+    
+    createUserDropdownMenuItemsList() {
         return this
         .getUserDropdownMenuItemsList()
         .then($els => { 
@@ -74,6 +86,16 @@ class HeaderAndFooter {
 
     isIncludedLowerAndUpperLetters(text, lowerLetter, upperLetter) {
         return text.includes(lowerLetter) || text.includes(upperLetter);
+    }
+
+    selectUserBuildsMenu() {
+        this.getUserBuildsMenu().click();
+        return new UserBuildsPage();
+    }
+
+    selectUserCredentialsMenu() {
+        this.getUserCredentialsMenu().click();
+        return new UserCredentialsPage();
     }
 }
 export default HeaderAndFooter;
