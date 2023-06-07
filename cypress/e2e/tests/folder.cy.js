@@ -9,7 +9,7 @@ describe('folder', () => {
 
     const homePage = new HomePage();
     
-    it.skip('AT_15.02.001 | Verify possibility to add folder description', () => {
+    it('AT_15.02.001 | Verify possibility to add folder description', () => {
         homePage
             .clickNewItemSideMenuLink()
             .selectFolderItem()
@@ -22,7 +22,7 @@ describe('folder', () => {
             .getFolderDescription().should('have.text', folderDescription);
     });
 
-    it.skip('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
+    it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
         cy.createFolderProject(folderName)
         homePage
             .clickProjectDrpDwnBtn()
