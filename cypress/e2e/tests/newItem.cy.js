@@ -79,4 +79,12 @@ describe('newItem', () => {
             .getDescription()
             .should('contain.text', orgFolderConfigurePage.description);
     });
+
+    it('AT_05.07_004 | New item page has Input field for text data', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .verifyNewItemHeader(newItemPage.newItemHeader)
+            .getNewItemNameInputField()
+            .should('have.attr', 'type', 'text')
+    });
 });
