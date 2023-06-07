@@ -62,9 +62,9 @@ describe('freestyleProject', () => {
     });
 
     it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
-        cy.createFreestyleProject(newItemData.freestyleProjectName)
-        headerAndFooter
-            .clickJenkinsHomeLink()
+        cy.createFreestyleProject(newItemData.freestyleProjectName
+
+        homePage        
             .clickNamesProjects()
             .clickRenameSideMenuLink()
             .getNewNameInputFild()
