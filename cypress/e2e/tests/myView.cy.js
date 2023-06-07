@@ -5,6 +5,7 @@ import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.jso
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import {freestyleProjectName, pipelineName, folderName, multibranchPipelineName, multiConfigurationProjectName} from "../../fixtures/pom_fixtures/newItemPage.json";
 
+import myView from "../../fixtures/pom_fixtures/myView.json";
 
 describe('myView', () => {
 
@@ -98,8 +99,19 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', multibranchPipelineName);
   }); 
+
+  it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickNewItemSideMenuLink()
+      .typeNewItemNameInputField(freestyleProjectName)
+      .selectFreestyleProjectItem()
+      .clickOkBtnAndGoFreestyleProjectConfig()
+      .clickSaveBtnAndGoFreestyleProject()
+      .clickHomePageLink()
+      .clickMyViewSideMenuLink()
+      .verifyAndClickAddNewViewLink()
+      .getHeaderOfNewViewNameInputField()
+      .should('have.text', myView.headerOfNewViewNameInputField)
+  });
 });
-  
-    
-
-
