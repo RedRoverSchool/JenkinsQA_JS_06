@@ -85,7 +85,7 @@ describe('headerAndFooter', () => {
             .and('have.css', 'color', version.rgb)
     })
 
-    it.only('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
+    it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
             .clickUserDropDownBtn() 
             .selectUserConfigureMenu()
