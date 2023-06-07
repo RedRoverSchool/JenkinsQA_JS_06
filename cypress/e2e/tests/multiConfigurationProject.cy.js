@@ -46,5 +46,4 @@ describe("multiConfigurationProject", () => {
         .getCurrentNameMessage()
         .should('contain.text', multiConfProjectPage.currentNameMsg)
     })
-    })
 });

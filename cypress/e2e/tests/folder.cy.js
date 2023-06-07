@@ -47,10 +47,10 @@ describe('folder', () => {
             .should('contain', `${folderName}/${freestyleProjectName}`);
       });
 
-    it('AT_15.05.001 | <Folder> Create a new Freestyle Project job inside a folder', () => {
+    it('AT_15.05.001 | <Folder> Create a new Freestyle Project job inside a folder using side menu', () => {
         cy.createFolderProject(folderName)
         homePage
-            .clickAndOpenFolderPage()
+            .clickProjectNameLink(folderName)
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(freestyleProjectName)
             .selectFreestyleProjectItem()
