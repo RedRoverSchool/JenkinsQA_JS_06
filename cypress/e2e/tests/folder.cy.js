@@ -33,7 +33,7 @@ describe('folder', () => {
             .should('not.exist');
     });
 
-    it.only('AT_15.05.001 | <Folder> Create a new Freestyle Project job inside a folder', () => {
+    it('AT_15.05.001 | <Folder> Create a new Freestyle Project job inside a folder', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(folderName)
