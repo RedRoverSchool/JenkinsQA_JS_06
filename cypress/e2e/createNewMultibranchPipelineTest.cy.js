@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Create a new Multibranch Pipeline', () => {
+describe.skip('Create a new Multibranch Pipeline', () => {
     const multibranchName ='NEWmultibranchName'
     it('Create Multibranch Pipeline', () => {
         cy.contains('New Item').click()

@@ -1,5 +1,7 @@
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage"
+import HomePage from "./HomePage";
+import GitHubPage from "./GitHubPage";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -7,6 +9,11 @@ class FreestyleProjectPage {
     getFreestyleProjectHeader = () => cy.get('#main-panel h1');   
     getGitHubSideMenuLink = () =>  cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]');  
     getFreestyleProjectDescription = () => cy.get('#description');
+    getFreestyleProjectHeader = () => cy.get('#main-panel h1');
+    getGitHubSideMenuLink = () => cy.get('[href="https://github.com/RedRoverSchool/JenkinsQA_JS_06/"]');
+    getDisableProjectBtn = () => cy.get('form#disable-project').find('button[name="Submit"]');
+    getHomePageLink = () => cy.get('#jenkins-home-link');
+    getFullProjectName = () => cy.get('#main-panel')
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -19,7 +26,12 @@ class FreestyleProjectPage {
 
     clickGitHubSideMenuLink() {
         this.getGitHubSideMenuLink().click();
+        return new GitHubPage();
     }
-}
 
+    clickHomePageLink() {
+        this.getHomePageLink().click();
+        return new HomePage();
+    } 
+}
 export default FreestyleProjectPage;

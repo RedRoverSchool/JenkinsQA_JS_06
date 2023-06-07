@@ -1,3 +1,4 @@
+
 class PipelinePage {
     getPipelinePageHeadline = () => cy.get('#main-panel > h1');
 } 
