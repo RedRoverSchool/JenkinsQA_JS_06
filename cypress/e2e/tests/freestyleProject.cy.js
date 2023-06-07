@@ -97,6 +97,16 @@ describe('freestyleProject', () => {
             .getDisabledProgectWarning()
             .should('be.visible')
             .and('include.text', freestyleProject.disabledProjectNotify)
-    });
+    }); 
+    
+    it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
+        cy.createFreestyleProject(newItemData.freestyleProjectName);
 
+        homePage
+            .clickProjectNameDropdown()
+            .hoverAndClickProjectDrpDwnBtn(newItemData.freestyleProjectName)
+            .selectDeleteMultiConfProjectDrpDwnMenuBtn()
+            .getProjectTable()
+            .should('not.exist');
+      }); 
 });
