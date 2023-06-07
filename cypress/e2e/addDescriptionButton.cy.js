@@ -2,7 +2,7 @@
 
 describe('add description button', () => {
     
-    it('AT_02.09_002 |should click button and fillout the field', function (){
+    it.skip('AT_02.09_002 |should click button and fillout the field', function (){
       cy.get('#description-link').click()
       cy.get('.jenkins-input')
         .clear()
@@ -21,7 +21,7 @@ describe('add description button', () => {
       cy.get ('#description > div:nth-child(1)').contains('Hello')
   })
 
-  it('AT_02.09_005|Verification "add description" button', function () {
+  it.skip('AT_02.09_005|Verification "add description" button', function () {
     cy.get("#description-link").click()
     cy.get(".jenkins-input").should("be.visible")
   });

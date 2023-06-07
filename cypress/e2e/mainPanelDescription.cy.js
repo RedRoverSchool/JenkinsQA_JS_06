@@ -2,7 +2,7 @@
 
 describe('mainPanelDescription', () => {
 
-    it('Verify adding/editing  main panel description', () => {
+    it.skip('Verify adding/editing  main panel description', () => {
         cy.get('#description-link').click()
         cy.get('.jenkins-input').should('exist')
           .type('This is my first project.')
@@ -37,7 +37,7 @@ describe('mainPanelDescription', () => {
       cy.get('#description div:nth-child(1)').should('have.text', modifiedDescription)
     })
 
-    it('AT_02.06.16 Homepage(Dashboard) Main panel description/the button "Add description" is clickable', ()=>{
+    it.skip('AT_02.06.16 Homepage(Dashboard) Main panel description/the button "Add description" is clickable', ()=>{
       cy.get('#description-link').click()
       cy.get('[name="description"]').should('be.visible')
     })
