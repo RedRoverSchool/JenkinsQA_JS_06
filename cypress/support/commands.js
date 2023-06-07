@@ -39,7 +39,7 @@ Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
    })
 
 const headerAndFooter = new HeaderAndFooter();
-const dashbord = new DashboardBreadcrumbs;
+const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -77,5 +77,13 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+});
+
+Cypress.Commands.add('createMultiBranchPipeline', (name) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(name)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig();
 });
 

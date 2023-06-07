@@ -3,6 +3,7 @@ import PipelinePage from "./PipelinePage";
 import FreestyleProjectPage from './FreestyleProjectPage';
 import MultiConfigurationProjectPage from './MultiConfigurationProjectPage';
 import FolderPage from './FolderPage';
+import MultibranchPipelinePage from './MultibranchPipelinePage';
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -11,7 +12,8 @@ class MyViewPage {
   getFreestyleProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getMultiConfigurationProjectNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
-
+  getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -35,6 +37,11 @@ clickMultiConfigurationProjectNameLink(){
 clickFolderNameLink(){
   this.getFolderNameLink().click()
   return new FolderPage();
+};
+
+clickMultiBranchPipelineNameLink(){
+  this.getMultiBranchPipelineNameLink().click()
+  return new MultibranchPipelinePage();
 };
 }
 export default MyViewPage;
