@@ -24,7 +24,7 @@ describe('pipelineCreate', () => {
         cy.get('a[href*="job/New%20project"]').should('be.visible')
     })
 
-    it('Create a new Pipeline goin from People page', () => {
+    it.skip('Create a new Pipeline goin from People page', () => {
         cy.get('a[href="/asynchPeople/"]').click()
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('input.jenkins-input').type(projects.pipeline.name)

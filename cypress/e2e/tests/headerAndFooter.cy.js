@@ -76,12 +76,21 @@ describe('headerAndFooter', () => {
             })
     });
 
-    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () =>{
+    it('AT_01.01_003 | Verify Jenkins icon and name-icon are visible', () => {
+        headerAndFooter
+            .getHeadIcon()
+            .should('be.visible');
+        headerAndFooter
+            .getHeadIconName()
+            .should('be.visible');
+    });
+  
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbs.dashboardDropdownMenu[4])
-    })
+    });
     
     it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
         headerAndFooter
@@ -90,6 +99,5 @@ describe('headerAndFooter', () => {
             .and('have.text', version.number)
             .and('have.attr', 'href', version.link)
             .and('have.css', 'color', version.rgb)
-    })
-
+    });
 })
