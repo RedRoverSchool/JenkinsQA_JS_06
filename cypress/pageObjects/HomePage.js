@@ -45,7 +45,9 @@ class HomePage {
     getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getNamesProjects = () => cy.get('.jenkins-table__link span');
     getSideMenuPanel = () => cy.get('#tasks .task');
-
+    getAddEditDescriptionBtn = () => cy.get("a#description-link");
+    getDescriptionField = () => cy.get('#description div:first-of-type')
+    
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
     return new PeoplePage();
@@ -182,6 +184,11 @@ class HomePage {
   hoverAndClickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
+    return this;
+  }
+
+  clickEditDescriptionBtn() {
+    this.getAddEditDescriptionBtn().click();
     return this;
   }
 }
