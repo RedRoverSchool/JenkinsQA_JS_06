@@ -25,7 +25,7 @@ describe("homePage", () => {
           .should("not.exist")
     })
 
-    it.only("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
+    it("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
         homePage
           .clickAddDescriptionLink()
           .typeDescriptionIntoField(descriptionText)
