@@ -6,6 +6,7 @@ import RestAPIPage from "./RestAPIPage"
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import UserBuildsPage from "./UserBuildsPage";
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
+import UserCredentialsPage from './UserCredentialsPage';
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -22,6 +23,7 @@ class HeaderAndFooter {
     getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a'); 
     getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
     getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
+    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span')
 
     clickJenkinsVersionLink(){
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -43,7 +45,7 @@ class HeaderAndFooter {
         return new RestAPIPage();
     }
     
-    getUserDropdownMenuItemList() {
+    createUserDropdownMenuItemsList() {
         return this
         .getUserDropdownMenuItemsList()
         .then($els => { 
@@ -89,6 +91,11 @@ class HeaderAndFooter {
     selectUserBuildsMenu() {
         this.getUserBuildsMenu().click();
         return new UserBuildsPage();
+    }
+
+    selectUserCredentialsMenu() {
+        this.getUserCredentialsMenu().click();
+        return new UserCredentialsPage();
     }
 }
 export default HeaderAndFooter;

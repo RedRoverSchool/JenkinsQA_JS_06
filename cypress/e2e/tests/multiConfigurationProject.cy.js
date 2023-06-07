@@ -19,7 +19,7 @@ describe("multiConfigurationProject", () => {
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
         cy.createMultiConfigurationProject(name);
         homePage
-            .clickProjectDrpDwnBtn()
+            .clickProjectDrpDwnBtn(name)
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
@@ -28,18 +28,7 @@ describe("multiConfigurationProject", () => {
     it('AT_14.06.003 | Rename Multi-configuration project with the current name', () => {
         cy.createMultiConfigurationProject(name);
         homePage
-            .clickProjectDrpDwnBtn()
-            .selectRenameMultiConfProjectDrpDwnMenuBtn()
-            .typeMultiConfProjectNameInputField(name)
-            .clickMultiConfProjectRenameBtn()
-            .getCurrentNameMessage()
-            .should('contain.text', multiConfProjectPage.currentNameMsg)
-    })
-
-    it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () => {
-        headerAndFooter
-            .clickJenkinsHomeLink()
-            .clickProjectDrpDwnBtn()
+            .clickProjectDrpDwnBtn(name)
             .selectRenameMultiConfProjectDrpDwnMenuBtn()
             .typeMultiConfProjectNameInputField(name)
             .clickMultiConfProjectRenameBtn()
