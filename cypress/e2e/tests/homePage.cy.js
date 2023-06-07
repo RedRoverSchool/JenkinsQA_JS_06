@@ -2,7 +2,8 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsData.json";
-
+import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json" 
+ 
 describe("homePage", () => {
     const homePage = new HomePage()
 
@@ -24,4 +25,12 @@ describe("homePage", () => {
           .should("not.exist")
     })
 
-})
+    it.only("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
+        homePage
+          .clickAddDescriptionLink()
+          .typeDescriptionIntoField(descriptionText)
+          .clickDescriptionPreviewLink()
+          .getDescriptionPreview()
+          .should('have.text', descriptionText) 
+      }) 
+  }) 

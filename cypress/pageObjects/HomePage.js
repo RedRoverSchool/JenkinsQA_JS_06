@@ -49,7 +49,9 @@ class HomePage {
     getSideMenuPanel = () => cy.get('#tasks .task');
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
-    getDescriptionField = () => cy.get('#description div:first-of-type')
+    getDescriptionField = () => cy.get('#description div:first-of-type');
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
     
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -207,6 +209,11 @@ class HomePage {
   clickMultibranchPipelineNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new MultibranchPipelineStatusPage();
+  }
+
+  clickDescriptionPreviewLink() {
+    this.getDescriptionPreviewLink().click();
+    return this;
   }
 }
 
