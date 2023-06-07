@@ -15,7 +15,6 @@ import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
 import {description} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {editDescription} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 
-
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
