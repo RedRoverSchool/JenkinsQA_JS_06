@@ -4,7 +4,7 @@ import createFolder from "../fixtures/createFolder.json"
 
 const PORT = Cypress.env("local.port");
 
-describe.skip('Folder Create a new job inside a folder', () => {
+describe('Folder Create a new job inside a folder', () => {
   beforeEach('createFolder', () => {
     cy.get('a[href="newJob"]').click();
     cy.get('input#name').type(createFolder.folderName);
@@ -17,7 +17,7 @@ describe.skip('Folder Create a new job inside a folder', () => {
     });   
   });
 
-  it.skip('AT_15.05.001 | Folder > Create a new job inside a folder', () => {      
+  it('AT_15.05.001 | Folder > Create a new job inside a folder', () => {      
     cy.get('a[href="newJob"]').should('have.text', addJob.createBtn);
     cy.get('a[href="newJob"]').click();
     cy.url().should('equal', `http://localhost:${PORT}/job/${createFolder.folderName}/newJob`);
@@ -29,7 +29,7 @@ describe.skip('Folder Create a new job inside a folder', () => {
     cy.get('h1.job-index-headline').should('have.text', addJob.projectHeader);
   }); 
 
-  it.skip('AT_15.05.002 | Folder > Create a new job inside a folder', () => {
+  it('AT_15.05.002 | Folder > Create a new job inside a folder', () => {
     cy.get('.content-block__link').contains(addJob.createBtn).click();
     cy.get('.add-item-name').contains(addJob.itemName); 
     cy.get( '#name').type(addJob.projectName);
@@ -40,7 +40,7 @@ describe.skip('Folder Create a new job inside a folder', () => {
     cy.get('.job-index-headline.page-headline').contains(addJob.projectName)
   })
 
-  it.skip('AT_15.05.003| Verify user can create a new job inside a folder', () => {
+  it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
     cy.get('a[href="newJob"]').click()
     cy.get('input[name="name"]').type(addJob.projectName)
     cy.get('.hudson_model_FreeStyleProject').click();
@@ -49,7 +49,7 @@ describe.skip('Folder Create a new job inside a folder', () => {
     cy.get('#main-panel').should('contain', `${createFolder.folderName}/${addJob.projectName}`)
   })
 
-  it.skip('AT_15.05.004 | Folder > Create a new job inside a folder', () => {
+  it('AT_15.05.004 | Folder > Create a new job inside a folder', () => {
     cy.get('a[href=newJob]')
       .contains(addJob.createBtn)
       .click();
@@ -61,7 +61,7 @@ describe.skip('Folder Create a new job inside a folder', () => {
       .should('have.text', addJob.headerProject + addJob.freestyleProject)
   });
 
-  it.skip('AT_15.05.005 | Folder > Create a new job inside a folder', () => {
+  it('AT_15.05.005 | Folder > Create a new job inside a folder', () => {
     cy.get('a[href=newJob]')
       .contains(addJob.createBtn)
       .click();

@@ -15,8 +15,6 @@ import BuildHistoryPage from "./BuildHistoryPage";
 import MultiConfProjectRenamePage from "./MultiConfProjectRenamePage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
 import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
-import FolderPage from "./FolderPage";
-import {folderName} from "../fixtures/pom_fixtures/newItemPage.json"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -199,11 +197,6 @@ class HomePage {
   clickEditDescriptionBtn() {
     this.getAddEditDescriptionBtn().click();
     return this;
-  }
-
-  clickProjectNameLink() {
-    this.getProjectNameLink().contains(folderName).click();
-    return new FolderPage;
   }
 }
 
