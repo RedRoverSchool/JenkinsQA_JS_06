@@ -15,8 +15,39 @@ import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
+import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 
 class HomePage {
+    getHomepageHeader = () => cy.get('.empty-state-block h1'); 
+    getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
+    getCreateJobLink = () => cy.get('a[href="newJob"]');
+    getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
+    getPageBody = () => cy.get("#page-body");
+    getMainPanel = () => cy.get('#main-panel');
+    getHomePageLink = () => cy.url();
+    getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");    
+    getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
+    getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
+    getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getAddDescriptionLink = () => cy.get('#description-link');
+    getAddDescriptionField = () => cy.get('.jenkins-input ');
+    getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
+    getSavedDescriptionField = () => cy.get('#description');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getSideMenuPanel = () => cy.get('#tasks .task');
+    getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getAddEditDescriptionBtn = () => cy.get("a#description-link");
+    getDescriptionField = () => cy.get('#description div:first-of-type');
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
+    
   getHomepageHeader = () => cy.get(".empty-state-block h1");
   getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
   getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
@@ -51,6 +82,15 @@ class HomePage {
   getDescriptionPreview = () => cy.get(".textarea-preview");
   getSetUpAgentLink = () =>
     cy.get('a[href="computer/new"] span:not(.trailing-icon)');
+  getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
+  getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
+  getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+
+
+  clickSideMenuPanelItem(idx) {
+    this.getSideMenuPanel().eq(idx).click()
+    return cy.url()
+  };
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -75,7 +115,7 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
-  }
+  }  
 
   clickOrgFolderNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
@@ -207,6 +247,23 @@ class HomePage {
     this.getSetUpAgentLink().click();
     return new NewNodePage();
   };
+
+  clickProjectNameDropdownMoveLink() {
+    this.getProjectNameDropdownMoveLink().click();
+    return new OrgFolderMoveChoicePage();
+  }
+  
+  hoverAndClickProjectDrpDwn(projectName) {
+    this.getProjectName(projectName).realHover();
+    this.getProjectDrpDwn(projectName).click();
+    return this;
+  }
+
+  clickProjectName(projectName) {
+    this.getProjectName(projectName).click();   
+    return new FolderPage;
+  }
+
 };
 
 export default HomePage;

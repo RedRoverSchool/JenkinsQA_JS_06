@@ -3,6 +3,7 @@ import IconLegends from "./IconLegendsPage.js";
 class BuildHistoryPage {
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
+    getBuildHistoryPageTitle = () => cy.get('.jenkins-app-bar__content>h1');
     getIconLegendsButton = () => cy.get('#rss-bar a[href *= "legend"]');
 
 
