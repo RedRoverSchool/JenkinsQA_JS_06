@@ -127,4 +127,13 @@ describe('myView', () => {
       .clickSortNameArrow()
       .verifyJobNameLinksDesk()
    });
+   
+  it('AT 09.02.005| My Views > Add description', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .getDescriptionText()
+      .should('have.text', myViewData.addDescription);
+  });
 });

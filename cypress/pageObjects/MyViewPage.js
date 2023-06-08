@@ -21,6 +21,10 @@ class MyViewPage {
   getOrgFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getJobNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getSortNameArrow = () => cy.get('a.sortheader').contains('Name');
+  getAddDescriptionBtn = () => cy.get('#description-link');
+  getInputDescriptionField = () => cy.get('.jenkins-input');
+  getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
+  getDescriptionText = () => cy.get('#description>div:nth-child(1)');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -83,6 +87,20 @@ clickMultiBranchPipelineNameLink(){
     .each(($el, idx) => {
       expect($el.text()).to.be.equal(newItemPageData.itemsNamesDesc[idx]);
     });
+  };
+
+  clickAddDescriptionBtn() {
+    this.getAddDescriptionBtn().click();
+    return this;
+  };
+
+  typeDescriptionIntoInputField(description) {
+    this.getInputDescriptionField()
+      .should('be.visible')
+      .clear()
+      .type(description);
+    this.getDescriprionSaveBtn().click();
+    return this;
   };
 }
 export default MyViewPage;
