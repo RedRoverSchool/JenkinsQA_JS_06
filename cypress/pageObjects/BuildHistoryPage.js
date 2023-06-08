@@ -1,4 +1,4 @@
-import IconLegends from "../pageObjects/IconLegends.js";
+import IconLegends from "./IconLegendsPage.js";
 
 class BuildHistoryPage {
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');

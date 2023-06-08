@@ -1,7 +1,7 @@
 /// <reference types = "cypress"/>
 import HomePage from '../../pageObjects/HomePage'
 import BuildHistory from '../../pageObjects/BuildHistoryPage'
-import IconLegends from '../../pageObjects/IconLegends'
+import IconLegends from '../../pageObjects/IconLegendsPage'
 
 import iconLegendsContent from '../../fixtures/pom_fixtures/iconLegends.json'
 
