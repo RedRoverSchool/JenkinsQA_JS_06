@@ -110,12 +110,12 @@ describe('myView', () => {
       .and('include.text', newItemPageData.orgFolderName);
   });
   
-  it('AT 09.02.005| My Views > Add description', () => {
+  it.only('AT 09.02.005| My Views > Add description', () => {
     homePage
       .clickMyViewSideMenuLink()
       .clickAddDescriptionBtn()
-      .typeDescriptionIntoInputField(myViewData.addDescriptionProject)
+      .typeDescriptionIntoInputField(myViewData.addDescription)
       .getDescriptionText()
-      .should('have.text', myViewData.addDescriptionProject);
+      .should('have.text', myViewData.addDescription);
   });
 });
