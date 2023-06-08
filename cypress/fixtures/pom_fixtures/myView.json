@@ -1,4 +1,5 @@
 {
     "newViewPageURL": "/my-views/newView",
-    "headerOfNewViewNameInputField": "View name"
+    "headerOfNewViewNameInputField": "View name",
+    "addDescriptionProject": "Project DemoQA"
 }
