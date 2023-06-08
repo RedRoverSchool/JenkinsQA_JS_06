@@ -2,6 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -22,5 +23,21 @@ describe("homePage", () => {
         homePage
           .getAddDescriptionField()
           .should("not.exist")
-    })
+    });
+
+    it("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
+        homePage
+          .clickAddDescriptionLink()
+          .typeDescriptionIntoField(homePageData.descriptionText)
+          .clickDescriptionPreviewLink()
+          .getDescriptionPreview()
+          .should('have.text', homePageData.descriptionText) 
+    });
+    
+    it("AT_02.07.009 | Homepage Verify the 'Set up an agent' link on the main page when no jobs have been created", () => {
+      homePage
+        .clickSetUpAgentLink()
+        .getPermanentAgentBtn()
+        .should("have.text", permanentAgentRadioBtn);
+    });
 })
