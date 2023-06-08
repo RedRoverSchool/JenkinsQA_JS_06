@@ -5,10 +5,7 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
-import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
-import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
-import homePage from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
@@ -24,16 +21,12 @@ class HomePage {
 	getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
 	getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
 	getCreateJobLink = () => cy.get('a[href="newJob"]');
-	getProjectNameLink = () => cy.get('td>a[href*="job/"]');
+	getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
 	getPageBody = () => cy.get("#page-body");
 	getMainPanel = () => cy.get('#main-panel');
 	getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
-	getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-	getSearchBox = () => cy.get('#search-box');
-	getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
-
+	getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
 	getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
-	getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
 	getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
 	getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
 	getProjectTable = () => cy.get("table#projectstatus");
@@ -45,7 +38,6 @@ class HomePage {
 	getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
 	getSavedDescriptionField = () => cy.get('#description');
 	getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
-	getNamesProjects = () => cy.get('.jenkins-table__link span');
 	getSideMenuPanel = () => cy.get('#tasks .task');
 	getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
 	getAddEditDescriptionBtn = () => cy.get("a#description-link");
@@ -92,17 +84,12 @@ class HomePage {
 		return this;
 	}
 
-	clickDeleteMultiBrPipelineFromDrpDwnMenu() {
-		this.getDeleteMultiBrPipelineLink().click();
-		return new MultibranchPipelineDeletePage();
-	}
-
 	typeIntoSearchBox(name) {
 		this.getSearchBox().type(name + '{enter}');
 		return new ResultSearchBoxPage();
 	}
 
-	clickProjectDrpDwnBtn(projectName) {
+	hoverAndClickProjectDrpDwnBtn(projectName) {
 		this.getProjectNameLink().contains(projectName).realHover();
 		this.getProjectDrpDwnBtn().click();
 		return this;
@@ -115,11 +102,6 @@ class HomePage {
 
 	selectDeleteMultiConfProjectDrpDwnMenuBtn() {
 		this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
-		return this;
-	}
-
-	clickProjectNameDropdown() {
-		this.getProjectNameDropdown().click({ force: true });
 		return this;
 	}
 
@@ -173,8 +155,8 @@ class HomePage {
 		return new MultiConfProjectRenamePage();
 	}
 
-	clickNamesProjects() {
-		this.getNamesProjects().click()
+	clickFreestyleProjectNameLink() {
+		this.getProjectNameLink().click()
 		return new FreestyleProjectPage()
 	}
 
@@ -184,10 +166,9 @@ class HomePage {
 		})
 	}
 
-	hoverAndClickProjectDrpDwnBtn(projectName) {
-		this.getProjectNameLink().contains(projectName).realHover();
-		this.getProjectDrpDwnBtn().click();
-		return this;
+	clickOnFolderNameLink() {
+		this.getProjectNameLink().click();
+		return new FolderPage();
 	}
 
 	selectRenamePipelineProjectDrpDwnMenuBtn() {
@@ -203,12 +184,12 @@ class HomePage {
 	clickProjectNameLink(name) {
 		this.getProjectNameLink().contains(name).click();
 		return new FolderPage;
-	}
+	};
 
 	clickMultibranchPipelineNameLink(name) {
 		this.getProjectNameLink().contains(name).click();
 		return new MultibranchPipelineStatusPage();
 	}
-}
+};
 
 export default HomePage;

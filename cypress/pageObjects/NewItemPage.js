@@ -7,6 +7,7 @@ import FolderConfigurePage from "./FolderConfigurePage";
 import ErrorMessagePage from "./ErrorMessagePage";
 
 class NewItemPage {
+    getNewItemPageUrl = () => cy.url()
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
@@ -101,6 +102,11 @@ class NewItemPage {
     clickOkBtnAndGoErrorPage() {
         this.getNewItemOkBtn().click();
         return new ErrorMessagePage();
+    };
+
+    verifyNewItemHeader(name) {
+        this.getNewItemHeader().should('have.text', name)
+        return this
     };
         
 }
