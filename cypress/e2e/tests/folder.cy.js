@@ -55,4 +55,14 @@ describe('folder', () => {
             .saveFolderDescription()
             .getFolderDescription().should('have.text', folderNewDescription);
     });
+
+    it('AT_15.04.001 | <Folder>Delete folder within itself', () => {
+        cy.createFolderProject(folderName);
+        homePage
+            .clickFolderNameLink(folderName)
+            .clickDeleteFolderBtn()
+            .clickSubmitBtn()
+            .getProjectTable()
+            .should('not.exist');
+    });
 });
