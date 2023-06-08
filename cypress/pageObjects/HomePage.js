@@ -7,8 +7,6 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
-import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
-import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import OrgFolderConfigurePage from "./OrgFolderConfigurePage";
 import homePage from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
@@ -30,10 +28,7 @@ class HomePage {
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
-    getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-    getSearchBox = () => cy.get('#search-box');
-    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete')
-
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdown = () => cy.get('.jenkins-table__link .jenkins-menu-dropdown-chevron');
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
@@ -88,27 +83,7 @@ class HomePage {
       return new MultibranchPipelinePage();
   }
 
-  hoverProjectNameLink() {
-    this.getProjectNameLink().realHover();
-    return this;
-  }
-
-  clickProjectDrpDwnBtn() {
-    this.getProjectDrpDwnBtn().click({force: true});
-    return this;
-  }
-
-  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
-    this.getDeleteMultiBrPipelineLink().click();
-    return new MultibranchPipelineDeletePage();
-  }
-
-  typeIntoSearchBox(name) {
-    this.getSearchBox().type(name + '{enter}');
-    return new ResultSearchBoxPage();
-  }
-
-  clickProjectDrpDwnBtn(projectName) {
+   clickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
@@ -154,6 +129,11 @@ class HomePage {
 
   }
 
+  clickFolderNameLink(projectName) {
+    this.getProjectNameLink().contains(projectName).click();
+    return new FolderPage();
+  }
+
   clickAddDescriptionLink() {
     this.getAddDescriptionLink().click();
     return this;
@@ -185,6 +165,11 @@ class HomePage {
     })
   }
 
+  clickFolderNameLink() {
+    this.getProjectNameLink().click();
+    return new FolderPage();
+  }
+
   hoverAndClickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
@@ -204,12 +189,12 @@ class HomePage {
   clickProjectNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new FolderPage;
-  }
+  };
 
   clickMultibranchPipelineNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new MultibranchPipelineStatusPage();
   }
-}
+};
 
 export default HomePage;

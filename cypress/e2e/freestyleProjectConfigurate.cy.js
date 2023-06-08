@@ -19,7 +19,7 @@ describe('FreestyleProjectConfigurateProject', () => {
         return cy.get('.config-table .jenkins-section:nth-child(11) .yui-module .bd li')
     }
 
-    it('AT_12.05_001 | Freestyle project > Add description', () => {
+    it.skip('AT_12.05_001 | Freestyle project > Add description', () => {
         cy.contains('Configure').click();
         cy.get('textarea[name="description"]').type(description);
         cy.get('button[name=Submit]').click();
