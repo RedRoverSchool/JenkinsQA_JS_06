@@ -106,5 +106,6 @@ class HeaderAndFooter {
         this.getUserNameLink().click();
         return new UserProfilePage();
     }
+    
 }
 export default HeaderAndFooter;

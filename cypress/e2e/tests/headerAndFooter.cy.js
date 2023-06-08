@@ -121,4 +121,13 @@ describe('headerAndFooter', () => {
             .getUserDescriptionText()
             .should('have.text', userConfigurePageData.userDescription)
     });
+
+    it('AT_01.03_030 Verify User Dropdown menu has links with specifiс endings.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemsList().each(($el, idx) => {
+                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);             
+            })           
+    });
+
 })

@@ -105,4 +105,18 @@ describe('newItem', () => {
             .getNewItemPageUrl()
             .should('include', newItemPageData.newItemEndPoinURL)   
     });
+
+    newItemPageData.newItemNames.forEach((newItemNames, idx) => {
+        newItemPageData.specialCharactersArr.forEach((char) => {
+            it(`AT_05.05_013 | Create a new ${newItemNames} using special characters ${char}`, () => {
+                homePage
+                    .clickNewItemSideMenuLink()
+                    .clickEachItemsNameFromMenuListItem(idx)
+                    .typeNewItemNameInputField(char)
+                    .getErrorMessageForInvalidInput()
+                    .should('contain', newItemPageData.specialCharactersMsg)
+                    .and('be.visible');
+            })
+        })
+    })
 });

@@ -22,6 +22,7 @@ class NewItemPage {
     getEachItemsName = () => cy.get('#createItem li[tabindex]')
     getWarningMessage = () => cy.get('#itemname-required');
     getNewItemHeader = () => cy.get('.header .h3');  
+    getErrorMessageForInvalidInput = () => cy.get('.header #itemname-invalid')
     
 
     typeNewItemNameInputField(name) {
@@ -108,6 +109,5 @@ class NewItemPage {
         this.getNewItemHeader().should('have.text', name)
         return this
     };
-        
 }
 export default NewItemPage;
