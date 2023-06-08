@@ -24,8 +24,8 @@
 
     "warningMessage": "» This field cannot be empty, please enter a valid name",
 
-    "itemsNamesAsc": ["Multibranch Pipeline Job", "Organization Folder Job","Pipeline Job"],
-    "itemsNamesDesc": ["Pipeline Job", "Organization Folder Job","Multibranch Pipeline Job"],
+    "itemsNamesAsc": ["MultibranchPipelineJob", "OrganizationFolderJob","PipelineJob"],
+    "itemsNamesDesc": ["PipelineJob", "OrganizationFolderJob","MultibranchPipelineJob"],
 
     "specialCharactersArr": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
     "specialCharactersMsg": " is an unsafe character"

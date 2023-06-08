@@ -114,7 +114,7 @@ describe('myView', () => {
 
   it('AT_04.03_011|<My View>  Sort items by descending order', () => {
     cy.createPipeline(newItemPageData.pipelineName);
-    cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName); 
+    cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName); 
     cy.createOrganizationFolderProject(newItemPageData.orgFolderName);
     headerAndFooter
       .clickUserDropDownBtn()
