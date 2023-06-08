@@ -60,7 +60,7 @@ describe('headerAndFooter', () => {
             .should('have.text', loginPage.welcomeMessage)
     });
 
-    it.skip('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
             .getSearchBoxInputField()
             .should('have.attr', 'placeholder', headerAndFooterData.searchBoxPlaceholder);
