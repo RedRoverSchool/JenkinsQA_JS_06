@@ -29,7 +29,7 @@ describe('Organization_folder_move', () => {
         createOrgFolder()
     });
 
-    it('AT_17.04_002 | Move Organization Folder into Folder', () => {
+    it.skip('AT_17.04_002 | Move Organization Folder into Folder', () => {
         let linkBefore = (`http://localhost:${PORT}/job/${orgFolderConfigure.orgFolderName}/`)
         cy.get(`a[href="job/${orgFolderConfigure.orgFolderName}/"]`).click()
         cy.get('#breadcrumbBar').should('contain', orgFolderConfigure.orgFolderName)

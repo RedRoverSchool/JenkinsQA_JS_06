@@ -41,11 +41,9 @@ describe('multibranchPipelineConfigure', () => {
     });
 
     it('AT_16.01_03 | Disables the current Multibranch Pipeline', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
-            .selectMultibranchPipelineItem()
-            .clickOkBtnAndGoMultiPipelineConfig()
+        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
             .trimMultibranchPiplineDisabledText()

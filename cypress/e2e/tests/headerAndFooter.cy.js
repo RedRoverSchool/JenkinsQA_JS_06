@@ -6,10 +6,18 @@ import {inputText} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import {homePageHeader} from "../../fixtures/pom_fixtures/homePage.json";
 import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
 import {restAPIPageTitle} from "../../fixtures/pom_fixtures/restAPIPage.json";
+import {  restAPIPageTitle  } from "../../fixtures/pom_fixtures/restAPIPage.json";
+import {  homePageHeader  } from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json"
 import HomePage from "../../pageObjects/HomePage";
+import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {userDescription} from "../../fixtures/pom_fixtures/userConfigurePage.json"
+
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -61,7 +69,7 @@ describe('headerAndFooter', () => {
             .should('have.text', loginPage.welcomeMessage)
     });
 
-    it.skip('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
             .getSearchBoxInputField()
             .should('have.attr', 'placeholder', headerAndFooterData.searchBoxPlaceholder);
@@ -75,6 +83,22 @@ describe('headerAndFooter', () => {
                 return headerAndFooter
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
+    });
+
+    it('AT_01.01_003 | Verify Jenkins icon and name-icon are visible', () => {
+        headerAndFooter
+            .getHeadIcon()
+            .should('be.visible');
+        headerAndFooter
+            .getHeadIconName()
+            .should('be.visible');
+    });
+  
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+            .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbs.dashboardDropdownMenu[4])
     });
     
     it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
@@ -90,12 +114,23 @@ describe('headerAndFooter', () => {
      it('AT_01.01_019 | Redirection to the homepage by label', () => {
         homePage
             .clickNewItemSideMenuLink()
-
         headerAndFooter    
-            .clickJenkinsHomeLink() 
-            
+            .clickJenkinsHomeLink()             
         homePage    
             .getHomePageLink()
             .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
      });
+=======
+    });
+    
+    it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
+        headerAndFooter
+            .clickUserDropDownBtn() 
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userDescription)
+            .clickUserConfigSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userDescription)
+    });
+>>>>>>> 0ae4fcc5cca56259ef1e0d468f0c411d652d1e15
 })

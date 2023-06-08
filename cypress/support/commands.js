@@ -26,7 +26,6 @@
 
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
-import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../pageObjects/HomePage";
 const homePage = new HomePage();
 
@@ -79,7 +78,30 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });
+
+Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});
+
+Cypress.Commands.add('addFolderDescription', (folderDescription) => {
+    homePage
+        .clickOnFolderNameLink()
+        .clickAddEditDescriptionBtn()
+        .typeFolderDescription(folderDescription)
+        .saveFolderDescription()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});          
 
 Cypress.Commands.add('createMultiBranchPipeline', (name) => {
     homePage
@@ -87,5 +109,15 @@ Cypress.Commands.add('createMultiBranchPipeline', (name) => {
         .typeNewItemNameInputField(name)
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig();
+});
+
+Cypress.Commands.add('createPipeline', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig();
+    headerAndFooter
+          .clickJenkinsHomeLink()
 });
 

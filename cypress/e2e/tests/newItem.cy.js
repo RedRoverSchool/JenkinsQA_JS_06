@@ -5,6 +5,7 @@ import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
 import errorMessage from "../../fixtures/pom_fixtures/errorPageData.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
+import orgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
 
 describe('newItem', () => {
 
@@ -65,5 +66,45 @@ describe('newItem', () => {
             .clickDashboardLinkAndGoHomePage()
             .getProjectTable()
             .should('exist');    
+    });
+
+    it('AT_05.06_005| Create a new Organization Folder with description', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .addDescription(orgFolderConfigurePage.description)
+            .clickSaveBtnAndGoOrgFolder()
+            .getDescription()
+            .should('contain.text', orgFolderConfigurePage.description);
+    });
+    
+    it('AT_05.02_003 | Create a new Pipeline going from People page', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPage.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig()
+            .clickSaveBtnAndGoPipeline()
+            .clickGoToDashboard()
+            .getMainPanel()
+            .should('contain.text', newItemPage.pipelineName);
+    });
+
+    it('AT_05.07_004 | New item page has Input field for text data', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .verifyNewItemHeader(newItemPage.newItemHeader)
+            .getNewItemNameInputField()
+            .should('have.attr', 'type', 'text')
+    });        
+
+    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageUrl()
+            .should('include', newItemPage.newItemEndPoinURL)   
     });
 });
