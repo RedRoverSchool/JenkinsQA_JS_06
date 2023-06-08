@@ -1,9 +1,8 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderDescription, folderNewDescription} from "../../fixtures/pom_fixtures/folderPage.json";
-import {freestyleProjectName} from "../../fixtures/pom_fixtures/newItemPage.json"
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import folderPageData from "../../fixtures/pom_fixtures/folderPage.json";
 
 describe('folder', () => {
 
@@ -13,19 +12,19 @@ describe('folder', () => {
         homePage
             .clickNewItemSideMenuLink()
             .selectFolderItem()
-            .typeNewItemNameInputField(folderName)
+            .typeNewItemNameInputField(newItemPageData.folderName)
             .clickOkBtnAndGoFolderConfig()
             .clickSaveBtnAndGoFolder()
             .clickAddEditDescriptionBtn()
-            .typeFolderDescription(folderDescription)
+            .typeFolderDescription(folderPageData.folderDescription)
             .saveFolderDescription()
-            .getFolderDescription().should('have.text', folderDescription);
+            .getFolderDescription().should('have.text', folderPageData.folderDescription);
     });
 
     it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
-        cy.createFolderProject(folderName)
+        cy.createFolderProject(newItemPageData.folderName)
         homePage
-            .hoverAndClickProjectDrpDwnBtn(folderName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.folderName)
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
             .getProjectTable()
@@ -33,33 +32,33 @@ describe('folder', () => {
     });
 
     it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
-        cy.createFolderProject(folderName);
+        cy.createFolderProject(newItemPageData.folderName);
         homePage
-            .clickProjectNameLink(folderName)
+            .clickProjectNameLink(newItemPageData.folderName)
             .clickCreateAJobLink()
-            .typeNewItemNameInputField(freestyleProjectName)
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .getFullProjectName()
-            .should('contain', `${folderName}/${freestyleProjectName}`);
+            .should('contain', `${newItemPageData.folderName}/${newItemPageData.freestyleProjectName}`);
       });
 
     it('AT_15.03.002 | Verify possibility to edit folder description', () => {
-        cy.createFolderProject(folderName);
-        cy.addFolderDescription(folderDescription);
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.addFolderDescription(folderPageData.folderDescription);
         homePage 
-            .clickFolderNameLink(folderName) 
+            .clickFolderNameLink(newItemPageData.folderName) 
             .clickAddEditDescriptionBtn()
-            .typeFolderNewDescription(folderNewDescription) 
+            .typeFolderNewDescription(folderPageData.folderNewDescription) 
             .saveFolderDescription()
-            .getFolderDescription().should('have.text', folderNewDescription);
+            .getFolderDescription().should('have.text', folderPageData.folderNewDescription);
     });
 
     it('AT_15.04.001 | <Folder>Delete folder within itself', () => {
-        cy.createFolderProject(folderName);
+        cy.createFolderProject(newItemPageData.folderName);
         homePage
-            .clickFolderNameLink(folderName)
+            .clickFolderNameLink(newItemPageData.folderName)
             .clickDeleteFolderBtn()
             .clickSubmitBtn()
             .getProjectTable()

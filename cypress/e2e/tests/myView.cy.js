@@ -1,11 +1,10 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {freestyleProjectName, pipelineName, folderName, multibranchPipelineName, multiConfigurationProjectName, orgFolderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-
-import myView from "../../fixtures/pom_fixtures/myView.json";
+import myViewData from "../../fixtures/pom_fixtures/myView.json";
 
 describe('myView', () => {
 
@@ -16,16 +15,16 @@ describe('myView', () => {
         homePage
             .clickMyViewSideMenuLink()
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(freestyleProjectName)
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .getFreestyleProjectHeader()
-            .should('have.text', headerText + freestyleProjectName);
+            .should('have.text', freestyleProjectPageData.headerText + newItemPageData.freestyleProjectName);
     });
 
     it('AT_04.03_001|< My View> Verify that user can open selected Pipeline', () => {
-      cy.createPipeline(pipelineName);  
+      cy.createPipeline(newItemPageData.pipelineName)  
         
       headerAndFooter
         .clickUserDropDownBtn()
@@ -33,11 +32,11 @@ describe('myView', () => {
         .clickPipelineNameLink()
         .getPipelinePageHeadline()
         .should('be.visible')
-        .and('include.text', pipelineName);
+        .and('include.text', newItemPageData.pipelineName);
   });
 
   it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
-    cy.createFreestyleProject(freestyleProjectName);
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName);
                   
     headerAndFooter
       .clickUserDropDownBtn()
@@ -45,11 +44,11 @@ describe('myView', () => {
       .clickFreestyleProjectNameLink()
       .getFreestyleProjectHeader()
       .should('be.visible')
-      .and('include.text', freestyleProjectName);
+      .and('include.text', newItemPageData.freestyleProjectName);
   });
 
   it('AT_04.03_007 |<My View> Verify that the user can open the selected Multi-configuration project', () => {
-    cy.createMultiConfigurationProject(multiConfigurationProjectName);
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
                 
     headerAndFooter
       .clickUserDropDownBtn()
@@ -57,11 +56,11 @@ describe('myView', () => {
       .clickMultiConfigurationProjectNameLink()
       .getMultiConfigurationProjectHeader()
       .should('be.visible')
-      .and('include.text', multiConfigurationProjectName);
+      .and('include.text', newItemPageData.multiConfigurationProjectName);
   });
 
   it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
-    cy.createFolderProject(folderName);
+    cy.createFolderProject(newItemPageData.folderName);
                 
     headerAndFooter
       .clickUserDropDownBtn()
@@ -69,11 +68,11 @@ describe('myView', () => {
       .clickFolderNameLink()
       .getFolderHeader()
       .should('be.visible')
-      .and('include.text', folderName);
+      .and('include.text', newItemPageData.folderName);
   }); 
 
   it('AT_04.03_008|<My View> Verify that the user can open the selected Multibranch Pipeline', () => {
-    cy.createMultiBranchPipeline(multibranchPipelineName);
+    cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
             
     headerAndFooter
       .clickUserDropDownBtn()
@@ -81,14 +80,14 @@ describe('myView', () => {
       .clickMultiBranchPipelineNameLink()
       .getMultiBranchPipelineHeader()
       .should('be.visible')
-      .and('include.text', multibranchPipelineName);
+      .and('include.text', newItemPageData.multibranchPipelineName);
   }); 
 
   it('AT_09.01_005 | My Views > Create new view > Verify "+" sign above jobs list is available', () => {
     homePage
       .clickMyViewSideMenuLink()
       .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(freestyleProjectName)
+      .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
       .selectFreestyleProjectItem()
       .clickOkBtnAndGoFreestyleProjectConfig()
       .clickSaveBtnAndGoFreestyleProject()
@@ -96,11 +95,11 @@ describe('myView', () => {
       .clickMyViewSideMenuLink()
       .verifyAndClickAddNewViewLink()
       .getHeaderOfNewViewNameInputField()
-      .should('have.text', myView.headerOfNewViewNameInputField)
+      .should('have.text', myViewData.headerOfNewViewNameInputField)
   });
 
   it('AT_04.03_009|<My View> Verify that the user can open the selected Organization Folder', () => {
-    cy.createOrgFolderProject(orgFolderName);
+    cy.createOrgFolderProject(newItemPageData.orgFolderName);
             
     headerAndFooter
       .clickUserDropDownBtn()
@@ -108,6 +107,6 @@ describe('myView', () => {
       .clickOrgFolderNameLink()
       .getOrgFolderHeader()
       .should('be.visible')
-      .and('include.text', orgFolderName);
+      .and('include.text', newItemPageData.orgFolderName);
   }); 
 });
