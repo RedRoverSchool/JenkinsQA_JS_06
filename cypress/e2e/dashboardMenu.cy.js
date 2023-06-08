@@ -16,7 +16,7 @@ describe('Homepage(Dashboard)| Side panel sub-menu', () => {
         })
     })
 
-    it('Homepage(Dashboard) | Verify "New Item" redirection', () => {
+    it.skip('Homepage(Dashboard) | Verify "New Item" redirection', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.url().should('include', '/view/all/newJob')
     })

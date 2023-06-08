@@ -100,4 +100,11 @@ describe('newItem', () => {
             .getNewItemNameInputField()
             .should('have.attr', 'type', 'text')
     });        
+
+    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageUrl()
+            .should('include', newItemPage.newItemEndPoinURL)   
+    });
 });

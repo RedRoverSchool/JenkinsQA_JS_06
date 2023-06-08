@@ -26,8 +26,6 @@ class HomePage {
     getPageBody = () => cy.get("#page-body");
     getMainPanel = () => cy.get('#main-panel');
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
-    getDeleteMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-    getSearchBox = () => cy.get('#search-box');
     getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");    
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
