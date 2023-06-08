@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import {folderName} from "../../fixtures/pom_fixtures/newItemPage.json";
-import {folderDescription} from "../../fixtures/pom_fixtures/folderPage.json";
+import {folderDescription, folderNewDescription} from "../../fixtures/pom_fixtures/folderPage.json";
 import {freestyleProjectName} from "../../fixtures/pom_fixtures/newItemPage.json"
 
 describe('folder', () => {
@@ -16,7 +16,7 @@ describe('folder', () => {
             .typeNewItemNameInputField(folderName)
             .clickOkBtnAndGoFolderConfig()
             .clickSaveBtnAndGoFolder()
-            .clickAddDescriptionBtn()
+            .clickAddEditDescriptionBtn()
             .typeFolderDescription(folderDescription)
             .saveFolderDescription()
             .getFolderDescription().should('have.text', folderDescription);
@@ -44,4 +44,15 @@ describe('folder', () => {
             .getFullProjectName()
             .should('contain', `${folderName}/${freestyleProjectName}`);
       });
+
+    it('AT_15.03.002 | Verify possibility to edit folder description', () => {
+        cy.createFolderProject(folderName);
+        cy.addFolderDescription(folderDescription);
+        homePage 
+            .clickFolderNameLink(folderName) 
+            .clickAddEditDescriptionBtn()
+            .typeFolderNewDescription(folderNewDescription) 
+            .saveFolderDescription()
+            .getFolderDescription().should('have.text', folderNewDescription);
+    });
 });

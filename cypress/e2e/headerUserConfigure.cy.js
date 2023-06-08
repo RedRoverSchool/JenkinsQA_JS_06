@@ -32,13 +32,13 @@ describe('Header User configure', () => {
     const jenkinsURL = 'http://localhost:'+jenkinsPort;
     const userURL = jenkinsURL+'/user/'+userId+'/';
     
-    it('AT_01.05_001| <Header>User configure menu item', function () {
+    it.skip('AT_01.05_001| <Header>User configure menu item', function () {
         cy.navigateUserConfigurationPage().then(() => {
             cy.url().should('eq', userURL + 'configure');
         });
     });
 
-    it('AT_01.05_004| <Header> <User Configure> insert information about user', function () {
+    it.skip('AT_01.05_004| <Header> <User Configure> insert information about user', function () {
         cy.navigateUserConfigurationPage().then(() => {
             descriptionField().should('be.visible');
             descriptionField().type('{selectall}').then(() => {
@@ -89,20 +89,20 @@ describe('Header User configure', () => {
     });
 
 
-    it('AT_01.05_007 | <Header>The user is able to select the option "Configure" from the dropdown menu "User"', () => {
+    it.skip('AT_01.05_007 | <Header>The user is able to select the option "Configure" from the dropdown menu "User"', () => {
         cy.get('.login button').click({ force: true })
         cy.get('.yuimenuitemlabel').contains('Configure').click()
         cy.get('#breadcrumbs').should('contain', 'Configure')
     })
 
-    it('AT_01.05.009 | <Header>User should be able to choose the “Configure“ menu item in the “User” dropdown-menu', () => {
+    it.skip('AT_01.05.009 | <Header>User should be able to choose the “Configure“ menu item in the “User” dropdown-menu', () => {
         cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });
         cy.get('#breadcrumb-menu li.yuimenuitem a span').contains('Configure').click();
         cy.get(`${saveButton}`).click()
         cy.get('#main-panel').should('be.visible')
     })
 
-    it('AT_01.05_011 | Header>Redirect to User Configure Page', () => {
+    it.skip('AT_01.05_011 | Header>Redirect to User Configure Page', () => {
         cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
           .realHover()
           .click({force: true});
@@ -111,7 +111,7 @@ describe('Header User configure', () => {
     })
 
 
-    it('AT_01.05_12 | Verify User can configure user account', () => {
+    it.skip('AT_01.05_12 | Verify User can configure user account', () => {
         cy.get('a[href^="/user/"] button[class="jenkins-menu-dropdown-chevron"]').realHover().click()
         cy.get('#yui-gen2').click()
         cy.get('textarea[name="_.description"]').type(userDescription.textDescription)
@@ -127,7 +127,7 @@ describe('Header User configure', () => {
         cy.get('#description-link').should('contain', 'Add description')
     })
 
-    it ('AT_01.05_013 | Header>Visiting User Configure Page and Filling Out the User Account', () => {
+    it.skip ('AT_01.05_013 | Header>Visiting User Configure Page and Filling Out the User Account', () => {
         cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
           .click({force: true});
         cy.get('#yui-gen2').click();
@@ -162,7 +162,7 @@ describe('Header User configure', () => {
         cy.get('#description-link').should('contain', 'Add description');
     });
 
-    it('AT_01.05.10 | Header> Verify User redirected on page configure', () => {
+    it.skip('AT_01.05.10 | Header> Verify User redirected on page configure', () => {
         cy.openConfigurationPage();
         cy.get('.jenkins-form-label').eq(0).should('contain', userDescription.fieldName) 
     })

@@ -9,6 +9,7 @@ import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.jso
 import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import {userDescription} from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
 describe('headerAndFooter', () => {
 
@@ -99,5 +100,15 @@ describe('headerAndFooter', () => {
             .and('have.text', version.number)
             .and('have.attr', 'href', version.link)
             .and('have.css', 'color', version.rgb)
+    });
+    
+    it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
+        headerAndFooter
+            .clickUserDropDownBtn() 
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userDescription)
+            .clickUserConfigSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userDescription)
     });
 })
