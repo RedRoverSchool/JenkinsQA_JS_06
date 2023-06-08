@@ -5,7 +5,6 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
-import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
@@ -82,11 +81,6 @@ class HomePage {
   clickProjectDrpDwnBtn() {
     this.getProjectDrpDwnBtn().click({force: true});
     return this;
-  }
-
-  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
-    this.getDeleteMultiBrPipelineLink().click();
-    return new MultibranchPipelineDeletePage();
   }
 
   typeIntoSearchBox(name) {
