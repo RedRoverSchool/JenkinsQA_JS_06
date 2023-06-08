@@ -109,17 +109,17 @@ describe('freestyleProject', () => {
     it('AT_12.06_003 | Freestyle project. Project Status is changed to "Disabled" on Dashboard after clicking "Disable project" button', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemData.freestyleProjectName)
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
             .selectFreestyleProjectItem()
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .getFreestyleProjectHeader()
-            .should('include.text', newItemData.freestyleProjectName)
+            .should('include.text', newItemPageData.freestyleProjectName)
         freestyleProjectPage
             .clickDisableProjectBtn()
         dashboardBreadcrumbs
             .clickDashboardLinkAndGoHomePage()
-            .getProjectDisableIcon(newItemData.freestyleProjectName)
+            .getProjectDisableIcon(newItemPageData.freestyleProjectName)
             .should('be.visible')
             .and('have.attr', 'title', 'Disabled')
     });
