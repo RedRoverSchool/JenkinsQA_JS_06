@@ -103,6 +103,11 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new ErrorMessagePage();
     };
+
+    verifyNewItemHeader(name) {
+        this.getNewItemHeader().should('have.text', name)
+        return this
+    };
         
 }
 export default NewItemPage;
