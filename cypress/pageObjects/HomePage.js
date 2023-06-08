@@ -52,6 +52,12 @@ class HomePage {
   getSetUpAgentLink = () =>
     cy.get('a[href="computer/new"] span:not(.trailing-icon)');
 
+
+  clickSideMenuPanelItem(idx) {
+    this.getSideMenuPanel().eq(idx).click()
+    return cy.url()
+  };
+
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
     return new PeoplePage();
