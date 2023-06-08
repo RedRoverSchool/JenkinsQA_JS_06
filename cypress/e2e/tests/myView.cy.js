@@ -24,28 +24,20 @@ describe('myView', () => {
     });
 
     it('AT_04.03_001|< My View> Verify that user can open selected Pipeline', () => {
-        homePage
-          .clickNewItemSideMenuLink()
-          .typeNewItemNameInputField(newItemPageData.pipelineName)
-          .selectPipelineItem()
-          .clickOkBtnAndGoPipelineConfig();
-                  
-        headerAndFooter
-          .clickUserDropDownBtn()
-          .selectUserMyViewsMenu()
-          .clickPipelineNameLink()
-          .getPipelinePageHeadline()
-          .should('be.visible')
-          .and('include.text', newItemPageData.pipelineName);
+      cy.createPipeline(newItemPageData.pipelineName)  
+        
+      headerAndFooter
+        .clickUserDropDownBtn()
+        .selectUserMyViewsMenu()
+        .clickPipelineNameLink()
+        .getPipelinePageHeadline()
+        .should('be.visible')
+        .and('include.text', newItemPageData.pipelineName);
   });
 
-    it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
-    homePage
-      .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-      .selectFreestyleProjectItem()
-      .clickOkBtnAndGoPipelineConfig();
-            
+  it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+                  
     headerAndFooter
       .clickUserDropDownBtn()
       .selectUserMyViewsMenu()
@@ -56,12 +48,8 @@ describe('myView', () => {
   });
 
   it('AT_04.03_007 |<My View> Verify that the user can open the selected Multi-configuration project', () => {
-    homePage
-      .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(newItemPageData.multiConfigurationProjectName)
-      .selectMultiConfigurationProjectItem()
-      .clickOkBtnAndGoMultiConfProjectConfig();
-            
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
+                
     headerAndFooter
       .clickUserDropDownBtn()
       .selectUserMyViewsMenu()
@@ -72,12 +60,8 @@ describe('myView', () => {
   });
 
   it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
-    homePage
-      .clickNewItemSideMenuLink()
-      .typeNewItemNameInputField(newItemPageData.folderName)
-      .selectFolderItem()
-      .clickOkBtnAndGoFolderConfig();
-            
+    cy.createFolderProject(newItemPageData.folderName)
+                
     headerAndFooter
       .clickUserDropDownBtn()
       .selectUserMyViewsMenu()
