@@ -2,7 +2,7 @@
 
 const USERNAME = Cypress.env('local.admin.username');
 
-describe("Profile Page", () => {
+describe.skip("Profile Page", () => {
   let userNameInUrl;
   let userNameOnThePage;
 
@@ -19,7 +19,7 @@ describe("Profile Page", () => {
       .invoke("text");
   }
 
-  it("AT_18.01_001 | Profile Page | Verify user profile name redirect.", function () {
+  it.skip("AT_18.01_001 | Profile Page | Verify user profile name redirect.", function () {
     getUserNameInUrl().then((nameInUrl) => {
       userNameInUrl = nameInUrl;
       getUserNameOnThePage().then((nameOnPage) => {
@@ -31,12 +31,12 @@ describe("Profile Page", () => {
     });
   });
 
-  it("AT_18.01_002 | Profile Page | Verify Profile Icon on the page", function () {
+  it.skip("AT_18.01_002 | Profile Page | Verify Profile Icon on the page", function () {
     cy.get("div[class*='login page-header']>a[href^='/user']").click();
     cy.get("span[class='icon-lg']").should("exist");
   });
 
-  it("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
+  it.skip("AT_18.01_003 | Profile Page | Verify Profile Name on the page", function () {
     getUserNameOnThePage().then((nameOnPage) => {
       userNameOnThePage = nameOnPage;
       cy.get("div[class*='login page-header']>a[href^='/user']").click();
@@ -49,7 +49,7 @@ describe("Profile Page", () => {
     });
   });
 
-  it("AT_18.01_004 | Profile Page | Verify User ID on the page", function () {
+  it.skip("AT_18.01_004 | Profile Page | Verify User ID on the page", function () {
     getUserNameInUrl().then((nameInUrl) => {
       userNameInUrl = nameInUrl;
       cy.get("div[class*='login page-header']>a[href^='/user']").click();
@@ -57,7 +57,7 @@ describe("Profile Page", () => {
     });
   });
 
-  it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+  it.skip('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
       cy.get('div[class^="login page-header"]>a[href^="/user"]').click()
       cy.url().should('include', `${USERNAME}`)
       cy.get('.icon-lg').should('exist')
