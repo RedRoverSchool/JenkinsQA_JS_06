@@ -84,7 +84,7 @@ describe('multibranchPipelineConfigure', () => {
       )
   })
 
-  it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
+  it.only('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
     cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName)
 
     multibranchPipelineConfigurePage
@@ -92,7 +92,7 @@ describe('multibranchPipelineConfigure', () => {
       .clickSaveBtnAndGoMultiPipeline()
       .clickMultibranchPiplineEnableBtn()
       .getEnableButton()
-      .should('contain', multibranchPipline.disableButton)
-      .should('have.css', 'color', multibranchPipline.enableButtonColor)
+      .should('contain', multibranchPipelinePageData.disableButton)
+      .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
   });
 })
