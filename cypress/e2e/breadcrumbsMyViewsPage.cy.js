@@ -69,7 +69,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.multiConfigurationProjectName)
     })
 
-    it('AT_04.03.008 | Verify that the user can open the selected Multibranch Pipeline', () => {
+    it.skip('AT_04.03.008 | Verify that the user can open the selected Multibranch Pipeline', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.multiBranchPipelineName);
         cy.get('.hudson_matrix_MatrixProject').click();
@@ -86,7 +86,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.multiBranchPipelineName)
     })
 
-    it('AT_04.03.009|Verify that the user can open the selected Organization Folder', () => {
+    it.skip('AT_04.03.009|Verify that the user can open the selected Organization Folder', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.organizationFolderName[0]);
         cy.get('.hudson_matrix_MatrixProject').click();

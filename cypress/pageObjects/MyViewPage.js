@@ -6,6 +6,7 @@ import FolderPage from './FolderPage';
 import MultibranchPipelinePage from './MultibranchPipelinePage';
 import NewViewPage from './NewViewPage';
 import myView from '../fixtures/pom_fixtures/myView.json';
+import OrgFolderPage from './OrgFolderPage';
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -17,6 +18,7 @@ class MyViewPage {
   getFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getAddNewViewLink = () => cy.get('a[href$="/newView"]');
+  getOrgFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -53,6 +55,11 @@ clickMultiBranchPipelineNameLink(){
     .should('be.visible').click();
     cy.url().should('contain', myView.newViewPageURL);
     return new NewViewPage();
+  };
+
+  clickOrgFolderNameLink(){
+    this.getOrgFolderNameLink().click()
+    return new OrgFolderPage();
   };
 }
 export default MyViewPage;

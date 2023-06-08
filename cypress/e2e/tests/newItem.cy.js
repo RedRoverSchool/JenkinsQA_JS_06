@@ -1,8 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
-import errorMessage from "../../fixtures/pom_fixtures/errorPageData.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import orgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
@@ -17,27 +16,27 @@ describe('newItem', () => {
         homePage
             .clickNewItemSideMenuLink()
             .createNewItemNamesList()
-            .should('deep.equal', newItemPage.newItemNames);
+            .should('deep.equal', newItemPageData.newItemNames);
     });
 
     it('AT_5.06_001| Create a new Organization Folder', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
             .selectOrgFolderItem()
             .clickOkBtnAndGoOrgFolderConfig()
             .clickSaveBtnAndGoOrgFolder()
             .clickGoToDashboard()
             .getMainPanel()
-            .should('contain.text', newItemPage.orgFolderName);
+            .should('contain.text', newItemPageData.orgFolderName);
     });
 
 
-    newItemPage.newItemNames.forEach((newItemNames,idx) => {
+    newItemPageData.newItemNames.forEach((newItemNames,idx) => {
         it(`AT_05.05_009 | Create a new ${newItemNames} using name with more then 255 valid characters`, () => {
             homePage
                 .clickNewItemSideMenuLink()
-                .typeNewItemNameInputField(newItemPage.character.repeat(newItemPage.number))
+                .typeNewItemNameInputField(newItemPageData.character.repeat(newItemPageData.number))
                 .clickEachItemsNameFromMenuListItem(idx)
                 .clickOkBtnAndGoErrorPage()
             errorPage
@@ -50,14 +49,13 @@ describe('newItem', () => {
             .clickNewItemSideMenuLink()
             .selectOrgFolderItem()
             .getWarningMessage()
-            .should('contain.text', newItemPage.warningMessage);
+            .should('contain.text', newItemPageData.warningMessage);
     });
   
-
     it('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.multibranchPipelineName)
+            .typeNewItemNameInputField(newItemPageData.multibranchPipelineName)
             .selectMultibranchPipelineItem()
             .clickOkBtnAndGoMultiPipelineConfig()
             .clickSaveBtnAndGoMultiPipeline();
@@ -71,7 +69,7 @@ describe('newItem', () => {
     it('AT_05.06_005| Create a new Organization Folder with description', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.orgFolderName)
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
             .selectOrgFolderItem()
             .clickOkBtnAndGoOrgFolderConfig()
             .addDescription(orgFolderConfigurePage.description)
@@ -84,20 +82,27 @@ describe('newItem', () => {
         homePage
             .clickPeopleSideMenuLink()
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.pipelineName)
+            .typeNewItemNameInputField(newItemPageData.pipelineName)
             .selectPipelineItem()
             .clickOkBtnAndGoPipelineConfig()
             .clickSaveBtnAndGoPipeline()
             .clickGoToDashboard()
             .getMainPanel()
-            .should('contain.text', newItemPage.pipelineName);
+            .should('contain.text', newItemPageData.pipelineName);
     });
 
     it('AT_05.07_004 | New item page has Input field for text data', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .verifyNewItemHeader(newItemPage.newItemHeader)
+            .verifyNewItemHeader(newItemPageData.newItemHeader)
             .getNewItemNameInputField()
             .should('have.attr', 'type', 'text')
     });        
+
+    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageUrl()
+            .should('include', newItemPageData.newItemEndPoinURL)   
+    });
 });

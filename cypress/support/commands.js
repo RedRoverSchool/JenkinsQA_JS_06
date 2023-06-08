@@ -26,7 +26,6 @@
 
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
-import newItemData from "../fixtures/pom_fixtures/newItemPage.json";
 import HomePage from "../pageObjects/HomePage";
 const homePage = new HomePage();
 
@@ -96,7 +95,7 @@ Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
 
 Cypress.Commands.add('addFolderDescription', (folderDescription) => {
     homePage
-        .clickFolderNameLink()
+        .clickOnFolderNameLink()
         .clickAddEditDescriptionBtn()
         .typeFolderDescription(folderDescription)
         .saveFolderDescription()
@@ -111,3 +110,14 @@ Cypress.Commands.add('createMultiBranchPipeline', (name) => {
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig();
 });
+
+Cypress.Commands.add('createPipeline', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig();
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});
+
