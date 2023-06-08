@@ -1,4 +1,6 @@
 import NewItemPage from "./NewItemPage";
+import HomePage from "./HomePage";
+import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 
 class FolderPage {
     getAddEditDescriptiotBtn = () => cy.get('#description-link');
@@ -8,6 +10,7 @@ class FolderPage {
     getFolderHeader = () => cy.get('#main-panel h1');
     getJobInsideFolderLink = () => cy.get('table td a[href*="job/"]');
     getCreateAJobLink = () => cy.get('a[href="newJob"]')
+    getDeleteFolderBtn = () => cy.get('a[href$="/delete"]')
 
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
@@ -38,6 +41,11 @@ class FolderPage {
     typeFolderNewDescription(name) {
         this.getFolderDescriptionInputField().clear().type(name);
         return this;
+    };
+
+    clickDeleteFolderBtn() {
+        this.getDeleteFolderBtn().click();
+        return new FoldersAndMultibrPipelineDeletePage;
     };
     
 };

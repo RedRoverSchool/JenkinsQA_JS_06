@@ -36,7 +36,7 @@ describe('myView', () => {
   });
 
   it('AT_04.03_003 |<My View> Verify that the user can open the selected Freestyle project', () => {
-    cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName);
                   
     headerAndFooter
       .clickUserDropDownBtn()
@@ -48,7 +48,7 @@ describe('myView', () => {
   });
 
   it('AT_04.03_007 |<My View> Verify that the user can open the selected Multi-configuration project', () => {
-    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName)
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
                 
     headerAndFooter
       .clickUserDropDownBtn()
@@ -60,7 +60,7 @@ describe('myView', () => {
   });
 
   it('AT_04.03_002|<My View> Verify that the user can open the selected Folder', () => {
-    cy.createFolderProject(newItemPageData.folderName)
+    cy.createFolderProject(newItemPageData.folderName);
                 
     headerAndFooter
       .clickUserDropDownBtn()
@@ -97,4 +97,16 @@ describe('myView', () => {
       .getHeaderOfNewViewNameInputField()
       .should('have.text', myViewData.headerOfNewViewNameInputField)
   });
+
+  it('AT_04.03_009|<My View> Verify that the user can open the selected Organization Folder', () => {
+    cy.createOrgFolderProject(newItemPageData.orgFolderName);
+            
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickOrgFolderNameLink()
+      .getOrgFolderHeader()
+      .should('be.visible')
+      .and('include.text', newItemPageData.orgFolderName);
+  }); 
 });
