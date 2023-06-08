@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import { credentialsPageHeader } from "../../fixtures/pom_fixtures/userCredentialsPage.json"
+import userCredentialsPageData from "../../fixtures/pom_fixtures/userCredentialsPage.json"
 
 
 describe('profilePage', () => {
@@ -14,6 +14,6 @@ describe('profilePage', () => {
             .clickUserNameLink()
             .clickUserCredentialsLink()
             .getCredentialsHeader()
-            .should('have.text', credentialsPageHeader)
+            .should('have.text', userCredentialsPageData.credentialsPageHeader)
     })
 })

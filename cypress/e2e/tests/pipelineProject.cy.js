@@ -38,6 +38,5 @@ describe('pipelineProject',()=>{
             .clickPipelineProjectRenameBtn()
             .getPipelinePageHeadline()
             .should('contain.text',newItemPageData.newpipelineName)
-        
     })
 })

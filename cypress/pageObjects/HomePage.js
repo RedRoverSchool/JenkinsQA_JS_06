@@ -5,7 +5,6 @@ import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
-import MultibranchPipelineDeletePage from "./MultibranchPipelineDeletePage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
@@ -43,7 +42,9 @@ class HomePage {
     getSideMenuPanel = () => cy.get('#tasks .task');
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
-    getDescriptionField = () => cy.get('#description div:first-of-type')
+    getDescriptionField = () => cy.get('#description div:first-of-type');
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
     
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -83,11 +84,6 @@ class HomePage {
   clickProjectDrpDwnBtn() {
     this.getProjectDrpDwnBtn().click({force: true});
     return this;
-  }
-
-  clickDeleteMultiBrPipelineFromDrpDwnMenu() {
-    this.getDeleteMultiBrPipelineLink().click();
-    return new MultibranchPipelineDeletePage();
   }
 
   typeIntoSearchBox(name) {
@@ -195,6 +191,11 @@ class HomePage {
   clickMultibranchPipelineNameLink(name) {
     this.getProjectNameLink().contains(name).click();
     return new MultibranchPipelineStatusPage();
+  }
+
+  clickDescriptionPreviewLink() {
+    this.getDescriptionPreviewLink().click();
+    return this;
   }
 };
 

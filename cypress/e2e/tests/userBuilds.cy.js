@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
+
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import userBuildsPage from "../../fixtures/pom_fixtures/userBuildsPage.json";
+import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
 
 describe('userBuilds', () => {
     const headerAndFooter = new HeaderAndFooter();
@@ -10,6 +11,6 @@ describe('userBuilds', () => {
             .clickUserDropDownBtn()
             .selectUserBuildsMenu()
             .getUserBuildsTitle()
-            .should('eq', `${Cypress.env('local.admin.username')} ${userBuildsPage.titleText}`);
+            .should('eq', `${Cypress.env('local.admin.username')} ${userBuildsPageData.titleText}`);
     });
 })
