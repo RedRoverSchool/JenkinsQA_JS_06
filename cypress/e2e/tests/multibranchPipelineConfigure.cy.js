@@ -90,11 +90,7 @@ describe('multibranchPipelineConfigure', () => {
     multibranchPipelineConfigurePage
       .clickDisableBtn()
       .clickSaveBtnAndGoMultiPipeline()
-
-      multibranchPiplinePage
       .clickMultibranchPiplineEnableBtn()
-
-      multibranchPiplinePage
       .getEnableButton()
       .should('contain', multibranchPipline.disableButton)
       .should('have.css', 'color', multibranchPipline.enableButtonColor)

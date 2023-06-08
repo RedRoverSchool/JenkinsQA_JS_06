@@ -21,6 +21,7 @@ class MultibranchPipelinePage {
 
     clickMultibranchPiplineEnableBtn() {
         this.getEnableButton().click();
+        return this;
       }
       
     
