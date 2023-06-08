@@ -24,7 +24,7 @@ describe('folder', () => {
     it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
         cy.createFolderProject(newItemPageData.folderName)
         homePage
-            .clickProjectDrpDwnBtn(newItemPageData.folderName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.folderName)
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
             .getProjectTable()

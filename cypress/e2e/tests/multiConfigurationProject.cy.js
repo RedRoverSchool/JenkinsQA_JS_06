@@ -19,7 +19,7 @@ describe("multiConfigurationProject", () => {
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
         cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
         homePage
-            .clickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
@@ -28,7 +28,7 @@ describe("multiConfigurationProject", () => {
     it('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
         cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
         homePage
-            .clickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
             .selectRenameMultiConfProjectDrpDwnMenuBtn()
             .typeMultiConfProjectNameInputField(newItemPageData.multiConfigurationProjectName)
             .clickMultiConfProjectRenameBtn()
