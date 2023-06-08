@@ -14,6 +14,7 @@ import FreestyleProjectPage from "./FreestyleProjectPage";
 import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
+import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -29,6 +30,7 @@ class HomePage {
     getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");    
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
     getProjectTable = () => cy.get("table#projectstatus");
     getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
@@ -44,6 +46,8 @@ class HomePage {
     getDescriptionField = () => cy.get('#description div:first-of-type');
     getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
+    getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
+    getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
     
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -114,6 +118,11 @@ class HomePage {
   clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
     this.getDeleteFoldersAndMultiBrPipelineLink().click();
     return new FoldersAndMultibrPipelineDeletePage();
+  }
+
+  clickProjectNameDropdownMoveLink() {
+    this.getProjectNameDropdownMoveLink().click();
+    return new OrgFolderMoveChoicePage();
   }
 
   clickScheduleBuildBtn() {
@@ -195,6 +204,17 @@ class HomePage {
   clickDescriptionPreviewLink() {
     this.getDescriptionPreviewLink().click();
     return this;
+  }
+
+  hoverAndClickProjectDrpDwn(projectName) {
+    this.getProjectName(projectName).realHover();
+    this.getProjectDrpDwn(projectName).click();
+    return this;
+  }
+
+  clickProjectName(projectName) {
+    this.getProjectName(projectName).click();   
+    return new FolderPage;
   }
 };
 
