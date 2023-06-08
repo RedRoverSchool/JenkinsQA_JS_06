@@ -54,7 +54,7 @@ describe('dashboardBreadcrumbs', () => {
    });
 
    dashboardBreadcrumbsData.dashboardDropdownMenu.forEach((pageName, ind) => {
-      it.only(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
          dashboardBreadcrumbs
             .clickDashboardDropdownBtn()
             .clickEachDashboardDropDownMenuList(ind)
