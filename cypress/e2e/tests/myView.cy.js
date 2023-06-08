@@ -110,7 +110,7 @@ describe('myView', () => {
       .and('include.text', newItemPageData.orgFolderName);
   });
   
-  it.only('AT 09.02.005| My Views > Add description', () => {
+  it('AT 09.02.005| My Views > Add description', () => {
     homePage
       .clickMyViewSideMenuLink()
       .clickAddDescriptionBtn()
