@@ -6,6 +6,7 @@ class MultibranchPipelinePage {
     getMultibranchPiplineWarning = () => cy.get('#enable-project');
     getEnableButton = () => cy.get('button[formnovalidate]');
     getMultiBranchPipelineHeader = () => cy.get('#main-panel h1');
+    getDisableBtn = () => cy.get('#disable-project .jenkins-button')
 
     clickConfigureTheProjectLink() {
         this.getConfigureTheProjectLink().click();
@@ -17,6 +18,11 @@ class MultibranchPipelinePage {
             return $el.text().trimStart();
         });
     };
+
+    clickMultibranchPiplineEnableBtn() {
+        this.getEnableButton().click();
+      }
+      
     
 }
 
