@@ -69,7 +69,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('be.visible')
     })
 
-    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
+    it.skip('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.get('a[title$="otherwise run"]')
           .realHover()
           .should('be.visible').click()

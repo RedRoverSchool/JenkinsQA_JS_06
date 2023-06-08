@@ -1,5 +1,6 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
-import {addSourceItemsList} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import {addSourceItemsList, PeriodicallyQstMarkText, PeriodicallyHelpText1} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import { realHover } from "cypress-real-events/commands/realHover";
 
 class MultibranchPipelineConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -10,6 +11,9 @@ class MultibranchPipelineConfigurePage {
     getAddSourceBtn = () => cy.get('#yui-gen1-button')
     getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
+    getPeriodicallyPopUpQstMark = () => cy.get('a[title$="otherwise run"]')
+    getPeriodicallyHelpText1 = () => cy.get('div[nameref="cb2"] div[class="help"]')
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -49,6 +53,33 @@ class MultibranchPipelineConfigurePage {
         return this;
     };
 
+    checkPeriodicallyPopUpQstMark() {
+        this.getPeriodicallyPopUpQstMark()
+            .realHover()
+            .should('have.text', PeriodicallyQstMarkText)
+            .and('be.visible')
+        return this;
+    }
+
+    clickPeriodicallyPopUpQstMark() {
+        this.getPeriodicallyPopUpQstMark()
+            .click()
+        return this;
+    }
+
+    checkPeriodicallyHelpText1Visible() {
+        this.getPeriodicallyHelpText1()
+        .should('have.text', PeriodicallyHelpText1)
+        .and('be.visible')
+        return this;
+    }
+
+    checkPeriodicallyHelpText1Unvisible() {
+        this.getPeriodicallyHelpText1()
+        .should('have.text', PeriodicallyHelpText1)
+        .and('not.be.visible')
+        return this;
+    }
 }
 
 export default MultibranchPipelineConfigurePage;
