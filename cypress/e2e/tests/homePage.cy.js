@@ -2,8 +2,9 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsData.json";
-import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json" 
- 
+import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json"; 
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+
 describe("homePage", () => {
     const homePage = new HomePage()
 
@@ -16,14 +17,14 @@ describe("homePage", () => {
     it.skip('AT_02.04_008 | Homepage > Verify 5 items from the sub-menu', () => {
         homePage
           .createSidePanelItemsList()
-          .should('deep.equal', sidePanelItemsData)
+          .should('deep.equal', homePageData.sidePanelItems)
     });
 
     it("AT_02.06_004 | Homepage > Description input textarea does not exist", () => {
         homePage
           .getAddDescriptionField()
           .should("not.exist")
-    })
+    });
 
     it("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
         homePage
@@ -32,5 +33,6 @@ describe("homePage", () => {
           .clickDescriptionPreviewLink()
           .getDescriptionPreview()
           .should('have.text', descriptionText) 
-      }) 
-  }) 
+    }); 
+
+})

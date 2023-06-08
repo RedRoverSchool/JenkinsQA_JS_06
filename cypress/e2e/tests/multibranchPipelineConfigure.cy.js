@@ -1,9 +1,9 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
-import multibranchPipelineConfigData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
-import multibranchPipelineData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import multibranchPipelineConfigPageData from "../../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
 
@@ -16,7 +16,7 @@ describe('multibranchPipelineConfigure', () => {
     it('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
+            .typeNewItemNameInputField(newItemPageData.multibranchPipelineName)
             .selectMultibranchPipelineItem()
             .clickOkBtnAndGoMultiPipelineConfig()
             .clickSaveBtnAndGoMultiPipeline()
@@ -29,44 +29,42 @@ describe('multibranchPipelineConfigure', () => {
     it('AT_16.01.004 | Verify Change Appearance', function () {
         homePage
             .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
+            .typeNewItemNameInputField(newItemPageData.multibranchPipelineName)
             .selectMultibranchPipelineItem()
             .clickOkBtnAndGoMultiPipelineConfig()
             .clickSaveBtnAndGoMultiPipeline()
             .clickConfigureTheProjectLink()
             .clickAppearanceBtn()
-            .selectIconDrpDwn(multibranchPipelineConfigData.iconDrpDwn[0])
+            .selectIconDrpDwn(multibranchPipelineConfigPageData.iconDrpDwn[0])
             .clickSaveBtnAndGoMultiPipeline()
-            .getMultibranchPipelineTitle().should('have.attr', 'title', multibranchPipelineData.iconTitle)
+            .getMultibranchPipelineTitle().should('have.attr', 'title', multibranchPipelinePageData.iconTitle)
     });
 
     it('AT_16.01_03 | Disables the current Multibranch Pipeline', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemData.multibranchPipelineName)
-            .selectMultibranchPipelineItem()
-            .clickOkBtnAndGoMultiPipelineConfig()
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
             .trimMultibranchPiplineDisabledText()
-            .should('contain', multibranchPipelineData.disabledMessage)
+            .should('contain', multibranchPipelinePageData.disabledMessage)
 
         multibranchPiplinePage
             .getMultibranchPiplineWarning()
-            .should('have.css', 'color', multibranchPipelineData.disabledMessageColor)
+            .should('have.css', 'color', multibranchPipelinePageData.disabledMessageColor)
 
         multibranchPiplinePage
             .getEnableButton()
-            .should('contain', multibranchPipelineData.enableButton)
-            .and('have.css', 'color', multibranchPipelineData.enableButtonColor)
+            .should('contain', multibranchPipelinePageData.enableButton)
+            .and('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
     });
 
     it('AT_16.01_010 | Verify configuration fields -> Branch source ', function () {
-        cy.createMultiBranchPipeline(newItemData.multibranchPipelineName);
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
 
         multibranchPipelineConfigurePage
             .hoverClickAddSource()
             .createAddSourceItemList()
-            .should('deep.equal', multibranchPipelineConfigData.addSourceItemsList)
+            .should('deep.equal', multibranchPipelineConfigPageData.addSourceItemsList)
     });
 });

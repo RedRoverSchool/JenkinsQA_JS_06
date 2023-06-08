@@ -8,7 +8,7 @@ class OrgFolderPage {
     getEnableProjectForm = () => cy.get('#enable-project');
     getDescription = () => cy.get('#view-message');
     getMoveInSideMenulink = () => cy.get('#side-panel a[href*="move"]')
-    getDisplayName = () => cy.get('#main-panel h1')
+    getOrgFolderHeader = () => cy.get('#main-panel h1')
 
     clickGoToDashboard() {
         this.getDashboard().click();
