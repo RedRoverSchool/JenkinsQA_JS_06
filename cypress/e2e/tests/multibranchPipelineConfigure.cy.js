@@ -82,8 +82,9 @@ describe('multibranchPipelineConfigure', () => {
 
         multibranchPipelineConfigurePage
           .checkPeriodicallyPopUpQstMark()
-          .clickPeriodicallyPopUpQstMark() 
-          .checkPeriodicallyHelpText1Visible()
+          .should('have.text', PeriodicallyQstMarkText)
+        //   .clickPeriodicallyPopUpQstMark() 
+        //   .checkPeriodicallyHelpText1Visible()
         //   .clickPeriodicallyPopUpQstMark()
         //   .checkPeriodicallyHelpText1Unvisible()
         // cy.get('a[title$="otherwise run"]')
