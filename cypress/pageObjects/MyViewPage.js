@@ -19,12 +19,12 @@ class MyViewPage {
   getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getAddNewViewLink = () => cy.get('a[href$="/newView"]');
   getOrgFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getJobNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getSortNameArrow = () => cy.get('a.sortheader').contains('Name');
   getAddDescriptionBtn = () => cy.get('#description-link');
   getInputDescriptionField = () => cy.get('.jenkins-input');
   getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
   getDescriptionText = () => cy.get('#description>div:nth-child(1)');
-  getJobNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
-  getSortNameArrow = () => cy.get('a.sortheader').contains('Name');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
