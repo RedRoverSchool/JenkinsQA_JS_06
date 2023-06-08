@@ -22,6 +22,8 @@
     "character" : "LooongName",
     "number" : 26,
 
-    "warningMessage": "» This field cannot be empty, please enter a valid name"
-  
+    "warningMessage": "» This field cannot be empty, please enter a valid name",
+
+    "specialCharactersArr": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
+    "specialCharactersMsg": " is an unsafe character"
 }
