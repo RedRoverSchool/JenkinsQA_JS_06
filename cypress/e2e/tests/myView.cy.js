@@ -5,12 +5,14 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
+import MyViewPage from "../../pageObjects/MyViewPage";
 
 describe('myView', () => {
 
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
-     
+  const myViewPage = new MyViewPage();
+
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
             .clickMyViewSideMenuLink()
@@ -109,4 +111,20 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', newItemPageData.orgFolderName);
   }); 
+
+  it('AT_04.03_011|<My View>  Sort items by descending order', () => {
+    cy.createPipeline(newItemPageData.pipelineName);
+    cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName); 
+    cy.createOrganizationFolderProject(newItemPageData.orgFolderName);
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .verifyJobNameLinksAsc()
+      
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickSortNameArrow()
+      .verifyJobNameLinksDesk()
+   });
 });

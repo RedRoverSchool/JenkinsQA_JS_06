@@ -7,7 +7,7 @@ import MultibranchPipelinePage from './MultibranchPipelinePage';
 import NewViewPage from './NewViewPage';
 import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
-
+import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
   getBreadcrumbMyViewsItem = () => cy.get('li:nth-child(5) a:nth-child(1)');
@@ -19,6 +19,8 @@ class MyViewPage {
   getMultiBranchPipelineNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
   getAddNewViewLink = () => cy.get('a[href$="/newView"]');
   getOrgFolderNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getJobNameLink = () =>  cy.get('a[href^="job/"].jenkins-table__link');
+  getSortNameArrow = () => cy.get('a.sortheader').contains('Name');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -60,6 +62,27 @@ clickMultiBranchPipelineNameLink(){
   clickOrgFolderNameLink(){
     this.getOrgFolderNameLink().click()
     return new OrgFolderPage();
+  }; 
+
+  clickSortNameArrow(){
+    this.getSortNameArrow().click()
+    return this;
+  };
+
+  verifyJobNameLinksAsc(){
+    this.getJobNameLink()
+    .should('have.length', 3)
+    .each(($el, idx) => {
+      expect($el.text()).to.be.equal(newItemPageData.itemsNamesAsc[idx]);
+    });
+  };
+
+  verifyJobNameLinksDesk(){
+    this.getJobNameLink()
+    .should('have.length', 3)
+    .each(($el, idx) => {
+      expect($el.text()).to.be.equal(newItemPageData.itemsNamesDesc[idx]);
+    });
   };
 }
 export default MyViewPage;

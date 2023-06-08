@@ -109,6 +109,8 @@ Cypress.Commands.add('createMultiBranchPipeline', (name) => {
         .typeNewItemNameInputField(name)
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig();
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });
 
 Cypress.Commands.add('createPipeline', (pipelineName) => {
