@@ -109,4 +109,23 @@ describe('headerAndFooter', () => {
             .getUserDescriptionText()
             .should('have.text', userConfigurePageData.userDescription)
     });
+
+    it('AT_01.03_030 Verify User Dropdown menu has links with specifiс endings.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemsList().each(($el, idx) => {
+                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);             
+            })           
+    });
+
+    headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
+        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+            headerAndFooter  
+                .clickUserDropDownBtn()
+                .clickEachDropdownMenuItems(idx)
+                .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
+                .getPageBody()
+                .should('be.visible')
+        });
+    });
 })
