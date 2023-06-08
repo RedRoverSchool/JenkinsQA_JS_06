@@ -4,6 +4,7 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
+import orgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
 
 describe('newItem', () => {
 
@@ -64,4 +65,37 @@ describe('newItem', () => {
             .getProjectTable()
             .should('exist');    
     });
+
+    it('AT_05.06_005| Create a new Organization Folder with description', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPageData.orgFolderName)
+            .selectOrgFolderItem()
+            .clickOkBtnAndGoOrgFolderConfig()
+            .addDescription(orgFolderConfigurePage.description)
+            .clickSaveBtnAndGoOrgFolder()
+            .getDescription()
+            .should('contain.text', orgFolderConfigurePage.description);
+    });
+    
+    it('AT_05.02_003 | Create a new Pipeline going from People page', () => {
+        homePage
+            .clickPeopleSideMenuLink()
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPageData.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig()
+            .clickSaveBtnAndGoPipeline()
+            .clickGoToDashboard()
+            .getMainPanel()
+            .should('contain.text', newItemPageData.pipelineName);
+    });
+
+    it('AT_05.07_004 | New item page has Input field for text data', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .verifyNewItemHeader(newItemPageData.newItemHeader)
+            .getNewItemNameInputField()
+            .should('have.attr', 'type', 'text')
+    });        
 });

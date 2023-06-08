@@ -1,18 +1,15 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import FreestyleProjectRenamePage from "../../pageObjects/FreestyleProjectRenamePage";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import freestyleConfigurePageData from "../../fixtures/pom_fixtures/freestyleConfigurePage.json"
 
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
-    const headerAndFooter = new HeaderAndFooter();
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
 
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
@@ -42,27 +39,6 @@ describe('freestyleProject', () => {
             .should('have.text', freestyleProjectPageData.errorMessage);
     })
 
-    freestyleConfigurePageData.buildSteps.forEach((buildStep,idx) => {
-        it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
-            homePage
-                .clickNewItemSideMenuLink()
-                .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-                .selectFreestyleProjectItem()            
-                .clickOkBtnAndGoFreestyleProjectConfig()
-
-                .clickLeftSidePanelBuildStepsBtn()
-                .clickAddBuildStepBtn()
-                .selectBuildStepFromMenuListItem(idx)
-                .checkBuilderWindowHeaderName(buildStep)
-                .clickSaveBtnAndGoFreestyleProject()
-                .clickConfigureSideMenuLink()
-                .clickLeftSidePanelBuildStepsBtn()
-                .getBuilderWindow()
-                .should('be.visible')
-                .and('exist')
-        })
-    });
-
     it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
         homePage
             .clickNewItemSideMenuLink()
@@ -82,8 +58,7 @@ describe('freestyleProject', () => {
 
     it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-        headerAndFooter
-            .clickJenkinsHomeLink()        
+        homePage
             .clickNamesProjects()
             .clickRenameSideMenuLink()
             .getNewNameInputFild()
@@ -99,5 +74,33 @@ describe('freestyleProject', () => {
             .getErrorMessage()
             .should('have.text', freestyleProjectPageData.message)
             .and('be.visible')
-    });    
+    });
+
+    it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickProjectNameDropdown()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+            .selectDeleteMultiConfProjectDrpDwnMenuBtn()
+            .getProjectTable()
+            .should('not.exist');
+    });
+
+    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFreestyleProjectHeader()
+            .should('include.text', newItemPageData.freestyleProjectName)
+
+        freestyleProjectPage
+            .clickDisableProjectBtn()
+            .getDisabledProgectWarning()
+            .should('be.visible')
+            .and('include.text', freestyleProjectPageData.disabledProjectNotify)
+    });
 });

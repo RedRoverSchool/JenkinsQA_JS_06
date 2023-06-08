@@ -28,4 +28,16 @@ describe('orgFolderConfigure', () => {
             .getDescription()
             .should('contain.text', OrgFolderConfigurePageData.description);
     });
+
+    it('AT_17.01.003 | Add Display Name to the Organization Folder via Configure', () => {
+        cy.createOrgFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+            .clickOrgFolderNameLink(newItemPageData.orgFolderName)
+            .clickConfigureTheProjectLink()
+            .addDisplayName(OrgFolderConfigurePageData.displayName)
+            .clickSaveBtnAndGoOrgFolder()
+            .getDisplayName()
+            .should('contain.text', OrgFolderConfigurePageData.displayName);
+    });
 });

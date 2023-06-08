@@ -15,19 +15,43 @@ describe('folder', () => {
             .typeNewItemNameInputField(newItemPageData.folderName)
             .clickOkBtnAndGoFolderConfig()
             .clickSaveBtnAndGoFolder()
-            .clickAddDescriptionBtn()
+            .clickAddEditDescriptionBtn()
             .typeFolderDescription(folderPageData.folderDescription)
             .saveFolderDescription()
             .getFolderDescription().should('have.text', folderPageData.folderDescription);
     });
 
     it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
-        cy.createFolderProject(newItemPageData.folderName);
+        cy.createFolderProject(newItemPageData.folderName)
         homePage
-            .clickProjectDrpDwnBtn()
+            .clickProjectDrpDwnBtn(newItemPageData.folderName)
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
             .getProjectTable()
             .should('not.exist');
+    });
+
+    it('AT_15.05.003| Verify user can create a new job inside a folder', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        homePage
+            .clickProjectNameLink(newItemPageData.folderName)
+            .clickCreateAJobLink()
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFullProjectName()
+            .should('contain', `${newItemPageData.folderName}/${newItemPageData.freestyleProjectName}`);
+      });
+
+    it('AT_15.03.002 | Verify possibility to edit folder description', () => {
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.addFolderDescription(folderPageData.folderDescription);
+        homePage 
+            .clickFolderNameLink(newItemPageData.folderName) 
+            .clickAddEditDescriptionBtn()
+            .typeFolderNewDescription(folderPageData.folderNewDescription) 
+            .saveFolderDescription()
+            .getFolderDescription().should('have.text', folderPageData.folderNewDescription);
     });
 });

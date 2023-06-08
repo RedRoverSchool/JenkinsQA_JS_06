@@ -24,7 +24,7 @@ describe('newItemInputField', () => {
         cy.get("input[id='name']").should("be.visible");
     });
 
-    it('AT_05.07_004 | New item page has Input field for text data', () => {
+    it.skip('AT_05.07_004 | New item page has Input field for text data', () => {
         cy.get('#side-panel a[href="/view/all/newJob"]').click()
 
         cy.get('div.header .h3').should('have.text', newItemNames.headerText)

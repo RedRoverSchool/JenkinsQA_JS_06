@@ -1,27 +1,36 @@
 /// <reference types="cypress" />
 
-import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
 
 describe('multibranchPipeline', () => {
 
-    const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
 
-    it.skip('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
-        homePage
-            .clickCreateJobLink()
-            .typeNewItemNameInputField(newItemPageData.multibranchPipelineName)
-            .selectMultibranchPipelineItem()
-            .clickOkBtnAndGoMultiPipelineConfig()
-            .clickSaveBtnAndGoMultiPipeline()
-            .clickJenkinsHeadIcon()
-            .hoverProjectNameLink()
-            .clickProjectDrpDwnBtn()
-            .clickDeleteMultiBrPipelineFromDrpDwnMenu()
+
+    it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .clickProjectNameDropdown()
+            .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu(newItemPageData.multibranchPipelineName)
             .clickSubmitBtn()
-            .typeIntoSearchBox(newItemPageData.multibranchPipelineName)
-            .getResultNoMatch().should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)  
+            .getProjectTable()
+            .should('not.exist');
         });
+
+    it('AT_16.02.006 | Verify user can rename Multibranch Pipeline inside the selected Multibranch Pipeline', () => {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .clickMultibranchPipelineNameLink(newItemPageData.multibranchPipelineName)
+            .clickMultibranchPipeRenameSideMenuLink()
+            .clickMultibranchPipelineRenameBtn()
+            .getErrorMessage()
+            .should('have.text', multibranchPipelineConfirmRenamePageData.errorMessage);
     });
+});
     

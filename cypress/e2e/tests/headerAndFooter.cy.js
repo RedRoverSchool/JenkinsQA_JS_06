@@ -6,6 +6,8 @@ import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json";
 import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
+import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
 describe('headerAndFooter', () => {
 
@@ -39,7 +41,7 @@ describe('headerAndFooter', () => {
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
         headerAndFooter
             .clickUserDropDownBtn()
-            .getUserDropdownMenuItemList()
+            .createUserDropdownMenuItemsList()
             .should('deep.equal', headerAndFooterData.userDropdownMenuItems);
     });
 
@@ -72,6 +74,22 @@ describe('headerAndFooter', () => {
                     .isIncludedLowerAndUpperLetters($text, headerAndFooterData.inputLowerCase, headerAndFooterData.inputUpperCase);
             })
     });
+
+    it('AT_01.01_003 | Verify Jenkins icon and name-icon are visible', () => {
+        headerAndFooter
+            .getHeadIcon()
+            .should('be.visible');
+        headerAndFooter
+            .getHeadIconName()
+            .should('be.visible');
+    });
+  
+    it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+            .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
+    });
     
     it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
         headerAndFooter
@@ -80,5 +98,15 @@ describe('headerAndFooter', () => {
             .and('have.text', headerAndFooterData.version.number)
             .and('have.attr', 'href', headerAndFooterData.version.link)
             .and('have.css', 'color', headerAndFooterData.version.rgb)
-    })
+    });
+    
+    it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
+        headerAndFooter
+            .clickUserDropDownBtn() 
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', userConfigurePageData.userDescription)
+    });
 })

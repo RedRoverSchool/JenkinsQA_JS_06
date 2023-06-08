@@ -67,6 +67,6 @@ describe('multibranchPipelineConfigure', () => {
         multibranchPipelineConfigurePage
             .hoverClickAddSource()
             .createAddSourceItemList()
-            .should('deep.equal', multibranchPipelineConfigData.addSourceItemsList)
+            .should('deep.equal', multibranchPipelineConfigPageData.addSourceItemsList)
     });
 });

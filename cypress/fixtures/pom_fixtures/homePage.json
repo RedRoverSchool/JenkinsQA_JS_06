@@ -1,4 +1,12 @@
 {
     "homePageHeader": "Welcome to Jenkins!",
-    "descriptionText": "Jenkins Projects"
+    "descriptionText": "Jenkins Projects",
+    "deletePipelineConfirmText": "Delete Pipeline: are you sure?",
+    "sidePanelItems": [
+        "New Item",
+        "People",
+        "Build History",
+        "Manage Jenkins",
+        "My Views"
+      ]
 }

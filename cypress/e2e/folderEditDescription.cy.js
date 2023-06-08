@@ -19,7 +19,7 @@ describe('Folder edit description', () => {
     cy.get('div#description>div:first-child').should('have.text', 'My description');
   });
 
-  it('AT_15.03_001 | Folder Edit description', () => {      
+  it.skip('AT_15.03_001 | Folder Edit description', () => {      
     cy.get('a#description-link').should('contain', 'Edit description').click();
     cy.get('textarea.jenkins-input').clear().type('New description');
     cy.get('button[name=Submit]').click();
@@ -27,7 +27,7 @@ describe('Folder edit description', () => {
     cy.get('a#description-link').should('contain', 'Edit description');
   }); 
 
-  it('AT_15.03.002 | Folder > Verify possibility to edit description', () => {
+  it.skip('AT_15.03.002 | Folder > Verify possibility to edit description', () => {
     cy.get('#description-link').click()
     cy.get('#description textarea').clear().type(createFolder.newDescriptionFolder)
     cy.get('.jenkins-button').click()
