@@ -42,7 +42,9 @@ class HomePage {
     getSideMenuPanel = () => cy.get('#tasks .task');
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
-    getDescriptionField = () => cy.get('#description div:first-of-type')
+    getDescriptionField = () => cy.get('#description div:first-of-type');
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
     getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
     getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
     getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
@@ -196,52 +198,6 @@ class HomePage {
     this.getProjectNameLink().contains(name).click();
     return new MultibranchPipelineStatusPage();
   }
-
-  clickTableSizeBtnS() {
-    this.getTableSizeBtnS().click()
-    return this
-  }
-
-  verifyTableSizeS() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.sRem)
-      })
-  })
-    return this
-  }
-
-  clickTableSizeBtnM() {
-    this.getTableSizeBtnM().click()
-    return this
-  }
-
-  verifyTableSizeM() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.mRem)
-      })
-  })
-    return this
-  }
-
-  clickTableSizeBtnL() {
-    this.getTableSizeBtnL().click()
-    return this
-  }
-
-  verifyTableSizeL() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.lRem)
-      })
-  })
-    return this
-  }
-
 };
 
 export default HomePage;
