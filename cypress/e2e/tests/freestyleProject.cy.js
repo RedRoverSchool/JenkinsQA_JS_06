@@ -6,7 +6,7 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import { freestyleProjectNewName } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { headerText } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import { errorMessage } from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
-import freestyleProject from"../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import freestyleProject from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import {description} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import {editDescription} from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
@@ -80,8 +80,8 @@ describe('freestyleProject', () => {
             .getErrorMessage()
             .should('have.text', freestyleProject.message)
             .and('be.visible')
-    });  
-    
+    });
+
     it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
 
@@ -91,9 +91,8 @@ describe('freestyleProject', () => {
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
-    }); 
-
-    it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+      }); 
+      it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPageData.freestyleProjectName)

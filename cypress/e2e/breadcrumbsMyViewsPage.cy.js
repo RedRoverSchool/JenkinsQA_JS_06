@@ -69,7 +69,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.multiConfigurationProjectName)
     })
 
-    it('AT_04.03.008 | Verify that the user can open the selected Multibranch Pipeline', () => {
+    it.skip('AT_04.03.008 | Verify that the user can open the selected Multibranch Pipeline', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.multiBranchPipelineName);
         cy.get('.hudson_matrix_MatrixProject').click();

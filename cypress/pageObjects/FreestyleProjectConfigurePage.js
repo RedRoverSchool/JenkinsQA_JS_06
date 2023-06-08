@@ -11,6 +11,7 @@ class FreestyleProjectConfigurePage {
     getGitHubProjectCheckbox = () => cy.get('.jenkins-checkbox [name="githubProject"]');
     getProjectUrlInputField = () => cy.get('input[name="_.projectUrlStr"]');
     getSaveBtn = () => cy.get('button[name="Submit"]');
+    getDescriptionInputField = () => cy.get('textarea[name="description"]');
     getLeftSideMenuPostBuldActionsBtn = () => cy.get('button[data-section-id="post-build-actions"]');
     getAddPostBuildActionBtn = () => cy.get('button.hetero-list-add').contains('Add post-build action');
     getAddPostBuildActionDropDownMenuItems = () => cy.get('.config-table .jenkins-section:nth-child(11) li .yuimenuitemlabel');
@@ -54,6 +55,11 @@ class FreestyleProjectConfigurePage {
         this.getSaveBtn().click();
         return new FreestyleProjectPage();
     }
+
+    typeDescriptionInputField(name) {
+        this.getDescriptionInputField().clear().type(name);
+        return this;
+    };
 
     clickLeftSideMenuPostBuldActionsBtn() {
         this.getLeftSideMenuPostBuldActionsBtn().click()
