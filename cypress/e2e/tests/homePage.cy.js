@@ -1,9 +1,10 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsData.json";
+//import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsData.json";
 import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json"; 
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -33,6 +34,12 @@ describe("homePage", () => {
           .clickDescriptionPreviewLink()
           .getDescriptionPreview()
           .should('have.text', descriptionText) 
-    }); 
-
+    });
+    
+    it("AT_02.07.009 | Homepage Verify the 'Set up an agent' link on the main page when no jobs have been created", () => {
+      homePage
+        .clickSetUpAgentLink()
+        .getPermanentAgentBtn()
+        .should("have.text", permanentAgentRadioBtn);
+    });
 })
