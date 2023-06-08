@@ -21,16 +21,13 @@ describe('buildHistory', () => {
                     .clickBuildInBuildHistoryCalendar()
                     .getTimeOfBuildCreatingFromCalendar()
                     .should('contain', timeBuildCreating)
-            })
-
-            
+            })     
         })
 
-         it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
-            homePage
+    it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
+        homePage
             .clickBuildHistoryLink()
             .getBuildHistoryPageUrl()
-            .should('include', buildHistoryPageData.BuildHistoryUrl)
-        }) 
-
-    });
+            .should('include', buildHistoryPageData.buildHistoryUrl)
+    }) 
+});

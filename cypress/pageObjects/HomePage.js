@@ -119,7 +119,6 @@ class HomePage {
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
     return new BuildHistoryPage();
-
   }
 
   clickFolderNameLink(projectName) {
