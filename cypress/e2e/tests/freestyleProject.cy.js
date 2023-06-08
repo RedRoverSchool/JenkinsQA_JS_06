@@ -64,7 +64,7 @@ describe('freestyleProject', () => {
     it('AT_12.03_002 | Verify that using the same name an error message is appeared', function () {
         cy.createFreestyleProject(newItemData.freestyleProjectName)
         homePage
-            .clickNamesProjects()
+            .clickFreestyleProjectNameLink()
             .clickRenameSideMenuLink()
             .getNewNameInputFild()
             .should('have.value', newItemData.freestyleProjectName)
@@ -85,7 +85,7 @@ describe('freestyleProject', () => {
         cy.createFreestyleProject(newItemData.freestyleProjectName);
 
         homePage
-            .clickProjectNameDropdown()
+            .clickProjectDrpDwnBtn()
             .hoverAndClickProjectDrpDwnBtn(newItemData.freestyleProjectName)
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()

@@ -17,7 +17,7 @@ describe('pipelineProject',()=>{
 
         headerAndFooter
         .clickJenkinsHomeLink()
-        .clickProjectDrpDwnBtn(newItemPageData.pipelineName)
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
         .selectDeleteDrpDwnLink()
         .getMainPanel()
         .should('not.include.text', newItemPageData.pipelineName)
@@ -32,7 +32,7 @@ describe('pipelineProject',()=>{
 
         headerAndFooter
             .clickJenkinsHomeLink()
-            .clickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
             .selectRenamePipelineProjectDrpDwnMenuBtn()
             .typePipelineProjectNameInputField(newItemPageData.newpipelineName)
             .clickPipelineProjectRenameBtn()
