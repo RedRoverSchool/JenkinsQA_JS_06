@@ -2,6 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemData from "../../fixtures/pom_fixtures/newItemPage.json";
+import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json"
 
 describe('buildHistory', () => {
 
@@ -21,6 +22,15 @@ describe('buildHistory', () => {
                     .getTimeOfBuildCreatingFromCalendar()
                     .should('contain', timeBuildCreating)
             })
+
+            
+        })
+
+         it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
+            homePage
+            .clickBuildHistoryLink()
+            .getBuildHistoryPageUrl()
+            .should('include', buildHistoryPageData.BuildHistoryUrl)
+        }) 
+
     });
- 
-});

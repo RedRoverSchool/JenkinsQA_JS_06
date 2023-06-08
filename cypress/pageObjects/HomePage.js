@@ -118,7 +118,7 @@ class HomePage {
 
   clickBuildHistoryLink() {
     this.getBuildHistoryLink().click();
-    return new BuildHistoryPage;
+    return new BuildHistoryPage();
 
   }
 

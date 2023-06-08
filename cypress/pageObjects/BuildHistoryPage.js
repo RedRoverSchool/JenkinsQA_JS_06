@@ -1,4 +1,5 @@
 class BuildHistoryPage {
+    getBuildHistoryPageUrl = () => cy.url()
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
 
