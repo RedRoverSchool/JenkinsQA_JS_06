@@ -106,22 +106,17 @@ describe('freestyleProject', () => {
     });
 
       it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
         
         homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject()
-            
-        freestyleProjectPage
-            .clickgetAddDescriptoinLinkBtn()
+            .clickFreestyleProjectNameLink()
+            .clickAddAndEditDescriptoinBtn()
             .typeDescriptionToInputField(freestyleProjectPageData.description)
             .clickSaveDescriptionBtn()
-            .clickEditDescriptionBtn()
-            .clearInputField()
-            .typeEditDescriptionToInputField(freestyleProjectPageData.editDescription)
-            .getInputField()
+            .clickAddAndEditDescriptoinBtn()
+            .clearDescriptionInputField()
+            .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
+            .getDescriptionInputField()
             .should('have.value', freestyleProjectPageData.editDescription)
 });
 })
