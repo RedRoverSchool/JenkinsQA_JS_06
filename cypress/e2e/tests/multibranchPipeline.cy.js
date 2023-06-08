@@ -40,7 +40,7 @@ describe('multibranchPipeline', () => {
 
     it('AT_16.04 _001| Verify that the Multibranch Pipeline is moved to an existing folder using dropdown', function () {
         cy.createFolderProject(newItemPageData.folderName);
-        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
 
         homePage
             .hoverAndClickProjectDrpDwn(newItemPageData.multibranchPipelineName)

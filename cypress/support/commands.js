@@ -103,7 +103,7 @@ Cypress.Commands.add('addFolderDescription', (folderDescription) => {
         .clickJenkinsHomeLink()
 });          
 
-Cypress.Commands.add('createMultiBranchPipeline', (name) => {
+Cypress.Commands.add('createMultBranchPipeline', (name) => {
     homePage
         .clickNewItemSideMenuLink()
         .typeNewItemNameInputField(name)
