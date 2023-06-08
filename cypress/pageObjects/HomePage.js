@@ -127,11 +127,6 @@ class HomePage {
     return new FoldersAndMultibrPipelineDeletePage();
   }
 
-  clickProjectNameDropdownMoveLink() {
-    this.getProjectNameDropdownMoveLink().click();
-    return new OrgFolderMoveChoicePage();
-  }
-
   clickScheduleBuildBtn() {
     return this.getScheduleBuildBtn().click();
   }
