@@ -37,7 +37,7 @@ describe('orgFolderConfigure', () => {
             .clickConfigureTheProjectLink()
             .addDisplayName(OrgFolderConfigurePage.displayName)
             .clickSaveBtnAndGoOrgFolder()
-            .getDisplayName()
+            .getOrgFolderHeader()
             .should('contain.text', OrgFolderConfigurePage.displayName);
     });
 });
