@@ -8,6 +8,7 @@ import UserBuildsPage from "./UserBuildsPage";
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
+import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 
 
 class HeaderAndFooter {

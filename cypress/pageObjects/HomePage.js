@@ -14,6 +14,7 @@ import FreestyleProjectPage from "./FreestyleProjectPage";
 import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
+import dashbordVerifyTableSize from "../fixtures/pom_fixtures/dashbordVerifyTableSize.json"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -42,6 +43,12 @@ class HomePage {
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
     getDescriptionField = () => cy.get('#description div:first-of-type')
+    getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
+    getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
+    getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
+    getTable = () => cy.get('#projectstatus')
+    
+
     
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -189,6 +196,52 @@ class HomePage {
     this.getProjectNameLink().contains(name).click();
     return new MultibranchPipelineStatusPage();
   }
+
+  clickTableSizeBtnS() {
+    this.getTableSizeBtnS().click()
+    return this
+  }
+
+  verifyTableSizeS() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', dashbordVerifyTableSize.sRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnM() {
+    this.getTableSizeBtnM().click()
+    return this
+  }
+
+  verifyTableSizeM() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', dashbordVerifyTableSize.mRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnL() {
+    this.getTableSizeBtnL().click()
+    return this
+  }
+
+  verifyTableSizeL() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', dashbordVerifyTableSize.lRem)
+      })
+  })
+    return this
+  }
+
 };
 
 export default HomePage;

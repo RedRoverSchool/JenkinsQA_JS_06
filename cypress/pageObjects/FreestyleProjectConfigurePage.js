@@ -1,4 +1,5 @@
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import HomePage from "./HomePage";
 
 class FreestyleProjectConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -17,6 +18,7 @@ class FreestyleProjectConfigurePage {
     getAddPostBuildActionDropDownMenuItems = () => cy.get('.config-table .jenkins-section:nth-child(11) li .yuimenuitemlabel');
     getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk'); 
     getPostBuildActionWindowHeader = () => cy.get('.repeated-chunk__header');
+    getHomePage = () => cy.get('#jenkins-home-link');
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -78,6 +80,10 @@ class FreestyleProjectConfigurePage {
             .should('include.text', name)
         return this    
     };
+    clickHomePage() {
+        this.getHomePage().click()
+        return new HomePage
+    }
 }
 
 export default FreestyleProjectConfigurePage;
