@@ -110,7 +110,7 @@ describe('myView', () => {
       .getOrgFolderHeader()
       .should('be.visible')
       .and('include.text', newItemPageData.orgFolderName);
-  }); 
+  });
 
   it('AT_04.03_011|<My View>  Sort items by descending order', () => {
     cy.createPipeline(newItemPageData.pipelineName);
@@ -127,4 +127,13 @@ describe('myView', () => {
       .clickSortNameArrow()
       .verifyJobNameLinksDesk()
    });
+  
+  it('AT 09.02.005| My Views > Add description', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .getDescriptionText()
+      .should('have.text', myViewData.addDescription);
+  });
 });

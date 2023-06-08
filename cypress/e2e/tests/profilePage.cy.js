@@ -26,4 +26,12 @@ describe('profilePage', () => {
             .should("have.text", sidePanelNameLink)
 
     })
+
+    it('AT_18.01_005| Verify access to user ID and status though user’s profile page', () => {
+        headerAndFooter
+            .clickUserNameLink()
+            .verifyUserPagesUrl(Cypress.env('local.admin.username'))
+            .verifyStatusBtn()
+            .getUserId().should('contain', Cypress.env('local.admin.username'))
+    })
 })
