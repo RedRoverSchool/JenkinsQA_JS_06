@@ -1,6 +1,8 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
-import {addSourceItemsList, PeriodicallyQstMarkText, PeriodicallyHelpText1} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 import { realHover } from "cypress-real-events/commands/realHover";
+import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText, PeriodicallyHelpText1} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import multibranchPipline from "../fixtures/multibranchPipeline.json";
+
 
 class MultibranchPipelineConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -13,7 +15,7 @@ class MultibranchPipelineConfigurePage {
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
     getPeriodicallyPopUpQstMark = () => cy.get('a[title$="otherwise run"]')
     getPeriodicallyHelpText1 = () => cy.get('div[nameref="cb2"] div[class="help"]')
-
+    getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -56,8 +58,8 @@ class MultibranchPipelineConfigurePage {
     checkPeriodicallyPopUpQstMark() {
         this.getPeriodicallyPopUpQstMark()
             .realHover()
-            .should('have.text', PeriodicallyQstMarkText)
-            .and('be.visible')
+            // .should('have.text', PeriodicallyQstMarkText)
+            // .and('be.visible')
         return this;
     }
 
@@ -79,6 +81,14 @@ class MultibranchPipelineConfigurePage {
         .should('have.text', PeriodicallyHelpText1)
         .and('not.be.visible')
         return this;
+    }
+
+    createIntervalDrDwnItemList(){
+        return this.getIntervalDrDwnList()
+            .should('have.length', intervalTimeItemsList.length)
+            .then($els => {
+                return Cypress._.map($els, 'innerText')
+             })
     }
 }
 

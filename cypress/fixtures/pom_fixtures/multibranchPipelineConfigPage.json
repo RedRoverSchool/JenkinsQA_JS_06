@@ -1,6 +1,6 @@
 {
     "addSourceItemsList":["Git", "GitHub", "Single repository & branch"],
-    "intervalTime": [
+    "intervalTimeItemsList": [
         "1 minute",
         "2 minutes",
         "3 minutes",

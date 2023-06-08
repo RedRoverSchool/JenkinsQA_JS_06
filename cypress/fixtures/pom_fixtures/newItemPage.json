@@ -1,11 +1,11 @@
 {
-    "multibranchPipelineName": "Multibranch Pipeline Job",
-    "freestyleProjectName": "Freestyle Project Job",
-    "orgFolderName": "Organisation Folder Job",
-    "pipelineName": "Pipeline Job",
-    "multiConfigurationProjectName": "Multi-configuration Project Job",
-    "folderName": "Folder Job",
-    "newpipelineName": "New Pipeline Job",
+    "multibranchPipelineName": "MultibranchPipelineJob",
+    "freestyleProjectName": "FreestyleProjectJob",
+    "orgFolderName": "OrganisationFolderJob",
+    "pipelineName": "PipelineJob",
+    "multiConfigurationProjectName": "Multi-configurationProjectJob",
+    "folderName": "FolderJob",
+    "newpipelineName": "NewPipelineJob",
 
     "newItemNames": [
         "Freestyle project",

@@ -80,7 +80,7 @@ describe('Multibranch Pipeline Configuration', function () {
           .should('not.be.visible')
     })
 
-    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+    it.skip('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
         cy.get('div[ref="cb2"] .jenkins-checkbox').click()
         cy.get('select[value="1d"] option')
             .should('have.length', multibranchPipline.configurationsFields.intervalTime.length)

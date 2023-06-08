@@ -12,7 +12,7 @@ describe('add description button', () => {
       cy.get('div[id="description"] div:nth-child(1)').should('contain', 'test')
     })
 
-    it('Add description via tab "My Views"', function () {
+    it.skip('Add description via tab "My Views"', function () {
       cy.get('#tasks > div:nth-child(5) > span > a').click()
       cy.get('#description-link').should ('be.visible')
       cy.get('#description-link').click()

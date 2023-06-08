@@ -27,7 +27,8 @@ class HeaderAndFooter {
     getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
     getHeadIcon = () => cy.get('#jenkins-head-icon');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
-    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span')
+    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
+    getPageBody = () => cy.get('#page-body')
 
     clickJenkinsVersionLink(){
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -106,6 +107,15 @@ class HeaderAndFooter {
         this.getUserNameLink().click();
         return new UserProfilePage();
     }
-    
+
+    clickEachDropdownMenuItems(idx) {
+        this.getUserDropdownMenuItemsList().eq(idx).click();
+        return this;
+    }
+
+    verifyPagesUrl(idx) {
+        cy.url().should('contain', idx);
+        return this;
+    }
 }
 export default HeaderAndFooter;

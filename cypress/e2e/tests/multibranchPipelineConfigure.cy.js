@@ -6,6 +6,7 @@ import multibranchPipelineConfigPageData from "../../fixtures/pom_fixtures/multi
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
+import multibranchPipline from "../../fixtures/multibranchPipeline.json";
 
 describe('multibranchPipelineConfigure', () => {
 
@@ -67,6 +68,14 @@ describe('multibranchPipelineConfigure', () => {
             .createAddSourceItemList()
             .should('deep.equal', multibranchPipelineConfigPageData.addSourceItemsList)
     });
+
+    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
+            .createIntervalDrDwnItemList()
+            .should('deep.equal', multibranchPipelineConfigPageData.intervalTimeItemsList)
+           })
 
     it.only('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
