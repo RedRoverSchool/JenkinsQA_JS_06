@@ -109,4 +109,15 @@ describe('headerAndFooter', () => {
             .getUserDescriptionText()
             .should('have.text', userConfigurePageData.userDescription)
     });
+
+    headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
+        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+            headerAndFooter  
+                .clickUserDropDownBtn()
+                .clickEachDropdownMenuItems(idx)
+                .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
+                .getPageBody()
+                .should('be.visible')
+        });
+    });
 })
