@@ -95,7 +95,7 @@ Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
 
 Cypress.Commands.add('addFolderDescription', (folderDescription) => {
     homePage
-        .clickFolderNameLink()
+        .clickOnFolderNameLink()
         .clickAddEditDescriptionBtn()
         .typeFolderDescription(folderDescription)
         .saveFolderDescription()

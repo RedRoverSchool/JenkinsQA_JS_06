@@ -25,7 +25,7 @@ describe('folder', () => {
     it('AT_15.04_003 | Folder | Delete folder from dashboard', () => {
         cy.createFolderProject(folderName)
         homePage
-            .clickProjectDrpDwnBtn(folderName)
+            .hoverAndClickProjectDrpDwnBtn(folderName)
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu()
             .clickSubmitBtn()
             .getProjectTable()
@@ -54,5 +54,15 @@ describe('folder', () => {
             .typeFolderNewDescription(folderNewDescription) 
             .saveFolderDescription()
             .getFolderDescription().should('have.text', folderNewDescription);
+    });
+
+    it('AT_15.04.001 | <Folder>Delete folder within itself', () => {
+        cy.createFolderProject(folderName);
+        homePage
+            .clickFolderNameLink(folderName)
+            .clickDeleteFolderBtn()
+            .clickSubmitBtn()
+            .getProjectTable()
+            .should('not.exist');
     });
 });
