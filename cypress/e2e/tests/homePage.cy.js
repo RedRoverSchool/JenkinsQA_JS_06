@@ -1,8 +1,6 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-//import { sidePanelItemsData } from "../../fixtures/pom_fixtures/sidePanelItemsData.json";
-import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json"; 
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json"
 
@@ -30,10 +28,10 @@ describe("homePage", () => {
     it("AT_02.06_006 | Homepage > Preview text equals to input description text", () => {
         homePage
           .clickAddDescriptionLink()
-          .typeDescriptionIntoField(descriptionText)
+          .typeDescriptionIntoField(homePageData.descriptionText)
           .clickDescriptionPreviewLink()
           .getDescriptionPreview()
-          .should('have.text', descriptionText) 
+          .should('have.text', homePageData.descriptionText) 
     });
     
     it("AT_02.07.009 | Homepage Verify the 'Set up an agent' link on the main page when no jobs have been created", () => {
