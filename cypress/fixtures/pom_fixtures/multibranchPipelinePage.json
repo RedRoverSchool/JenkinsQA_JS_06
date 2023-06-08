@@ -1,0 +1,7 @@
+{
+    "iconTitle": "Folder",
+     "disabledMessage": "This Multibranch Pipeline is currently disabled",
+     "disabledMessageColor" : "rgb(254, 130, 10)",
+     "enableButton" : "Enable",
+     "enableButtonColor" : "rgb(255, 255, 255)"
+}

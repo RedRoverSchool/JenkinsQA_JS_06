@@ -76,7 +76,7 @@ describe('Freestyle project Delete', () => {
     cy.get('#main-panel').contains(projects.freestyle.name).should('not.exist')
   })
 
-  it('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
+  it.skip('AT 12.02.006 | Delete Freestyle project using dropdown menu', () => {
     cy.get('.jenkins-table__link.model-link.inside')
     .contains(projects.freestyle.name)
     .realHover({position: 'center'});

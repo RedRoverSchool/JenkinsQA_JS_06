@@ -1,0 +1,13 @@
+{
+   "dashboardDropdownMenu": [
+       "New Item",
+       "People",
+       "Build History",
+       "Manage Jenkins",
+       "My Views"
+   ],
+   
+   "alertWindowMessages" : [
+        "Reload Configuration from Disk: are you sure?"
+   ]
+}

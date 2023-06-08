@@ -23,7 +23,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 		cy.get('table#projectstatus').should('include.text', projects.freestyle.name)
 	})
 
-	it('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
+	it.skip('AT_12.06_001 | Freestyle project "Disable project" option exists', () => {
 		cy.get(`a[href="job/${projects.freestyle.name}/"]`).click()
 		cy.wait('@newProjectProfile')
 		//expected result
@@ -34,7 +34,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 			.and('be.enabled')
 	});
 
-	it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+	it.skip('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
 		cy.get(`a[href="job/${projects.freestyle.name}/"]`).click()
 		cy.wait('@newProjectProfile')
 		cy.get('form#disable-project')

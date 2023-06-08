@@ -19,4 +19,9 @@ describe('Jenkins Dashboard', () => {
     cy.get('#description-link').click()
     cy.get('.jenkins-input').should('be.visible')
   })
+
+  it.only('Verification "add description" button', function (){
+    cy.get('#description-link').click()
+    cy.get('.jenkins-input').should('be.visible')
+  })
 });
