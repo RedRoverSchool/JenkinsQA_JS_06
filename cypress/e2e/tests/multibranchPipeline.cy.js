@@ -14,7 +14,7 @@ describe('multibranchPipeline', () => {
 
         headerAndFooter
             .clickJenkinsHomeLink()
-            .clickProjectNameDropdown()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
             .clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu(newItemPageData.multibranchPipelineName)
             .clickSubmitBtn()
             .getProjectTable()

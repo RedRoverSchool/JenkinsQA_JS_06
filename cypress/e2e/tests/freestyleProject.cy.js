@@ -81,7 +81,7 @@ describe('freestyleProject', () => {
 
         homePage
             .clickProjectDrpDwnBtn()
-            .hoverAndClickProjectDrpDwnBtn(newItemData.freestyleProjectName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
