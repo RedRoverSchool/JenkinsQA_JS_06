@@ -1,6 +1,9 @@
+import IconLegends from "../pageObjects/IconLegends.js";
+
 class BuildHistoryPage {
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
+    getIconLegendsButton = () => cy.get('#rss-bar a[href *= "legend"]');
 
 
     clickBuildInBuildHistoryCalendar() {
@@ -16,6 +19,10 @@ class BuildHistoryPage {
         })
     }
 
+    clickIconLegendsButton() {
+        this.getIconLegendsButton().click();
+        return new IconLegends();
+    }
 }
 
 export default BuildHistoryPage;
