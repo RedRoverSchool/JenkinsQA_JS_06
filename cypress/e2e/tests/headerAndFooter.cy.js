@@ -8,6 +8,7 @@ import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import HomePage from "../../pageObjects/HomePage";
 
 describe('headerAndFooter', () => {
 
