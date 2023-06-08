@@ -45,9 +45,9 @@ class UserProfilePage {
         return new UserConfigurePage();
     }
     verifyUserPagesUrl(user) {
-            cy.url().should('contain', user);
-            return this;
-        };
+        cy.url().should('contain', user);
+        return this;
+    };
 
     verifyStatusBtn() {
         this.getStatusBtn().should('exist');
