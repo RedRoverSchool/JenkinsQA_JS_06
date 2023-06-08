@@ -106,5 +106,10 @@ class HeaderAndFooter {
         this.getUserNameLink().click();
         return new UserProfilePage();
     }
+
+    createUserMenuItemList() {
+        return this.getUserDropdownMenuItemsList()                
+    }
+
 }
 export default HeaderAndFooter;
