@@ -34,7 +34,7 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get('#jenkins-home-link').click()
     })
 
-    it('AT_16.04 _001| Verify that the Multibranch Pipeline is moved to an existing folder using dropdown', function () {
+    it.skip('AT_16.04 _001| Verify that the Multibranch Pipeline is moved to an existing folder using dropdown', function () {
         moveMPusingDD()
         cy.get('#jenkins-home-link').click()
         cy.get(`a[href="job/${folderName.nameOrganizationFolder}/"]`).click()

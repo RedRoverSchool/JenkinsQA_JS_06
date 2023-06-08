@@ -15,5 +15,11 @@
         "rgb" : "rgb(20, 20, 31)"
     },
     "jenkinsEndPointWebSite" : "jenkins.io",
-    "pageTitle" : "Jenkins"
+    "pageTitle" : "Jenkins",
+    "userDropdownMenuItemsUrl" : [
+        "/builds",
+        "/configure", 
+        "/my-views/view/all/",
+        "/credentials/"
+    ]
 }

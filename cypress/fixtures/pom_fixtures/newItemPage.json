@@ -1,11 +1,11 @@
 {
-    "multibranchPipelineName": "Multibranch Pipeline Job",
-    "freestyleProjectName": "Freestyle Project Job",
-    "orgFolderName": "Organization Folder Job",
-    "pipelineName": "Pipeline Job",
-    "multiConfigurationProjectName": "Multi-configuration Project Job",
-    "folderName": "Folder Job",
-    "newpipelineName": "New Pipeline Job",
+    "multibranchPipelineName": "MultibranchPipelineJob",
+    "freestyleProjectName": "FreestyleProjectJob",
+    "orgFolderName": "OrganisationFolderJob",
+    "pipelineName": "PipelineJob",
+    "multiConfigurationProjectName": "Multi-configurationProjectJob",
+    "folderName": "FolderJob",
+    "newpipelineName": "NewPipelineJob",
 
     "newItemNames": [
         "Freestyle project",
@@ -22,9 +22,11 @@
     "character" : "LooongName",
     "number" : 26,
 
-    "warningMessage": "» This field cannot be empty, please enter a valid name",
+    "warningMessage": "» This field cannot be empty, please enter a valid name",,
 
     "itemsNamesAsc": ["Multibranch Pipeline Job", "Organization Folder Job","Pipeline Job"],
     "itemsNamesDesc": ["Pipeline Job", "Organization Folder Job","Multibranch Pipeline Job"]
-  
+
+    "specialCharactersArr": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
+    "specialCharactersMsg": " is an unsafe character"
 }
