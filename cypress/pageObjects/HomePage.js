@@ -278,12 +278,12 @@ class HomePage {
   clickScheduleBuildForProjectNameBtn(projectName) {
     this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
     return this
-    clickPipelineProjectName(projectName) {
+  };
+
+  clickPipelineProjectName(projectName) {
     this.getProjectName(projectName).click();   
     return new PipelinePage();
   };
-
-};
 
 }
 
