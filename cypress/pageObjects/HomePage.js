@@ -17,6 +17,7 @@ import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
+import homePage from "../fixtures/pom_fixtures/homePage.json"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -292,7 +293,7 @@ class HomePage {
     this.getTable().then((obj) => {
       cy.document().then(() => {
           cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.sRem)
+          .should('eq', homePage.sRem)
       })
   })
     return this
@@ -307,7 +308,7 @@ class HomePage {
     this.getTable().then((obj) => {
       cy.document().then(() => {
           cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.mRem)
+          .should('eq', homePage.mRem)
       })
   })
     return this
@@ -322,7 +323,7 @@ class HomePage {
     this.getTable().then((obj) => {
       cy.document().then(() => {
           cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', dashbordVerifyTableSize.lRem)
+          .should('eq', homePage.lRem)
       })
   })
     return this
