@@ -87,6 +87,10 @@ class HomePage {
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
+  getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
+  getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
+  getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
+  getTable = () => cy.get('#projectstatus')
 
 
   clickSideMenuPanelItem(idx) {
