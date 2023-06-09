@@ -62,15 +62,15 @@ describe('multibranchPipeline', () => {
         cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
 
             homePage
-            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
-            .clickRenameProjectDrpDwn()
+                .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+                .clickRenameProjectDrpDwn()
 
             multibranchPiplineRenamePage
-            .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
-            .clickRenameSubmitBtn()
-            .getMultiBranchPipelineHeader()
-            .should('contain', newItemPageData.newpipelineName)
-            .and('not.contain',newItemPageData.multibranchPipelineName);
+                .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
+                .clickRenameSubmitBtn()
+                .getMultiBranchPipelineHeader()
+                .should('contain', newItemPageData.newpipelineName)
+                .and('not.contain',newItemPageData.multibranchPipelineName);
     });
 
 });
