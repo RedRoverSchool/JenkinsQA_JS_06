@@ -16,6 +16,7 @@ import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import BuildPage from "./BuildPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -85,6 +86,7 @@ class HomePage {
   getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+  getBuildTableLink = () => cy.get('a.jenkins-table__badge')
 
 
   clickSideMenuPanelItem(idx) {
@@ -267,6 +269,11 @@ class HomePage {
   clickOnScheduleBuildBtn() {
     this.getScheduleBuildBtn().click();
     return this;
+  }
+
+  clickBuildTableLink() {
+    this.getBuildTableLink().click()
+    return BuildPage;
   }
 
 };
