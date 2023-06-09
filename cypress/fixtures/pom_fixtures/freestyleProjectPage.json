@@ -5,5 +5,16 @@
     "message": "The new name is the same as the current name.",
     "description": "New description",
     "editDescription": " Edit Description",
-	"disabledProjectNotify": "This project is currently disabled"
+	"disabledProjectNotify": "This project is currently disabled",
+
+    "sidePanel":[
+        "Status",
+        "Changes",
+        "Workspace",
+        "Build Now",
+        "Configure",
+        "Delete Project",
+        "Rename"
+       ]
+    
 }
