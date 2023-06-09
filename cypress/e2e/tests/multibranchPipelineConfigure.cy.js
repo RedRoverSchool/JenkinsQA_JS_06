@@ -89,10 +89,11 @@ describe('multibranchPipelineConfigure', () => {
             .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
      });
 
-    it.only('AT_16.01_05 | Verify check boxes change color', () => {
-        cy.createMultBranchPipeline(newItemData.multibranchPipelineName)
+    it('AT_16.01_05 | Verify check boxes change color', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName)
+
         homePage
-            .clickMultibranchPipelineNameLink(newItemData.multibranchPipelineName)
+            .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
             .clickConfigureTheProjectLink()
             .hoverScanTriggerCheckbox()
             .should('have.css', 'box-shadow')

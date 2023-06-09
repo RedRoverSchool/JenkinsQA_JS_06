@@ -139,8 +139,7 @@ class HomePage {
     return new ResultSearchBoxPage();
   }
 
-  hoverAndClickProjectDrpDwnBtn(projectName) {
-  clickMultibranchPipelineNameLink(projectName) {
+   clickMultibranchPipelineProjectNameLink(projectName) {
       this.getProjectNameLink().contains(projectName).click();
       return new MultibranchPipelinePage();
   }
