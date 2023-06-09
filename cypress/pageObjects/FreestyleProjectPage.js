@@ -18,6 +18,7 @@ class FreestyleProjectPage {
     getAddAndEditDescriptoinBtn = () => cy.get('#description-link');
     getDescriptionInputField = () => cy.get('.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('.jenkins-button--primary');
+    getDeleteSideMenuLink = () => cy.get('a[data-url$="/doDelete"]');
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -61,6 +62,11 @@ class FreestyleProjectPage {
     clearDescriptionInputField() {
         this.getDescriptionInputField().clear();
         return this
+    }
+
+    clickDeleteSideMenuLink() {
+        this.getDeleteSideMenuLink().click();
+        return new HomePage;
     }
     
 }
