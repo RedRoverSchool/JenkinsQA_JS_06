@@ -16,6 +16,7 @@ import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -85,7 +86,7 @@ class HomePage {
   getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
-
+  getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
 
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()
@@ -262,6 +263,16 @@ class HomePage {
   clickProjectName(projectName) {
     this.getProjectName(projectName).click();   
     return new FolderPage;
+  }
+
+  clickProjectDrpDwn(projectName) {
+    this.getProjectDrpDwn(projectName).click();
+    return this;
+  }
+
+  clickRenameProjectDrpDwn() {
+    this.getRenameProjectDrpDwn().click();
+    return new MultibranchPipelineRenamePage;
   }
 
 };

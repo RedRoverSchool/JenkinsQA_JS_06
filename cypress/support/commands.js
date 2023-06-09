@@ -123,3 +123,13 @@ Cypress.Commands.add('createPipeline', (pipelineName) => {
           .clickJenkinsHomeLink()
 });
 
+Cypress.Commands.add('createMultiBranchPiplineItem', (pipelineName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();
+})
+
