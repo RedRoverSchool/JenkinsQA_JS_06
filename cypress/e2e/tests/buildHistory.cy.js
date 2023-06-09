@@ -89,4 +89,18 @@ describe('buildHistory', () => {
             .should('be.visible')
             .and('have.text', buildDescription)
     });
+
+    it("AT_07.05_001  Build History  Verify adding build description", () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+      homePage
+        .clickOnScheduleBuildBtn()
+        .clickBuildHistoryLink()
+        .clickBuildLink();
+      buildPage
+        .clickBuildDescriptionLink()
+        .typeBuildDescriptionInput(buildDescription)
+        .clickSaveDescriptionBtn()
+        .getDescriptionText()
+        .should("have.text", buildDescription);
+    });
 });
