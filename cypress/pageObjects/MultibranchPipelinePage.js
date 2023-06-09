@@ -17,6 +17,11 @@ class MultibranchPipelinePage {
             return $el.text().trimStart();
         });
     };
+
+    clickMultibranchPiplineEnableBtn() {
+        this.getEnableButton().click();
+        return this;
+      }; 
     
 }
 
