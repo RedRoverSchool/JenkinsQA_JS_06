@@ -9,6 +9,7 @@ import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.jso
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 import HomePage from "../../pageObjects/HomePage";
+import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 
 describe('headerAndFooter', () => {
 
