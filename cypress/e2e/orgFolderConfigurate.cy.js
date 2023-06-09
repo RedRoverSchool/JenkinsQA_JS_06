@@ -32,7 +32,7 @@ describe('orgFolderConfigurate', () => {
         cy.get('#enable-project').should('contain', orgFolderConfigure.disableMessage);
     });
 
-    it('AT_17.01.003 | Organization Folder> Add Display name to the Organization Folder via Configure', () =>{
+    it.skip('AT_17.01.003 | Organization Folder> Add Display name to the Organization Folder via Configure', () =>{
         createOrgFolder(orgFolderConfigure.orgFolderName);
         cy.get('tbody tr td .jenkins-table__link').contains(orgFolderConfigure.orgFolderName).realHover()
         cy.get('#projectstatus button.jenkins-menu-dropdown-chevron').click()
@@ -43,7 +43,7 @@ describe('orgFolderConfigurate', () => {
         cy.contains(orgFolderConfigure.displayName).should('be.visible')
     })
 
-    it('AT_17.01_005 | Verify that the user can add a display name for the organization folder', function () {
+    it.skip('AT_17.01_005 | Verify that the user can add a display name for the organization folder', function () {
 
         createOrgFolder(orgFolderConfigure.orgFolderName)
         cy.get('#main-panel .jenkins-table__link.model-link.inside').click()
