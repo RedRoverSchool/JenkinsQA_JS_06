@@ -16,7 +16,7 @@ class MultibranchPipelineRenamePage{
         return this;
     };
 
-    clickSubmitBtn(){
+    clickRenameSubmitBtn(){
         this. getMultibranchPipelineRenameBtn().click();
         return new MultibranchPipelinePage();
 

@@ -267,8 +267,23 @@ class HomePage {
     return new FolderPage;
   }
 
+  clickOnScheduleBuildBtn() {
+    this.getScheduleBuildBtn().click();
+    return this;
+  }
+  clickPipelineProjectNameDropdownConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new PipelineProjectConfigurePage();
+  }
+  clickScheduleBuildForProjectNameBtn(projectName) {
+    this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
+    return this;
+  };
+  
+  clickRenameProjectDrpDwn() {
+    this.getRenameProjectDrpDwn().click();
+    return new MultibranchPipelineRenamePage;
+  }
 };
-
-
 
 export default HomePage;

@@ -59,16 +59,15 @@ describe('multibranchPipeline', () => {
     });
 
     it('AT_16.02_001 | Rename Multibranch Pipeliner using dropdown menu', () => {
-        cy.createMultiBranchPiplineItem(newItemPageData.multibranchPipelineName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
 
             homePage
-            .hoverProjectNameLink() 
-            .clickProjectDrpDwn(newItemPageData.multibranchPipelineName)
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
             .clickRenameProjectDrpDwn()
 
             multibranchPiplineRenamePage
             .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
-            .clickSubmitBtn()
+            .clickRenameSubmitBtn()
             .getMultiBranchPipelineHeader()
             .should('contain', newItemPageData.newpipelineName)
             .and('not.contain',newItemPageData.multibranchPipelineName);
