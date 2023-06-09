@@ -22,6 +22,7 @@ import PipelinePage from "./PipelinePage";
 import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 import BuildPage from "./BuildPage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
+import PipelinePage from "./PipelinePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -306,6 +307,11 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
     return new MultiConfigurationProjectConfigurePage();
   }
+
+  clickPipelineProjectName(projectName) {
+    this.getProjectName(projectName).click();   
+    return new PipelinePage();
+  };
 };
 
 export default HomePage;

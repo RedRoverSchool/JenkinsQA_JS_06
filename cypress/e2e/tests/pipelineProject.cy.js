@@ -72,4 +72,17 @@ describe('pipelineProject',()=>{
             .should('have.length',9)
             .and('contain','GitHub');             
     })
+
+    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDeletePipelineBtn()
+            .clickConfirmDeletePipeline();
+            
+        homePage
+            .getMainPanel()
+            .should('not.have.text', newItemPageData.pipelineName);
+    });
 })
