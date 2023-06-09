@@ -1,3 +1,4 @@
+import HomePage from "./HomePage";
 import MultiConfProjectConfirmRenamePage from "./MultiConfProjectConfirmRenamePage";
 
 class MultiConfProjectRenamePage {
@@ -11,6 +12,6 @@ class MultiConfProjectRenamePage {
     clickMultiConfProjectRenameBtn() {
         this.getMultiConfProjectRenameBtn().click();
         return new MultiConfProjectConfirmRenamePage();
-    }
+    }  
 }
 export default MultiConfProjectRenamePage;

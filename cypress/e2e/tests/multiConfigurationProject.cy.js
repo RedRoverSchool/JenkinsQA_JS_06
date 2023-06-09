@@ -3,6 +3,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multiConfProjectPageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
@@ -34,5 +35,23 @@ describe("multiConfigurationProject", () => {
             .clickMultiConfProjectRenameBtn()
             .getCurrentNameMessage()
             .should('contain.text', multiConfProjectPageData.currentNameMsg)
+    })
+
+    it.only('AT_14.06.004 | Multi-configuration project>Rename Multi-configuration project', () => {
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+        homePage
+        .hoverProjectNameLink()
+        .clickProjectDrpDwnBtn()
+        .selectRenameMultiConfProjectDrpDwnMenuBtn()
+        .typeMultiConfProjectNameInputField(newItemPageData.newMultiConfigurationProjectName)
+        .clickMultiConfProjectRenameBtn()
+        
+
+        
+       
+
+
+
+
     })
 })
