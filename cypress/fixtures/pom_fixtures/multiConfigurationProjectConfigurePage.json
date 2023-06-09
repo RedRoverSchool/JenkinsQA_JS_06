@@ -1,0 +1,32 @@
+{
+    "advancedProjectOptionsFields": {
+        "Quiet period": {
+            "fieldNameFirst": "Quiet period",
+            "fieldNameSecond": "Number of seconds",
+            "defaultValue": 5,
+            "setValue": 10
+        },
+        
+        "Retry Count": {
+            "SCM checkout retry count": {
+                "fieldName": "SCM checkout retry count",
+                "defaultValue": 0,
+                "setValue": 1
+            }
+        },
+        "Use custom workspace": {
+            "Directory": {
+                "fieldName": "Directory",
+                "defaultValue": "",
+                "setValue": "testDirectory"
+            }
+        },
+        "Use custom child workspace": {
+            "Child Directory": {
+                "fieldName": "Child Directory",
+                "defaultValue": "${COMBINATION}",
+                "setValue": "${testDirectory}"
+            }
+        }
+    }
+}

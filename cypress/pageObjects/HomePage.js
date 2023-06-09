@@ -1,3 +1,5 @@
+import MultibranchPipelinePage from "./MultibranchPipelinePage";
+
 const dayjs = require('dayjs');
 
 import PeoplePage from "./PeoplePage";
@@ -17,9 +19,11 @@ import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
+import BuildPage from "./BuildPage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 
 class HomePage {
-    getHomepageHeader = () => cy.get('.empty-state-block h1'); 
+    getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
@@ -30,7 +34,7 @@ class HomePage {
     getHomePageLink = () => cy.url();
     getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
-    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");    
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
     getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
     getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
     getProjectTable = () => cy.get("table#projectstatus");
@@ -48,7 +52,7 @@ class HomePage {
     getDescriptionField = () => cy.get('#description div:first-of-type');
     getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
-    
+
   getHomepageHeader = () => cy.get(".empty-state-block h1");
   getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
   getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
@@ -88,6 +92,7 @@ class HomePage {
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
   getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
+  getBuildTableLink = () => cy.get('a.jenkins-table__badge')
 
 
 
@@ -119,7 +124,7 @@ class HomePage {
   clickMultiConfigProjectNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
     return new MultiConfigurationProjectPage();
-  }  
+  }
 
   clickOrgFolderNameLink(projectName) {
     this.getProjectNameLink().contains(projectName).click();
@@ -139,6 +144,11 @@ class HomePage {
   typeIntoSearchBox(name) {
     this.getSearchBox().type(name + "{enter}");
     return new ResultSearchBoxPage();
+  }
+
+   clickMultibranchPipelineProjectNameLink(projectName) {
+      this.getProjectNameLink().contains(projectName).click();
+      return new MultibranchPipelinePage();
   }
 
   hoverAndClickProjectDrpDwnBtn(projectName) {
@@ -247,7 +257,7 @@ class HomePage {
     return this;
   }
 
-  clickSetUpAgentLink() { 
+  clickSetUpAgentLink() {
     this.getSetUpAgentLink().click();
     return new NewNodePage();
   };
@@ -256,7 +266,7 @@ class HomePage {
     this.getProjectNameDropdownMoveLink().click();
     return new OrgFolderMoveChoicePage();
   }
-  
+
   hoverAndClickProjectDrpDwn(projectName) {
     this.getProjectName(projectName).realHover();
     this.getProjectDrpDwn(projectName).click();
@@ -264,7 +274,7 @@ class HomePage {
   }
 
   clickProjectName(projectName) {
-    this.getProjectName(projectName).click();   
+    this.getProjectName(projectName).click();
     return new FolderPage;
   }
 
@@ -281,6 +291,15 @@ class HomePage {
     return this
   };
 
-}
+  clickBuildTableLink() {
+    this.getBuildTableLink().click()
+    return BuildPage;
+  }
+
+  clickMultiConfProjectDrpDwnConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new MultiConfigurationProjectConfigurePage();
+  }
+};
 
 export default HomePage;
