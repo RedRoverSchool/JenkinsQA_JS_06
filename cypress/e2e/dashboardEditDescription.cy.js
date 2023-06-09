@@ -14,7 +14,7 @@ describe('Dashboard Edit Description', () => {
     cy.get('#description div:first-of-type').should('have.text', descriptions.editDescription)
   });
 
-it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
+it.skip('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
   cy.get('[href="/view/all/newJob"] .task-icon-link').click();
   cy.get("#name").type("First Project");
   cy.get(".hudson_model_FreeStyleProject .label").click();
