@@ -2,17 +2,15 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import { textTitle, buildDescription} from "../../fixtures/pom_fixtures/buildHistoryPage.json"
+import { textTitle } from "../../fixtures/pom_fixtures/buildHistoryPage.json"
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import BuildHistoryPage from "../../pageObjects/BuildHistoryPage"
-import BuildPage from "../../pageObjects/BuildPage";
 
 describe('buildHistory', () => {
 
     const homePage = new HomePage();
     const headerandFooter = new HeaderAndFooter();
     const buildHistoryPage = new BuildHistoryPage()
-    const buildPage = new BuildPage();
     
     it('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
@@ -73,20 +71,4 @@ describe('buildHistory', () => {
                 })       
     });
 
-    it('AT_07.05_02 | Build History | Add Build Description - Verify user can see description text Preview.', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
-        homePage
-            .clickOnScheduleBuildBtn()
-        headerandFooter
-            .clickJenkinsHomeLink()
-            .clickBuildTableLink()
-        buildPage
-            .clickBuildDescriptionLink()
-            .typeBuildDescriptionInput(buildDescription)
-            .verifyPreviewTextareaNotVisible()
-            .clickShowPreviewLink()
-            .getPreviewTextarea()
-            .should('be.visible')
-            .and('have.text', buildDescription)
-    });
 });

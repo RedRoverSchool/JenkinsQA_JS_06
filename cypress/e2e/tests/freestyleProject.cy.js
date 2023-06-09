@@ -11,19 +11,19 @@ describe('freestyleProject', () => {
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
-
+    
 
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
-            .selectFreestyleProjectItem()
+            .selectFreestyleProjectItem()            
             .clickOkBtnAndGoFreestyleProjectConfig()
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .typeNewNameInputFild(freestyleProjectPageData.freestyleProjectNewName)
             .clickRenameBtn()
-            .getFreestyleProjectHeader()
+            .getFreestyleProjectHeader()            
             .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
     });
 
@@ -36,7 +36,7 @@ describe('freestyleProject', () => {
             .clickSaveBtnAndGoFreestyleProject()
             .clickRenameSideMenuLink()
             .clickRenameBtn()
-            .getFreestyleProjectHeader()
+            .getFreestyleProjectHeader()   
             .should('have.text', freestyleProjectPageData.errorMessage);
     })
 
@@ -86,9 +86,9 @@ describe('freestyleProject', () => {
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
-    });
-    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
-
+      }); 
+      it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+        
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
@@ -105,9 +105,9 @@ describe('freestyleProject', () => {
             .and('include.text', freestyleProjectPageData.disabledProjectNotify)
     });
 
-    it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+      it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
+        
         homePage
             .clickFreestyleProjectNameLink()
             .clickAddAndEditDescriptoinBtn()
@@ -118,15 +118,5 @@ describe('freestyleProject', () => {
             .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
             .getDescriptionInputField()
             .should('have.value', freestyleProjectPageData.editDescription)
-    });
-
-    it('AT_12.02_008 | Delete created project with inside menu', () => {
-        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
-
-        homePage
-            .clickFreestyleProjectNameLink()
-            .clickDeleteSideMenuLink()
-            .getProjectTable()
-            .should('not.exist');
-    });
+});
 })

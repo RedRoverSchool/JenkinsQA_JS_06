@@ -1,5 +1,4 @@
 {
     "textTitle": "Build History of Jenkins",
-    "buildHistoryUrl": "/builds",
-    "buildDescription" : "My Description"
+    "buildHistoryUrl": "/builds"
 }
