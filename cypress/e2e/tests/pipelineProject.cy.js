@@ -4,6 +4,7 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json"
 import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
+import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json"; 
 
 describe('pipelineProject',()=>{
     const homePage= new HomePage()
@@ -53,4 +54,22 @@ describe('pipelineProject',()=>{
             .should('have.text', pipelineConfigurePageData.firstDescription + pipelinePageData.additionalDescriptionPipeline)
     })
 
+    it('AT_13.06.01 | <Pipeline|Configuration>verify the ability to paste link from GitHub project and user is displayed icon GitHub',()=>{
+        homePage
+            .clickCreateJobLink()
+            .typeNewItemNameInputField(newItemPageData.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig();
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .clickPipelineProjectNameDropdownConfigureLink()
+            .checkGitHubProjectCheckbox()
+            .typePipelineProjectUrl(gitHubPage.gitHubProjectURL)
+            .clickPipelineSaveBtn()
+            .getSideMenuPanel()
+            .should('have.length',9)
+            .and('contain','GitHub');             
+    })
 })

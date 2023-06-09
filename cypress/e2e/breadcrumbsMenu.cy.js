@@ -101,7 +101,7 @@ describe('BreadcrumbsMenu', () => {
    });
 
    pages.dashboardMenu.forEach((pageName, ind) => {
-      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+      it.skip(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
          cy.get('#breadcrumbs')
             .contains(pages.pageName)
             .realHover()

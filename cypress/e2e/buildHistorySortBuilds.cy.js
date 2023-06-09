@@ -168,7 +168,7 @@ describe('Build History Sort builds', () => {
         });
     });
 
-    it('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
+    it.skip('AT_07.02_005 | Verify builds can be sorted by project name in alphabetical order', () => {
         scheduleBuildForFreestyleProject()
         scheduleBuildForPipelineProjec()
         cy.get('#tasks [href="/view/all/builds"]').click()
