@@ -85,6 +85,7 @@ class HomePage {
   getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+  getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
 
 
   clickSideMenuPanelItem(idx) {
@@ -269,6 +270,11 @@ class HomePage {
     return this;
   }
 
-};
+  clickScheduleBuildForProjectNameBtn(projectName) {
+    this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
+    return this
+  };
+
+}
 
 export default HomePage;
