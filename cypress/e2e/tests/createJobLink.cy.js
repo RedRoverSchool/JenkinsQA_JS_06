@@ -1,5 +1,5 @@
 import HomePage from "../../pageObjects/HomePage";  
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json" 
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json" 
 
 describe('createJobLink', () => {
 
@@ -9,6 +9,6 @@ describe('createJobLink', () => {
         homePage
             .clickCreateJobLink()
             .getNewItenHeader()
-            .should('have.text', newItemPage.newItemHeader);
+            .should('have.text', newItemPageData.newItemHeader);
     })
 })

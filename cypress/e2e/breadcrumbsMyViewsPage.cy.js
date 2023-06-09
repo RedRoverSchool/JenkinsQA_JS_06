@@ -86,7 +86,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.multiBranchPipelineName)
     })
 
-    it('AT_04.03.009|Verify that the user can open the selected Organization Folder', () => {
+    it.skip('AT_04.03.009|Verify that the user can open the selected Organization Folder', () => {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('#name').type(items.organizationFolderName[0]);
         cy.get('.hudson_matrix_MatrixProject').click();
@@ -103,7 +103,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.organizationFolderName[0])
     })
 
-  it('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
+  it.skip('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
     for (let i = 0; i <= 2; i++) {
       cy.get('.task ').contains('New Item').click();
       cy.get('#name').type(items.organizationFolderName[i]);

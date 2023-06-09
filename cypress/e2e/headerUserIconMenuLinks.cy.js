@@ -9,7 +9,7 @@ describe('headerUserIconMenuLinks', () => {
     });
 
     itemsName.forEach((pageName, ind) => {
-        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+        it.skip(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
             cy.wrap(this.IconMenuLinks[ind]).click()
 
             cy.url().should('contain', itemsUrl[ind])

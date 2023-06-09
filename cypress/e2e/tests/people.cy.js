@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import userProfileData from "../../fixtures/pom_fixtures/userProfilePage.json";
-import peoplePage from "../../fixtures/pom_fixtures/peoplePage.json"
+import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
+import peoplePageData from "../../fixtures/pom_fixtures/peoplePage.json"
 
 describe('people', () => {
 
@@ -13,13 +13,13 @@ describe('people', () => {
             .clickPeopleSideMenuLink()
             .clickUserNameLink()
             .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(userProfileData.description)
+            .typeUserDescriptionInputField(userProfilePageData.description)
             .clickUserDescriptionSaveBtn()
             .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(userProfileData.editDescription)
+            .typeUserDescriptionInputField(userProfilePageData.editDescription)
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionText()
-            .should('have.text', userProfileData.editDescription);
+            .should('have.text', userProfilePageData.editDescription);
     });
 
     it('AT_06.02.009 | Verify Possibility to Add Description to a User', () => {
@@ -27,16 +27,16 @@ describe('people', () => {
             .clickPeopleSideMenuLink()
             .clickUserNameLink()
             .clickUserDescriptionBtn()
-            .typeUserDescriptionInputField(userProfileData.description)
+            .typeUserDescriptionInputField(userProfilePageData.description)
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionText()
-            .should('have.text', userProfileData.description);
+            .should('have.text', userProfilePageData.description);
     });
 
     it('AT_06.01_002 | Verify People page tab is redirecting to right page', () => {
         homePage
             .clickPeopleSideMenuLink()
             .trimPeoplePageHeader()
-            .should('eq', peoplePage.peoplePageHeader)
+            .should('eq', peoplePageData.peoplePageHeader)
     });
 });

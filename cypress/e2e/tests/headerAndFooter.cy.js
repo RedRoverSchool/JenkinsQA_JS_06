@@ -1,32 +1,32 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {  restAPIPageTitle  } from "../../fixtures/pom_fixtures/restAPIPage.json";
-import {  homePageHeader  } from "../../fixtures/pom_fixtures/homePage.json";
-import resultSearchBox from "../../fixtures/pom_fixtures/resultSearchBox.json";
-import loginPage from "../../fixtures/pom_fixtures/loginPage.json";
+import restAPIPageData from "../../fixtures/pom_fixtures/restAPIPage.json";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
+import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json";
+import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
-import dashboardBreadcrumbs from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
-import {version} from "../../fixtures/pom_fixtures/headerAndFooter.json";
-import { pageTitle } from "../../fixtures/pom_fixtures/headerAndFooter.json";
-import {userDescription} from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import HomePage from "../../pageObjects/HomePage";
 
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
+    const homePage = new HomePage();
 
     it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
         headerAndFooter
             .clickJenkinsVersionLink()
             .getPageTitle()
-            .should('contain', pageTitle)
+            .should('contain', headerAndFooterData.pageTitle)
     })
 
     it('AT_03.01.002 | Verify link Rest Api redirected to the page with correct header', () => {
         headerAndFooter
             .clickRestAPILink()
             .getRestApiTitle()
-            .should('have.text', restAPIPageTitle)
+            .should('have.text', restAPIPageData.restAPIPageTitle)
     })
 
     it('AT_01.01 _021| Verify Head Icon is clickable.', () => {
@@ -37,7 +37,7 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickJenkinsHomeLink()
             .getHomepageHeader()
-            .should('have.text', homePageHeader);
+            .should('have.text', homePageData.homePageHeader);
     });
 
     it('AT_01.03.023 Verify User Icon has dropdown menu with given links', () => {
@@ -51,17 +51,17 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .searchTextSearchBox(headerAndFooterData.inputText)
             .getResultNoMatch()
-            .should('have.text', resultSearchBox.resultSearchNoMatchMsg)
+            .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     })
 
     it('AT_01.08_002 | Verify logout button redirects to the login page', function () {
         headerAndFooter
             .clickLogOutBtn()
             .getWelcomeMessage()
-            .should('have.text', loginPage.welcomeMessage)
+            .should('have.text', loginPageData.welcomeMessage)
     });
 
-    it.skip('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
+    it('AT_01.02_003 | Verify the placeholder text “Search (CTRL+K)" in the input field of the Search box', () => {
         headerAndFooter
             .getSearchBoxInputField()
             .should('have.attr', 'placeholder', headerAndFooterData.searchBoxPlaceholder);
@@ -90,25 +90,54 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
-            .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbs.dashboardDropdownMenu[4])
+            .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
     });
     
     it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
         headerAndFooter
             .getJenkinsLinkVerNumber()
             .should('be.visible')
-            .and('have.text', version.number)
-            .and('have.attr', 'href', version.link)
-            .and('have.css', 'color', version.rgb)
+            .and('have.text', headerAndFooterData.version.number)
+            .and('have.attr', 'href', headerAndFooterData.version.link)
+            .and('have.css', 'color', headerAndFooterData.version.rgb)
     });
+
+    it('AT_01.01_019 | Redirection to the homepage by label', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+        headerAndFooter    
+            .clickJenkinsHomeLink()             
+        homePage    
+            .getHomePageLink()
+            .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
+     });
     
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
             .clickUserDropDownBtn() 
             .selectUserConfigureMenu()
-            .typeUserConfigDescription(userDescription)
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
             .clickUserConfigSaveBtn()
             .getUserDescriptionText()
-            .should('have.text', userDescription)
+            .should('have.text', userConfigurePageData.userDescription)
+    });
+
+    it('AT_01.03_030 Verify User Dropdown menu has links with specifiс endings.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemsList().each(($el, idx) => {
+                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);             
+            })           
+    });
+
+    headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
+        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+            headerAndFooter  
+                .clickUserDropDownBtn()
+                .clickEachDropdownMenuItems(idx)
+                .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
+                .getPageBody()
+                .should('be.visible')
+        });
     });
 })

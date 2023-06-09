@@ -97,7 +97,7 @@ Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
 
 Cypress.Commands.add('addFolderDescription', (folderDescription) => {
     homePage
-        .clickFolderNameLink()
+        .clickOnFolderNameLink()
         .clickAddEditDescriptionBtn()
         .typeFolderDescription(folderDescription)
         .saveFolderDescription()
@@ -105,12 +105,14 @@ Cypress.Commands.add('addFolderDescription', (folderDescription) => {
         .clickJenkinsHomeLink()
 });          
 
-Cypress.Commands.add('createMultiBranchPipeline', (name) => {
+Cypress.Commands.add('createMultBranchPipeline', (name) => {
     homePage
         .clickNewItemSideMenuLink()
         .typeNewItemNameInputField(name)
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig();
+    headerAndFooter
+        .clickJenkinsHomeLink()
 });
 
 Cypress.Commands.add('createMultibranchPipelineProject', (multibranchPipelineName) => {
