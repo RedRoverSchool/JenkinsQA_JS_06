@@ -10,7 +10,7 @@ describe('myView', () => {
 
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
-     
+  
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
             .clickMyViewSideMenuLink()
@@ -109,4 +109,29 @@ describe('myView', () => {
       .should('be.visible')
       .and('include.text', newItemPageData.orgFolderName);
   }); 
+
+  it('AT_04.03_011|<My View>  Sort items by descending order', () => {
+    cy.createPipeline(newItemPageData.pipelineName);
+    cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName); 
+    cy.createOrganizationFolderProject(newItemPageData.orgFolderName);
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .verifyJobNameLinksAsc()
+      
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .clickSortNameArrow()
+      .verifyJobNameLinksDesk()
+   });
+   
+  it('AT 09.02.005| My Views > Add description', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .getDescriptionText()
+      .should('have.text', myViewData.addDescription);
+  });
 });

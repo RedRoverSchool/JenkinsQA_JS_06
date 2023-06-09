@@ -29,6 +29,7 @@ class HeaderAndFooter {
     getHeadIcon = () => cy.get('#jenkins-head-icon');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
     getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
+    getPageBody = () => cy.get('#page-body');
     getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
 
     clickJenkinsVersionLink(){
@@ -107,6 +108,16 @@ class HeaderAndFooter {
     clickUserNameLink(){
         this.getUserNameLink().click();
         return new UserProfilePage();
+    }
+
+    clickEachDropdownMenuItems(idx) {
+        this.getUserDropdownMenuItemsList().eq(idx).click();
+        return this;
+    }
+
+    verifyPagesUrl(idx) {
+        cy.url().should('contain', idx);
+        return this;
     }
 
     clickSearchBoxIconTrailing() {

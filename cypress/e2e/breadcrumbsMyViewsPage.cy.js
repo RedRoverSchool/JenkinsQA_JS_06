@@ -103,7 +103,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.organizationFolderName[0])
     })
 
-  it('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
+  it.skip('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
     for (let i = 0; i <= 2; i++) {
       cy.get('.task ').contains('New Item').click();
       cy.get('#name').type(items.organizationFolderName[i]);

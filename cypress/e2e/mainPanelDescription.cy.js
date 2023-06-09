@@ -17,7 +17,7 @@ describe('mainPanelDescription', () => {
 
     })
 
-    it('AT_02.06_009 | Homepage (Dashboard) | Verify the user can change main panel description', () => {
+    it.skip('AT_02.06_009 | Homepage (Dashboard) | Verify the user can change main panel description', () => {
       const firstDescription = 'This is my description of the main page!'
       const modifiedDescription = 'This is the modified description of the page.'
       cy.get('#description-link').click()

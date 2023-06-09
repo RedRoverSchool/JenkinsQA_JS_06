@@ -7,12 +7,13 @@ import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.jso
 import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
-import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json";
-import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import HomePage from "../../pageObjects/HomePage";
 
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
+    const homePage = new HomePage();
 
     it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
         headerAndFooter
@@ -101,6 +102,17 @@ describe('headerAndFooter', () => {
             .and('have.css', 'color', headerAndFooterData.version.rgb)
     });
 
+
+    it('AT_01.01_019 | Redirection to the homepage by label', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+        headerAndFooter    
+            .clickJenkinsHomeLink()             
+        homePage    
+            .getHomePageLink()
+            .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
+     });
+    
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
             .clickUserDropDownBtn()
@@ -109,6 +121,25 @@ describe('headerAndFooter', () => {
             .clickUserConfigSaveBtn()
             .getUserDescriptionText()
             .should('have.text', userConfigurePageData.userDescription)
+    });
+
+    it('AT_01.03_030 Verify User Dropdown menu has links with specifiс endings.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .getUserDropdownMenuItemsList().each(($el, idx) => {
+                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);             
+            })           
+    });
+
+    headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
+        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+            headerAndFooter  
+                .clickUserDropDownBtn()
+                .clickEachDropdownMenuItems(idx)
+                .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
+                .getPageBody()
+                .should('be.visible')
+        });
     });
 
     it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
