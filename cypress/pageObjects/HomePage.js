@@ -20,6 +20,7 @@ import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 import homePage from "../fixtures/pom_fixtures/homePage.json"
+import BuildPage from "./BuildPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -90,10 +91,6 @@ class HomePage {
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
-  getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
-  getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
-  getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
-  getTable = () => cy.get('#projectstatus')
 
 
   clickSideMenuPanelItem(idx) {
@@ -291,51 +288,9 @@ class HomePage {
     return this
   };
 
-  clickTableSizeBtnS() {
-    this.getTableSizeBtnS().click()
-    return this
-  }
-
-  verifyTableSizeS() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePage.sRem)
-      })
-  })
-    return this
-  }
-
-  clickTableSizeBtnM() {
-    this.getTableSizeBtnM().click()
-    return this
-  }
-
-  verifyTableSizeM() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePage.mRem)
-      })
-  })
-    return this
-  }
-
-  clickTableSizeBtnL() {
-    this.getTableSizeBtnL().click()
-    return this
-  }
-
-  verifyTableSizeL() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePage.lRem)
-      })
-  })
-    return this
-  }
-
 }
+
+};
+
 
 export default HomePage;
