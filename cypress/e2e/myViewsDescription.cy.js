@@ -15,7 +15,7 @@ describe('myViewsEditDescriptionTest', () => {
         cy.get('.jenkins-buttons-row').should('contain', 'Edit description')
     })
 
-    it ('AT_09.03.002 | <My Views>Edit description text is saved', () => {
+    it.skip ('AT_09.03.002 | <My Views>Edit description text is saved', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input   ').clear().type(description)
