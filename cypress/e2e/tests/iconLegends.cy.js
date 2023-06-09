@@ -21,4 +21,24 @@ describe('iconLegends', () => {
             .getProjectHealthIconsGroup()
             .should('have.length', iconLegendsData.projectHealthDescriptions.length)
     })
-})
+
+    it("AT_20.05.005 | Verify User is able to see Project Health statuses", function () {
+        homePage.clickBuildHistoryLink();
+        buildHistory.clickIconLegendsButton();
+
+        iconLegends
+            .getProjectHealthGroupHeader()
+            .should("be.visible")
+            .and("have.text", iconLegendsData.headers[1]);
+
+        iconLegends.getProjectHealthStatuses().each(($el, idx) => {
+            cy.wrap($el)
+                .invoke("text")
+                .then((text) => {
+                    expect(text.trim()).to.includes(
+                        iconLegendsData.projectHealthDescriptions[idx]
+                    );
+                });
+        });
+    });
+});
