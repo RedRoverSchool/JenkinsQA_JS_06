@@ -15,7 +15,7 @@ describe("multibranchPipelineRename", () => {
     cy.get('[class="model-link"]').contains("Dashboard").click();
   });
 
-  it("AT_16.02_001 Rename Multibranch Pipeliner using dropdown menu", () => {
+  it.skip("AT_16.02_001 Rename Multibranch Pipeliner using dropdown menu", () => {
     cy.get('a[href^="job/"').realHover();
     cy.get('td > a [class$="dropdown-chevron"]').click();
     cy.get("li > a > span").contains("Rename").click();
