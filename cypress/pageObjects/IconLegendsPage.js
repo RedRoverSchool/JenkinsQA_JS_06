@@ -1,4 +1,4 @@
-class IconLegends {
+class IconLegendsPage {
     getPageTopHeader = () => cy.get('#main-panel h1');
     getStatusGroupHeader = () => cy.get('#main-panel>h2:nth-child(3)');
     getStatusIconsGroup = () => cy.get('#main-panel > dl:nth-child(4) dt');
@@ -7,4 +7,4 @@ class IconLegends {
 
 }
 
-export default IconLegends;
+export default IconLegendsPage;
