@@ -1,7 +1,7 @@
 {
     "multibranchPipelineName": "MultibranchPipelineJob",
     "freestyleProjectName": "FreestyleProjectJob",
-    "orgFolderName": "OrganisationFolderJob",
+    "orgFolderName": "OrganizationFolderJob",
     "pipelineName": "PipelineJob",
     "multiConfigurationProjectName": "Multi-configurationProjectJob",
     "folderName": "FolderJob",
@@ -23,6 +23,9 @@
     "number" : 26,
 
     "warningMessage": "» This field cannot be empty, please enter a valid name",
+
+    "itemsNamesAsc": ["MultibranchPipelineJob", "OrganizationFolderJob","PipelineJob"],
+    "itemsNamesDesc": ["PipelineJob", "OrganizationFolderJob","MultibranchPipelineJob"],
 
     "specialCharactersArr": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
     "specialCharactersMsg": " is an unsafe character"

@@ -87,9 +87,9 @@ describe('freestyleProject', () => {
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
-    });
-
-    it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+      }); 
+      it('AT_12.06_002 | Freestyle project. "This project is currently disabled" notification appears after clicking "Disable project" button in the project profile', () => {
+        
         homePage
             .clickNewItemSideMenuLink()
             .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
@@ -124,4 +124,18 @@ describe('freestyleProject', () => {
             .and('have.attr', 'title', 'Disabled')
     });
 
+      it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+        
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickAddAndEditDescriptoinBtn()
+            .typeDescriptionToInputField(freestyleProjectPageData.description)
+            .clickSaveDescriptionBtn()
+            .clickAddAndEditDescriptoinBtn()
+            .clearDescriptionInputField()
+            .typeDescriptionToInputField(freestyleProjectPageData.editDescription)
+            .getDescriptionInputField()
+            .should('have.value', freestyleProjectPageData.editDescription)
 });
+})

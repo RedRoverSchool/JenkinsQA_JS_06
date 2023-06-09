@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import { textTitle } from "../../fixtures/pom_fixtures/buildHistoryPage.json"
+import { textTitle } from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 
 describe('buildHistory', () => {
 
