@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import multiConfigurationProjectPageData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
+import multiConfigurationProjectConfigurePageData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
 
 describe('multiConfigurationProjectConfigure', () => {
     const homePage = new HomePage();
@@ -15,7 +15,7 @@ describe('multiConfigurationProjectConfigure', () => {
         .clickAdvancedBtn()
         .clickQuietPeriodCheckBox()
         .getNumberOfSecondsInput()
-        .should('have.value', multiConfigurationProjectPageData.advancedProjectOptionsFields["Quiet period"].defaultValue)        
+        .should('have.value', multiConfigurationProjectConfigurePageData.advancedProjectOptionsFields["Quiet period"].defaultValue)        
     });
     
 });
