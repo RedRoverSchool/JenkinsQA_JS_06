@@ -92,7 +92,8 @@ class HomePage {
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
-
+  getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
+  getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
 
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()
@@ -298,6 +299,10 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
     return new MultiConfigurationProjectConfigurePage();
   }
-};
 
+  triggerBuildstatusIcon(){
+    this.getBuildstatusIcon().trigger('focus');
+    return this;
+  };  
+};
 export default HomePage;

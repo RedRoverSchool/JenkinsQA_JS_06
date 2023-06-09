@@ -134,4 +134,24 @@ describe('myView', () => {
       .getDescriptionText()
       .should('have.text', myViewData.addDescription);
   });
+
+  it('AT_04.03_012 |<My View> Verify that user can Sсhedule a build', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);     
+    
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .triggerBuildstatusIcon()
+      .assertNotBuiltTooltip()
+      .assertLastSuccesStatus()
+      .assertLastFalureStatus()
+      .assertLastDurationStatus()
+      .triggerSceduleBuidBtn()
+      .assertAndClickScheduleBuidTooltip();
+      
+    headerAndFooter
+      .clickJenkinsHomeLink()
+      .triggerBuildstatusIcon()
+      .getSuccessBuiltTooltip().should('be.visible');
+  });
 });

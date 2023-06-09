@@ -7,7 +7,9 @@ import MultibranchPipelinePage from './MultibranchPipelinePage';
 import NewViewPage from './NewViewPage';
 import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
-import newItemPageData from "../fixtures/pom_fixtures/newItemPage.json";
+import newItemPageData from '../fixtures/pom_fixtures/newItemPage.json';
+import {cellData} from '../fixtures/pom_fixtures/dashboard.json';
+import HomePage from './HomePage'
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
   getBreadcrumbMyViewsItem = () => cy.get('li:nth-child(5) a:nth-child(1)');
@@ -25,7 +27,14 @@ class MyViewPage {
   getInputDescriptionField = () => cy.get('.jenkins-input');
   getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
   getDescriptionText = () => cy.get('#description>div:nth-child(1)');
-
+  getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
+  getNotBuiltTooltip = () => cy.get('svg[tooltip="Not built"]');
+  getLastSuccesStatus = () => cy.get('td:nth-child(4)');
+  getLastFalureStatus = () => cy.get('td:nth-child(5)');
+  getLastDurationStatus = () => cy.get('td:nth-child(6)');
+  getSceduleBuidBtn = () => cy.get('td:nth-child(7)');
+  getScheduleBuidTooltip = () => cy.get('a[tooltip*="Schedule a Build"]');
+  
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -102,5 +111,40 @@ clickMultiBranchPipelineNameLink(){
       expect($el.text()).to.be.equal(newItemPageData.itemsNamesDesc[idx]);
     });
   };
-}
+
+  triggerBuildstatusIcon(){
+    this.getBuildstatusIcon().trigger('focus');
+    return this;
+  };  
+
+  assertNotBuiltTooltip(){
+    this.getNotBuiltTooltip().should('be.visible');
+    return this;
+  };  
+
+  assertLastSuccesStatus(){
+    this.getLastSuccesStatus().should('contain', cellData);
+    return this;
+   }; 
+
+     assertLastFalureStatus(){
+    this.getLastFalureStatus().should('contain', cellData);
+    return this;
+   }; 
+
+  assertLastDurationStatus(){
+    this.getLastDurationStatus().should('contain', cellData);
+    return this;
+   }; 
+
+   triggerSceduleBuidBtn(){
+    this.getSceduleBuidBtn().trigger('focus');
+    return this;
+  };  
+
+  assertAndClickScheduleBuidTooltip(){
+    this.getScheduleBuidTooltip().should('be.visible').click().wait(2000);
+    return this;
+   }; 
+  }
 export default MyViewPage;
