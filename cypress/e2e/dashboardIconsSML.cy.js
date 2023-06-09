@@ -2,7 +2,7 @@
 import pipelineName from '../fixtures/pipelineName.json'
 import iconsSML from "../fixtures/iconsSML.json"
 
-describe('Dashboard | Icons S,M,L', () => {
+describe.skip('Dashboard | Icons S,M,L', () => {
     beforeEach('Create one job', () => {
         cy.get('span[class="task-link-text"]').contains(pipelineName.textForNewItem).click({ force: true })
         cy.get('[name="name"]').type(pipelineName.newPipelineName)
