@@ -1,7 +1,11 @@
+import BuildPage from "./BuildPage";
+
 class BuildHistoryPage {
+    getBuildHistoryPageUrl = () => cy.url();
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
     getBuildHistoryPageTitle = () => cy.get('.jenkins-app-bar__content>h1');
+    getBuildLink = () => cy.get('.jenkins-table__badge');
     getProjectStatusTable = () => cy.get('table#projectStatus')
     getProjectStatusTableHeaderElements = () => cy.get('thead th')
     getProjectStatusTableRows = () => cy.get('tbody tr')
@@ -21,6 +25,11 @@ class BuildHistoryPage {
             const timeOnBuildHistoryCalendar = timeArray[0][0].slice(0,timeArray[0][0].length-3);
             return timeOnBuildHistoryCalendar;
         })
+    }
+
+    clickBuildLink() {
+        this.getBuildLink().click();
+        return new BuildPage;
     }
 
     createProjectStatusTable() {

@@ -3,11 +3,13 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import { textTitle } from "../../fixtures/pom_fixtures/buildHistoryPage.json"
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import BuildHistoryPage from "../../pageObjects/BuildHistoryPage"
 
 describe('buildHistory', () => {
 
     const homePage = new HomePage();
+    const headerandFooter = new HeaderAndFooter();
     const buildHistoryPage = new BuildHistoryPage()
     
     it('AT_07.01_005 | Build History > Verify user can see date and time of build creating in build history calendar', function() {
@@ -33,6 +35,21 @@ describe('buildHistory', () => {
             .getBuildHistoryPageTitle()
             .should('have.text', textTitle)
     })
+
+    it('AT_07.03.002 | Verify Possibility to Delete Builds from Build Page', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildLink()
+            .clickDeleteBuildBtn()
+            .clickConfirmDeleteBtn()
+        headerandFooter
+            .clickJenkinsHomeLink()
+            .clickBuildHistoryLink()
+            .getBuildLink().should('not.exist');
+    })
+    
     it('07.02_005 | Build History > Verify builds can be sorted by project name in descending alphabetical order', () => {   
         cy.createPipeline(newItemPageData.pipelineName)
         cy.createFreestyleProject(newItemPageData.freestyleProjectName) 

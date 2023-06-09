@@ -15,6 +15,9 @@ class FreestyleProjectPage {
     getHomePageLink = () => cy.get('#jenkins-home-link');
     getFullProjectName = () => cy.get('#main-panel')
     getDisabledProgectWarning = () => cy.get('.warning');
+    getAddAndEditDescriptoinBtn = () => cy.get('#description-link');
+    getDescriptionInputField = () => cy.get('.jenkins-input');
+    getSaveDescriptionBtn = () => cy.get('.jenkins-button--primary');
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -36,9 +39,29 @@ class FreestyleProjectPage {
     }
 
     clickDisableProjectBtn() {
-        this.getDisableProjectBtn().click()
+        this.getDisableProjectBtn().click();
         return this;
     }
 
+    clickAddAndEditDescriptoinBtn() {
+        this.getAddAndEditDescriptoinBtn().click();
+        return this
+    }
+
+    typeDescriptionToInputField(description) {
+        this.getDescriptionInputField().type(description);
+        return this
+    }
+
+    clickSaveDescriptionBtn() {
+        this.getSaveDescriptionBtn().click();
+        return this
+    }
+
+    clearDescriptionInputField() {
+        this.getDescriptionInputField().clear();
+        return this
+    }
+    
 }
 export default FreestyleProjectPage;
