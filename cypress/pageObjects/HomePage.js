@@ -16,6 +16,7 @@ import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -86,6 +87,8 @@ class HomePage {
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
   getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
+  getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
+
 
 
   clickSideMenuPanelItem(idx) {
@@ -265,6 +268,19 @@ class HomePage {
     return new FolderPage;
   }
 
-};
+  clickOnScheduleBuildBtn() {
+    this.getScheduleBuildBtn().click();
+    return this;
+  }
+  clickPipelineProjectNameDropdownConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new PipelineProjectConfigurePage();
+  }
+  clickScheduleBuildForProjectNameBtn(projectName) {
+    this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
+    return this
+  };
+
+}
 
 export default HomePage;

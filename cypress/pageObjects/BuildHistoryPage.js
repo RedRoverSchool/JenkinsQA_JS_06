@@ -1,8 +1,17 @@
+import BuildPage from "./BuildPage";
+
 class BuildHistoryPage {
     getBuildHistoryPageUrl = () => cy.url();
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
     getBuildHistoryPageTitle = () => cy.get('.jenkins-app-bar__content>h1');
+    getBuildLink = () => cy.get('.jenkins-table__badge');
+    getProjectStatusTable = () => cy.get('table#projectStatus')
+    getProjectStatusTableHeaderElements = () => cy.get('thead th')
+    getProjectStatusTableRows = () => cy.get('tbody tr')
+    getProjectStatusTableRowElements = () =>  cy.get('table#projectStatus tbody tr td')
+    getSortHeaderBuild = () => cy.get('#projectStatus thead th:nth-child(2) .sortheader')
+    getScheduleBuildBtn = () => cy.get('a[tooltip*="Schedule a Build"]')
 
 
     clickBuildInBuildHistoryCalendar() {
@@ -17,6 +26,37 @@ class BuildHistoryPage {
             return timeOnBuildHistoryCalendar;
         })
     }
+
+    clickBuildLink() {
+        this.getBuildLink().click();
+        return new BuildPage;
+    }
+
+    createProjectStatusTable() {
+        let keyArrayTableHeader = []
+        let tableDataArr = []
+        this.getProjectStatusTable().within(() => {
+            this.getProjectStatusTableHeaderElements().then(($els) => {
+                keyArrayTableHeader = Cypress.$.makeArray($els).map($el => $el.innerText.replace(/\W/g,''))
+            })
+            this.getProjectStatusTableRows().each((_, row) => {
+                this.getProjectStatusTableRows().eq(row).find('td').then(($els) => {
+                    let tableData = Cypress.$.makeArray($els).map($el => $el.innerText)
+                    let tempObj = tableData.reduce((obj, el, idx) => {
+                        return { ...obj, [keyArrayTableHeader[idx]]: el }
+                    }, {})
+                    tableDataArr.push(tempObj)
+                })   
+            })
+        })
+        return cy.wrap (tableDataArr)
+    };
+    
+    clickSortHeaderBuild() {
+        this.getSortHeaderBuild().click()
+        return this
+    };
+
 }
 
 export default BuildHistoryPage;
