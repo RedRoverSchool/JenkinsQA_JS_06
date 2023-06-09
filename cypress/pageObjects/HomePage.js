@@ -16,6 +16,7 @@ import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
 import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -264,6 +265,10 @@ class HomePage {
     return new FolderPage;
   }
 
+  clickMultiConfProjectDrpDwnConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new MultiConfigurationProjectConfigurePage();
+  }
 };
 
 export default HomePage;
