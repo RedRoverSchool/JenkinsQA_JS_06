@@ -7,7 +7,8 @@ import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.jso
 import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
-import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json";
+import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 
 describe('headerAndFooter', () => {
 
@@ -83,15 +84,15 @@ describe('headerAndFooter', () => {
             .getHeadIconName()
             .should('be.visible');
     });
-  
+
     it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
     });
-    
-    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () => {
         headerAndFooter
             .getJenkinsLinkVerNumber()
             .should('be.visible')
@@ -99,14 +100,20 @@ describe('headerAndFooter', () => {
             .and('have.attr', 'href', headerAndFooterData.version.link)
             .and('have.css', 'color', headerAndFooterData.version.rgb)
     });
-    
+
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
-            .clickUserDropDownBtn() 
+            .clickUserDropDownBtn()
             .selectUserConfigureMenu()
             .typeUserConfigDescription(userConfigurePageData.userDescription)
             .clickUserConfigSaveBtn()
             .getUserDescriptionText()
             .should('have.text', userConfigurePageData.userDescription)
+    });
+
+    it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+        headerAndFooter
+            .clickSearchBoxIconTrailing()
+            cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
     });
 })

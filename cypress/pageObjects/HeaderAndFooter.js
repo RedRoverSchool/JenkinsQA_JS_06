@@ -8,6 +8,7 @@ import UserBuildsPage from "./UserBuildsPage";
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
+import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 
 
 class HeaderAndFooter {
@@ -27,7 +28,8 @@ class HeaderAndFooter {
     getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
     getHeadIcon = () => cy.get('#jenkins-head-icon');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
-    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span')
+    getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
+    getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
 
     clickJenkinsVersionLink(){
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -105,6 +107,11 @@ class HeaderAndFooter {
     clickUserNameLink(){
         this.getUserNameLink().click();
         return new UserProfilePage();
+    }
+
+    clickSearchBoxIconTrailing() {
+        this.getSearchBoxIconTrailing().click();
+        return new searchBoxDocumentationPage();
     }
 }
 export default HeaderAndFooter;
