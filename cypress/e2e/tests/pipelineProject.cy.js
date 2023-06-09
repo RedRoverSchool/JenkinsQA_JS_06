@@ -39,4 +39,17 @@ describe('pipelineProject',()=>{
             .getPipelinePageHeadline()
             .should('contain.text',newItemPageData.newpipelineName)
     })
+
+    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDeletePipelineBtn()
+            .clickConfirmDeletePipeline();
+            
+        homePage
+            .getMainPanel()
+            .should('not.have.text', newItemPageData.pipelineName);
+    });
 })
