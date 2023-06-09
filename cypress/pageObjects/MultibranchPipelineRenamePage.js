@@ -11,8 +11,7 @@ class MultibranchPipelineRenamePage{
     };
 
     clearAndTypeNewPiplineName(piplineName) {
-        this. getInputField().clear();
-        this. getInputField().type(piplineName);
+        this. getInputField().clear().type(piplineName);
         return this;
     };
 

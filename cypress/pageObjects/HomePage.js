@@ -280,7 +280,7 @@ class HomePage {
     return this;
   };
   
-  clickRenameProjectDrpDwn() {
+  selectRenameMultiBrPipelineDrpDwnMenuBtn() {
     this.getRenameProjectDrpDwn().click();
     return new MultibranchPipelineRenamePage;
   }

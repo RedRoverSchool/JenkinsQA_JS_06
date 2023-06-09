@@ -6,15 +6,11 @@ import FolderPage from "../../pageObjects/FolderPage";
 
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
-import MultibranchPipelineRenamePage from "../../pageObjects/MultibranchPipelineRenamePage";
-
 describe('multibranchPipeline', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
     const folderPage = new FolderPage();
-    const multibranchPiplineRenamePage = new MultibranchPipelineRenamePage();
-
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -63,9 +59,7 @@ describe('multibranchPipeline', () => {
 
             homePage
                 .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
-                .clickRenameProjectDrpDwn()
-
-            multibranchPiplineRenamePage
+                .selectRenameMultiBrPipelineDrpDwnMenuBtn()
                 .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
                 .clickRenameSubmitBtn()
                 .getMultiBranchPipelineHeader()
