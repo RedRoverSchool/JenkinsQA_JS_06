@@ -1,5 +1,4 @@
 import PipelinePage from "./PipelinePage";
-
 import pipelineConfigurePageData from "../fixtures/pom_fixtures/pipelineConfigurePage.json"
 
 class PipelineConfigurePage {
