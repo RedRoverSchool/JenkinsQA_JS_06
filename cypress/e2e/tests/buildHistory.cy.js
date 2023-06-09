@@ -49,7 +49,7 @@ describe('buildHistory', () => {
             .clickBuildHistoryLink()
             .getBuildLink().should('not.exist');
     })
-    
+
     it('07.02_005 | Build History > Verify builds can be sorted by project name in descending alphabetical order', () => {   
         cy.createPipeline(newItemPageData.pipelineName)
         cy.createFreestyleProject(newItemPageData.freestyleProjectName) 
