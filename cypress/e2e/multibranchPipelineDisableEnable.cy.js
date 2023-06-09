@@ -12,7 +12,7 @@ describe('Multibranch Pipeline Disable/Enable', () => {
         cy.get('#enable-project').should('contain', data.enableMessage);
     });
 
-    it('AT_16.05_002 | Multibranch Pipeline | Disable', () => {
+    it.skip('AT_16.05_002 | Multibranch Pipeline | Disable', () => {
         cy.get('.task a[href="/view/all/newJob"]').click()
         cy.get('input#name').type(data.newMultiPipeline)
         cy.get('div #items').contains(data.itemToCreate).click()

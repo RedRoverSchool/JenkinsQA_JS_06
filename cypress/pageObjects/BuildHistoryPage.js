@@ -2,6 +2,7 @@ class BuildHistoryPage {
     getBuildHistoryPageUrl = () => cy.url();
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
+    getBuildHistoryPageTitle = () => cy.get('.jenkins-app-bar__content>h1');
 
 
     clickBuildInBuildHistoryCalendar() {

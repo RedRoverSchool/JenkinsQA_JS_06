@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from '../../pageObjects/HomePage'
-import homePage from '../../fixtures/pom_fixtures/homePage.json'
+import homePageData from '../../fixtures/pom_fixtures/homePage.json'
 
 
 describe('homepage', () => {
@@ -11,9 +11,9 @@ describe('homepage', () => {
     it('AT_02.06_001 | Homepage (Dashboard) > Add main panel description', () => {
         homepage
             .clickAddDescriptionLink()
-            .typeDescriptionIntoField(homePage.descriptionText)
+            .typeDescriptionIntoField(homePageData.descriptionText)
             .clickSaveDescriptionBtn()
             .getSavedDescriptionField()
-            .should('contain', homePage.descriptionText)
+            .should('contain', homePageData.descriptionText)
     })
 })

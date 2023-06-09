@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import {userFullName} from "../../fixtures/pom_fixtures/userConfigurePage.json";
+import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json";
 
 describe('userConfigure', () => {
 
@@ -12,9 +12,9 @@ describe('userConfigure', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserConfigureMenu()
-            .typeFullNameInputField(userFullName)
+            .typeFullNameInputField(userConfigurePageData.userFullName)
             .clickUserConfigSaveBtn()
             .trimUserPageHeaderName()
-            .should('eq', userFullName)
+            .should('eq', userConfigurePageData.userFullName)
     })
 })
