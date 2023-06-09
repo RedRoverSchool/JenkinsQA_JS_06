@@ -264,6 +264,11 @@ class HomePage {
     return new FolderPage;
   }
 
+  clickOnScheduleBuildBtn() {
+    this.getScheduleBuildBtn().click();
+    return this;
+  }
+
 };
 
 export default HomePage;

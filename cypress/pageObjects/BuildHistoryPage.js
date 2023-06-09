@@ -1,11 +1,14 @@
 import IconLegends from "./IconLegendsPage.js";
+import BuildPage from "./BuildPage";
+
 
 class BuildHistoryPage {
+    getBuildHistoryPageUrl = () => cy.url();
     getBuildInBuildHistoryCalendar = () => cy.get('.timeline-event-label');
     getTimeFromBuildLabel = () => cy.get('.timeline-event-bubble-time');
     getBuildHistoryPageTitle = () => cy.get('.jenkins-app-bar__content>h1');
     getIconLegendsButton = () => cy.get('#rss-bar a[href *= "legend"]');
-
+    getBuildLink = () => cy.get('.jenkins-table__badge');
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();
@@ -23,6 +26,11 @@ class BuildHistoryPage {
     clickIconLegendsButton() {
         this.getIconLegendsButton().click();
         return new IconLegends();
+    }
+  
+    clickBuildLink() {
+        this.getBuildLink().click();
+        return new BuildPage;
     }
 }
 

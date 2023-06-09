@@ -76,4 +76,16 @@ describe('multibranchPipelineConfigure', () => {
             .createIntervalDrDwnItemList()
             .should('deep.equal', multibranchPipelineConfigPageData.intervalTimeItemsList)
            })
+
+    it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName)
+        
+         multibranchPipelineConfigurePage
+            .clickDisableBtn()
+            .clickSaveBtnAndGoMultiPipeline()
+            .clickMultibranchPiplineEnableBtn()
+            .getEnableButton()
+            .should('contain', multibranchPipelinePageData.disableButton)
+            .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
+     });
 });
