@@ -144,7 +144,7 @@ class HomePage {
       return new MultibranchPipelinePage();
   }
 
-   clickProjectDrpDwnBtn(projectName) {
+  hoverAndClickProjectDrpDwnBtn(projectName) {
     this.getProjectNameLink().contains(projectName).realHover();
     this.getProjectDrpDwnBtn().click();
     return this;
