@@ -12,6 +12,8 @@ class MultibranchPipelineConfigurePage {
     getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
     getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
+    getScanTriggersCheckbox = () => cy.get('#cb2');
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -58,6 +60,10 @@ class MultibranchPipelineConfigurePage {
                 return Cypress._.map($els, 'innerText')
              })
     }
+
+    hoverScanTriggerCheckbox(){
+        return this.getScanTriggersCheckbox().realHover();
+    };
 }
 
 export default MultibranchPipelineConfigurePage;
