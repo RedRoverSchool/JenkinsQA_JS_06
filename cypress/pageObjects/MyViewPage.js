@@ -9,6 +9,7 @@ import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
 import newItemPageData from '../fixtures/pom_fixtures/newItemPage.json';
 import {cellData} from '../fixtures/pom_fixtures/dashboard.json';
+import HomePage from './HomePage'
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -35,7 +36,8 @@ class MyViewPage {
   getLastDurationStatus = () => cy.get('td:nth-child(6)');
   getSceduleBuidBtn = () => cy.get('td:nth-child(7)');
   getScheduleBuidTooltip = () => cy.get('a[tooltip*="Schedule a Build"]');
-  
+  getEditDescriptionLink = () => cy.get('#description-link');
+
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -131,17 +133,17 @@ clickMultiBranchPipelineNameLink(){
   assertLastSuccesStatus(){
     this.getLastSuccesStatus().should('contain', cellData);
     return this;
-   }; 
+  }; 
 
-     assertLastFalureStatus(){
+  assertLastFalureStatus(){
     this.getLastFalureStatus().should('contain', cellData);
     return this;
-   }; 
+  }; 
 
   assertLastDurationStatus(){
     this.getLastDurationStatus().should('contain', cellData);
     return this;
-   }; 
+  }; 
 
    triggerSceduleBuidBtn(){
     this.getSceduleBuidBtn().trigger('focus');
@@ -152,5 +154,10 @@ clickMultiBranchPipelineNameLink(){
     this.getScheduleBuidTooltip().should('be.visible').click().wait(2000);
     return this;
    }; 
-  }
+  
+  clickEditDescriptionLink() {
+    this.getEditDescriptionLink().click();
+    return this;
+  };
+}
 export default MyViewPage;
