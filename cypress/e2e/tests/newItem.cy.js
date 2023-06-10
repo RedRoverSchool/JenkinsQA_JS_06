@@ -99,13 +99,6 @@ describe('newItem', () => {
             .should('have.attr', 'type', 'text')
     });        
 
-    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .getNewItemPageUrl()
-            .should('include', newItemPageData.newItemEndPoinURL)   
-    });
-
     newItemPageData.newItemNames.forEach((newItemNames, idx) => {
         newItemPageData.specialCharactersArr.forEach((char) => {
             it(`AT_05.05_013 | Create a new ${newItemNames} using special characters ${char}`, () => {

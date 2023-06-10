@@ -79,7 +79,7 @@ describe('multibranchPipelineConfigure', () => {
 
     it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName)
-        
+
          multibranchPipelineConfigurePage
             .clickDisableBtn()
             .clickSaveBtnAndGoMultiPipeline()
@@ -88,4 +88,14 @@ describe('multibranchPipelineConfigure', () => {
             .should('contain', multibranchPipelinePageData.disableButton)
             .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
      });
+
+    it('AT_16.01_05 | Verify check boxes change color', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName)
+
+        homePage
+            .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+            .clickConfigureTheProjectLink()
+            .hoverScanTriggerCheckbox()
+            .should('have.css', 'box-shadow')
+    });
 });

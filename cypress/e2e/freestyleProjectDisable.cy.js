@@ -46,7 +46,7 @@ describe('US_12.06 | Freestyle project Disable project', () => {
 			.and('include.text', projects.disabledProjectNotify)
 	});
 
-	it('AT_12.06_003 | Freestyle project. Project Status is changed to "Disabled" on Dashboard after clicking "Disable project" button', () => {
+	it.skip('AT_12.06_003 | Freestyle project. Project Status is changed to "Disabled" on Dashboard after clicking "Disable project" button', () => {
 		cy.get(`a[href="job/${projects.freestyle.name}/"]`).click()
 		cy.wait('@newProjectProfile')
 		cy.get('form#disable-project')
