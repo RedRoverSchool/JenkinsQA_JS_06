@@ -9,6 +9,7 @@ import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.jso
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 import HomePage from "../../pageObjects/HomePage";
+import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 
 describe('headerAndFooter', () => {
 
@@ -85,15 +86,15 @@ describe('headerAndFooter', () => {
             .getHeadIconName()
             .should('be.visible');
     });
-  
+
     it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
     });
-    
-    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () => {
         headerAndFooter
             .getJenkinsLinkVerNumber()
             .should('be.visible')
@@ -101,6 +102,7 @@ describe('headerAndFooter', () => {
             .and('have.attr', 'href', headerAndFooterData.version.link)
             .and('have.css', 'color', headerAndFooterData.version.rgb)
     });
+
 
     it('AT_01.01_019 | Redirection to the homepage by label', () => {
         homePage
@@ -114,7 +116,7 @@ describe('headerAndFooter', () => {
     
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
-            .clickUserDropDownBtn() 
+            .clickUserDropDownBtn()
             .selectUserConfigureMenu()
             .typeUserConfigDescription(userConfigurePageData.userDescription)
             .clickUserConfigSaveBtn()
@@ -139,5 +141,11 @@ describe('headerAndFooter', () => {
                 .getPageBody()
                 .should('be.visible')
         });
+    });
+
+    it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+        headerAndFooter
+            .clickSearchBoxIconTrailing()
+            cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
     });
 })

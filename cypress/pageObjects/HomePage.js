@@ -98,6 +98,7 @@ class HomePage {
   getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
   getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
   getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
+  getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
 
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()

@@ -6,6 +6,8 @@ class BuildPage {
     getBuildDescriptionInput = () => cy.get('textarea[name="description"]');
     getShowPreviewLink = () => cy.get('a.textarea-show-preview');
     getPreviewTextarea = () => cy.get('div.textarea-preview');
+    getSaveDescriptionBtn = () => cy.get("#description button");
+    getDescriptionText = () => cy.get("#description div:first-child");
 
     clickDeleteBuildBtn() {
         this.getDeleteBuildBtn().click();
@@ -31,6 +33,12 @@ class BuildPage {
         this.getPreviewTextarea().should('not.be.visible');
         return this;
     }
+
+    clickSaveDescriptionBtn() {
+    this.getSaveDescriptionBtn().click();
+    return this;
+  }
+
 }
 
 export default BuildPage;

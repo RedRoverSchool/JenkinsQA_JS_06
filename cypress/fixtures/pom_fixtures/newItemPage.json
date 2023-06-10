@@ -4,6 +4,7 @@
     "orgFolderName": "OrganizationFolderJob",
     "pipelineName": "PipelineJob",
     "multiConfigurationProjectName": "Multi-configurationProjectJob",
+    "newMultiConfigurationProjectName": "New Name For Multiconfiguration Project",
     "folderName": "FolderJob",
     "newpipelineName": "NewPipelineJob",
 
