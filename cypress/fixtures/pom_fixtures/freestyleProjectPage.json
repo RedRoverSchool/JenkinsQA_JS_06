@@ -7,12 +7,22 @@
     "editDescription": " Edit Description",
 	"disabledProjectNotify": "This project is currently disabled",
 
+  "sidePanel":[
+        "Status",
+        "Changes",
+        "Workspace",
+        "Build Now",
+        "Configure",
+        "Delete Project",
+        "Rename"
+       ],
+
     "freestyleDropdownItems": [
-        "Changes", 
+        "Changes",
         "Workspace",
         "Build Now" ,
-        "Configure" , 
-        "Delete Project", 
+        "Configure" ,
+        "Delete Project",
         "Rename"
         ]
 }

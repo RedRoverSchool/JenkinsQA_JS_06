@@ -19,6 +19,8 @@ class FreestyleProjectPage {
     getAddAndEditDescriptoinBtn = () => cy.get('#description-link');
     getDescriptionInputField = () => cy.get('.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('.jenkins-button--primary');
+    getSidePanelOptions = () => cy.get('#side-panel .task span a[href]');
+    getDeleteSideMenuLink = () => cy.get('a[data-url$="/doDelete"]');
     getFreestyleProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getFrestyleProjectDrpDwmMenuList = () => cy.get('.yuimenuitem span')
 
@@ -27,6 +29,7 @@ class FreestyleProjectPage {
         this.getConfigureSideMenuLink().click()
         return new FreestyleProjectConfigurePage()
     };
+
     clickRenameSideMenuLink() {
         this.getRenameSideMenuLink().click();
         return new FreestyleProjectRenamePage();
@@ -65,6 +68,16 @@ class FreestyleProjectPage {
     clearDescriptionInputField() {
         this.getDescriptionInputField().clear();
         return this
+    }
+
+    checkLengthOfOptionsSidePanel() {
+        this.getSidePanelOptions().should('have.length', 7)
+        return this
+    }
+
+    clickDeleteSideMenuLink() {
+        this.getDeleteSideMenuLink().click();
+        return new HomePage;
     }
 
     clickFreestyleProjectDrpDwnMenu() {

@@ -24,5 +24,14 @@
         "Set GitHub commit status (universal)",
         "Set build status on GitHub commit [deprecated]",
         "Delete workspace when build is done"
+    ],
+
+    "AdvancedBtnCheckboxList" : [
+        "Quiet period", 
+        "Retry Count",
+        "Block build when upstream project is building",
+        "Block build when downstream project is building",
+        "Use custom workspace",
+        "Keep the build logs of dependencies"
     ]
 }

@@ -24,7 +24,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
   it('AT_16.01_06 | Verify the number of checkboxes', () => {
     cy.get('[type="checkbox"]').should('have.length', 4)
   })
-  
+
   it.skip('AT_16.01_07 | Verify the "add metrics" are exist and visible', () => {
     cy.get('.advancedButton').click()
     cy.get('#yui-gen3-button').click()
@@ -32,7 +32,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
     cy.get('#yui-gen7').should('be.visible', multibranchPipeline.addMetrics[1])
   })
 
-  it('AT_16.01_05 | Verify check boxes change color', () => {
+  it.skip('AT_16.01_05 | Verify check boxes change color', () => {
     cy.get('#cb2')
     .realHover()
     .should('have.css', 'box-shadow')

@@ -2,10 +2,12 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
-import { sidePanelItems } from "../../fixtures/pom_fixtures/homePage.json"
+import { sidePanelItems } from "../../fixtures/pom_fixtures/homePage.json";
 import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json";
-import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json"
-import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json"
+import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json";
+import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
+import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -51,4 +53,18 @@ describe("homePage", () => {
         .getPermanentAgentBtn()
         .should("have.text", permanentAgentRadioBtn);
     });
+
+    it('AT_02.04.006 | Verify that link "Build History" is clickable', () => {
+      homePage
+          .clickBuildHistoryLink()
+          .getBuildHistoryPageUrl()
+          .should('include', buildHistoryPageData.buildHistoryUrl)
+    })
+    
+    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+      homePage
+          .clickNewItemSideMenuLink()
+          .getNewItemPageUrl()
+          .should('include', newItemPageData.newItemEndPoinURL)   
+  });
 })

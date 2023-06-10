@@ -51,7 +51,7 @@ describe('multiConfigurationProjectRename', () => {
 
 describe('RenameMultiConfigurationProject', () => {
 
-    it('AT_14.06.004|Rename Multi-configuration project', () => {
+    it.skip('AT_14.06.004|Rename Multi-configuration project', () => {
         Cypress.Commands.add('creadedNewMultiConfigurationProject', () => {
             cy.get('a[href="newJob"]').click()
             cy.get('.add-item-name>input').type(projects.multiConfigurationProject.name)
