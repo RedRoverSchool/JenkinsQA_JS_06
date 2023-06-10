@@ -147,7 +147,7 @@ describe('myView', () => {
       .and('have.text', myViewData.editedDescription);
   });
 
-  it('AT_04.03_012 |<My View> Verify that user can Sсhedule a build', () => {
+  it('AT_04.03_012 |<My View> Verify that user can sсhedule a build', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);     
     headerAndFooter
       .clickUserDropDownBtn()
