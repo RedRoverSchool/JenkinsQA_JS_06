@@ -119,4 +119,14 @@ describe('freestyleProject', () => {
             .getDescriptionInputField()
             .should('have.value', freestyleProjectPageData.editDescription)
 });
-})
+
+      it('AT_20.03_006 | Verify length and name items of dropdown menu of the Freestyle project', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
+        freestyleProjectPage
+            .clickFreestyleProjectDrpDwnMenu()
+            .checkFreestyleProjectDrpDwnMenuItemsName()
+            .getFrestyleProjectDrpDwmMenuList()
+            .should('have.length', freestyleProjectPageData.freestyleDropdownItems.length)
+      })
+});

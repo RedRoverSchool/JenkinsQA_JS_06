@@ -2,6 +2,7 @@ import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage"
 import HomePage from "./HomePage";
 import GitHubPage from "./GitHubPage";
+import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectPage.json'
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -18,6 +19,9 @@ class FreestyleProjectPage {
     getAddAndEditDescriptoinBtn = () => cy.get('#description-link');
     getDescriptionInputField = () => cy.get('.jenkins-input');
     getSaveDescriptionBtn = () => cy.get('.jenkins-button--primary');
+    getFreestyleProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getFrestyleProjectDrpDwmMenuList = () => cy.get('.yuimenuitem span')
+
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()
@@ -62,6 +66,19 @@ class FreestyleProjectPage {
         this.getDescriptionInputField().clear();
         return this
     }
-    
+
+    clickFreestyleProjectDrpDwnMenu() {
+    this.getFreestyleProjectDrpDwnBtn().realHover().click();
+    return this;
+    }
+
+    checkFreestyleProjectDrpDwnMenuItemsName() {
+        this.getFrestyleProjectDrpDwmMenuList()
+        .then(($els) =>{
+            let actual =Cypress.$.makeArray($els).map($el =>$el.innerText)
+            expect(actual).to.be.deep.equal(FreestyleProjectPageData.freestyleDropdownItems)
+           })
+        return this;
+      }
 }
 export default FreestyleProjectPage;
