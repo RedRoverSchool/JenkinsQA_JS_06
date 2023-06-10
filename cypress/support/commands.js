@@ -136,4 +136,3 @@ Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
     headerAndFooter
           .clickJenkinsHomeLink()
 });
-
