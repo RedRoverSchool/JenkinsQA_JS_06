@@ -18,7 +18,7 @@ describe('freestyleProjectConfigure', () => {
             .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
             .typeProjectUrl(freestyleProjectConfigData.gitHubProjectURL)
-            .clickSaveBntAndGoFreestyleProjectPage()
+            .clickSaveBtnAndGoFreestyleProjectPage()
             .clickGitHubSideMenuLink()
             .checkUrl() 
             .getGitHubHeaderAuthor()
@@ -30,7 +30,7 @@ describe('freestyleProjectConfigure', () => {
             .clickFreestyleProjectNameLink()         
             .clickConfigureSideMenuLink()  
             .typeDescriptionInputField(freestyleProjectConfigData.description)
-            .clickSaveBtnAndGoFreestyleProject()        
+            .clickSaveBtnAndGoFreestyleProject()
             .getFreestyleProjectDescription()
             .should('contain.text', freestyleProjectConfigData.description);
     })
@@ -68,4 +68,21 @@ describe('freestyleProjectConfigure', () => {
                 .should('be.visible')
         })
     });
+
+    freestyleProjectConfigData.AdvancedBtnCheckboxList.forEach((el, idx) => {
+        it(`AT_12.05_009 | Verify that ${el} checkbox below Advanced button is visible and can be checked`, () => {
+            homePage
+                .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+                .clickProjectNameDropdownConfigureLink()
+                .clickAdvancedBtn()
+                .checkAdvancedBtnChbox(idx)
+                .clickSaveBtnAndGoFreestyleProjectPage()
+                .clickConfigureSideMenuLink()
+                .clickAdvancedBtn()
+                .getAdvancedBtnChboxList(idx)
+                .should('be.visible')
+                .and('be.checked');                
+        })    
+    })    
+
 });

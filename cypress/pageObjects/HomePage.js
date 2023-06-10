@@ -22,6 +22,7 @@ import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 import BuildPage from "./BuildPage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import PipelinePage from "./PipelinePage";
+import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -91,8 +92,10 @@ class HomePage {
   getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
   getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
   getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+  getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
+  getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
   getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
   getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
 
@@ -288,7 +291,7 @@ class HomePage {
   }
   clickScheduleBuildForProjectNameBtn(projectName) {
     this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
-    return this
+    return this;
   };
 
   clickBuildTableLink() {
@@ -300,6 +303,11 @@ class HomePage {
     this.getProjectNameDropdownConfigureLink().click();
     return new MultiConfigurationProjectConfigurePage();
   }
+
+  selectRenameMultiBrPipelineDrpDwnMenuBtn() {
+    this.getRenameProjectDrpDwn().click();
+    return new MultibranchPipelineRenamePage;
+}
 
   clickPipelineProjectName(projectName) {
     this.getProjectName(projectName).click();   

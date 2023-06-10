@@ -135,6 +135,18 @@ describe('myView', () => {
       .should('have.text', myViewData.addDescription);
   });
 
+  it('AT_09.03.002 | <My Views>Edit description text is saved', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .clickEditDescriptionLink()
+      .typeDescriptionIntoInputField(myViewData.editedDescription)
+      .getDescriptionText()
+      .should('be.visible')
+      .and('have.text', myViewData.editedDescription);
+  });
+
   it('AT_04.03_012 |<My View> Verify that user can Sсhedule a build', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);     
     

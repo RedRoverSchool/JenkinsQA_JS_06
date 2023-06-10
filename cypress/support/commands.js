@@ -124,4 +124,3 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
     headerAndFooter
           .clickJenkinsHomeLink()
 });
-

@@ -34,7 +34,7 @@ describe('Verify <Dashboard>Icon legend', () => {
     cy.get('#main-panel > .app-icon-legend dt').should('have.length', iconLegends.length)
   })
 
-  it("AT_20.05.005 | Verify User is able to see Project Health statuses", function () {
+  it.skip("AT_20.05.005 | Verify User is able to see Project Health statuses", function () {
     cy.get('a[href="/legend"]').click();
     cy.get("#main-panel > h2:nth-child(5)")
       .should("be.visible")

@@ -9,7 +9,7 @@ import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
 import newItemPageData from '../fixtures/pom_fixtures/newItemPage.json';
 import {cellData} from '../fixtures/pom_fixtures/dashboard.json';
-import HomePage from './HomePage'
+
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
   getBreadcrumbMyViewsItem = () => cy.get('li:nth-child(5) a:nth-child(1)');
@@ -27,6 +27,7 @@ class MyViewPage {
   getInputDescriptionField = () => cy.get('.jenkins-input');
   getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
   getDescriptionText = () => cy.get('#description>div:nth-child(1)');
+  getEditDescriptionLink = () => cy.get('#description-link');
   getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
   getNotBuiltTooltip = () => cy.get('svg[tooltip="Not built"]');
   getLastSuccesStatus = () => cy.get('td:nth-child(4)');
@@ -110,6 +111,11 @@ clickMultiBranchPipelineNameLink(){
     .each(($el, idx) => {
       expect($el.text()).to.be.equal(newItemPageData.itemsNamesDesc[idx]);
     });
+  };
+
+  clickEditDescriptionLink() {
+    this.getEditDescriptionLink().click();
+    return this;
   };
 
   triggerBuildstatusIcon(){
