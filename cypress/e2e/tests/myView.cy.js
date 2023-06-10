@@ -149,7 +149,6 @@ describe('myView', () => {
 
   it('AT_04.03_012 |<My View> Verify that user can Sсhedule a build', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);     
-    to
     headerAndFooter
       .clickUserDropDownBtn()
       .selectUserMyViewsMenu()
