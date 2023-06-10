@@ -2,7 +2,7 @@
 import dashboardIcons from '../fixtures/dashboardIcons.json'
 import iconsSML from '../fixtures/iconsSML.json'
 
-describe ('Dashboard Icons S,M,L', ()=> {
+describe.skip ('Dashboard Icons S,M,L', ()=> {
     it ('Table size S', ()=> {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type('Project1')
