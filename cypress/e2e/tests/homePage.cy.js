@@ -7,6 +7,7 @@ import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json";
 import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json";
 import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -58,5 +59,12 @@ describe("homePage", () => {
           .clickBuildHistoryLink()
           .getBuildHistoryPageUrl()
           .should('include', buildHistoryPageData.buildHistoryUrl)
-    }) 
+    })
+    
+    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
+      homePage
+          .clickNewItemSideMenuLink()
+          .getNewItemPageUrl()
+          .should('include', newItemPageData.newItemEndPoinURL)   
+  });
 })

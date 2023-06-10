@@ -34,7 +34,8 @@ class MyViewPage {
   getLastDurationStatus = () => cy.get('td:nth-child(6)');
   getSceduleBuidBtn = () => cy.get('td:nth-child(7)');
   getScheduleBuidTooltip = () => cy.get('a[tooltip*="Schedule a Build"]');
-  
+  getEditDescriptionLink = () => cy.get('#description-link');
+
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -146,5 +147,10 @@ clickMultiBranchPipelineNameLink(){
     this.getScheduleBuidTooltip().should('be.visible').click().wait(2000);
     return this;
    }; 
-  }
+  
+  clickEditDescriptionLink() {
+    this.getEditDescriptionLink().click();
+    return this;
+  };
+}
 export default MyViewPage;

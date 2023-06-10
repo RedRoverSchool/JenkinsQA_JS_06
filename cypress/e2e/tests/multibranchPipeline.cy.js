@@ -6,13 +6,11 @@ import FolderPage from "../../pageObjects/FolderPage";
 
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
-
 describe('multibranchPipeline', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const homePage = new HomePage();
     const folderPage = new FolderPage();
-
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -54,6 +52,19 @@ describe('multibranchPipeline', () => {
         folderPage
            .getJobInsideFolderLink()
            .should('have.text', newItemPageData.multibranchPipelineName)
+    });
+
+    it('AT_16.02_001 | Rename Multibranch Pipeliner using dropdown menu', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+
+            homePage
+                .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+                .selectRenameMultiBrPipelineDrpDwnMenuBtn()
+                .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
+                .clickRenameSubmitBtn()
+                .getMultiBranchPipelineHeader()
+                .should('contain', newItemPageData.newpipelineName)
+                .and('not.contain',newItemPageData.multibranchPipelineName);
     });
 
 });
