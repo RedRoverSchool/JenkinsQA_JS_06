@@ -28,5 +28,7 @@
                 "setValue": "${testDirectory}"
             }
         }
-    }
+    },
+    
+    "advancedProjectOptionsLabels": ["Quiet period", "Retry Count", "Use custom workspace", "Use custom child workspace"]
 }

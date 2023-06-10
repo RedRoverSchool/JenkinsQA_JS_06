@@ -124,3 +124,14 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
     headerAndFooter
           .clickJenkinsHomeLink()
 });
+
+Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName) => {
+    homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();    
+});
