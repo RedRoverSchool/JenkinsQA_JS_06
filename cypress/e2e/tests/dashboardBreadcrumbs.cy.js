@@ -49,7 +49,7 @@ describe('dashboardBreadcrumbs', () => {
          .clickDashboardDropdownBtn()
          .moveMouseOverManageJenkins()
          .clickReloadConfigurationFromDiskBtn()
-         .clickAlertWindowCancel()
+         .clickAlertWindowCancel(dashboardBreadcrumbsData.alertWindowMessages[0])
       cy.url().should('eq', `http://localhost:${PORT}/`)
    });
 

@@ -35,9 +35,9 @@ class DashboardBreadcrumbs {
    this.getReloadConfigurationFromDiskBtn().click()
       return this
    };
-   clickAlertWindowCancel() {
+   clickAlertWindowCancel(alertWindowText) {
       cy.on('window:confirm', (text) => {
-         expect(text).to.equal(dashboardBreadcrumbsData.alertWindowMessages)
+         expect(text).to.equal(alertWindowText)
          return false})
    };
 
