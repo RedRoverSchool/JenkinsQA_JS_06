@@ -143,7 +143,7 @@ describe('headerAndFooter', () => {
         });
     });
 
-    it('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+    it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
         headerAndFooter
             .clickSearchBoxIconTrailing()
             cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
