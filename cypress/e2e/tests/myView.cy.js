@@ -134,4 +134,16 @@ describe('myView', () => {
       .getDescriptionText()
       .should('have.text', myViewData.addDescription);
   });
+
+  it('AT_09.03.002 | <My Views>Edit description text is saved', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .clickEditDescriptionLink()
+      .typeDescriptionIntoInputField(myViewData.editedDescription)
+      .getDescriptionText()
+      .should('be.visible')
+      .and('have.text', myViewData.editedDescription);
+  });
 });

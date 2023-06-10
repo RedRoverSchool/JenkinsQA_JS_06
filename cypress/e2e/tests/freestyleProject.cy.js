@@ -5,13 +5,14 @@ import FreestyleProjectRenamePage from "../../pageObjects/FreestyleProjectRename
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
+import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 
 describe('freestyleProject', () => {
 
     const homePage = new HomePage();
     const freestyleProjectPage = new FreestyleProjectPage();
     const freestyleProjectRenamePage = new FreestyleProjectRenamePage();
-
+    const dashboardBreadcrumbs = new DashboardBreadcrumbs();
 
     it('AT_12.03_007 | Rename freestyle project using side menu', () => {
         homePage
@@ -106,7 +107,26 @@ describe('freestyleProject', () => {
             .and('include.text', freestyleProjectPageData.disabledProjectNotify)
     });
 
+    it('AT_12.06_003 | Freestyle project. Project Status is changed to "Disabled" on Dashboard after clicking "Disable project" button', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+            .selectFreestyleProjectItem()
+            .clickOkBtnAndGoFreestyleProjectConfig()
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFreestyleProjectHeader()
+            .should('include.text', newItemPageData.freestyleProjectName)
+        freestyleProjectPage
+            .clickDisableProjectBtn()
+        dashboardBreadcrumbs
+            .clickDashboardLinkAndGoHomePage()
+            .getProjectDisableIcon(newItemPageData.freestyleProjectName)
+            .should('be.visible')
+            .and('have.attr', 'title', 'Disabled')
+    });
+
     it('AT_12.07_001 | Freestyle project> Edit description> Verify possiblity to type the text', function () {
+  
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
 
         homePage

@@ -25,6 +25,7 @@ class MyViewPage {
   getInputDescriptionField = () => cy.get('.jenkins-input');
   getDescriprionSaveBtn = () => cy.get('button[name="Submit"]');
   getDescriptionText = () => cy.get('#description>div:nth-child(1)');
+  getEditDescriptionLink = () => cy.get('#description-link');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -101,6 +102,11 @@ clickMultiBranchPipelineNameLink(){
     .each(($el, idx) => {
       expect($el.text()).to.be.equal(newItemPageData.itemsNamesDesc[idx]);
     });
+  };
+
+  clickEditDescriptionLink() {
+    this.getEditDescriptionLink().click();
+    return this;
   };
 }
 export default MyViewPage;
