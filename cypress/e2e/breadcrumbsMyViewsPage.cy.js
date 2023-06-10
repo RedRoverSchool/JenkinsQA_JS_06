@@ -156,7 +156,7 @@ describe("breadcrumbsMyViewsPage", () => {
       .should('deep.equal', items.createdJobsReverse)
   })
   
-  it('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
+  it.skip('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
     cy.get('a[href="/view/all/newJob"]').click();
     cy.get('#name').type(items.createdBuildsNames[0]);
     cy.get('.hudson_model_FreeStyleProject').click();

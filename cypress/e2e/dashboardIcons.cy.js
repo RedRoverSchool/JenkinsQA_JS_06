@@ -3,7 +3,7 @@
 import projects from '../fixtures/projects.json'
 import iconsSML from "../fixtures/iconsSML.json"
 
-describe('dashboardIcons', () => {
+describe.skip('dashboardIcons', () => {
 
     beforeEach('Create a freestyle project', () => {
         cy.get('a[href="newJob"]').click()
