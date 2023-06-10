@@ -8,8 +8,7 @@ import NewViewPage from './NewViewPage';
 import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
 import newItemPageData from '../fixtures/pom_fixtures/newItemPage.json';
-import {cellData} from '../fixtures/pom_fixtures/dashboard.json';
-import HomePage from './HomePage'
+import myViewData from '../fixtures/pom_fixtures/myView.json';
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -131,17 +130,17 @@ clickMultiBranchPipelineNameLink(){
   };  
 
   assertLastSuccesStatus(){
-    this.getLastSuccesStatus().should('contain', cellData);
+    this.getLastSuccesStatus().should('contain', myViewData.cellData);
     return this;
   }; 
 
   assertLastFalureStatus(){
-    this.getLastFalureStatus().should('contain', cellData);
+    this.getLastFalureStatus().should('contain', myViewData.cellData);
     return this;
   }; 
 
   assertLastDurationStatus(){
-    this.getLastDurationStatus().should('contain', cellData);
+    this.getLastDurationStatus().should('contain', myViewData.cellData);
     return this;
   }; 
 
