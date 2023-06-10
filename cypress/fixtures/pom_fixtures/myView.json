@@ -2,5 +2,7 @@
     "newViewPageURL": "/my-views/newView",
     "headerOfNewViewNameInputField": "View name",
     "addDescription": "Project DemoQA",
-    "editedDescription":"New Description"
+    "editedDescription":"New Description",
+    "cellData": "N/A"
+    
 }

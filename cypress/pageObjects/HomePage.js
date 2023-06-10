@@ -96,6 +96,8 @@ class HomePage {
   getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
   getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
+  getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
+  getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
   getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
   getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
   getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
@@ -289,11 +291,13 @@ class HomePage {
   clickOnScheduleBuildBtn() {
     this.getScheduleBuildBtn().click();
     return this;
-  }
+  };
+
   clickPipelineProjectNameDropdownConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
     return new PipelineProjectConfigurePage();
-  }
+  };
+
   clickScheduleBuildForProjectNameBtn(projectName) {
     this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
     return this;
@@ -302,17 +306,17 @@ class HomePage {
   clickBuildTableLink() {
     this.getBuildTableLink().click()
     return BuildPage;
-  }
+  };
 
   clickMultiConfProjectDrpDwnConfigureLink() {
     this.getProjectNameDropdownConfigureLink().click();
     return new MultiConfigurationProjectConfigurePage();
-  }
+  };
 
   selectRenameMultiBrPipelineDrpDwnMenuBtn() {
     this.getRenameProjectDrpDwn().click();
     return new MultibranchPipelineRenamePage;
-}
+};
 
   clickPipelineProjectName(projectName) {
     this.getProjectName(projectName).click();   
@@ -362,12 +366,17 @@ class HomePage {
       })
     })
     return this
-  }
+  };  
+  
+  triggerBuildstatusIcon(){
+    this.getBuildstatusIcon().trigger('focus');
+    return this;
+  };  
   
   clickProjectDropdownMenuBtn() {
     this.getProjectDropdownMenuBtn().realHover().click('right');
     return this;
  };
+  
 };
-
 export default HomePage;

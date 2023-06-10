@@ -95,7 +95,7 @@ describe('myView', () => {
       .clickMyViewSideMenuLink()
       .verifyAndClickAddNewViewLink()
       .getHeaderOfNewViewNameInputField()
-      .should('have.text', myViewData.headerOfNewViewNameInputField)
+      .should('have.text', myViewData.headerOfNewViewNameInputField);
   });
 
   it('AT_04.03_009|<My View> Verify that the user can open the selected Organization Folder', () => {
@@ -145,5 +145,24 @@ describe('myView', () => {
       .getDescriptionText()
       .should('be.visible')
       .and('have.text', myViewData.editedDescription);
+  });
+
+  it('AT_04.03_012 |<My View> Verify that user can sсhedule a build', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);     
+    headerAndFooter
+      .clickUserDropDownBtn()
+      .selectUserMyViewsMenu()
+      .triggerBuildstatusIcon()
+      .assertNotBuiltTooltip()
+      .assertLastSuccesStatus()
+      .assertLastFalureStatus()
+      .assertLastDurationStatus()
+      .triggerSceduleBuidBtn()
+      .assertAndClickScheduleBuidTooltip();
+      
+    headerAndFooter
+      .clickJenkinsHomeLink()
+      .triggerBuildstatusIcon()
+      .getSuccessBuiltTooltip().should('be.visible');
   });
 });
