@@ -23,6 +23,7 @@ import BuildPage from "./BuildPage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import PipelinePage from "./PipelinePage";
 import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
+import homePageData from "../fixtures/pom_fixtures/homePage.json"
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -97,6 +98,10 @@ class HomePage {
   getBuildTableLink = () => cy.get('a.jenkins-table__badge')
   getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
   getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
+  getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
+  getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
+  getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
+  getTable = () => cy.get('#projectstatus')
 
 
   clickSideMenuPanelItem(idx) {
@@ -313,6 +318,51 @@ class HomePage {
     this.getProjectName(projectName).click();   
     return new PipelinePage();
   };
+  clickTableSizeBtnS() {
+    this.getTableSizeBtnS().click()
+    return this
+  }
+
+  verifyTableSizeS() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.sRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnM() {
+    this.getTableSizeBtnM().click()
+    return this
+  }
+
+  verifyTableSizeM() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.mRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnL() {
+    this.getTableSizeBtnL().click()
+    return this
+  }
+
+  verifyTableSizeL() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+        cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.lRem)
+      })
+    })
+    return this
+  }
+  
 };
 
 export default HomePage;
