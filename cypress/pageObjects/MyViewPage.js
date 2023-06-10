@@ -36,6 +36,8 @@ class MyViewPage {
   getSceduleBuidBtn = () => cy.get('td:nth-child(7)');
   getScheduleBuidTooltip = () => cy.get('a[tooltip*="Schedule a Build"]');
   getEditDescriptionLink = () => cy.get('#description-link');
+  getActiveTabViewInTabBar = () => cy.get('.tabBar .tab.active');
+  getViewsTabBar = () => cy.get('.tabBar');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -68,8 +70,7 @@ clickMultiBranchPipelineNameLink(){
 };
 
   verifyAndClickAddNewViewLink() {
-    this.getAddNewViewLink()
-    .should('be.visible').click();
+    this.getAddNewViewLink().should('be.visible').click();
     cy.url().should('contain', myView.newViewPageURL);
     return new NewViewPage();
   };
@@ -156,6 +157,14 @@ clickMultiBranchPipelineNameLink(){
   
   clickEditDescriptionLink() {
     this.getEditDescriptionLink().click();
+    return this;
+  };
+
+  verifyTabAllViewsInTabBarIsActive() {
+    this.getActiveTabViewInTabBar()
+      .should('have.text', myView.viewsTabBar.tabAllViewsInTabBar)
+      .and('have.css', 'color', myView.viewsTabBar.activeTabViewColor)
+      .and('have.css', 'background-color', myView.viewsTabBar.activeTabViewBackgroundColor);
     return this;
   };
 }

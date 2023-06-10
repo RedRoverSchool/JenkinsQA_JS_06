@@ -124,3 +124,15 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
     headerAndFooter
           .clickJenkinsHomeLink()
 });
+
+Cypress.Commands.add('createNewView', (viewName, viewType) => {
+    homePage
+        .clickMyViewSideMenuLink()
+        .verifyAndClickAddNewViewLink()
+        .typeNewViewNameIntoInputField(viewName)
+        .checkViewTypeRadioButton(viewType)
+        .clickCreateNewViewButton()
+        .clickOkButtonSaveView();
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});

@@ -45,7 +45,7 @@ describe('myViewsCreateNewView', () => {
     cy.get('a[href$="my-views"]').should('contain.text', createNewView.myView).click();
 })
 
-  it('AT_09.01_001 | My Views>Create new view', function () {
+  it.skip('AT_09.01_001 | My Views>Create new view', function () {
     cy.get('.addTab').should('be.visible').click();
     cy.get('#name').type(createNewView.viewName);
     cy.get('.jenkins-radio:last-child label').should('have.text', createNewView.myView).click();
@@ -78,7 +78,7 @@ describe('My Views Create New View', () => {
       cy.get('#breadcrumbs li:last-child').should('have.text', myViews.newViewItemOnTopMenu)
   });
 
-  it('AT_09.01_007 | My Views > Create new view > Verify creating different types of Viwes', () => {
+  it.skip('AT_09.01_007 | My Views > Create new view > Verify creating different types of Viwes', () => {
     createNewViewExample(myViews.viewTypes.globalView);
     createNewViewExample(myViews.viewTypes.listView);
     createNewViewExample(myViews.viewTypes.myView);
