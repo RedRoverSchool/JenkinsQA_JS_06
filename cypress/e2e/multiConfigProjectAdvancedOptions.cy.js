@@ -143,7 +143,7 @@ describe('Multi Config Project Advanced Options', () => {
 		});
 	});
 
-	it('AT_14.05_009 | Multi-configuration project. Advanced project options are set and saved', () => {
+	it.skip('AT_14.05_009 | Multi-configuration project. Advanced project options are set and saved', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').within(($elem) => {

@@ -104,6 +104,7 @@ class HomePage {
   getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
   getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
   getTable = () => cy.get('#projectstatus')
+  getProjectDropdownMenuBtn = () => cy.get ('td>a');
 
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()
@@ -321,7 +322,7 @@ class HomePage {
     this.getProjectName(projectName).click();   
     return new PipelinePage();
   };
-  
+
   clickTableSizeBtnS() {
     this.getTableSizeBtnS().click()
     return this
@@ -365,11 +366,17 @@ class HomePage {
       })
     })
     return this
-  };
+  };  
   
   triggerBuildstatusIcon(){
     this.getBuildstatusIcon().trigger('focus');
     return this;
   };  
+  
+  clickProjectDropdownMenuBtn() {
+    this.getProjectDropdownMenuBtn().realHover().click('right');
+    return this;
+ };
+  
 };
 export default HomePage;

@@ -125,6 +125,17 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
           .clickJenkinsHomeLink()
 });
 
+Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName) => {
+    homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();    
+});
+
 Cypress.Commands.add('createNewView', (viewName, viewType) => {
     homePage
         .clickMyViewSideMenuLink()
