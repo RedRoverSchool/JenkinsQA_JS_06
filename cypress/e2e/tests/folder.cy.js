@@ -65,7 +65,7 @@ describe('folder', () => {
             .should('not.exist');
     });
 
-    it.only('AT_15.06_03 | Folder>Rename Folder', () => {
+    it('AT_15.06_03 | Folder>Rename Folder', () => {
         cy.createFolderProject(folderPageData.folderName)
 
         homePage
