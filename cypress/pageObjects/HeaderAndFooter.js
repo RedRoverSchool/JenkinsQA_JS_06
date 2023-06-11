@@ -10,7 +10,6 @@ import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
 import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 
-
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
     getUserDropDownBtn = () => cy.get('div.login a[href*="user"] button');
@@ -31,6 +30,7 @@ class HeaderAndFooter {
     getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
     getPageBody = () => cy.get('#page-body');
     getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
+    getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
 
     clickJenkinsVersionLink(){
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -124,5 +124,11 @@ class HeaderAndFooter {
         this.getSearchBoxIconTrailing().click();
         return new searchBoxDocumentationPage();
     }
+
+    clickUserDropDownMenuCredentials() {
+        this.getUserDropDownMenuCredentials().click();
+        return new UserCredentialsPage();
+    }
+   
 }
 export default HeaderAndFooter;
