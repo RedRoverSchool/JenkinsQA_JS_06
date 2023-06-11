@@ -8,10 +8,13 @@ import loginPageData from "../../fixtures/pom_fixtures/loginPage.json";
 import headerAndFooterData from "../../fixtures/pom_fixtures/headerAndFooter.json";
 import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBreadcrumbs.json";
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import HomePage from "../../pageObjects/HomePage";
+import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 
 describe('headerAndFooter', () => {
 
     const headerAndFooter = new HeaderAndFooter();
+    const homePage = new HomePage();
 
     it('AT_03.02_008 | <Footer> Verify the Link "Jenkins" in the footer', () => {
         headerAndFooter
@@ -83,15 +86,15 @@ describe('headerAndFooter', () => {
             .getHeadIconName()
             .should('be.visible');
     });
-  
+
     it('AT_01.06_009 | Header>Link "My Views" in the “User” dropdown-menu is visible and redirects', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .selectUserMyViewsMenu()
             .getDashboardMyViewsLink().should('have.text', dashboardBreadcrumbsData.dashboardDropdownMenu[4])
     });
-    
-    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () =>{
+
+    it('AT_03.02_001 | Footer>Verify Link Jenkins ver number is correct', () => {
         headerAndFooter
             .getJenkinsLinkVerNumber()
             .should('be.visible')
@@ -99,10 +102,21 @@ describe('headerAndFooter', () => {
             .and('have.attr', 'href', headerAndFooterData.version.link)
             .and('have.css', 'color', headerAndFooterData.version.rgb)
     });
+
+
+    it('AT_01.01_019 | Redirection to the homepage by label', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+        headerAndFooter    
+            .clickJenkinsHomeLink()             
+        homePage    
+            .getHomePageLink()
+            .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
+     });
     
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
-            .clickUserDropDownBtn() 
+            .clickUserDropDownBtn()
             .selectUserConfigureMenu()
             .typeUserConfigDescription(userConfigurePageData.userDescription)
             .clickUserConfigSaveBtn()
@@ -118,4 +132,27 @@ describe('headerAndFooter', () => {
             })           
     });
 
+    headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
+        it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
+            headerAndFooter  
+                .clickUserDropDownBtn()
+                .clickEachDropdownMenuItems(idx)
+                .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
+                .getPageBody()
+                .should('be.visible')
+        });
+    });
+
+    it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
+        headerAndFooter
+            .clickSearchBoxIconTrailing()
+            cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
+    });
+
+    it('AT_03.02.005 | Footer>Verify the Link Jenkins', () => {
+        headerAndFooter
+            .clickJenkinsVersionLink()
+            .getJenkinsPageUrl()
+            .should("equal", headerAndFooterData.version.link);
+    });
 })

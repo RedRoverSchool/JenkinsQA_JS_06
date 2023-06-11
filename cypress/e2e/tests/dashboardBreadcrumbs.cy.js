@@ -49,8 +49,18 @@ describe('dashboardBreadcrumbs', () => {
          .clickDashboardDropdownBtn()
          .moveMouseOverManageJenkins()
          .clickReloadConfigurationFromDiskBtn()
-         .clickAlertWindowCancel()
+         .clickAlertWindowCancel(dashboardBreadcrumbsData.alertWindowMessages[0])
       cy.url().should('eq', `http://localhost:${PORT}/`)
+   });
+
+   dashboardBreadcrumbsData.dashboardDropdownMenu.forEach((pageName, ind) => {
+      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+         dashboardBreadcrumbs
+            .clickDashboardDropdownBtn()
+            .clickEachDashboardDropDownMenuList(ind)
+            .getFirstDashboardDropdownBtn()
+            .should('have.text', dashboardBreadcrumbsData.dashboardBtn);
+      });
    });
 
 })

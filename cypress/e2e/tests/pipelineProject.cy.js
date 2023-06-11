@@ -2,6 +2,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json"; 
 
 
 describe('pipelineProject',()=>{
@@ -39,4 +40,35 @@ describe('pipelineProject',()=>{
             .getPipelinePageHeadline()
             .should('contain.text',newItemPageData.newpipelineName)
     })
+    it('AT_13.06.01 | <Pipeline|Configuration>verify the ability to paste link from GitHub project and user is displayed icon GitHub',()=>{
+        homePage
+            .clickCreateJobLink()
+            .typeNewItemNameInputField(newItemPageData.pipelineName)
+            .selectPipelineItem()
+            .clickOkBtnAndGoPipelineConfig();
+
+        headerAndFooter
+            .clickJenkinsHomeLink()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .clickPipelineProjectNameDropdownConfigureLink()
+            .checkGitHubProjectCheckbox()
+            .typePipelineProjectUrl(gitHubPage.gitHubProjectURL)
+            .clickPipelineSaveBtn()
+            .getSideMenuPanel()
+            .should('have.length',9)
+            .and('contain','GitHub');             
+    })
+
+    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDeletePipelineBtn()
+            .clickConfirmDeletePipeline();
+            
+        homePage
+            .getMainPanel()
+            .should('not.have.text', newItemPageData.pipelineName);
+    });
 })

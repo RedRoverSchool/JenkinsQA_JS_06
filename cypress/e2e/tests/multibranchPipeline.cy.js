@@ -1,13 +1,16 @@
 /// <reference types="cypress" />
 
-import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
+import HomePage from "../../pageObjects/HomePage";
+import FolderPage from "../../pageObjects/FolderPage";
 
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
 describe('multibranchPipeline', () => {
 
     const headerAndFooter = new HeaderAndFooter();
-
+    const homePage = new HomePage();
+    const folderPage = new FolderPage();
 
     it('AT_16.03.001 | Delete the Multibranch Pipeline using dropdown menu', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -32,5 +35,37 @@ describe('multibranchPipeline', () => {
             .getErrorMessage()
             .should('have.text', multibranchPipelineConfirmRenamePageData.errorMessage);
     });
+
+    it('AT_16.04 _001| Verify that the Multibranch Pipeline is moved to an existing folder using dropdown', function () {
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        homePage
+            .hoverAndClickProjectDrpDwn(newItemPageData.multibranchPipelineName)
+            .clickProjectNameDropdownMoveLink()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
+            .clickGoToDashboard()
+            .clickProjectName(newItemPageData.folderName)            
+            .getIconProject()
+            .should('have.attr', 'title', newItemPageData.newItemNames[4])
+        folderPage
+           .getJobInsideFolderLink()
+           .should('have.text', newItemPageData.multibranchPipelineName)
+    });
+
+    it('AT_16.02_001 | Rename Multibranch Pipeliner using dropdown menu', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+
+            homePage
+                .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+                .selectRenameMultiBrPipelineDrpDwnMenuBtn()
+                .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
+                .clickRenameSubmitBtn()
+                .getMultiBranchPipelineHeader()
+                .should('contain', newItemPageData.newpipelineName)
+                .and('not.contain',newItemPageData.multibranchPipelineName);
+    });
+
 });
     

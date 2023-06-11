@@ -6,6 +6,7 @@ import multibranchPipelineConfigPageData from "../../fixtures/pom_fixtures/multi
 import multibranchPipelinePageData from "../../fixtures/pom_fixtures/multibranchPipelinePage.json";
 import MultibranchPipelinePage from "../../pageObjects/MultibranchPipelinePage";
 import MultibranchPipelineConfigurePage from "../../pageObjects/MultibranchPipelineConfigurePage";
+import multibranchPipline from "../../fixtures/multibranchPipeline.json";
 
 describe('multibranchPipelineConfigure', () => {
 
@@ -67,4 +68,44 @@ describe('multibranchPipelineConfigure', () => {
             .createAddSourceItemList()
             .should('deep.equal', multibranchPipelineConfigPageData.addSourceItemsList)
     });
+
+    it('AT_16.01_017 | Multibranch Pipeline>Configuration>Scan Multibranch Pipeline Triggers>Verify array of time Interval', function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        multibranchPipelineConfigurePage
+            .createIntervalDrDwnItemList()
+            .should('deep.equal', multibranchPipelineConfigPageData.intervalTimeItemsList)
+           })
+
+    it('AT_16.01.008 Enables the current Multibranch Pipeline', () => {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName)
+
+         multibranchPipelineConfigurePage
+            .clickDisableBtn()
+            .clickSaveBtnAndGoMultiPipeline()
+            .clickMultibranchPiplineEnableBtn()
+            .getEnableButton()
+            .should('contain', multibranchPipelinePageData.disableButton)
+            .should('have.css', 'color', multibranchPipelinePageData.enableButtonColor)
+     });
+
+    it('AT_16.01_05 | Verify check boxes change color', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName)
+
+        homePage
+            .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+            .clickConfigureTheProjectLink()
+            .hoverScanTriggerCheckbox()
+            .should('have.css', 'box-shadow')
+    });
+
+    it('AT_16.01_06 | Verify the number of checkboxes', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName)
+
+        homePage
+        .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+        .clickConfigureTheProjectLink()
+        .getCheckbox()
+        .should('have.length', 4)
+    })
 });

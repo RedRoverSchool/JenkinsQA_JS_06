@@ -35,4 +35,27 @@ describe("multiConfigurationProject", () => {
             .getCurrentNameMessage()
             .should('contain.text', multiConfProjectPageData.currentNameMsg)
     })
+
+    it('AT_14.06.004 | Multi-configuration project>Rename Multi-configuration project', () => {
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+        homePage
+        .hoverProjectNameLink()
+        .clickProjectDrpDwnBtn()
+        .selectRenameMultiConfProjectDrpDwnMenuBtn()
+        .typeMultiConfProjectNameInputField(newItemPageData.newMultiConfigurationProjectName)
+        .clickRenameBtnMultiConfProject()
+        .clickGoHome()
+        .getNameMulticonfigProjectName()
+        .should('have.text', newItemPageData.newMultiConfigurationProjectName)
+
+
+        
+
+        
+       
+
+
+
+
+    })
 })

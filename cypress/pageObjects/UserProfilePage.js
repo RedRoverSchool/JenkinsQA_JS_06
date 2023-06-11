@@ -11,6 +11,8 @@ class UserProfilePage {
     getUserCredentialsLink = () => cy.get(`a[href="/user/${userName}/credentials"]`);
     getUserConfigureLink = () => cy.get(`a[href="/user/${userName}/configure"]`);
     getUserConfigureNameLink = () => cy.get(`a[href="/user/${userName}/configure"] .task-link-text`)
+    getUserId = () => cy.get('#main-panel>div:last-child');
+    getStatusBtn = () => cy.get('#tasks>:nth-child(2)')
 
     trimUserPageHeaderName() {
         return this.getUserPageHeader().then($el => {
@@ -42,5 +44,15 @@ class UserProfilePage {
         this.getUserConfigureLink.click();
         return new UserConfigurePage();
     }
+    verifyUserPagesUrl(user) {
+        cy.url().should('contain', user);
+        return this;
+    };
+
+    verifyStatusBtn() {
+        this.getStatusBtn().should('exist');
+        return this;
+    };
+
 }
 export default UserProfilePage;

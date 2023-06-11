@@ -13,6 +13,7 @@ class FolderPage {
     getCreateAJobLink = () => cy.get('a[href="newJob"]')
     getDeleteFolderBtn = () => cy.get('a[href$="/delete"]')
     getRenameFolderLink = () => cy.get('a[href$=confirm-rename]')
+    getIconProject = () => cy.get('.icon-pipeline-multibranch-project')
 
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();

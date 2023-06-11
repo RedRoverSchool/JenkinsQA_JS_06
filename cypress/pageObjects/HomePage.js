@@ -1,3 +1,5 @@
+import MultibranchPipelinePage from "./MultibranchPipelinePage";
+
 const dayjs = require('dayjs');
 
 import PeoplePage from "./PeoplePage";
@@ -15,8 +17,45 @@ import PipelineProjectRenamePage from "./PipelineProjectRenamePage";
 import FolderPage from "./FolderPage";
 import MultibranchPipelineStatusPage from "./MultibranchPipelineStatusPage";
 import NewNodePage from "./NewNodePage";
+import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
+import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
+import BuildPage from "./BuildPage";
+import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
+import PipelinePage from "./PipelinePage";
+import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
+import homePageData from "../fixtures/pom_fixtures/homePage.json"
 
 class HomePage {
+    getHomepageHeader = () => cy.get('.empty-state-block h1');
+    getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
+    getCreateJobLink = () => cy.get('a[href="newJob"]');
+    getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
+    getPageBody = () => cy.get("#page-body");
+    getMainPanel = () => cy.get('#main-panel');
+    getHomePageLink = () => cy.url();
+    getProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
+    getDeleteDrpDwnLink = () => cy.get('ul.first-of-type li').contains('Delete');
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(5) span");
+    getProjectNameDropdownList = () => cy.get('#breadcrumb-menu');
+    getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
+    getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getAddDescriptionLink = () => cy.get('#description-link');
+    getAddDescriptionField = () => cy.get('.jenkins-input ');
+    getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
+    getSavedDescriptionField = () => cy.get('#description');
+    getRenameMultiConfProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getSideMenuPanel = () => cy.get('#tasks .task');
+    getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getAddEditDescriptionBtn = () => cy.get("a#description-link");
+    getDescriptionField = () => cy.get('#description div:first-of-type');
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
+
   getHomepageHeader = () => cy.get(".empty-state-block h1");
   getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
   getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
@@ -51,6 +90,26 @@ class HomePage {
   getDescriptionPreview = () => cy.get(".textarea-preview");
   getSetUpAgentLink = () =>
     cy.get('a[href="computer/new"] span:not(.trailing-icon)');
+  getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
+  getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
+  getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+  getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
+  getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
+  getBuildTableLink = () => cy.get('a.jenkins-table__badge')
+  getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
+  getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
+  getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
+  getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
+  getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
+  getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
+  getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
+  getTable = () => cy.get('#projectstatus')
+  getProjectDropdownMenuBtn = () => cy.get ('td>a');
+
+  clickSideMenuPanelItem(idx) {
+    this.getSideMenuPanel().eq(idx).click()
+    return cy.url()
+  };
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -95,6 +154,11 @@ class HomePage {
   typeIntoSearchBox(name) {
     this.getSearchBox().type(name + "{enter}");
     return new ResultSearchBoxPage();
+  }
+
+   clickMultibranchPipelineProjectNameLink(projectName) {
+      this.getProjectNameLink().contains(projectName).click();
+      return new MultibranchPipelinePage();
   }
 
   hoverAndClickProjectDrpDwnBtn(projectName) {
@@ -203,10 +267,116 @@ class HomePage {
     return this;
   }
 
-  clickSetUpAgentLink() { 
+  clickSetUpAgentLink() {
     this.getSetUpAgentLink().click();
     return new NewNodePage();
   };
+
+  clickProjectNameDropdownMoveLink() {
+    this.getProjectNameDropdownMoveLink().click();
+    return new OrgFolderMoveChoicePage();
+  }
+
+  hoverAndClickProjectDrpDwn(projectName) {
+    this.getProjectName(projectName).realHover();
+    this.getProjectDrpDwn(projectName).click();
+    return this;
+  }
+
+  clickProjectName(projectName) {
+    this.getProjectName(projectName).click();
+    return new FolderPage;
+  }
+
+  clickOnScheduleBuildBtn() {
+    this.getScheduleBuildBtn().click();
+    return this;
+  };
+
+  clickPipelineProjectNameDropdownConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new PipelineProjectConfigurePage();
+  };
+
+  clickScheduleBuildForProjectNameBtn(projectName) {
+    this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
+    return this;
+  };
+
+  clickBuildTableLink() {
+    this.getBuildTableLink().click()
+    return BuildPage;
+  };
+
+  clickMultiConfProjectDrpDwnConfigureLink() {
+    this.getProjectNameDropdownConfigureLink().click();
+    return new MultiConfigurationProjectConfigurePage();
+  };
+
+  selectRenameMultiBrPipelineDrpDwnMenuBtn() {
+    this.getRenameProjectDrpDwn().click();
+    return new MultibranchPipelineRenamePage;
 };
 
+  clickPipelineProjectName(projectName) {
+    this.getProjectName(projectName).click();   
+    return new PipelinePage();
+  };
+
+  clickTableSizeBtnS() {
+    this.getTableSizeBtnS().click()
+    return this
+  }
+
+  verifyTableSizeS() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.sRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnM() {
+    this.getTableSizeBtnM().click()
+    return this
+  }
+
+  verifyTableSizeM() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.mRem)
+      })
+  })
+    return this
+  }
+
+  clickTableSizeBtnL() {
+    this.getTableSizeBtnL().click()
+    return this
+  }
+
+  verifyTableSizeL() {
+    this.getTable().then((obj) => {
+      cy.document().then(() => {
+        cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+          .should('eq', homePageData.lRem)
+      })
+    })
+    return this
+  };  
+  
+  triggerBuildstatusIcon(){
+    this.getBuildstatusIcon().trigger('focus');
+    return this;
+  };  
+  
+  clickProjectDropdownMenuBtn() {
+    this.getProjectDropdownMenuBtn().realHover().click('right');
+    return this;
+ };
+  
+};
 export default HomePage;

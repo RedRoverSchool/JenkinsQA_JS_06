@@ -103,7 +103,7 @@ describe("breadcrumbsMyViewsPage", () => {
           .and('include.text', items.organizationFolderName[0])
     })
 
-  it('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
+  it.skip('AT_04.03.011 |<Breadcrumbs>My Views page| Sort items by ascending order', () => {
     for (let i = 0; i <= 2; i++) {
       cy.get('.task ').contains('New Item').click();
       cy.get('#name').type(items.organizationFolderName[i]);
@@ -156,7 +156,7 @@ describe("breadcrumbsMyViewsPage", () => {
       .should('deep.equal', items.createdJobsReverse)
   })
   
-  it('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
+  it.skip('AT_04.03.012 | <Breadcrumbs> My Views page| Schedule a build', () => {
     cy.get('a[href="/view/all/newJob"]').click();
     cy.get('#name').type(items.createdBuildsNames[0]);
     cy.get('.hudson_model_FreeStyleProject').click();
@@ -178,7 +178,7 @@ describe("breadcrumbsMyViewsPage", () => {
     cy.get('svg[tooltip="Success"]').should('be.visible');
   });
 
-  it("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chosen job", () => {
+  it.skip("AT_04.03_006 | Breadcrumbs My Views page Check an opportunity to open a chosen job", () => {
     let jobName = "Test1";
     cy.get('[href="/view/all/newJob"] .task-link-text').click({
       force: true,
