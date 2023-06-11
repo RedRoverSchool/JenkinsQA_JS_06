@@ -6,6 +6,7 @@ import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 
 describe('freestyleProject', () => {
 
@@ -168,5 +169,17 @@ describe('freestyleProject', () => {
             .checkFreestyleProjectDrpDwnMenuItemsName()
             .getFrestyleProjectDrpDwmMenuList()
             .should('have.length', freestyleProjectPageData.freestyleDropdownItems.length)
+    })
+
+    it.only('AT_12.02_005| Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+            .selectDeleteMultiConfProjectDrpDwnMenuBtn()
+            .clickWindowConfirmCancel(homePageData.messages.windowConfirm)
+            
+            //.getProjectTable()
+            //.should('contain', newItemPageData.freestyleProjectName)
+
     })
 });
