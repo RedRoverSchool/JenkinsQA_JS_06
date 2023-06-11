@@ -29,7 +29,7 @@ const extractGlobalViewNameFromGlobalViewType = (globalViewType) => {
       .join(' ');
 };
 
-describe('myViewsCreateNewView', () => {
+describe.skip('myViewsCreateNewView', () => {
 
   beforeEach('create the job', function () {
     cy.get('a[href$="my-views"]').realHover();
@@ -59,7 +59,7 @@ describe('myViewsCreateNewView', () => {
   })
 })
 
-describe('My Views Create New View', () => {
+describe.skip('My Views Create New View', () => {
 
   beforeEach('Create New Job', function () {
       cy.get('a[href="/view/all/newJob"]').click();

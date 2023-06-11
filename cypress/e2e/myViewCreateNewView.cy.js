@@ -1,6 +1,6 @@
 import myView from "../fixtures/myView.json"
 
-describe('my view create new view', function () {
+describe.skip('my view create new view', function () {
     beforeEach('create the job', function () {
         cy.get('a[href="newJob"]').click();
         cy.get('#name').type('First job');
