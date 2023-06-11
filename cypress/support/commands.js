@@ -146,3 +146,15 @@ Cypress.Commands.add('addBuildDescription', (buildDescription) => {
     headerAndFooter
         .clickJenkinsHomeLink();
 });
+
+Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig()
+          .typeDescriptionOnPiplineConfigPage()
+          .clickSaveBtnAndGoPipeline()
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});

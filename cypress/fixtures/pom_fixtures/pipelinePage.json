@@ -1,4 +1,5 @@
 {
     "textDeletePipeline": "Delete Pipeline",
-    "confirmationOfDeletingFromSideBar" : "Delete the Pipeline"
+    "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
+    "additionalDescriptionPipeline" : " second"
 }
