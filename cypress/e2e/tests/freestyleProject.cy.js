@@ -171,15 +171,16 @@ describe('freestyleProject', () => {
             .should('have.length', freestyleProjectPageData.freestyleDropdownItems.length)
     })
 
-    it.only('AT_12.02_005| Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
+    it('AT_12.02_005| Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
         homePage
             .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
-            .selectDeleteMultiConfProjectDrpDwnMenuBtn()
+            .selectDeleteDrpDwnLink()
             .clickWindowConfirmCancel(homePageData.messages.windowConfirm)
-            
-            //.getProjectTable()
-            //.should('contain', newItemPageData.freestyleProjectName)
+        homePage       
+            .getProjectTable()
+            .should('contain', newItemPageData.freestyleProjectName)
+    });
 
-    })
 });
