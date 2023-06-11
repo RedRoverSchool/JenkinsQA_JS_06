@@ -1,3 +1,26 @@
 {
-    "homePageHeader": "Welcome to Jenkins!"
+    "homePageHeader": "Welcome to Jenkins!",
+    "descriptionText": "Jenkins Projects",
+    "deletePipelineConfirmText": "Delete Pipeline: are you sure?",
+    "sidePanelItems": [
+        "New Item",
+        "People",
+        "Build History",
+        "Manage Jenkins",
+        "My Views"
+    ],
+    "endPointUrl": [
+        "/all/newJob",
+        "/asynchPeople/",
+        "/builds",
+        "/manage/",
+        "/my-views/view/all/"
+    ],
+    "sRem" : "0.2rem",
+    "mRem" : "0.4rem",
+    "lRem" : "0.55rem",
+
+    "messages" :{
+        "windowConfirm" : "Delete Project: are you sure?"
+    }
 }

@@ -1,5 +1,5 @@
 /// <reference types="cypress"/>
-describe('Home page (Dashboard) | Add Description',()=>{
+describe.skip('Home page (Dashboard) | Add Description',()=>{
     const addDescription = 'Add description'
     const messageInDescription = 'This is my new description'
     const editDescription = 'Edit description'

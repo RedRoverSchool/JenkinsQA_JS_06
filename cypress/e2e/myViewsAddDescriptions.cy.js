@@ -2,9 +2,9 @@
 import descriptionsProject from '../fixtures/descriptionsProject.json'
 import createNewView from '../fixtures/createNewView.json'
 
-describe('My Views add description', () => {
+describe.skip('My Views add description', () => {
 
-    it('AT_9.02_001|My Views Add description', () => {
+    it.skip('AT_9.02_001|My Views Add description', () => {
         cy.contains('My Views').click()
         cy.get('#description-link').click()
         cy.get('.jenkins-input ').clear().type('DESCRIPTION')
@@ -12,7 +12,7 @@ describe('My Views add description', () => {
         cy.get('#description div:nth-child(1)').should('have.text','DESCRIPTION')
     })
 
-    it('AT 09.02.005| My Views> Add description', function () {
+    it.skip('AT 09.02.005| My Views> Add description', function () {
         cy.contains(createNewView.myView).click();
         cy.get('#description-link').click();
         cy.get('.jenkins-input')

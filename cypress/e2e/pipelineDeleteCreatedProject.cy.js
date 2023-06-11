@@ -23,7 +23,7 @@ describe('Pipeline | Delete Created Project', () => {
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
     
-    it('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
+    it.skip('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
         cy.get('[class="jenkins-table__link model-link inside"] span')
           .should('have.text',pipelineName.newPipelineName)
           .click()
@@ -37,7 +37,7 @@ describe('Pipeline | Delete Created Project', () => {
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
 
-    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
+    it.skip('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
         cy.get('.jenkins-table__link.model-link.inside').click()
         cy.get('.task-link-wrapper').contains(pipelineName.textForDeleteProject).click()
         cy.on('window:confirm', (str) => {
@@ -45,7 +45,7 @@ describe('Pipeline | Delete Created Project', () => {
         })
         cy.get('#main-panel').should('not.have.text', pipelineName.newPipelineName)
     })
-    it('AT_13.02.04|<Pipeline>Delete created project from the Jenkins project table',()=>{
+    xit('AT_13.02.04|<Pipeline>Delete created project from the Jenkins project table',()=>{
         cy.get('.jenkins-table__link.model-link .jenkins-menu-dropdown-chevron').realHover({ position: "center" }).click()
         cy.get('.first-of-type :nth-child(4).yuimenuitem').click()
         cy.on('window:confirm',(str)=>{

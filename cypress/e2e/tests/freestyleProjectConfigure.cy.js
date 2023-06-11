@@ -1,52 +1,44 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json";
-import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
-import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
-import freestyleProjectConfigure from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
-import GitHubPage from "../../pageObjects/GitHubPage";
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
 
 describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
-    const freestyleProjectPage = new FreestyleProjectPage();
-    const dashbord = new DashboardBreadcrumbs();
-    const gitHubPage = new GitHubPage();
-
+   
     beforeEach('Create Freestyle project', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .typeNewItemNameInputField(newItemPage.freestyleProjectName)
-            .selectFreestyleProjectItem()
-            .clickOkBtnAndGoFreestyleProjectConfig()
-            .clickSaveBtnAndGoFreestyleProject();
-    })
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+    })   
 
     it('AT_12.05_004 | Add link on GitHub and verify it', () => {    
-        dashbord
-            .clickDashboardLinkAndGoHomePage();
         homePage
-            .hoverProjectNameLink()
-            .clickProjectNameDropdown();
-        homePage.getProjectNameDropdownList().should('be.visible');
-        homePage.clickProjectNameDropdownConfigureLink()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+            .clickProjectNameDropdownConfigureLink()
             .checkGitHubProjectCheckbox()
-            .typeProjectUrl(freestyleProjectConfigure.gitHubProjectURL)
-            .clickSaveBntAndGoFreestyleProjectPage()
-            .getGitHubSideMenuLink()
-            .should('be.visible');
-        freestyleProjectPage.clickGitHubSideMenuLink();
-
-        cy.url().should('be.eq', freestyleProjectConfigure.gitHubProjectURL);
-        gitHubPage
+            .typeProjectUrl(freestyleProjectConfigData.gitHubProjectURL)
+            .clickSaveBtnAndGoFreestyleProjectPage()
+            .clickGitHubSideMenuLink()
+            .checkUrl() 
             .getGitHubHeaderAuthor()
-            .should('include.text', gitHubPageData.gitHubHeaderAuthor);
+            .should('include.text', gitHubPageData.gitHubHeaderAuthor); 
     });
 
-    freestyleProjectConfigure.postBuildActions.forEach((actionName, idx) => {
+    it('AT_12.05_001 | Freestyle project > Add description to Freestyle project through Congure in side menu', () => {
+        homePage
+            .clickFreestyleProjectNameLink()         
+            .clickConfigureSideMenuLink()  
+            .typeDescriptionInputField(freestyleProjectConfigData.description)
+            .clickSaveBtnAndGoFreestyleProject()
+            .getFreestyleProjectDescription()
+            .should('contain.text', freestyleProjectConfigData.description);
+    })
+
+    freestyleProjectConfigData.postBuildActions.forEach((actionName, idx) => {
         it(`AT_12.05_008 | Verify user can choose ${actionName} from the dropdown menu list <Post-build Actions> while configuring the freestyle project`, () => {
-            freestyleProjectPage
+            homePage
+                .clickFreestyleProjectNameLink()
                 .clickConfigureSideMenuLink()
                 .clickLeftSideMenuPostBuldActionsBtn()
                 .clickAddPostBuildActionBtn()
@@ -59,5 +51,38 @@ describe('freestyleProjectConfigure', () => {
                 .should('exist')
         })
     });
+
+    freestyleProjectConfigData.buildSteps.forEach((buildStep, idx) => {
+        it(`AT_12.05_005 | Verify user can choose ${buildStep} from the dropdown menu list <Add build step> while configuring the freestyle project`, () => {
+            homePage
+                .clickFreestyleProjectNameLink()
+                .clickConfigureSideMenuLink()
+                .clickLeftSidePanelBuildStepsBtn()
+                .clickAddBuildStepBtn()
+                .selectBuildStepFromMenuListItem(idx)
+                .checkBuilderWindowHeaderName(buildStep)
+                .clickSaveBtnAndGoFreestyleProject()
+                .clickConfigureSideMenuLink()
+                .clickLeftSidePanelBuildStepsBtn()
+                .getBuilderWindow()
+                .should('be.visible')
+        })
+    });
+
+    freestyleProjectConfigData.AdvancedBtnCheckboxList.forEach((el, idx) => {
+        it(`AT_12.05_009 | Verify that ${el} checkbox below Advanced button is visible and can be checked`, () => {
+            homePage
+                .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+                .clickProjectNameDropdownConfigureLink()
+                .clickAdvancedBtn()
+                .checkAdvancedBtnChbox(idx)
+                .clickSaveBtnAndGoFreestyleProjectPage()
+                .clickConfigureSideMenuLink()
+                .clickAdvancedBtn()
+                .getAdvancedBtnChboxList(idx)
+                .should('be.visible')
+                .and('be.checked');                
+        })    
+    })    
 
 });

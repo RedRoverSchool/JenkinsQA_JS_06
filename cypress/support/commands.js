@@ -24,13 +24,22 @@
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
-import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
+import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
 
 const homePage = new HomePage();
+
+Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig()
+   })
+
 const headerAndFooter = new HeaderAndFooter();
-const dashboard = new DashboardBreadcrumbs();
+const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -43,13 +52,25 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
         .clickJenkinsHomeLink()
 })
 
-Cypress.Commands.add('createMultiConfigurationProject', (folderName) => {
+Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProjectName) => {
     homePage
         .clickCreateJobLink()
         .selectMultiConfigurationProjectItem()
-        .typeNewItemNameInputField(folderName)
+        .typeNewItemNameInputField(multiConfigurationProjectName)
         .clickOkBtnAndGoMultiConfProjectConfig()
-        .clickSaveButton();
+        .clickSaveButton()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+})
+
+Cypress.Commands.add('createOrgFolderProject', (folderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(folderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();
 })
 
 Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
@@ -58,7 +79,73 @@ Cypress.Commands.add('createFreestyleProject', (freestyleProjectName) => {
         .selectFreestyleProjectItem()
         .typeNewItemNameInputField(freestyleProjectName)
         .clickOkBtnAndGoFreestyleProjectConfig()
-})
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
+
+
+Cypress.Commands.add('createOrganizationFolderProject', (orgFolderName) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});
+
+Cypress.Commands.add('addFolderDescription', (folderDescription) => {
+    homePage
+        .clickOnFolderNameLink()
+        .clickAddEditDescriptionBtn()
+        .typeFolderDescription(folderDescription)
+        .saveFolderDescription()
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
+
+Cypress.Commands.add('createMultBranchPipeline', (name) => {
+    homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(name)
+        .selectMultibranchPipelineItem()
+        .clickOkBtnAndGoMultiPipelineConfig();
+    headerAndFooter
+        .clickJenkinsHomeLink()
+});
+
+  Cypress.Commands.add('createPipeline', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig();
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});
+
+Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName) => {
+    homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .clickSaveButton()
+    dashbord
+        .clickDashboardLinkAndGoHomePage();    
+});
+
+Cypress.Commands.add('addBuildDescription', (buildDescription) => {
+    homePage
+        .clickBuildHistoryLink()
+        .clickBuildLink()
+        .clickBuildDescriptionLink()
+        .typeBuildDescriptionInput(buildDescription)
+        .clickSaveDescriptionBtn();
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});
 
 Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailAddress) =>{
     homePage
@@ -71,5 +158,5 @@ Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailA
         .typeEmailAddressInputField(emailAddress)
         .clickCreateUserBtn();
     dashboard
-        .clickDashboardLinkAndGoHomePage(); 
+        .clickDashboardLinkAndGoHomePage();
 });

@@ -1,3 +1,5 @@
 {
-    "userFullName": "Ivan Ivanov"
+    "userFullName": "Ivan Ivanov",
+    "userDescription": "I am the best QA",
+    "sidePanelNameLink": "Configure"
 }

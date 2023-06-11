@@ -11,11 +11,15 @@ class FreestyleProjectConfigurePage {
     getGitHubProjectCheckbox = () => cy.get('.jenkins-checkbox [name="githubProject"]');
     getProjectUrlInputField = () => cy.get('input[name="_.projectUrlStr"]');
     getSaveBtn = () => cy.get('button[name="Submit"]');
+    getDescriptionInputField = () => cy.get('textarea[name="description"]');
     getLeftSideMenuPostBuldActionsBtn = () => cy.get('button[data-section-id="post-build-actions"]');
     getAddPostBuildActionBtn = () => cy.get('button.hetero-list-add').contains('Add post-build action');
     getAddPostBuildActionDropDownMenuItems = () => cy.get('.config-table .jenkins-section:nth-child(11) li .yuimenuitemlabel');
     getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk'); 
     getPostBuildActionWindowHeader = () => cy.get('.repeated-chunk__header');
+    getAdvancedBtn = () => cy.get('div.config-table > .jenkins-form-item--tight > .jenkins-buttons-row > .advancedButton');
+    getAdvancedBtnChboxList = () => cy.get('[style="display: block;"] [type="checkbox"]');
+   
     
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
@@ -50,10 +54,15 @@ class FreestyleProjectConfigurePage {
         return this;
     }
 
-    clickSaveBntAndGoFreestyleProjectPage() {
+    clickSaveBtnAndGoFreestyleProjectPage() {
         this.getSaveBtn().click();
         return new FreestyleProjectPage();
     }
+
+    typeDescriptionInputField(name) {
+        this.getDescriptionInputField().clear().type(name);
+        return this;
+    };
 
     clickLeftSideMenuPostBuldActionsBtn() {
         this.getLeftSideMenuPostBuldActionsBtn().click()
@@ -72,6 +81,17 @@ class FreestyleProjectConfigurePage {
             .should('include.text', name)
         return this    
     };
+
+    clickAdvancedBtn() {
+        this.getAdvancedBtn().click();
+        return this;
+    }
+
+    checkAdvancedBtnChbox(idx) {
+        this.getAdvancedBtnChboxList(idx).check({force : true});
+        return this;
+    }
+
 }
 
 export default FreestyleProjectConfigurePage;

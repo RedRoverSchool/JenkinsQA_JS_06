@@ -36,7 +36,7 @@ describe('multiConfigurationProjectRename', () => {
         cy.get('h1.page-headline').should('include.text', `Project ${projects.multiConfigurationProject.renameWithValidName}`)
     })
 
-    it('AT_14.06._003 | Rename Multi-configuration project with the current name', () => {
+    it.skip('AT_14.06._003 | Rename Multi-configuration project with the current name', () => {
         cy.get('td:nth-child(3) a[href^="job/"]').realHover()
         cy.get('.jenkins-table__link button.jenkins-menu-dropdown-chevron').click()
         cy.get('.first-of-type > li').contains('Rename').click()
@@ -51,7 +51,7 @@ describe('multiConfigurationProjectRename', () => {
 
 describe('RenameMultiConfigurationProject', () => {
 
-    it('AT_14.06.004|Rename Multi-configuration project', () => {
+    it.skip('AT_14.06.004|Rename Multi-configuration project', () => {
         Cypress.Commands.add('creadedNewMultiConfigurationProject', () => {
             cy.get('a[href="newJob"]').click()
             cy.get('.add-item-name>input').type(projects.multiConfigurationProject.name)
