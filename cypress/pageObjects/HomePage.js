@@ -11,6 +11,7 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import BuildHistoryPage from "./BuildHistoryPage";
 import FreestyleProjectPage from "./FreestyleProjectPage";
+import ManageJenkinsPage from "./ManageJenkinsPage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1'); 
@@ -33,6 +34,7 @@ class HomePage {
     getScheduleBuildBtn = () => cy.get('td:last-child [tooltip]');
     getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
     getNamesProjects = () => cy.get('.jenkins-table__link span');
+    getManageJenkinsSideMenu = () => cy.get('a[href="/manage"]');
 
   clickPeopleSideMenuLink() {
     this.getPeopleSideMenuLink().click();
@@ -121,6 +123,11 @@ class HomePage {
   clickNamesProjects() {
     this.getNamesProjects().click()
     return new FreestyleProjectPage()
+  }
+
+  clickManageJenkinsSideMenu() {
+    this.getManageJenkinsSideMenu().click();
+    return new ManageJenkinsPage();
   }
 }
 
