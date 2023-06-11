@@ -135,3 +135,14 @@ Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName)
     dashbord
         .clickDashboardLinkAndGoHomePage();    
 });
+
+Cypress.Commands.add('addBuildDescription', (buildDescription) => {
+    homePage
+        .clickBuildHistoryLink()
+        .clickBuildLink()
+        .clickBuildDescriptionLink()
+        .typeBuildDescriptionInput(buildDescription)
+        .clickSaveDescriptionBtn();
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});

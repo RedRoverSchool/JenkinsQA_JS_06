@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import { textTitle, buildDescription} from "../../fixtures/pom_fixtures/buildHistoryPage.json"
+import { textTitle, buildDescription, buildNewDescription } from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import BuildHistoryPage from "../../pageObjects/BuildHistoryPage"
 import BuildPage from "../../pageObjects/BuildPage";
@@ -101,5 +101,19 @@ describe('buildHistory', () => {
         .clickSaveDescriptionBtn()
         .getDescriptionText()
         .should("have.text", buildDescription);
+    });
+
+    it('AT_07.06.001 | Build History > Verify Possibility to Edit Build Description', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+        homePage
+            .clickOnScheduleBuildBtn();
+        cy.addBuildDescription(buildDescription);
+        homePage
+            .clickBuildHistoryLink()
+            .clickBuildLink()
+            .clickBuildDescriptionLink()
+            .typeBuildNewDescriptionInput(buildNewDescription)
+            .clickSaveDescriptionBtn()
+            .getDescriptionText().should("have.text", buildNewDescription);
     });
 });

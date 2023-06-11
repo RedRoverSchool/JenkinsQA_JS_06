@@ -39,6 +39,11 @@ class BuildPage {
     return this;
   }
 
+    typeBuildNewDescriptionInput(newDescription) {
+        this.getBuildDescriptionInput().clear().type(newDescription);
+        return this;
+    };
+
 }
 
 export default BuildPage;
