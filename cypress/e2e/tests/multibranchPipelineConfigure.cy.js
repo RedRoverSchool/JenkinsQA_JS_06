@@ -98,4 +98,14 @@ describe('multibranchPipelineConfigure', () => {
             .hoverScanTriggerCheckbox()
             .should('have.css', 'box-shadow')
     });
+
+    it('AT_16.01_06 | Verify the number of checkboxes', () => {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName)
+
+        homePage
+        .clickMultibranchPipelineProjectNameLink(newItemPageData.multibranchPipelineName)
+        .clickConfigureTheProjectLink()
+        .getCheckbox()
+        .should('have.length', 4)
+    })
 });

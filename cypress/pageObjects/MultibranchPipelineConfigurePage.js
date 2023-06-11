@@ -13,6 +13,7 @@ class MultibranchPipelineConfigurePage {
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
     getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
     getScanTriggersCheckbox = () => cy.get('#cb2');
+    getCheckbox = () =>cy.get('[type="checkbox"]');
 
 
     clickSaveBtnAndGoMultiPipeline() {

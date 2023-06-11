@@ -21,7 +21,7 @@ describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
       cy.get('h1').should('be.visible', 'job-1')
   });
 
-  it('AT_16.01_06 | Verify the number of checkboxes', () => {
+  it.skip('AT_16.01_06 | Verify the number of checkboxes', () => {
     cy.get('[type="checkbox"]').should('have.length', 4)
   })
 
