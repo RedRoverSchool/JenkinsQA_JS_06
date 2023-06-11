@@ -157,6 +157,6 @@ Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailA
         .typeConfirmPasswordInputField(confirmPassword)
         .typeEmailAddressInputField(emailAddress)
         .clickCreateUserBtn();
-    dashboard
+    dashbord
         .clickDashboardLinkAndGoHomePage();
 });
