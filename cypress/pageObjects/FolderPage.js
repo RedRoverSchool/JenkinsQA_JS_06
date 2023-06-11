@@ -1,6 +1,7 @@
 import NewItemPage from "./NewItemPage";
 import HomePage from "./HomePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
+import FolderConfirmRenamePage from "./FolderConfirmRenamePage";
 
 class FolderPage {
     getAddEditDescriptiotBtn = () => cy.get('#description-link');
@@ -11,6 +12,7 @@ class FolderPage {
     getJobInsideFolderLink = () => cy.get('table td a[href*="job/"]');
     getCreateAJobLink = () => cy.get('a[href="newJob"]')
     getDeleteFolderBtn = () => cy.get('a[href$="/delete"]')
+    getRenameFolderLink = () => cy.get('a[href$=confirm-rename]')
 
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
@@ -48,6 +50,18 @@ class FolderPage {
         return new FoldersAndMultibrPipelineDeletePage;
     };
     
+    clickRenameFolderLink() {
+        this.getRenameFolderLink().click();
+        return new FolderConfirmRenamePage;
+    }
+
+    trimFolderHeaderName() {
+        
+        return this.getFolderHeader().then($el => {
+            return $el.text().trim();
+        });
+    };
+
 };
 
 export default FolderPage;
