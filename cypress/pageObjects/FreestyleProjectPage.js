@@ -23,7 +23,7 @@ class FreestyleProjectPage {
     getDeleteSideMenuLink = () => cy.get('a[data-url$="/doDelete"]');
     getFreestyleProjectDrpDwnBtn = () => cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron');
     getFrestyleProjectDrpDwmMenuList = () => cy.get('.yuimenuitem span')
-
+    
 
     clickConfigureSideMenuLink() {
         this.getConfigureSideMenuLink().click()

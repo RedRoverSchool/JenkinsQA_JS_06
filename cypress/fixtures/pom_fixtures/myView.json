@@ -3,6 +3,7 @@
     "headerOfNewViewNameInputField": "View name",
     "addDescription": "Project DemoQA",
     "editedDescription":"New Description",
-    "cellData": "N/A"
+    "cellData": "N/A",
+    "viewName": "viewName"
     
 }

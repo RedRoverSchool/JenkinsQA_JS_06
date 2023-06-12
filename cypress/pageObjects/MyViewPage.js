@@ -9,6 +9,7 @@ import myView from '../fixtures/pom_fixtures/myView.json';
 import OrgFolderPage from './OrgFolderPage';
 import newItemPageData from '../fixtures/pom_fixtures/newItemPage.json';
 import myViewData from '../fixtures/pom_fixtures/myView.json';
+import MyViewDeletePage from './MyViewDeletePage';
 
 class MyViewPage {
   getNewItemSideMenuLink = () => cy.get('a[href$="my-views/view/all/newJob"]');
@@ -36,6 +37,9 @@ class MyViewPage {
   getSceduleBuidBtn = () => cy.get('td:nth-child(7)');
   getScheduleBuidTooltip = () => cy.get('a[tooltip*="Schedule a Build"]');
   getEditDescriptionLink = () => cy.get('#description-link');
+  getAddNewViewRadioBtn = () => cy.get('label[for$=MyView].jenkins-radio__label');
+  getNameMyView = () => cy.get(`.tabBar a[href*=${myView.viewName}]`);
+  getDeleteViewBtn = () => cy.get('#side-panel [href=delete]');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -158,5 +162,31 @@ clickMultiBranchPipelineNameLink(){
     this.getEditDescriptionLink().click();
     return this;
   };
+
+  clickNewViewBtn() {
+    this.getAddNewViewLink().click()
+    return this;
+  }
+
+  typeNameViewToInputField(nameView) {
+    this.getInputDescriptionField().clear().type(nameView);
+    return this;
+  }
+
+  clickAddNewViewRadioBtn() {
+    this.getAddNewViewRadioBtn().click();
+    return this;
+  }
+
+  clickDescriprionSaveBtn() {
+    this.getDescriprionSaveBtn().click();
+    return this;
+  }
+
+  clickDeleteViewBtn() {
+    this.getDeleteViewBtn().click();
+    return new MyViewDeletePage();
+  };
+  
 }
 export default MyViewPage;
