@@ -42,7 +42,7 @@ describe('iconLegends', () => {
         });
     });
 
-    it("AT_20.05.006 | Icons visibility verification", function () {
+    it("AT_20.05.006.01 | Icons visibility verification - Status", function () {
         homePage
             .clickBuildHistoryLink()
             .clickIconLegendsButton()
@@ -50,12 +50,17 @@ describe('iconLegends', () => {
             .getStatusIcons()
             .each(($el) => {
                 cy.wrap($el).should('be.visible');
-            })
-        iconLegends
+            })          
+    })
+    
+    it("AT_20.05.006.02 | Icons visibility verification - Project Health", function () {
+        homePage
+            .clickBuildHistoryLink()
+            .clickIconLegendsButton()
+
             .getProjectHealthIcons()
             .each(($el) => {
                 cy.wrap($el).should('be.visible');
             })
-            
     })
 });
