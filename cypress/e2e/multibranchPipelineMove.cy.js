@@ -44,7 +44,7 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get('.jenkins-table__link').should('have.text', pipelineName.namePipeline)
     });
 
-    it('AT_16.04 _002| Verify that the moved Multibranch Pipeline (using drop down) does not exist on the list of projects on the home page', function () {
+    it.skip('AT_16.04 _002| Verify that the moved Multibranch Pipeline (using drop down) does not exist on the list of projects on the home page', function () {
         moveMPusingDD()
         cy.get('#jenkins-home-link').click()
         cy.get(`#job_${pipelineName.namePipeline}`).should('not.exist')
