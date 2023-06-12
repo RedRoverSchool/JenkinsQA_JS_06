@@ -23,9 +23,10 @@ class MultiConfigurationProjectConfigurePage {
   getUseCustomChildWorkspaceInput = () => cy.get('div[ref="cb14"]~div[class="form-container tr"] input');
   getDisplayNameText = () => cy.get('div[class^="tbody"] div[class^="optionalBlock"]:nth-child(6)+div .jenkins-form-label');
   getDisplayNameInput = () => cy.get('div[class^="tbody"] div[class^="optionalBlock"]:nth-child(6)+div input');
-  getAdvancedOptionsLables = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
+  getAdvancedOptionsLabels = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
   getMultiConfigForm = () => cy.document().its('forms.config.elements');
   getAdvancedOptionsCheckboxes = () => cy.get('#advanced-project-options~.tbody').find('input[type="checkbox"]');
+  getAdvancedOptionsBlock = () => cy.get('div+div[class="tbody dropdownList-container"]');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -66,8 +67,8 @@ class MultiConfigurationProjectConfigurePage {
     this.getUseCustomChildWorkspaceCheckBox().click();
   }
 
-  clickAdvancedOptionsLables() {
-    this.getAdvancedOptionsLables().click({multiple:true});
+  clickAdvancedOptionsLabels() {
+    this.getAdvancedOptionsLabels().click({multiple:true});
     return this;
   };
 

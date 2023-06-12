@@ -34,5 +34,7 @@
         }
     },
 
-    "advancedOptionsValues":  ["10", "1", "testDirectory", "${testDirectory}", "Display Name"]
+    "advancedOptionsValues":  ["10", "1", "testDirectory", "${testDirectory}", "Display Name"],
+
+    "defaultOptionsValues":  ["5", "0", "", "${COMBINATION}", ""]
 }
