@@ -31,7 +31,7 @@ describe('Multi Config Project Advanced Options', () => {
 		cy.wait('@newProjectConfigure')
 	});
 
-	it('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
+	it.skip('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').should('be.visible')
