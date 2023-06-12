@@ -10,6 +10,7 @@ import dashboardBreadcrumbsData from "../../fixtures/pom_fixtures/dashboardBread
 import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage.json"
 import HomePage from "../../pageObjects/HomePage";
 import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
+import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
 
 describe('headerAndFooter', () => {
 
@@ -154,5 +155,13 @@ describe('headerAndFooter', () => {
             .clickJenkinsVersionLink()
             .getJenkinsPageUrl()
             .should("equal", headerAndFooterData.version.link);
+    });
+
+    it('AT_01.04.009 Header>Verify User Builds link  is clickable and redirects to the “Builds for ‘User’ “ page.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserBuildsMenu()
+            .getPageHeading()
+            .should('contain', userBuildsPageData.heading + Cypress.env('local.admin.username'));
     });
 })

@@ -125,14 +125,16 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
           .clickJenkinsHomeLink()
 });
 
-Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName) => {
+const dashboard = new DashboardBreadcrumbs();
+
+Cypress.Commands.add('createMultiConfigProject', (name) => {
     homePage
         .clickCreateJobLink()
-        .typeNewItemNameInputField(multiConfigurationProjectName)
+        .typeNewItemNameInputField(name)
         .selectMultiConfigurationProjectItem()
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
-    dashbord
+    dashboard
         .clickDashboardLinkAndGoHomePage();    
 });
 
@@ -159,4 +161,28 @@ Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailA
         .clickCreateUserBtn();
     dashbord
         .clickDashboardLinkAndGoHomePage();
+});
+
+Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig()
+          .typeDescriptionOnPiplineConfigPage()
+          .clickSaveBtnAndGoPipeline()
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});
+
+Cypress.Commands.add('createNewView', (viewName, viewType) => {
+    homePage
+        .clickMyViewSideMenuLink()
+        .verifyAndClickAddNewViewLink()
+        .typeNewViewNameIntoInputField(viewName)
+        .checkViewTypeRadioButton(viewType)
+        .clickCreateNewViewButton()
+        .clickOkButtonSaveView();
+    headerAndFooter
+        .clickJenkinsHomeLink();
 });

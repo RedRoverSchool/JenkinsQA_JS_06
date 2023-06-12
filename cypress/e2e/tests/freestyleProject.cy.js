@@ -183,4 +183,15 @@ describe('freestyleProject', () => {
             .should('contain', newItemPageData.freestyleProjectName)
     });
 
+    it('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.freestyleProjectName)
+            .clickProjectNameDropdownRenameLink()
+            .typeNewNameInputFild(freestyleProjectPageData.freestyleProjectNewName)
+            .clickRenameBtn()
+            .getFreestyleProjectHeader()
+            .should('have.text', freestyleProjectPageData.headerText + freestyleProjectPageData.freestyleProjectNewName)
+    });
 });

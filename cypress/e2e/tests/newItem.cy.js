@@ -112,4 +112,11 @@ describe('newItem', () => {
             })
         })
     })
+
+    it('AT_05.08_0006 | New Item page name in the header', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageTitle()
+            .should('have.text', newItemPageData.newItemPageTitle)
+    });
 });

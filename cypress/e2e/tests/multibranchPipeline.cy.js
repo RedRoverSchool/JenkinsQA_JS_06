@@ -6,6 +6,7 @@ import FolderPage from "../../pageObjects/FolderPage";
 
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multibranchPipelineConfirmRenamePageData from "../../fixtures/pom_fixtures/multibranchPipelineConfirmRenamePage.json";
+
 describe('multibranchPipeline', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -22,7 +23,7 @@ describe('multibranchPipeline', () => {
             .clickSubmitBtn()
             .getProjectTable()
             .should('not.exist');
-        });
+    });
 
     it('AT_16.02.006 | Verify user can rename Multibranch Pipeline inside the selected Multibranch Pipeline', () => {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
@@ -46,26 +47,38 @@ describe('multibranchPipeline', () => {
             .selectDestinationMoveJob(newItemPageData.folderName)
             .clickMoveButton()
             .clickGoToDashboard()
-            .clickProjectName(newItemPageData.folderName)            
+            .clickProjectName(newItemPageData.folderName)
             .getIconProject()
             .should('have.attr', 'title', newItemPageData.newItemNames[4])
         folderPage
-           .getJobInsideFolderLink()
-           .should('have.text', newItemPageData.multibranchPipelineName)
+            .getJobInsideFolderLink()
+            .should('have.text', newItemPageData.multibranchPipelineName)
     });
 
     it('AT_16.02_001 | Rename Multibranch Pipeliner using dropdown menu', () => {
         cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
 
-            homePage
-                .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
-                .selectRenameMultiBrPipelineDrpDwnMenuBtn()
-                .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
-                .clickRenameSubmitBtn()
-                .getMultiBranchPipelineHeader()
-                .should('contain', newItemPageData.newpipelineName)
-                .and('not.contain',newItemPageData.multibranchPipelineName);
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multibranchPipelineName)
+            .selectRenameMultiBrPipelineDrpDwnMenuBtn()
+            .clearAndTypeNewPiplineName(newItemPageData.newpipelineName)
+            .clickRenameSubmitBtn()
+            .getMultiBranchPipelineHeader()
+            .should('contain', newItemPageData.newpipelineName)
+            .and('not.contain', newItemPageData.multibranchPipelineName);
+    });
+
+    it('AT_16.04 _002| Verify that the moved Multibranch Pipeline (using drop down) does not exist on the list of projects on the home page', function () {
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+
+        homePage
+            .hoverAndClickProjectDrpDwn(newItemPageData.multibranchPipelineName)
+            .clickProjectNameDropdownMoveLink()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
+            .clickGoToDashboard()
+            .getProjectName(newItemPageData.multibranchPipelineName).should('not.exist')
     });
 
 });
-    

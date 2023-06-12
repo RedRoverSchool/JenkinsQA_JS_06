@@ -4,7 +4,6 @@ import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userCredentialsPageData from "../../fixtures/pom_fixtures/userCredentialsPage.json";
 import { sidePanelNameLink } from "../../fixtures/pom_fixtures/userConfigurePage.json"
 
-
 describe('profilePage', () => {
 
     const headerAndFooter = new HeaderAndFooter();
@@ -33,5 +32,14 @@ describe('profilePage', () => {
             .verifyUserPagesUrl(Cypress.env('local.admin.username'))
             .verifyStatusBtn()
             .getUserId().should('contain', Cypress.env('local.admin.username'))
+    })
+
+    it('AT_18.06.002 | <Profile Page> Link to User`s credentials (by dropdown menu)', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .clickUserDropDownMenuCredentials()
+            .checkUrlCredentialsPage(userCredentialsPageData.credentialsPageUrl)
+            .getCredentialsHeader()
+            .should('have.text', userCredentialsPageData.credentialsPageHeader)
     })
 })

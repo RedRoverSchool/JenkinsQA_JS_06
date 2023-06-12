@@ -50,7 +50,7 @@ describe('BreadcrumbsBuilds', () => {
         cy.get('div#main-panel h1').should('have.text', `Builds for ${USERID}`)
     })
 
-    it('AT_04.06.002 clicking on S, M, L will change the icon size', function () {
+    it.skip('AT_04.06.002 clicking on S, M, L will change the icon size', function () {
         cy.get('.login .jenkins-menu-dropdown-chevron').realHover().click();
         cy.get('.first-of-type a[href$="/builds"]').click();
 

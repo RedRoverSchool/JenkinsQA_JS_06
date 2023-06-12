@@ -1,0 +1,12 @@
+{
+    "viewTypes": {
+        "globalView": "Include a global view",
+        "listView": "List View",
+        "myView": "My View"
+    },
+    "viewNames": {
+        "globalView": "Global view",
+        "listView": "List View",
+        "myView": "My View"
+    }    
+}

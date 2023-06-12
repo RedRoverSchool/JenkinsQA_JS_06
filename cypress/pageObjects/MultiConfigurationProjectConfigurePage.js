@@ -1,4 +1,5 @@
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
+import projectData from "../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 class MultiConfigurationProjectConfigurePage {
   getSaveButton = () => cy.get("button[name='Submit']");
@@ -22,8 +23,9 @@ class MultiConfigurationProjectConfigurePage {
   getUseCustomChildWorkspaceInput = () => cy.get('div[ref="cb14"]~div[class="form-container tr"] input');
   getDisplayNameText = () => cy.get('div[class^="tbody"] div[class^="optionalBlock"]:nth-child(6)+div .jenkins-form-label');
   getDisplayNameInput = () => cy.get('div[class^="tbody"] div[class^="optionalBlock"]:nth-child(6)+div input');
-  getMultiConfigAdvanceOptionsLables = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
-  getMultiConfigAdvanceOptionsLablesText = () => cy.get('#advanced-project-options~.tbody [class="form-container tr"] .jenkins-form-label');
+  getAdvancedOptionsLables = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
+  getMultiConfigForm = () => cy.document().its('forms.config.elements');
+  getAdvancedOptionsCheckboxes = () => cy.get('#advanced-project-options~.tbody').find('input[type="checkbox"]');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -64,9 +66,38 @@ class MultiConfigurationProjectConfigurePage {
     this.getUseCustomChildWorkspaceCheckBox().click();
   }
 
-  clickMultiConfigAdvanceOptionsLables() {
-    this.getMultiConfigAdvanceOptionsLables().click({multiple:true});
+  clickAdvancedOptionsLables() {
+    this.getAdvancedOptionsLables().click({multiple:true});
     return this;
-  }
+  };
+
+  fillAdvancedOptionsForms() {
+    this.getMultiConfigForm()
+    .then((elements) => {
+      elements['quiet_period'].value = projectData.advancedProjectOptionsFields.QuietPeriod.setValue
+      elements['scmCheckoutRetryCount'].value = projectData.advancedProjectOptionsFields.RetryCount.SCMCheckoutRetryCount.setValue
+      elements['_.customWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomWorkspace.Directory.setValue
+      elements['_.childCustomWorkspace'].value = projectData.advancedProjectOptionsFields.UseCustomChildWorkspace.ChildDirectory.setValue
+      elements['_.displayNameOrNull'].value = projectData.advancedProjectOptionsFields.DisplayName.setValue
+      }) 
+      return this;
+  };
+
+  createAdvancedOptionsValuesList() {
+    return this.getMultiConfigForm()
+    .then((elements) => { return Cypress._.map([
+      elements['quiet_period'],
+      elements['scmCheckoutRetryCount'],
+      elements['_.customWorkspace'],
+      elements['_.childCustomWorkspace'],
+      elements['_.displayNameOrNull']], 'value')
+      }) 
+  };
+
+  createAdvancedOptionsCheckboxesList() {
+    this.getAdvancedOptionsCheckboxes()
+        .should('be.checked');
+    return this;
+  };
 }
 export default MultiConfigurationProjectConfigurePage;

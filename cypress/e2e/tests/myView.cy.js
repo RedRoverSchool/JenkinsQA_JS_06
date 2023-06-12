@@ -5,6 +5,7 @@ import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
+import newViewData from "../../fixtures/pom_fixtures/newView.json";
 
 describe('myView', () => {
 
@@ -164,5 +165,21 @@ describe('myView', () => {
       .clickJenkinsHomeLink()
       .triggerBuildstatusIcon()
       .getSuccessBuiltTooltip().should('be.visible');
+  });
+
+  it('AT_09.01_007|My Views > Create new view > Verify creating different types of Views', () => {
+    cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+    cy.createNewView(newViewData.viewNames.globalView, newViewData.viewTypes.globalView);
+    cy.createNewView(newViewData.viewNames.listView, newViewData.viewTypes.listView);
+    cy.createNewView(newViewData.viewNames.myView, newViewData.viewTypes.myView);
+    homePage
+      .clickMyViewSideMenuLink()
+      .verifyTabAllViewsInTabBarIsActive()
+      .getViewsTabBar()
+      .should('be.visible')
+      .and('contain', newViewData.viewNames.globalView)
+      .and('contain', newViewData.viewNames.listView)
+      .and('contain', newViewData.viewNames.myView);
   });
 });

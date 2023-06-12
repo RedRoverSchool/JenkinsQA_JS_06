@@ -6,6 +6,7 @@ import { textTitle, buildDescription, buildNewDescription } from "../../fixtures
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import BuildHistoryPage from "../../pageObjects/BuildHistoryPage"
 import BuildPage from "../../pageObjects/BuildPage";
+import editBuildInformationPageData from "../../fixtures/pom_fixtures/editBuildInformationPage.json";
 
 describe('buildHistory', () => {
 
@@ -116,4 +117,19 @@ describe('buildHistory', () => {
             .clickSaveDescriptionBtn()
             .getDescriptionText().should("have.text", buildNewDescription);
     });
+
+    it('AT_007.04.001 | Build History > Verify user can edit Build Information by clicking on dropdown menu', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+
+        homePage
+            .clickOnScheduleBuildBtn()
+            .clickBuildHistoryLink()
+            .clickBuildNameBtn()
+            .clickEditBuildInformationBtn()
+            .typeDisplayName(editBuildInformationPageData.displayName)
+            .clickEditBuildInformationSaveBtn()
+            .getBuildName()
+            .should('contain', editBuildInformationPageData.displayName);
+    });
+
 });
