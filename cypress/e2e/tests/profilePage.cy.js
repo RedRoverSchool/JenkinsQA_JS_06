@@ -12,15 +12,15 @@ describe('profilePage', () => {
     const userProfilePage = new UserProfilePage();
 
     it('AT_18.02.001 | <Profile Page> Verify that the User can Edit the Status Description', () => {
-        cy.clearUserStatusDescription()
+        cy.clearUserStatusDescription();
 
         userProfilePage
         .clickUserDescriptionBtn()
         .typeUserDescriptionInputField(userProfilePageData.editDescription)
         .clickUserDescriptionSaveBtn()
         .getUserDescriptionText()
-        .should('contain', userProfilePageData.editDescription)
-    })
+        .should('contain', userProfilePageData.editDescription);
+    });
 
     it("AT_18.06.001 | Profile Page | Verifying the Credentials link redirects to the user's credentials page", () => {
 
