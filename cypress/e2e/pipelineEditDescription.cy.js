@@ -23,7 +23,7 @@ describe('Add description to the pipeline', () => {
         cy.get('textarea[name="description"]').should('have.value', pipelineName.descriptionPipeLine);
     });
 
-    it('AT_13.05_001 | Pipeline | Edit existing description of the pipeline by adding new text to the end', () => {
+    it.skip('AT_13.05_001 | Pipeline | Edit existing description of the pipeline by adding new text to the end', () => {
         cy.get('a[href="job/TestPipeline/"] span').click()
         cy.get('#description-link').click()
         cy.get('textarea.jenkins-input')

@@ -9,5 +9,7 @@
    
    "alertWindowMessages" : [
         "Reload Configuration from Disk: are you sure?"
-   ]
+   ],
+
+   "dashboardBtn": "Dashboard"
 }

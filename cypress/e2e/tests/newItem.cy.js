@@ -101,13 +101,6 @@ describe('newItem', () => {
             .should('have.attr', 'type', 'text')
     });        
 
-    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .getNewItemPageUrl()
-            .should('include', newItemPageData.newItemEndPoinURL)   
-    });
-
     newItemPageData.newItemNames.forEach((newItemNames, idx) => {
         newItemPageData.specialCharactersArr.forEach((char) => {
             it(`AT_05.05_013 | Create a new ${newItemNames} using special characters ${char}`, () => {
@@ -121,6 +114,13 @@ describe('newItem', () => {
             })
         })
     })
+
+    it('AT_05.08_0006 | New Item page name in the header', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageTitle()
+            .should('have.text', newItemPageData.newItemPageTitle)
+    });
 
     newItemPageData.newItemNames.forEach((newItemNames, idx) => {
         it(`05.07_005 | <New item>Input field Verify spases before and after the ${newItemNames} name are trimed when saving`, () => {

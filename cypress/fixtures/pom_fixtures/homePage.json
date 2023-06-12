@@ -15,5 +15,12 @@
         "/builds",
         "/manage/",
         "/my-views/view/all/"
-    ]
+    ],
+    "sRem" : "0.2rem",
+    "mRem" : "0.4rem",
+    "lRem" : "0.55rem",
+
+    "messages" :{
+        "windowConfirm" : "Delete Project: are you sure?"
+    }
 }

@@ -1,0 +1,3 @@
+{
+    "okButtonSaveViewLocator": "button[name='Submit']"
+}
