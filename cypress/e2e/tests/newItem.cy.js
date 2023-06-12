@@ -139,7 +139,7 @@ describe('newItem', () => {
         })        
     })
 
-    it.only('AT_05.08.013 | Verify New Item type icons are visible', () => {
+    it('AT_05.08.013 | New Item> Verify Item type icons are visible', () => {
         homePage.clickNewItemSideMenuLink()
         newItemPage
             .getNewItemTypeIcons()
