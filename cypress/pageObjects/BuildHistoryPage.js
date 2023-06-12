@@ -1,5 +1,6 @@
 import BuildPage from "./BuildPage";
 import IconLegends from "./IconLegendsPage.js";
+import EditBuildInformationPage from "./EditBuildInformationPage";
 
 class BuildHistoryPage {
     getBuildHistoryPageUrl = () => cy.url();
@@ -14,6 +15,7 @@ class BuildHistoryPage {
     getProjectStatusTableRowElements = () =>  cy.get('table#projectStatus tbody tr td')
     getSortHeaderBuild = () => cy.get('#projectStatus thead th:nth-child(2) .sortheader')
     getScheduleBuildBtn = () => cy.get('a[tooltip*="Schedule a Build"]')
+    getEditBuildInformationBtn = () => cy.get('#breadcrumb-menu a[href$="/configure"] span');
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();
@@ -61,6 +63,16 @@ class BuildHistoryPage {
     clickSortHeaderBuild() {
         this.getSortHeaderBuild().click()
         return this
+    };
+
+    clickBuildNameBtn() {
+        this.getBuildLink().realHover().click('right');
+        return this;
+    };
+
+    clickEditBuildInformationBtn() {
+        this.getEditBuildInformationBtn().click();
+        return new EditBuildInformationPage();
     };
 }
 
