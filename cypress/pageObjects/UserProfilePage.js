@@ -1,5 +1,7 @@
 import UserCredentialsPage from "./UserCredentialsPage";
 import UserConfigurePage from "./UserConfigurePage";
+
+
 const userName = Cypress.env("local.admin.username").toLowerCase();
 
 class UserProfilePage {
@@ -14,6 +16,12 @@ class UserProfilePage {
     getUserId = () => cy.get('#main-panel>div:last-child');
     getStatusBtn = () => cy.get('#tasks>:nth-child(2)')
 
+
+    clearUserStatusDescription() {
+        this.getUserDescriptionInputField().clear();
+        return this;    
+    }
+    
     trimUserPageHeaderName() {
         return this.getUserPageHeader().then($el => {
             return $el.text().trim();

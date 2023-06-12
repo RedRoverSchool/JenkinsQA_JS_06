@@ -3,10 +3,24 @@
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import userCredentialsPageData from "../../fixtures/pom_fixtures/userCredentialsPage.json";
 import { sidePanelNameLink } from "../../fixtures/pom_fixtures/userConfigurePage.json"
+import UserProfilePage from "../../pageObjects/UserProfilePage";
+import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 
 describe('profilePage', () => {
 
     const headerAndFooter = new HeaderAndFooter();
+    const userProfilePage = new UserProfilePage();
+
+    it('AT_18.02.001 | <Profile Page> Verify that the User can Edit the Status Description', () => {
+        cy.clearUserStatusDescription()
+
+        userProfilePage
+        .clickUserDescriptionBtn()
+        .typeUserDescriptionInputField(userProfilePageData.editDescription)
+        .clickUserDescriptionSaveBtn()
+        .getUserDescriptionText()
+        .should('contain', userProfilePageData.editDescription)
+    })
 
     it("AT_18.06.001 | Profile Page | Verifying the Credentials link redirects to the user's credentials page", () => {
 
