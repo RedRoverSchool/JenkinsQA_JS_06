@@ -23,7 +23,8 @@ class NewItemPage {
     getWarningMessage = () => cy.get('#itemname-required');
     getNewItemHeader = () => cy.get('.header .h3');  
     getErrorMessageForInvalidInput = () => cy.get('.header #itemname-invalid')
-    
+    getNewItemPageTitle = () => cy.get('head title')
+
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);

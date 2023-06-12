@@ -18,6 +18,7 @@
     ], 
 
     "newItemEndPoinURL" :  "/all/newJob", 
+    "newItemPageTitle": "New Item [Jenkins]",
     "newItemHeader" : "Enter an item name",
 
     "character" : "LooongName",
