@@ -24,6 +24,7 @@ import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectC
 import PipelinePage from "./PipelinePage";
 import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
 import homePageData from "../fixtures/pom_fixtures/homePage.json"
+import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
     getHomepageHeader = () => cy.get('.empty-state-block h1');
@@ -105,6 +106,7 @@ class HomePage {
   getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
   getTable = () => cy.get('#projectstatus')
   getProjectDropdownMenuBtn = () => cy.get ('td>a');
+  getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
 
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()
@@ -384,5 +386,9 @@ class HomePage {
     return false})
  }
   
+  clickProjectNameDropdownRenameLink() {
+    this.getProjectNameDropdownRenameLink().click()
+    return new FreestyleProjectRenamePage();
+  }
 };
 export default HomePage;
