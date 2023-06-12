@@ -101,7 +101,7 @@ class MultiConfigurationProjectConfigurePage {
     return this;
   };
 
-  assertionAdvancedOptionsCheckboxesChecked() {
+  assertAdvancedOptionsCheckboxesChecked() {
     return this.getAdvancedOptionsBlock()
     .within(($elem) => {
       cy.wrap($elem)
@@ -110,7 +110,7 @@ class MultiConfigurationProjectConfigurePage {
     })
   };
 
-  assertionAdvancedOptionsCheckboxesUnChecked() {
+  assertAdvancedOptionsCheckboxesUnChecked() {
     return this.getAdvancedOptionsBlock()
     .within(($elem) => {
       cy.wrap($elem)
