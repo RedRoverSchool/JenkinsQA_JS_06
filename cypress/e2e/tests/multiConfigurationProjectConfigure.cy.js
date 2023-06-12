@@ -44,4 +44,34 @@ describe("multiConfigurationProjectConfigure", () => {
       .createAdvancedOptionsValuesList()
       .should("deep.equal", projectData.advancedOptionsValues);
   });
+
+  it('AT_14.05_004c | Multi-configuration project. Advance project options are checked', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+    homePage
+    .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+    .clickMultiConfProjectDrpDwnConfigureLink()
+    .clickAdvancedBtn()
+    .clickAdvancedOptionsLabels()
+    .clickSaveButton()
+    .clickConfigureSideMenuLink()
+    .clickAdvancedBtn()
+    .assertionAdvancedOptionsCheckboxesChecked()    
+  });
+
+  it('AT_14.05_004u | Multi-configuration project. Advance project options are unchecked', () => {
+    cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+    homePage
+    .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
+    .clickMultiConfProjectDrpDwnConfigureLink()
+    .clickAdvancedBtn()
+    .clickAdvancedOptionsLabels()
+    .clickSaveButton()
+    .clickConfigureSideMenuLink()
+    .clickAdvancedBtn()
+    .clickAdvancedOptionsLabels()
+    .clickSaveButton()
+    .clickConfigureSideMenuLink()
+    .clickAdvancedBtn()
+    .assertionAdvancedOptionsCheckboxesUnChecked()    
+  });
 });

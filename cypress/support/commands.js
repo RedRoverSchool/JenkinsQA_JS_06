@@ -55,8 +55,8 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
 Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProjectName) => {
     homePage
         .clickCreateJobLink()
-        .selectMultiConfigurationProjectItem()
         .typeNewItemNameInputField(multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
     headerAndFooter
