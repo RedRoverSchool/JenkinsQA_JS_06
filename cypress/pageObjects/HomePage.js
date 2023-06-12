@@ -111,11 +111,6 @@ class HomePage {
   getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
   getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
 
-  clickPipelineNameDrpDwnBtn(projectName) {
-    this.getProjectNameLink().contains(projectName).realHover();
-    this.getProjectDrpDwnBtn().click();
-    return this;
-  }
 
   verifyPipeLineDrpDwnMenu() {
     return this.getPipelineDrpDwnMenuItems().then(($els) => {
