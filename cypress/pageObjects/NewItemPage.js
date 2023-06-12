@@ -109,5 +109,10 @@ class NewItemPage {
         this.getNewItemHeader().should('have.text', name)
         return this
     };
+
+    clickOkBtnAndGoHomePage() {
+        this.getNewItemOkBtn().click();
+        return this;
+    };
 }
 export default NewItemPage;
