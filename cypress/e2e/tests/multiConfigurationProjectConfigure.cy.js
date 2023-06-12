@@ -2,7 +2,7 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import multiConfigurationProjectConfigurePageData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
+import projectData from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json";
 
 describe('multiConfigurationProjectConfigure', () => {
     const homePage = new HomePage();
@@ -15,7 +15,7 @@ describe('multiConfigurationProjectConfigure', () => {
         .clickAdvancedBtn()
         .clickQuietPeriodCheckBox()
         .getNumberOfSecondsInput()
-        .should('have.value', multiConfigurationProjectConfigurePageData.advancedProjectOptionsFields["Quiet period"].defaultValue)        
+        .should('have.value', projectData.advancedProjectOptionsFields.QuietPeriod.defaultValue)        
     });
 
     it('AT_14.05_010_2 | Multi-configuration project. Advanced project options default values2', () => {
@@ -26,18 +26,22 @@ describe('multiConfigurationProjectConfigure', () => {
         .clickAdvancedBtn()
         .clickRetryCountCheckBox()
         .getRetryCountInput()
-        .should('have.value', multiConfigurationProjectConfigurePageData.advancedProjectOptionsFields
-                ["Retry Count"]["SCM checkout retry count"].defaultValue);        
+        .should('have.value', projectData.advancedProjectOptionsFields.RetryCount.SCMCheckoutRetryCount.defaultValue);        
     }); 
     
-    it('AT_14.05_009 | Verify MultiConfig Project Advanced options form labels are visible after click', () => {
+    it('AT_14.05_009 | Verify MultiConfig Project Advanced options are set and saved', () => {
         cy.createMultiConfigProject(newItemPageData.multiConfigurationProjectName);
         homePage
         .clickProjectDropdownMenuBtn()
         .clickMultiConfProjectDrpDwnConfigureLink()
         .clickAdvancedBtn()
-        .clickMultiConfigAdvanceOptionsLables()
-        .getMultiConfigAdvanceOptionsLablesText().should('be.visible')
-        .and('have.length', multiConfigurationProjectConfigurePageData.advancedProjectOptionsLabels.length)    
+        .clickAdvancedOptionsLables()
+        .fillAdvancedOptionsForms()
+        .clickSaveButton()
+        .clickConfigureSideMenuLink()
+        .clickAdvancedBtn()
+        .createAdvancedOptionsCheckboxesList()        
+        .createAdvancedOptionsValuesList()          
+        .should('deep.equal', projectData.advancedOptionsValues)
     });
 });
