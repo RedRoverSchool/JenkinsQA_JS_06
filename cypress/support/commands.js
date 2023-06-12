@@ -136,6 +136,29 @@ Cypress.Commands.add('createMultiConfigProject', (multiConfigurationProjectName)
         .clickDashboardLinkAndGoHomePage();    
 });
 
+Cypress.Commands.add('addBuildDescription', (buildDescription) => {
+    homePage
+        .clickBuildHistoryLink()
+        .clickBuildLink()
+        .clickBuildDescriptionLink()
+        .typeBuildDescriptionInput(buildDescription)
+        .clickSaveDescriptionBtn();
+    headerAndFooter
+        .clickJenkinsHomeLink();
+});
+
+Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
+    homePage
+          .clickNewItemSideMenuLink()
+          .typeNewItemNameInputField(pipelineName)
+          .selectPipelineItem()
+          .clickOkBtnAndGoPipelineConfig()
+          .typeDescriptionOnPiplineConfigPage()
+          .clickSaveBtnAndGoPipeline()
+    headerAndFooter
+          .clickJenkinsHomeLink()
+});
+
 Cypress.Commands.add('createNewView', (viewName, viewType) => {
     homePage
         .clickMyViewSideMenuLink()

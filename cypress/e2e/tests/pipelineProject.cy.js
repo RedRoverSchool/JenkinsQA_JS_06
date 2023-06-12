@@ -2,7 +2,9 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
-import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json"; 
+import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json";
+import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json"
+import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json"; 
 
 
 describe('pipelineProject',()=>{
@@ -70,5 +72,17 @@ describe('pipelineProject',()=>{
         homePage
             .getMainPanel()
             .should('not.have.text', newItemPageData.pipelineName);
+    });
+
+    it('AT_13.05_001 | Pipeline | Edit existing description of the pipeline by adding new text to the end',()=>{
+        cy.createPipelineWithDescription(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickEditDescriptionBtn()
+            .typeAdditionalDescriptionOnPiplinePage()
+            .clickSaveBtn()
+            .getDescription()
+            .should('have.text', pipelineConfigurePageData.firstDescription + pipelinePageData.additionalDescriptionPipeline)
     });
 })

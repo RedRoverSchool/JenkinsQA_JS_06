@@ -41,4 +41,21 @@ describe('iconLegends', () => {
                 });
         });
     });
+
+    it("AT_20.05.006 | Icons visibility verification", function () {
+        homePage
+            .clickBuildHistoryLink()
+            .clickIconLegendsButton()
+
+            .getStatusIcons()
+            .each(($el) => {
+                cy.wrap($el).should('be.visible');
+            })
+        iconLegends
+            .getProjectHealthIcons()
+            .each(($el) => {
+                cy.wrap($el).should('be.visible');
+            })
+            
+    })
 });

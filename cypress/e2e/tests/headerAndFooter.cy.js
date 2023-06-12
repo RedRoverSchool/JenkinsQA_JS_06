@@ -148,4 +148,11 @@ describe('headerAndFooter', () => {
             .clickSearchBoxIconTrailing()
             cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
     });
+
+    it('AT_03.02.005 | Footer>Verify the Link Jenkins', () => {
+        headerAndFooter
+            .clickJenkinsVersionLink()
+            .getJenkinsPageUrl()
+            .should("equal", headerAndFooterData.version.link);
+    });
 })

@@ -64,4 +64,17 @@ describe('folder', () => {
             .getProjectTable()
             .should('not.exist');
     });
+
+    it('AT_15.06_03 | Folder>Rename Folder', () => {
+        cy.createFolderProject(folderPageData.folderName)
+
+        homePage
+            .clickFolderNameLink(folderPageData.folderName)
+            .clickRenameFolderLink()
+            .typeFolderNewNameField(folderPageData.folderNewName)
+            .clickFolderRenameBtn()
+            .trimFolderHeaderName()
+            .should('eq', folderPageData.folderNewName)
+    })
+
 });

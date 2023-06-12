@@ -1,4 +1,6 @@
 {
     "folderDescription": "Folder Description",
-    "folderNewDescription": "Folder New Description"
+    "folderNewDescription": "Folder New Description",
+    "folderName": "FolderName",
+    "folderNewName": "FolderNewName"  
 }

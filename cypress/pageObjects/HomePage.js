@@ -377,6 +377,12 @@ class HomePage {
     this.getProjectDropdownMenuBtn().realHover().click('right');
     return this;
  };
+ 
+ clickWindowConfirmCancel(windowConfirmText) {
+  cy.on('window:confirm', (str) => {
+    expect(str).to.eq(windowConfirmText)
+    return false})
+ }
   
 };
 export default HomePage;
