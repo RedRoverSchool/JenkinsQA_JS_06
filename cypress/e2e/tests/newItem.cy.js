@@ -123,16 +123,17 @@ describe('newItem', () => {
     });
 
     newItemPageData.newItemNames.forEach((newItemNames, idx) => {
-        it(`05.07_005 | <New item>Input field Verify spases before and after the ${newItemNames} name are trimed when saving`, () => {
+        it(`AT_05.07_005 | <New item>Input field Verify spases before and after the ${newItemNames} name are trimed when saving`, () => {
+            const trimmedItemName=newItemPageData.newItemNamesWithSpaces[idx].trim()
             homePage
                 .clickNewItemSideMenuLink()
                 .clickEachItemsNameFromMenuListItem(idx)
-                .typeNewItemNameInputField(`    ${newItemPageData.newItemNames[idx]}  `)
+                .typeNewItemNameInputField(newItemPageData.newItemNamesWithSpaces[idx])
                 .clickOkBtnAndGoHomePage()
             headerAndFooter
                 .clickJenkinsHomeLink()
                 .getProjectNameLink()
-                .should('have.text',newItemPageData.newItemNames[idx] )                
+                .should('have.text',trimmedItemName)                
         })        
     })
 });

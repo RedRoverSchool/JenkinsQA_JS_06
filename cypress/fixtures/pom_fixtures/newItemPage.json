@@ -17,6 +17,15 @@
         "Organization Folder"
     ], 
 
+    "newItemNamesWithSpaces": [
+        "   Freestyle project   ",
+        "   Pipeline   ",
+        "   Multi-configuration project   ",
+        "   Folder   ",
+        "   Multibranch Pipeline   ",
+        "   Organization Folder   "
+    ], 
+
     "newItemEndPoinURL" :  "/all/newJob", 
     "newItemPageTitle": "New Item [Jenkins]",
     "newItemHeader" : "Enter an item name",
