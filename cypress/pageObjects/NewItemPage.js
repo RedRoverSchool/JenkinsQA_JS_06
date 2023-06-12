@@ -113,7 +113,6 @@ class NewItemPage {
 
     clickOkBtnAndGoHomePage() {
         this.getNewItemOkBtn().click();
-        return this;
     };
 }
 export default NewItemPage;
