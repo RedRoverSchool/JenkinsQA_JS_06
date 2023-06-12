@@ -27,6 +27,8 @@ import homePageData from "../fixtures/pom_fixtures/homePage.json"
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 
 class HomePage {
+
+    getPipelineNameDrpDwnBtn = () => ('td a[href*="job/"] button')
     getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
@@ -107,7 +109,20 @@ class HomePage {
   getTable = () => cy.get('#projectstatus')
   getProjectDropdownMenuBtn = () => cy.get ('td>a');
   getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
+  getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
 
+  clickPipelineNameDrpDwnBtn(projectName) {
+    this.getProjectNameLink().contains(projectName).realHover();
+    this.getProjectDrpDwnBtn().click();
+    return this;
+  }
+
+  verifyPipeLineDrpDwnMenu() {
+    return this.getPipelineDrpDwnMenuItems().then(($els) => {
+      return Cypress.$.makeArray($els).map(($el) => $el.innerText);
+    });
+ }
+  
   clickSideMenuPanelItem(idx) {
     this.getSideMenuPanel().eq(idx).click()
     return cy.url()

@@ -1,5 +1,16 @@
 {
     "textDeletePipeline": "Delete Pipeline",
     "confirmationOfDeletingFromSideBar" : "Delete the Pipeline",
-    "additionalDescriptionPipeline" : " second"
+    "additionalDescriptionPipeline" : " second",
+
+    "pipelineName" : "newPipeline",
+    "pipelineDropdownItems": [
+            "Changes", 
+            "Build Now" ,
+            "Configure" , 
+            "Delete Pipeline", 
+            "Full Stage View",
+            "Rename", 
+            "Pipeline Syntax"
+            ]
 }
