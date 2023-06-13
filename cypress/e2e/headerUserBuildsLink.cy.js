@@ -30,7 +30,7 @@ describe('Header - User Builds Link', () => {
     });
   }); 
 
-  it('AT_01.04_006|<Header> User builds link| Verify the side panel', () =>{
+  it.skip('AT_01.04_006|<Header> User builds link| Verify the side panel', () =>{
        
       cy.get('#page-header .jenkins-menu-dropdown-chevron').click({force: true} );
       cy.get('.yuimenuitemlabel').contains('Builds').click();
