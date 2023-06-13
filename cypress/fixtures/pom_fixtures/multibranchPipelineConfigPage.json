@@ -23,10 +23,10 @@
     ],
     "iconDrpDwn" : ["Default Icon", "Metadata Folder Icon"],
 
-    // "PeriodicallyQstMarkText" : "Help for feature: Periodically if not otherwise run",
+    "PeriodicallyQstMarkText" : "Help for feature: Periodically if not otherwise run",
 
-    // "PeriodicallyHelpText1" : "Some kinds of folders are reindexed automatically and immediately upon receipt of an external event. For example, a multi-branch project will recheck its SCM repository for new or removed or modified branches when it receives an SCM change notification.
-    // (Push notification may be configured as per the SCM plugin used for each respective branch source.) Such notifications can occasionally be unreliable, however, or Jenkins might not even be running to receive them.
-    // In some cases no immediate notification is even possible, for example because Jenkins is behind a firewall and can only poll an external system."
+    "PeriodicallyHelpText1" : "Some kinds of folders are reindexed automatically and immediately upon receipt of an external event. For example, a multi-branch project will recheck its SCM repository for new or removed or modified branches when it receives an SCM change notification.
+    (Push notification may be configured as per the SCM plugin used for each respective branch source.) Such notifications can occasionally be unreliable, however, or Jenkins might not even be running to receive them.
+    In some cases no immediate notification is even possible, for example because Jenkins is behind a firewall and can only poll an external system."
 
 }
