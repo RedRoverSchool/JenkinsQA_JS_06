@@ -33,4 +33,20 @@ describe('orgFolderConfigure', () => {
         .getResultNoMatch()
         .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     });
+
+    it('AT_17.04_001 | Verify that user can move the organization folder through the Jenkins dashboard', function () {
+        cy.createFolderProject(newItemPageData.folderName)
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+        .hoverAndClickOrgFolderDrpDwnMenuBtn()
+        .clickProjectNameDropdownMoveLink()
+        .selectDestinationMoveJob(newItemPageData.folderName)
+        .clickMoveButton()
+
+        headerAndFooter
+        .clickJenkinsHomeLink()
+        .clickFolderNameLink(newItemPageData.folderName)
+        .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
+    })
 })
