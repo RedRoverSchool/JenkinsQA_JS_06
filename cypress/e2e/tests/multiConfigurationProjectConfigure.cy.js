@@ -75,7 +75,7 @@ describe('multiConfigurationProjectConfigure', () => {
       .assertAdvancedOptionsCheckboxesUnChecked()    
   });
 
-  it.only('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+  it('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
     cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
     homePage
       .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
