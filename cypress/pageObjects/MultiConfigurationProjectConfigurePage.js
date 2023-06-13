@@ -118,19 +118,5 @@ class MultiConfigurationProjectConfigurePage {
         .should('be.not.checked');
     })
   };
-
-  assertAdvancedOptionsEnabled() {
-    this.getAdvancedOptionsBlock()
-        .within(($elem) => {
-            cy.wrap($elem)
-              .find('input[type="checkbox"]')
-              .should('be.visible')
-              .and('be.enabled')
-            cy.wrap($elem)
-              .find('input[name="_.displayNameOrNull"]')
-              .should('be.visible')
-              .and('be.enabled')
-    })
-  }
 }
 export default MultiConfigurationProjectConfigurePage;
