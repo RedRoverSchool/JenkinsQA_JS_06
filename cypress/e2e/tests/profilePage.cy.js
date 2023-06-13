@@ -5,11 +5,25 @@ import userCredentialsPageData from "../../fixtures/pom_fixtures/userCredentials
 import { sidePanelNameLink } from "../../fixtures/pom_fixtures/userConfigurePage.json"
 import UserProfilePage from "../../pageObjects/UserProfilePage";
 import userProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
+import UserBuildsPage from "../../pageObjects/UserBuildsPage";
 
 describe('profilePage', () => {
 
     const headerAndFooter = new HeaderAndFooter();
     const userProfilePage = new UserProfilePage();
+    const userBuildsPage = new UserBuildsPage();
+
+    it('AT_18.03.001 | <Profile Page> Link to Users Builds', () => {
+        headerAndFooter
+        .clickUserNameLink()
+
+        userProfilePage 
+        .clickOnBuildsSubMenuLink()
+
+        userBuildsPage
+        .getUserBuildsHeader()
+        .should('contain', "Builds for " + Cypress.env("local.admin.username").toLowerCase());
+    });
 
     it('AT_18.02.001 | <Profile Page> Verify that the User can Edit the Status Description', () => {
         cy.clearUserStatusDescription();

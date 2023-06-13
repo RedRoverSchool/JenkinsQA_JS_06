@@ -1,6 +1,6 @@
 import UserCredentialsPage from "./UserCredentialsPage";
 import UserConfigurePage from "./UserConfigurePage";
-
+import UserBuildsPage from "./UserBuildsPage";
 
 const userName = Cypress.env("local.admin.username").toLowerCase();
 
@@ -16,7 +16,13 @@ class UserProfilePage {
     getUserId = () => cy.get('#main-panel>div:last-child');
     getStatusBtn = () => cy.get('#tasks>:nth-child(2)');
     getUserDescriptionText = () =>  cy.get('#description div:not(.jenkins-buttons-row)').not("div[class]");
+    getBuildsSubMenuLink = () => cy.get('a[href$="/builds"].task-link');
 
+
+    clickOnBuildsSubMenuLink() {
+        this.getBuildsSubMenuLink().click();
+        return new UserBuildsPage();
+    }
 
     clearUserStatusDescription() {
         this.getUserDescriptionInputField().clear();
