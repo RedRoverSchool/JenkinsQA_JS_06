@@ -26,7 +26,8 @@ class MultiConfigurationProjectConfigurePage {
   getAdvancedOptionsLabels = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
   getMultiConfigForm = () => cy.document().its('forms.config.elements');
   getAdvancedOptionsCheckboxes = () => cy.get('#advanced-project-options~.tbody').find('input[type="checkbox"]');
-  getAdvancedOptionsBlock = () => cy.get('div+div[class="tbody dropdownList-container"]');
+  getAdvancedOptionsBlockCheckBoxes = () => cy.get('div+div[class="tbody dropdownList-container"]');
+  getAdvancedOptionsBlock = () => cy.get('div.jenkins-section:has(#advanced-project-options) div input:is([type="checkbox"], [name="_.displayNameOrNull"])');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -102,7 +103,7 @@ class MultiConfigurationProjectConfigurePage {
   };
 
   assertAdvancedOptionsCheckboxesChecked() {
-    return this.getAdvancedOptionsBlock()
+    return this.getAdvancedOptionsBlockCheckBoxes()
     .within(($elem) => {
       cy.wrap($elem)
         .find('input[type="checkbox"]')
@@ -111,7 +112,7 @@ class MultiConfigurationProjectConfigurePage {
   };
 
   assertAdvancedOptionsCheckboxesUnChecked() {
-    return this.getAdvancedOptionsBlock()
+    return this.getAdvancedOptionsBlockCheckBoxes()
     .within(($elem) => {
       cy.wrap($elem)
         .find('input[type="checkbox"]')

@@ -1,4 +1,14 @@
-{
+{   "advancedOptions": [
+        "Quiet period", 
+        "Retry Count", 
+        "Block build when upstream project is building", 
+        "Block build when downstream project is building", 
+        "Use custom workspace",	
+        "Use custom child workspace"
+    ],
+
+    "advancedOptionsField": ["Display Name"],
+
     "advancedProjectOptionsFields": {
         "QuietPeriod": {
             "fieldNameFirst": "Quiet period",
