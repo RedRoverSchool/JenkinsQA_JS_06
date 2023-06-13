@@ -205,7 +205,7 @@ Cypress.Commands.add("openHomePage", () => {
     if(homePage.getDashboardElement().should("have.length", 1)) {
         homePage.getTable().should("be.visible");
     } else {
-        homePage.retrieveWelcomeMessage().should("have.text", homePageHeader);
+        homePage.retrieveWelcomeMessage().should("equal", homePageHeader);
     }
 });
 
