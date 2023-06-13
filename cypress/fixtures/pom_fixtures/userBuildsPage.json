@@ -1,3 +1,18 @@
 {
-    "titleText": "[Jenkins]"
+    "titleText": "[Jenkins]",
+    "tableSize": [
+        {
+            "size": "Small",
+            "heigth": "34px"
+        },
+        {
+            "size": "Medium",
+            "heigth": "40px"
+        },
+        {
+            "size": "Large",
+            "heigth": "48px"
+        }
+    ],
+    "heading" : "Builds for "
 }

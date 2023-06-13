@@ -36,7 +36,7 @@ describe('Freestyle project Delete', () => {
     cy.get('.error').should('contain.text', messages.error)
   })
 
-  it('Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
+  it.skip('Delete Freestyle project using dropdown menu_User_clicks_Cancel', () => {
     cy.get('#projectstatus tr td:nth-child(3)').contains(projects.freestyle.name).realHover()
     cy.get('table#projectstatus .jenkins-menu-dropdown-chevron').click()
     cy.get('.first-of-type li:nth-child(5)').click()

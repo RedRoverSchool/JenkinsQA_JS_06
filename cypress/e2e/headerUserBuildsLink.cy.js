@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 import {title} from '../fixtures/buildLinkPage.json'
-
+import {SidePanelTasks} from '../fixtures/userConfigure.json'
 import {projects} from '../fixtures/projects.json'
 
 function createAndBuildProject(projectName){
@@ -73,4 +73,19 @@ describe('Header - User Builds Link', () => {
     cy.location('pathname').should('eq', `/user/${login}/builds`)
     cy.get('#main-panel h1').should('include.text', title + `${login}`)
   })
+
+  it('AT_01.04.04 | Header > User Builds link > Verify access to the side panel', () => {
+    cy.get('.login.page-header__hyperlinks .jenkins-menu-dropdown-chevron').click({force: true})
+    cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()
+
+    cy.get('#tasks span.task-link-wrapper a')
+      .each(($el, index) => {
+        cy.wrap($el).should('be.visible')
+        cy.wrap($el).should('have.attr', 'href')        
+      })
+      .then(($els) => {
+        return Cypress._.map($els, 'innerText')
+      })
+      .should('deep.equal', SidePanelTasks.Names)
+  });
 });

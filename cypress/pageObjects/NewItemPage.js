@@ -23,7 +23,9 @@ class NewItemPage {
     getWarningMessage = () => cy.get('#itemname-required');
     getNewItemHeader = () => cy.get('.header .h3');  
     getErrorMessageForInvalidInput = () => cy.get('.header #itemname-invalid')
-    
+    getNewItemPageTitle = () => cy.get('head title')
+    getNewItemTypeIcons = () => cy.get('.j-item-options .icon')   
+
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -108,6 +110,10 @@ class NewItemPage {
     verifyNewItemHeader(name) {
         this.getNewItemHeader().should('have.text', name)
         return this
+    };
+
+    clickOkBtnAndGoHomePage() {
+        this.getNewItemOkBtn().click();
     };
 }
 export default NewItemPage;

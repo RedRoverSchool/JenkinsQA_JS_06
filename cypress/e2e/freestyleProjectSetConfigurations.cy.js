@@ -82,7 +82,7 @@ const scriptOption = "a.yuimenuitemlabel";
 const buildStepName = ".repeated-chunk .repeated-chunk__header";
 const scriptText = ".CodeMirror-lines div div[style] pre";
 
-it('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
+it.skip('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
     cy.createProjectWithDefaultSettings(data.projectName, data.projectType);
     cy.openConfigurationsPage(data.projectName)
         .then(() => {

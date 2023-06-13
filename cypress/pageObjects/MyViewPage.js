@@ -40,6 +40,8 @@ class MyViewPage {
   getAddNewViewRadioBtn = () => cy.get('label[for$=MyView].jenkins-radio__label');
   getNameMyView = () => cy.get(`.tabBar a[href*=${myView.viewName}]`);
   getDeleteViewBtn = () => cy.get('#side-panel [href=delete]');
+  getActiveTabViewInTabBar = () => cy.get('.tabBar .tab.active');
+  getViewsTabBar = () => cy.get('.tabBar');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -72,8 +74,7 @@ clickMultiBranchPipelineNameLink(){
 };
 
   verifyAndClickAddNewViewLink() {
-    this.getAddNewViewLink()
-    .should('be.visible').click();
+    this.getAddNewViewLink().should('be.visible').click();
     cy.url().should('contain', myView.newViewPageURL);
     return new NewViewPage();
   };
@@ -188,5 +189,12 @@ clickMultiBranchPipelineNameLink(){
     return new MyViewDeletePage();
   };
   
+  verifyTabAllViewsInTabBarIsActive() {
+    this.getActiveTabViewInTabBar()
+      .should('have.text', myView.viewsTabBar.tabAllViewsInTabBar)
+      .and('have.css', 'color', myView.viewsTabBar.activeTabViewColor)
+      .and('have.css', 'background-color', myView.viewsTabBar.activeTabViewBackgroundColor);
+    return this;
+  };
 }
 export default MyViewPage;

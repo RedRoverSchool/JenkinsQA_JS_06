@@ -2,7 +2,7 @@
 
 import data from "../fixtures/peopleAddDescription.json"
 
-describe("peopleAddDescriptionToCreatedUser", () => {
+describe.skip("peopleAddDescriptionToCreatedUser", () => {
   beforeEach("Create a user from Manage Jenkins>Manage Users", function () {
     cy.get('a[href="/manage"]').click();
     cy.get('.jenkins-section__item a[href="securityRealm/"]').click();

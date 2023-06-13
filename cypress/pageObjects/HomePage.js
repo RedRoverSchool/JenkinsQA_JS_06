@@ -22,10 +22,15 @@ import PipelineProjectConfigurePage from "./PipelineProjectConfigurePage"
 import BuildPage from "./BuildPage";
 import MultiConfigurationProjectConfigurePage from "./MultiConfigurationProjectConfigurePage";
 import PipelinePage from "./PipelinePage";
-import MultibranchPipelineRenamePage from  "./MultibranchPipelineRenamePage"
+import MultibranchPipelineRenamePage from "./MultibranchPipelineRenamePage"
 import homePageData from "../fixtures/pom_fixtures/homePage.json"
+import ManageJenkinsPage from "./ManageJenkinsPage";
+import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
+import ConfigureCloudsPage from "./ConfigureCloudsPage";
 
 class HomePage {
+
+    getPipelineNameDrpDwnBtn = () => ('td a[href*="job/"] button')
     getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
     getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
@@ -56,327 +61,367 @@ class HomePage {
     getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
 
-  getHomepageHeader = () => cy.get(".empty-state-block h1");
-  getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-  getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
-  getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
-  getCreateJobLink = () => cy.get('a[href="newJob"]');
-  getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
-  getPageBody = () => cy.get("#page-body");
-  getMainPanel = () => cy.get("#main-panel");
-  getProjectDrpDwnBtn = () =>
-    cy.get("table#projectstatus button.jenkins-menu-dropdown-chevron");
-  getDeleteDrpDwnLink = () => cy.get("ul.first-of-type li").contains("Delete");
-  getDeleteMultiConfProjectDrpDwnMenuBtn = () =>
-    cy.get("#breadcrumb-menu li:nth-child(5) span");
-  getProjectNameDropdownList = () => cy.get("#breadcrumb-menu");
-  getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
-  getProjectTable = () => cy.get("table#projectstatus");
-  getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
-  getScheduleBuildBtn = () => cy.get("td:last-child [tooltip]");
-  getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
-  getAddDescriptionLink = () => cy.get("#description-link");
-  getAddDescriptionField = () => cy.get(".jenkins-input ");
-  getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
-  getSavedDescriptionField = () => cy.get("#description");
-  getRenameMultiConfProjectDrpDwnMenuBtn = () =>
-    cy.get("#breadcrumb-menu li:nth-child(6) span");
-  getSideMenuPanel = () => cy.get("#tasks .task");
-  getRenamePipelineProjectDrpDwnMenuBtn = () =>
-    cy.get("#breadcrumb-menu li:nth-child(6) span");
-  getAddEditDescriptionBtn = () => cy.get("a#description-link");
-  getDescriptionField = () => cy.get("#description div:first-of-type");
-  getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
-  getDescriptionPreview = () => cy.get(".textarea-preview");
-  getSetUpAgentLink = () =>
-    cy.get('a[href="computer/new"] span:not(.trailing-icon)');
-  getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
-  getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
-  getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
-  getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
-  getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
-  getBuildTableLink = () => cy.get('a.jenkins-table__badge')
-  getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
-  getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
-  getRenameProjectDrpDwn = () => cy.get ("#breadcrumb-menu li:nth-child(7) span");
-  getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
-  getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
-  getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
-  getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
-  getTable = () => cy.get('#projectstatus')
-  getProjectDropdownMenuBtn = () => cy.get ('td>a');
+    getHomepageHeader = () => cy.get(".empty-state-block h1");
+    getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
+    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
+    getCreateJobLink = () => cy.get('a[href="newJob"]');
+    getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
+    getPageBody = () => cy.get("#page-body");
+    getMainPanel = () => cy.get("#main-panel");
+    getProjectDrpDwnBtn = () =>
+        cy.get("table#projectstatus button.jenkins-menu-dropdown-chevron");
+    getDeleteDrpDwnLink = () => cy.get("ul.first-of-type li").contains("Delete");
+    getDeleteMultiConfProjectDrpDwnMenuBtn = () =>
+        cy.get("#breadcrumb-menu li:nth-child(5) span");
+    getProjectNameDropdownList = () => cy.get("#breadcrumb-menu");
+    getProjectNameDropdownConfigureLink = () => cy.get('[href*="configure"]');
+    getProjectTable = () => cy.get("table#projectstatus");
+    getDeleteFoldersAndMultiBrPipelineLink = () => cy.get('a[href*="/delete"]');
+    getScheduleBuildBtn = () => cy.get("td:last-child [tooltip]");
+    getBuildHistoryLink = () => cy.get('[href="/view/all/builds"]');
+    getAddDescriptionLink = () => cy.get("#description-link");
+    getAddDescriptionField = () => cy.get(".jenkins-input ");
+    getSaveDescriptionBtn = () => cy.get('button[name="Submit"]');
+    getSavedDescriptionField = () => cy.get("#description");
+    getRenameMultiConfProjectDrpDwnMenuBtn = () =>
+        cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getSideMenuPanel = () => cy.get("#tasks .task");
+    getRenamePipelineProjectDrpDwnMenuBtn = () =>
+        cy.get("#breadcrumb-menu li:nth-child(6) span");
+    getAddEditDescriptionBtn = () => cy.get("a#description-link");
+    getDescriptionField = () => cy.get("#description div:first-of-type");
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
+    getSetUpAgentLink = () =>
+        cy.get('a[href="computer/new"] span:not(.trailing-icon)');
+    getProjectNameDropdownMoveLink = () => cy.get('a[href$=move]');
+    getProjectName = (projectName) => cy.get(`a[href="job/${projectName}/"]`)
+    getProjectDrpDwn = (projectName) => cy.get(`#job_${projectName} .jenkins-menu-dropdown-chevron`)
+    getProjectDisableIcon = (projectName) => cy.get('table#projectstatus').contains('tr', projectName).find('svg.icon-disabled');
+    getPojectStatusTableRow = () => cy.get('table#projectstatus tbody tr')
+    getBuildTableLink = () => cy.get('a.jenkins-table__badge')
+    getBuildstatusIcon = () => cy.get('.build-status-icon__outer');
+    getSuccessBuiltTooltip = () => cy.get('svg[tooltip="Success"]')
+    getRenameProjectDrpDwn = () => cy.get("#breadcrumb-menu li:nth-child(7) span");
+    getNameMulticonfigProjectName = () => cy.get('.jenkins-table__link')
+    getTableSizeBtnS = () => cy.get('[tooltip="Small"]')
+    getTableSizeBtnM = () => cy.get('[tooltip="Medium"]')
+    getTableSizeBtnL = () => cy.get('[tooltip="Large"]')
+    getTable = () => cy.get('#projectstatus')
+    getProjectDropdownMenuBtn = () => cy.get('td>a');
+    getManageJenkinsSideMenu = () => cy.get('a[href="/manage"]');
+    getProjectNameDropdownRenameLink = () => cy.get('#breadcrumb-menu li:nth-child(6) span')
+    getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
+    getConfigureACloudLink = () => cy.get('a[href="configureClouds"]');
+    getDashboardElement = () => cy.get('.dashboard');
 
-  clickSideMenuPanelItem(idx) {
-    this.getSideMenuPanel().eq(idx).click()
-    return cy.url()
-  };
+    verifyPipeLineDrpDwnMenu() {
+        return this.getPipelineDrpDwnMenuItems().then(($els) => {
+            return Cypress.$.makeArray($els).map(($el) => $el.innerText);
+        });
+    }
 
-  clickPeopleSideMenuLink() {
-    this.getPeopleSideMenuLink().click();
-    return new PeoplePage();
-  }
+    clickSideMenuPanelItem(idx) {
+        this.getSideMenuPanel().eq(idx).click()
+        return cy.url()
+    };
 
-  clickNewItemSideMenuLink() {
-    this.getNewItemSideMenuLink().click();
-    return new NewItemPage();
-  }
+    clickPeopleSideMenuLink() {
+        this.getPeopleSideMenuLink().click();
+        return new PeoplePage();
+    }
 
-  clickMyViewSideMenuLink() {
-    this.getMyViewSideMenuLink().click();
-    return new MyViewPage();
-  }
+    clickNewItemSideMenuLink() {
+        this.getNewItemSideMenuLink().click();
+        return new NewItemPage();
+    }
 
-  clickCreateJobLink() {
-    this.getCreateJobLink().click();
-    return new NewItemPage();
-  }
+    clickMyViewSideMenuLink() {
+        this.getMyViewSideMenuLink().click();
+        return new MyViewPage();
+    }
 
-  clickMultiConfigProjectNameLink(projectName) {
-    this.getProjectNameLink().contains(projectName).click();
-    return new MultiConfigurationProjectPage();
-  }
+    clickCreateJobLink() {
+        this.getCreateJobLink().click();
+        return new NewItemPage();
+    }
 
-  clickOrgFolderNameLink(projectName) {
-    this.getProjectNameLink().contains(projectName).click();
-    return new OrgFolderPage();
-  }
+    clickMultiConfigProjectNameLink(projectName) {
+        this.getProjectNameLink().contains(projectName).click();
+        return new MultiConfigurationProjectPage();
+    }
 
-  hoverProjectNameLink() {
-    this.getProjectNameLink().realHover();
-    return this;
-  }
+    clickOrgFolderNameLink(projectName) {
+        this.getProjectNameLink().contains(projectName).click();
+        return new OrgFolderPage();
+    }
 
-  clickProjectDrpDwnBtn() {
-    this.getProjectDrpDwnBtn().click({ force: true });
-    return this;
-  }
+    hoverProjectNameLink() {
+        this.getProjectNameLink().realHover();
+        return this;
+    }
 
-  typeIntoSearchBox(name) {
-    this.getSearchBox().type(name + "{enter}");
-    return new ResultSearchBoxPage();
-  }
+    clickProjectDrpDwnBtn() {
+        this.getProjectDrpDwnBtn().click({force: true});
+        return this;
+    }
 
-   clickMultibranchPipelineProjectNameLink(projectName) {
-      this.getProjectNameLink().contains(projectName).click();
-      return new MultibranchPipelinePage();
-  }
+    typeIntoSearchBox(name) {
+        this.getSearchBox().type(name + "{enter}");
+        return new ResultSearchBoxPage();
+    }
 
-  hoverAndClickProjectDrpDwnBtn(projectName) {
-    this.getProjectNameLink().contains(projectName).realHover();
-    this.getProjectDrpDwnBtn().click();
-    return this;
-  }
+    clickMultibranchPipelineProjectNameLink(projectName) {
+        this.getProjectNameLink().contains(projectName).click();
+        return new MultibranchPipelinePage();
+    }
 
-  selectDeleteDrpDwnLink() {
-    this.getDeleteDrpDwnLink().click();
-    return this;
-  }
+    hoverAndClickProjectDrpDwnBtn(projectName) {
+        this.getProjectNameLink().contains(projectName).realHover();
+        this.getProjectDrpDwnBtn().click();
+        return this;
+    }
 
-  selectDeleteMultiConfProjectDrpDwnMenuBtn() {
-    this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
-    return this;
-  }
+    selectDeleteDrpDwnLink() {
+        this.getDeleteDrpDwnLink().click();
+        return this;
+    }
 
-  clickProjectNameDropdownConfigureLink() {
-    this.getProjectNameDropdownConfigureLink().click();
-    return new FreestyleProjectConfigurePage();
-  }
+    selectDeleteMultiConfProjectDrpDwnMenuBtn() {
+        this.getDeleteMultiConfProjectDrpDwnMenuBtn().click();
+        return this;
+    }
 
-  clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
-    this.getDeleteFoldersAndMultiBrPipelineLink().click();
-    return new FoldersAndMultibrPipelineDeletePage();
-  }
+    clickProjectNameDropdownConfigureLink() {
+        this.getProjectNameDropdownConfigureLink().click();
+        return new FreestyleProjectConfigurePage();
+    }
 
-  clickScheduleBuildBtn() {
-    return this.getScheduleBuildBtn().click();
-  }
+    clickDeleteFoldersAndMultiBrPipelineFromDrpDwnMenu() {
+        this.getDeleteFoldersAndMultiBrPipelineLink().click();
+        return new FoldersAndMultibrPipelineDeletePage();
+    }
 
-  getTimeBuildCreating() {
-    let timeBuildCreating;
-    return (timeBuildCreating = dayjs().format("ddd, DD MMM YYYY HH:mm"));
-  }
+    clickScheduleBuildBtn() {
+        return this.getScheduleBuildBtn().click();
+    }
 
-  clickBuildHistoryLink() {
-    this.getBuildHistoryLink().click();
-    return new BuildHistoryPage();
-  }
+    getTimeBuildCreating() {
+        let timeBuildCreating;
+        return (timeBuildCreating = dayjs().format("ddd, DD MMM YYYY HH:mm"));
+    }
 
-  clickFolderNameLink(projectName) {
-    this.getProjectNameLink().contains(projectName).click();
-    return new FolderPage();
-  }
+    clickBuildHistoryLink() {
+        this.getBuildHistoryLink().click();
+        return new BuildHistoryPage();
+    }
 
-  clickAddDescriptionLink() {
-    this.getAddDescriptionLink().click();
-    return this;
-  }
+    clickFolderNameLink(projectName) {
+        this.getProjectNameLink().contains(projectName).click();
+        return new FolderPage();
+    }
 
-  typeDescriptionIntoField(text) {
-    this.getAddDescriptionField().clear().type(text);
-    return this;
-  }
+    clickAddDescriptionLink() {
+        this.getAddDescriptionLink().click();
+        return this;
+    }
 
-  clickSaveDescriptionBtn() {
-    this.getSaveDescriptionBtn().click();
-    return this;
-  }
+    typeDescriptionIntoField(text) {
+        this.getAddDescriptionField().clear().type(text);
+        return this;
+    }
 
-  selectRenameMultiConfProjectDrpDwnMenuBtn() {
-    this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
-    return new MultiConfProjectRenamePage();
-  }
+    clickSaveDescriptionBtn() {
+        this.getSaveDescriptionBtn().click();
+        return this;
+    }
 
-  clickFreestyleProjectNameLink() {
-    this.getProjectNameLink().click();
-    return new FreestyleProjectPage();
-  }
+    selectRenameMultiConfProjectDrpDwnMenuBtn() {
+        this.getRenameMultiConfProjectDrpDwnMenuBtn().click();
+        return new MultiConfProjectRenamePage();
+    }
 
-  createSidePanelItemsList() {
-    return this.getSideMenuPanel().then(($els) => {
-      return Cypress.$.makeArray($els).map(($elem) => $elem.innerText);
-    });
-  }
+    clickFreestyleProjectNameLink() {
+        this.getProjectNameLink().click();
+        return new FreestyleProjectPage();
+    }
 
-  clickOnFolderNameLink() {
-    this.getProjectNameLink().click();
-    return new FolderPage();
-  }
+    createSidePanelItemsList() {
+        return this.getSideMenuPanel().then(($els) => {
+            return Cypress.$.makeArray($els).map(($elem) => $elem.innerText);
+        });
+    }
 
-  selectRenamePipelineProjectDrpDwnMenuBtn() {
-    this.getRenamePipelineProjectDrpDwnMenuBtn().click();
-    return new PipelineProjectRenamePage();
-  }
+    clickOnFolderNameLink() {
+        this.getProjectNameLink().click();
+        return new FolderPage();
+    }
 
-  clickEditDescriptionBtn() {
-    this.getAddEditDescriptionBtn().click();
-    return this;
-  }
+    selectRenamePipelineProjectDrpDwnMenuBtn() {
+        this.getRenamePipelineProjectDrpDwnMenuBtn().click();
+        return new PipelineProjectRenamePage();
+    }
 
-  clickProjectNameLink(name) {
-    this.getProjectNameLink().contains(name).click();
-    return new FolderPage();
-  }
+    clickEditDescriptionBtn() {
+        this.getAddEditDescriptionBtn().click();
+        return this;
+    }
 
-  clickMultibranchPipelineNameLink(name) {
-    this.getProjectNameLink().contains(name).click();
-    return new MultibranchPipelineStatusPage();
-  }
+    clickProjectNameLink(name) {
+        this.getProjectNameLink().contains(name).click();
+        return new FolderPage();
+    }
 
-  clickDescriptionPreviewLink() {
-    this.getDescriptionPreviewLink().click();
-    return this;
-  }
+    clickMultibranchPipelineNameLink(name) {
+        this.getProjectNameLink().contains(name).click();
+        return new MultibranchPipelineStatusPage();
+    }
 
-  clickSetUpAgentLink() {
-    this.getSetUpAgentLink().click();
-    return new NewNodePage();
-  };
+    clickDescriptionPreviewLink() {
+        this.getDescriptionPreviewLink().click();
+        return this;
+    }
 
-  clickProjectNameDropdownMoveLink() {
-    this.getProjectNameDropdownMoveLink().click();
-    return new OrgFolderMoveChoicePage();
-  }
+    clickSetUpAgentLink() {
+        this.getSetUpAgentLink().click();
+        return new NewNodePage();
+    };
 
-  hoverAndClickProjectDrpDwn(projectName) {
-    this.getProjectName(projectName).realHover();
-    this.getProjectDrpDwn(projectName).click();
-    return this;
-  }
+    clickProjectNameDropdownMoveLink() {
+        this.getProjectNameDropdownMoveLink().click();
+        return new OrgFolderMoveChoicePage();
+    }
 
-  clickProjectName(projectName) {
-    this.getProjectName(projectName).click();
-    return new FolderPage;
-  }
+    hoverAndClickProjectDrpDwn(projectName) {
+        this.getProjectName(projectName).realHover();
+        this.getProjectDrpDwn(projectName).click();
+        return this;
+    }
 
-  clickOnScheduleBuildBtn() {
-    this.getScheduleBuildBtn().click();
-    return this;
-  };
+    clickProjectName(projectName) {
+        this.getProjectName(projectName).click();
+        return new FolderPage;
+    }
 
-  clickPipelineProjectNameDropdownConfigureLink() {
-    this.getProjectNameDropdownConfigureLink().click();
-    return new PipelineProjectConfigurePage();
-  };
+    clickOnScheduleBuildBtn() {
+        this.getScheduleBuildBtn().click();
+        return this;
+    };
 
-  clickScheduleBuildForProjectNameBtn(projectName) {
-    this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
-    return this;
-  };
+    clickPipelineProjectNameDropdownConfigureLink() {
+        this.getProjectNameDropdownConfigureLink().click();
+        return new PipelineProjectConfigurePage();
+    };
 
-  clickBuildTableLink() {
-    this.getBuildTableLink().click()
-    return BuildPage;
-  };
+    clickScheduleBuildForProjectNameBtn(projectName) {
+        this.getPojectStatusTableRow().find(`a[tooltip="Schedule a Build for ${projectName}"]`).click()
+        return this;
+    };
 
-  clickMultiConfProjectDrpDwnConfigureLink() {
-    this.getProjectNameDropdownConfigureLink().click();
-    return new MultiConfigurationProjectConfigurePage();
-  };
+    clickBuildTableLink() {
+        this.getBuildTableLink().click()
+        return BuildPage;
+    };
 
-  selectRenameMultiBrPipelineDrpDwnMenuBtn() {
-    this.getRenameProjectDrpDwn().click();
-    return new MultibranchPipelineRenamePage;
-};
+    clickMultiConfProjectDrpDwnConfigureLink() {
+        this.getProjectNameDropdownConfigureLink().click();
+        return new MultiConfigurationProjectConfigurePage();
+    };
 
-  clickPipelineProjectName(projectName) {
-    this.getProjectName(projectName).click();   
-    return new PipelinePage();
-  };
+    selectRenameMultiBrPipelineDrpDwnMenuBtn() {
+        this.getRenameProjectDrpDwn().click();
+        return new MultibranchPipelineRenamePage;
+    };
 
-  clickTableSizeBtnS() {
-    this.getTableSizeBtnS().click()
-    return this
-  }
+    clickPipelineProjectName(projectName) {
+        this.getProjectName(projectName).click();
+        return new PipelinePage();
+    };
 
-  verifyTableSizeS() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePageData.sRem)
-      })
-  })
-    return this
-  }
+    clickTableSizeBtnS() {
+        this.getTableSizeBtnS().click()
+        return this
+    }
 
-  clickTableSizeBtnM() {
-    this.getTableSizeBtnM().click()
-    return this
-  }
+    verifyTableSizeS() {
+        this.getTable().then((obj) => {
+            cy.document().then(() => {
+                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+                    .should('eq', homePageData.sRem)
+            })
+        })
+        return this
+    }
 
-  verifyTableSizeM() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-          cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePageData.mRem)
-      })
-  })
-    return this
-  }
+    clickTableSizeBtnM() {
+        this.getTableSizeBtnM().click()
+        return this
+    }
 
-  clickTableSizeBtnL() {
-    this.getTableSizeBtnL().click()
-    return this
-  }
+    verifyTableSizeM() {
+        this.getTable().then((obj) => {
+            cy.document().then(() => {
+                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+                    .should('eq', homePageData.mRem)
+            })
+        })
+        return this
+    }
 
-  verifyTableSizeL() {
-    this.getTable().then((obj) => {
-      cy.document().then(() => {
-        cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
-          .should('eq', homePageData.lRem)
-      })
-    })
-    return this
-  };  
-  
-  triggerBuildstatusIcon(){
-    this.getBuildstatusIcon().trigger('focus');
-    return this;
-  };  
-  
-  clickProjectDropdownMenuBtn() {
-    this.getProjectDropdownMenuBtn().realHover().click('right');
-    return this;
- };
-  
-};
+    clickTableSizeBtnL() {
+        this.getTableSizeBtnL().click()
+        return this
+    }
+
+    verifyTableSizeL() {
+        this.getTable().then((obj) => {
+            cy.document().then(() => {
+                cy.wrap(obj).then($el => window.getComputedStyle($el[0]).getPropertyValue('--table-padding'))
+                    .should('eq', homePageData.lRem)
+            })
+        })
+        return this
+    };
+
+    triggerBuildstatusIcon() {
+        this.getBuildstatusIcon().trigger('focus');
+        return this;
+    };
+
+    clickProjectDropdownMenuBtn() {
+        this.getProjectDropdownMenuBtn().realHover().click('right');
+        return this;
+    };
+
+    clickManageJenkinsSideMenu() {
+        this.getManageJenkinsSideMenu().click();
+        return new ManageJenkinsPage();
+    }
+
+    clickWindowConfirmCancel(windowConfirmText) {
+        cy.on('window:confirm', (str) => {
+            expect(str).to.eq(windowConfirmText)
+            return false
+        })
+    }
+
+    clickProjectNameDropdownRenameLink() {
+        this.getProjectNameDropdownRenameLink().click()
+        return new FreestyleProjectRenamePage();
+    }
+
+    clickConfigureACloudLink() {
+        this.getConfigureACloudLink().click()
+        return new ConfigureCloudsPage();
+    }
+
+    retrieveWelcomeMessage() {
+        return this.getHomepageHeader().then($el => {
+            return $el.text().trim();
+        });
+    }
+
+}
+
 export default HomePage;

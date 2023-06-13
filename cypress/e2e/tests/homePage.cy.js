@@ -8,6 +8,7 @@ import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageD
 import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import {configureCloudsHeader} from "../../fixtures/pom_fixtures/configureCloudsPage.json"
 
 describe("homePage", () => {
     const homePage = new HomePage()
@@ -67,4 +68,11 @@ describe("homePage", () => {
           .getNewItemPageUrl()
           .should('include', newItemPageData.newItemEndPoinURL)   
   });
+
+    it('AT_02.07.006 Homepage > Verify the redirection of the "Configure a cloud"', () => {
+      homePage
+      .clickConfigureACloudLink()
+      .getConfigureCloudsHeader()
+      .should('have.text', configureCloudsHeader)
+    })
 })

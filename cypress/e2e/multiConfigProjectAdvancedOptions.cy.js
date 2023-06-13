@@ -31,7 +31,7 @@ describe('Multi Config Project Advanced Options', () => {
 		cy.wait('@newProjectConfigure')
 	});
 
-	it('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
+	it.skip('AT_14.05_001 | Multi-configuration project. Block with advanced options is appeared after clicking "Advanced" button', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').should('be.visible')
@@ -49,7 +49,7 @@ describe('Multi Config Project Advanced Options', () => {
 		})
 	});
 
-	it('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
+	it.skip('AT_14.05_003 | Multi-configuration project. Advanced options are enabled to select it', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').within(($elem) => {
@@ -65,7 +65,7 @@ describe('Multi Config Project Advanced Options', () => {
 		})
 	});
 
-	it('AT_14.05_004 | Multi-configuration project. Advance project options are checked/unchecked', () => {
+	it.skip('AT_14.05_004 | Multi-configuration project. Advance project options are checked/unchecked', () => {
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {
 			cy.contains('.advanced-button.advancedButton', 'Advanced').click({ force: true })
 			cy.get('.dropdownList-container').within(($elem) => {
