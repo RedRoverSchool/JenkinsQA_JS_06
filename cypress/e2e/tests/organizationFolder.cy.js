@@ -29,7 +29,7 @@ describe('orgFolderConfigure', () => {
         .clickDeleteOrgFolderDrpDwnMenuBtn()
         .clickDeleteButton()
         headerAndFooter
-        .searchTextSearchBox(newItemPageData.orgFolderName + '{enter}')
+        .searchTextSearchBox(newItemPageData.orgFolderName)
         .getResultNoMatch()
         .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
     });
