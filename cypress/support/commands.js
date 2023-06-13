@@ -29,6 +29,8 @@ import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
 
 const homePage = new HomePage();
+const headerAndFooter = new HeaderAndFooter();
+const dashboard = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
     homePage
@@ -37,9 +39,6 @@ Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig()
    })
-
-const headerAndFooter = new HeaderAndFooter();
-const dashbord = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -69,7 +68,7 @@ Cypress.Commands.add('createOrgFolderProject', (folderName) => {
         .typeNewItemNameInputField(folderName)
         .selectOrgFolderItem()
         .clickOkBtnAndGoOrgFolderConfig()
-    dashbord
+    dashboard
         .clickDashboardLinkAndGoHomePage();
 })
 
@@ -125,8 +124,6 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
           .clickJenkinsHomeLink()
 });
 
-const dashboard = new DashboardBreadcrumbs();
-
 Cypress.Commands.add('createMultiConfigProject', (name) => {
     homePage
         .clickCreateJobLink()
@@ -159,7 +156,7 @@ Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailA
         .typeConfirmPasswordInputField(confirmPassword)
         .typeEmailAddressInputField(emailAddress)
         .clickCreateUserBtn();
-    dashbord
+    dashboard
         .clickDashboardLinkAndGoHomePage();
 });
 
@@ -185,4 +182,21 @@ Cypress.Commands.add('createNewView', (viewName, viewType) => {
         .clickOkButtonSaveView();
     headerAndFooter
         .clickJenkinsHomeLink();
+});
+
+Cypress.Commands.add("openHomePage", () => {
+    headerAndFooter.clickHeadIcon();
+
+    if(homePage.getDashboardElement().should("have.length", 1)) {
+        homePage.getTable().should("be.visible");
+    } else {
+        homePage.retrieveWelcomeMessage().should("have.text", "Welcome to Jenkins!");
+    }
+});
+
+Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
+    homePage
+        .clickFreestyleProjectNameLink()
+        .clickConfigureSideMenuLink()
+        .retrievePageHeader().should("equal", "Configure");
 });

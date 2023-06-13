@@ -129,6 +129,11 @@ class HeaderAndFooter {
         this.getUserDropDownMenuCredentials().click();
         return new UserCredentialsPage();
     }
-   
+
+    clickHeadIcon() {
+        this.getHeadIcon().click();
+        return new HomePage();
+    }
+
 }
 export default HeaderAndFooter;
