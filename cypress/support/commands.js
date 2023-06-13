@@ -27,6 +27,19 @@
 import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
+import UserProfilePage from "../pageObjects/UserProfilePage";
+
+const userProfilePage = new UserProfilePage();
+
+Cypress.Commands.add('clearUserStatusDescription', () => {
+    headerAndFooter
+        .clickUserNameLink();
+
+    userProfilePage
+        .clickUserDescriptionBtn()
+        .clearUserStatusDescription()
+        .clickUserDescriptionSaveBtn();
+});
 
 const homePage = new HomePage();
 const headerAndFooter = new HeaderAndFooter();
@@ -54,8 +67,8 @@ Cypress.Commands.add('createFolderProject', (folderName) => {
 Cypress.Commands.add('createMultiConfigurationProject', (multiConfigurationProjectName) => {
     homePage
         .clickCreateJobLink()
-        .selectMultiConfigurationProjectItem()
         .typeNewItemNameInputField(multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
     headerAndFooter

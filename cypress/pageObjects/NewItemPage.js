@@ -24,6 +24,7 @@ class NewItemPage {
     getNewItemHeader = () => cy.get('.header .h3');  
     getErrorMessageForInvalidInput = () => cy.get('.header #itemname-invalid')
     getNewItemPageTitle = () => cy.get('head title')
+    getNewItemTypeIcons = () => cy.get('.j-item-options .icon')   
 
 
     typeNewItemNameInputField(name) {

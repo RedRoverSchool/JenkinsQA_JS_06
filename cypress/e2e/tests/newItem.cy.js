@@ -1,6 +1,7 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import NewItemPage from "../../pageObjects/NewItemPage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
@@ -13,6 +14,7 @@ describe('newItem', () => {
     const errorPage = new ErrorMessagePage();
     const dashboardBreadcrumbs = new DashboardBreadcrumbs();
     const headerAndFooter = new HeaderAndFooter
+    const newItemPage = new NewItemPage();
 
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
@@ -136,4 +138,13 @@ describe('newItem', () => {
                 .should('have.text',trimmedItemName)                
         })        
     })
+
+    it('AT_05.08.013 | New Item> Verify Item type icons are visible', () => {
+        homePage.clickNewItemSideMenuLink()
+        newItemPage
+            .getNewItemTypeIcons()
+            .each(($el) => {
+                cy.wrap($el).should('be.visible')
+            })
+    })    
 });

@@ -100,5 +100,23 @@ class MultiConfigurationProjectConfigurePage {
         .should('be.checked');
     return this;
   };
+
+  assertAdvancedOptionsCheckboxesChecked() {
+    return this.getAdvancedOptionsBlock()
+    .within(($elem) => {
+      cy.wrap($elem)
+        .find('input[type="checkbox"]')
+        .should('be.checked');
+    })
+  };
+
+  assertAdvancedOptionsCheckboxesUnChecked() {
+    return this.getAdvancedOptionsBlock()
+    .within(($elem) => {
+      cy.wrap($elem)
+        .find('input[type="checkbox"]')
+        .should('be.not.checked');
+    })
+  };
 }
 export default MultiConfigurationProjectConfigurePage;
