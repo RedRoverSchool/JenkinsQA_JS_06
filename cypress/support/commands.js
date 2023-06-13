@@ -28,6 +28,8 @@ import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
 import UserProfilePage from "../pageObjects/UserProfilePage";
+import { homePageHeader } from "../fixtures/pom_fixtures/homePage.json";
+import { configurePageHeader } from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 
 const userProfilePage = new UserProfilePage();
 
@@ -203,7 +205,7 @@ Cypress.Commands.add("openHomePage", () => {
     if(homePage.getDashboardElement().should("have.length", 1)) {
         homePage.getTable().should("be.visible");
     } else {
-        homePage.retrieveWelcomeMessage().should("have.text", "Welcome to Jenkins!");
+        homePage.retrieveWelcomeMessage().should("have.text", homePageHeader);
     }
 });
 
@@ -211,5 +213,5 @@ Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
     homePage
         .clickFreestyleProjectNameLink()
         .clickConfigureSideMenuLink()
-        .retrievePageHeader().should("equal", "Configure");
+        .retrievePageHeader().should("equal", configurePageHeader);
 });
