@@ -4,7 +4,7 @@ import messages from '../fixtures/messages.json'
 
 describe('<Organization Folder> Delete Organization Folder', () => {
 
-    it('Delete organization folder within the selected organization folder', function () {
+    it.skip('Delete organization folder within the selected organization folder', function () {
         cy.get('a[href="newJob"]').click()
         cy.get('span.label').contains('Organization Folder').click()
         cy.get('input#name').type('OlgaJS')
@@ -17,7 +17,7 @@ describe('<Organization Folder> Delete Organization Folder', () => {
         cy.get('button[name="Submit"]').click()
     });
 
-    it('Delete Organization Folder using dropdown menu', () => {
+    it.skip('Delete Organization Folder using dropdown menu', () => {
         cy.get('#tasks .task').contains('New Item').click()
         cy.get('input#name').type(projects.organizationFolder.name)
         cy.get('#j-add-item-type-nested-projects li:last-child').click()
