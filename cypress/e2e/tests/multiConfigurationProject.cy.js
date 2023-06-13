@@ -47,15 +47,14 @@ describe("multiConfigurationProject", () => {
         .clickGoHome()
         .getNameMulticonfigProjectName()
         .should('have.text', newItemPageData.newMultiConfigurationProjectName)
+    })
 
-
-        
-
-        
-       
-
-
-
-
+    it('AT_14.07.03 Delete Multi-configuration project within the selected project itself. ', () => {
+        cy.createMultiConfigurationProject(newItemPageData.newMultiConfigurationProjectName);
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.newMultiConfigurationProjectName)
+        .clickDeleteMultiConfigurationProject()
+        .getProjectTable()
+        .should('not.exist');
     })
 })

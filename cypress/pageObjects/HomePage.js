@@ -421,7 +421,6 @@ class HomePage {
             return $el.text().trim();
         });
     }
-
 }
 
 export default HomePage;
