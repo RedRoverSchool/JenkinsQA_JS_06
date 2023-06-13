@@ -87,7 +87,7 @@ describe('freestyleProjectConfigure', () => {
         })
     })
 
-    it.only('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
+    it('AT_12.05_002 | Freestyle project > Configure > Apply configurations changes', () => {
         const data = freestyleProjectConfigData.buildPeriodicallyProject;
 
         cy.openFreestyleProjectConfigurePage();
