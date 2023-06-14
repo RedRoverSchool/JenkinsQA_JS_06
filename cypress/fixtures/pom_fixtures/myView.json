@@ -9,5 +9,19 @@
         "activeTabViewColor": "rgb(20, 20, 31)",
         "activeTabViewBackgroundColor": "rgba(0, 0, 0, 0)"
     },
-    "listViewName": "ListView"
+    "listViewName": "ListView",
+    "jobFilter": [
+        {
+            "url": "job/FolderName/job/FreestyleProjectName1/",
+            "name": "FolderName » FreestyleProjectName1"
+        },
+        {
+            "url": "job/FolderName/job/FreestyleProjectName2/",
+            "name": "FolderName » FreestyleProjectName2"
+        },
+        {
+            "url": "job/FolderNewName/",
+            "name": "FolderNewName"
+        }
+    ]
 }

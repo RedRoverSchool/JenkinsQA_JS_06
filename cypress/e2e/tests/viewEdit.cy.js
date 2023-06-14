@@ -1,8 +1,6 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import ViewPage from "../../pageObjects/ViewPage";
-import ViewEditPage from "../../pageObjects/ViewEditPage";
 import myView from "../../fixtures/pom_fixtures/myView.json";
 import folderPage from "../../fixtures/pom_fixtures/folderPage.json";
 import freestyleProjectPage from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
@@ -24,7 +22,6 @@ describe('viewEdit', () => {
         homePage.clickNewViewLink()
         .typeNewViewNameIntoInputField(myView.listViewName)
         .checkViewTypeRadioButton(newViewData.viewTypes.listView)
-        // .clickCreateButton()
         .clickCreateNewViewButton(newViewData.viewTypes.listView)
         .checkRecurseCheckbox()
         .checkJobCheckbox(`${folderPage.folderName}/${freestyleProjectPage.freestyleProjectName1}`)
