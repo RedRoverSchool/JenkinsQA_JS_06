@@ -7,7 +7,7 @@ describe ('distributedBuildsLink', () => {
     const homePage = new HomePage();
     const distributedBuildsLinkPage = new DistributedBuildsLinkPage;
   
-  it ('POM > AT_02.05.09 | Verify Link Learn more about distributed builds is redirected to the new window', () => {
+  it ('AT_02.05.09 | Verify Link Learn more about distributed builds is redirected to the new window', () => {
     
     homePage
     .clickLearnMoreAboutDistributedBuildsLink()
