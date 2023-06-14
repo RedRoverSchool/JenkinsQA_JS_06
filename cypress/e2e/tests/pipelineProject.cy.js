@@ -87,7 +87,7 @@ describe('pipelineProject',()=>{
             .should('have.text', pipelineConfigurePageData.firstDescription + pipelinePageData.additionalDescriptionPipeline)
     });
 
-    it.only('AT_13.02.003 | Pipeline | Delete with breadcrumb dropdown menu',()=>{
+    it('AT_13.02.005 | Pipeline | Delete with breadcrumbs dropdown menu',()=>{
         cy.createPipeline(newItemPageData.pipelineName);
 
         homePage
