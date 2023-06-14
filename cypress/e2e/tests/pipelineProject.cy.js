@@ -3,8 +3,9 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json";
-import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json"
-import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json"; 
+import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json";
+import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 
 
 describe('pipelineProject',()=>{
@@ -84,5 +85,18 @@ describe('pipelineProject',()=>{
             .clickSaveBtn()
             .getDescription()
             .should('have.text', pipelineConfigurePageData.firstDescription + pipelinePageData.additionalDescriptionPipeline)
+    });
+
+    it.only('AT_13.02.003 | Pipeline | Delete with breadcrumb dropdown menu',()=>{
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDashboardDropdownBtn()
+            .clickProjectBreadcrumbsMenu()
+            .clickDeletePipelineMenuFromBreadcrumbs()
+            .getMainPanel()
+            .should('not.have.text', newItemPageData.pipelineName)
+            .and('include.text', homePageData.homePageHeader); 
     });
 })

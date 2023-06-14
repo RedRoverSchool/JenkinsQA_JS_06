@@ -10,6 +10,10 @@ class PipelinePage {
     getSaveBtn = () => cy.get('button[name="Submit"]');
     getEditDescriptionBtn = () => cy.get('#description-link').should('contain', 'Edit description');
     getDescription = () => cy.get('#description div:nth-child(1)');
+    getDashboardDropdownBtn = () => cy.get('#breadcrumbs > :nth-child(3) > .model-link');
+    getBreadcrumbsPipelineName = () => cy.get ('.jenkins-breadcrumbs__list-item > a[href^="/job/"]');
+    getBreadcrumbsPipelineMenuListButton = () => cy.get ('.jenkins-breadcrumbs__list-item > a[href^="/job/"] button');
+    getBreadcrumbsPipelineMenuListItems = () => cy.get('.yuimenuitem a[href^="#"]');
 
     clickGoToDashboard() {
         this.getDashboard().click();
@@ -30,18 +34,34 @@ class PipelinePage {
     clickEditDescriptionBtn() {
         this.getEditDescriptionBtn().click();
         return this;
-    }
+    };
 
     clickSaveBtn() {
         this.getSaveBtn().first().click();
         return this;
-    }
+    };
 
     typeAdditionalDescriptionOnPiplinePage(){
         this.getDescriptionTextarea().type('{moveToEnd}').type(pipelinePageData.additionalDescriptionPipeline);
         return this;
     };
 
+    clickDashboardDropdownBtn() {
+        this.getDashboardDropdownBtn().realHover().click();
+        return this;
+    };
+    
+    clickProjectBreadcrumbsMenu() {
+        this.getBreadcrumbsPipelineName().realHover();
+        this.getBreadcrumbsPipelineMenuListButton().click();
+        return this;
+    };
+
+    clickDeletePipelineMenuFromBreadcrumbs() {
+        this.getBreadcrumbsPipelineMenuListItems().contains(pipelinePageData.textDeletePipeline).click();
+        return new HomePage();
+    };
+    
 } 
 
 export default PipelinePage;
