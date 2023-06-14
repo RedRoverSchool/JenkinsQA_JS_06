@@ -178,4 +178,10 @@ describe('headerAndFooter', () => {
             .getUserDescriptionText()
             .should('have.text', UserProfilePageData.editDescription);
     });
+
+    it('AT_01.07_004 | The users name should be visible in the header', () => {
+        headerAndFooter
+            .getCurrentUserName()
+            .should('be.visible');
+    });
 })
