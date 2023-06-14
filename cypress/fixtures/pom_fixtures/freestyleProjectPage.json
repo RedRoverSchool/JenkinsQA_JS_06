@@ -6,6 +6,8 @@
     "description": "New description",
     "editDescription": " Edit Description",
 	"disabledProjectNotify": "This project is currently disabled",
+    "freestyleProjectName1": "FreestyleProjectName1",
+    "freestyleProjectName2": "FreestyleProjectName2",
 
   "sidePanel":[
         "Status",

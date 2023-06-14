@@ -5,6 +5,7 @@ const dayjs = require('dayjs');
 import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
+import NewViewPage from "./NewViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
@@ -34,7 +35,7 @@ class HomePage {
     getPipelineNameDrpDwnBtn = () => ('td a[href*="job/"] button')
     getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getNewItemSideMenuLink = () => cy.get('a[href$="/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
@@ -64,7 +65,6 @@ class HomePage {
 
     getHomepageHeader = () => cy.get(".empty-state-block h1");
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
@@ -118,7 +118,7 @@ class HomePage {
     getDashboardElement = () => cy.get('.dashboard');
     getDeleteOrgFolderDrpDwnMenuBtn = () =>
         cy.get("#breadcrumb-menu li:nth-child(4) span")
-    
+    getNewViewLink = () => cy.get('[href="/newView"]');
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -435,6 +435,10 @@ class HomePage {
       return new PipelineProjectConfigurePage()
     }
 
+    clickNewViewLink() {
+        this.getNewViewLink().click();
+        return new NewViewPage();
+    }
 }
 
 export default HomePage;

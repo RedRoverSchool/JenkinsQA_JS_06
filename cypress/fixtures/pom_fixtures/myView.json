@@ -8,5 +8,6 @@
         "tabAllViewsInTabBar": "All",
         "activeTabViewColor": "rgb(20, 20, 31)",
         "activeTabViewBackgroundColor": "rgba(0, 0, 0, 0)"
-    }
+    },
+    "listViewName": "ListView"
 }
