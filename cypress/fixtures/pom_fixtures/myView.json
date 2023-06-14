@@ -1,10 +1,9 @@
 {
     "newViewPageURL": "/my-views/newView",
-    "headerOfNewViewNameInputField": "View name",
+    "headerOfNewViewNameInputField": "Viewname",
     "addDescription": "Project DemoQA",
     "editedDescription":"New Description",
     "cellData": "N/A",
-    "viewName": "viewName",
     "viewsTabBar": {
         "tabAllViewsInTabBar": "All",
         "activeTabViewColor": "rgb(20, 20, 31)",
