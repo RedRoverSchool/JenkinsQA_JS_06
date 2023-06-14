@@ -205,7 +205,7 @@ Cypress.Commands.add("openHomePage", () => {
     if(homePage.getDashboardElement().should("have.length", 1)) {
         homePage.getTable().should("be.visible");
     } else {
-        homePage.retrieveWelcomeMessage().should("equal", homePageHeader);
+        homePage.getWelcomeMessage().should("equal", homePageHeader);
     }
 });
 
@@ -213,5 +213,5 @@ Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
     homePage
         .clickFreestyleProjectNameLink()
         .clickConfigureSideMenuLink()
-        .retrievePageHeader().should("equal", configurePageHeader);
+        .getPageHeader().should("equal", configurePageHeader);
 });
