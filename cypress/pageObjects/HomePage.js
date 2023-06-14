@@ -118,7 +118,7 @@ class HomePage {
     getDashboardElement = () => cy.get('.dashboard');
     getDeleteOrgFolderDrpDwnMenuBtn = () =>
         cy.get("#breadcrumb-menu li:nth-child(4) span")
-    getOrgFolderDrpDwnMenuBtn = () => cy.get('a[href="job/OrganizationFolderJob/"] button')    
+    
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
