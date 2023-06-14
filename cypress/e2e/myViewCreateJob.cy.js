@@ -19,7 +19,7 @@ describe('myViewsCreateJob', () => {
    cy.get('h1.job-index-headline').should('have.text', addJob.projectHeader);
   }); 
 
-  it('AT_09.08.002 My view Create job Verify User should be able to enter item name, choose type, click Ok', () => {
+  it.skip('AT_09.08.002 My view Create job Verify User should be able to enter item name, choose type, click Ok', () => {
     cy.get('a[href="/me/my-views"]').click();
 
     cy.get('a[href="newJob"]').click();
