@@ -28,6 +28,7 @@ import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
 import OrgFolderDeletePage from "./OrgFolderDeletePage";
+import DistributedBuildsLinkPage from "./DistributedBuildsLinkPage";
 
 class HomePage {
 
@@ -118,7 +119,8 @@ class HomePage {
     getDashboardElement = () => cy.get('.dashboard');
     getDeleteOrgFolderDrpDwnMenuBtn = () =>
         cy.get("#breadcrumb-menu li:nth-child(4) span")
-    
+    getLearnMoreAboutDistributedBuildsLink = () => cy.get('.content-block__help-link');
+
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -431,6 +433,11 @@ class HomePage {
         return new OrgFolderDeletePage();
     }
 
+    clickLearnMoreAboutDistributedBuildsLink() {
+        this.getLearnMoreAboutDistributedBuildsLink().invoke('removeAttr','target').click();
+        return new DistributedBuildsLinkPage(); 
+        
+    }
 }
 
 export default HomePage;
