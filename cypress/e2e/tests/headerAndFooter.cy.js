@@ -11,6 +11,7 @@ import userConfigurePageData from "../../fixtures/pom_fixtures/userConfigurePage
 import HomePage from "../../pageObjects/HomePage";
 import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
+import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 
 describe('headerAndFooter', () => {
 
@@ -163,5 +164,18 @@ describe('headerAndFooter', () => {
             .selectUserBuildsMenu()
             .getPageHeading()
             .should('contain', userBuildsPageData.heading + Cypress.env('local.admin.username'));
+    });
+   
+    it('AT_01.05_014 | Header> Verify User can change info about the user on the “Configure” page.', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .clickUserDescriptionBtn()
+            .typeUserDescriptionInputField(UserProfilePageData.editDescription)
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionText()
+            .should('have.text', UserProfilePageData.editDescription);
     });
 })

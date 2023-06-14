@@ -99,4 +99,17 @@ describe('pipelineProject',()=>{
             .should('not.have.text', newItemPageData.pipelineName)
             .and('include.text', homePageData.homePageHeader); 
     });
+
+    it('AT_13.07.001 | <Pipeline>User is able to choose in pipeline Project on the drop down menu speed/durability override and save it',()=>{
+        cy.createPipeline(newItemPageData.pipelineName); 
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .selectConfigPipelineDrpDwnMenuBtn()
+            .clickspeedPipelineProjectCheckbox()
+            .getspeedPipelineProjectDrpDnwMemuList().should('have.length',3).should('be.visible')
+            .each((el, index) => {
+               expect(el.text()).to.equal(pipelineConfigurePageData.pipelineSpeedDurabilityOverride[index])
+      });                   
+    })
 })

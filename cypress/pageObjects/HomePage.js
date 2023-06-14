@@ -430,6 +430,10 @@ class HomePage {
         this.getDeleteOrgFolderDrpDwnMenuBtn().click();
         return new OrgFolderDeletePage();
     }
+    selectConfigPipelineDrpDwnMenuBtn(){
+      this.getProjectNameDropdownConfigureLink().click()
+      return new PipelineProjectConfigurePage()
+    }
 
 }
 
