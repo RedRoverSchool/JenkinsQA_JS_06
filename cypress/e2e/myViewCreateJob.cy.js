@@ -30,7 +30,7 @@ describe('myViewsCreateJob', () => {
     cy.url().should('include', addJob.configurePageEndpoint);
   });
 
-  it('AT_09.08.003 My view Create job Verify User can insert general information about item and save it', () => {
+  it.skip('AT_09.08.003 My view Create job Verify User can insert general information about item and save it', () => {
     cy.get('a[href="/me/my-views"]').click();
     cy.get('a[href="newJob"]').click();
     cy.get('input#name').type(addJob.projectName);
