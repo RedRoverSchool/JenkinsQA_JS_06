@@ -422,7 +422,7 @@ class HomePage {
         return new ConfigureCloudsPage();
     }
 
-    retrieveWelcomeMessage() {
+    getWelcomeMessage() {
         return this.getHomepageHeader().then($el => {
             return $el.text().trim();
         });
@@ -431,6 +431,10 @@ class HomePage {
     clickDeleteOrgFolderDrpDwnMenuBtn() {
         this.getDeleteOrgFolderDrpDwnMenuBtn().click();
         return new OrgFolderDeletePage();
+    }
+    selectConfigPipelineDrpDwnMenuBtn(){
+      this.getProjectNameDropdownConfigureLink().click()
+      return new PipelineProjectConfigurePage()
     }
 
     clickLearnMoreAboutDistributedBuildsLink() {

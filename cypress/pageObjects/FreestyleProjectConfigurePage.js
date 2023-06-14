@@ -15,7 +15,7 @@ class FreestyleProjectConfigurePage {
     getLeftSideMenuPostBuldActionsBtn = () => cy.get('button[data-section-id="post-build-actions"]');
     getAddPostBuildActionBtn = () => cy.get('button.hetero-list-add').contains('Add post-build action');
     getAddPostBuildActionDropDownMenuItems = () => cy.get('.config-table .jenkins-section:nth-child(11) li .yuimenuitemlabel');
-    getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk'); 
+    getPostBuildActionWindow = () => cy.get('[name="publisher"].repeated-chunk');
     getPostBuildActionWindowHeader = () => cy.get('.repeated-chunk__header');
     getAdvancedBtn = () => cy.get('div.config-table > .jenkins-form-item--tight > .jenkins-buttons-row > .advancedButton');
     getAdvancedBtnChboxList = () => cy.get('[style="display: block;"] [type="checkbox"]');
@@ -24,7 +24,7 @@ class FreestyleProjectConfigurePage {
     getDiscardOldBuildsCheck = () => cy.get('input#cb4');
     getDiscardOldBuildsSection = () => cy.get("div[ref='cb4'] ~ div.form-container.tr[style] select.dropdownList option");
     getMaxNumberOfBuildsToKeepInputField = () => cy.get('input[name="_.numToKeepStr"]');
-    getSourceCodeNoneRadioBtn = () =>  cy.get('label[for="radio-block-0"]');
+    getSourceCodeNoneRadioBtn = () => cy.get('label[for="radio-block-0"]');
     getBuildTriggersCheck = () => cy.get('input#cb17');
     getBuildTriggersOptionLabel = () => cy.get('#cb17 + label');
     getScheduleInputField = () => cy.get('textarea[name="_.spec"]');
@@ -40,24 +40,27 @@ class FreestyleProjectConfigurePage {
     getScriptCodeInputField = () => cy.get('.CodeMirror textarea');
     getApplyBtn = () => cy.get('button[name="Apply"]');
     getNotificationMessage = () => cy.get('#notification-bar span');
-    
+
     clickSaveBtnAndGoFreestyleProject() {
         this.getProjectConfigSaveBtn().click();
         return new FreestyleProjectPage();
-    }; 
+    };
+
     clickLeftSidePanelBuildStepsBtn() {
         this.getLeftSidePanelBuildStepsBtn().click()
         return this
     };
+
     clickAddBuildStepBtn() {
         this.getAddBuildStepBtn().click()
         return this
     };
+
     selectBuildStepFromMenuListItem(idx) {
         this.getAddBuildStepMenuList().eq(idx).click()
         return this
     };
-    
+
     checkBuilderWindowHeaderName(name) {
         this.getBuilderWindowHeader()
             .should('include.text', name)
@@ -88,18 +91,21 @@ class FreestyleProjectConfigurePage {
         this.getLeftSideMenuPostBuldActionsBtn().click()
         return this
     };
+
     clickAddPostBuildActionBtn() {
         this.getAddPostBuildActionBtn().click()
         return this
     };
+
     selectPostBuildActionDropDownMenuItem(idx) {
         this.getAddPostBuildActionDropDownMenuItems().eq(idx).click()
         return this
     };
+
     checkPostBuildActionWindowHeaderName(name) {
         this.getPostBuildActionWindowHeader()
             .should('include.text', name)
-        return this    
+        return this
     };
 
     clickAdvancedBtn() {
@@ -108,11 +114,11 @@ class FreestyleProjectConfigurePage {
     }
 
     checkAdvancedBtnChbox(idx) {
-        this.getAdvancedBtnChboxList(idx).check({force : true});
+        this.getAdvancedBtnChboxList(idx).check({force: true});
         return this;
     }
 
-    retrievePageHeader() {
+    getPageHeader() {
         return this.getSidePanelHeader().then($el => {
             return $el.text();
         });
@@ -161,10 +167,24 @@ class FreestyleProjectConfigurePage {
         return this;
     }
 
-    retrieveNotificationMessageText() {
+    getNotificationMessageText() {
         return this.getNotificationMessage().then($el => {
             return $el.text();
         })
+    }
+
+    setConfigurationsForScheduledFreestyleProject(description, maxBuilds, schedule, buildEnvironmentOption,
+                                                  scriptOption, scriptText) {
+        this.typeDescriptionInputField(description)
+            .clickDiscardOldBuildsLabel()
+            .typeMaxNumberOfBuildsToKeepInputField(maxBuilds)
+            .clickBuildTriggersOptionLabel()
+            .typeScheduleInputField(schedule)
+            .selectBuildEnvironmentOption(buildEnvironmentOption)
+            .clickAddBuildStepBtn()
+            .selectScriptOption(scriptOption)
+            .typeScriptCodeInputField(scriptText)
+            .clickApplyBtn()
     }
 }
 

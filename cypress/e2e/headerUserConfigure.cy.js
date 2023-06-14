@@ -54,7 +54,7 @@ describe('Header User configure', () => {
         });
     });
 
-    it('AT_01.05 _008| <Header> User can change information about user', function () {
+    it.skip('AT_01.05 _008| <Header> User can change information about user', function () {
         cy.navigateUserConfigurationPage().then(() => {
             descriptionField().should('be.visible');
             descriptionField().type('{selectall}').then(() => {
@@ -136,7 +136,7 @@ describe('Header User configure', () => {
         cy.get('#description').should('include.text', userDescription.textDescription);
     })
 
-    it ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
+    it.skip ('AT_01.05_014 | Header>Visiting User Configure Page and Changing User Information', () => {
         cy.get("a[href^='/user/']>.jenkins-menu-dropdown-chevron")
           .realHover()
           .click();

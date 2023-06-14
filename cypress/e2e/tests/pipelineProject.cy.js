@@ -3,8 +3,9 @@ import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import gitHubPage from "../../fixtures/pom_fixtures/gitHubPage.json";
-import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json"
-import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json"; 
+import pipelineConfigurePageData from "../../fixtures/pom_fixtures/pipelineConfigurePage.json";
+import pipelinePageData from "../../fixtures/pom_fixtures/pipelinePage.json";
+import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 
 
 describe('pipelineProject',()=>{
@@ -85,4 +86,30 @@ describe('pipelineProject',()=>{
             .getDescription()
             .should('have.text', pipelineConfigurePageData.firstDescription + pipelinePageData.additionalDescriptionPipeline)
     });
+
+    it('AT_13.02.005 | Pipeline | Delete with breadcrumbs dropdown menu',()=>{
+        cy.createPipeline(newItemPageData.pipelineName);
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDashboardDropdownBtn()
+            .clickProjectBreadcrumbsMenu()
+            .clickDeletePipelineMenuFromBreadcrumbs()
+            .getMainPanel()
+            .should('not.have.text', newItemPageData.pipelineName)
+            .and('include.text', homePageData.homePageHeader); 
+    });
+
+    it('AT_13.07.001 | <Pipeline>User is able to choose in pipeline Project on the drop down menu speed/durability override and save it',()=>{
+        cy.createPipeline(newItemPageData.pipelineName); 
+
+        homePage
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.pipelineName)
+            .selectConfigPipelineDrpDwnMenuBtn()
+            .clickspeedPipelineProjectCheckbox()
+            .getspeedPipelineProjectDrpDnwMemuList().should('have.length',3).should('be.visible')
+            .each((el, index) => {
+               expect(el.text()).to.equal(pipelineConfigurePageData.pipelineSpeedDurabilityOverride[index])
+      });                   
+    })
 })

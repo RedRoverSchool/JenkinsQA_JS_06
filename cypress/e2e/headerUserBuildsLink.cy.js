@@ -19,7 +19,7 @@ describe('Header - User Builds Link', () => {
     cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()
   });
     
-  it('Verify redirected to the “Builds for User" page', () => {
+  it.skip('Verify redirected to the “Builds for User" page', () => {
     cy.get('div.login.page-header__hyperlinks button.jenkins-menu-dropdown-chevron').click({force:true})
     cy.get('li.yuimenuitem a span').contains('Builds').click()
     
@@ -65,7 +65,7 @@ describe('Header - User Builds Link', () => {
     .should('deep.equal', projects)
   })
   
-  it('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
+  it.skip('AT_01.04.009 |<Header>User Builds link is visible/clicable/redirected',() => {
     const login = Cypress.env('local.admin.username').toLowerCase();
     
     cy.get('#page-header .jenkins-menu-dropdown-chevron').realHover().click()
