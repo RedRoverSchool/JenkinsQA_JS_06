@@ -3,6 +3,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multiConfProjectPageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
+import multiConfigurationProjectConfigurePage from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
@@ -47,15 +48,25 @@ describe("multiConfigurationProject", () => {
         .clickGoHome()
         .getNameMulticonfigProjectName()
         .should('have.text', newItemPageData.newMultiConfigurationProjectName)
+    })
 
+    it('AT_14.07.03 Delete Multi-configuration project within the selected project itself. ', () => {
+        cy.createMultiConfigurationProject(newItemPageData.newMultiConfigurationProjectName);
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.newMultiConfigurationProjectName)
+        .clickDeleteMultiConfigurationProject()
+        .getProjectTable()
+        .should('not.exist');
+    })
 
-        
-
-        
-       
-
-
-
-
+    it('AT_14.04_001 | Multi-configuration project verify adding description', () => {
+        homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(newItemPageData.multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .typeDescriptionInputField()
+        .clickSaveButton()
+        .getDescriptionField().should('have.text',multiConfigurationProjectConfigurePage.descriptionText);
     })
 })

@@ -5,6 +5,7 @@ const dayjs = require('dayjs');
 import PeoplePage from "./PeoplePage";
 import NewItemPage from "./NewItemPage";
 import MyViewPage from "./MyViewPage";
+import NewViewPage from "./NewViewPage";
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import OrgFolderPage from "./OrgFolderPage";
 import ResultSearchBoxPage from "./ResultSearchBoxPage";
@@ -27,13 +28,14 @@ import homePageData from "../fixtures/pom_fixtures/homePage.json"
 import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
+import OrgFolderDeletePage from "./OrgFolderDeletePage";
 
 class HomePage {
 
     getPipelineNameDrpDwnBtn = () => ('td a[href*="job/"] button')
     getHomepageHeader = () => cy.get('.empty-state-block h1');
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
+    getNewItemSideMenuLink = () => cy.get('a[href$="/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
@@ -63,7 +65,6 @@ class HomePage {
 
     getHomepageHeader = () => cy.get(".empty-state-block h1");
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
-    getNewItemSideMenuLink = () => cy.get('a[href="/view/all/newJob"]');
     getMyViewSideMenuLink = () => cy.get('a[href$="my-views"]');
     getCreateJobLink = () => cy.get('a[href="newJob"]');
     getProjectNameLink = () => cy.get('td>a[href*="job/"] span');
@@ -115,6 +116,9 @@ class HomePage {
     getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
     getConfigureACloudLink = () => cy.get('a[href="configureClouds"]');
     getDashboardElement = () => cy.get('.dashboard');
+    getDeleteOrgFolderDrpDwnMenuBtn = () =>
+        cy.get("#breadcrumb-menu li:nth-child(4) span")
+    getNewViewLink = () => cy.get('[href="/newView"]');
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -179,7 +183,7 @@ class HomePage {
 
     hoverAndClickProjectDrpDwnBtn(projectName) {
         this.getProjectNameLink().contains(projectName).realHover();
-        this.getProjectDrpDwnBtn().click();
+        this.getProjectDrpDwn(projectName).click();
         return this;
     }
 
@@ -416,12 +420,25 @@ class HomePage {
         return new ConfigureCloudsPage();
     }
 
-    retrieveWelcomeMessage() {
+    getWelcomeMessage() {
         return this.getHomepageHeader().then($el => {
             return $el.text().trim();
         });
     }
 
+    clickDeleteOrgFolderDrpDwnMenuBtn() {
+        this.getDeleteOrgFolderDrpDwnMenuBtn().click();
+        return new OrgFolderDeletePage();
+    }
+    selectConfigPipelineDrpDwnMenuBtn(){
+      this.getProjectNameDropdownConfigureLink().click()
+      return new PipelineProjectConfigurePage()
+    }
+
+    clickNewViewLink() {
+        this.getNewViewLink().click();
+        return new NewViewPage();
+    }
 }
 
 export default HomePage;

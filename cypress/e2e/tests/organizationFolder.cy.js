@@ -1,6 +1,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
-import HeaderAndFooter from "../../pageObjects/HeaderAndFooter"
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.json"
 
 describe('orgFolderConfigure', () => {
 
@@ -15,6 +16,34 @@ describe('orgFolderConfigure', () => {
         .clickMoveInSideMenuLink()
         .selectDestinationMoveJob(newItemPageData.folderName)
         .clickMoveButton()
+        headerAndFooter
+        .clickJenkinsHomeLink()
+        .clickFolderNameLink(newItemPageData.folderName)
+        .checkJobMoveInsideFolder(newItemPageData.orgFolderName)
+    })
+
+    it('AT_17.03_001| Delete organization folder within the selected organization folder', () => {
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+        homePage
+        .clickProjectDrpDwnBtn()
+        .clickDeleteOrgFolderDrpDwnMenuBtn()
+        .clickDeleteButton()
+        headerAndFooter
+        .searchTextSearchBox(newItemPageData.orgFolderName)
+        .getResultNoMatch()
+        .should('have.text', resultSearchBoxData.resultSearchNoMatchMsg)
+    });
+
+    it('AT_17.04_001 | Verify that user can move the organization folder through the Jenkins dashboard', function () {
+        cy.createFolderProject(newItemPageData.folderName)
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+        .clickProjectNameDropdownMoveLink()
+        .selectDestinationMoveJob(newItemPageData.folderName)
+        .clickMoveButton()
+
         headerAndFooter
         .clickJenkinsHomeLink()
         .clickFolderNameLink(newItemPageData.folderName)

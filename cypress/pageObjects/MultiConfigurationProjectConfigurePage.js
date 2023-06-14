@@ -1,5 +1,6 @@
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import projectData from "../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
+import multiConfigurationProjectConfigurePage from "../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 class MultiConfigurationProjectConfigurePage {
   getSaveButton = () => cy.get("button[name='Submit']");
@@ -26,7 +27,9 @@ class MultiConfigurationProjectConfigurePage {
   getAdvancedOptionsLabels = () => cy.get('#advanced-project-options~.tbody label.attach-previous');
   getMultiConfigForm = () => cy.document().its('forms.config.elements');
   getAdvancedOptionsCheckboxes = () => cy.get('#advanced-project-options~.tbody').find('input[type="checkbox"]');
-  getAdvancedOptionsBlock = () => cy.get('div+div[class="tbody dropdownList-container"]');
+  getAdvancedOptionsBlockCheckBoxes = () => cy.get('div+div[class="tbody dropdownList-container"]');
+  getAdvancedOptionsBlock = () => cy.get('div.jenkins-section:has(#advanced-project-options) div input:is([type="checkbox"], [name="_.displayNameOrNull"])');
+  getDescriptionInputField = () => cy.get('div.setting-main textarea[name="description"]');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -102,7 +105,7 @@ class MultiConfigurationProjectConfigurePage {
   };
 
   assertAdvancedOptionsCheckboxesChecked() {
-    return this.getAdvancedOptionsBlock()
+    return this.getAdvancedOptionsBlockCheckBoxes()
     .within(($elem) => {
       cy.wrap($elem)
         .find('input[type="checkbox"]')
@@ -111,12 +114,17 @@ class MultiConfigurationProjectConfigurePage {
   };
 
   assertAdvancedOptionsCheckboxesUnChecked() {
-    return this.getAdvancedOptionsBlock()
+    return this.getAdvancedOptionsBlockCheckBoxes()
     .within(($elem) => {
       cy.wrap($elem)
         .find('input[type="checkbox"]')
         .should('be.not.checked');
     })
   };
+
+  typeDescriptionInputField (){
+    this.getDescriptionInputField().type(multiConfigurationProjectConfigurePage.descriptionText)
+    return this
+  }
 }
 export default MultiConfigurationProjectConfigurePage;

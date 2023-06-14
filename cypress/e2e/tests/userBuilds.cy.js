@@ -29,4 +29,11 @@ describe('userBuilds', () => {
                 .getStatusIcon().should('have.css', 'height', size.heigth)
         });
     });
+
+    it('AT_01.04_006| User builds link| Verify the side panel', () =>{
+       headerAndFooter
+       .clickUserDropDownBtn() 
+       .selectUserBuildsMenu()
+       .getUserBuildsSidePanel().should('be.visible')
+    });
 })

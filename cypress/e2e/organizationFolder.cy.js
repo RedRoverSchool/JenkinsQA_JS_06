@@ -3,7 +3,7 @@
 import { folderName } from '../fixtures/createFolder.json'
 import { nameOrganizationFolder } from '../fixtures/organizationFolderNames.json'
 
-describe('organizationFolder', function () {
+describe.skip('organizationFolder', function () {
 
     beforeEach('Create two folders', function () {
         

@@ -2,13 +2,17 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import FreestyleProjectConfigurePage from "../../pageObjects/FreestyleProjectConfigurePage";
+import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
 
 describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
+    const headerAndFooter = new HeaderAndFooter();
     const configPage = new FreestyleProjectConfigurePage();
+    const freestyleProjectPage = new FreestyleProjectPage();
 
     beforeEach('Create Freestyle project', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
@@ -102,22 +106,56 @@ describe('freestyleProjectConfigure', () => {
             .selectScriptOption(data.scriptOption)
             .typeScriptCodeInputField(data.scriptText)
             .clickApplyBtn()
-            .retrieveNotificationMessageText().should('equal', data.applyConfirmMessage);
+            .getNotificationMessageText().should('equal', data.applyConfirmMessage);
 
         cy.openHomePage();
-        cy.openFreestyleProjectConfigurePage()
-            .then(() => {
-                configPage.getProjectEnabled().should("have.attr", "value", "true");
-                configPage.getDescriptionInputField().should("have.text", data.description);
-                configPage.getDiscardOldBuildsCheck().should("be.checked");
-                configPage.getStrategy().should("have.text", data.strategyOption);
-                configPage.getMaxNumberOfBuildsToKeepInputField().should("have.attr", "value", data.maxBuilds.toString());
-                configPage.getSourceCodeNoneRadioBtn().should("have.text", data.sourceCodeManagement);
-                configPage.getBuildTriggersCheck().should("be.checked");
-                configPage.getScheduleInputField().should("have.text", data.schedule);
-                configPage.getAddTimestampsCheck().should("be.checked");
-                configPage.getBuildStepName().should("contain.text", data.scriptOption);
-                configPage.getScriptText().should("have.text", data.scriptText);
-            });
+        cy.openFreestyleProjectConfigurePage();
+
+        configPage.getProjectEnabled().should("have.attr", "value", "true");
+        configPage.getDescriptionInputField().should("have.text", data.description);
+        configPage.getDiscardOldBuildsCheck().should("be.checked");
+        configPage.getStrategy().should("have.text", data.strategyOption);
+        configPage.getMaxNumberOfBuildsToKeepInputField().should("have.attr", "value", data.maxBuilds.toString());
+        configPage.getSourceCodeNoneRadioBtn().should("have.text", data.sourceCodeManagement);
+        configPage.getBuildTriggersCheck().should("be.checked");
+        configPage.getScheduleInputField().should("have.text", data.schedule);
+        configPage.getAddTimestampsCheck().should("be.checked");
+        configPage.getBuildStepName().should("contain.text", data.scriptOption);
+        configPage.getScriptText().should("have.text", data.scriptText);
     });
-});
+
+    it('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', function () {
+        const data = freestyleProjectConfigData.buildPeriodicallyProject;
+
+        cy.openFreestyleProjectConfigurePage();
+        configPage.setConfigurationsForScheduledFreestyleProject(
+            data.description,
+            data.maxBuilds,
+            data.schedule1,
+            data.buildEnvironmentOption,
+            data.scriptOption,
+            data.scriptText
+        )
+
+        cy.openHomePage();
+        headerAndFooter
+            .getCurrentUserName().should("be.visible").and("not.be.empty")
+            .then(($userName) => {
+                cy.wrap($userName.text()).as('currentUserName');
+            })
+        homePage
+            .clickFreestyleProjectNameLink()
+            .clickBuildNowSideMenuLink(newItemPageData.freestyleProjectName)
+            .getBuildsHistoryTableRows()
+            .should("not.have.length", 2, {timeout: 10000})
+            .then(() => {
+                cy.reload()
+            })
+           .then(() => {
+                freestyleProjectPage
+                    .clickLastBuildLink()
+                    .getBuildStartedByText()
+                    .should("equal", `${data.startedByUser}${this.currentUserName}`);
+           });
+    })
+})
