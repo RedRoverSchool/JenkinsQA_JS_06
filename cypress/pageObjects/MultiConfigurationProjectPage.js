@@ -6,6 +6,8 @@ class MultiConfigurationProjectPage {
     getMultiConfigurationProjectHeader = () => cy.get('#main-panel h1'); 
     getConfigureSideMenuLink = () => cy.get('[href$="configure"]');
     getDeleteMultiConfProject = () => cy.get('a[data-url$=doDelete]');
+    getDescriptionField = () => cy.get('#description div:first-child')
+
     clickDeleteSideMenuLink() {
         this.getDeleteSideMenuLink().click();
         return new HomePage();

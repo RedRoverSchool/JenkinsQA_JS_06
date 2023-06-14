@@ -3,6 +3,7 @@
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import multiConfProjectPageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
+import multiConfigurationProjectConfigurePage from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
@@ -56,5 +57,16 @@ describe("multiConfigurationProject", () => {
         .clickDeleteMultiConfigurationProject()
         .getProjectTable()
         .should('not.exist');
+    })
+
+    it('AT_14.04_001 | Multi-configuration project verify adding description', () => {
+        homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(newItemPageData.multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .typeDescriptionInputField()
+        .clickSaveButton()
+        .getDescriptionField().should('have.text',multiConfigurationProjectConfigurePage.descriptionText);
     })
 })

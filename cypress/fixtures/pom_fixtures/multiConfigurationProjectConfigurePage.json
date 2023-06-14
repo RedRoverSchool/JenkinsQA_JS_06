@@ -46,5 +46,7 @@
 
     "advancedOptionsValues":  ["10", "1", "testDirectory", "${testDirectory}", "Display Name"],
 
-    "defaultOptionsValues":  ["5", "0", "", "${COMBINATION}", ""]
+    "defaultOptionsValues":  ["5", "0", "", "${COMBINATION}", ""],
+
+    "descriptionText": "New Configuration Project Job"
 }
