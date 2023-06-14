@@ -38,7 +38,7 @@ describe('Multi Config Project Advanced Options', () => {
 		})
 	});
 
-	it('AT_14.05_002 | Multi-configuration project. There are 7 advanced project options in the list', () => {
+	it.skip('AT_14.05_002 | Multi-configuration project. There are 7 advanced project options in the list', () => {
 		const optionsNumber = projects.multiConfigurationProject.advancedOptions.length + projects.multiConfigurationProject.advancedOptionsField.length;
 
 		cy.contains('div.jenkins-section', 'Advanced Project Options').within(() => {

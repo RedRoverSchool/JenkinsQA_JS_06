@@ -27,6 +27,7 @@ import homePageData from "../fixtures/pom_fixtures/homePage.json"
 import ManageJenkinsPage from "./ManageJenkinsPage";
 import FreestyleProjectRenamePage from "./FreestyleProjectRenamePage";
 import ConfigureCloudsPage from "./ConfigureCloudsPage";
+import OrgFolderDeletePage from "./OrgFolderDeletePage";
 
 class HomePage {
 
@@ -115,6 +116,9 @@ class HomePage {
     getPipelineDrpDwnMenuItems = () => cy.get('.yuimenuitem a span')
     getConfigureACloudLink = () => cy.get('a[href="configureClouds"]');
     getDashboardElement = () => cy.get('.dashboard');
+    getDeleteOrgFolderDrpDwnMenuBtn = () =>
+        cy.get("#breadcrumb-menu li:nth-child(4) span")
+    
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -179,7 +183,7 @@ class HomePage {
 
     hoverAndClickProjectDrpDwnBtn(projectName) {
         this.getProjectNameLink().contains(projectName).realHover();
-        this.getProjectDrpDwnBtn().click();
+        this.getProjectDrpDwn(projectName).click();
         return this;
     }
 
@@ -421,6 +425,16 @@ class HomePage {
             return $el.text().trim();
         });
     }
+
+    clickDeleteOrgFolderDrpDwnMenuBtn() {
+        this.getDeleteOrgFolderDrpDwnMenuBtn().click();
+        return new OrgFolderDeletePage();
+    }
+    selectConfigPipelineDrpDwnMenuBtn(){
+      this.getProjectNameDropdownConfigureLink().click()
+      return new PipelineProjectConfigurePage()
+    }
+
 }
 
 export default HomePage;
