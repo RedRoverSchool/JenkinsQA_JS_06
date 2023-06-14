@@ -183,7 +183,7 @@ class HomePage {
 
     hoverAndClickProjectDrpDwnBtn(projectName) {
         this.getProjectNameLink().contains(projectName).realHover();
-        this.getProjectDrpDwnBtn().click();
+        this.getProjectDrpDwn(projectName).click();
         return this;
     }
 
@@ -431,10 +431,6 @@ class HomePage {
         return new OrgFolderDeletePage();
     }
 
-    hoverAndClickOrgFolderDrpDwnMenuBtn() {
-        this.getOrgFolderDrpDwnMenuBtn().realHover().click()
-        return this
-    }
 }
 
 export default HomePage;

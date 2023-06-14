@@ -39,7 +39,7 @@ describe('orgFolderConfigure', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
 
         homePage
-        .hoverAndClickOrgFolderDrpDwnMenuBtn()
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
         .clickProjectNameDropdownMoveLink()
         .selectDestinationMoveJob(newItemPageData.folderName)
         .clickMoveButton()
