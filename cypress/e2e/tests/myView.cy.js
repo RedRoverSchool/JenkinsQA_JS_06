@@ -6,13 +6,15 @@ import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProje
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import newViewData from "../../fixtures/pom_fixtures/newView.json";
-import freestyleProjectConfigureData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json"
+import freestyleProjectConfigureData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
+import ViewPage from "../../pageObjects/ViewPage";
 
 
 describe('myView', () => {
 
   const homePage = new HomePage();
   const headerAndFooter = new HeaderAndFooter();
+  const viewPage = new ViewPage();
   
     it('AT_09.08.001 | <My view> Create Freestyle Project job', () => {
         homePage
@@ -194,4 +196,22 @@ describe('myView', () => {
       .clickOkBtnAndGoFreestyleProjectConfig()
       .getSidePanelHeader().should('have.text', freestyleProjectConfigureData.configurePageHeader);
   });
+
+  it('AT_09.07.001|Verify that "Edit View" tab is displayed', () => {
+      cy.createFreestyleProject(newItemPageData.freestyleProjectName);
+      homePage
+      .clickMyViewSideMenuLink()
+      .verifyAndClickAddNewViewLink()
+      .typeNewViewNameIntoInputField(newViewData.viewNames.myView)
+      .checkViewTypeRadioButton(newViewData.viewNames.myView)
+      .clickCreateNewViewButton(newViewData.viewNames.myView)
+      .getEditViewSideMenuLink()
+      .should('be.visible')
+  });
+  after('delete view', () => {
+       viewPage
+       .clickDeleteViewBtn()
+       .clickMyViewDeleteOkBtn();
+});
+
 });

@@ -6,6 +6,7 @@ class ViewPage {
     getNameMyViewList = () => cy.get('.tabBar a');
     getJobUrlsList = () => cy.get('#projectstatus tbody>tr>td:nth-child(3) a');
     getJobNamesList = () => cy.get('#projectstatus tbody>tr>td:nth-child(3) span');
+    getEditViewSideMenuLink = () => cy.get('a[href*="/configure"].task-link ');
 
     clickDeleteViewBtn() {
         this.getDeleteViewBtn().click();
