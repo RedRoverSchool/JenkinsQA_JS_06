@@ -77,4 +77,13 @@ describe('folder', () => {
             .should('eq', folderPageData.folderNewName)
     })
 
+    it('AT _05.04_003 User is able to Create Folder', () => {
+        cy.createFolderProject(folderPageData.folderName) 
+
+        homePage
+            .clickProjectNameLink(folderPageData.folderName)            
+            .trimFolderHeaderName()
+            .should('eq', folderPageData.folderName)             
+    });
+
 });
