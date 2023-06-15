@@ -12,5 +12,7 @@
             "Full Stage View",
             "Rename", 
             "Pipeline Syntax"
-            ]
+            ],
+    "pipelinePageUrl" : "/job/",
+    "pipelinePageHeaderStart" : "Pipeline"
 }

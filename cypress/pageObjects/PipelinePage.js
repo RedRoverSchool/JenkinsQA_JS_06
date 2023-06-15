@@ -61,7 +61,19 @@ class PipelinePage {
         this.getBreadcrumbsPipelineMenuListItems().contains(pipelinePageData.textDeletePipeline).click();
         return new HomePage();
     };
-    
-} 
+
+    clickCancelConfirmDeletePipeline() {
+        cy.on('window:confirm', (str) => {
+            expect(str).to.equal(`${pipelinePageData.confirmationOfDeletingFromSideBar} ‘${newItemPageData.pipelineName}’?`);
+            return false;
+        });
+        return this;
+    };
+
+    verifyPipelinePageUrl() {
+        cy.url().should('contain', `${pipelinePageData.pipelinePageUrl}${newItemPageData.pipelineName}`);
+        return this;
+    };
+};
 
 export default PipelinePage;
