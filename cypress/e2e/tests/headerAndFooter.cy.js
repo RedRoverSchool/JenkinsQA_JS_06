@@ -195,6 +195,6 @@ describe('headerAndFooter', () => {
             .clearUserStatusDescription()
             .clickUserDescriptionSaveBtn()
             .getUserDescriptionBtn()
-            .should('contain', 'Add description');
+            .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
 })
