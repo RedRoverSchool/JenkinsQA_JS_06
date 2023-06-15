@@ -6,6 +6,8 @@ import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProje
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 import myViewData from "../../fixtures/pom_fixtures/myView.json";
 import newViewData from "../../fixtures/pom_fixtures/newView.json";
+import freestyleProjectConfigureData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json"
+
 
 describe('myView', () => {
 
@@ -181,5 +183,15 @@ describe('myView', () => {
       .and('contain', newViewData.viewNames.globalView)
       .and('contain', newViewData.viewNames.listView)
       .and('contain', newViewData.viewNames.myView);
+  });
+
+  it('AT_09.08.002 My view Create job Verify User should be able to enter item name, choose type, click Ok', () => {
+    homePage
+      .clickMyViewSideMenuLink()
+      .clickCreateAJobLink()
+      .typeNewItemNameInputField(newItemPageData.freestyleProjectName)
+      .selectFreestyleProjectItem()
+      .clickOkBtnAndGoFreestyleProjectConfig()
+      .getSidePanelHeader().should('have.text', freestyleProjectConfigureData.configurePageHeader);
   });
 });

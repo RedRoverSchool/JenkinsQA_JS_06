@@ -38,6 +38,7 @@ class MyViewPage {
   getEditDescriptionLink = () => cy.get('#description-link');
   getActiveTabViewInTabBar = () => cy.get('.tabBar .tab.active');
   getViewsTabBar = () => cy.get('.tabBar');
+  getCreateAJobLink = () => cy.get('a[href="newJob"]');
 
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
@@ -167,5 +168,10 @@ clickMultiBranchPipelineNameLink(){
       .and('have.css', 'background-color', myView.viewsTabBar.activeTabViewBackgroundColor);
     return this;
   };
+
+  clickCreateAJobLink() {
+    this.getCreateAJobLink().click();
+    return new NewItemPage();
+  }
 }
 export default MyViewPage;

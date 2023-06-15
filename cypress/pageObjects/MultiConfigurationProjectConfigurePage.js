@@ -1,5 +1,6 @@
 import MultiConfigurationProjectPage from "./MultiConfigurationProjectPage";
 import projectData from "../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
+import multiConfigurationProjectConfigurePage from "../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 class MultiConfigurationProjectConfigurePage {
   getSaveButton = () => cy.get("button[name='Submit']");
@@ -28,6 +29,7 @@ class MultiConfigurationProjectConfigurePage {
   getAdvancedOptionsCheckboxes = () => cy.get('#advanced-project-options~.tbody').find('input[type="checkbox"]');
   getAdvancedOptionsBlockCheckBoxes = () => cy.get('div+div[class="tbody dropdownList-container"]');
   getAdvancedOptionsBlock = () => cy.get('div.jenkins-section:has(#advanced-project-options) div input:is([type="checkbox"], [name="_.displayNameOrNull"])');
+  getDescriptionInputField = () => cy.get('div.setting-main textarea[name="description"]');
 
   clickSaveButton() {
     this.getSaveButton().click();
@@ -119,5 +121,10 @@ class MultiConfigurationProjectConfigurePage {
         .should('be.not.checked');
     })
   };
+
+  typeDescriptionInputField (){
+    this.getDescriptionInputField().type(multiConfigurationProjectConfigurePage.descriptionText)
+    return this
+  }
 }
 export default MultiConfigurationProjectConfigurePage;
