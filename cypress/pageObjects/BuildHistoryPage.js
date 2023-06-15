@@ -16,6 +16,9 @@ class BuildHistoryPage {
     getSortHeaderBuild = () => cy.get('#projectStatus thead th:nth-child(2) .sortheader')
     getScheduleBuildBtn = () => cy.get('a[tooltip*="Schedule a Build"]')
     getEditBuildInformationBtn = () => cy.get('#breadcrumb-menu a[href$="/configure"] span');
+    getProjectStatusTableProjectName = () => cy.get('td:nth-child(2) a:first-child')
+    getProjectStatusTableProjectBuildNumber = () => cy.get('td:nth-child(2) .jenkins-table__badge')
+    getTimeLineProjectNameAndBuild = () => cy.get('.label-event-blue') 
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();
@@ -74,6 +77,28 @@ class BuildHistoryPage {
         this.getEditBuildInformationBtn().click();
         return new EditBuildInformationPage();
     };
+
+    retrieveFromTimeLineProjectNameAndBuildNumber() {
+        let timeLineProjectNameandBuildNumberArray = []
+        this.getTimeLineProjectNameAndBuild().each(($el) => {
+            let text = Cypress._.map($el, 'innerText').toString().replace(/\s+/g, '')
+            timeLineProjectNameandBuildNumberArray.push(text)
+            })
+        return cy.wrap (timeLineProjectNameandBuildNumberArray)
+    };
+
+    retrieveFromProjectStatusTableProjectNameAndBuildNumber() {
+        let projectNameAndBuildNumberArray = []
+        this.getProjectStatusTable().within(() => {
+            this.getProjectStatusTableRows().each((_, row) => {
+                this.getProjectStatusTableRows().eq(row).find('td:nth-child(2)').then(($el) => {
+                    projectNameAndBuildNumberArray.push($el.text())
+                })
+            })  
+        })
+        return cy.wrap (projectNameAndBuildNumberArray)
+    };
+
 }
 
 export default BuildHistoryPage;
