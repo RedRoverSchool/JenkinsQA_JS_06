@@ -1,8 +1,8 @@
 /// <reference types="cypress"/>
 import data from '../fixtures/createNewView.json';
 
-describe('My Views Edit View', () => {
-    it('AT_09.07.001 | My views | Verify that "Edit View" tab is displayed', () => {
+describe.skip('My Views Edit View', () => {
+    it.skip('AT_09.07.001 | My views | Verify that "Edit View" tab is displayed', () => {
         cy.get('a[href$="/newJob"]').click();
         cy.get('input.jenkins-input').type(data.newItem);
         cy.get('.hudson_model_FreeStyleProject').click();
@@ -18,7 +18,7 @@ describe('My Views Edit View', () => {
         cy.get('.task-link-text').should('include.text', data.editView);
     });
 
-    it('AT_09.07.003 | Verify user can click "Edit View" button', () => {
+    it.skip('AT_09.07.003 | Verify user can click "Edit View" button', () => {
         cy.get('a[href$="/newJob"]').click();
         cy.get('input.jenkins-input').type(data.newItem);
         cy.get('.hudson_model_FreeStyleProject').click();

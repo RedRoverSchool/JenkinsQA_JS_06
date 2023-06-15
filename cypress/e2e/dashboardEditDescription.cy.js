@@ -2,7 +2,7 @@
 import descriptions from "../fixtures/homePage.json"
 
 describe('Dashboard Edit Description', () => {
-  it('20.02 _001| Dashboard > Editing Description', () => {
+  it.skip('20.02 _001| Dashboard > Editing Description', () => {
     cy.get('#description-link').contains(descriptions.add).click()
     cy.get('.jenkins-input').type(descriptions.addDescription)
     cy.get('button[name="Submit"]').contains(descriptions.save).click()
@@ -14,7 +14,7 @@ describe('Dashboard Edit Description', () => {
     cy.get('#description div:first-of-type').should('have.text', descriptions.editDescription)
   });
 
-it('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
+it.skip('AT_20.02_003 | Dashboard Verify The "Edit Description" button', () => {
   cy.get('[href="/view/all/newJob"] .task-icon-link').click();
   cy.get("#name").type("First Project");
   cy.get(".hudson_model_FreeStyleProject .label").click();

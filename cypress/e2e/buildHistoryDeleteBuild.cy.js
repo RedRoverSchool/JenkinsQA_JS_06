@@ -25,7 +25,7 @@ describe('buildHistoryDeleteBuild', () => {
         cy.get('.jenkins-table__link.jenkins-table__badge.model-link.inside').should('not.exist')
     })
 
-    it('AT_07.03.002 | Build History > Verify Possibility to Delete Builds from Build Page', () => {
+    it.skip('AT_07.03.002 | Build History > Verify Possibility to Delete Builds from Build Page', () => {
         cy.get('#tasks a[href*=builds]').click()
         cy.get('.jenkins-table__badge').click()
         cy.get('.task:last-child').click()

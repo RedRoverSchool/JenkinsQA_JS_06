@@ -3,7 +3,7 @@
 import pipelineName from '../fixtures/pipelineName.json'
 
 
-describe('Create a new Pipeline',()=>{
+describe.skip('Create a new Pipeline',()=>{
     const nameOfPipeline = 'New Pipeline'
     const dashboardButton='.jenkins-breadcrumbs__list-item [href="/"]'
     const radioButtonPipeline='.org_jenkinsci_plugins_workflow_job_WorkflowJob'

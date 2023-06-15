@@ -1,10 +1,12 @@
 {
-    "multibranchPipelineName": "Multibranch Pipeline Job",
-    "freestyleProjectName": "Freestyle Project Job",
-    "orgFolderName": "OrgFolderTest",
-    "pipelineName": "Pipeline Job",
-    "multiConfigurationProjectName": "Multi-configuration Project Job",
-    "folderName": "Folder Job",
+    "multibranchPipelineName": "MultibranchPipelineJob",
+    "freestyleProjectName": "FreestyleProjectJob",
+    "orgFolderName": "OrganizationFolderJob",
+    "pipelineName": "PipelineJob",
+    "multiConfigurationProjectName": "Multi-configurationProjectJob",
+    "newMultiConfigurationProjectName": "New Name For Multiconfiguration Project",
+    "folderName": "FolderJob",
+    "newpipelineName": "NewPipelineJob",
 
     "newItemNames": [
         "Freestyle project",
@@ -15,12 +17,27 @@
         "Organization Folder"
     ], 
 
+    "newItemNamesWithSpaces": [
+        "   Freestyle project   ",
+        "   Pipeline   ",
+        "   Multi-configuration project   ",
+        "   Folder   ",
+        "   Multibranch Pipeline   ",
+        "   Organization Folder   "
+    ], 
+
     "newItemEndPoinURL" :  "/all/newJob", 
+    "newItemPageTitle": "New Item [Jenkins]",
     "newItemHeader" : "Enter an item name",
 
     "character" : "LooongName",
     "number" : 26,
 
-    "warningMessage": "» This field cannot be empty, please enter a valid name"
-  
+    "warningMessage": "» This field cannot be empty, please enter a valid name",
+
+    "itemsNamesAsc": ["MultibranchPipelineJob", "OrganizationFolderJob","PipelineJob"],
+    "itemsNamesDesc": ["PipelineJob", "OrganizationFolderJob","MultibranchPipelineJob"],
+
+    "specialCharactersArr": ["@", "#", "$", "%", "^", "&", "*", "?", ">", "<", "/", ";", "|"],
+    "specialCharactersMsg": " is an unsafe character"
 }

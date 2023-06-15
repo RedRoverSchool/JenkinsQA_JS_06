@@ -7,6 +7,7 @@ import FolderConfigurePage from "./FolderConfigurePage";
 import ErrorMessagePage from "./ErrorMessagePage";
 
 class NewItemPage {
+    getNewItemPageUrl = () => cy.url()
     getNewItemNameInputField = () => cy.get('#name');
     getMultibranchPipelineItem = () => cy.get('li[class$="WorkflowMultiBranchProject"]');
     getFreestyleProjectItem = () => cy.get('li[class$="FreeStyleProject"]');
@@ -21,7 +22,10 @@ class NewItemPage {
     getEachItemsName = () => cy.get('#createItem li[tabindex]')
     getWarningMessage = () => cy.get('#itemname-required');
     getNewItemHeader = () => cy.get('.header .h3');  
-    
+    getErrorMessageForInvalidInput = () => cy.get('.header #itemname-invalid')
+    getNewItemPageTitle = () => cy.get('head title')
+    getNewItemTypeIcons = () => cy.get('.j-item-options .icon')   
+
 
     typeNewItemNameInputField(name) {
         this.getNewItemNameInputField().clear().type(name);
@@ -102,6 +106,14 @@ class NewItemPage {
         this.getNewItemOkBtn().click();
         return new ErrorMessagePage();
     };
-        
+
+    verifyNewItemHeader(name) {
+        this.getNewItemHeader().should('have.text', name)
+        return this
+    };
+
+    clickOkBtnAndGoHomePage() {
+        this.getNewItemOkBtn().click();
+    };
 }
 export default NewItemPage;

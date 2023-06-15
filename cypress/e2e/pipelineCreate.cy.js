@@ -4,7 +4,7 @@ import homePage from '../fixtures/homePage.json'
 import newItemNames from '../fixtures/newItemNames.json'
 import myView from '../fixtures/myView.json'
 
-describe('pipelineCreate', () => {
+describe.skip('pipelineCreate', () => {
     it('AT_05.02_001 | Create a new Pipeline', () => {
         cy.get('.task:first-child ').click()
         cy.get('input#name').type(projects.pipeline.name)

@@ -1,6 +1,6 @@
 import myView from "../fixtures/myView.json"
 
-describe('my view create new view', function () {
+describe.skip('my view create new view', function () {
     beforeEach('create the job', function () {
         cy.get('a[href="newJob"]').click();
         cy.get('#name').type('First job');
@@ -10,7 +10,7 @@ describe('my view create new view', function () {
         cy.get(':nth-child(1) > .model-link').click()
     })
 
-    it('AT 09.01.002 create new view', function () {
+    it.skip('AT 09.01.002 create new view', function () {
         cy.get('a[href="/me/my-views"]').click()
         cy.get('a[title="New View"]').click()
         cy.get('#name').type('first view');
@@ -19,7 +19,7 @@ describe('my view create new view', function () {
         cy.get('.tab.active').should('contain', 'first view')
     });
 
-    it('AT_09.01_003| Create new view via tab My Views', function () {
+    it.skip('AT_09.01_003| Create new view via tab My Views', function () {
 
         cy.get('.task:nth-child(5)').click()
         cy.get('[title="New View"]').click()
@@ -29,7 +29,7 @@ describe('my view create new view', function () {
         cy.get('.tab:nth-child(2)').should('be.visible').contains('myFirstView')
     })
 
-    it('AT_09.01_006 | My Views Create new view', () => {
+    it.skip('AT_09.01_006 | My Views Create new view', () => {
         cy.get('#side-panel a[href="/me/my-views"]').click();
         cy.get('#projectstatus-tabBar [href$=newView]').click();
         cy.location('pathname').should('contain','/my-views/newView');

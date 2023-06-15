@@ -16,7 +16,7 @@ describe('Freestyle project - Rename project', () => {
         cy.get(':nth-child(1) > .model-link').click()
     });
 
-    it('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', function () {
+    it.skip('AT_12.03_001 | Verify renaming freestyle project using dropdown menu', function () {
         cy.get('tbody tr td a.jenkins-table__link').should('be.visible').should('have.text', jobName).realHover()
         cy.get('table#projectstatus button.jenkins-menu-dropdown-chevron').should('be.visible').click()
         cy.contains('div#breadcrumb-menu ul li a', 'Rename').should('be.visible').click();

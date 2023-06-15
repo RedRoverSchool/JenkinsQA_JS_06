@@ -1,5 +1,6 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
-import {addSourceItemsList} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import {addSourceItemsList, intervalTimeItemsList} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import multibranchPipline from "../fixtures/multibranchPipeline.json";
 
 class MultibranchPipelineConfigurePage {
     getProjectConfigSaveBtn = () => cy.get('button[name=Submit]');
@@ -10,6 +11,10 @@ class MultibranchPipelineConfigurePage {
     getAddSourceBtn = () => cy.get('#yui-gen1-button')
     getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
+    getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
+    getScanTriggersCheckbox = () => cy.get('#cb2');
+    getCheckbox = () =>cy.get('[type="checkbox"]');
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -49,6 +54,17 @@ class MultibranchPipelineConfigurePage {
         return this;
     };
 
+    createIntervalDrDwnItemList(){
+        return this.getIntervalDrDwnList()
+            .should('have.length', intervalTimeItemsList.length)
+            .then($els => {
+                return Cypress._.map($els, 'innerText')
+             })
+    }
+
+    hoverScanTriggerCheckbox(){
+        return this.getScanTriggersCheckbox().realHover();
+    };
 }
 
 export default MultibranchPipelineConfigurePage;

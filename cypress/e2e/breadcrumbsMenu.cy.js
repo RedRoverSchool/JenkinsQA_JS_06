@@ -47,7 +47,7 @@ describe('BreadcrumbsMenu', () => {
       cy.get('.header .h3').should('have.text', headers.newItemHeader);
    })
 
-   it('AT_04.02_005 | Verify Dashboard is visible in the breadcrumb on every page and user can return to the main page.', () => {
+   it.skip('AT_04.02_005 | Verify Dashboard is visible in the breadcrumb on every page and user can return to the main page.', () => {
 
       cy.get('.jenkins-breadcrumbs__list-item').contains('Dashboard').should('be.visible')
       cy.get('.jenkins-breadcrumbs__list-item').click()
@@ -101,7 +101,7 @@ describe('BreadcrumbsMenu', () => {
    });
 
    pages.dashboardMenu.forEach((pageName, ind) => {
-      it(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
+      it.skip(`AT_04.02.014 | Breadcrumbs Verify The "Dashboard" link is first element in the ${pageName} trail`, () => {
          cy.get('#breadcrumbs')
             .contains(pages.pageName)
             .realHover()

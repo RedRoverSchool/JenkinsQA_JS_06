@@ -1,49 +1,72 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
-import { name } from "../../fixtures/pom_fixtures/jobConfigurePage.json";
-import multiConfProjectPage from "../../fixtures/pom_fixtures/multiConfProjectPage.json"
+import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import multiConfProjectPageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
+import multiConfigurationProjectConfigurePage from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
 
     it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
-        cy.createMultiConfigurationProject(name);
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
         homePage
-            .clickMultiConfigProjectNameLink(name)
+            .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
             .clickDeleteSideMenuLink()
             .getProjectTable()
             .should('not.exist');
     });
 
     it('AT_14.07_002 | Delete Multi-configuration project on Dashboard with dropdown menu', () => {
-        cy.createMultiConfigurationProject(name);
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
         homePage
-            .clickProjectDrpDwnBtn()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
             .selectDeleteMultiConfProjectDrpDwnMenuBtn()
             .getProjectTable()
             .should('not.exist');
     });
 
     it('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
-        cy.createMultiConfigurationProject(name);
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
         homePage
-            .clickProjectDrpDwnBtn()
+            .hoverAndClickProjectDrpDwnBtn(newItemPageData.multiConfigurationProjectName)
             .selectRenameMultiConfProjectDrpDwnMenuBtn()
-            .typeMultiConfProjectNameInputField(name)
+            .typeMultiConfProjectNameInputField(newItemPageData.multiConfigurationProjectName)
             .clickMultiConfProjectRenameBtn()
             .getCurrentNameMessage()
-            .should('contain.text', multiConfProjectPage.currentNameMsg)
+            .should('contain.text', multiConfProjectPageData.currentNameMsg)
     })
-  
-     it.skip('AT_14.06.003 | Rename Multi-configuration project with the current name', () =>{
-        headerAndFooter
-        .clickJenkinsHomeLink()
+
+    it('AT_14.06.004 | Multi-configuration project>Rename Multi-configuration project', () => {
+        cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
+        homePage
+        .hoverProjectNameLink()
         .clickProjectDrpDwnBtn()
         .selectRenameMultiConfProjectDrpDwnMenuBtn()
-        .typeMultiConfProjectNameInputField(name)
-        .clickMultiConfProjectRenameBtn()
-        .getCurrentNameMessage()
-        .should('contain.text', multiConfProjectPage.currentNameMsg)
-    }
-});
+        .typeMultiConfProjectNameInputField(newItemPageData.newMultiConfigurationProjectName)
+        .clickRenameBtnMultiConfProject()
+        .clickGoHome()
+        .getNameMulticonfigProjectName()
+        .should('have.text', newItemPageData.newMultiConfigurationProjectName)
+    })
+
+    it('AT_14.07.03 Delete Multi-configuration project within the selected project itself. ', () => {
+        cy.createMultiConfigurationProject(newItemPageData.newMultiConfigurationProjectName);
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.newMultiConfigurationProjectName)
+        .clickDeleteMultiConfigurationProject()
+        .getProjectTable()
+        .should('not.exist');
+    })
+
+    it('AT_14.04_001 | Multi-configuration project verify adding description', () => {
+        homePage
+        .clickCreateJobLink()
+        .typeNewItemNameInputField(newItemPageData.multiConfigurationProjectName)
+        .selectMultiConfigurationProjectItem()
+        .clickOkBtnAndGoMultiConfProjectConfig()
+        .typeDescriptionInputField()
+        .clickSaveButton()
+        .getDescriptionField().should('have.text',multiConfigurationProjectConfigurePage.descriptionText);
+    })
+})

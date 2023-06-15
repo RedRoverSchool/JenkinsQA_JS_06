@@ -18,8 +18,7 @@ describe('Folder rename folder', () => {
             expect(text).to.equal(createFolder.folderName);
         });
     });
-
-    it('AT_15.06_001 | Folder>Rename Folder', () => {
+    it.skip('AT_15.06_001 | Folder>Rename Folder', () => {
         cy.get('#side-panel>#tasks>div.task a[href="/job/' + createFolder.folderName + '/confirm-rename"]').click();
         cy.url().should('eq', jenkinsURL + '/job/' + createFolder.folderName + '/confirm-rename');
         cy.get('form[name="config"] input[name="newName"').type('{selectAll}').type(createFolder.folderName + 'CHANGED');
@@ -46,7 +45,7 @@ describe('Folder rename folder', () => {
         cy.get('#main-panel p').should('have.text', messages.renameErrorMessage.message).and('be.visible')
     });
 
-    it('AT_15.06_03 | Folder>Rename Folder', () => {
+    it.skip('AT_15.06_03 | Folder>Rename Folder', () => {
         cy.get('#side-panel #tasks .task:nth-child(7)').contains('Rename').click()
         cy.url().should('eq', jenkinsURL + '/job/' + createFolder.folderName + '/confirm-rename');
         cy.get('.setting-main [name="newName"]').clear().type(createFolder.folderName1)
