@@ -74,7 +74,7 @@ describe('Header - User Builds Link', () => {
     cy.get('#main-panel h1').should('include.text', title + `${login}`)
   })
 
-  it('AT_01.04.04 | Header > User Builds link > Verify access to the side panel', () => {
+  it.skip('AT_01.04.04 | Header > User Builds link > Verify access to the side panel', () => {
     cy.get('.login.page-header__hyperlinks .jenkins-menu-dropdown-chevron').click({force: true})
     cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()
 

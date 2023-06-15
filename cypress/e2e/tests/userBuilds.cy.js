@@ -36,4 +36,18 @@ describe('userBuilds', () => {
        .selectUserBuildsMenu()
        .getUserBuildsSidePanel().should('be.visible')
     });
+
+    it('AT_01.04.04 | User Builds link | Verify tasks links on the side panel', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserBuildsMenu()
+            .getUserBuildsSigePanelTaskLinks().each(($el, index) => {
+                cy.wrap($el).should('be.visible')
+                cy.wrap($el).should('have.attr', 'href')
+            })
+            .then(($els) => {
+                return Cypress._.map($els, 'innerText')
+            })
+            .should('deep.equal', userBuildsPageData.SidePanelTasks)
+      });
 })
