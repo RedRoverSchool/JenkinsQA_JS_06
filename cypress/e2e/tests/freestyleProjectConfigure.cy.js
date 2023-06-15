@@ -160,7 +160,7 @@ describe('freestyleProjectConfigure', () => {
             });
     })
 
-    it.only('AT_12.05_011 | FreestyleProjectConfigure > API > Trigger job remotely by API call', function () {
+    it('AT_12.05_011 | FreestyleProjectConfigure > API > Trigger job remotely by API call', function () {
         const data = freestyleProjectConfigData.scriptedProject;
         const NAME = newItemPageData.freestyleProjectName;
         const ADMIN = Cypress.env('local.admin.username');
