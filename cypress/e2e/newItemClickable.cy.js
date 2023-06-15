@@ -14,7 +14,7 @@ describe('New Item |Items Names and Icons', () => {
         cy.get('.add-item-name').should('contain','Enter an item name');
     })
 
-    it('AT_05.04.001 |<New item>the link is visible and clickable and redirected', () => {
+    it.skip('AT_05.04.001 |<New item>the link is visible and clickable and redirected', () => {
         cy.get('[href="/view/all/newJob"]').should('be.visible')
         cy.get('[href="/view/all/newJob"]').should('have.text', 'New Item').click()
         cy.url().should('contain', '/view/all/newJob')

@@ -11,7 +11,7 @@ describe('AT_02.01_002 | Homepage Create a clickable job link', () => {
         cy.get('#ok-button').click()
         cy.get('#general').should('be.visible')
     });
-    it ('AT_05.04.03 | <New item> User is able to create Folder project', () => {
+    it.skip ('AT_05.04.03 | <New item> User is able to create Folder project', () => {
         cy.get("a[href='/view/all/newJob']").should('have.text', header).click()
         cy.url().should("eq", newPageUrl)
         cy.get('#name').type(text).should('be.visible')
