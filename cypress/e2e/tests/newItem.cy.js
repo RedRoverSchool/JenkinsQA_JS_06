@@ -149,8 +149,8 @@ describe('newItem', () => {
     })    
 
     it('AT_05.02.002 | Create a new Pipeline by clicking "New Item"', () => {
-        homePage.clickNewItemSideMenuLink()
-        newItemPage
+        homePage
+        .clickNewItemSideMenuLink()
         .typeNewItemNameInputField(newItemPageData.pipelineName)
         .selectPipelineItem()
         .clickOkBtnAndGoPipelineConfig()
