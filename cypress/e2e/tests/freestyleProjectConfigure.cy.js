@@ -160,11 +160,11 @@ describe('freestyleProjectConfigure', () => {
             });
     })
 
-    it('AT_12.05_011 | FreestyleProjectConfigure > API > Trigger job remotely by API call', function () {
+    it.only('AT_12.05_011 | FreestyleProjectConfigure > API > Trigger job remotely by API call', function () {
         const data = freestyleProjectConfigData.scriptedProject;
-        const name = newItemPageData.freestyleProjectName;
-        const admin = Cypress.env('local.admin.username');
-        const port = Cypress.env('local.port');
+        const NAME = newItemPageData.freestyleProjectName;
+        const ADMIN = Cypress.env('local.admin.username');
+        const PORT = Cypress.env('local.port');
 
         cy.openFreestyleProjectConfigurePage();
         projectConfigPage
@@ -177,15 +177,31 @@ describe('freestyleProjectConfigure', () => {
         projectPage.getNoBuildsSidePanelStatusText().should("equal", freestyleProjectPageData.statusText);
         projectPage.getPermalinksLinks().should("be.empty");
 
-        cy.generateAPIToken(name);
+        cy.generateAPIToken(NAME);
         userConfigPage.getNewTokenValueText()
             .then($t => {
-                cy.wrap($t.text()).as('token');
+                cy.wrap($t.text()).as('TOKEN');
             })
             .then(() => {
                 cy.request({
+                    method: 'GET',
+                    url: `http://${ADMIN}:${this.TOKEN}@localhost:${PORT}/crumbIssuer/api/json`
+                }).its('body')
+                    .then((body) => {
+                        cy.wrap(body.crumb).as('CRUMB');
+                        cy.wrap(body.crumbRequestField).as('CRUMB_REQUEST_FIELD');
+                    })
+            })
+            .then(() => {
+                const key = this.CRUMB_REQUEST_FIELD;
+                const value = this.CRUMB;
+                const header = {[key]: value}
+
+                cy.request({
                     method: 'POST',
-                    url: `http://${admin}:${this.token}@localhost:${port}/job/${name}/build?delay=0sec`
+                    url: `http://${ADMIN}:${this.TOKEN}@localhost:${PORT}/job/${NAME}/build?delay=0sec`,
+                    body: `${this.CRUMB_REQUEST_FIELD}=${this.CRUMB}`,
+                    headers: header
                 }).should(($response) => {
                     expect($response.status).to.eq(201);
                 })
