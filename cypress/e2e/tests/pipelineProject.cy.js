@@ -117,11 +117,11 @@ describe('pipelineProject',()=>{
         cy.createPipeline(newItemPageData.pipelineName); 
 
         homePage
-          .clickPipelineProjectName(newItemPageData.pipelineName)
-          .clickDeletePipelineBtn()
-          .clickCancelConfirmDeletePipeline()
-          .verifyPipelinePageUrl()
-          .getPipelinePageHeadline()
-          .should('have.text', `${pipelinePageData.pipelinePageHeaderStart} ${newItemPageData.pipelineName}`)
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDeletePipelineBtn()
+            .clickCancelConfirmDeletePipeline()
+            .verifyPipelinePageUrl()
+            .getPipelinePageHeadline()
+            .should('have.text', `${pipelinePageData.pipelinePageHeaderStart} ${newItemPageData.pipelineName}`);
     });
 });
