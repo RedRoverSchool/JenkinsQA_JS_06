@@ -8,6 +8,8 @@ class BuildPage {
     getPreviewTextarea = () => cy.get('div.textarea-preview');
     getSaveDescriptionBtn = () => cy.get("#description button");
     getDescriptionText = () => cy.get("#description div:first-child");
+    getBuildName = () => cy.get('.jenkins-icon-adjacent');
+    getBuildStartedBy = () => cy.get('table tr td p span');
 
     clickDeleteBuildBtn() {
         this.getDeleteBuildBtn().click();
@@ -43,6 +45,19 @@ class BuildPage {
         this.getBuildDescriptionInput().clear().type(newDescription);
         return this;
     };
+
+    getBuildStartedByText() {
+        return this.getBuildStartedBy().should("be.visible")
+            .then(($el) => {
+                return $el.text();
+            })
+    }
+
+    getBuildNameText() {
+        return this.getBuildName().then($el => {
+            return $el.text().split("(").shift().trim();
+        })
+    }
 
 }
 

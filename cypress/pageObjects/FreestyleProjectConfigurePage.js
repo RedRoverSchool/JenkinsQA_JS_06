@@ -186,6 +186,15 @@ class FreestyleProjectConfigurePage {
             .typeScriptCodeInputField(scriptText)
             .clickApplyBtn()
     }
+
+    setConfigurationsForScriptedFreestyleProject(description, buildEnvironmentOption, scriptOption, scriptText) {
+        this.typeDescriptionInputField(description)
+            .selectBuildEnvironmentOption(buildEnvironmentOption)
+            .clickAddBuildStepBtn()
+            .selectScriptOption(scriptOption)
+            .typeScriptCodeInputField(scriptText)
+            .clickApplyBtn()
+    }
 }
 
 export default FreestyleProjectConfigurePage;

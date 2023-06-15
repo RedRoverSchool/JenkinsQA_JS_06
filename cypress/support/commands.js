@@ -28,10 +28,15 @@ import HeaderAndFooter from "../pageObjects/HeaderAndFooter";
 import DashboardBreadcrumbs from "../pageObjects/DashboardBreadcrumbs";
 import HomePage from "../pageObjects/HomePage";
 import UserProfilePage from "../pageObjects/UserProfilePage";
-import { homePageHeader } from "../fixtures/pom_fixtures/homePage.json";
-import { configurePageHeader } from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
+import UserConfigurePage from "../pageObjects/UserConfigurePage";
+import {homePageHeader} from "../fixtures/pom_fixtures/homePage.json";
+import {configurePageHeader} from "../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 
 const userProfilePage = new UserProfilePage();
+const userConfigurePage = new UserConfigurePage();
+const homePage = new HomePage();
+const headerAndFooter = new HeaderAndFooter();
+const dashboard = new DashboardBreadcrumbs();
 
 Cypress.Commands.add('clearUserStatusDescription', () => {
     headerAndFooter
@@ -43,17 +48,13 @@ Cypress.Commands.add('clearUserStatusDescription', () => {
         .clickUserDescriptionSaveBtn();
 });
 
-const homePage = new HomePage();
-const headerAndFooter = new HeaderAndFooter();
-const dashboard = new DashboardBreadcrumbs();
-
 Cypress.Commands.add('createMultiBranchPipeline', (pipelineName) => {
     homePage
         .clickNewItemSideMenuLink()
         .typeNewItemNameInputField(pipelineName)
         .selectMultibranchPipelineItem()
         .clickOkBtnAndGoMultiPipelineConfig()
-   })
+})
 
 Cypress.Commands.add('createFolderProject', (folderName) => {
     homePage
@@ -129,14 +130,14 @@ Cypress.Commands.add('createMultBranchPipeline', (name) => {
         .clickJenkinsHomeLink()
 });
 
-  Cypress.Commands.add('createPipeline', (pipelineName) => {
+Cypress.Commands.add('createPipeline', (pipelineName) => {
     homePage
-          .clickNewItemSideMenuLink()
-          .typeNewItemNameInputField(pipelineName)
-          .selectPipelineItem()
-          .clickOkBtnAndGoPipelineConfig();
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectPipelineItem()
+        .clickOkBtnAndGoPipelineConfig();
     headerAndFooter
-          .clickJenkinsHomeLink()
+        .clickJenkinsHomeLink()
 });
 
 Cypress.Commands.add('createMultiConfigProject', (name) => {
@@ -147,7 +148,7 @@ Cypress.Commands.add('createMultiConfigProject', (name) => {
         .clickOkBtnAndGoMultiConfProjectConfig()
         .clickSaveButton()
     dashboard
-        .clickDashboardLinkAndGoHomePage();    
+        .clickDashboardLinkAndGoHomePage();
 });
 
 Cypress.Commands.add('addBuildDescription', (buildDescription) => {
@@ -161,7 +162,7 @@ Cypress.Commands.add('addBuildDescription', (buildDescription) => {
         .clickJenkinsHomeLink();
 });
 
-Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailAddress) =>{
+Cypress.Commands.add('createUser', (userName, password, confirmPassword, emailAddress) => {
     homePage
         .clickManageJenkinsSideMenu()
         .clickManageUsersLink()
@@ -177,14 +178,14 @@ Cypress.Commands.add('createUser',  (userName, password, confirmPassword, emailA
 
 Cypress.Commands.add('createPipelineWithDescription', (pipelineName) => {
     homePage
-          .clickNewItemSideMenuLink()
-          .typeNewItemNameInputField(pipelineName)
-          .selectPipelineItem()
-          .clickOkBtnAndGoPipelineConfig()
-          .typeDescriptionOnPiplineConfigPage()
-          .clickSaveBtnAndGoPipeline()
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(pipelineName)
+        .selectPipelineItem()
+        .clickOkBtnAndGoPipelineConfig()
+        .typeDescriptionOnPiplineConfigPage()
+        .clickSaveBtnAndGoPipeline()
     headerAndFooter
-          .clickJenkinsHomeLink()
+        .clickJenkinsHomeLink()
 });
 
 Cypress.Commands.add('createNewView', (viewName, viewType) => {
@@ -202,7 +203,7 @@ Cypress.Commands.add('createNewView', (viewName, viewType) => {
 Cypress.Commands.add("openHomePage", () => {
     headerAndFooter.clickHeadIcon();
 
-    if(homePage.getDashboardElement().should("have.length", 1)) {
+    if (homePage.getDashboardElement().should("have.length", 1)) {
         homePage.getTable().should("be.visible");
     } else {
         homePage.getWelcomeMessage().should("equal", homePageHeader);
@@ -214,4 +215,27 @@ Cypress.Commands.add('openFreestyleProjectConfigurePage', () => {
         .clickFreestyleProjectNameLink()
         .clickConfigureSideMenuLink()
         .getPageHeader().should("equal", configurePageHeader);
+});
+
+Cypress.Commands.add('generateAPIToken', (tokenName) => {
+    headerAndFooter
+        .clickUserDropDownBtn()
+        .selectUserConfigureMenu()
+        .getNoTokensMsg()
+        .then($el => {
+            if ($el.length > 1)
+                userConfigurePage
+                    .deleteUserTokens()
+                    .getNoTokensMsg()
+                    .should("have.length", 1, {timeout: 10000})
+                    .should("have.text", "There are no registered tokens for this user.");
+            else
+                userConfigurePage
+                    .getNoTokensMsgText()
+                    .should("equal", "There are no registered tokens for this user.");
+        })
+    userConfigurePage
+        .clickAddNewTokenBtn()
+        .typeTokenNameInputField(tokenName)
+        .clickGenerateBtn();
 });

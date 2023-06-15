@@ -3,7 +3,7 @@ import FreestyleProjectConfigurePage from "./FreestyleProjectConfigurePage";
 import HomePage from "./HomePage";
 import GitHubPage from "./GitHubPage";
 import FreestyleProjectPageData from '../fixtures/pom_fixtures/freestyleProjectPage.json'
-import BuildStatusPage from "./BuildStatusPage";
+import BuildPage from "./BuildPage";
 
 class FreestyleProjectPage {
     getConfigureSideMenuLink = () => cy.get('a[href$="configure"]')
@@ -24,8 +24,10 @@ class FreestyleProjectPage {
     getFrestyleProjectDrpDwmMenuList = () => cy.get('.yuimenuitem span');
     getBuildNowSideMenuLink = (projectName) => cy.get(`#tasks .task a[href="/job/${projectName}/build?delay=0sec"]`);
     getPermalinksHeader = () => cy.get('.permalinks-header');
-    getBuildsHistoryTableRows = () => cy.get('table tr');
+    getBuildsRows = () => cy.get('#buildHistory table tr[page-entry-id]');
     getLastBuildLink = () => cy.get('#main-panel a[href="lastBuild/"]');
+    getNoBuildsSidePanelStatus =() => cy.get('#no-builds');
+    getPermalinksLinks =() => cy.get('.permalinks-list');
 
 
     clickConfigureSideMenuLink() {
@@ -105,7 +107,13 @@ class FreestyleProjectPage {
 
     clickLastBuildLink() {
         this.getLastBuildLink().should("be.visible").click();
-        return new BuildStatusPage();
+        return new BuildPage();
+    }
+
+    getNoBuildsSidePanelStatusText() {
+        return this.getNoBuildsSidePanelStatus().then($el => {
+            return $el.text();
+        })
     }
 
 }

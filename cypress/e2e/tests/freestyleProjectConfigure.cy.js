@@ -4,15 +4,19 @@ import HomePage from "../../pageObjects/HomePage";
 import FreestyleProjectConfigurePage from "../../pageObjects/FreestyleProjectConfigurePage";
 import FreestyleProjectPage from "../../pageObjects/FreestyleProjectPage";
 import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
+import UserConfigurePage from "../../pageObjects/UserConfigurePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import freestyleProjectConfigData from "../../fixtures/pom_fixtures/freestyleProjectConfigure.json";
 import gitHubPageData from "../../fixtures/pom_fixtures/gitHubPage.json"
+import freestyleProjectPageData from "../../fixtures/pom_fixtures/freestyleProjectPage.json";
+import buildPageData from "../../fixtures/pom_fixtures/buildPage.json";
 
 describe('freestyleProjectConfigure', () => {
     const homePage = new HomePage();
     const headerAndFooter = new HeaderAndFooter();
-    const configPage = new FreestyleProjectConfigurePage();
-    const freestyleProjectPage = new FreestyleProjectPage();
+    const projectPage = new FreestyleProjectPage();
+    const projectConfigPage = new FreestyleProjectConfigurePage();
+    const userConfigPage = new UserConfigurePage();
 
     beforeEach('Create Freestyle project', () => {
         cy.createFreestyleProject(newItemPageData.freestyleProjectName);
@@ -95,7 +99,7 @@ describe('freestyleProjectConfigure', () => {
         const data = freestyleProjectConfigData.buildPeriodicallyProject;
 
         cy.openFreestyleProjectConfigurePage();
-        configPage
+        projectConfigPage
             .typeDescriptionInputField(data.description)
             .clickDiscardOldBuildsLabel()
             .typeMaxNumberOfBuildsToKeepInputField(data.maxBuilds)
@@ -111,25 +115,25 @@ describe('freestyleProjectConfigure', () => {
         cy.openHomePage();
         cy.openFreestyleProjectConfigurePage();
 
-        configPage.getProjectEnabled().should("have.attr", "value", "true");
-        configPage.getDescriptionInputField().should("have.text", data.description);
-        configPage.getDiscardOldBuildsCheck().should("be.checked");
-        configPage.getStrategy().should("have.text", data.strategyOption);
-        configPage.getMaxNumberOfBuildsToKeepInputField().should("have.attr", "value", data.maxBuilds.toString());
-        configPage.getSourceCodeNoneRadioBtn().should("have.text", data.sourceCodeManagement);
-        configPage.getBuildTriggersCheck().should("be.checked");
-        configPage.getScheduleInputField().should("have.text", data.schedule);
-        configPage.getAddTimestampsCheck().should("be.checked");
-        configPage.getBuildStepName().should("contain.text", data.scriptOption);
-        configPage.getScriptText().should("have.text", data.scriptText);
+        projectConfigPage.getProjectEnabled().should("have.attr", "value", "true");
+        projectConfigPage.getDescriptionInputField().should("have.text", data.description);
+        projectConfigPage.getDiscardOldBuildsCheck().should("be.checked");
+        projectConfigPage.getStrategy().should("have.text", data.strategyOption);
+        projectConfigPage.getMaxNumberOfBuildsToKeepInputField().should("have.attr", "value", data.maxBuilds.toString());
+        projectConfigPage.getSourceCodeNoneRadioBtn().should("have.text", data.sourceCodeManagement);
+        projectConfigPage.getBuildTriggersCheck().should("be.checked");
+        projectConfigPage.getScheduleInputField().should("have.text", data.schedule);
+        projectConfigPage.getAddTimestampsCheck().should("be.checked");
+        projectConfigPage.getBuildStepName().should("contain.text", data.scriptOption);
+        projectConfigPage.getScriptText().should("have.text", data.scriptText);
     });
 
     it('AT_12.05_007| Freestyle project > Configure > User can build the scheduled project manually', function () {
         const data = freestyleProjectConfigData.buildPeriodicallyProject;
 
         cy.openFreestyleProjectConfigurePage();
-        configPage.setConfigurationsForScheduledFreestyleProject(
-            data.description,
+        projectConfigPage.setConfigurationsForScheduledFreestyleProject(
+            data.description1,
             data.maxBuilds,
             data.schedule1,
             data.buildEnvironmentOption,
@@ -145,17 +149,56 @@ describe('freestyleProjectConfigure', () => {
             })
         homePage
             .clickFreestyleProjectNameLink()
-            .clickBuildNowSideMenuLink(newItemPageData.freestyleProjectName)
-            .getBuildsHistoryTableRows()
-            .should("not.have.length", 2, {timeout: 10000})
+            .clickBuildNowSideMenuLink(newItemPageData.freestyleProjectName);
+        cy.reload()
             .then(() => {
-                cy.reload()
-            })
-           .then(() => {
-                freestyleProjectPage
+                projectPage.getBuildsRows().should("have.length", 1, {timeout: 10000});
+                projectPage
                     .clickLastBuildLink()
                     .getBuildStartedByText()
-                    .should("equal", `${data.startedByUser}${this.currentUserName}`);
-           });
+                    .should("equal", `${buildPageData.startedByUser}${this.currentUserName}`);
+            });
+    })
+
+    it('AT_12.05_011 | FreestyleProjectConfigure > API > Trigger job remotely by API call', function () {
+        const data = freestyleProjectConfigData.scriptedProject;
+        const name = newItemPageData.freestyleProjectName;
+        const admin = Cypress.env('local.admin.username');
+        const port = Cypress.env('local.port');
+
+        cy.openFreestyleProjectConfigurePage();
+        projectConfigPage
+            .setConfigurationsForScriptedFreestyleProject(
+                data.description, data.buildEnvironmentOption, data.scriptOption, data.scriptText
+            )
+        cy.openHomePage();
+        homePage.clickFreestyleProjectNameLink();
+        projectPage.getBuildsRows().should("have.length", 0);
+        projectPage.getNoBuildsSidePanelStatusText().should("equal", freestyleProjectPageData.statusText);
+        projectPage.getPermalinksLinks().should("be.empty");
+
+        cy.generateAPIToken(name);
+        userConfigPage.getNewTokenValueText()
+            .then($t => {
+                cy.wrap($t.text()).as('token');
+            })
+            .then(() => {
+                cy.request({
+                    method: 'POST',
+                    url: `http://${admin}:${this.token}@localhost:${port}/job/${name}/build?delay=0sec`
+                }).should(($response) => {
+                    expect($response.status).to.eq(201);
+                })
+            })
+
+        cy.openHomePage();
+        homePage
+            .clickFreestyleProjectNameLink()
+        projectPage.getBuildsRows().should("have.length", 1);
+        projectPage.getPermalinksLinks().should("not.be.empty");
+        projectPage
+            .clickLastBuildLink()
+            .getBuildNameText()
+            .should("equal", `${buildPageData.buildName}`);
     })
 })

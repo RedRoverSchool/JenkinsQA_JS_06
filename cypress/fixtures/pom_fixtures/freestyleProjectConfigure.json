@@ -39,6 +39,7 @@
 
     "buildPeriodicallyProject": {
         "description": "New Freestyle Project with every 1 min build",
+        "description1": "New Freestyle Project with every 5 min build",
         "strategyOption": "Log Rotation",
         "maxBuilds": 2,
         "sourceCodeManagement": "None",
@@ -48,9 +49,14 @@
         "buildEnvironmentOption": "Add timestamps to the Console Output",
         "scriptOption": "Execute shell",
         "scriptText": "java --version",
-        "applyConfirmMessage": "Saved",
-        "message": "No changes in any of the builds.",
-        "scheduledProjectName": "ScheduledProject",
-        "startedByUser": "Started by user "
+        "applyConfirmMessage": "Saved"
+    },
+
+    "scriptedProject": {
+        "description": "New Freestyle Project with shell script to execute",
+        "buildEnvironmentOption": "Add timestamps to the Console Output",
+        "scriptOption": "Execute shell",
+        "scriptText": "java --version",
+        "applyConfirmMessage": "Saved"
     }
 }
