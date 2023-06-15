@@ -184,4 +184,17 @@ describe('headerAndFooter', () => {
             .getCurrentUserName()
             .should('be.visible');
     });
+
+    it('AT_01.05_015 Header>Verify user can visit Configure Page and delete user information', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserConfigureMenu()
+            .typeUserConfigDescription(userConfigurePageData.userDescription)
+            .clickUserConfigSaveBtn()
+            .clickUserDescriptionBtn()
+            .clearUserStatusDescription()
+            .clickUserDescriptionSaveBtn()
+            .getUserDescriptionBtn()
+            .should('contain', 'Add description');
+    });
 })
