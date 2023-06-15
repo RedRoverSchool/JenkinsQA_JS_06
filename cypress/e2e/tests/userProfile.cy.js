@@ -25,7 +25,7 @@ describe("userProfile", () => {
       .should("have.text", userProfilePageData.user.description);
   });
 
-  it.only('AT_06.02_003 | People> Verify save button functionality', () => {
+  it('AT_06.02_003 | People> Verify save button functionality', () => {
     homePage
       .clickPeopleSideMenuLink()
       .clickUserNameLink()
