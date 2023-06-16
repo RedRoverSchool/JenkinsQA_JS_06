@@ -1,7 +1,5 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
-import { realHover } from "cypress-real-events/commands/realHover";
-import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText, PeriodicallyHelpText1} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
-import multibranchPipline from "../fixtures/multibranchPipeline.json";
+import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 
 
 class MultibranchPipelineConfigurePage {
