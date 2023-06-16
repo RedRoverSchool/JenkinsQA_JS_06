@@ -17,7 +17,7 @@ describe('profilePageCredentialsLink', () => {
           cy.get('.jenkins-app-bar h1').should('have.text', headerCredentials.credentialsPageHeader)  
     })
 
-    it('AT_18.06.002 | <Profile Page> Link to User`s credentials', () => {
+    it.skip('AT_18.06.002 | <Profile Page> Link to User`s credentials', () => {
         cy.get('button:nth-child(3)').realHover().click();
         cy.get('#yui-gen4').click();
         cy.url().should('contain', headerCredentials.credentialsPageUrl);

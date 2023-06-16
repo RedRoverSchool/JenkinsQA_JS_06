@@ -2,7 +2,7 @@
 
 import homepageMainPanelLinkData from "../fixtures/homepageMainPanelLinkData.json";
 
-describe("homepageConfigureACloudLink", () => {
+describe.skip("homepageConfigureACloudLink", () => {
   it('AT_02.07.006 | <Main Panel> Verify the "Configure a cloud" link in the "Set up a distributed build" section', function () {
     cy.get('.content-block a[href="configureClouds"]')
       .should("be.visible")

@@ -17,6 +17,9 @@ class MultibranchPipelineConfigurePage {
     getPeriodicallyQuestionMark = () => cy.get('.optionalBlock-container a:nth-child(2)')
     getPeriodicallyHelpText1 = () => cy.get('div[class="help"] div p:nth-child(1)')
     getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
+    getScanTriggersCheckbox = () => cy.get('#cb2');
+    getCheckbox = () =>cy.get('[type="checkbox"]');
+
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -84,6 +87,10 @@ class MultibranchPipelineConfigurePage {
                 return Cypress._.map($els, 'innerText')
              })
     }
+
+    hoverScanTriggerCheckbox(){
+        return this.getScanTriggersCheckbox().realHover();
+    };
 }
 
 export default MultibranchPipelineConfigurePage;

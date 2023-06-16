@@ -1,5 +1,27 @@
 {
     "newViewPageURL": "/my-views/newView",
     "headerOfNewViewNameInputField": "View name",
-    "addDescription": "Project DemoQA"
+    "addDescription": "Project DemoQA",
+    "editedDescription":"New Description",
+    "cellData": "N/A",
+    "viewsTabBar": {
+        "tabAllViewsInTabBar": "All",
+        "activeTabViewColor": "rgb(20, 20, 31)",
+        "activeTabViewBackgroundColor": "rgba(0, 0, 0, 0)"
+    },
+    "listViewName": "ListView",
+    "jobFilter": [
+        {
+            "url": "job/FolderName/job/FreestyleProjectName1/",
+            "name": "FolderName » FreestyleProjectName1"
+        },
+        {
+            "url": "job/FolderName/job/FreestyleProjectName2/",
+            "name": "FolderName » FreestyleProjectName2"
+        },
+        {
+            "url": "job/FolderNewName/",
+            "name": "FolderNewName"
+        }
+    ]
 }

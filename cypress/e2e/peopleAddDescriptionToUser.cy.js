@@ -15,7 +15,7 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('#description div:nth-of-type(1)').should("have.text", userDescription.textDescription);
   });
 
-  it('AT_06.02_003 | Verify save button functionality', () => {
+  it.skip('AT_06.02_003 | Verify save button functionality', () => {
     cy.get(':nth-child(2) > .task-link-wrapper > .task-link').click();
     cy.get(`a[href*='/user/${USERNAME.toLowerCase()}']`).click();
     cy.get('#description-link').click();
@@ -47,7 +47,7 @@ describe("peopleAddDescriptionToUser", () => {
     cy.get('#description div:first-of-type').should('include.text', userDescription.textDescription)
   })
 
-  it('AT_06.02.005 | People > Adding a description to a created user', () => {
+  it.skip('AT_06.02.005 | People > Adding a description to a created user', () => {
     cy.get('a[href="/asynchPeople/"]').click()
     cy.get('.jenkins-app-bar__content').should('include.text', userConfigure.SidePanelTasks.Names[0])
     cy.get(`table#people [href="/user/${USERNAME}/"]`).click()

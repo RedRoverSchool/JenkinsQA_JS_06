@@ -1,4 +1,6 @@
 {
+    "configurePageHeader": "Configure",
+
     "gitHubProjectURL" : "https://github.com/RedRoverSchool/JenkinsQA_JS_06/",
 
     "description": "FreestyleProject Description",
@@ -24,5 +26,31 @@
         "Set GitHub commit status (universal)",
         "Set build status on GitHub commit [deprecated]",
         "Delete workspace when build is done"
-    ]
+    ],
+
+    "AdvancedBtnCheckboxList" : [
+        "Quiet period", 
+        "Retry Count",
+        "Block build when upstream project is building",
+        "Block build when downstream project is building",
+        "Use custom workspace",
+        "Keep the build logs of dependencies"
+    ],
+
+    "buildPeriodicallyProject": {
+        "description": "New Freestyle Project with every 1 min build",
+        "strategyOption": "Log Rotation",
+        "maxBuilds": 2,
+        "sourceCodeManagement": "None",
+        "buildTriggers": "Build periodically",
+        "schedule": "* * * * *",
+        "schedule1": "*/5 * * * *",
+        "buildEnvironmentOption": "Add timestamps to the Console Output",
+        "scriptOption": "Execute shell",
+        "scriptText": "java --version",
+        "applyConfirmMessage": "Saved",
+        "message": "No changes in any of the builds.",
+        "scheduledProjectName": "ScheduledProject",
+        "startedByUser": "Started by user "
+    }
 }

@@ -1,5 +1,7 @@
 import UserCredentialsPage from "./UserCredentialsPage";
 import UserConfigurePage from "./UserConfigurePage";
+import UserBuildsPage from "./UserBuildsPage";
+
 const userName = Cypress.env("local.admin.username").toLowerCase();
 
 class UserProfilePage {
@@ -11,7 +13,22 @@ class UserProfilePage {
     getUserCredentialsLink = () => cy.get(`a[href="/user/${userName}/credentials"]`);
     getUserConfigureLink = () => cy.get(`a[href="/user/${userName}/configure"]`);
     getUserConfigureNameLink = () => cy.get(`a[href="/user/${userName}/configure"] .task-link-text`)
+    getUserId = () => cy.get('#main-panel>div:last-child');
+    getStatusBtn = () => cy.get('#tasks>:nth-child(2)');
+    getUserDescriptionText = () =>  cy.get('#description div:not(.jenkins-buttons-row)').not("div[class]");
+    getBuildsSubMenuLink = () => cy.get('a[href$="/builds"].task-link');
 
+
+    clickOnBuildsSubMenuLink() {
+        this.getBuildsSubMenuLink().click();
+        return new UserBuildsPage();
+    }
+
+    clearUserStatusDescription() {
+        this.getUserDescriptionInputField().clear();
+        return this;    
+    }
+    
     trimUserPageHeaderName() {
         return this.getUserPageHeader().then($el => {
             return $el.text().trim();
@@ -42,5 +59,19 @@ class UserProfilePage {
         this.getUserConfigureLink.click();
         return new UserConfigurePage();
     }
+    verifyUserPagesUrl(user) {
+        cy.url().should('contain', user);
+        return this;
+    };
+
+    verifyStatusBtn() {
+        this.getStatusBtn().should('exist');
+        return this;
+    };
+
+    checkUserDescriptionTextNotExists(){
+        this.getUserDescriptionText().should("be.empty");
+        return this;
+    };
 }
 export default UserProfilePage;

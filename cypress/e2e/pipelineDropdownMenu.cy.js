@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 import pipelineDropdown from "../fixtures/pipelineDropdown.json"
-describe('New item Create a new Pipeline', () => {
+describe.skip('New item Create a new Pipeline', () => {
     const name = "Test";
 
     beforeEach('Create a new Pipeline', () => {

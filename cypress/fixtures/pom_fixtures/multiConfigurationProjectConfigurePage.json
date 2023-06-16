@@ -1,0 +1,52 @@
+{   "advancedOptions": [
+        "Quiet period", 
+        "Retry Count", 
+        "Block build when upstream project is building", 
+        "Block build when downstream project is building", 
+        "Use custom workspace",	
+        "Use custom child workspace"
+    ],
+
+    "advancedOptionsField": ["Display Name"],
+
+    "advancedProjectOptionsFields": {
+        "QuietPeriod": {
+            "fieldNameFirst": "Quiet period",
+            "fieldNameSecond": "Number of seconds",
+            "defaultValue": "5",
+            "setValue": "10"
+        },
+        
+        "RetryCount": {
+            "SCMCheckoutRetryCount": {
+                "fieldName": "SCM checkout retry count",
+                "defaultValue": "0",
+                "setValue": "1"
+            }
+        },
+        "UseCustomWorkspace": {
+            "Directory": {
+                "fieldName": "Directory",
+                "defaultValue": "",
+                "setValue": "testDirectory"
+            }
+        },
+        "UseCustomChildWorkspace": {
+            "ChildDirectory": {
+                "fieldName": "Child Directory",
+                "defaultValue": "${COMBINATION}",
+                "setValue": "${testDirectory}"
+            }
+        },
+
+        "DisplayName": {
+            "setValue": "Display Name"
+        }
+    },
+
+    "advancedOptionsValues":  ["10", "1", "testDirectory", "${testDirectory}", "Display Name"],
+
+    "defaultOptionsValues":  ["5", "0", "", "${COMBINATION}", ""],
+
+    "descriptionText": "New Configuration Project Job"
+}

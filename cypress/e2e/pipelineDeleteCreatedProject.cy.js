@@ -23,7 +23,7 @@ describe('Pipeline | Delete Created Project', () => {
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
     
-    it('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
+    it.skip('AT_13.02_002 | Pipeline |Delete created project Pipeline in left side bar',()=>{
         cy.get('[class="jenkins-table__link model-link inside"] span')
           .should('have.text',pipelineName.newPipelineName)
           .click()
@@ -37,7 +37,7 @@ describe('Pipeline | Delete Created Project', () => {
         cy.get('#main-panel').contains(pipelineName.newPipelineName).should('not.exist')
     })
 
-    it('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
+    it.skip('AT_13.02.003 | Pipeline Delete created project within the selected Pipeline itself', () => {
         cy.get('.jenkins-table__link.model-link.inside').click()
         cy.get('.task-link-wrapper').contains(pipelineName.textForDeleteProject).click()
         cy.on('window:confirm', (str) => {

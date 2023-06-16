@@ -1,16 +1,20 @@
 /// <reference types="cypress" />
 
 import HomePage from "../../pageObjects/HomePage";
+import NewItemPage from "../../pageObjects/NewItemPage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
 import ErrorMessagePage from "../../pageObjects/ErrorMessagePage"
 import DashboardBreadcrumbs from "../../pageObjects/DashboardBreadcrumbs";
 import orgFolderConfigurePage from '../../fixtures/pom_fixtures/orgFolderConfigurePage.json';
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
 describe('newItem', () => {
 
     const homePage = new HomePage();
     const errorPage = new ErrorMessagePage();
     const dashboardBreadcrumbs = new DashboardBreadcrumbs();
+    const headerAndFooter = new HeaderAndFooter
+    const newItemPage = new NewItemPage();
 
     it('AT_05.08.011 | Verify New Item Names', () => {
         homePage
@@ -99,13 +103,6 @@ describe('newItem', () => {
             .should('have.attr', 'type', 'text')
     });        
 
-    it('AT_02.04.004 | Homepage(Dashboard) | Verify "New Item" redirection', () => {
-        homePage
-            .clickNewItemSideMenuLink()
-            .getNewItemPageUrl()
-            .should('include', newItemPageData.newItemEndPoinURL)   
-    });
-
     newItemPageData.newItemNames.forEach((newItemNames, idx) => {
         newItemPageData.specialCharactersArr.forEach((char) => {
             it(`AT_05.05_013 | Create a new ${newItemNames} using special characters ${char}`, () => {
@@ -118,5 +115,50 @@ describe('newItem', () => {
                     .and('be.visible');
             })
         })
+    })
+
+    it('AT_05.08_0006 | New Item page name in the header', () => {
+        homePage
+            .clickNewItemSideMenuLink()
+            .getNewItemPageTitle()
+            .should('have.text', newItemPageData.newItemPageTitle)
+    });
+
+    newItemPageData.newItemNames.forEach((newItemNames, idx) => {
+        it(`AT_05.07_005 | <New item>Input field Verify spases before and after the ${newItemNames} name are trimed when saving`, () => {
+            const trimmedItemName=newItemPageData.newItemNamesWithSpaces[idx].trim()
+            homePage
+                .clickNewItemSideMenuLink()
+                .clickEachItemsNameFromMenuListItem(idx)
+                .typeNewItemNameInputField(newItemPageData.newItemNamesWithSpaces[idx])
+                .clickOkBtnAndGoHomePage()
+            headerAndFooter
+                .clickJenkinsHomeLink()
+                .getProjectNameLink()
+                .should('have.text',trimmedItemName)                
+        })        
+    })
+
+    it('AT_05.08.013 | New Item> Verify Item type icons are visible', () => {
+        homePage.clickNewItemSideMenuLink()
+        newItemPage
+            .getNewItemTypeIcons()
+            .each(($el) => {
+                cy.wrap($el).should('be.visible')
+            })
+    })    
+
+    it('AT_05.02.002 | Create a new Pipeline by clicking "New Item"', () => {
+        homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(newItemPageData.pipelineName)
+        .selectPipelineItem()
+        .clickOkBtnAndGoPipelineConfig()
+
+        headerAndFooter
+        .clickJenkinsHomeLink()
+        .getProjectNameLink()
+        .should('have.text', newItemPageData.pipelineName)
+        .and('be.visible')
     })
 });

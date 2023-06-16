@@ -8,7 +8,7 @@ import UserBuildsPage from "./UserBuildsPage";
 import UserConfigurePage from "../pageObjects/UserConfigurePage";
 import UserCredentialsPage from './UserCredentialsPage';
 import UserProfilePage from "./UserProfilePage";
-
+import searchBoxDocumentationPage from "./SearchBoxDocumentationPage";
 
 class HeaderAndFooter {
     getUserNameLink = () => cy.get('div.login a[href*="user"]');
@@ -22,15 +22,18 @@ class HeaderAndFooter {
     getLogOutBtn = () => cy.get('[href="/logout"]');
     getSearchBoxInputField = () => cy.get('input#search-box');
     getSearchBoxResultDropDownList = () => cy.get('#search-box-completion li:not([style="display: none;"])');
-    getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a'); 
+    getJenkinsLinkVerNumber = () => cy.get('.jenkins_ver a');
     getJenkinsVersionLink = () => cy.get('div[class$="white jenkins_ver"] a')
     getUserBuildsMenu = () => cy.get('#breadcrumb-menu li a[href*="builds"] span');
     getHeadIcon = () => cy.get('#jenkins-head-icon');
     getHeadIconName = () => cy.get('#jenkins-name-icon');
     getUserCredentialsMenu = () => cy.get('#breadcrumb-menu li a[href*="credentials"] span');
-    getPageBody = () => cy.get('#page-body')
+    getPageBody = () => cy.get('#page-body');
+    getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
+    getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
+    getCurrentUserName = () => cy.get('.login .model-link span');
 
-    clickJenkinsVersionLink(){
+    clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
         return new JenkinsPage;
     }
@@ -44,18 +47,18 @@ class HeaderAndFooter {
         this.getUserConfigureMenu().click();
         return new UserConfigurePage();
     }
-    
+
     clickRestAPILink() {
         this.getRestAPILink().click()
         return new RestAPIPage();
     }
-    
+
     createUserDropdownMenuItemsList() {
         return this
-        .getUserDropdownMenuItemsList()
-        .then($els => { 
-            return Cypress._.map($els, 'innerText')
-        }); 
+            .getUserDropdownMenuItemsList()
+            .then($els => {
+                return Cypress._.map($els, 'innerText')
+            });
     }
 
     selectUserMyViewsMenu() {
@@ -103,7 +106,7 @@ class HeaderAndFooter {
         return new UserCredentialsPage();
     }
 
-    clickUserNameLink(){
+    clickUserNameLink() {
         this.getUserNameLink().click();
         return new UserProfilePage();
     }
@@ -117,5 +120,22 @@ class HeaderAndFooter {
         cy.url().should('contain', idx);
         return this;
     }
+
+    clickSearchBoxIconTrailing() {
+        this.getSearchBoxIconTrailing().click();
+        return new searchBoxDocumentationPage();
+    }
+
+    clickUserDropDownMenuCredentials() {
+        this.getUserDropDownMenuCredentials().click();
+        return new UserCredentialsPage();
+    }
+
+    clickHeadIcon() {
+        this.getHeadIcon().click();
+        return new HomePage();
+    }
+
 }
+
 export default HeaderAndFooter;

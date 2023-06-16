@@ -1,0 +1,8 @@
+{
+    "firstDescription": "First description",
+    "pipelineSpeedDurabilityOverride": [
+        "Performance-optimized: much faster (requires clean shutdown to save running pipelines)",
+        "Less durability, a bit faster (specialty use only)",
+        "Maximum durability but slowest (previously the only option)"
+    ]
+}

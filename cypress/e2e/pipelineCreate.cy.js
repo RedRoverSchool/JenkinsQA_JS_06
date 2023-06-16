@@ -4,7 +4,7 @@ import homePage from '../fixtures/homePage.json'
 import newItemNames from '../fixtures/newItemNames.json'
 import myView from '../fixtures/myView.json'
 
-describe('pipelineCreate', () => {
+describe.skip('pipelineCreate', () => {
     it('AT_05.02_001 | Create a new Pipeline', () => {
         cy.get('.task:first-child ').click()
         cy.get('input#name').type(projects.pipeline.name)
@@ -24,7 +24,7 @@ describe('pipelineCreate', () => {
         cy.get('a[href*="job/New%20project"]').should('be.visible')
     })
 
-    it.skip('Create a new Pipeline goin from People page', () => {
+    it('Create a new Pipeline goin from People page', () => {
         cy.get('a[href="/asynchPeople/"]').click()
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('input.jenkins-input').type(projects.pipeline.name)

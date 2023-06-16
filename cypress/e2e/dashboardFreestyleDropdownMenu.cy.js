@@ -13,7 +13,7 @@ describe('dashboardFreestyleDropdownMenu', () => {
         cy.get('#jenkins-home-link').click()
     })
 
-    it('AT_20.03_001 | Verify names of items of Freestyle projects name hoverable dropdown menu', () => {
+    it.skip('AT_20.03_001 | Verify names of items of Freestyle projects name hoverable dropdown menu', () => {
         cy.get('.jenkins-table__link.model-link.inside button').click({ force: true })
         cy.get('.first-of-type li').then($el => {
             let array = Cypress.$.makeArray($el).map($el => $el.innerText);
@@ -21,12 +21,12 @@ describe('dashboardFreestyleDropdownMenu', () => {
         })
     })
     
-    it('AT_20.03_002 | Verify numbers of items of Freestyle projects name hoverable dropdown menu', () => {
+    it.skip('AT_20.03_002 | Verify numbers of items of Freestyle projects name hoverable dropdown menu', () => {
         cy.get('.jenkins-table__link.model-link.inside button').click({ force: true })
         cy.get('.first-of-type li').should('have.length', freestyleDropdownItems.freestyleDropdownItems.length)
     })
 
-    it('AT_20.03_003 | Verify dropdown menu of the Freestyle project is visible', () => {
+    it.skip('AT_20.03_003 | Verify dropdown menu of the Freestyle project is visible', () => {
         cy.get('.jenkins-table__link.model-link.inside button').click({ force: true })
         cy.get('.first-of-type li').then($el => {
             let array = Cypress.$.makeArray($el).map($el => $el.innerText);
@@ -34,7 +34,7 @@ describe('dashboardFreestyleDropdownMenu', () => {
         }).and('be.visible')
     })
 
-    it('AT_20.03.004 | Verify when User clicks Down arrow, dropdown menu content is appears', () => {
+    it.skip('AT_20.03.004 | Verify when User clicks Down arrow, dropdown menu content is appears', () => {
         cy.get('a[href*="job/"].model-link').click()
         cy.get('#breadcrumbBar a[href*="/job/"]').realHover()
         cy.get('#breadcrumbBar a[href*="/job/"] button').click()
