@@ -13,8 +13,9 @@ class MultibranchPipelineConfigurePage {
     getAddSourceBtn = () => cy.get('#yui-gen1-button')
     getAddSourceDrDwnItemsList = () => cy.get('#yui-gen2 li')
     getDisableBtn = () => cy.get('#toggle-switch-enable-disable-project');
-    getPeriodicallyPopUpQstMark = () => cy.get('div.tippy-content"]')
-    getPeriodicallyHelpText1 = () => cy.get('div[nameref="cb2"] div[class="help"]')
+    getPeriodicallyPopUpQstMark = () => cy.get('#tippy-4 div.tippy-box div.tippy-content')
+    getPeriodicallyQuestionMark = () => cy.get('.optionalBlock-container a:nth-child(2)')
+    getPeriodicallyHelpText1 = () => cy.get('div[class="help"] div p:nth-child(1)')
     getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
 
     clickSaveBtnAndGoMultiPipeline() {
@@ -55,33 +56,26 @@ class MultibranchPipelineConfigurePage {
         return this;
     };
 
-    checkPeriodicallyPopUpQstMark() {
+    checkPeriodicallyPopUpQstMarkText() {
+        this.getPeriodicallyQuestionMark()
+            .trigger('focus')
         this.getPeriodicallyPopUpQstMark()
-            .realHover()
             .should('have.text', PeriodicallyQstMarkText)
             .and('be.visible')
         return this;
     }
 
-    clickPeriodicallyPopUpQstMark() {
-        this.getPeriodicallyPopUpQstMark()
+    clickPeriodicallyQuestionMark() {
+        this.getPeriodicallyQuestionMark()
             .click()
         return this;
     }
 
     checkPeriodicallyHelpText1Visible() {
         this.getPeriodicallyHelpText1()
-        .should('have.text', PeriodicallyHelpText1)
-        .and('be.visible')
+        .should('be.visible')
         return this;
     }
-
-    // checkPeriodicallyHelpText1Unvisible() {
-    //     this.getPeriodicallyHelpText1()
-    //     .should('have.text', PeriodicallyHelpText1)
-    //     .and('not.be.visible')
-    //     return this;
-    // }
 
     createIntervalDrDwnItemList(){
         return this.getIntervalDrDwnList()

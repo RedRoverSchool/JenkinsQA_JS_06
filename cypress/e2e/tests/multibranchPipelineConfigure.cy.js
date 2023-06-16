@@ -77,23 +77,15 @@ describe('multibranchPipelineConfigure', () => {
             .should('deep.equal', multibranchPipelineConfigPageData.intervalTimeItemsList)
            })
 
-    it.only('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
+    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
 
         multibranchPipelineConfigurePage
-          .checkPeriodicallyPopUpQstMark()
-        //   .should('have.text', PeriodicallyQstMarkText)
-          .clickPeriodicallyPopUpQstMark() 
-        //   .checkPeriodicallyHelpText1Visible()
-        //   .clickPeriodicallyPopUpQstMark()
-        //   .checkPeriodicallyHelpText1Unvisible()
-        
-        // cy.get('a[title$="otherwise run"]')
-        //   .should('be.visible').click()
-        // cy.get('div[nameref="cb2"] div[class="help"]')
-        //   .should('be.visible')
-        // cy.get('a[title$="otherwise run"]').click()
-        // cy.get('div[nameref="cb2"] div[class="help"]')
-        //   .should('not.be.visible')
+          .checkPeriodicallyPopUpQstMarkText()
+          .clickPeriodicallyQuestionMark() 
+          .checkPeriodicallyHelpText1Visible()
+          .clickPeriodicallyQuestionMark()
+          .getPeriodicallyHelpText1()
+            .should('not.be.visible')
     })
 });
