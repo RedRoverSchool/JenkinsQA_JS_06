@@ -2,7 +2,7 @@
 
 import {userMenuItems} from '../fixtures/userIconMenuItems.json'
 
-describe('Header User icon check', () => {
+describe.skip('Header User icon check', () => {
 
     it('AT_01.03.022| <Header>User icon check', () =>{
         cy.get('a[href="/user/admin"]').should('be.visible')

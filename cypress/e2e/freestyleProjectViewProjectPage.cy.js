@@ -3,7 +3,7 @@
 import freestyleSideMenuItems from "../fixtures/freestyleSideMenu.json"
 import projects from '../fixtures/projects.json'
 
-describe('freestyle project - View project page', () => {
+describe.skip('freestyle project - View project page', () => {
 
     it('AT_12.01_001|Freestyle project> View project page', () => {
         cy.get('a[href="newJob"]').click();

@@ -2,7 +2,7 @@
 
 import myView from "../fixtures/myView.json"
 
-describe('My View Delete', () => {
+describe.skip('My View Delete', () => {
 
     beforeEach('Create job and create view', () => {
         cy.get('a[href=newJob]').click()

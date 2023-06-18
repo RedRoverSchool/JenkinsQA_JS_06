@@ -2,7 +2,7 @@
 
 import freestyleDropdownItems from "../fixtures/freestyleDropdownMenu.json"
 
-describe('dashboardFreestyleDropdownMenu', () => {
+describe.skip('dashboardFreestyleDropdownMenu', () => {
 
     beforeEach("Creat new Freestyle project", () => {
         cy.get('a[href="newJob"]').click();

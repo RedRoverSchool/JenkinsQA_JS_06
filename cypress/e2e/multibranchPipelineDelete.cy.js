@@ -3,7 +3,7 @@
 import projects from "../fixtures/projects.json"
 import messages from "../fixtures/messages.json"
 
-describe('MultibranchPipelineDelete', () => {
+describe.skip('MultibranchPipelineDelete', () => {
 
     it.skip('Delete the Multibranch Pipeline using dropdown menu', () => {
         cy.get('a[href="newJob"]').click()

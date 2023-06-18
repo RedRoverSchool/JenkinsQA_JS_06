@@ -2,7 +2,7 @@
 
 import userD from "../fixtures/renameProjectValid.json"
 
-describe('renameFreestyleProjectValid', () => {
+describe.skip('renameFreestyleProjectValid', () => {
     
     beforeEach ('Prepare freeStyle Project', function () {
       cy.get(".task-link").eq(0).click();

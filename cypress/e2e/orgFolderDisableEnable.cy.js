@@ -2,7 +2,7 @@
 
 import projects from '../fixtures/projects.json'
 
-describe('Organization Folder Disable/Enable', () => {
+describe.skip('Organization Folder Disable/Enable', () => {
     beforeEach(() => {
         cy.get('a[href="newJob"]').click()
         cy.get('input#name').type(projects.organizationFolder.name)

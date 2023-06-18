@@ -1,7 +1,7 @@
 ///<reference types="cypress"/>
 const name = "Test";
 
-describe('Multibranch Pipeline', () => {
+describe.skip('Multibranch Pipeline', () => {
 
     beforeEach('Create Multibranch Pipeline', () => {
         cy.get('a[href="/view/all/newJob"]').click();

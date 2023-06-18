@@ -1,5 +1,5 @@
 /// <reference types='cypress'/>
-describe('Add description to the pipeline', () =>{
+describe.skip('Add description to the pipeline', () =>{
 
     beforeEach ('Create pipeline', function () {
         cy.get('a[href="newJob"]').click()

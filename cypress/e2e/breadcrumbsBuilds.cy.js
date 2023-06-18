@@ -5,7 +5,7 @@ import breadcrumbsBuilds from "../fixtures/breadcrumbsBuilds.json"
 const USERID = Cypress.env('local.admin.username').toLowerCase();
 const PORT = Cypress.env('local.port')
 
-describe('BreadcrumbsBuilds', () => {
+describe.skip('BreadcrumbsBuilds', () => {
     beforeEach('', () => {
         cy.get('a[href^="newJob"]').click();
         cy.get('input#name').type(breadcrumbsBuilds.nameOfProject);

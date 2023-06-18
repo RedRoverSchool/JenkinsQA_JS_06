@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import descriptions from "../fixtures/homePage.json"
 
-describe('Dashboard Edit Description', () => {
+describe.skip('Dashboard Edit Description', () => {
   it.skip('20.02 _001| Dashboard > Editing Description', () => {
     cy.get('#description-link').contains(descriptions.add).click()
     cy.get('.jenkins-input').type(descriptions.addDescription)

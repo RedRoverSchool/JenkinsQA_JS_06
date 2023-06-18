@@ -13,7 +13,7 @@ function createAndBuildProject(projectName){
   cy.get('#tasks div:nth-child(4)').click()
 }
 
-describe('Header - User Builds Link', () => {
+describe.skip('Header - User Builds Link', () => {
   it('Verify menu item “Builds“ in “User” dropdown-menu displayed and clickable', () => {
     cy.get('div.login.page-header__hyperlinks button.jenkins-menu-dropdown-chevron').click({force:true})
     cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()

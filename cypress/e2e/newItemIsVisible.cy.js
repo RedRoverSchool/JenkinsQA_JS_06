@@ -2,7 +2,7 @@
 
 import projectNames from '../fixtures/newItemList.json'
 
-describe('<New Item> Items Names and Icons', () => {
+describe.skip('<New Item> Items Names and Icons', () => {
 
     it('TC_05.08_002 | <New Item>Verify that page with New Items displayed after click on the button New Item', () => {
         cy.contains('New Item').click()

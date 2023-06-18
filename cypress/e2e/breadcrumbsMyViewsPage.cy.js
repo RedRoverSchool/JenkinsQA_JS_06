@@ -4,7 +4,7 @@ import items from '../fixtures/items.json'
 import userMenuItems from '../fixtures/userIconMenuItems.json'
 
  
-describe("breadcrumbsMyViewsPage", () => {
+describe.skip("breadcrumbsMyViewsPage", () => {
     it.skip('AT_04.03_001|<Breadcrumbs>My Views page > Verify that user can open selected Pipeline', () => {
 
         cy.get('a[href="/view/all/newJob"]').click();

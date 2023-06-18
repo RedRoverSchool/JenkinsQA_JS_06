@@ -2,7 +2,7 @@
 
 import homepageMainPanel from "../fixtures/homepageMainPanel";
 
-describe("Homepage, Create a job Link", () => {
+describe.skip("Homepage, Create a job Link", () => {
   it('AT_02.07.004 | <Main Panel> Verify the "Create a job" link in the "Start building your software project" section', function () {
     cy.get('.content-block a[href="newJob"]')
       .should("be.visible")

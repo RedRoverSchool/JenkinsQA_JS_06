@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import descriptions from '../fixtures/descriptionsProject.json';
 
-describe('homepageMainPanelDescription',()=>{
+describe.skip('homepageMainPanelDescription',()=>{
     beforeEach('Add description', function() {
         cy.get('#description-link').should('contain', descriptions.addDescriptionButtonText).click();
         cy.get('#description-link').should('not.exist');

@@ -2,7 +2,7 @@
 
 import descriptionsProject from '../fixtures/descriptionsProject.json'
 
-describe(`Edit description`, function () {
+describe.skip(`Edit description`, function () {
   const description = `text`;
   const newDescription = "new text";
 

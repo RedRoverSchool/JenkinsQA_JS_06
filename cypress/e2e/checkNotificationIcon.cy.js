@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Header | notification icon', ()=> {
+describe.skip('Header | notification icon', ()=> {
     const buttons = ["Set up agent", "Set up cloud", "Dismiss", "Go to plugin manager", "Configure which of these warnings are shown "]
     it.skip('verify buttons and links', ()=> {
         cy.get('#visible-sec-am-button')

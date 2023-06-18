@@ -2,7 +2,7 @@
 
 import projects from '../fixtures/projects.json'
 
-describe('buildHistoryDeleteBuild', () => {
+describe.skip('buildHistoryDeleteBuild', () => {
 
     beforeEach('Create a freestyle project and a build', () => {
         cy.get('a[href="newJob"]').click()

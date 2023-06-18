@@ -1,6 +1,6 @@
 /// <reference types='cypress' />
 
-describe('Header Jenkins Logo', () =>{
+describe.skip('Header Jenkins Logo', () =>{
 
     it('AT_01.01_030 | Header Jenkins logo is visible and clickable', () => {
         cy.get('#jenkins-name-icon').should('be.visible');

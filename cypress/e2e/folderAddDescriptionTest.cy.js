@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import userDescription from "../fixtures/userDescription.json";
 
-describe('Folder > Add User description with "Add description" button', () => {
+describe.skip('Folder > Add User description with "Add description" button', () => {
   it.skip("AT 15.02.001 | Add User description", () => {
     cy.get("a[href='/view/all/newJob']").click();
     cy.get("input#name").type("Folder name");

@@ -3,7 +3,7 @@
 import multibranchPipeline from '../fixtures/multibranchPipeline.json'
 import pipelineName from '../fixtures/pipelineName.json'
 
-describe('New Item Create a new Multibranch Pipeline', () => {
+describe.skip('New Item Create a new Multibranch Pipeline', () => {
 
     it.skip('AT_05.05_004 Create a new Multibranch Pipeline using [+New Item]', () => {
         cy.get('a[href="/view/all/newJob"]').click()

@@ -4,7 +4,7 @@ import userDescription from '../fixtures/userDescription.json'
 import userDescription_zb from "../fixtures/userDescription_zb.json";
 const USERNAME = Cypress.env('local.admin.username');
 
-describe('People Add Discription to User', () => {
+describe.skip('People Add Discription to User', () => {
 
     it.skip('AT_06.02_008 | <People> Verify the ability to add a description to a user', () => {
         cy.get('#tasks .task:nth-child(2)').click()

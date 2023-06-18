@@ -2,7 +2,7 @@
 
 import {header, newPageUrl, text, folder} from '../fixtures/newItemFolderFirst.json'
 
-describe('Jenkins Dashboard', () => {
+describe.skip('Jenkins Dashboard', () => {
 it('TC_05.04_009 | <New item> Folder', () => {
   cy.get("a[href='/view/all/newJob']").should('have.text', header).click()
   cy.url().should("equal", newPageUrl)

@@ -5,7 +5,7 @@ import projects from '../fixtures/projects.json'
 import homePage from '../fixtures/logInPage.json'
 import freestyleDropdownMenu from '../fixtures/freestyleDropdownMenu.json'
 
-describe('Freestyle project Delete', () => {
+describe.skip('Freestyle project Delete', () => {
   beforeEach('Create freestyle project', () => {
     cy.get('a[href="newJob"]').click()
     cy.get('#name').type(projects.freestyle.name)

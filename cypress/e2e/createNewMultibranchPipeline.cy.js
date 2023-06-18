@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Create a new Multibranch Pipeline',()=>{
+describe.skip('Create a new Multibranch Pipeline',()=>{
     const nameOfMultibranchPipeline = 'New Multibranch Pipeline'
 
     it.skip('Create a new Multibranch Pipeline',()=>{

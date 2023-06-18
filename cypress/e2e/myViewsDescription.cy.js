@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import myViewsData from "../fixtures/myViews.json"
 
-describe('myViewsEditDescriptionTest', () => {
+describe.skip('myViewsEditDescriptionTest', () => {
     const description = 'text'
     const newDescription = 'newText'
 

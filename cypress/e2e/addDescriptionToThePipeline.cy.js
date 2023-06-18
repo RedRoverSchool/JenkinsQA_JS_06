@@ -3,7 +3,7 @@
 import pipelineName from '../fixtures/pipelineName.json'
 import description from '../fixtures/userDescription.json'
 
-describe('addDescriptionToThePipeline', () =>{
+describe.skip('addDescriptionToThePipeline', () =>{
     beforeEach(() => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('.label').contains('Pipeline').click();

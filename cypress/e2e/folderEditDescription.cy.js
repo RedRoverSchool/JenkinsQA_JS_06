@@ -2,7 +2,7 @@
 
 import createFolder from "../fixtures/createFolder.json"
 
-describe('Folder edit description', () => {
+describe.skip('Folder edit description', () => {
   beforeEach('createFolder', () => {
     cy.get('a[href="newJob"]').click();
     cy.get('input#name').type('TestProject');

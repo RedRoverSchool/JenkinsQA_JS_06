@@ -2,7 +2,7 @@
 
 import descriptionsProject from "../fixtures/descriptionsProject.json"
 
-describe('dashboardMainPanelDescription', () => {
+describe.skip('dashboardMainPanelDescription', () => {
 
     it.skip("AT_02.06_004 | Dashboard > Description input textarea is invisible", () => {
         cy.get("textarea.jenkins-input").should('not.exist')

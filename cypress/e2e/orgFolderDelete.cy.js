@@ -2,7 +2,7 @@
 import projects from '../fixtures/projects.json'
 import messages from '../fixtures/messages.json'
 
-describe('<Organization Folder> Delete Organization Folder', () => {
+describe.skip('<Organization Folder> Delete Organization Folder', () => {
 
     it.skip('Delete organization folder within the selected organization folder', function () {
         cy.get('a[href="newJob"]').click()

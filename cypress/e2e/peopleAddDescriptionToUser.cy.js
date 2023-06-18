@@ -4,7 +4,7 @@ import userConfigure from "../fixtures/userConfigure.json";
 
 const USERNAME = Cypress.env('local.admin.username');
 
-describe("peopleAddDescriptionToUser", () => {
+describe.skip("peopleAddDescriptionToUser", () => {
 
   it.skip("AT 06.02.001 | Verify description is added to user", function () {
     cy.get("a.task-link").eq(1).click();

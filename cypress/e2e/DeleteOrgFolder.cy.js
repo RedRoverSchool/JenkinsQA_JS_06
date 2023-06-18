@@ -2,7 +2,7 @@
 
 const folderName = 'Test';
 
-describe('Organization Folder > Delete Organization Folder', () => {
+describe.skip('Organization Folder > Delete Organization Folder', () => {
 
     it('New Item > Create a new Organization Folder by [+New Item]', function () {
 

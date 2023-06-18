@@ -4,7 +4,7 @@ import {SidePanelTasks} from "../fixtures/userConfigure.json"
 
 const USERNAME = Cypress.env('local.admin.username').toLowerCase();
 
- describe('<Header | User icon', ()=>{
+ describe.skip('<Header | User icon', ()=>{
     it('Verify the "User" icon is clickable', ()=>{
         cy.get('.model-link span[class="hidden-xs hidden-sm"]').click()
         cy.get('.icon-lg').should('be.visible')

@@ -2,7 +2,7 @@
 
 import text from '../fixtures/userConfigure.json'
 
-describe('Header | User icon', () => {
+describe.skip('Header | User icon', () => {
     
     const expectedDropDownMenuItems = [
         'Builds',

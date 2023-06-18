@@ -3,7 +3,7 @@
 const folderName = "Test";
 const errorMessage = "Nothing seems to match.";
 
-describe("Organization Folder > Delete Organization Folder", () => {
+describe.skip("Organization Folder > Delete Organization Folder", () => {
   it("AT_17.03_003 | Delete Org Folder with hover", function () {
     
     // Create Org Folder

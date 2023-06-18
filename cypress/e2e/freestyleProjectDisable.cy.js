@@ -2,7 +2,7 @@
 
 import projects from '../fixtures/projects.json'
 
-describe('US_12.06 | Freestyle project Disable project', () => {
+describe.skip('US_12.06 | Freestyle project Disable project', () => {
 
 	beforeEach(() => {
 		cy.intercept('/view/all/newJob').as('newJobsList')

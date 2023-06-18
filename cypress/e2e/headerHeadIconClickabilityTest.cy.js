@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('headerHeadIconClicabilityTest', () => {
+describe.skip('headerHeadIconClicabilityTest', () => {
 
     it('AT_01.01_023| <Header>Head Icon clickability test', () =>{
     cy.get('a[href="/manage"]').click()

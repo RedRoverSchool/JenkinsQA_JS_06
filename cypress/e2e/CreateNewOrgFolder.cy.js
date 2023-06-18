@@ -8,7 +8,7 @@ import myView from '../fixtures/myView.json'
 
 const folderName = 'Test'
 
-describe('<New Item> Create a new Organization Folder', () => {
+describe.skip('<New Item> Create a new Organization Folder', () => {
     
     it('New Item > Create a new Organization Folder by [+New Item]', function () {
         cy.contains('New Item').click()

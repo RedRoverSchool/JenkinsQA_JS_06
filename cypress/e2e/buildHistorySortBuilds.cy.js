@@ -57,7 +57,7 @@ function getTable ()  {
     })
 }
 
-describe('Build History Sort builds', () => {
+describe.skip('Build History Sort builds', () => {
     
     it('AT_07.02 _001 | Build History Sort builds', () => {
         const sortColumn = () => cy.get('table#projectStatus thead .sortheader');

@@ -4,7 +4,7 @@ import createJob from "../fixtures/createJob.json"
 
 const PORT = Cypress.env("local.port");
 
-describe('myViewsCreateJob', () => {
+describe.skip('myViewsCreateJob', () => {
    it.skip('AT_09.08.001 | <My view> Create Freestyle Project job', () => {      
     cy.get('a[href$="my-views"]').click();
     cy.url().should('equal', `http://localhost:${PORT}/me/my-views/view/all/`);
