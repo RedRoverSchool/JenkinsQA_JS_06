@@ -35,7 +35,7 @@ describe('Folder edit description', () => {
     cy.get('#description').should('contain', createFolder.newDescriptionFolder)
   });
 
-  it('AT_15.03_003 | Folder > Prewiew description text matches the new description', () => { 
+  it.skip('AT_15.03_003 | Folder > Prewiew description text matches the new description', () => { 
     cy.get('#description-link').click()
     cy.get('#description textarea').clear().type(createFolder.newDescriptionFolder)
     cy.get('a.textarea-show-preview').click(  ) 

@@ -14,7 +14,9 @@ class FolderPage {
     getDeleteFolderBtn = () => cy.get('a[href$="/delete"]')
     getRenameFolderLink = () => cy.get('a[href$=confirm-rename]')
     getIconProject = () => cy.get('.icon-pipeline-multibranch-project')
-
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreview = () => cy.get(".textarea-preview");
+    
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
         return this;
@@ -63,6 +65,10 @@ class FolderPage {
         });
     };
 
+    clickDescriptionPreviewLink() {
+        this.getDescriptionPreviewLink().click();
+        return this;
+    }
 };
 
 export default FolderPage;

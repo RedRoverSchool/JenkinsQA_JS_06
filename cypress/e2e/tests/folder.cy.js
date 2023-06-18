@@ -86,4 +86,15 @@ describe('folder', () => {
             .should('eq', folderPageData.folderName)             
     });
 
+    it('AT_15.03_003 | Folder > Prewiew description text matches the new description', () => { 
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.addFolderDescription(folderPageData.folderDescription);
+        homePage 
+            .clickFolderNameLink(newItemPageData.folderName) 
+            .clickAddEditDescriptionBtn()
+            .typeFolderNewDescription(folderPageData.folderNewDescription) 
+            .clickDescriptionPreviewLink()
+            .getDescriptionPreview()
+                .should('have.text', folderPageData.folderNewDescription);
+      });
 });
