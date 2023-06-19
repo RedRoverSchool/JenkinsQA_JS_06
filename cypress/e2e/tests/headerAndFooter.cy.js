@@ -204,5 +204,5 @@ describe('headerAndFooter', () => {
             .clickLinkTheDocumentation()
             .getRestApiDocPageTitle().should('contain',restApiDocPageData.restApiDocPageTitle)
             
-    })
+    });
 })
