@@ -1,5 +1,5 @@
 import MultibranchPipelinePage from "./MultibranchPipelinePage";
-import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
+import {addSourceItemsList, intervalTimeItemsList, PeriodicallyQstMarkText, ScriptPathQstMarkText} from "../fixtures/pom_fixtures/multibranchPipelineConfigPage.json";
 
 
 class MultibranchPipelineConfigurePage {
@@ -17,7 +17,9 @@ class MultibranchPipelineConfigurePage {
     getIntervalDrDwnList = () => cy.get('select[value="1d"] option')
     getScanTriggersCheckbox = () => cy.get('#cb2');
     getCheckbox = () =>cy.get('[type="checkbox"]');
-
+    getScriptPathQstMark = () => cy.get('[width="100%"] > .jenkins-form-item > .jenkins-form-label > a');
+    getScriptPathPopUpQstMark = () => cy.get('#tippy-3 div.tippy-box div.tippy-content');
+    getScriptPathHelpText = () => cy.get('div[class$="container tr"] div[class="help"] div:nth-child(1)');
 
     clickSaveBtnAndGoMultiPipeline() {
         this.getProjectConfigSaveBtn().click();
@@ -89,6 +91,27 @@ class MultibranchPipelineConfigurePage {
     hoverScanTriggerCheckbox(){
         return this.getScanTriggersCheckbox().realHover();
     };
+
+    checkScriptPathPopUpQstMarkText() {
+        this.getScriptPathQstMark()
+            .trigger('focus')
+        this.getScriptPathPopUpQstMark()
+            .should('have.text', ScriptPathQstMarkText)
+            .and('be.visible')
+        return this;
+    }
+
+    clickScriptPathQuestionMark() {
+        this.getScriptPathQstMark()
+            .click()
+        return this;
+    }
+
+    checkScriptPathHelpTextVisible() {
+        this.getScriptPathHelpText()
+        .should('be.visible')
+        return this;
+    }
 }
 
 export default MultibranchPipelineConfigurePage;

@@ -55,7 +55,7 @@ describe.skip('Multibranch Pipeline Configuration', function () {
             })
     });
 
-    it('AT_16.01_011 | Verify visibility of configuration fields names -> Build Configuration', function () {
+    it.skip('AT_16.01_011 | Verify visibility of configuration fields names -> Build Configuration', function () {
         cy.get('#build-configuration')
             .should('contain', multibranchPipline.configurationsFields.buildConfiguration)
         cy.get(':nth-child(6) > :nth-child(2) > .jenkins-form-label')
