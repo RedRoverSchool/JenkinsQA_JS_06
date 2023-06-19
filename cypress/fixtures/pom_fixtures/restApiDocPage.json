@@ -1,3 +1,15 @@
 {
-    "restApiDocPageTitle":"Remote Access API"
+    "restApiDocPageTitle":"Remote Access API",
+    "RestApiDocPageItemsList":[
+        "What can you do with it?",
+        "Submitting jobs",
+        "Remote API and security",
+        "CSRF Protection",
+        "XPath selection",
+        "Depth control",
+        "Python API wrappers",
+        "Ruby API wrappers",
+        "Java API wrappers",
+        "Detecting Jenkins version"
+    ]
 }
