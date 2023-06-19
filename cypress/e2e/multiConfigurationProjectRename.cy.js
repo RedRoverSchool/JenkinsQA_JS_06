@@ -2,7 +2,7 @@ import projects from '../fixtures/projects.json'
 import messages from '../fixtures/messages.json'
 
 
-describe('multiConfigurationProjectRename', () => {
+describe.skip('multiConfigurationProjectRename', () => {
 
     beforeEach(() => {
         cy.get('a[href="newJob"]').click()

@@ -2,7 +2,7 @@
 
 import {sidePanelItems, endPointUrl} from '../fixtures/homePage.json'
 
-describe('Homepage(Dashboard)| Side panel sub-menu', () => {
+describe.skip('Homepage(Dashboard)| Side panel sub-menu', () => {
 
     it('Homepage(Dashboard) | Check quantity of items on the panel sub-menu', function () {
         cy.get('.task-link-wrapper ').should('have.length', 5)

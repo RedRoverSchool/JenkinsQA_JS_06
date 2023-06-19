@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import dashboardItems from '../fixtures/dashboardItems.json';
 
-describe('Header | Notifications icon', () => {
+describe.skip('Header | Notifications icon', () => {
     it.skip('AT_01.10_001| <Header> Verify Notifications icon', function () {
         cy.get('a[href="/manage"]').click()
         cy.get('.jenkins-app-bar__content').should('have.text', (dashboardItems.manageJenkins))

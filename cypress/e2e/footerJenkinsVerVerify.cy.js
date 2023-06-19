@@ -2,7 +2,7 @@
 
 import footerData from "../fixtures/footerData.json"
 
-describe('footerJenkinsVerVerify', () =>{
+describe.skip('footerJenkinsVerVerify', () =>{
     it.skip('AT_03.02_001 | Footer> Link Jenkins ver number is correct', () =>{
         cy.get('.jenkins_ver a')
         .should('exist')

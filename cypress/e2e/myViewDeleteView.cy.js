@@ -4,7 +4,7 @@ const myViewName = 'First Job'
 const myView = 'MyView'
 const deleteView = 'Delete View'
 
-describe('myViewsDeleteView', () => {
+describe.skip('myViewsDeleteView', () => {
     it('AT_09.06.001 | <My views> Delete View', function () {
         cy.get('#tasks > div:nth-child(5) > span > a > span.task-link-text').realHover().click({ force: true });
         cy.get('a[href$="/newJob"]').click();

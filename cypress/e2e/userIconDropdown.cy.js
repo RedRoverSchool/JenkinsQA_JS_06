@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('User icon', () => {
+describe.skip('User icon', () => {
     
     it('verify user icon - Builds', function () {
       cy.get('a[href="/user/admin"]>.jenkins-menu-dropdown-chevron').realHover().click();

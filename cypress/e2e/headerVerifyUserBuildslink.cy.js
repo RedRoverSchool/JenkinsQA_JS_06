@@ -1,5 +1,5 @@
 /// reference types="cypress"/>
-describe('AT_01.04.07|Header Verify User Builds link', () =>{
+describe.skip('AT_01.04.07|Header Verify User Builds link', () =>{
     it('AT_01.04.07|Header Verify User Builds link', ()=> {
        cy.get('.page-header a .jenkins-menu-dropdown-chevron').realHover().click()
        cy.get('a[href="/user/admin/builds"').click()

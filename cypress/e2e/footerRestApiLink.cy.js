@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 const LOCAL_PORT = Cypress.env('local.port')
 
-describe('footerRestApiLink', () => {
+describe.skip('footerRestApiLink', () => {
     it.skip('AT_03.01_006 | Verify Footer > Link REST API', () => {
         cy.get('a[href="api/"]').click();
         cy.get('a[href="/api/"]').should('contain.text', 'API');

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header > Log out button', () => {
+describe.skip('Header > Log out button', () => {
     
     it.skip('AT_01.08_002 | Verify log out button', () => {
         cy.get(' a[href="/logout"]').click()

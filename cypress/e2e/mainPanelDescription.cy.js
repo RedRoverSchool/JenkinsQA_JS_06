@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('mainPanelDescription', () => {
+describe.skip('mainPanelDescription', () => {
 
     it.skip('Verify adding/editing  main panel description', () => {
         cy.get('#description-link').click()

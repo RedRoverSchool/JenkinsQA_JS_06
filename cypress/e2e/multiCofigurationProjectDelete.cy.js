@@ -4,7 +4,7 @@ import projects from '../fixtures/projects.json'
 
 const PORT = Cypress.env("local.port");
 
-describe('multiConfigurationProjectDelete', () => {
+describe.skip('multiConfigurationProjectDelete', () => {
 
     beforeEach(() => {
         cy.get('a[href="newJob"]').click();

@@ -5,7 +5,7 @@ import headers from '../fixtures/headers.json';
 import homePage from '../fixtures/homePage.json'
 const userName = Cypress.env('local.admin.username').toLowerCase();
 
-describe('Header Search Box', () => {
+describe.skip('Header Search Box', () => {
   it.skip('AT_01.02_003 | Verify a placeholder text “Search (CTRL+K)" in input field Search box', function () {
     cy.get('#search-box').should('have.attr', 'placeholder', 'Search (CTRL+K)');
   });

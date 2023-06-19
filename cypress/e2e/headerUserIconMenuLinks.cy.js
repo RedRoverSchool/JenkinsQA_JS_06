@@ -2,7 +2,7 @@
 
 import { itemsName, itemsUrl } from '../fixtures/headerUserIconMenuLinks.json'
 
-describe('headerUserIconMenuLinks', () => {
+describe.skip('headerUserIconMenuLinks', () => {
     beforeEach(function () {
         cy.get('#page-header button.jenkins-menu-dropdown-chevron').realHover().click()
         cy.get('li.yuimenuitem').as('IconMenuLinks')

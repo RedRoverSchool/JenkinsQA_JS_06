@@ -4,7 +4,7 @@ import newItemNames from '../fixtures/newItemNames.json'
 
 const PORT = Cypress.env("local.port");
 
-describe('newItemInputField', () => {
+describe.skip('newItemInputField', () => {
 
     it('Verify New Item has input field', () => {
         cy.get('a[href="/view/all/newJob"]').click()

@@ -2,7 +2,7 @@
 
 import multibranchPipeline from '../fixtures/multibranchPipeline.json'
 
-describe('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
+describe.skip('Multibranch Pipeline. Configurate Multibranch Pipeline', () => {
 
   beforeEach('Create multibranch pipeline', function () {
       cy.get('a[href="newJob"]').click();

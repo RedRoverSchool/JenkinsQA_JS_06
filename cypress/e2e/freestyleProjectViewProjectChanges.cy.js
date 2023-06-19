@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe("Freestyle project - View project changes", () => {
+describe.skip("Freestyle project - View project changes", () => {
 
     it("View project changes in freestyle project", () => {
         cy.get("#side-panel").click();

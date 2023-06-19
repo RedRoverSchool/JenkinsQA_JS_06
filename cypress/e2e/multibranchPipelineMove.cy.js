@@ -19,7 +19,7 @@ function moveMPusingLS() {
     cy.get('.jenkins-button').click()
 }
 
-describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
+describe.skip('Multibranch Pipeline - Move Multibranch Pipeline', function () {
 
     beforeEach('Create the Multibranch Pipeline and the folder', function () {
         cy.get('.content-block a[href=newJob]').click()

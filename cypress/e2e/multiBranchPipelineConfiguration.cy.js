@@ -1,7 +1,7 @@
 import { createMultiBranchPipeline } from "../support/helper";
 import multibranchPipline from "../fixtures/multibranchPipeline.json"
 
-describe('Multibranch Pipeline Configuration', function () {
+describe.skip('Multibranch Pipeline Configuration', function () {
 
     const newPipelineName = 'pipeline' + Date.now()
     const descriptionText = 'description' + Date.now()

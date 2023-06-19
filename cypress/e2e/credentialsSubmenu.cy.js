@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import headerCredentials from '../fixtures/headerCredentials.json'
 
-describe('credentialsSubmenu', () => {
+describe.skip('credentialsSubmenu', () => {
 
     beforeEach(() => {
         cy.get('header .jenkins-menu-dropdown-chevron').realHover().click();

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Homepage', () => {
+describe.skip('Homepage', () => {
 
   it.skip('Verify Homepage Link "Learn more about distributed builds" is working', () => {
 

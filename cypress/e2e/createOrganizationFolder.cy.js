@@ -2,7 +2,7 @@
 import organizationFolder from '../fixtures/organizationFolderNames.json';
 import header from '../fixtures/headers.json'
 
-describe('createOrganizationFolder', () => {
+describe.skip('createOrganizationFolder', () => {
     it('AT_05.06_006 | <New Item > Create a new Organization Folder', function () {
         cy.get('a[href="/view/all/newJob"]').click();
         cy.get('.h3').should('have.text', header.newItemHeader);

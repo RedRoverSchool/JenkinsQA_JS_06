@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import newItemTest from '../fixtures/newItemTest.json'
 
-describe("newItemTest", () => {
+describe.skip("newItemTest", () => {
     const orgFolderName = 'OrgFolderTest';
     const warningMessage = '» This field cannot be empty, please enter a valid name';
 

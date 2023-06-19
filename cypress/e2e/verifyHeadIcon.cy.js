@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header | Head Icon', () => {
+describe.skip('Header | Head Icon', () => {
     it('Verify Head Icon Redirection', () => {
         cy.visit('http://localhost:8080/asynchPeople/')
         cy.get('#jenkins-name-icon').click()

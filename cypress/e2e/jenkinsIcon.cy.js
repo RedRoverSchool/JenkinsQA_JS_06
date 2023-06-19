@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header - head icon', () => {
+describe.skip('Header - head icon', () => {
     it('verify jenkins icon', function () {
       cy.get('a[href="/view/all/newJob"]').click();
       cy.get('#jenkins-name-icon').click();

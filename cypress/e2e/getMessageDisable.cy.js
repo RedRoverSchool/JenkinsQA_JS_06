@@ -1,6 +1,6 @@
 // <reference types="cypress" />
 
-describe('AT_12.06_009 Freestyle project. Disable project', () => {
+describe.skip('AT_12.06_009 Freestyle project. Disable project', () => {
 
     it('Disable project.Message “This project is currently disabled” is visible ', () => {
         

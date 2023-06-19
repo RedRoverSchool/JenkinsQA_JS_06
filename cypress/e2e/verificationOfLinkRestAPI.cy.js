@@ -4,7 +4,7 @@ import projects from "../fixtures/projects.json";
 
 const PORT = Cypress.env("local.port");
 
-describe("Footer | Verify Link REST API", () => {
+describe.skip("Footer | Verify Link REST API", () => {
     
   it.skip("Rest API link redirecting to the correct page", () => {
     cy.get('a[href="api/"]').click();

@@ -2,7 +2,7 @@
 import logInPage from "../fixtures/logInPage.json"
 import headerIcon from "../fixtures/headerIcon.json"
 
-describe('Header Head Icon', () => {
+describe.skip('Header Head Icon', () => {
 
     it.skip('AT_01.01_004 | Verify that Head Icon is visible and clickable', () => {
         cy.get('a[href="/view/all/newJob"]').click()

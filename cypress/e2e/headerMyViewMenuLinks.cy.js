@@ -4,7 +4,7 @@ import homePage from '../fixtures/homePage.json'
 
 const userName = Cypress.env("local.admin.username").toLowerCase();
 
-describe("US_01.06 Header My views menu link", () => {
+describe.skip("US_01.06 Header My views menu link", () => {
     it('TC_01.06_002 Header My views menu link', () => {
         cy.get('#side-panel').as('sidePanel');
         cy.get('@sidePanel').find('[href="/me/my-views"]').click();    

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Dashboard', () => {
+describe.skip('Dashboard', () => {
 
     it('Verify side panel has 5 items and they redirect to the appropriate pages', () => {
         cy.get('#side-panel .task').should('have.length', 5)

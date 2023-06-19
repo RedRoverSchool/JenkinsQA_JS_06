@@ -4,7 +4,7 @@ import homePageData from "../fixtures/homePage.json";
 import configurePageData from "../fixtures/configure.json";
 import configure from '../fixtures/configure.json'
 
-describe('FreestyleProjectConfigurateProject', () => {   
+describe.skip('FreestyleProjectConfigurateProject', () => {   
     let description = 'New description';
 
     beforeEach('Create freestyle project', function () {

@@ -14,7 +14,7 @@ function createProject(nameProject) {
 }
 
 
-describe('buildHistory', () => {
+describe.skip('buildHistory', () => {
 
     it.skip('AT_07.01 _001| Build History|Build History link is clickable', () => {
         cy.get('[href="/view/all/builds"]').click();

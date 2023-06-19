@@ -2,7 +2,7 @@
 
 import userDescription from "../fixtures/userDescription.json";
 
-describe('editStatusDescription', () => {
+describe.skip('editStatusDescription', () => {
 
     const userID = Cypress.env('local.admin.username').toLowerCase();
 

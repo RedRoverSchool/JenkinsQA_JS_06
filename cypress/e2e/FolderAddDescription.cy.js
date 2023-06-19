@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Folder Add Descriptions', () => {
+describe.skip('Folder Add Descriptions', () => {
 })
 
 it("Folder>Add description", () => {

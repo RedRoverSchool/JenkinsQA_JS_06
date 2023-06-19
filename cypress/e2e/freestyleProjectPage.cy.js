@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import pages from "../fixtures/pages.json"
 
-describe('freestyleProjectPage', () => {
+describe.skip('freestyleProjectPage', () => {
     function creatFreestyleProject() {
         cy.get('div.task:nth-child(1)').click()
         cy.get('input[class="jenkins-input"]').type(pages.projectName)

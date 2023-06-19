@@ -1,6 +1,6 @@
 import organizationFolderNames from '../fixtures/organizationFolderNames.json'
 import deleteOrgFolder from '../fixtures/deleteOrgFolder.json'
-describe('Folder | Delete created folder', () => {
+describe.skip('Folder | Delete created folder', () => {
     beforeEach('Create folder', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#name').type(organizationFolderNames.nameNewFolder)

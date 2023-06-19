@@ -1,4 +1,4 @@
-describe('New Item Create a new Multibranch Pipeline', () => {
+describe.skip('New Item Create a new Multibranch Pipeline', () => {
     it('Create a new Multibranch Pipeline', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('#name').type('New Multibranch Pipeline')

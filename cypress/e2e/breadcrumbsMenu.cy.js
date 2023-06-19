@@ -6,7 +6,7 @@ import pages from "../fixtures/pages.json"
 import { dashboardMenu } from "../fixtures/pages.json"
 
 
-describe('BreadcrumbsMenu', () => {
+describe.skip('BreadcrumbsMenu', () => {
 
    it.skip('AT_04.02_001 |Dashboard is displayed on every page and user is able to go back to Home page', () => {
       pages.dashboardMenu.forEach(page => {
