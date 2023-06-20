@@ -1,5 +1,5 @@
 import NewItemPage from "./NewItemPage";
-import HomePage from "./HomePage";
+import OrgFolderMoveChoicePage from "./OrgFolderMoveChoicePage";
 import FoldersAndMultibrPipelineDeletePage from "./FoldersAndMultibrPipelineDeletePage";
 import FolderConfirmRenamePage from "./FolderConfirmRenamePage";
 
@@ -16,6 +16,7 @@ class FolderPage {
     getIconProject = () => cy.get('.icon-pipeline-multibranch-project')
     getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
     getDescriptionPreview = () => cy.get(".textarea-preview");
+    getMoveBtnLeftSidebar = () => cy.get('a[href$=move]');
     
     clickAddEditDescriptionBtn() {
         this.getAddEditDescriptiotBtn().click();
@@ -68,6 +69,11 @@ class FolderPage {
     clickDescriptionPreviewLink() {
         this.getDescriptionPreviewLink().click();
         return this;
+    }
+
+    clickMoveBtnLeftSidebar() {
+        this.getMoveBtnLeftSidebar().click()
+        return new OrgFolderMoveChoicePage;
     }
 };
 
