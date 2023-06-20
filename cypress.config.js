@@ -11,11 +11,13 @@ module.exports = defineConfig({
     },
   },
   video: false,
-    reporter: 'cypress-mochawesome-reporter',
-    reporterOptions: {
-      embeddedScreenshots: true,
-      reportFilename: 'mochawesome',
-      reportDir: 'mochawesomeReports',
-      mochaFile: 'reports/test-results-[hash].xml',
-    },
+  reporterEnabled: "cypress-mochawesome-reporter, junit",
+  mochawesomeReporterOptions: {
+    embeddedScreenshots: true,
+    reportFilename: 'mochawesome',
+    reportDir: 'mochawesomeReports',
+  },
+  junitReporterOptions: {
+    mochaFile: 'reports/test-results-[hash].xml',
+  },
 });
