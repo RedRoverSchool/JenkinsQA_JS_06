@@ -7,12 +7,15 @@ module.exports = defineConfig({
   defaultCommandTimeout: 7000,
   e2e: {
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
   video: false,
-    reporter: 'junit',
+    reporter: 'cypress-mochawesome-reporter',
     reporterOptions: {
-        mochaFile: 'reports/test-results-[hash].xml',
+      embeddedScreenshots: true,
+      reportFilename: 'mochawesome',
+      reportDir: 'mochawesomeReports',
+      mochaFile: 'reports/test-results-[hash].xml',
     },
 });

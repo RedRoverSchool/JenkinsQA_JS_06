@@ -35,6 +35,7 @@ cypress/e2e/1-getting-started
 cypress/e2e/2-advanced-examples
 
 reports
+mochawesomeReports
 cypress/downloads
 
 cypress.env.json
