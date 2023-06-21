@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npx cypress open --e2e --browser chrome",
-    "test:run:chrome": "npx cypress run --spec 'cypress/e2e/tests/buildHistory.cy.js' --browser chrome"
+    "test:run:chrome": "npx cypress run --spec 'cypress/e2e/tests/*' --browser chrome"
   },
   "author": "",
   "license": "ISC",

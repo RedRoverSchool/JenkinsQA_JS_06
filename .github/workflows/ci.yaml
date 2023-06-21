@@ -72,13 +72,13 @@ jobs:
         uses: test-summary/action@v1.0
         if: always()
         with:
-          paths: reports/junit/*.xml
+          paths: ./cypress/reports/junit/*.xml
 
       - name: Publish test results
         uses: EnricoMi/publish-unit-test-result-action@v1
         if: always()
         with:
-          files: "reports/junit/*.xml"
+          files: "./cypress/reports/junit/*.xml"
 
       - name: Artifacts
         uses: actions/upload-artifact@v2
@@ -92,4 +92,4 @@ jobs:
         if: always()
         with:
           name: cypress-reports
-          path: ./mochawesomeReports    
+          path: ./cypress/reports/mochawesomeReports    
