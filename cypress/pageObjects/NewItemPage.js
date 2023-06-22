@@ -28,7 +28,7 @@ class NewItemPage {
 
 
     typeNewItemNameInputField(name) {
-        this.getNewItemNameInputField().type(name);
+        this.getNewItemNameInputField().clear().type(name);
         return this;
     };
 
