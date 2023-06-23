@@ -1,5 +1,7 @@
 {
     "error": "Error",
     "currentNameMsg": "The new name is the same as the current name",
-    "disableProjectMsg": "This project is currently disabled"
+    "disableProjectMsg": "This project is currently disabled",
+    "enableBtnText": "Enable",
+    "disableBtnText": "Disable Project"
 }
