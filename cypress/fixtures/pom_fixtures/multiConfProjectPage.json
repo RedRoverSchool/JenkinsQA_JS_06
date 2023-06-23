@@ -1,4 +1,5 @@
 {
     "error": "Error",
-    "currentNameMsg": "The new name is the same as the current name"
+    "currentNameMsg": "The new name is the same as the current name",
+    "disableProjectMsg": "This project is currently disabled"
 }
