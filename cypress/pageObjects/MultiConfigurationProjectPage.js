@@ -30,5 +30,10 @@ class MultiConfigurationProjectPage {
         this.getDisableProjectBtn().click();
         return this;
     };
+
+    clickEnableBtn() {
+        this.getEnableBtn().click();
+        return this;
+    }
 }
 export default MultiConfigurationProjectPage;
