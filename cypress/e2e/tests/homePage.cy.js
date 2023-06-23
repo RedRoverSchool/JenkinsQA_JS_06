@@ -3,7 +3,6 @@
 import HomePage from "../../pageObjects/HomePage";
 import homePageData from "../../fixtures/pom_fixtures/homePage.json";
 import { sidePanelItems } from "../../fixtures/pom_fixtures/homePage.json";
-import { descriptionText } from "../../fixtures/pom_fixtures/homePage.json";
 import { permanentAgentRadioBtn } from "../../fixtures/pom_fixtures/newNodePageData.json";
 import {endPointUrl} from "../../fixtures/pom_fixtures/homePage.json";
 import buildHistoryPageData from "../../fixtures/pom_fixtures/buildHistoryPage.json";
@@ -87,4 +86,13 @@ describe("homePage", () => {
         .getDescriptionField()
         .should('have.text', homePageData.newDescriptionText);
     })
+
+    it("AT_02.06_008 | Homepage > Verification of the link 'Hide preview' for description at main panel", () => {
+      homePage
+      .clickAddDescriptionLink()
+      .typeDescriptionIntoField(homePageData.descriptionText)
+      .clickDescriptionPreviewLink()
+      .clickHideDescriptionPreviewLink()
+      .getHideDescriptionPreview().should("not.be.visible")
+  })
 })
