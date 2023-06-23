@@ -216,7 +216,7 @@ describe('headerAndFooter', () => {
             })
     })
 
-    it.only('TC 17.04 | Open "My views" tab from user dropdown', () => {
+    it('TC 17.04 | Open "My views" tab from user dropdown', () => {
         headerAndFooter
             .clickDropDownMenuButton(realHover)
             .clickDropDownnMenuMyViews()
