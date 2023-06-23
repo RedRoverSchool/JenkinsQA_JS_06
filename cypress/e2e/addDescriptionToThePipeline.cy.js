@@ -13,7 +13,7 @@ describe('addDescriptionToThePipeline', () =>{
         cy.get('.jenkins-breadcrumbs__list-item').click();
         cy.get('.jenkins-table__link > span').should('include.text', `${pipelineName.namePipeline}`).should('exist');
     })
-    it('addDescriptionToThePipeline', () =>{
+    it.only('addDescriptionToThePipeline', () =>{
         cy.get('.jenkins-table__link > span').click();
         cy.get('#description-link').click();
         cy.get('.jenkins-input').type(description.textDescription);
