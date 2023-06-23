@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header | Head Icon', () => {
+describe.skip('Header | Head Icon', () => {
 
     it.skip('Verify Jenkins icon', function () {
         cy.get('#jenkins-head-icon').should('be.visible');        

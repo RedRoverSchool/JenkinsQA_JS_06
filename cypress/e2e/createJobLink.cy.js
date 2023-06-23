@@ -2,7 +2,7 @@
 
 import newItemNames from "../fixtures/newItemNames.json";
 
-describe("Homepage: Create a job link", () => {
+describe.skip("Homepage: Create a job link", () => {
   it.skip("Create a job link", function () {
     cy.get('a[href*="newJob"].content-block__link').should("be.visible");
     cy.get('a[href*="newJob"].content-block__link').should(

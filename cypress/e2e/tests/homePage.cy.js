@@ -75,4 +75,16 @@ describe("homePage", () => {
       .getConfigureCloudsHeader()
       .should('have.text', configureCloudsHeader)
     })
+
+    it('AT_02.06.002 Homepage > User is able to add and edit the text in the panel description"', () => {
+      homePage
+        .clickAddDescriptionLink()
+        .typeDescriptionIntoField(homePageData.descriptionText)
+        .clickSaveDescriptionBtn()
+        .clickEditDescriptionBtn()
+        .typeDescriptionIntoField(homePageData.newDescriptionText)
+        .clickSaveDescriptionBtn()
+        .getDescriptionField()
+        .should('have.text', homePageData.newDescriptionText);
+    })
 })

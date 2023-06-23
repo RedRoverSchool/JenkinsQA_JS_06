@@ -2,7 +2,7 @@
 
 import userConfig from "../fixtures/userConfigure.json"
 
-describe('profileLinkToUserBuilds', () =>{
+describe.skip('profileLinkToUserBuilds', () =>{
 
     it('AT_18.03.001 | Profile Page | Link to Users Builds', () => {
         cy.get('a[href*="user"]').click();

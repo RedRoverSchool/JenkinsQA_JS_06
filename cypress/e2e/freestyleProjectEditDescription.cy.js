@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import createNewView from "../fixtures/createNewView.json"
 
-describe('freestyleProjectEditDescription', () => {
+describe.skip('freestyleProjectEditDescription', () => {
     
     it('AT_12.07_002| Freestyle project > Add and edit description above existed project in List', function (){
       cy.get('#description-link').click();

@@ -4,7 +4,7 @@ import createFolder from '../fixtures/createFolder.json';
 import messages from '../fixtures/messages.json';
 import titleHomePage from '../fixtures/logInPage.json';
 
-describe('folderDeleteFolder', () =>{
+describe.skip('folderDeleteFolder', () =>{
     
     beforeEach('createFolder', () => {
         cy.get('a[href="newJob"]').click();

@@ -2,7 +2,7 @@
 
 import multibranchPipeline from '../fixtures/multibranchPipeline.json'
 
-describe('Multibranch Pipeline', () => {
+describe.skip('Multibranch Pipeline', () => {
     
     const newMultibranchPipeline = 'Multibranch Pipeline Project'
 

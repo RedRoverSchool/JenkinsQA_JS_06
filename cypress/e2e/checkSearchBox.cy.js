@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 
 
-describe('Check seach box', () => {
+describe.skip('Check seach box', () => {
     
     it.skip('Check placeholder text "Search (CTRL+K)"', () => {
         cy.visit("http://localhost:8080/")

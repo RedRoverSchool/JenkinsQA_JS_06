@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import myView from "../fixtures/myView.json"
 
-describe('myViewCreateNewBasedOnExisting', () => {
+describe.skip('myViewCreateNewBasedOnExisting', () => {
 
     const PORT = Cypress.env("local.port");
 

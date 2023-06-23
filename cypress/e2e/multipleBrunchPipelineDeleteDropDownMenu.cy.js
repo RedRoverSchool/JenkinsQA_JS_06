@@ -2,7 +2,7 @@
 
 import deleteMultiplePipeline from "../fixtures/deleteMultiplePipeline.json"
 
-describe('MultibranchPipelineDeleteDropDownMenu', () => {
+describe.skip('MultibranchPipelineDeleteDropDownMenu', () => {
 
     it('AT_16.03_003 Delete Multibranch Pipeline using the dropdown menu', () => {
         cy.get('a[href="/view/all/newJob"]').click()

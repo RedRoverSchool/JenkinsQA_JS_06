@@ -161,6 +161,11 @@ clickMultiBranchPipelineNameLink(){
     return this;
   };
 
+  clickNewViewBtn() {
+    this.getAddNewViewLink().click()
+    return this;
+  }
+
   verifyTabAllViewsInTabBarIsActive() {
     this.getActiveTabViewInTabBar()
       .should('have.text', myView.viewsTabBar.tabAllViewsInTabBar)

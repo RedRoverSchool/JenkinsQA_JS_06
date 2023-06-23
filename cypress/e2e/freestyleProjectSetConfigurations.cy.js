@@ -2,7 +2,7 @@
 
 import data from "../fixtures/freestyleBuildConfigurations.json"
 
-describe('freestyleProjectSetConfigurations', () => {
+describe.skip('freestyleProjectSetConfigurations', () => {
     Cypress.Commands.add("openDashboard", () => {
         cy.get('#jenkins-head-icon').click()
             .then(() => {

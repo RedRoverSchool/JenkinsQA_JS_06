@@ -147,4 +147,18 @@ describe('newItem', () => {
                 cy.wrap($el).should('be.visible')
             })
     })    
+
+    it('AT_05.02.002 | Create a new Pipeline by clicking "New Item"', () => {
+        homePage
+        .clickNewItemSideMenuLink()
+        .typeNewItemNameInputField(newItemPageData.pipelineName)
+        .selectPipelineItem()
+        .clickOkBtnAndGoPipelineConfig()
+
+        headerAndFooter
+        .clickJenkinsHomeLink()
+        .getProjectNameLink()
+        .should('have.text', newItemPageData.pipelineName)
+        .and('be.visible')
+    })
 });

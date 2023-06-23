@@ -17,7 +17,7 @@ beforeEach('create2folders', function () {
   cy.get('#jenkins-home-link').click();
 })
 
-describe('Move Organization Folder', () => {
+describe.skip('Move Organization Folder', () => {
     it('AT_17.04.003 | Move Organization Folder', function () {
       cy.get('.jenkins-table__link').contains(names.orgFolderName).realHover();
       cy.get(`[href="job/${names.orgFolderName}/"]`).click();

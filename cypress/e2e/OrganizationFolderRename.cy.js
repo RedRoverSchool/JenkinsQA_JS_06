@@ -3,7 +3,7 @@
 import organizationFolderNames  from "../fixtures/organizationFolderNames.json";
 import messages from "../fixtures/messages.json"
 
-describe('Rename existing Organization Folder', () => {
+describe.skip('Rename existing Organization Folder', () => {
     beforeEach(() => {
         cy.get('a[href$="/newJob"]').click()
         cy.get('.jenkins-input').type(organizationFolderNames.nameOrganizationFolder);

@@ -81,4 +81,22 @@ describe('multibranchPipeline', () => {
             .getProjectName(newItemPageData.multibranchPipelineName).should('not.exist')
     });
 
+    it('AT_16.04 _003| Verify that the Multibranch Pipeline is moved to an existing folder using the left sidebar', function () {
+        cy.createMultBranchPipeline(newItemPageData.multibranchPipelineName);
+        cy.createFolderProject(newItemPageData.folderName);
+
+        homePage
+            .clickProjectName(newItemPageData.multibranchPipelineName)
+            .clickMoveBtnLeftSidebar()
+            .selectDestinationMoveJob(newItemPageData.folderName)
+            .clickMoveButton()
+            .clickGoToDashboard()
+            .clickProjectName(newItemPageData.folderName)
+            .getIconProject()
+            .should('have.attr', 'title', newItemPageData.newItemNames[4])
+        folderPage
+            .getJobInsideFolderLink()
+            .should('have.text', newItemPageData.multibranchPipelineName)
+    });
+
 });

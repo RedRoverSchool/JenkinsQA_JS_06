@@ -2,7 +2,7 @@
 
 import userDescription from '../fixtures/userDescription.json'
 
-describe('Header User configure', () => {
+describe.skip('Header User configure', () => {
     Cypress.Commands.add('navigateUserConfigurationPage', () => {
         cy.get('.login .model-link').should('be.visible');
         cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });
@@ -152,7 +152,7 @@ describe('Header User configure', () => {
       cy.get('#description').should('include.text', userDescription.chengedDescription);
     });
 
-    it('AT_01.05_015 | Header>Visiting User Configure Page and Deleting User Information', () => {
+    it.skip('AT_01.05_015 | Header>Visiting User Configure Page and Deleting User Information', () => {
         cy.navigateUserConfigurationPage();
         descriptionField().type(userDescription.chengedDescription);
         cy.get(`${saveButton}`).click();

@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Header | Head Icon', ()=>{
+describe.skip('Header | Head Icon', ()=>{
 
     it.skip('Verify Jenkins Icon Functionality', function(){
     cy.get('span[class="task-link-text"]').contains('People').click({force: true})

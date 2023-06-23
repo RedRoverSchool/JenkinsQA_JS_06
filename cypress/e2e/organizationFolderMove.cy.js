@@ -22,7 +22,7 @@ function createFolder1(folderNew) {
     cy.get('#breadcrumbBar li:first-child').click();
 }
 
-describe('Organization_folder_move', () => {
+describe.skip('Organization_folder_move', () => {
     
     beforeEach(() => {
         createFolder1()

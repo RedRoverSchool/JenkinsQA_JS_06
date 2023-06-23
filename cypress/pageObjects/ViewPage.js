@@ -1,10 +1,18 @@
+import MyViewDeletePage from './MyViewDeletePage';
 import myView from "../fixtures/pom_fixtures/myView.json";
 
 class ViewPage {
-
+    getDeleteViewBtn = () => cy.get('#side-panel [href=delete]');
+    getNameMyViewList = () => cy.get('.tabBar a');
     getJobUrlsList = () => cy.get('#projectstatus tbody>tr>td:nth-child(3) a');
     getJobNamesList = () => cy.get('#projectstatus tbody>tr>td:nth-child(3) span');
+    getEditViewSideMenuLink = () => cy.get('a[href*="/configure"].task-link ');
 
+    clickDeleteViewBtn() {
+        this.getDeleteViewBtn().click();
+        return new MyViewDeletePage();
+    };
+ 
     verifyJobAmountUrlsAndNames() {
         this.getJobUrlsList().should('have.length', 3)
             .each(($el, idx) => {
@@ -17,5 +25,6 @@ class ViewPage {
                 expect($el).to.have.text(expectedName);
             })
     }    
+
 }
 export default ViewPage;

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('add description button', () => {
+describe.skip('add description button', () => {
     
     it.skip('AT_02.09_002 |should click button and fillout the field', function (){
       cy.get('#description-link').click()

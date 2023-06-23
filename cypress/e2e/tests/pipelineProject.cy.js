@@ -112,4 +112,16 @@ describe('pipelineProject',()=>{
                expect(el.text()).to.equal(pipelineConfigurePageData.pipelineSpeedDurabilityOverride[index])
       });                   
     })
-})
+
+    it('AT_13.02_006 | Pipeline - Verify the user can cancel the deletion of the pipeline in the confirmation window.',()=>{
+        cy.createPipeline(newItemPageData.pipelineName); 
+
+        homePage
+            .clickPipelineProjectName(newItemPageData.pipelineName)
+            .clickDeletePipelineBtn()
+            .clickCancelConfirmDeletePipeline()
+            .verifyPipelinePageUrl()
+            .getPipelinePageHeadline()
+            .should('have.text', `${pipelinePageData.pipelinePageHeaderStart} ${newItemPageData.pipelineName}`);
+    });
+});

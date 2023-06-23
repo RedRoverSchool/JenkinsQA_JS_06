@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Jenkins Dashboard', () => {
+describe.skip('Jenkins Dashboard', () => {
   it('verify dropdown menu Dashboard', function () {
     cy.get('.jenkins-breadcrumbs__list-item > .model-link').should('have.text', 'Dashboard').realHover();
     cy.get('li.jenkins-breadcrumbs__list-item button.jenkins-menu-dropdown-chevron').should('be.visible').click();

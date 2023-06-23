@@ -4,7 +4,7 @@ import headerCredentials from "../fixtures/headerCredentials.json"
 
 const login = Cypress.env('local.admin.username').toLowerCase();
 
-describe('headerCredentialsMenuLink', () => {
+describe.skip('headerCredentialsMenuLink', () => {
     it.skip('AT_ 01.07_002|Header|Credentials menu link|After redirect to the "Credentials" page the user has access to a list of credentials.', () => {
         cy.get('header button.jenkins-menu-dropdown-chevron').realHover().click()
         cy.get('li.yuimenuitem a[href*="/credentials"]').click()

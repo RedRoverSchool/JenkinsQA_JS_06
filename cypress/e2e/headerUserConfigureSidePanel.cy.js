@@ -2,7 +2,7 @@
 
 import userConfigure from "../fixtures/userConfigure.json"
 
-describe("Header User Configure", () => {
+describe.skip("Header User Configure", () => {
     it.only('AT_01.05_006 | User should see all available "tasks" in a side panel', function () {
         cy.get('.login .model-link').should('be.visible');
         cy.get('#page-header .login a.model-link button.jenkins-menu-dropdown-chevron').click({ force: true });

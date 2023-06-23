@@ -77,4 +77,24 @@ describe('folder', () => {
             .should('eq', folderPageData.folderNewName)
     })
 
+    it('AT _05.04_003 User is able to Create Folder', () => {
+        cy.createFolderProject(folderPageData.folderName) 
+
+        homePage
+            .clickProjectNameLink(folderPageData.folderName)            
+            .trimFolderHeaderName()
+            .should('eq', folderPageData.folderName)             
+    });
+
+    it('AT_15.03_003 | Folder > Prewiew description text matches the new description', () => { 
+        cy.createFolderProject(newItemPageData.folderName);
+        cy.addFolderDescription(folderPageData.folderDescription);
+        homePage 
+            .clickFolderNameLink(newItemPageData.folderName) 
+            .clickAddEditDescriptionBtn()
+            .typeFolderNewDescription(folderPageData.folderNewDescription) 
+            .clickDescriptionPreviewLink()
+            .getDescriptionPreview()
+                .should('have.text', folderPageData.folderNewDescription);
+      });
 });

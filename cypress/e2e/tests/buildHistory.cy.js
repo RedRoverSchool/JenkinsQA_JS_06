@@ -132,4 +132,19 @@ describe('buildHistory', () => {
             .should('contain', editBuildInformationPageData.displayName);
     });
 
+    it('AT_07.01_010 | Build History > Verify column Build content matches the Time Line content', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
+    
+        homePage
+            .clickScheduleBuildForProjectNameBtn(newItemPageData.freestyleProjectName)
+            .clickScheduleBuildForProjectNameBtn(newItemPageData.freestyleProjectName)
+            .clickScheduleBuildForProjectNameBtn(newItemPageData.freestyleProjectName)
+            .clickBuildHistoryLink()
+            .retrieveFromProjectStatusTableProjectNameAndBuildNumber().then((projectStatusTableProjectNameAndBuildNumber) => {
+                buildHistoryPage.retrieveFromTimeLineProjectNameAndBuildNumber().then((timeLineProjectNameAndBuildNumber) => {
+                    expect(projectStatusTableProjectNameAndBuildNumber).to.include.members(timeLineProjectNameAndBuildNumber)
+                    })
+            })
+    });
+
 });

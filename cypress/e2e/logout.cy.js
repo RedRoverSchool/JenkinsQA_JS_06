@@ -1,7 +1,7 @@
 import logInPage from "../fixtures/logInPage.json";
 import login from "../fixtures/logInPage.json";
 
-describe('verification log out button', function () {
+describe.skip('verification log out button', function () {
 
     it.skip('01_08_001 log out button should be clickable and open login page', function () {
         cy.get('a[href="/logout"]').should('be.visible').click()

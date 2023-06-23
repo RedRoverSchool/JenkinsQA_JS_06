@@ -6,7 +6,7 @@ import headers from '../fixtures/headers.json'
 import statuses from '../fixtures/statuses.json'
 
 
-describe('Verify <Dashboard>Icon legend', () => {
+describe.skip('Verify <Dashboard>Icon legend', () => {
   beforeEach('Create Project', function () {
     cy.get('a[href="newJob"]').click()
     cy.get('input#name').type('TestProject')

@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe("Homepage > Main Panel", () => {
+describe.skip("Homepage > Main Panel", () => {
   it.skip('<Main Panel> Verify the "Set up an agent" link in the "Set up a distributed build" section', function () {
     cy.get('.content-block a[href="computer/new"]')
       .should("be.visible")

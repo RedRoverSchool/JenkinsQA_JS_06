@@ -1,7 +1,7 @@
 import newItemNames from '../fixtures/newItemNames.json';
 import pages from '../fixtures/pages.json'
 
-describe('newItem', () => {
+describe.skip('newItem', () => {
     it.skip('TC_05.08_007 Verify item names', () => {
         cy.get('a[href="/view/all/newJob"]').click()
         cy.get('.j-item-options li span')

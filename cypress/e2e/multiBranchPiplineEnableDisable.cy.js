@@ -6,7 +6,7 @@ const {
 } = require('../support/helper')
 import multibranchPipelineData from '../fixtures/multibranchPipeline.json'
 
-describe('multiBranchPiplineEnableDisable', () => {
+describe.skip('multiBranchPiplineEnableDisable', () => {
   beforeEach(() => {
     const randomNumber = getRandomNumber()
     createMultibranchPipeline(

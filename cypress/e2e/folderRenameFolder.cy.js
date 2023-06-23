@@ -4,7 +4,7 @@ import createFolder from "../fixtures/createFolder.json"
 import messages from "../fixtures/messages.json"
 
 
-describe('Folder rename folder', () => {
+describe.skip('Folder rename folder', () => {
     const jenkinsURL = 'http://localhost:' + Cypress.env('local.port');
 
     beforeEach('createFolder', () => {

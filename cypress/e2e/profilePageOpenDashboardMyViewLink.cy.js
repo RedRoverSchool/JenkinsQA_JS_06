@@ -5,7 +5,7 @@ const jenkinsPort = Cypress.env('local.port');
 const jenkinsURL = 'http://localhost:' + jenkinsPort;
 const userId = Cypress.env('local.admin.username').toLowerCase();
 
-describe('Profile Page Open dashboard My view link', () => {
+describe.skip('Profile Page Open dashboard My view link', () => {
     it('AT_18.05_001 | Profile Page Open dashboard with My view link', () => {
 
         cy.get('.task ').contains('New Item').click();

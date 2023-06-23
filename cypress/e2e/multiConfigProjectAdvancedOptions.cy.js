@@ -2,7 +2,7 @@
 
 import projects from '../fixtures/projects.json'
 
-describe('Multi Config Project Advanced Options', () => {
+describe.skip('Multi Config Project Advanced Options', () => {
 
 	beforeEach(() => {
 		// Create Multi-configuration Project

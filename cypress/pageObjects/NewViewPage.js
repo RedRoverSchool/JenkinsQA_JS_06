@@ -7,7 +7,7 @@ class NewViewPage {
     getNewViewNameInputField = () => cy.get('#name');
     getViewsTypeRadioButtonsList = () => cy.get('.jenkins-radio__label');
     getCreateNewViewButton = () => cy.get('#ok');
-
+    
     typeNewViewNameIntoInputField(viewName) {
         this.getNewViewNameInputField().type(viewName);
         return this;
@@ -26,5 +26,6 @@ class NewViewPage {
             return new ViewEditPage();
         }
     };
+          
 }
 export default NewViewPage;

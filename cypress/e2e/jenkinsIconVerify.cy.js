@@ -1,6 +1,6 @@
 /// <reference types="cypress"/>
 
-describe('Header', () => {
+describe.skip('Header', () => {
 
     it('Verify Jenkins icon', function () {
 

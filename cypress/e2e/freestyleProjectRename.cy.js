@@ -4,7 +4,7 @@ import messages from "../fixtures/messages.json"
 import freestyleProject from "../fixtures/freestyleProject.json"
 import {dashboard} from "../fixtures/pages.json"
 
-describe('Freestyle project - Rename project', () => {
+describe.skip('Freestyle project - Rename project', () => {
 
     let jobName = 'Project1'
 

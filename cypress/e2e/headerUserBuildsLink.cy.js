@@ -13,7 +13,7 @@ function createAndBuildProject(projectName){
   cy.get('#tasks div:nth-child(4)').click()
 }
 
-describe('Header - User Builds Link', () => {
+describe.skip('Header - User Builds Link', () => {
   it('Verify menu item “Builds“ in “User” dropdown-menu displayed and clickable', () => {
     cy.get('div.login.page-header__hyperlinks button.jenkins-menu-dropdown-chevron').click({force:true})
     cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()
@@ -74,7 +74,7 @@ describe('Header - User Builds Link', () => {
     cy.get('#main-panel h1').should('include.text', title + `${login}`)
   })
 
-  it('AT_01.04.04 | Header > User Builds link > Verify access to the side panel', () => {
+  it.skip('AT_01.04.04 | Header > User Builds link > Verify access to the side panel', () => {
     cy.get('.login.page-header__hyperlinks .jenkins-menu-dropdown-chevron').click({force: true})
     cy.get('li.yuimenuitem a span').contains('Builds').should('be.visible').and('include.text', 'Builds').click()
 

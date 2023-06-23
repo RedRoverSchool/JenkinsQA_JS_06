@@ -1,7 +1,7 @@
 /// <reference types='cypress'/>
 import pipelineName from '../fixtures/pipelineName.json'
 
-describe('Pipeline | Delete Created Project', () => {
+describe.skip('Pipeline | Delete Created Project', () => {
     beforeEach('Create New Pipeline',()=>{
         cy.get('span[class="task-link-text"]').contains(pipelineName.textForNewItem).click({ force: true })
         cy.get('[name="name"]').type(pipelineName.newPipelineName)

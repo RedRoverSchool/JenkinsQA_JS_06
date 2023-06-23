@@ -2,7 +2,7 @@
 import userIconMenuItems from "../fixtures/userIconMenuItems.json"
 import headerIcon from "../fixtures/headerIcon.json"
 
-describe('Header User Icon', () => {
+describe.skip('Header User Icon', () => {
 
     let dropDown = ['Builds', 'Configure','My Views','Credentials'];
     

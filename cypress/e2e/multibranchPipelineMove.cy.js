@@ -19,7 +19,7 @@ function moveMPusingLS() {
     cy.get('.jenkins-button').click()
 }
 
-describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
+describe.skip('Multibranch Pipeline - Move Multibranch Pipeline', function () {
 
     beforeEach('Create the Multibranch Pipeline and the folder', function () {
         cy.get('.content-block a[href=newJob]').click()
@@ -50,7 +50,7 @@ describe('Multibranch Pipeline - Move Multibranch Pipeline', function () {
         cy.get(`#job_${pipelineName.namePipeline}`).should('not.exist')
     });
 
-    it('AT_16.04 _003| Verify that the Multibranch Pipeline is moved to an existing folder using the left sidebar', function () {
+    it.skip('AT_16.04 _003| Verify that the Multibranch Pipeline is moved to an existing folder using the left sidebar', function () {
         moveMPusingLS()
         cy.get('#jenkins-home-link').click()
         cy.get(`a[href="job/${folderName.nameOrganizationFolder}/"]`).click()

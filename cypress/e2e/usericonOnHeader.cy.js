@@ -1,5 +1,5 @@
 /// <reference types="cypress" />
-describe('Header > User icon', ()=>{
+describe.skip('Header > User icon', ()=>{
     it('Verify User icn and clicks on drop dawn menu', () => {
         cy.get('[href="/user/admin"]').should('exist').click()
         cy.get('.icon-lg').should('exist')

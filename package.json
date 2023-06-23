@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "cypressopen": "npx cypress open"
+    "start": "npx cypress open --e2e --browser chrome",
+    "test:run:chrome": "npx cypress run --spec 'cypress/e2e/tests/*' --browser chrome"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.11.0"
+    "cypress": "^12.11.0",
+    "cypress-mochawesome-reporter": "^3.5.1",
+    "cypress-multi-reporters": "^1.6.3",
+    "mocha-junit-reporter": "^2.2.0"
   },
   "dependencies": {
     "cypress-real-events": "^1.7.6",

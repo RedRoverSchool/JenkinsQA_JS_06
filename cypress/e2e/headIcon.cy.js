@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Head Icon', () => {
+describe.skip('Head Icon', () => {
 
     it('Verify Jenkins icon redirection to the homepage', () => {
         cy.get('#jenkins-head-icon').click()

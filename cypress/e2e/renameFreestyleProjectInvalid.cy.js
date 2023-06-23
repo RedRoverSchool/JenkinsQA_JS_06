@@ -1,7 +1,7 @@
 /// <reference types="cypress"/>
 import userData from "../fixtures/renameProjectInvalid.json"
 
-describe('renameFreestyleProjectInvalid', () => {
+describe.skip('renameFreestyleProjectInvalid', () => {
     
     beforeEach ('Prepare freeStyle Project', function () {
       cy.get(".task-link").eq(0).click();

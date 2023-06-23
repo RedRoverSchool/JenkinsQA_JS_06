@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 import pages from "../fixtures/pages.json"
 
-describe("Header Icon 1", () => {
+describe.skip("Header Icon 1", () => {
 
   Cypress.Commands.add('navigateUserConfigurationPage', () => {
     cy.get('.login .model-link').should('be.visible');

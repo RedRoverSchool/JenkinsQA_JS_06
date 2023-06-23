@@ -12,7 +12,7 @@ function createOrgFolder(orgFolderName) {
     cy.get('#breadcrumbBar li:first-child').click();
 }
 
-describe('orgFolderConfigurate', () => {
+describe.skip('orgFolderConfigurate', () => {
 
     it.skip('AT_17.01.002 | Add description to the Organization Folder via Configure', () => {
         createOrgFolder(orgFolderConfigure.orgFolderName);

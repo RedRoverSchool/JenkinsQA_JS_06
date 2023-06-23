@@ -14,5 +14,14 @@
             "heigth": "48px"
         }
     ],
-    "heading" : "Builds for "
-}
+    "heading" : "Builds for ",
+    
+    "SidePanelTasks": [
+            "People",
+            "Status",
+            "Builds",
+            "Configure",
+            "My Views",
+            "Credentials"
+        ]
+    }

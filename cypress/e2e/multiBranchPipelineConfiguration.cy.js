@@ -1,7 +1,7 @@
 import { createMultiBranchPipeline } from "../support/helper";
 import multibranchPipline from "../fixtures/multibranchPipeline.json"
 
-describe('Multibranch Pipeline Configuration', function () {
+describe.skip('Multibranch Pipeline Configuration', function () {
 
     const newPipelineName = 'pipeline' + Date.now()
     const descriptionText = 'description' + Date.now()
@@ -55,7 +55,7 @@ describe('Multibranch Pipeline Configuration', function () {
             })
     });
 
-    it('AT_16.01_011 | Verify visibility of configuration fields names -> Build Configuration', function () {
+    it.skip('AT_16.01_011 | Verify visibility of configuration fields names -> Build Configuration', function () {
         cy.get('#build-configuration')
             .should('contain', multibranchPipline.configurationsFields.buildConfiguration)
         cy.get(':nth-child(6) > :nth-child(2) > .jenkins-form-label')
@@ -69,7 +69,7 @@ describe('Multibranch Pipeline Configuration', function () {
             .should('be.visible')
     })
 
-    it('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
+    it.skip('AT_16.01_013 | Multibranch Pipeline > Verify visibility of help message > Scan Multibranch Pipeline Triggers', function () {
         cy.get('a[title$="otherwise run"]')
           .realHover()
           .should('be.visible').click()
