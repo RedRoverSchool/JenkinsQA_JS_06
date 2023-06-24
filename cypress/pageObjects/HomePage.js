@@ -456,6 +456,14 @@ class HomePage {
         this.getHideDescriptionPreview().click();
         return this;
     }
-}
 
+    createBuildsOfNewProject(projectName, buildsNumber) {
+        for(let i = 1; i <= buildsNumber; i++){
+            this.getScheduleBuildBtn(projectName).click();
+            cy.wait(1000);
+    }
+    return this
+    }
+
+}
 export default HomePage;
