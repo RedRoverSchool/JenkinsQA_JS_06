@@ -146,5 +146,14 @@ describe('buildHistory', () => {
                     })
             })
     });
+    
+    it('AT_07.02_008 | Verify user can sort builds in descending order by clicking “Time Since”', () => {
+        cy.createFreestyleProject(newItemPageData.freestyleProjectName)
 
+        homePage
+        .createBuildsOfNewProject(newItemPageData.freestyleProjectName, 3) 
+        .clickBuildHistoryLink()
+        .clickTimeSinceBtn()
+        .verifySortBuildsByTimeSience()
+    })
 });
