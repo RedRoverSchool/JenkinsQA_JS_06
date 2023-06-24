@@ -112,7 +112,6 @@ class BuildHistoryPage {
             let expectedData = actualData.slice().sort().reverse()
             expect(actualData).to.have.ordered.members(expectedData)
         })
-        return this
     }
 }
 
