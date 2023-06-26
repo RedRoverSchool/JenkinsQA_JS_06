@@ -120,4 +120,16 @@ describe('multibranchPipelineConfigure', () => {
           .getPeriodicallyHelpText1()
             .should('not.be.visible')
     })
+
+    it('AT_16.01_011 | Multibranch Pipeline > Verify visibility of help message > Build Configuration', function () {
+        cy.createMultiBranchPipeline(newItemPageData.multibranchPipelineName);
+        
+        multibranchPipelineConfigurePage
+          .checkScriptPathPopUpQstMarkText()
+          .clickScriptPathQuestionMark()
+          .checkScriptPathHelpTextVisible()
+          .clickScriptPathQuestionMark()
+          .getScriptPathHelpText()
+          .should('not.be.visible')
+    })
 });

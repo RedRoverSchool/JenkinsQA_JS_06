@@ -12,6 +12,7 @@ import HomePage from "../../pageObjects/HomePage";
 import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBoxDocumentationPage.json";
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
 import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
+import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
 
 describe('headerAndFooter', () => {
 
@@ -197,4 +198,20 @@ describe('headerAndFooter', () => {
             .getUserDescriptionBtn()
             .should('contain', UserProfilePageData.userAddDescriptionBtn);
     });
+    it('POM>AT_03.01.002 | <Footer>Verify user can open Link "The documentation" in REST API and see page title Remote Access API',()=>{
+        headerAndFooter
+            .clickRestAPILink()
+            .clickLinkTheDocumentation()
+            .getRestApiDocPageTitle().should('contain',restApiDocPageData.restApiDocPageTitle)
+            
+    });
+    it('AT 03.01.003 <Footer>Verify user can open Link The documentation in REST API and can see 10 modules per page',()=>{
+        headerAndFooter
+            .clickRestAPILink()
+            .clickLinkTheDocumentation()
+            .getRestApiDocPageItemsList().should('have.length',10)
+            .each(($el,idx)=>{
+                expect($el.text()).to.contain(restApiDocPageData.RestApiDocPageItemsList[idx])
+            })
+    })
 })

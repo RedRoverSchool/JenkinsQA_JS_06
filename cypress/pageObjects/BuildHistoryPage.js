@@ -19,6 +19,8 @@ class BuildHistoryPage {
     getProjectStatusTableProjectName = () => cy.get('td:nth-child(2) a:first-child')
     getProjectStatusTableProjectBuildNumber = () => cy.get('td:nth-child(2) .jenkins-table__badge')
     getTimeLineProjectNameAndBuild = () => cy.get('.label-event-blue') 
+    getSortHeaderTimeSince = () => cy.get('#projectStatus thead th:nth-child(3) a.sortheader')
+    getProjectStatusTableTimeSinceElements = () => cy.get('table#projectStatus tbody tr td:nth-child(3)')
 
     clickBuildInBuildHistoryCalendar() {
         this.getBuildInBuildHistoryCalendar().click();
@@ -99,6 +101,18 @@ class BuildHistoryPage {
         return cy.wrap (projectNameAndBuildNumberArray)
     };
 
+    clickTimeSinceBtn() {
+    this.getSortHeaderTimeSince().click()
+    return this
+    }
+
+    verifySortBuildsByTimeSience() {
+        this.getProjectStatusTableTimeSinceElements().then(($els) => {
+            let actualData = Cypress.$.makeArray($els).map(($el) => $el.innerText)
+            let expectedData = actualData.slice().sort().reverse()
+            expect(actualData).to.have.ordered.members(expectedData)
+        })
+    }
 }
 
 export default BuildHistoryPage;

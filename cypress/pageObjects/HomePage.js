@@ -61,8 +61,9 @@ class HomePage {
     getRenamePipelineProjectDrpDwnMenuBtn = () => cy.get("#breadcrumb-menu li:nth-child(6) span");
     getAddEditDescriptionBtn = () => cy.get("a#description-link");
     getDescriptionField = () => cy.get('#description div:first-of-type');
-    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");
+    getDescriptionPreviewLink = () => cy.get(".textarea-show-preview");  
     getDescriptionPreview = () => cy.get(".textarea-preview");
+    getHideDescriptionPreview = () => cy.get(".textarea-hide-preview");
 
     getHomepageHeader = () => cy.get(".empty-state-block h1");
     getPeopleSideMenuLink = () => cy.get('a[href="/asynchPeople/"]');
@@ -121,6 +122,7 @@ class HomePage {
         cy.get("#breadcrumb-menu li:nth-child(4) span")
     getNewViewLink = () => cy.get('[href="/newView"]');
     getLearnMoreAboutDistributedBuildsLink = () => cy.get('.content-block__help-link');
+    
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
@@ -235,6 +237,7 @@ class HomePage {
 
     typeDescriptionIntoField(text) {
         this.getAddDescriptionField().clear().type(text);
+        this.getHideDescriptionPreview().should("not.be.visible")
         return this;
     }
 
@@ -286,6 +289,7 @@ class HomePage {
 
     clickDescriptionPreviewLink() {
         this.getDescriptionPreviewLink().click();
+        this.getHideDescriptionPreview().should("be.visible")
         return this;
     }
 
@@ -447,6 +451,19 @@ class HomePage {
         this.getLearnMoreAboutDistributedBuildsLink().invoke('removeAttr','target').click();
         return new DistributedBuildsLinkPage(); 
     }
-}
 
+    clickHideDescriptionPreviewLink() {
+        this.getHideDescriptionPreview().click();
+        return this;
+    }
+
+    createBuildsOfNewProject(projectName, buildsNumber) {
+        for(let i = 1; i <= buildsNumber; i++){
+            this.getScheduleBuildBtn(projectName).click();
+            cy.wait(1000);
+    }
+    return this
+    }
+
+}
 export default HomePage;

@@ -2,11 +2,17 @@
 
 import HomePage from "../../pageObjects/HomePage";
 import newItemPageData from "../../fixtures/pom_fixtures/newItemPage.json";
+import newItemPage from "../../fixtures/pom_fixtures/newItemPage.json"
 import multiConfProjectPageData from "../../fixtures/pom_fixtures/multiConfProjectPage.json";
 import multiConfigurationProjectConfigurePage from "../../fixtures/pom_fixtures/multiConfigurationProjectConfigurePage.json"
+import MultiConfigurationProjectPage from "../../pageObjects/MultiConfigurationProjectPage";
+import headerAndFooter from "../../pageObjects/HeaderAndFooter";
+import HeaderAndFooter from "../../pageObjects/HeaderAndFooter";
 
 describe("multiConfigurationProject", () => {
     const homePage = new HomePage();
+    const multiConfigurationProjectPage = new MultiConfigurationProjectPage();
+    const headerAndFooter = new HeaderAndFooter();
 
     it("AT_14.07_001|Verify Multi-configuration project deleted within itself", () => {
         cy.createMultiConfigurationProject(newItemPageData.multiConfigurationProjectName);
@@ -68,5 +74,32 @@ describe("multiConfigurationProject", () => {
         .typeDescriptionInputField()
         .clickSaveButton()
         .getDescriptionField().should('have.text',multiConfigurationProjectConfigurePage.descriptionText);
+    })
+
+    it('AT_14.02_001 |MultiConfigurationProject | Verify that the user is able to Disable Project', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickDisableProjectBtn()
+        .getDisableProjectMsg().should('contain', multiConfProjectPageData.disableProjectMsg)
+        multiConfigurationProjectPage
+        .getEnableBtn().should('be.visible').and('have.text', multiConfProjectPageData.enableBtnText);
+    })
+
+    it('AT_14.02_002 |MultiConfigurationProject | Verify that the user is able to Enable Disabled Project', () => {
+        cy.createMultiConfigurationProject(newItemPage.multiConfigurationProjectName);
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickDisableProjectBtn();
+        headerAndFooter
+        .clickJenkinsHomeLink();
+
+        homePage
+        .clickMultiConfigProjectNameLink(newItemPageData.multiConfigurationProjectName)
+        .clickEnableBtn()
+        .getDisableProjectMsg().should('not.exist', multiConfProjectPageData.disableProjectMsg)
+        multiConfigurationProjectPage
+        .getDisableProjectBtn().should('be.visible').and('have.text', multiConfProjectPageData.disableBtnText);
     })
 })
