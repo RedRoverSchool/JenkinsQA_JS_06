@@ -208,6 +208,18 @@ describe('myView', () => {
       .getEditViewSideMenuLink()
       .should('be.visible')
   });
+
+  it('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
+      homePage
+        .clickMyViewSideMenuLink()
+        .clickCreateAJobLink()
+        .typeNewItemNameInputField(newItemPageData.orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+        .getOrgFolderHeader()
+        .should('contain', newItemPageData.orgFolderName)
+  })
   after('delete view', () => {
        viewPage
        .clickDeleteViewBtn()
