@@ -220,6 +220,15 @@ describe('myView', () => {
         .getOrgFolderHeader()
         .should('contain', newItemPageData.orgFolderName)
   })
+
+  it('AT_09.02.008_Add description to "My Views"', () => {
+      homePage
+      .clickMyViewSideMenuLink()
+      .clickAddDescriptionBtn()
+      .typeDescriptionIntoInputField(myViewData.addDescription)
+      .getDescriptionText()
+      .should('contain',myViewData.addDescription)
+  })
   after('delete view', () => {
        viewPage
        .clickDeleteViewBtn()
