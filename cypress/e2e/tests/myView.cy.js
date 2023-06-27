@@ -197,6 +197,18 @@ describe('myView', () => {
       .getSidePanelHeader().should('have.text', freestyleProjectConfigureData.configurePageHeader);
   });
 
+  it('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
+      homePage
+        .clickMyViewSideMenuLink()
+        .clickCreateAJobLink()
+        .typeNewItemNameInputField(newItemPageData.orgFolderName)
+        .selectOrgFolderItem()
+        .clickOkBtnAndGoOrgFolderConfig()
+        .clickSaveBtnAndGoOrgFolder()
+        .getOrgFolderHeader()
+        .should('contain', newItemPageData.orgFolderName)
+  });
+
   it('AT_09.07.001|Verify that "Edit View" tab is displayed', () => {
       cy.createFreestyleProject(newItemPageData.freestyleProjectName);
       homePage
@@ -209,21 +221,9 @@ describe('myView', () => {
       .should('be.visible')
   });
 
-  it('AT_09.08.004 My Views-Create a job, verify user can create a job', () =>{
-      homePage
-        .clickMyViewSideMenuLink()
-        .clickCreateAJobLink()
-        .typeNewItemNameInputField(newItemPageData.orgFolderName)
-        .selectOrgFolderItem()
-        .clickOkBtnAndGoOrgFolderConfig()
-        .clickSaveBtnAndGoOrgFolder()
-        .getOrgFolderHeader()
-        .should('contain', newItemPageData.orgFolderName)
-  })
   after('delete view', () => {
        viewPage
        .clickDeleteViewBtn()
        .clickMyViewDeleteOkBtn();
-});
-
+  });
 });
