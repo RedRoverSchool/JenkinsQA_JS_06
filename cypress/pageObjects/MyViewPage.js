@@ -39,7 +39,7 @@ class MyViewPage {
   getActiveTabViewInTabBar = () => cy.get('.tabBar .tab.active');
   getViewsTabBar = () => cy.get('.tabBar');
   getCreateAJobLink = () => cy.get('a[href="newJob"]');
-
+  
   clickNewItemSideMenuLink() {
     this.getNewItemSideMenuLink().click();
     return new NewItemPage();
@@ -178,5 +178,12 @@ clickMultiBranchPipelineNameLink(){
     this.getCreateAJobLink().click();
     return new NewItemPage();
   }
-}
+
+  // clickgetMyViewsAll() {
+  //   this.getMyViewsAll().click();
+  //   return new page MyViewsAll
+
+  }
+ 
+
 export default MyViewPage;

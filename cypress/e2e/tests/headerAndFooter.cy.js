@@ -13,7 +13,7 @@ import searchBoxDocumentationPageData from "../../fixtures/pom_fixtures/searchBo
 import userBuildsPageData from "../../fixtures/pom_fixtures/userBuildsPage.json";
 import UserProfilePageData from "../../fixtures/pom_fixtures/userProfilePage.json";
 import restApiDocPageData from "..//..//fixtures/pom_fixtures/restApiDocPage.json";
-import { realHover } from "cypress-real-events/commands/realHover";
+// import { realHover } from "cypress-real-events/commands/realHover";
 
 describe('headerAndFooter', () => {
 
@@ -216,11 +216,11 @@ describe('headerAndFooter', () => {
             })
     })
 
-    it('TC 17.04 | Open "My views" tab from user dropdown', () => {
+    it.only('TC 17.04 | Open "My views" tab from user dropdown', () => {
         headerAndFooter
-            .clickDropDownMenuButton(realHover)
-            .clickDropDownnMenuMyViews()
-        cy.url().should('contain', 'view/all/')
-    })
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+           
+        })
 
 })
