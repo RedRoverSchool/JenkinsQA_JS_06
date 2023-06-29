@@ -178,11 +178,6 @@ clickMultiBranchPipelineNameLink(){
     this.getCreateAJobLink().click();
     return new NewItemPage();
   }
-
-  // clickgetMyViewsAll() {
-  //   this.getMyViewsAll().click();
-  //   return new page MyViewsAll
-
   }
  
 
