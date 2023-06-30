@@ -32,6 +32,9 @@ class HeaderAndFooter {
     getSearchBoxIconTrailing = () => cy.get('.main-search__icon-trailing');
     getUserDropDownMenuCredentials = () => cy.get('#yui-gen4');
     getCurrentUserName = () => cy.get('.login .model-link span');
+    getDropDownMenuButton = () => cy.get('.page-header__hyperlinks .model-link .jenkins-menu-dropdown-chevron')
+    getDropDownnMenuMyViews = () => cy.get('a[href="/user/admin/my-views"]');
+   
 
     clickJenkinsVersionLink() {
         this.getJenkinsVersionLink().invoke('removeAttr', 'target').click()
@@ -136,6 +139,15 @@ class HeaderAndFooter {
         return new HomePage();
     }
 
-}
+    clickDropDownMenuButton() {
+        this.getDropDownMenuButton().realHover().click();
+        return this
+    }
+
+    clickDropDownnMenuMyViews() {
+        this.getDropDownnMenuMyViews().click();
+        return new MyViewPage();
+    }
+} 
 
 export default HeaderAndFooter;

@@ -9,3 +9,4 @@ describe.skip('US 17.04 | Page-header', () => {
         cy.url().should('contain', 'view/all/')
     })
 })
+

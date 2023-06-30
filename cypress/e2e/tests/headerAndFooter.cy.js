@@ -110,13 +110,13 @@ describe('headerAndFooter', () => {
     it('AT_01.01_019 | Redirection to the homepage by label', () => {
         homePage
             .clickNewItemSideMenuLink()
-        headerAndFooter    
-            .clickJenkinsHomeLink()             
-        homePage    
+        headerAndFooter
+            .clickJenkinsHomeLink()
+        homePage
             .getHomePageLink()
             .should('eq', `http://localhost:${Cypress.env('local.port')}/`);
-     });
-    
+    });
+
     it('AT_01.05_12 | Verify User can configure user account, add info about user', () => {
         headerAndFooter
             .clickUserDropDownBtn()
@@ -131,13 +131,13 @@ describe('headerAndFooter', () => {
         headerAndFooter
             .clickUserDropDownBtn()
             .getUserDropdownMenuItemsList().each(($el, idx) => {
-                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);             
-            })           
+                expect($el.html()).contain(headerAndFooterData.userDropdownMenuItems[idx]);
+            })
     });
 
     headerAndFooterData.userDropdownMenuItems.forEach((pageName, idx) => {
         it(`AT_01.03_029 | Header | User icon - Verify dropdown menu links redirect to the ${pageName} pages`, function () {
-            headerAndFooter  
+            headerAndFooter
                 .clickUserDropDownBtn()
                 .clickEachDropdownMenuItems(idx)
                 .verifyPagesUrl(headerAndFooterData.userDropdownMenuItemsUrl[idx])
@@ -149,7 +149,7 @@ describe('headerAndFooter', () => {
     it.skip('AT_01.02_001 | Verify that user navigate to Search Box documentation page', () => {
         headerAndFooter
             .clickSearchBoxIconTrailing()
-            cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
+        cy.url().should('eq', searchBoxDocumentationPageData.searchBoxDocumentationPageURL)
     });
 
     it('AT_03.02.005 | Footer>Verify the Link Jenkins', () => {
@@ -166,7 +166,7 @@ describe('headerAndFooter', () => {
             .getPageHeading()
             .should('contain', userBuildsPageData.heading + Cypress.env('local.admin.username'));
     });
-   
+
     it('AT_01.05_014 | Header> Verify User can change info about the user on the “Configure” page.', () => {
         headerAndFooter
             .clickUserDropDownBtn()
@@ -213,5 +213,12 @@ describe('headerAndFooter', () => {
             .each(($el,idx)=>{
                 expect($el.text()).to.contain(restApiDocPageData.RestApiDocPageItemsList[idx])
             })
+    })
+
+    it('TC 17.04 | Open "My views" tab from user dropdown', () => {
+        headerAndFooter
+            .clickUserDropDownBtn()
+            .selectUserMyViewsMenu()
+             cy.url().should('contain', 'view/all/')
     })
 })
