@@ -6,7 +6,25 @@ import resultSearchBoxData from "../../fixtures/pom_fixtures/resultSearchBox.jso
 describe('orgFolderConfigure', () => {
 
     const homePage = new HomePage();
-    const headerAndFooter = new HeaderAndFooter();
+    const headerAndFooter = new HeaderAndFooter(); 
+
+    it ('AT_17.04_004 | Verify the moved Organization Folder existence on the Jenkins dashboard', function () {
+        cy.createFolderProject(newItemPageData.folderName)
+        cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
+
+        homePage
+        .hoverAndClickProjectDrpDwnBtn(newItemPageData.orgFolderName)
+        .clickProjectNameDropdownMoveLink()
+        .selectDestinationMoveJob(newItemPageData.folderName)
+        .clickMoveButton()
+
+        headerAndFooter
+        .clickJenkinsHomeLink()
+
+        homePage
+        .getgetDashboardMainPanel()
+        .should('not.contain.text', newItemPageData.orgFolderName)
+    })
 
     it('AT_17.04_002 | Move Organization Folder into Folder', () => {
         cy.createOrganizationFolderProject(newItemPageData.orgFolderName)
