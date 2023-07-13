@@ -122,7 +122,8 @@ class HomePage {
         cy.get("#breadcrumb-menu li:nth-child(4) span")
     getNewViewLink = () => cy.get('[href="/newView"]');
     getLearnMoreAboutDistributedBuildsLink = () => cy.get('.content-block__help-link');
-    
+    getgetDashboardMainPanel = () => cy.get('#main-panel')
+
 
     verifyPipeLineDrpDwnMenu() {
         return this.getPipelineDrpDwnMenuItems().then(($els) => {
